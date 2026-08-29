@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="35%" stop-color="#16235A" />
+      <stop offset="85%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0B1120" />
+    </linearGradient>
+
+    <!-- Gold Accent Gradient -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE68A" />
+      <stop offset="50%" stop-color="#B48C35" />
+      <stop offset="100%" stop-color="#785312" />
+    </linearGradient>
+
+    <!-- Purple/Pink Brand Gradient -->
+    <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563EB" />
+      <stop offset="50%" stop-color="#9333EA" />
+      <stop offset="100%" stop-color="#DB2777" />
+    </linearGradient>
+
+    <!-- Arm Skin Tone Gradient -->
+    <linearGradient id="skinL" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F3C2A5" />
+      <stop offset="45%" stop-color="#D98A62" />
+      <stop offset="85%" stop-color="#A85936" />
+      <stop offset="100%" stop-color="#703217" />
+    </linearGradient>
+    <linearGradient id="skinR" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F3C2A5" />
+      <stop offset="45%" stop-color="#D98A62" />
+      <stop offset="85%" stop-color="#A85936" />
+      <stop offset="100%" stop-color="#703217" />
+    </linearGradient>
+  </defs>
+
+  <!-- Base Rounded Icon Container -->
+  <rect width="512" height="512" rx="108" fill="url(#bgGrad)" />
+
+  <!-- Outer Border Ring -->
+  <rect x="8" y="8" width="496" height="496" rx="100" fill="none" stroke="url(#brandGrad)" stroke-width="6" opacity="0.85" />
+
+  <!-- Subtle Cross Rays in Background -->
+  <circle cx="256" cy="220" r="160" fill="url(#goldGrad)" opacity="0.08" filter="blur(20px)" />
+  <line x1="256" y1="50" x2="256" y2="400" stroke="#FDE68A" stroke-width="1.5" opacity="0.15" />
+  <line x1="100" y1="180" x2="412" y2="180" stroke="#FDE68A" stroke-width="1.5" opacity="0.15" />
+
+  <!-- Top Accent Bar -->
+  <rect x="96" y="44" width="320" height="8" rx="4" fill="url(#brandGrad)" />
+
+  <!-- Golden Latin Cross at Top Center -->
+  <g transform="translate(256, 105)">
+    <!-- Vertical Cross Beam -->
+    <rect x="-6" y="-36" width="12" height="72" rx="3" fill="url(#goldGrad)" />
+    <!-- Horizontal Cross Beam -->
+    <rect x="-24" y="-20" width="48" height="12" rx="3" fill="url(#goldGrad)" />
+    <!-- Golden Core Glow -->
+    <circle cx="0" cy="-14" r="5" fill="#FFFBEB" />
+  </g>
+
+  <!-- Left Flexed Muscle Arm -->
+  <g transform="translate(48, 170) scale(1.15)">
+    <!-- Shoulder & Bicep -->
+    <path d="M12 90 C18 68, 30 58, 42 56 C46 55, 50 60, 52 70 C54 78, 48 88, 42 94 Z" fill="url(#skinL)" />
+    <path d="M42 56 C36 42, 46 26, 60 28 C72 30, 78 44, 72 56 C66 64, 52 66, 42 56 Z" fill="url(#skinL)" />
+    <path d="M66 36 C74 28, 84 20, 88 8 C90 4, 84 0, 78 2 C70 4, 62 14, 54 26 C52 30, 56 34, 66 36 Z" fill="url(#skinL)" />
+    <!-- Fist -->
+    <circle cx="86" cy="8" r="8" fill="url(#skinL)" />
+  </g>
+
+  <!-- Right Flexed Muscle Arm (Mirrored) -->
+  <g transform="translate(464, 170) scale(-1.15, 1.15)">
+    <!-- Shoulder & Bicep -->
+    <path d="M12 90 C18 68, 30 58, 42 56 C46 55, 50 60, 52 70 C54 78, 48 88, 42 94 Z" fill="url(#skinR)" />
+    <path d="M42 56 C36 42, 46 26, 60 28 C72 30, 78 44, 72 56 C66 64, 52 66, 42 56 Z" fill="url(#skinR)" />
+    <path d="M66 36 C74 28, 84 20, 88 8 C90 4, 84 0, 78 2 C70 4, 62 14, 54 26 C52 30, 56 34, 66 36 Z" fill="url(#skinR)" />
+    <!-- Fist -->
+    <circle cx="86" cy="8" r="8" fill="url(#skinR)" />
+  </g>
+
+  <!-- Script "The" -->
+  <text x="256" y="195" font-family="'Caveat', cursive, serif" font-weight="700" font-size="38" fill="#F472B6" text-anchor="middle" letter-spacing="1">The</text>
+
+  <!-- Central Emblem Box "JOY" -->
+  <g transform="translate(256, 260)">
+    <!-- Background Frame -->
+    <rect x="-135" y="-46" width="270" height="92" rx="18" fill="#0D1638" stroke="#FDFBFE" stroke-width="4" />
+    <rect x="-130" y="-41" width="260" height="82" rx="14" fill="#16235A" />
+    
+    <!-- Middle White Block for 'O' -->
+    <rect x="-42" y="-41" width="84" height="82" rx="6" fill="#FFFFFF" />
+
+    <!-- Big Bold Letters -->
+    <!-- J -->
+    <text x="-86" y="19" font-family="'Montserrat', system-ui, sans-serif" font-weight="900" font-size="64" fill="#FFFFFF" text-anchor="middle">J</text>
+    <!-- O -->
+    <text x="0" y="19" font-family="'Montserrat', system-ui, sans-serif" font-weight="900" font-size="64" fill="#16235A" text-anchor="middle">O</text>
+    <!-- Y -->
+    <text x="86" y="19" font-family="'Montserrat', system-ui, sans-serif" font-weight="900" font-size="64" fill="#FFFFFF" text-anchor="middle">Y</text>
+  </g>
+
+  <!-- "OF THE LORD" -->
+  <text x="256" y="348" font-family="'Montserrat', system-ui, sans-serif" font-weight="800" font-size="28" fill="#FFFFFF" text-anchor="middle" letter-spacing="4">
+    OF THE LORD
+  </text>
+
+  <!-- "IS MY STRENGTH" -->
+  <text x="256" y="388" font-family="'Montserrat', system-ui, sans-serif" font-weight="900" font-size="24" fill="#F472B6" text-anchor="middle" letter-spacing="5">
+    IS MY STRENGTH
+  </text>
+
+  <!-- Scripture Tag: Nehemiah 8:10 -->
+  <text x="256" y="420" font-family="'Source Serif 4', Georgia, serif" font-style="italic" font-weight="600" font-size="18" fill="#FDE68A" text-anchor="middle">
+    Nehemiah 8:10
+  </text>
+
+  <!-- Bottom Triple Accent Lines -->
+  <line x1="90" y1="454" x2="422" y2="454" stroke="#DB2777" stroke-width="4" stroke-linecap="round" />
+  <line x1="120" y1="464" x2="392" y2="464" stroke="#9333EA" stroke-width="4" stroke-linecap="round" />
+  <line x1="160" y1="474" x2="352" y2="474" stroke="#2563EB" stroke-width="4" stroke-linecap="round" />
+</svg>

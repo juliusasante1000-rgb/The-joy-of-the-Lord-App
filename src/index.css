@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --brand-navy: #16235A;
+    --brand-navy-dark: #0D1638;
+    --brand-navy-light: #24357D;
+    --brand-magenta: #C026D3;
+    --brand-pink: #DB2777;
+    --brand-purple: #9333EA;
+    --brand-purple-dark: #6B21A8;
+    --brand-cobalt: #2563EB;
+    --brand-gold: #B48C35;
+    --brand-gold-light: #DCC398;
+    --editorial-bg: #FDFBFE;
+    --editorial-border: #E8E0F0;
+    --editorial-text: #16235A;
+    --editorial-text-muted: #5B6B8A;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: #FDFBFE;
+    color: #16235A;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    min-height: 100vh;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  h1, h2, h3, h4, .font-serif {
+    font-family: 'Source Serif 4', Georgia, Cambria, serif;
+  }
+
+  .font-script {
+    font-family: 'Caveat', cursive, sans-serif;
+  }
+
+  .font-brand-impact {
+    font-family: 'Montserrat', 'Plus Jakarta Sans', sans-serif;
+  }
+
+  .font-cinzel {
+    font-family: 'Cinzel', 'Source Serif 4', Georgia, serif;
+  }
+}
+
+/* Brand Triple Stripe Border Simulation (Magenta -> Purple -> Navy) */
+.brand-triple-border {
+  border-top: 3px solid #DB2777;
+  box-shadow: 0 -3px 0 0 #9333EA, 0 -6px 0 0 #16235A;
+}
+
+.brand-gradient-bar {
+  background: linear-gradient(90deg, #2563EB 0%, #9333EA 50%, #DB2777 100%);
+}
+
+.brand-gradient-badge {
+  background: linear-gradient(135deg, #16235A 0%, #24357D 100%);
+}
+
+.brand-accent-glow {
+  box-shadow: 0 4px 20px -2px rgba(147, 51, 234, 0.15);
+}
+
+/* Responsive Math & KaTeX Equation Standardization */
+.katex-display {
+  margin: 0.5em 0 !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  white-space: normal !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+.katex {
+  font-size: clamp(0.85rem, 2.2vw, 1.15rem) !important;
+  white-space: normal !important;
+  line-height: 1.45 !important;
+}
+
+.katex-html {
+  max-width: 100% !important;
+  white-space: normal !important;
+}
+
+.katex .base {
+  display: inline-flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: center !important;
+  max-width: 100% !important;
+  word-break: break-word !important;
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
+}
+
+.katex .tag {
+  position: relative !important;
+  padding-left: 0.5rem !important;
+}
+
+.katex-display > .katex {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  max-width: 100% !important;
+}
+
+.inline-math-container {
+  max-width: 100%;
+  word-break: break-word;
+}
+
+/* Comprehensive Responsive Media Queries for All Devices */
+@media (max-width: 640px) {
+  .katex {
+    font-size: clamp(0.75rem, 3.5vw, 0.95rem) !important;
+  }
+
+  /* Compact button text and touch targets */
+  button, a {
+    touch-action: manipulation;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  /* Tablet optimization */
+  .katex {
+    font-size: clamp(0.9rem, 1.8vw, 1.1rem) !important;
+  }
+}
+
+@media (min-width: 1025px) {
+  /* Desktop & Large Screens */
+  .katex {
+    font-size: clamp(1rem, 1.2vw, 1.25rem) !important;
+  }
+}
+
+/* Ensure images and canvases never overflow containers */
+img, canvas, video, svg {
+  max-width: 100%;
+  height: auto;
+}

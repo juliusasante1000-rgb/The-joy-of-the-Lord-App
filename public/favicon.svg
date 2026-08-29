@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="favBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#16235A" />
+    </linearGradient>
+    <linearGradient id="favBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB" />
+      <stop offset="50%" stop-color="#9333EA" />
+      <stop offset="100%" stop-color="#DB2777" />
+    </linearGradient>
+  </defs>
+
+  <rect width="64" height="64" rx="14" fill="url(#favBg)" />
+  <rect x="1" y="1" width="62" height="62" rx="13" fill="none" stroke="url(#favBorder)" stroke-width="2" />
+
+  <!-- Mini Cross -->
+  <rect x="30.5" y="6" width="3" height="12" rx="1" fill="#FDE68A" />
+  <rect x="26.5" y="9.5" width="11" height="3" rx="1" fill="#FDE68A" />
+
+  <!-- JOY Box -->
+  <g transform="translate(32, 34)">
+    <rect x="-24" y="-12" width="48" height="24" rx="5" fill="#0D1638" stroke="#FFFFFF" stroke-width="1.5" />
+    <rect x="-7.5" y="-12" width="15" height="24" rx="2" fill="#FFFFFF" />
+    <text x="-15.5" y="5.5" font-family="Montserrat, system-ui, sans-serif" font-weight="900" font-size="16" fill="#FFFFFF" text-anchor="middle">J</text>
+    <text x="0" y="5.5" font-family="Montserrat, system-ui, sans-serif" font-weight="900" font-size="16" fill="#16235A" text-anchor="middle">O</text>
+    <text x="15.5" y="5.5" font-family="Montserrat, system-ui, sans-serif" font-weight="900" font-size="16" fill="#FFFFFF" text-anchor="middle">Y</text>
+  </g>
+
+  <!-- Bottom Accent Stripe -->
+  <line x1="12" y1="53" x2="52" y2="53" stroke="#DB2777" stroke-width="2" stroke-linecap="round" />
+  <line x1="18" y1="57" x2="46" y2="57" stroke="#9333EA" stroke-width="2" stroke-linecap="round" />
+</svg>

@@ -1,0 +1,74 @@
+{
+  "name": "The Joy of the Lord",
+  "short_name": "The Joy of the Lord",
+  "description": "The Joy of the Lord — Christian Faith & Spiritual Growth. Daily Scripture, devotionals, complete Holy Bible reader, ApostleMath, MathemaSermon, Rhema Word, Hymnals, and Christian Library.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "orientation": "any",
+  "theme_color": "#16235A",
+  "background_color": "#16235A",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["lifestyle", "education", "books", "religion"],
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "64x64 32x32 16x16",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Verse of the Day",
+      "short_name": "Daily Verse",
+      "description": "Read today's synchronized daily Bible verse and devotion",
+      "url": "/#home",
+      "icons": [{ "src": "/icon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "Holy Bible",
+      "short_name": "Bible",
+      "description": "Read complete Old & New Testaments in 6 major translations",
+      "url": "/#bible",
+      "icons": [{ "src": "/icon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "ApostleMath",
+      "short_name": "ApostleMath",
+      "description": "Explore 100 mathematical analogies & KaTeX formulas of divine truth",
+      "url": "/#apostle_math",
+      "icons": [{ "src": "/icon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "MathemaSermons",
+      "short_name": "Sermons",
+      "description": "Read and listen to homiletics and pulpit sermon series",
+      "url": "/#mathema_sermons",
+      "icons": [{ "src": "/icon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "Prayer Studio",
+      "short_name": "Prayer",
+      "description": "Spiritual devotions, prayer journal, and guided intercession",
+      "url": "/#prayer",
+      "icons": [{ "src": "/icon.svg", "sizes": "any" }]
+    }
+  ]
+}
