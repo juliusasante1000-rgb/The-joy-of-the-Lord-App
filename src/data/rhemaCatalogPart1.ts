@@ -4761,13 +4761,4 @@ export const RHEMA_CATALOG_PART1: RhemaWordItem[] = [
     "spiritualAtmosphere": "Royal Honor & Generational Blessing",
     "isAuthorFavourite": true
   },
-  {
-    "id": "rhema-fav-239",
-    "title": "The Rhema of Sanctify You Wholly: Spirit, Soul, and Body (1 Thessalonians 5:23â€“24)",
-    "seasonCategory": "Holiness & Consecration",
-    "propheticDeclaration": "By the apostolic decree of 1 Thessalonians 5:23â€“24, the God of peace sanctifies your spirit, soul, and body entirely; faithful is He that calleth you, who also will do it!",
-    "nowWordText": "Hear the living voice of the Spirit for this hour: 1 ThessalxœÜVMoÛF½ûWLuZ@1Z;½È'Õ®?Šº0"·AĞä°"‡âBË]v?¤Aş‡şÃş’¾Y’’íˆ‹æT$rvfŞ¼7oå¬V6Ğ·³“Ó¿ÿüëäµŞFé&LéİdnKŠ5Ó†}GW®$WQËª`
-ÊQWu.Ñ¶vÆtg¤~ƒªÆ+Ÿß!¼Õ^Ç\2ùËÒ•-ñØoOŒjØp”lt¹rámWRW’ıè|I?pHÎk¯C<¦K¥c]!¥„øX«H…2†c-L¥R&8Újc¨t¤ãñ»	-¢ôP8[é’m$mé)J½Ñv×“”nİ–ıñdzDøLBáu“ç¹-jç'3ú_à•çŠ=Û‚ñpòİ× ¢Œ{2à!â#ÿ%ôÿ:äIúÇ08$Î»¦A[&.ĞÉcb%{âŒ^yVÒFk—Vu„¹qrßR[wA£zm€Ğ&A	ŠJ{–òôÚ™y,;!ğ¶æ¨‹.<g²nlş	ƒ‘“±O1ë2ö¨›nó4Ïxº2z	ÓsOWßğÙ/»\ò!İ_Œ–J›nD%°¯Š6…së¼¤·\ê˜Cfãwôßc©Æ¬C)$$í:Z2òã½6ouYB`¿è":ğ‚Qå‡Rt»Oæg9Õ°95+U8ğÙÓø˜.‰„ØÊµ¾ßp†s†1é¡Ê[ÍfP÷ klèoI3^º>
-Â®œç©Î©ß+›&eæ±qÜ{îµ×²·
-»ŒŞîò¾½ {å×l#):Ìé/Õ=é(9¢O|4HüÃVJn_s£^VjóòäÕ×c†¨£É•áôZ"„ù‘7«µ[³7`jQcÁÄ¦–F‡šŞÂ¾<yâ*§³Ó¯vÎÄ*`Á (“:=#wŞEÎÛ€l4¨QbSbd9ûRQ /a;v ò4Ï}ì}\ï!7Ææ³Gõkæ6»Yå]ƒ¥×æŒ,Â­Ú/må¶âéS@f¬©•Ò6D9»Ûë¶oPı~ğÑkV>'ØJKHV@„VÁÛ!+¡¬›‚!ëØœ/¼ïRü,¨ä†Ù1{Û”M%ù²¡Ùèe/³S×"ôcZyéÌşb*ø__=0~|é|6 Ïpù^W¼¯÷ØœvNQ©Æ7Å`HQN¿rùzJıİ6ÜVÚ~ÂÒ{·pÜ§&~C
-İğàË°¯q×°KÁ>fo°rA	dÑ×ú?™õİğë S+†ºUëìŠÏôäqÄƒ	4m xAÖÿC@Ï­“ËĞFK$‚^Ù<ëOZòkŒ¬¿ªÀÜ6å›[X…^J·xnf÷<şÙâôT0]‹ñ‚°ÌèE®’òåsLøèıÙÑ?   ÿÿ ÆI¦‚
+];
