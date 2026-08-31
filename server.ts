@@ -233,10 +233,10 @@ const AI_CACHE_TTL_MS = 1000 * 60 * 60 * 6; // 6 hours cache
 
 // Valid models according to Gemini API specification, ordered for high availability and throughput
 const GEMINI_MODELS_CASCADE = [
-  "gemini-3.5-flash-lite",
-  "gemini-3.1-flash-lite",
-  "gemini-3.7-flash",
-  "gemini-3.5-flash",
+  "gemini-2.5-flash",
+  "gemini-2.5-flash-lite",
+  "gemini-2.0-flash",
+  "gemini-1.5-flash",
 ];
 
 export const ANTI_LOOP_DIRECTIVE = "NEVER repeat. Be concise, swift, accurate, and precise. Address exactly what is asked without preambles, fluff, or loop. Provide final answer only once.";
@@ -421,7 +421,7 @@ async function streamGeminiCascade(options: {
   const maxOutputTokens = options.maxOutputTokens ?? (options.fastMode ? 600 : 2048);
 
   const modelsToTry = options.fastMode 
-    ? ["gemini-3.5-flash-lite", "gemini-3.1-flash-lite", "gemini-3.7-flash"]
+    ? ["gemini-2.5-flash-lite", "gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-flash"]
     : GEMINI_MODELS_CASCADE;
 
   for (const model of modelsToTry) {

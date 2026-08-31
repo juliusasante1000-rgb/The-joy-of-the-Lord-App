@@ -115,6 +115,7 @@ export const BibleTab: React.FC<BibleTabProps> = ({
     chapter: number;
     verse?: number;
     text: string;
+    initialFullscreen?: boolean;
   } | null>(null);
   const [showInlineCommentary, setShowInlineCommentary] = useState(false);
   const [expandedInlineCommentaries, setExpandedInlineCommentaries] = useState<Record<string, boolean>>({});
@@ -870,13 +871,32 @@ export const BibleTab: React.FC<BibleTabProps> = ({
                       book: currentBook.name,
                       chapter: selectedChapter,
                       verse: 1,
-                      text: currentChapterVerses[0]?.text || ""
+                      text: currentChapterVerses[0]?.text || "",
+                      initialFullscreen: false
                     })
                   }
                   className="px-3 py-1 rounded-lg bg-[#B48C35] hover:bg-[#996515] text-white font-bold flex items-center gap-1 cursor-pointer transition-colors shadow-2xs"
+                  title="Open Chapter Commentary"
                 >
                   <BookOpen className="w-3.5 h-3.5" />
-                  <span>Read Chapter Commentary</span>
+                  <span>Commentary</span>
+                </button>
+
+                <button
+                  onClick={() =>
+                    setSelectedCommentaryVerse({
+                      book: currentBook.name,
+                      chapter: selectedChapter,
+                      verse: 1,
+                      text: currentChapterVerses[0]?.text || "",
+                      initialFullscreen: true
+                    })
+                  }
+                  className="px-3 py-1 rounded-lg bg-[#16235A] hover:bg-[#24357D] text-white font-bold flex items-center gap-1 cursor-pointer transition-colors shadow-2xs"
+                  title="Open Full-Screen Commentary Studio"
+                >
+                  <Maximize2 className="w-3.5 h-3.5 text-amber-300" />
+                  <span>Full-Screen Studio</span>
                 </button>
 
                 <button
@@ -888,7 +908,7 @@ export const BibleTab: React.FC<BibleTabProps> = ({
                   }`}
                 >
                   <MessageSquare className="w-3.5 h-3.5 text-[#B48C35]" />
-                  <span>{showInlineCommentary ? "Hide Inline Commentary" : "Show Inline Commentary"}</span>
+                  <span>{showInlineCommentary ? "Hide Inline" : "Inline Notes"}</span>
                 </button>
               </div>
             </div>
@@ -1492,6 +1512,7 @@ export const BibleTab: React.FC<BibleTabProps> = ({
           verse={selectedCommentaryVerse.verse}
           verseText={selectedCommentaryVerse.text}
           version={selectedVersion}
+          initialFullscreen={selectedCommentaryVerse.initialFullscreen}
           onShareItem={onShareItem}
           onToggleSpeak={onToggleSpeak}
           onToggleBookmark={onToggleBookmark}

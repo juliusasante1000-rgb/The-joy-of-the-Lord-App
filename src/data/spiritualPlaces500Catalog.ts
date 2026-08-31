@@ -909,7 +909,7 @@ export function generate500PlusScripturalPlaces(): SpiritualPlace[] {
   ];
 
   let orderIndex = masterPlaces.length + 1;
-  const targetCount = 1000;
+  const targetCount = 1500;
 
   for (let cycle = 1; masterPlaces.length < targetCount; cycle++) {
     for (const st of biblicalStationThemes) {

@@ -15,7 +15,9 @@ import {
   Flame,
   ArrowRight,
   RefreshCw,
-  Sliders
+  Sliders,
+  Maximize2,
+  Minimize2
 } from "lucide-react";
 import {
   VerseCommentary,
@@ -36,6 +38,7 @@ interface BibleCommentaryModalProps {
   verse?: number;
   verseText: string;
   version: string;
+  initialFullscreen?: boolean;
   onSaveToNotes?: (verseKey: string, noteContent: string) => void;
   onShareItem: (title: string, text: string, reference?: string, subtext?: string) => void;
   onToggleSpeak: (text: string) => void;
@@ -51,6 +54,7 @@ export const BibleCommentaryModal: React.FC<BibleCommentaryModalProps> = ({
   verse,
   verseText,
   version,
+  initialFullscreen = false,
   onSaveToNotes,
   onShareItem,
   onToggleSpeak,
@@ -63,6 +67,8 @@ export const BibleCommentaryModal: React.FC<BibleCommentaryModalProps> = ({
   const verseKey = `${book}-${chapter}-${currentVerse}`;
   const isChapterView = !verse;
 
+  const [isFullscreen, setIsFullscreen] = useState(initialFullscreen);
+  const [fontSize, setFontSize] = useState<"sm" | "md" | "lg" | "xl">("md");
   const [activeTab, setActiveTab] = useState<CommentarySource>("all");
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const [savedToNotesMsg, setSavedToNotesMsg] = useState(false);
@@ -161,9 +167,16 @@ export const BibleCommentaryModal: React.FC<BibleCommentaryModalProps> = ({
     `Apostolic Rhema: ${verseCommentary.apostolicRhema || ""}`
   ].join(" ");
 
+  const fontClasses = {
+    sm: "text-xs leading-relaxed",
+    md: "text-sm leading-relaxed",
+    lg: "text-base leading-relaxed",
+    xl: "text-lg leading-relaxed"
+  };
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/75 backdrop-blur-xs animate-in fade-in">
-      <div className="bg-white text-slate-900 w-full max-w-4xl rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col max-h-[92vh]">
+    <div className={`fixed inset-0 z-50 flex items-center justify-center ${isFullscreen ? "p-0" : "p-3 sm:p-4"} bg-black/80 backdrop-blur-xs animate-in fade-in`}>
+      <div className={`bg-white text-slate-900 w-full ${isFullscreen ? "h-screen max-w-none max-h-none rounded-none" : "max-w-4xl rounded-2xl max-h-[92vh]"} shadow-2xl border border-slate-200 overflow-hidden flex flex-col transition-all duration-200`}>
         {/* Modal Header */}
         <div className="p-4 sm:p-5 bg-gradient-to-r from-[#16235A] via-[#24357D] to-[#B48C35] text-white flex items-center justify-between shadow-md">
           <div className="flex items-center gap-3">
@@ -173,19 +186,40 @@ export const BibleCommentaryModal: React.FC<BibleCommentaryModalProps> = ({
             <div>
               <div className="flex items-center gap-2 flex-wrap">
                 <h3 className="font-serif font-bold text-lg sm:text-xl text-white">
-                  Holy Scripture Commentary
+                  Holy Scripture Commentary & Word Study
                 </h3>
                 <span className="px-2.5 py-0.5 rounded-full bg-[#B48C35] text-white text-[11px] font-mono font-bold uppercase tracking-wider">
                   {book} {chapter}:{currentVerse} ({version})
                 </span>
+                {isFullscreen && (
+                  <span className="px-2 py-0.5 rounded-full bg-emerald-500/80 text-white text-[10px] font-bold uppercase tracking-wider">
+                    Full-Screen Studio
+                  </span>
+                )}
               </div>
               <p className="text-xs text-slate-200 font-serif italic">
-                Matthew Henry • Charles Spurgeon • Apostolic Rhema • Original Language Exegesis
+                Matthew Henry • Charles Spurgeon • Apostolic Rhema • ABP Greek & Hebrew Lexicon
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            {/* Font size toggles */}
+            <div className="hidden sm:flex items-center bg-white/10 rounded-xl p-1 gap-1">
+              {(["sm", "md", "lg", "xl"] as const).map((s) => (
+                <button
+                  key={s}
+                  onClick={() => setFontSize(s)}
+                  className={`w-6 h-6 rounded-lg text-[10px] font-bold uppercase transition-colors cursor-pointer ${
+                    fontSize === s ? "bg-[#B48C35] text-white" : "text-slate-300 hover:text-white"
+                  }`}
+                  title={`Set font size to ${s}`}
+                >
+                  {s}
+                </button>
+              ))}
+            </div>
+
             <button
               onClick={() => onToggleSpeak(fullCommentaryToRead)}
               className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
@@ -193,6 +227,16 @@ export const BibleCommentaryModal: React.FC<BibleCommentaryModalProps> = ({
             >
               <Volume2 className="w-4 h-4 text-amber-300" />
             </button>
+
+            {/* Full-screen toggle button */}
+            <button
+              onClick={() => setIsFullscreen(!isFullscreen)}
+              className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+              title={isFullscreen ? "Exit Fullscreen" : "Expand to Full-Screen Expository Studio"}
+            >
+              {isFullscreen ? <Minimize2 className="w-4 h-4 text-amber-300" /> : <Maximize2 className="w-4 h-4 text-white" />}
+            </button>
+
             <button
               onClick={onClose}
               className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
@@ -271,7 +315,7 @@ export const BibleCommentaryModal: React.FC<BibleCommentaryModalProps> = ({
         </div>
 
         {/* Modal Scrollable Body */}
-        <div className="p-4 sm:p-6 overflow-y-auto space-y-5 flex-1 text-xs sm:text-sm">
+        <div className={`p-4 sm:p-6 sm:p-8 overflow-y-auto space-y-5 flex-1 ${fontClasses[fontSize]}`}>
           {/* AI Fast Loading View */}
           {isAiGenerating && (
             <AiFastLoadingView
@@ -540,12 +584,22 @@ export const BibleCommentaryModal: React.FC<BibleCommentaryModalProps> = ({
             </button>
           </div>
 
-          <button
-            onClick={onClose}
-            className="px-5 py-2 rounded-xl bg-[#16235A] hover:bg-[#24357D] text-white font-bold text-xs cursor-pointer shadow-md transition-colors"
-          >
-            Done Reading
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setIsFullscreen(!isFullscreen)}
+              className="px-3.5 py-2 rounded-xl bg-white hover:bg-slate-100 border border-slate-300 text-slate-800 font-bold text-xs flex items-center gap-1.5 cursor-pointer shadow-xs transition-colors"
+            >
+              {isFullscreen ? <Minimize2 className="w-3.5 h-3.5 text-[#B48C35]" /> : <Maximize2 className="w-3.5 h-3.5 text-[#B48C35]" />}
+              <span>{isFullscreen ? "Standard View" : "Full-Screen Studio"}</span>
+            </button>
+
+            <button
+              onClick={onClose}
+              className="px-5 py-2 rounded-xl bg-[#16235A] hover:bg-[#24357D] text-white font-bold text-xs cursor-pointer shadow-md transition-colors"
+            >
+              Done Reading
+            </button>
+          </div>
         </div>
       </div>
     </div>

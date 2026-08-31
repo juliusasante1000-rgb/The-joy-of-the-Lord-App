@@ -106,6 +106,25 @@ export interface DoctrineCategory {
   foundationalDocumentInsights: string[];
 }
 
+export interface SystematicTopicItem {
+  id: string;
+  topicNumber: number;
+  title: string;
+  category: string;
+  division:
+    | "Core Christian Life"
+    | "Systematic Theology"
+    | "Apostolic & Kingdom Ministries"
+    | "Spiritual Warfare & Healing"
+    | "Christian Walk & Discipleship"
+    | "Eschatology & Eternal Life";
+  anchorScriptures: { reference: string; text?: string }[];
+  theologicalSummary: string;
+  keyInsights: string[];
+  practicalApplication?: string;
+  deepStudyArticle?: DoctrineArticle;
+}
+
 export interface DoctrineArticle {
   id: string;
   categoryId: string;

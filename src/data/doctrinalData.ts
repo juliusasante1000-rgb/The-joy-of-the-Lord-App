@@ -252,6 +252,63 @@ export const CHURCH_TENETS: ChurchTenet[] = [
       "The Consummation of All Things: Eradication of sin, disease, and death, establishing the eternal New Jerusalem."
     ],
     practicalApplication: "Live in holy anticipation, purify your heart, and tirelessly win souls while it is day, for the King is coming soon."
+  },
+  {
+    id: "tenet-13-spiritual-warfare-healing",
+    number: 13,
+    title: "Spiritual Warfare, Divine Authority & Divine Healing",
+    category: "Spiritual Warfare & Divine Healing",
+    statement: "Angels, Satan, Demons, Spiritual Warfare, Armor of God, Divine Healing & Miraculous Provision: Holy angels are ministering spirits sent to serve the heirs of salvation and execute God's purposes. Satan fell through pride and now operates with his demons to deceive, oppress, and afflict humanity. Divine healing and health were secured in the Atonement and are received through believing prayer and faith in Jesus' name.",
+    scripturalReferences: [
+      { reference: "Hebrews 1:14", text: "Are they not all ministering spirits, sent forth to minister for them who shall be heirs of salvation?" },
+      { reference: "Ephesians 6:10-12", text: "Finally, my brethren, be strong in the Lord, and in the power of his might. Put on the whole armour of God, that ye may be able to stand against the wiles of the devil. For we wrestle not against flesh and blood, but against principalities, against powers, against the rulers of the darkness of this world, against spiritual wickedness in high places." },
+      { reference: "Isaiah 53:4-5", text: "Surely he hath borne our griefs, and carried our sorrows: yet we did esteem him stricken, smitten of God, and afflicted. But he was wounded for our transgressions, he was bruised for our iniquities: the chastisement of our peace was upon him; and with his stripes we are healed." },
+      { reference: "James 5:14-15", text: "Is any sick among you? let him call for the elders of the church; and let them pray over him, anointing him with oil in the name of the Lord: And the prayer of faith shall save the sick, and the Lord shall raise him up; and if he have committed sins, they shall be forgiven him." }
+    ],
+    theologicalBreakdown: [
+      "Holy angels are ministering spirits sent to serve the heirs of salvation and execute God's purposes.",
+      "Satan fell through pride and now operates with his demons to deceive, oppress, and afflict humanity.",
+      "Divine healing and health were secured in the Atonement and are received through believing prayer and faith in Jesus' name."
+    ],
+    practicalApplication: "Put on the whole armor of God daily, exercise divine authority in Jesus' Name over demonic oppression, minister healing to the sick through the prayer of faith, and rest in angelic watchcare."
+  },
+  {
+    id: "tenet-14-holy-matrimony-family-life",
+    number: 14,
+    title: "Holy Matrimony, Family, Life & Christian Responsibility",
+    category: "Holy Matrimony, Family & Life",
+    statement: "The Institution of Marriage, Family, Human Sexuality, Sanctity of Human Life, Civil Government, Divine Providence & Social Responsibility: God ordained marriage as a lifelong covenant between one man and one woman and the foundation of the family. All human life from conception is sacred, bearing the Imago Dei, and must be defended and valued. Civil government is ordained by God for order and justice, and believers must live as law-abiding, prayerful citizens.",
+    scripturalReferences: [
+      { reference: "Genesis 2:24", text: "Therefore shall a man leave his father and his mother, and shall cleave unto his wife: and they shall be one flesh." },
+      { reference: "Matthew 19:4-6", text: "And he answered and said unto them, Have ye not read, that he which made them at the beginning made them male and female, And said, For this cause shall a man leave father and mother, and shall cleave to his wife: and they twain shall be one flesh? Wherefore they are no more twain, but one flesh. What therefore God hath joined together, let not man put asunder." },
+      { reference: "Psalm 139:13-16", text: "For thou hast possessed my reins: thou hast covered me in my mother's womb. I will praise thee; for I am fearfully and wonderfully made: marvellous are thy works; and that my soul knoweth right well... Thine eyes did see my substance, yet being unperfect; and in thy book all my members were written." },
+      { reference: "Romans 13:1-4", text: "Let every soul be subject unto the higher powers. For there is no power but of God: the powers that be are ordained of God... For he is the minister of God to thee for good." }
+    ],
+    theologicalBreakdown: [
+      "God ordained marriage as a lifelong covenant between one man and one woman and the foundation of the family.",
+      "All human life from conception is sacred, bearing the Imago Dei, and must be defended and valued.",
+      "Civil government is ordained by God for order and justice, and believers must live as law-abiding, prayerful citizens."
+    ],
+    practicalApplication: "Honor the holy covenant of marriage, protect and cherish human life at all stages from conception, pray for governing authorities, and shine as light in society through integrity and social responsibility."
+  },
+  {
+    id: "tenet-15-mission-repentance-destiny",
+    number: 15,
+    title: "The Mission, Repentance & Eternal Destiny",
+    category: "The Mission, Repentance & Destiny",
+    statement: "The Great Commission, Evangelism, Priesthood of All Believers, True Repentance, Restitution, Intermediate State & Conscious Existence After Death: The supreme mission of every believer and the Church is to evangelize the world and make disciples of all nations. True repentance is godly sorrow that turns from sin unto God and bears fruit in restitution where possible. At death, the righteous are present with the Lord in conscious joy while the wicked are reserved in Hades for judgment.",
+    scripturalReferences: [
+      { reference: "Matthew 28:19-20", text: "Go ye therefore, and teach all nations, baptizing them in the name of the Father, and of the Son, and of the Holy Ghost: Teaching them to observe all things whatsoever I have commanded you: and, lo, I am with you alway, even unto the end of the world. Amen." },
+      { reference: "Luke 19:8-9", text: "And Zacchaeus stood, and said unto the Lord; Behold, Lord, the half of my goods I give to the poor; and if I have taken any thing from any man by false accusation, I restore him fourfold. And Jesus said unto him, This day is salvation come to this house." },
+      { reference: "Luke 23:43", text: "And Jesus said unto him, Verily I say unto thee, To day shalt thou be with me in paradise." },
+      { reference: "2 Corinthians 5:8", text: "We are confident, I say, and willing rather to be absent from the body, and to be present with the Lord." }
+    ],
+    theologicalBreakdown: [
+      "The supreme mission of every believer and the Church is to evangelize the world and make disciples of all nations.",
+      "True repentance is godly sorrow that turns from sin unto God and bears fruit in restitution where possible.",
+      "At death, the righteous are present with the Lord in conscious joy while the wicked are reserved in Hades for judgment."
+    ],
+    practicalApplication: "Commit wholeheartedly to personal and corporate evangelism, walk in continuous repentance and make restitution where needed, and live with eternal perspective knowing our conscious presence with the Lord awaits."
   }
 ];
 
@@ -442,22 +499,63 @@ export const DOCTRINE_CATEGORIES: DoctrineCategory[] = [
     ]
   },
   {
-    id: "spiritual-warfare",
-    title: "Spiritual Warfare & Divine Authority",
-    slug: "spiritual-warfare",
+    id: "spiritual-warfare-healing",
+    title: "Spiritual Warfare, Divine Authority & Divine Healing",
+    slug: "spiritual-warfare-healing",
     icon: "Shield",
-    shortDesc: "Biblical victory over demonic darkness, the Full Armor of God, and ministering angels sent to serve heirs of salvation.",
-    doctrinalFocus: "Spiritual Warfare, Full Armor of God, Angelology",
+    shortDesc: "Angels, Satan, Demons, Spiritual Warfare, Armor of God, Divine Healing & Miraculous Provision.",
+    doctrinalFocus: "Angelology, Demonology, Spiritual Authority, Divine Healing & Provision",
     keyScriptures: [
-      { reference: "Ephesians 6:10-11", text: "Finally, my brethren, be strong in the Lord, and in the power of his might. Put on the whole armour of God." },
-      { reference: "Colossians 2:15", text: "And having spoiled principalities and powers, he made a shew of them openly, triumphing over them in it." },
-      { reference: "Hebrews 1:14", text: "Are they not all ministering spirits, sent forth to minister for them who shall be heirs of salvation?" }
+      { reference: "Hebrews 1:14", text: "Are they not all ministering spirits, sent forth to minister for them who shall be heirs of salvation?" },
+      { reference: "Ephesians 6:10-12", text: "Finally, my brethren, be strong in the Lord, and in the power of his might. Put on the whole armour of God, that ye may be able to stand against the wiles of the devil. For we wrestle not against flesh and blood, but against principalities, against powers, against the rulers of the darkness of this world, against spiritual wickedness in high places." },
+      { reference: "Isaiah 53:4-5", text: "Surely he hath borne our griefs, and carried our sorrows: yet we did esteem him stricken, smitten of God, and afflicted. But he was wounded for our transgressions, he was bruised for our iniquities: the chastisement of our peace was upon him; and with his stripes we are healed." },
+      { reference: "James 5:14-15", text: "Is any sick among you? let him call for the elders of the church; and let them pray over him, anointing him with oil in the name of the Lord: And the prayer of faith shall save the sick, and the Lord shall raise him up; and if he have committed sins, they shall be forgiven him." }
     ],
-    theologicalSummary: "Believers engage in spiritual warfare not for victory, but from the finished victory of Christ on Calvary. Satan and demonic principalities are disarmed. By putting on the Armor of God (truth, righteousness, peace, faith, salvation, the Word of God) and wielding spiritual weapons, believers stand unshakeable against the enemy.",
+    theologicalSummary: "Holy angels are ministering spirits sent to serve the heirs of salvation and execute God's purposes. Satan fell through pride and now operates with his demons to deceive, oppress, and afflict humanity. Divine healing and health were secured in the Atonement and are received through believing prayer and faith in Jesus' name.",
     foundationalDocumentInsights: [
-      "The primary battleground is the human mind against deceptions, accusations, and worldly philosophies.",
-      "The Blood of Jesus, the Name of Jesus, and the Word of God are our invincible spiritual weapons.",
-      "Holy angels actively minister and protect God's children at His command."
+      "Holy angels are ministering spirits sent to serve the heirs of salvation and execute God's purposes.",
+      "Satan fell through pride and now operates with his demons to deceive, oppress, and afflict humanity.",
+      "Divine healing and health were secured in the Atonement and are received through believing prayer and faith in Jesus' name."
+    ]
+  },
+  {
+    id: "holy-matrimony-family-life",
+    title: "Holy Matrimony, Family, Life & Christian Responsibility",
+    slug: "holy-matrimony-family-life",
+    icon: "HeartHandshake",
+    shortDesc: "The Institution of Marriage, Family, Human Sexuality, Sanctity of Human Life, Civil Government, Divine Providence & Social Responsibility.",
+    doctrinalFocus: "Holy Matrimony, Sanctity of Life, Family & Civil Governance",
+    keyScriptures: [
+      { reference: "Genesis 2:24", text: "Therefore shall a man leave his father and his mother, and shall cleave unto his wife: and they shall be one flesh." },
+      { reference: "Matthew 19:4-6", text: "And he answered and said unto them, Have ye not read, that he which made them at the beginning made them male and female, And said, For this cause shall a man leave father and mother, and shall cleave to his wife: and they twain shall be one flesh? Wherefore they are no more twain, but one flesh. What therefore God hath joined together, let not man put asunder." },
+      { reference: "Psalm 139:13-16", text: "For thou hast possessed my reins: thou hast covered me in my mother's womb. I will praise thee; for I am fearfully and wonderfully made: marvellous are thy works; and that my soul knoweth right well... Thine eyes did see my substance, yet being unperfect; and in thy book all my members were written." },
+      { reference: "Romans 13:1-4", text: "Let every soul be subject unto the higher powers. For there is no power but of God: the powers that be are ordained of God... For he is the minister of God to thee for good." }
+    ],
+    theologicalSummary: "God ordained marriage as a lifelong covenant between one man and one woman and the foundation of the family. All human life from conception is sacred, bearing the Imago Dei, and must be defended and valued. Civil government is ordained by God for order and justice, and believers must live as law-abiding, prayerful citizens.",
+    foundationalDocumentInsights: [
+      "God ordained marriage as a lifelong covenant between one man and one woman and the foundation of the family.",
+      "All human life from conception is sacred, bearing the Imago Dei, and must be defended and valued.",
+      "Civil government is ordained by God for order and justice, and believers must live as law-abiding, prayerful citizens."
+    ]
+  },
+  {
+    id: "mission-repentance-destiny",
+    title: "The Mission, Repentance & Eternal Destiny",
+    slug: "mission-repentance-destiny",
+    icon: "Crown",
+    shortDesc: "The Great Commission, Evangelism, Priesthood of All Believers, True Repentance, Restitution, Intermediate State & Conscious Existence After Death.",
+    doctrinalFocus: "The Great Commission, Biblical Repentance, Restitution & Eternal Destiny",
+    keyScriptures: [
+      { reference: "Matthew 28:19-20", text: "Go ye therefore, and teach all nations, baptizing them in the name of the Father, and of the Son, and of the Holy Ghost: Teaching them to observe all things whatsoever I have commanded you: and, lo, I am with you alway, even unto the end of the world. Amen." },
+      { reference: "Luke 19:8-9", text: "And Zacchaeus stood, and said unto the Lord; Behold, Lord, the half of my goods I give to the poor; and if I have taken any thing from any man by false accusation, I restore him fourfold. And Jesus said unto him, This day is salvation come to this house." },
+      { reference: "Luke 23:43", text: "And Jesus said unto him, Verily I say unto thee, To day shalt thou be with me in paradise." },
+      { reference: "2 Corinthians 5:8", text: "We are confident, I say, and willing rather to be absent from the body, and to be present with the Lord." }
+    ],
+    theologicalSummary: "The supreme mission of every believer and the Church is to evangelize the world and make disciples of all nations. True repentance is godly sorrow that turns from sin unto God and bears fruit in restitution where possible. At death, the righteous are present with the Lord in conscious joy while the wicked are reserved in Hades for judgment.",
+    foundationalDocumentInsights: [
+      "The supreme mission of every believer and the Church is to evangelize the world and make disciples of all nations.",
+      "True repentance is godly sorrow that turns from sin unto God and bears fruit in restitution where possible.",
+      "At death, the righteous are present with the Lord in conscious joy while the wicked are reserved in Hades for judgment."
     ]
   },
   {
@@ -700,5 +798,141 @@ export const DOCTRINE_ARTICLES: DoctrineArticle[] = [
     ],
     historicalAndConfessionalBasis: "Affirmed in the Nicene Creed ('He shall come again with glory to judge both the quick and the dead'), the Apostles' Creed, and the historic hope of all Christian saints.",
     guidedReflection: "Even so, come, Lord Jesus! My heart longs for Your glorious appearing. Keep me watchful, holy, and faithful until that glorious day when every knee shall bow and every tongue confess that Jesus Christ is Lord."
+  },
+  {
+    id: "art-prayer-fasting-faith-1",
+    categoryId: "prayer-fasting-faith",
+    categoryTitle: "Prayer, Fasting & Victorious Faith",
+    title: "Prevailing Intercession, Spiritual Fasting & Mountain-Moving Faith",
+    subtitle: "Cultivating Intimacy with God, Breaking Demonic Strongholds, and Operating in Unshakeable Faith",
+    theologicalOverview: "Prayer is the vital breath of the regenerate soul—an ongoing communion of worship, petition, and spiritual warfare with the living God. Fasting is a biblical discipline ordained to humble the flesh, intensify spiritual alertness, and release breakthroughs in difficult seasons. Biblical faith is not positive thinking or emotional optimism, but a supernatural confidence in the veracity of God's Word that acts with unwavering expectation.",
+    keyScriptures: [
+      { ref: "Hebrews 11:1,6", text: "Now faith is the substance of things hoped for, the evidence of things not seen... But without faith it is impossible to please him: for he that cometh to God must believe that he is, and that he is a rewarder of them that diligently seek him.", context: "The divine definition of faith and the prerequisite for communion with God." },
+      { ref: "Matthew 6:6,17-18", text: "When thou prayest, enter into thy closet... But thou, when thou fastest, anoint thine head, and wash thy face; That thou appear not unto men to fast, but unto thy Father which is in secret.", context: "Jesus teaching the private, authentic posture of kingdom spiritual disciplines." },
+      { ref: "James 5:16", text: "The effectual fervent prayer of a righteous man availeth much.", context: "The dynamic power of passionate, aligned righteous prayer." },
+      { ref: "Mark 11:23-24", text: "Whosoever shall say unto this mountain, Be thou removed... he shall have whatsoever he saith.", context: "The authority of authoritative faith spoken in agreement with God's will." }
+    ],
+    doctrinalPillars: [
+      { title: "Intimacy & Priesthood in Prayer", explanation: "Believers approach the throne of grace boldly as royal priests through the blood of Jesus.", scripture: "Hebrews 4:16, 1 Peter 2:9" },
+      { title: "Biblical Fasting for Breakthrough", explanation: "Fasting crucifies carnal appetites, aligns spiritual desires, and unleashes power against entrenched spiritual resistance.", scripture: "Isaiah 58:6, Matthew 17:21" },
+      { title: "Unshakeable Word-Based Faith", explanation: "True faith comes by hearing the Word of God and refuses to waver in the face of contrary circumstances.", scripture: "Romans 10:17, James 1:6-7" }
+    ],
+    practicalApplication: [
+      "Establish a daily secret place of prayer: Set aside consecrated morning and evening time for undistracted fellowship with the Father.",
+      "Incorporate regular fasting: Dedicate specific days to abstain from food and saturate your spirit in scripture and worship.",
+      "Speak the promises of God aloud: When faced with sickness, fear, or financial pressure, declare what God has written."
+    ],
+    historicalAndConfessionalBasis: "Practiced continuously throughout church history from the Apostolic Fathers, desert monastic fathers, the Reformers, and modern revival movements.",
+    guidedReflection: "Father in heaven, ignite my heart with the spirit of grace and supplication. Teach my hands to war and my fingers to fight in prayer. Increase my faith to move every mountain standing against Your purpose in my life."
+  },
+  {
+    id: "art-spiritual-warfare-healing-1",
+    categoryId: "spiritual-warfare-healing",
+    categoryTitle: "Spiritual Warfare, Divine Authority & Divine Healing",
+    title: "Angelic Ministry, Spiritual Authority over Darkness & Divine Healing in the Atonement",
+    subtitle: "Wielding the Whole Armor of God, Exercising Christ's Authority, and Ministering Miraculous Healing",
+    theologicalOverview: "Believers live in a supernatural cosmos where the unseen realm actively impacts the visible world. Holy angels are ministering spirits sent by God to serve the heirs of salvation. Satan and fallen demonic principalities operate to deceive, afflict, and oppress humanity, but they were decisively disarmed and defeated at the Cross of Calvary. Believers are seated with Christ in heavenly places and authorized to tread upon serpents and scorpions. Furthermore, divine healing was purchased and secured in the substitutionary Atonement of Jesus Christ ('with his stripes we are healed'), and is imparted today through the prayer of faith, the laying on of hands, and the power of the Holy Spirit.",
+    keyScriptures: [
+      { ref: "Hebrews 1:14", text: "Are they not all ministering spirits, sent forth to minister for them who shall be heirs of salvation?", context: "The active ministry and protection of holy angels for God's redeemed people." },
+      { ref: "Ephesians 6:10-12", text: "Finally, my brethren, be strong in the Lord, and in the power of his might. Put on the whole armour of God, that ye may be able to stand against the wiles of the devil. For we wrestle not against flesh and blood, but against principalities, against powers, against the rulers of the darkness of this world, against spiritual wickedness in high places.", context: "The spiritual nature of our wrestling and the imperative of putting on divine armor." },
+      { ref: "Isaiah 53:4-5", text: "Surely he hath borne our griefs, and carried our sorrows: yet we did esteem him stricken, smitten of God, and afflicted. But he was wounded for our transgressions, he was bruised for our iniquities: the chastisement of our peace was upon him; and with his stripes we are healed.", context: "The prophetic bedrock revealing that physical healing was purchased in the Atonement." },
+      { ref: "James 5:14-15", text: "Is any sick among you? let him call for the elders of the church; and let them pray over him, anointing him with oil in the name of the Lord: And the prayer of faith shall save the sick, and the Lord shall raise him up; and if he have committed sins, they shall be forgiven him.", context: "The ongoing ordinance and ministry of healing in the local church." },
+      { ref: "Luke 10:19", text: "Behold, I give unto you power to tread on serpents and scorpions, and over all the power of the enemy: and nothing shall by any means hurt you.", context: "Christ delegating supernatural authority over demonic forces to His disciples." }
+    ],
+    doctrinalPillars: [
+      { title: "Ministering Angels of God", explanation: "God dispatches holy angels to protect, guide, deliver, and strengthen His people according to His sovereign command.", scripture: "Psalm 91:11-12, Hebrews 1:14" },
+      { title: "Satan's Defeat & The Believer's Authority", explanation: "Christ spoiled principalities and made a public spectacle of them; believers enforce this victory in Jesus' Name.", scripture: "Colossians 2:15, Mark 16:17" },
+      { title: "The Full Armor of God", explanation: "Daily girding ourselves with Truth, Righteousness, the Gospel of Peace, Faith, Salvation, and the Sword of the Spirit.", scripture: "Ephesians 6:13-18" },
+      { title: "Divine Healing in the Atonement", explanation: "Christ took our infirmities and bore our sicknesses; healing is a covenant right received through believing prayer.", scripture: "Matthew 8:16-17, 1 Peter 2:24" }
+    ],
+    practicalApplication: [
+      "Put on the armor of God every morning: Consciously dress your soul with truth, righteousness, faith, and the Word of God.",
+      "Exercise spiritual authority over sickness and demonic oppression: Rebuke fear, depression, and infirmity directly in the Name of Jesus.",
+      "Pray the prayer of faith over the sick: Lay hands on the afflicted, anoint with oil, and expect God's healing virtue to flow.",
+      "Rest in angelic guardianship: Do not fear demonic threats, knowing those that are with us are greater than those in the world."
+    ],
+    historicalAndConfessionalBasis: "Rooted in the Apostolic Gospel ministry of Jesus and the Apostles, the historic testimony of the Early Church Fathers, and the global Pentecostal/Charismatic healing revival movements.",
+    guidedReflection: "Lord Jesus, I praise You for Your decisive triumph over Satan and all the powers of darkness on Calvary. You were wounded for my transgressions and by Your stripes I am healed! I put on the whole armor of God, take up the shield of faith and the sword of the Spirit, and step forth in Your supernatural authority and love."
+  },
+  {
+    id: "art-holy-matrimony-family-1",
+    categoryId: "holy-matrimony-family-life",
+    categoryTitle: "Holy Matrimony, Family, Life & Christian Responsibility",
+    title: "The Sacred Covenant of Marriage, Sanctity of Human Life & Kingdom Citizenship",
+    subtitle: "Upholding God's Design for Marriage, Defending the Unborn, and Living as Salt and Light in Society",
+    theologicalOverview: "Marriage is a sacred, divine institution established by God at Creation as an exclusive, lifelong covenant union between one biological man and one biological woman. It represents the profound mystery of Christ's love for His Church. Human life at every stage—from fertilization/conception to natural death—is sacred and inviolable, created in the image of God (Imago Dei). Furthermore, civil government is an ordinance of God designed to maintain public order and justice, and believers are called to be prayerful, law-abiding citizens who practice social righteousness and shine as moral lights in the world.",
+    keyScriptures: [
+      { ref: "Genesis 2:24", text: "Therefore shall a man leave his father and his mother, and shall cleave unto his wife: and they shall be one flesh.", context: "The creation ordinance establishing heterosexual monogamous marriage as God's eternal pattern." },
+      { ref: "Matthew 19:4-6", text: "And he answered and said unto them, Have ye not read, that he which made them at the beginning made them male and female, And said, For this cause shall a man leave father and mother, and shall cleave to his wife: and they twain shall be one flesh? Wherefore they are no more twain, but one flesh. What therefore God hath joined together, let not man put asunder.", context: "Jesus affirming the permanence and divine origin of marriage." },
+      { ref: "Psalm 139:13-16", text: "For thou hast possessed my reins: thou hast covered me in my mother's womb. I will praise thee; for I am fearfully and wonderfully made... Thine eyes did see my substance, yet being unperfect; and in thy book all my members were written.", context: "David's revelation of God's sovereign intimacy and purpose in prenatal life." },
+      { ref: "Romans 13:1-4", text: "Let every soul be subject unto the higher powers. For there is no power but of God: the powers that be are ordained of God... For he is the minister of God to thee for good.", context: "Paul outlining the Christian's civic duty and the divine mandate for civil order." }
+    ],
+    doctrinalPillars: [
+      { title: "Holy Matrimony as Covenant", explanation: "A lifelong, holy covenant between one man and one woman reflecting Christ and His Bride.", scripture: "Ephesians 5:22-33, Malachi 2:14-15" },
+      { title: "Sanctity of Human Life (Imago Dei)", explanation: "Human life begins at conception and carries divine dignity; abortion, euthanasia, and unjust taking of life are forbidden.", scripture: "Jeremiah 1:5, Exodus 20:13" },
+      { title: "Family & Nurture in the Lord", explanation: "Parents are tasked by God with the discipleship, instruction, and loving nurture of children.", scripture: "Deuteronomy 6:6-7, Ephesians 6:4" },
+      { title: "Civil Government & Social Responsibility", explanation: "Believers pray for leaders, pay taxes, uphold righteousness, and minister compassion to the poor and vulnerable.", scripture: "1 Timothy 2:1-3, Micah 6:8" }
+    ],
+    practicalApplication: [
+      "Guard the sanctity of your marriage: Cultivate fidelity, selfless love, mutual honor, and forgiveness daily.",
+      "Champion and protect the vulnerable: Defend the unborn, care for orphans and widows, and stand for human dignity.",
+      "Pray faithfully for governing authorities: Intercede for national leaders, magistrates, and peace in society.",
+      "Live as ethical witnesses: Conduct your business, career, and daily interactions with spotless Christian integrity."
+    ],
+    historicalAndConfessionalBasis: "Unbroken orthodox Christian consensus across two millennia, rooted in Genesis creation ordinances and apostolic epistles.",
+    guidedReflection: "Lord God Creator, thank You for the sacred gift of life and the divine covenant of marriage. Bless our families and homes. Give us courage to stand for life and truth in our culture, and use our lives to bring justice, compassion, and the light of Christ to a broken world."
+  },
+  {
+    id: "art-mission-repentance-destiny-1",
+    categoryId: "mission-repentance-destiny",
+    categoryTitle: "The Mission, Repentance & Eternal Destiny",
+    title: "The Great Commission, The Fruit of True Repentance & The Intermediate State",
+    subtitle: "Global Evangelism, Restitution, the Priesthood of All Believers, and Conscious Life After Death",
+    theologicalOverview: "The supreme mission of the Lord Jesus Christ to His Church is the Great Commission: proclaiming the Gospel to all nations, baptizing disciples, and teaching them to observe all His commands. Genuine conversion is evidenced by biblical repentance—a deep, godly sorrow that renounces sin, turns wholeheartedly to God, and seeks to make restitution where wrong has been done. Furthermore, Scripture teaches the conscious existence of the soul after physical death: the righteous depart to be immediately with Christ in paradise and joy, while the unregenerate await final judgment.",
+    keyScriptures: [
+      { ref: "Matthew 28:19-20", text: "Go ye therefore, and teach all nations, baptizing them in the name of the Father, and of the Son, and of the Holy Ghost: Teaching them to observe all things whatsoever I have commanded you: and, lo, I am with you alway, even unto the end of the world. Amen.", context: "The supreme mandate and apostolic marching orders for the Church." },
+      { ref: "Luke 19:8-9", text: "And Zacchaeus stood, and said unto the Lord; Behold, Lord, the half of my goods I give to the poor; and if I have taken any thing from any man by false accusation, I restore him fourfold. And Jesus said unto him, This day is salvation come to this house.", context: "The tangible fruit of true repentance demonstrated through practical restitution." },
+      { ref: "Luke 23:43", text: "And Jesus said unto him, Verily I say unto thee, To day shalt thou be with me in paradise.", context: "Christ's promise of immediate conscious presence in paradise at physical death." },
+      { ref: "2 Corinthians 5:8", text: "We are confident, I say, and willing rather to be absent from the body, and to be present with the Lord.", context: "Paul's assurance of instantaneous fellowship with Christ upon passing from this life." }
+    ],
+    doctrinalPillars: [
+      { title: "The Great Commission Mandate", explanation: "Evangelism and disciple-making are the non-negotiable priority of every Christian believer.", scripture: "Mark 16:15, Acts 1:8" },
+      { title: "True Repentance & Practical Restitution", explanation: "Repentance involves an internal change of mind that bears outward fruit in righteousness and restitution.", scripture: "2 Corinthians 7:10, Acts 26:20" },
+      { title: "Priesthood of All Believers", explanation: "Every born-again believer has direct access to God and is called to minister His reconciliation in the world.", scripture: "1 Peter 2:5,9, Revelation 1:6" },
+      { title: "The Intermediate State & Eternal Destiny", explanation: "Conscious existence continues after death; the believer goes immediately to be with the Lord in bliss, awaiting resurrection.", scripture: "Philippians 1:21-23, Luke 16:19-31" }
+    ],
+    practicalApplication: [
+      "Share your testimony and the Gospel weekly: Be an active ambassador for Christ in your workplace, neighborhood, and family.",
+      "Practice swift repentance and restitution: If you have defrauded or wronged anyone, apologize sincerely and make amends where possible.",
+      "Live with eternity in your eyes: Remember that this life is a vapor; invest your time, talents, and treasures into what will last forever."
+    ],
+    historicalAndConfessionalBasis: "Rooted in apostolic preaching in the Book of Acts, the Reformation principle of the Priesthood of all Believers, and historic orthodox eschatology.",
+    guidedReflection: "Lord Jesus, make me a passionate, unashamed witness of Your Gospel. Purify my heart with true repentance and integrity. Fill me with urgent compassion for dying souls, and keep my gaze fixed on the glorious eternal prize awaiting me in Your presence."
+  },
+  {
+    id: "art-joy-of-the-lord-1",
+    categoryId: "joy-of-the-lord",
+    categoryTitle: "The Joy of the Lord & Victorious Living",
+    title: "The Fortress of Divine Joy, Overcoming Despair & Walking in Daily Victory",
+    subtitle: "How Supernatural Joy Serves as an Impenetrable Shield and Fountain of Spiritual Power",
+    theologicalOverview: "The Joy of the Lord is not fleeting emotional happiness dependent on favorable circumstances; it is an unshakeable, supernatural fortress anchored in the unchanging love, grace, and victory of Jesus Christ. As Nehemiah proclaimed, 'The joy of the Lord is your strength' (Nehemiah 8:10). Joy operates as a mighty spiritual weapon that breaks depression, dismantles demonic gloom, and fuels enduring victory in the midst of fiery trials.",
+    keyScriptures: [
+      { ref: "Nehemiah 8:10", text: "The joy of the Lord is your strength.", context: "God's people exhorted to feast and rejoice in the covenant goodness of God." },
+      { ref: "Romans 8:37", text: "Nay, in all these things we are more than conquerors through him that loved us.", context: "The unstoppable triumphant position of believers in Christ." },
+      { ref: "Psalm 16:11", text: "Thou wilt shew me the path of life: in thy presence is fulness of joy; at thy right hand there are pleasures for evermore.", context: "David discovering the source of inexhaustible divine joy in God's presence." },
+      { ref: "Philippians 4:4", text: "Rejoice in the Lord alway: and again I say, Rejoice.", context: "Paul's apostolic command to maintain continuous spiritual rejoicing regardless of chains or trials." }
+    ],
+    doctrinalPillars: [
+      { title: "Joy as a Supernatural Fruit", explanation: "Joy is generated by the Holy Spirit within the abiding believer, unaffected by outer storms.", scripture: "Galatians 5:22, John 15:11" },
+      { title: "Joy as Spiritual Warfare", explanation: "Praising and rejoicing in trials confuses the enemy and releases God's supernatural deliverance.", scripture: "2 Chronicles 20:21-22, Acts 16:25-26" },
+      { title: "More Than Conquerors", explanation: "Believers live from victory, not for victory, knowing nothing can separate us from Christ's love.", scripture: "Romans 8:35-39" }
+    ],
+    practicalApplication: [
+      "Begin every day with thanksgiving and praise: Enter His gates with thanksgiving before bringing any petitions.",
+      "Refuse to let circumstances dictate your worship: Sing and praise the Lord especially when facing adversity.",
+      "Spread kingdom joy to others: Encourage the downcast, share words of hope, and radiate Christ's gladness."
+    ],
+    historicalAndConfessionalBasis: "Celebrated in the psalms of David, the early Christian martyrs' hymns in Roman arenas, and the joyous testimonies of the saints throughout all ages.",
+    guidedReflection: "Heavenly Father, I praise You that in Your presence is fullness of joy. I cast off all spirit of heaviness and put on the garment of praise. Your joy is my strength, my shield, and my song today and forevermore. Amen!"
   }
 ];

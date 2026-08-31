@@ -532,7 +532,7 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({
                 }`}
               >
                 <Compass className="w-4 h-4 text-emerald-400" />
-                Spiritual Places (500+)
+                Spiritual Places (1,500)
               </button>
 
               <button
