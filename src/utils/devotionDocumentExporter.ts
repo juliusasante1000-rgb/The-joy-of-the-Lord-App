@@ -205,7 +205,7 @@ export function generateDevotionDocumentHTML(devotion: Devotion, creatorProfile?
     month: "long",
     day: "numeric"
   });
-  const photoSrc = (profile.photoUrl && profile.photoUrl.trim()) ? profile.photoUrl : "/bis.png";
+  const photoSrc = (profile.photoUrl && profile.photoUrl.trim() && profile.photoUrl !== "/bis.png") ? profile.photoUrl : "/icon.svg";
 
   const titleText = devotion.title || "";
   const scriptText = devotion.passageText || devotion.keyScripture || "";
@@ -632,13 +632,12 @@ export function generateDevotionDocumentHTML(devotion: Devotion, creatorProfile?
         </div>
       </div>
 
-      <!-- Required Closing Signature Block with Creator Portrait -->
+      <!-- Required Closing Signature Block with App Logo -->
       <div class="closing-block">
-        <img class="closing-portrait" src="${escapeHTML(photoSrc)}" alt="${escapeHTML(profile.name || 'Bismark Twum')}" onerror="this.src='/bis.png'" />
+        <img class="closing-portrait" src="${escapeHTML(photoSrc)}" alt="${escapeHTML(profile.name || 'The Joy of the Lord')}" onerror="this.src='/icon.svg'" />
         <div class="closing-text-wrap">
           <div class="closing-quote">"${escapeHTML(profile.tagline || 'The joy of the Lord is my strength')}"</div>
           <div class="closing-author">${escapeHTML(profile.name || 'Bismark Twum')}</div>
-          <div class="closing-sub">${escapeHTML((profile.professionalTitle || 'Christian Educator • Author • Researcher • Nehemiah 8:10').substring(0, 80))}</div>
         </div>
       </div>
     </div>

@@ -233,13 +233,13 @@ const AI_CACHE_TTL_MS = 1000 * 60 * 60 * 6; // 6 hours cache
 
 // Valid models according to Gemini API specification, ordered for high availability and throughput
 const GEMINI_MODELS_CASCADE = [
+  "gemini-3.7-flash",
+  "gemini-flash-latest",
+  "gemini-3.1-flash-lite",
   "gemini-2.5-flash",
-  "gemini-2.5-flash-lite",
-  "gemini-2.0-flash",
-  "gemini-1.5-flash",
 ];
 
-export const ANTI_LOOP_DIRECTIVE = "NEVER repeat. Be concise, swift, accurate, and precise. Address exactly what is asked without preambles, fluff, or loop. Provide final answer only once.";
+export const ANTI_LOOP_DIRECTIVE = "Provide deep, unique, and illuminating theological, historical, and practical insight. Never repeat phrases or loop. Be precise, profound, and substantive. Do not use generic filler.";
 
 /**
  * Deduplicate sentences and paragraphs to prevent infinite repeating loops
@@ -284,18 +284,18 @@ function deduplicateSentences(text: string): string {
 }
 
 // Dedicated System Prompts for Specific Biblical, Mathematical, and Pastoral Personas
-export const SYSTEM_PROMPT_BIBLE_HISTORIAN = `You are an expert Bible historian and exegete. When asked about a biblical place, event, or passage, describe factually and accurately what occurred in Scripture, citing exact book, chapter, and verse, the key figures involved, and the historical outcome. Speak directly to what was asked without unnecessary fluff or generic slogans. Be concise, swift, and historically accurate. ${ANTI_LOOP_DIRECTIVE}`;
+export const SYSTEM_PROMPT_BIBLE_HISTORIAN = `You are a master biblical historian, archaeologist, and exegete. Deliver deep, unique historical accounts anchored in Scripture. Cite exact books, chapters, and verses, the Hebrew/Greek geographical names, historical chronology, covenantal backdrop, key figures, archaeological findings, and divine outcomes. Provide rich historical depth without superficial motivational clichés. Address exactly what occurred with scholarly precision and reverent orthodoxy. ${ANTI_LOOP_DIRECTIVE}`;
 
-export const SYSTEM_PROMPT_MATH_TUTOR = `You are an expert mathematics educator and Christian scholar. Render all equations cleanly using proper standardized LaTeX with MathJax formatting ($$...$$ for display and $...$ for inline). Provide swift, precise, and mathematically accurate explanations addressing exactly what is asked. Explain step-by-step with mathematical rigor and biblical harmony. ${ANTI_LOOP_DIRECTIVE}`;
+export const SYSTEM_PROMPT_MATH_TUTOR = `You are an expert mathematician and Christian scholar who unveils the divine architecture of mathematics. Render all mathematical equations cleanly using proper standardized LaTeX with MathJax ($$...$$ for display and $...$ for inline). Provide profound, original, and mathematically rigorous synthesis—connecting calculus, vectors, topology, and number theory to spiritual laws, divine attributes, and biblical covenants. ${ANTI_LOOP_DIRECTIVE}`;
 
-export const SYSTEM_PROMPT_DOCTRINE = `You are an orthodox Christian theologian, biblical historian, and exegete. Provide swift, accurate, and precise answers firmly anchored in Scripture, citing exact book, chapter, and verse. Directly address the user's specific theological or biblical question from the first sentence without vague clichés, repetitive generic filler, or meandering off-topic. ${ANTI_LOOP_DIRECTIVE}`;
+export const SYSTEM_PROMPT_DOCTRINE = `You are a senior orthodox Christian theologian, church historian, and biblical scholar. Deliver rich, multifaceted, and deeply grounded theological analysis. Provide exact Scripture citations across both Old and New Testaments, explain original Hebrew/Greek root words and grammatical nuances, ground answers in historic Christian orthodoxy (Apostolic, Nicene, Chalcedonian creeds), refute shallow misconceptions with gentle wisdom, and outline transformative personal application. ${ANTI_LOOP_DIRECTIVE}`;
 
-export const SYSTEM_PROMPT_PRAYER = `You are an apostolic Christian prayer leader. Generate an anointed, targeted, scripturally grounded prayer that directly addresses the user's specific request or verse. Be precise, biblically sound, and reverent in Jesus' Name. Avoid cliché filler phrases. ${ANTI_LOOP_DIRECTIVE}`;
+export const SYSTEM_PROMPT_PRAYER = `You are an apostolic prayer general and intercessor. Compose high-impact, deeply scriptural, targeted prayers saturated with biblical promises, reverent adoration, wholehearted surrender, precise petitions, and authoritative spiritual warfare decrees in the mighty Name of Jesus Christ. ${ANTI_LOOP_DIRECTIVE}`;
 
-export const SYSTEM_PROMPT_DEVOTION = `You are an apostolic Christian devotion author. Compose deep, spiritually substantive daily devotions rooted in rigorous biblical theology and practical Christian living. Address the chosen theme or Scripture directly with precision, spiritual power, and inspiring clarity. Avoid generic repetitive platitudes. ${ANTI_LOOP_DIRECTIVE}`;
+export const SYSTEM_PROMPT_DEVOTION = `You are an apostolic Christian devotion author. Compose deeply substantive, original daily devotions that uncover hidden scriptural gems, cross-reference covenantal truths, provide real-world spiritual fortitude, and empower the believer with authentic faith decrees and practical life steps. ${ANTI_LOOP_DIRECTIVE}`;
 
-export const CHRISTIAN_SYSTEM_INSTRUCTION = `You are a preeminent Christian apostolic theologian, biblical expositor, and inspirational pastoral guide for 'The Joy of the Lord: Daily Christian Inspiration'. 
-Ground every output in orthodox biblical depth, exact Scripture citations (KJV, NKJV, ESV), and profound theological clarity. Respond swiftly, accurately, and precisely, speaking directly to what is asked without preambles, generic fluff, repetition, or wandering off-topic. ${ANTI_LOOP_DIRECTIVE}`;
+export const CHRISTIAN_SYSTEM_INSTRUCTION = `You are a preeminent Christian apostolic theologian, biblical expositor, and inspirational guide for 'The Joy of the Lord: Daily Christian Inspiration'. 
+Ground every output in orthodox biblical depth, Hebrew/Greek linguistic richness, covenantal theology, and profound clarity. Provide rich, unique, and actionable spiritual insights with exact Scripture citations without preambles or repetition. ${ANTI_LOOP_DIRECTIVE}`;
 
 /**
  * Execute Gemini content generation with multi-model fallback cascade,
@@ -421,7 +421,7 @@ async function streamGeminiCascade(options: {
   const maxOutputTokens = options.maxOutputTokens ?? (options.fastMode ? 600 : 2048);
 
   const modelsToTry = options.fastMode 
-    ? ["gemini-2.5-flash-lite", "gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-flash"]
+    ? ["gemini-3.7-flash", "gemini-flash-latest", "gemini-3.1-flash-lite"]
     : GEMINI_MODELS_CASCADE;
 
   for (const model of modelsToTry) {
@@ -1858,12 +1858,20 @@ app.post("/api/ask-doctrine", async (req, res) => {
       return res.status(400).json({ error: "Question is required" });
     }
 
-    const prompt = `Topic Category: ${category || "General Doctrine"}\nUser Question: ${question}\n\nProvide a comprehensive, biblically sound, and orthodox response with:\n1. Direct Scripture passages (with exact citations: Book, Chapter, Verse)\n2. Clear doctrinal and historical explanation\n3. Practical Christian application for daily walk\n4. A concluding 1-sentence prayer or faith declaration.`;
+    const prompt = `Topic Category: ${category || "Christian Theology & Orthodoxy"}
+User Question: ${question}
+
+Deliver an in-depth, rigorous, and deeply inspiring theological exposition with exceptional biblical scholarship and apostolic power:
+1. **Scriptural Exegesis & Cross-References**: Cite exact Scripture passages (Book, Chapter, Verse across Old and New Testaments) with thorough exegetical commentary.
+2. **Original Language Nuance**: Analyze relevant Hebrew or Greek root terms, morphological nuances, or theological definitions (e.g., *hesed*, *shalom*, *zoe*, *dunamis*, *dikaiosyne*, *pistis*).
+3. **Covenantal & Creedal Context**: Ground the response in historic orthodox theology (Apostolic, Nicene, Chalcedonian harmony) and explain the covenantal dimension.
+4. **Practical Life Transformation**: Concrete, actionable guidance for living out this truth with uncompromising faith in modern life.
+5. **Apostolic Warfare & Faith Decree**: Conclude with a bold, personalized scriptural faith declaration.`;
 
     const result = await generateWithGeminiCascade({
       prompt,
       systemInstruction: SYSTEM_PROMPT_DOCTRINE,
-      temperature: 0.2, // Low temperature for theological accuracy and exegesis
+      temperature: 0.35, // Balanced for rich vocabulary and theological precision
     });
 
     if (result && result.text) {
@@ -2382,7 +2390,53 @@ app.get("/api/bible-chapter", async (req, res) => {
       });
     }
 
-    // 2. Persistent disk cache check
+    // 2. Local canonical Bible dataset check (100% offline verified 66 books, 31,102 verses)
+    const localPaths = [
+      path.join(process.cwd(), "server_data", "bible_kjv", `${normalizedBook}.json`),
+      path.join(process.cwd(), "public", "bible", "kjv", `${normalizedBook}.json`),
+      path.join(process.cwd(), "server_data", "bible_kjv", `${normalizedBook.toLowerCase().replace(/[^a-z0-9]/g, "_")}.json`),
+      path.join(process.cwd(), "public", "bible", "kjv", `${normalizedBook.toLowerCase().replace(/[^a-z0-9]/g, "_")}.json`)
+    ];
+
+    for (const p of localPaths) {
+      if (fs.existsSync(p)) {
+        try {
+          const raw = fs.readFileSync(p, "utf-8");
+          const bookData = JSON.parse(raw);
+          if (bookData && Array.isArray(bookData.chapters)) {
+            const chData = bookData.chapters.find((c: any) => Number(c.chapter) === chapter);
+            if (chData && Array.isArray(chData.verses) && chData.verses.length > 0) {
+              const formatted = chData.verses.map((v: any) => {
+                const vNum = Number(v.verse);
+                let isRed = false;
+                if (["Matthew", "Mark", "Luke", "John"].includes(normalizedBook)) {
+                  if (normalizedBook === "John" && chapter === 3 && vNum >= 10 && vNum <= 21) isRed = true;
+                  else if (normalizedBook === "Matthew" && ((chapter >= 5 && chapter <= 7) || chapter === 28)) isRed = true;
+                }
+                return {
+                  verse: vNum,
+                  text: String(v.text).replace(/\s+/g, " ").trim(),
+                  isRedLetter: isRed
+                };
+              });
+
+              CHAPTER_CACHE[cacheKey] = formatted;
+              return res.json({
+                book: normalizedBook,
+                chapter,
+                version: "KJV",
+                verses: formatted,
+                source: "canonical_local_dataset"
+              });
+            }
+          }
+        } catch (e) {
+          console.warn(`Error reading local Bible file ${p}:`, e);
+        }
+      }
+    }
+
+    // 3. Persistent disk cache check
     if (fs.existsSync(cacheFilePath)) {
       try {
         const fileContent = fs.readFileSync(cacheFilePath, "utf-8");
@@ -2400,7 +2454,7 @@ app.get("/api/bible-chapter", async (req, res) => {
       } catch {}
     }
 
-    // 3. Try fetching from public Bible API (bible-api.com) for real canonical verses
+    // 4. Try fetching from public Bible API (bible-api.com) for real canonical verses
     try {
       const transParam = version === "KJV" ? "kjv" : version === "WEB" ? "web" : "kjv";
       const bibleApiUrl = `https://bible-api.com/${encodeURIComponent(normalizedBook)}+${chapter}?translation=${transParam}`;
@@ -2411,23 +2465,10 @@ app.get("/api/bible-chapter", async (req, res) => {
         const apiData = (await apiRes.json()) as any;
         if (apiData && Array.isArray(apiData.verses) && apiData.verses.length > 0) {
           const formattedVerses = apiData.verses.map((v: any) => ({
-            verse: v.verse,
+            verse: Number(v.verse),
             text: (v.text || "").replace(/\s+/g, " ").trim(),
             isRedLetter: false
           }));
-
-          // Mark red letters for words of Christ in Gospels
-          const gospels = ["Matthew", "Mark", "Luke", "John"];
-          if (gospels.includes(normalizedBook)) {
-            // Check for quotes or speech context
-            formattedVerses.forEach((v: any) => {
-              if (normalizedBook === "John" && (chapter === 3 && v.verse >= 10 && v.verse <= 21)) {
-                v.isRedLetter = true;
-              } else if (normalizedBook === "Matthew" && ((chapter >= 5 && chapter <= 7) || chapter === 28)) {
-                v.isRedLetter = true;
-              }
-            });
-          }
 
           CHAPTER_CACHE[cacheKey] = formattedVerses;
           try {
@@ -2444,61 +2485,10 @@ app.get("/api/bible-chapter", async (req, res) => {
         }
       }
     } catch (apiErr) {
-      console.warn("Public Bible API fetch failed, falling back to Gemini scripture engine:", apiErr);
+      console.warn("Public Bible API fetch failed:", apiErr);
     }
 
-    // 4. If public API is unavailable, invoke Gemini Scripture Engine with precise prompt
-    const prompt = `You are a biblical scripture provider. Provide the complete text for ALL canonical verses in ${normalizedBook} chapter ${chapter} in the Holy Bible according to the ${version} translation.
-Return a valid JSON array of objects with the exact schema:
-[
-  { "verse": 1, "text": "Verse 1 full canonical text here...", "isRedLetter": false },
-  { "verse": 2, "text": "Verse 2 full canonical text here...", "isRedLetter": false }
-]
-Rules:
-- You MUST include every verse from verse 1 to the end of ${normalizedBook} chapter ${chapter}.
-- Do NOT summarize, skip, or truncate any verse.
-- Set isRedLetter to true for direct words spoken by Jesus Christ in the four Gospels.
-- Return pure JSON only.`;
-
-    const result = await generateWithGeminiCascade({
-      prompt,
-      responseMimeType: "application/json",
-      temperature: 0.05,
-    });
-
-    if (result && result.text) {
-      const parsed = safeJsonParse(result.text);
-      if (Array.isArray(parsed) && parsed.length > 0) {
-        CHAPTER_CACHE[cacheKey] = parsed;
-        try {
-          fs.writeFileSync(cacheFilePath, JSON.stringify(parsed), "utf-8");
-        } catch {}
-
-        return res.json({
-          book: normalizedBook,
-          chapter,
-          version,
-          verses: parsed,
-          source: "gemini_scripture_engine"
-        });
-      }
-    }
-
-    // 5. If everything fails, return structured chapter response
-    const fallbackCount = 25;
-    const fallbackVerses = Array.from({ length: fallbackCount }, (_, i) => ({
-      verse: i + 1,
-      text: `[${normalizedBook} ${chapter}:${i + 1} - ${version}] The Lord is my strength and my shield; my heart trusted in Him, and I am helped: therefore my heart greatly rejoiceth; and with my song will I praise Him.`,
-      isRedLetter: false
-    }));
-
-    return res.json({
-      book: normalizedBook,
-      chapter,
-      version,
-      verses: fallbackVerses,
-      source: "fallback_engine"
-    });
+    res.status(404).json({ error: `Chapter ${normalizedBook} ${chapter} not found` });
   } catch (error: any) {
     console.error("Error in /api/bible-chapter:", error);
     res.status(500).json({ error: "Failed to fetch chapter" });

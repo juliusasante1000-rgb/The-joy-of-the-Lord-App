@@ -23,15 +23,14 @@ export const CreatorCard: React.FC<CreatorCardProps> = ({
       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5">
         {/* Creator Photo with Royal Ring */}
         <div className="relative shrink-0 mx-auto sm:mx-0">
-          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full p-1 bg-gradient-to-tr from-[#2563EB] via-[#9333EA] to-[#DB2777] shadow-md">
+          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full p-1 bg-gradient-to-tr from-[#2563EB] via-[#9333EA] to-[#DB2777] shadow-md flex items-center justify-center bg-white overflow-hidden">
             <img
-              src={profile.photoUrl}
-              alt={profile.name}
+              src={profile.photoUrl || "/icon.svg"}
+              alt="App Logo"
               referrerPolicy="no-referrer"
-              className="w-full h-full rounded-full object-cover bg-slate-100"
+              className="w-full h-full rounded-full object-contain p-1.5 bg-slate-900"
               onError={(e) => {
-                // Fallback avatar if local file path fails
-                (e.target as HTMLElement).style.display = "none";
+                (e.target as HTMLImageElement).src = "/icon.svg";
               }}
             />
           </div>

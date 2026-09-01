@@ -281,7 +281,7 @@ export const DevotionDetailModal: React.FC<DevotionDetailModalProps> = ({
                 Generate high-resolution social graphic with custom background themes and official author seal:
               </p>
               <div className="flex items-center gap-2 pt-0.5">
-                <img src="/bis.png" alt="Bismark Twum" className="w-5 h-5 rounded-full object-cover border border-[#F59E0B]" />
+                <img src="/icon.svg" alt="App Logo" className="w-5 h-5 rounded-full object-contain bg-white/10 p-0.5 border border-[#F59E0B]" />
                 <span className="text-xs font-serif italic text-[#FDE68A]">
                   "The joy of the Lord is my strength" — Bismark Twum
                 </span>

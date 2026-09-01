@@ -101,7 +101,7 @@ export function getClientGeminiApiKey(): string | null {
 /**
  * Master Anti-Loop System Prompt
  */
-export const ANTI_LOOP_DIRECTIVE = "NEVER repeat. Be concise, swift, accurate, and precise. Address exactly what is asked without preambles, fluff, or loop. Provide final answer only once.";
+export const ANTI_LOOP_DIRECTIVE = "Provide deep, unique, and illuminating theological, historical, and practical insight. Never repeat phrases or loop. Be precise, profound, and substantive. Do not use generic filler.";
 
 /**
  * Core AI Generation Service
@@ -113,11 +113,11 @@ export async function generateAiContent<T = any>(
   const temperature = options.temperature ?? 0.45;
   const topP = options.topP ?? 0.90;
   const maxOutputTokens = options.maxOutputTokens ?? 2048;
-  const targetModel = options.model || "gemini-2.5-flash";
+  const targetModel = options.model || "gemini-3.7-flash";
 
   const systemPrompt = options.systemInstruction
     ? `${options.systemInstruction} ${ANTI_LOOP_DIRECTIVE}`
-    : `You are an apostolic Christian theologian and pastoral guide. Respond swiftly, accurately, and precisely, speaking directly to what is asked. ${ANTI_LOOP_DIRECTIVE}`;
+    : `You are an apostolic Christian theologian, biblical expositor, and inspirational guide. Deliver rich, multifaceted, and deeply grounded theological depth with exact Scripture citations and practical spiritual fortitude. ${ANTI_LOOP_DIRECTIVE}`;
 
   console.log(`[AI SERVICE] 🚀 Dispatching prompt to model ${targetModel}:`, {
     prompt: options.prompt.substring(0, 100) + "...",
@@ -177,7 +177,7 @@ export async function generateAiContent<T = any>(
   // Step 2: Direct Client-Side Gemini API call (Vercel, Netlify, Static Builds)
   const clientApiKey = getClientGeminiApiKey();
   if (clientApiKey) {
-    const modelsToTry = [targetModel, "gemini-2.5-flash", "gemini-2.5-flash-lite", "gemini-2.0-flash", "gemini-1.5-flash"].filter(
+    const modelsToTry = [targetModel, "gemini-3.7-flash", "gemini-flash-latest", "gemini-3.1-flash-lite", "gemini-2.5-flash"].filter(
       (v, i, a) => Boolean(v) && a.indexOf(v) === i
     );
 

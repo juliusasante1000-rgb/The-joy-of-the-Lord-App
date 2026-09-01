@@ -932,7 +932,7 @@ export const BibleTab: React.FC<BibleTabProps> = ({
 
                 return (
                   <div
-                    key={v.verse}
+                    key={`${currentBook.name}-${selectedChapter}-${v.verse}`}
                     id={`verse-${v.verse}`}
                     className={`group p-3.5 rounded-xl transition-all space-y-2 border ${
                       isTargetHighlighted

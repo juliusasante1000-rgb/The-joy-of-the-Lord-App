@@ -50,6 +50,10 @@ export const QuotesTab: React.FC<QuotesTabProps> = ({
   const [featuredQuote, setFeaturedQuote] = useState<PersonalQuote>(PERSONAL_QUOTES[0]);
   const [featuredGeneralQuote, setFeaturedGeneralQuote] = useState<FamousChristianQuote>(GODS_GENERALS_QUOTES[0]);
 
+  const otFavCount = useMemo(() => AUTHOR_FAVOURITE_SCRIPTURES.filter(s => s.testament === "Old Testament").length, []);
+  const ntFavCount = useMemo(() => AUTHOR_FAVOURITE_SCRIPTURES.filter(s => s.testament === "New Testament").length, []);
+  const newFavCount = useMemo(() => AUTHOR_FAVOURITE_SCRIPTURES.filter(s => s.isNew).length, []);
+
   const categories = [
     "All",
     "Destiny & Decisions",
@@ -763,9 +767,9 @@ export const QuotesTab: React.FC<QuotesTabProps> = ({
                   <span className="text-[11px] font-bold text-slate-600 uppercase tracking-wider pr-1">Testament:</span>
                   {[
                     { key: "All", label: "All Scriptures", count: AUTHOR_FAVOURITE_SCRIPTURES.length },
-                    { key: "Old Testament", label: "Old Testament", count: 123 },
-                    { key: "New Testament", label: "New Testament", count: 184 },
-                    { key: "New", label: "New Added", count: 21 }
+                    { key: "Old Testament", label: "Old Testament", count: otFavCount },
+                    { key: "New Testament", label: "New Testament", count: ntFavCount },
+                    { key: "New", label: "New Added", count: newFavCount }
                   ].map((t) => (
                     <button
                       key={t.key}

@@ -891,7 +891,7 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
     try {
       const img = new Image();
       img.crossOrigin = "anonymous";
-      img.src = activeProfile.photoUrl && activeProfile.photoUrl.trim() ? activeProfile.photoUrl : "/bis.png";
+      img.src = (activeProfile.photoUrl && activeProfile.photoUrl.trim() && activeProfile.photoUrl !== "/bis.png") ? activeProfile.photoUrl : "/icon.svg";
 
       await new Promise<void>((resolve) => {
         img.onload = () => {
@@ -931,25 +931,17 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
       // ignore
     }
 
-    // Left Author Details
+    // Left Author Details (Name and Devotional Title)
     const textLeftX = portraitX + portraitSize + Math.round(30 * baseScale);
     ctx.textAlign = "left";
     ctx.fillStyle = "#0A0F1D";
-    ctx.font = `bold ${Math.round(40 * baseScale)}px 'Georgia', serif`;
-    ctx.fillText(activeProfile.name || "Bismark Twum", textLeftX, footerY + Math.round(74 * baseScale));
-
-    ctx.fillStyle = "#475569";
-    ctx.font = `500 ${Math.round(24 * baseScale)}px 'Plus Jakarta Sans', sans-serif`;
-    ctx.fillText(
-      (activeProfile.professionalTitle || "Author & Mathematics Educator").substring(0, 80),
-      textLeftX,
-      footerY + Math.round(116 * baseScale)
-    );
+    ctx.font = `bold ${Math.round(42 * baseScale)}px 'Georgia', serif`;
+    ctx.fillText(activeProfile.name || "Bismark Twum", textLeftX, footerY + Math.round(82 * baseScale));
 
     ctx.fillStyle = "#B48C35";
-    ctx.font = `bold ${Math.round(22 * baseScale)}px 'Plus Jakarta Sans', sans-serif`;
+    ctx.font = `bold ${Math.round(24 * baseScale)}px 'Plus Jakarta Sans', sans-serif`;
     ctx.letterSpacing = "2px";
-    ctx.fillText("THE JOY OF THE LORD DAILY DEVOTIONAL", textLeftX, footerY + Math.round(154 * baseScale));
+    ctx.fillText("THE JOY OF THE LORD DAILY DEVOTIONAL", textLeftX, footerY + Math.round(136 * baseScale));
 
     // Right Sacred Closing Decree
     const textRightX = W - cardX - Math.round(20 * baseScale);

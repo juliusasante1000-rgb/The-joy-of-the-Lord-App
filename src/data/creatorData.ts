@@ -22,7 +22,7 @@ export const DEFAULT_CREATOR_PROFILE: CreatorProfile = {
   location: "Ghana",
   phone: "+233 246 320 879",
   email: "twumbismark304@gmail.com",
-  photoUrl: "/bis.png",
+  photoUrl: "/icon.svg",
   bannerUrl: "/src/assets/images/bismark_banner_official_1786988862290.jpg",
   welcomeMessage:
     "Welcome to this Christian platform. My desire is that this resource will help people grow in their relationship with God, deepen their understanding of Scripture, strengthen their prayer lives, and encourage them in their Christian walk. May the joy of the Lord be your unending strength every day.",
@@ -172,10 +172,14 @@ export function loadCreatorProfile(): CreatorProfile {
     if (saved) {
       const parsed = JSON.parse(saved);
       // Ensure essential fields exist
+      let photoUrl = parsed.photoUrl || DEFAULT_CREATOR_PROFILE.photoUrl;
+      if (photoUrl === "/bis.png" || photoUrl === "/creator.jpg" || photoUrl === "/creator.png") {
+        photoUrl = "/icon.svg";
+      }
       return {
         ...DEFAULT_CREATOR_PROFILE,
         ...parsed,
-        photoUrl: parsed.photoUrl || DEFAULT_CREATOR_PROFILE.photoUrl,
+        photoUrl,
         bannerUrl: parsed.bannerUrl || DEFAULT_CREATOR_PROFILE.bannerUrl,
         location: "Ghana"
       };

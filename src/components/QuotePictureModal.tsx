@@ -455,25 +455,17 @@ export const QuotePictureModal: React.FC<QuotePictureModalProps> = ({
     ctx.lineTo(W - cardX, footerY);
     ctx.stroke();
 
-    // Footer Left Detail
+    // Footer Left Detail (Author name and devotional tagline)
     const footerTextX = cardX + Math.round(20 * baseScale);
     ctx.textAlign = "left";
     ctx.fillStyle = textColor;
-    ctx.font = `bold ${Math.round(36 * baseScale)}px 'Georgia', serif`;
-    ctx.fillText(activeProfile?.name || "Bismark Twum", footerTextX, footerY + Math.round(65 * baseScale));
-
-    ctx.fillStyle = secondaryTextColor;
-    ctx.font = `500 ${Math.round(22 * baseScale)}px 'Plus Jakarta Sans', sans-serif`;
-    ctx.fillText(
-      activeProfile?.professionalTitle || "Christian | Mathematics Educator | Researcher | Writer",
-      footerTextX,
-      footerY + Math.round(105 * baseScale)
-    );
+    ctx.font = `bold ${Math.round(38 * baseScale)}px 'Georgia', serif`;
+    ctx.fillText(activeProfile?.name || "Bismark Twum", footerTextX, footerY + Math.round(72 * baseScale));
 
     ctx.fillStyle = goldColor;
     ctx.font = `bold ${Math.round(20 * baseScale)}px 'Plus Jakarta Sans', sans-serif`;
     ctx.letterSpacing = "2px";
-    ctx.fillText("THE JOY OF THE LORD DAILY DEVOTIONAL & WISDOM", footerTextX, footerY + Math.round(140 * baseScale));
+    ctx.fillText("THE JOY OF THE LORD DAILY DEVOTIONAL & WISDOM", footerTextX, footerY + Math.round(124 * baseScale));
 
     // Footer Right Decree
     const footerRightX = W - cardX - Math.round(20 * baseScale);

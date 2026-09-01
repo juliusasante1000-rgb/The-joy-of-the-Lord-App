@@ -371,10 +371,11 @@ export function getRandomQuote(): PersonalQuote {
 export {
   AUTHOR_FAVOURITE_SCRIPTURES,
   AUTHOR_FAVOURITES_COUNT,
-  OT_FAVOURITES_COUNT,
-  NT_FAVOURITES_COUNT,
+  AUTHOR_FAVOURITES_OT_COUNT as OT_FAVOURITES_COUNT,
+  AUTHOR_FAVOURITES_NT_COUNT as NT_FAVOURITES_COUNT,
   getAuthorScriptureByNum,
-  getAuthorScriptureByRef
+  getAuthorScriptureByReference as getAuthorScriptureByRef,
+  getAuthorScriptureByReference
 } from "./authorFavouriteScriptures";
 export type { AuthorFavouriteScripture } from "./authorFavouriteScriptures";
 

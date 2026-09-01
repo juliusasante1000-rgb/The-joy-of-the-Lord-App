@@ -47,6 +47,8 @@ export const SpiritualPlacesTab: React.FC<SpiritualPlacesTabProps> = ({
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [activeSanctuaryPlace, setActiveSanctuaryPlace] = useState<SpiritualPlace | null>(null);
 
+  const [visibleLimit, setVisibleLimit] = useState<number>(36);
+
   const categories = [
     { id: "all", label: "All Spiritual Places" },
     { id: "rest", label: "🌿 Rest & Provision" },
@@ -205,11 +207,16 @@ export const SpiritualPlacesTab: React.FC<SpiritualPlacesTabProps> = ({
 
       {/* Quick Place Selection Chips */}
       <div className="space-y-2">
-        <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">
-          Quick Sanctuary Select:
-        </p>
+        <div className="flex items-center justify-between">
+          <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+            Quick Sanctuary Select:
+          </p>
+          <span className="text-[11px] text-slate-400 font-medium">
+            Scroll horizontally for more places
+          </span>
+        </div>
         <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
-          {places.map((place) => (
+          {places.slice(0, 50).map((place) => (
             <button
               key={place.id}
               onClick={() => setActiveSanctuaryPlace(place)}
@@ -225,7 +232,7 @@ export const SpiritualPlacesTab: React.FC<SpiritualPlacesTabProps> = ({
 
       {/* Spiritual Places Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {filteredPlaces.map((place) => (
+        {filteredPlaces.slice(0, visibleLimit).map((place) => (
           <div
             key={place.id}
             className="group bg-white border border-[#E8E0F0] hover:border-amber-500/80 rounded-2xl p-5 shadow-xs hover:shadow-xl transition-all duration-200 flex flex-col justify-between relative overflow-hidden"
@@ -304,6 +311,26 @@ export const SpiritualPlacesTab: React.FC<SpiritualPlacesTabProps> = ({
           </div>
         ))}
       </div>
+
+      {/* Load More Pagination */}
+      {visibleLimit < filteredPlaces.length && (
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-6">
+          <button
+            onClick={() => setVisibleLimit((prev) => Math.min(prev + 48, filteredPlaces.length))}
+            className="px-6 py-3 rounded-2xl bg-[#16235A] hover:bg-[#24357D] text-white font-bold text-xs shadow-md hover:shadow-lg transition-all cursor-pointer flex items-center gap-2"
+          >
+            <span>Load More Sanctuaries (+48)</span>
+            <ChevronRight className="w-4 h-4" />
+          </button>
+
+          <button
+            onClick={() => setVisibleLimit(filteredPlaces.length)}
+            className="px-5 py-3 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-all cursor-pointer"
+          >
+            Show All ({filteredPlaces.length})
+          </button>
+        </div>
+      )}
 
       {/* Spiritual Place Sanctuary Modal */}
       <SpiritualPlaceSanctuaryModal
