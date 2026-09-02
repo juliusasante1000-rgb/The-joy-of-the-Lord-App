@@ -12,9 +12,13 @@ import {
   Palette,
   Eye,
   BookOpen,
-  Quote
+  Quote,
+  Printer,
+  FileText
 } from "lucide-react";
 import { CreatorProfile } from "../types";
+import { loadCreatorProfile } from "../data/creatorData";
+import { printQuoteOnePageDocument, downloadQuoteDocument } from "../utils/devotionDocumentExporter";
 import { AppLogo } from "./AppLogo";
 
 export interface QuotePictureItem {
@@ -37,7 +41,7 @@ interface QuotePictureModalProps {
 type PictureTheme = "parchment-gold" | "royal-navy" | "midnight-obsidian" | "sunset-crimson" | "emerald-sanctuary";
 
 interface PictureFormat {
-  id: "social-square" | "story-wallpaper" | "landscape-banner";
+  id: "full-page" | "social-square" | "story-wallpaper" | "landscape-banner";
   name: string;
   aspect: string;
   width: number;
@@ -46,6 +50,14 @@ interface PictureFormat {
 }
 
 const PICTURE_FORMATS: PictureFormat[] = [
+  {
+    id: "full-page",
+    name: "Standard Full Page (PDF Style)",
+    aspect: "1:1.414",
+    width: 1414,
+    height: 2000,
+    subtext: "Matches the exact 1-Page PDF Document layout & proportions"
+  },
   {
     id: "social-square",
     name: "Social Square (1:1)",
@@ -278,12 +290,13 @@ export const QuotePictureModal: React.FC<QuotePictureModalProps> = ({
     ctx.lineTo(W / 2 + Math.round(350 * baseScale), currentY);
     ctx.stroke();
 
-    // 4. USABLE VERTICAL SPACE
-    const footerHeight = Math.round(200 * baseScale);
-    const footerStartY = H - innerMargin - footerHeight;
-    const availableSpace = footerStartY - currentY - Math.round(40 * baseScale);
+    // 4. USABLE VERTICAL SPACE & FOOTER POSITION
+    const profileToUse = activeProfile || loadCreatorProfile();
+    const footerY = H - innerMargin - Math.round(210 * baseScale);
+    const maxUsableBottom = footerY - Math.round(25 * baseScale);
+    const availableSpace = Math.max(200, maxUsableBottom - currentY);
 
-    currentY += Math.round(30 * baseScale);
+    currentY += Math.round(24 * baseScale);
 
     const cardX = Math.round(120 * baseScale);
     const cardW = W - cardX * 2;
@@ -295,61 +308,116 @@ export const QuotePictureModal: React.FC<QuotePictureModalProps> = ({
     const hasReflection = Boolean(item.reflection);
     const hasReference = Boolean(item.reference);
 
-    // Dynamic Font Scaling
-    let quoteFontSize = Math.round(56 * baseScale);
-    if (quoteText.length > 250) {
-      quoteFontSize = Math.round(44 * baseScale);
-    } else if (quoteText.length > 150) {
-      quoteFontSize = Math.round(50 * baseScale);
-    } else if (quoteText.length < 80) {
-      quoteFontSize = Math.round(66 * baseScale);
+    // Determine author attribution in the middle quote card
+    // USER MANDATE: Do NOT display the creator's name in the middle card since it appears in the bottom signature footer.
+    const creatorName = (profileToUse.name || "Bismark Twum").trim().toLowerCase();
+    const itemAuthor = (item.author || "").trim();
+    const isCreatorAuthor =
+      !itemAuthor ||
+      itemAuthor.toLowerCase() === creatorName ||
+      itemAuthor.toLowerCase().includes("bismark") ||
+      creatorName.includes(itemAuthor.toLowerCase());
+
+    let attribution = "";
+    if (isCreatorAuthor) {
+      if (item.title && item.title.trim()) {
+        attribution = `— ${item.title.trim()}`;
+      } else if (item.reference && item.reference.trim()) {
+        attribution = `— ${item.reference.trim()}`;
+      } else {
+        attribution = "";
+      }
+    } else {
+      attribution = `— ${itemAuthor}${item.title ? ` (${item.title})` : ""}`;
     }
 
-    if (selectedFormat.id === "story-wallpaper") {
-      quoteFontSize = Math.round(quoteFontSize * 1.05);
+    // Dynamic Font Scaling adapted to aspect ratio to prevent overflow
+    let quoteFontSize = Math.round(54 * baseScale);
+    let principleFontSize = Math.round(36 * baseScale);
+    let reflectFontSize = Math.round(34 * baseScale);
+
+    if (selectedFormat.id === "landscape-banner") {
+      // Shorter vertical space in 16:9 banner
+      quoteFontSize = Math.round(42 * baseScale);
+      principleFontSize = Math.round(28 * baseScale);
+      reflectFontSize = Math.round(26 * baseScale);
+      if (quoteText.length > 200) {
+        quoteFontSize = Math.round(36 * baseScale);
+      }
+    } else {
+      if (quoteText.length > 250) {
+        quoteFontSize = Math.round(44 * baseScale);
+      } else if (quoteText.length > 150) {
+        quoteFontSize = Math.round(48 * baseScale);
+      } else if (quoteText.length < 80) {
+        quoteFontSize = Math.round(62 * baseScale);
+      }
+      if (selectedFormat.id === "story-wallpaper") {
+        quoteFontSize = Math.round(quoteFontSize * 1.05);
+      }
     }
 
-    const quoteLineH = Math.round(quoteFontSize * 1.5);
+    let quoteLineH = Math.round(quoteFontSize * 1.45);
     ctx.font = `italic bold ${quoteFontSize}px 'Georgia', serif`;
-    const quoteLines = wrapText(ctx, `“${quoteText}”`, innerTextW);
+    let quoteLines = wrapText(ctx, `“${quoteText}”`, innerTextW);
 
-    const principleFontSize = Math.round(38 * baseScale);
-    const principleLineH = Math.round(principleFontSize * 1.45);
+    let principleLineH = Math.round(principleFontSize * 1.42);
     ctx.font = `bold ${principleFontSize}px 'Plus Jakarta Sans', sans-serif`;
-    const principleLines = hasPrinciple ? wrapText(ctx, item.principle!, innerTextW) : [];
+    let principleLines = hasPrinciple ? wrapText(ctx, item.principle!, innerTextW) : [];
 
-    const reflectFontSize = Math.round(36 * baseScale);
-    const reflectLineH = Math.round(reflectFontSize * 1.48);
+    let reflectLineH = Math.round(reflectFontSize * 1.45);
     ctx.font = `500 ${reflectFontSize}px 'Georgia', serif`;
-    const reflectLines = hasReflection ? wrapText(ctx, item.reflection!, innerTextW) : [];
+    let reflectLines = hasReflection ? wrapText(ctx, item.reflection!, innerTextW) : [];
 
     // Calculate Box Heights
-    const quoteBoxNaturalH =
-      Math.round(80 * baseScale) +
+    let quoteBoxNaturalH =
+      Math.round(75 * baseScale) +
       quoteLines.length * quoteLineH +
-      Math.round(40 * baseScale);
+      (attribution ? Math.round(50 * baseScale) : Math.round(25 * baseScale));
 
-    const extraBoxNaturalH =
+    let extraBoxNaturalH =
       (hasPrinciple || hasReflection)
-        ? Math.round(70 * baseScale) +
+        ? Math.round(60 * baseScale) +
           (hasPrinciple ? principleLines.length * principleLineH + Math.round(20 * baseScale) : 0) +
           (hasReflection ? reflectLines.length * reflectLineH : 0) +
-          Math.round(40 * baseScale)
+          Math.round(35 * baseScale)
         : 0;
 
-    const totalNaturalH = quoteBoxNaturalH + extraBoxNaturalH;
-    const remainingSpace = availableSpace - totalNaturalH;
+    let gap = (hasPrinciple || hasReflection) ? Math.round(24 * baseScale) : 0;
+    const totalRequiredH = quoteBoxNaturalH + extraBoxNaturalH + gap;
 
+    // Strict boundary enforcement: NEVER allow content boxes to reach or cross footerY
     let quoteBoxH = quoteBoxNaturalH;
     let extraBoxH = extraBoxNaturalH;
-    let gap = Math.round(30 * baseScale);
 
-    if (remainingSpace > 0) {
-      quoteBoxH += Math.round(remainingSpace * 0.6);
-      if (extraBoxH > 0) {
-        extraBoxH += Math.round(remainingSpace * 0.4);
+    if (totalRequiredH > availableSpace) {
+      // Proportionally compress box heights so the bottom stays strictly above maxUsableBottom
+      const availableForBoxes = Math.max(100, availableSpace - gap);
+      const ratio = availableForBoxes / (quoteBoxNaturalH + extraBoxNaturalH);
+      quoteBoxH = Math.floor(quoteBoxNaturalH * ratio);
+      extraBoxH = Math.floor(extraBoxNaturalH * ratio);
+
+      // Re-adjust inner font sizing slightly if compression is severe
+      if (ratio < 0.85) {
+        quoteFontSize = Math.max(22, Math.round(quoteFontSize * 0.88));
+        quoteLineH = Math.round(quoteFontSize * 1.38);
+        ctx.font = `italic bold ${quoteFontSize}px 'Georgia', serif`;
+        quoteLines = wrapText(ctx, `“${quoteText}”`, innerTextW);
+
+        principleFontSize = Math.max(18, Math.round(principleFontSize * 0.88));
+        principleLineH = Math.round(principleFontSize * 1.35);
+
+        reflectFontSize = Math.max(16, Math.round(reflectFontSize * 0.88));
+        reflectLineH = Math.round(reflectFontSize * 1.35);
       }
-      gap += Math.round(20 * baseScale);
+    } else {
+      // If there is extra comfortable space, expand boxes smoothly
+      const remainingComfortSpace = availableSpace - totalRequiredH;
+      quoteBoxH += Math.round(remainingComfortSpace * 0.55);
+      if (extraBoxH > 0) {
+        extraBoxH += Math.round(remainingComfortSpace * 0.45);
+      }
+      gap += Math.min(Math.round(20 * baseScale), Math.round(remainingComfortSpace * 0.1));
     }
 
     // 5. DRAW MAIN QUOTE CARD
@@ -376,23 +444,21 @@ export const QuotePictureModal: React.FC<QuotePictureModalProps> = ({
     ctx.font = `italic bold ${quoteFontSize}px 'Georgia', serif`;
     ctx.letterSpacing = "0.3px";
     ctx.textAlign = "left";
-    let qY = quoteBoxY + Math.round(90 * baseScale);
+    let qY = quoteBoxY + Math.round(75 * baseScale);
     quoteLines.forEach((line) => {
-      ctx.fillText(line, cardX + Math.round(50 * baseScale), qY);
-      qY += quoteLineH;
+      if (qY < quoteBoxY + quoteBoxH - Math.round(20 * baseScale)) {
+        ctx.fillText(line, cardX + Math.round(50 * baseScale), qY);
+        qY += quoteLineH;
+      }
     });
 
-    // Author / Scripture Reference line
-    const attribution = item.author
-      ? `— ${item.author}${item.title ? ` (${item.title})` : ""}`
-      : item.reference
-      ? `— ${item.reference}`
-      : "— The Joy of the Lord";
-
-    ctx.fillStyle = goldColor;
-    ctx.font = `bold ${Math.round(38 * baseScale)}px 'Georgia', serif`;
-    ctx.textAlign = "right";
-    ctx.fillText(attribution, cardX + cardW - Math.round(50 * baseScale), quoteBoxY + quoteBoxH - Math.round(32 * baseScale));
+    // Author / Scripture Reference line (Shown in quote card ONLY when not the creator)
+    if (attribution) {
+      ctx.fillStyle = goldColor;
+      ctx.font = `bold ${Math.round(36 * baseScale)}px 'Georgia', serif`;
+      ctx.textAlign = "right";
+      ctx.fillText(attribution, cardX + cardW - Math.round(50 * baseScale), quoteBoxY + quoteBoxH - Math.round(28 * baseScale));
+    }
 
     currentY = quoteBoxY + quoteBoxH + gap;
 
@@ -409,45 +475,48 @@ export const QuotePictureModal: React.FC<QuotePictureModalProps> = ({
       ctx.fillStyle = goldColor;
       ctx.fillRect(cardX, extraBoxY, Math.round(8 * baseScale), extraBoxH);
 
-      let eY = extraBoxY + Math.round(52 * baseScale);
+      let eY = extraBoxY + Math.round(44 * baseScale);
 
       if (hasPrinciple) {
         ctx.fillStyle = goldColor;
-        ctx.font = `bold ${Math.round(28 * baseScale)}px 'Plus Jakarta Sans', sans-serif`;
+        ctx.font = `bold ${Math.round(26 * baseScale)}px 'Plus Jakarta Sans', sans-serif`;
         ctx.letterSpacing = "2px";
         ctx.textAlign = "left";
         ctx.fillText("✦ KEY PRINCIPLE & BIBLICAL ANCHOR", cardX + Math.round(45 * baseScale), eY);
-        eY += Math.round(44 * baseScale);
+        eY += Math.round(38 * baseScale);
 
         ctx.fillStyle = textColor;
         ctx.font = `bold ${principleFontSize}px 'Georgia', serif`;
         principleLines.forEach((line) => {
-          ctx.fillText(line, cardX + Math.round(45 * baseScale), eY);
-          eY += principleLineH;
+          if (eY < extraBoxY + extraBoxH - Math.round(20 * baseScale)) {
+            ctx.fillText(line, cardX + Math.round(45 * baseScale), eY);
+            eY += principleLineH;
+          }
         });
 
-        if (hasReference && !item.author) {
+        if (hasReference && !item.author && eY < extraBoxY + extraBoxH - Math.round(30 * baseScale)) {
           ctx.fillStyle = goldColor;
-          ctx.font = `italic bold ${Math.round(32 * baseScale)}px 'Georgia', serif`;
-          ctx.fillText(`Scripture Anchor: ${item.reference}`, cardX + Math.round(45 * baseScale), eY + Math.round(10 * baseScale));
-          eY += Math.round(42 * baseScale);
+          ctx.font = `italic bold ${Math.round(28 * baseScale)}px 'Georgia', serif`;
+          ctx.fillText(`Scripture Anchor: ${item.reference}`, cardX + Math.round(45 * baseScale), eY + Math.round(8 * baseScale));
+          eY += Math.round(36 * baseScale);
         }
       }
 
       if (hasReflection) {
-        eY += Math.round(15 * baseScale);
+        eY += Math.round(12 * baseScale);
         ctx.fillStyle = secondaryTextColor;
         ctx.font = `500 ${reflectFontSize}px 'Georgia', serif`;
         reflectLines.forEach((line) => {
-          ctx.fillText(line, cardX + Math.round(45 * baseScale), eY);
-          eY += reflectLineH;
+          if (eY < extraBoxY + extraBoxH - Math.round(15 * baseScale)) {
+            ctx.fillText(line, cardX + Math.round(45 * baseScale), eY);
+            eY += reflectLineH;
+          }
         });
       }
     }
 
-    // 7. FOOTER BANNER
-    const footerY = H - innerMargin - Math.round(180 * baseScale);
-
+    // 7. FOOTER BANNER - EXACT SAME AS OTHER DOWNLOADS (Devotion Picture & PDF Document)
+    // Gold Divider Line
     ctx.strokeStyle = goldColor;
     ctx.lineWidth = Math.round(2.5 * baseScale);
     ctx.beginPath();
@@ -455,32 +524,84 @@ export const QuotePictureModal: React.FC<QuotePictureModalProps> = ({
     ctx.lineTo(W - cardX, footerY);
     ctx.stroke();
 
-    // Footer Left Detail (Author name and devotional tagline)
-    const footerTextX = cardX + Math.round(20 * baseScale);
+    // Author Picture / App Logo with circular clip and gold border ring
+    const portraitX = cardX + Math.round(20 * baseScale);
+    const portraitY = footerY + Math.round(24 * baseScale);
+    const portraitSize = Math.round(155 * baseScale);
+
+    const photoSrc = (profileToUse.photoUrl && profileToUse.photoUrl.trim() && profileToUse.photoUrl !== "/bis.png") ? profileToUse.photoUrl : "/icon.svg";
+
+    try {
+      const img = new Image();
+      img.crossOrigin = "anonymous";
+      img.src = photoSrc;
+
+      await new Promise<void>((resolve) => {
+        img.onload = () => {
+          ctx.save();
+          ctx.beginPath();
+          ctx.arc(
+            portraitX + portraitSize / 2,
+            portraitY + portraitSize / 2,
+            portraitSize / 2,
+            0,
+            Math.PI * 2
+          );
+          ctx.closePath();
+          ctx.clip();
+          ctx.drawImage(img, portraitX, portraitY, portraitSize, portraitSize);
+          ctx.restore();
+
+          // Gold border ring around author photo
+          ctx.strokeStyle = goldColor;
+          ctx.lineWidth = Math.round(4.5 * baseScale);
+          ctx.beginPath();
+          ctx.arc(
+            portraitX + portraitSize / 2,
+            portraitY + portraitSize / 2,
+            portraitSize / 2 + 2,
+            0,
+            Math.PI * 2
+          );
+          ctx.stroke();
+          resolve();
+        };
+        img.onerror = () => {
+          resolve();
+        };
+      });
+    } catch {
+      // ignore
+    }
+
+    // Left Author Details (Name appears ONCE with the logo!)
+    const textLeftX = portraitX + portraitSize + Math.round(30 * baseScale);
     ctx.textAlign = "left";
     ctx.fillStyle = textColor;
-    ctx.font = `bold ${Math.round(38 * baseScale)}px 'Georgia', serif`;
-    ctx.fillText(activeProfile?.name || "Bismark Twum", footerTextX, footerY + Math.round(72 * baseScale));
+    ctx.font = `bold ${Math.round(40 * baseScale)}px 'Georgia', serif`;
+    ctx.fillText(profileToUse.name || "Bismark Twum", textLeftX, footerY + Math.round(76 * baseScale));
 
     ctx.fillStyle = goldColor;
-    ctx.font = `bold ${Math.round(20 * baseScale)}px 'Plus Jakarta Sans', sans-serif`;
+    ctx.font = `bold ${Math.round(22 * baseScale)}px 'Plus Jakarta Sans', sans-serif`;
     ctx.letterSpacing = "2px";
-    ctx.fillText("THE JOY OF THE LORD DAILY DEVOTIONAL & WISDOM", footerTextX, footerY + Math.round(124 * baseScale));
+    ctx.fillText("THE JOY OF THE LORD", textLeftX, footerY + Math.round(124 * baseScale));
 
-    // Footer Right Decree
-    const footerRightX = W - cardX - Math.round(20 * baseScale);
+    // Right Sacred Closing Decree - Clean, balanced, never collides with author name
+    const textRightX = W - cardX - Math.round(20 * baseScale);
+    const maxRightW = Math.max(300, textRightX - (textLeftX + Math.round(320 * baseScale)));
+
     ctx.textAlign = "right";
     ctx.fillStyle = goldColor;
     ctx.font = `italic bold ${Math.round(32 * baseScale)}px 'Georgia', serif`;
-    ctx.fillText('"The joy of the Lord is my strength"', footerRightX, footerY + Math.round(68 * baseScale));
+    ctx.fillText('"The joy of the Lord is my strength"', textRightX, footerY + Math.round(76 * baseScale), maxRightW);
 
     ctx.fillStyle = secondaryTextColor;
     ctx.font = `bold ${Math.round(22 * baseScale)}px 'Georgia', serif`;
-    ctx.fillText("Nehemiah 8:10", footerRightX, footerY + Math.round(105 * baseScale));
+    ctx.fillText("Nehemiah 8:10", textRightX, footerY + Math.round(116 * baseScale), maxRightW);
 
-    ctx.fillStyle = textColor;
-    ctx.font = `bold ${Math.round(28 * baseScale)}px 'Georgia', serif`;
-    ctx.fillText("Bismark Twum", footerRightX, footerY + Math.round(140 * baseScale));
+    ctx.fillStyle = isDark ? "#94A3B8" : "#64748B";
+    ctx.font = `bold ${Math.round(20 * baseScale)}px 'Plus Jakarta Sans', sans-serif`;
+    ctx.fillText("Daily Apostolic Walk", textRightX, footerY + Math.round(152 * baseScale), maxRightW);
 
     return canvas.toDataURL("image/png");
   };
@@ -690,6 +811,27 @@ export const QuotePictureModal: React.FC<QuotePictureModalProps> = ({
                 >
                   {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-amber-400" />}
                   <span>{copied ? "Copied" : "Copy Quote"}</span>
+                </button>
+              </div>
+
+              {/* PDF Document Options matching other downloads */}
+              <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-800">
+                <button
+                  onClick={() => printQuoteOnePageDocument(item, activeProfile || loadCreatorProfile())}
+                  className="py-2.5 px-3 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/40 text-xs font-bold flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-sm"
+                  title="Print or Save as 1-Page PDF"
+                >
+                  <Printer className="w-3.5 h-3.5 text-amber-400" />
+                  <span>Save / Print PDF</span>
+                </button>
+
+                <button
+                  onClick={() => downloadQuoteDocument(item, activeProfile || loadCreatorProfile())}
+                  className="py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold flex items-center justify-center gap-1.5 transition-colors cursor-pointer border border-slate-700"
+                  title="Download Standalone 1-Page Document"
+                >
+                  <FileText className="w-3.5 h-3.5 text-amber-400" />
+                  <span>1-Page HTML</span>
                 </button>
               </div>
             </div>

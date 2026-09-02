@@ -233,13 +233,76 @@ const AI_CACHE_TTL_MS = 1000 * 60 * 60 * 6; // 6 hours cache
 
 // Valid models according to Gemini API specification, ordered for high availability and throughput
 const GEMINI_MODELS_CASCADE = [
-  "gemini-3.7-flash",
-  "gemini-flash-latest",
   "gemini-3.1-flash-lite",
-  "gemini-2.5-flash",
+  "gemini-3.8-flash",
+  "gemini-3.6-flash",
+  "gemini-flash-latest",
+  "gemini-3.7-flash",
 ];
 
-export const ANTI_LOOP_DIRECTIVE = "Provide deep, unique, and illuminating theological, historical, and practical insight. Never repeat phrases or loop. Be precise, profound, and substantive. Do not use generic filler.";
+export function formatGeminiErrorMessage(err: any): string {
+  if (!err) return "Unknown error";
+  const rawMsg = err.message || String(err);
+  try {
+    const parsed = typeof rawMsg === "string" && rawMsg.startsWith("{") ? JSON.parse(rawMsg) : null;
+    if (parsed?.error?.message) {
+      let innerMsg = parsed.error.message;
+      try {
+        const innerParsed = JSON.parse(innerMsg);
+        if (innerParsed?.error?.message) {
+          innerMsg = innerParsed.error.message;
+        }
+      } catch {}
+      return `[${parsed.error.code || 500} ${parsed.error.status || ""}] ${innerMsg}`.trim();
+    }
+  } catch {}
+  return rawMsg;
+}
+
+/**
+ * User Quality Rules for AI Output:
+ * a. You must write based ONLY on the context provided below. Do not give a generic Christian message.
+ * b. Vary your tone and starting words each time. Do not start with "In our Christian walk" every time.
+ * c. Be warm, clear, and specific to the TOPIC.
+ */
+export const AI_OUTPUT_IMPROVEMENT_RULES = `
+Rules:
+a. You must write based ONLY on the context provided below. Do not give a generic Christian message.
+b. Vary your tone and starting words each time. Do not start with "In our Christian walk" every time. Never open with clichéd expressions like "In our Christian walk", "As Christians", or "In our daily walk".
+c. Be warm, clear, and specific to the TOPIC.`;
+
+export const ANTI_LOOP_DIRECTIVE = `Provide deep, unique, and illuminating theological, historical, and practical insight. Never repeat phrases or loop. Be precise, profound, and substantive. Do not use generic filler.
+${AI_OUTPUT_IMPROVEMENT_RULES}`;
+
+/**
+ * Remove clichéd repetitive phrases like "In our Christian walk"
+ */
+export function cleanChristianWalkCliché(text: string): string {
+  if (!text) return "";
+  let cleaned = text.replace(/^(?:["']?\s*)In our (?:Christian|daily|spiritual) walk(?: with (?:God|Christ|the Lord))?,?\s*/i, "");
+  cleaned = cleaned.replace(/^(?:["']?\s*)As Christians?,?\s*/i, "");
+  cleaned = cleaned.replace(/(\n\s*)In our (?:Christian|daily|spiritual) walk(?: with (?:God|Christ|the Lord))?,?\s*/gi, "$1");
+  cleaned = cleaned.replace(/^([a-z])/, (m, c) => c.toUpperCase());
+  return cleaned;
+}
+
+export function recursivelyCleanObjectClichés(obj: any): any {
+  if (!obj) return obj;
+  if (typeof obj === "string") {
+    return cleanChristianWalkCliché(obj);
+  }
+  if (Array.isArray(obj)) {
+    return obj.map(recursivelyCleanObjectClichés);
+  }
+  if (typeof obj === "object") {
+    const res: Record<string, any> = {};
+    for (const key of Object.keys(obj)) {
+      res[key] = recursivelyCleanObjectClichés(obj[key]);
+    }
+    return res;
+  }
+  return obj;
+}
 
 /**
  * Deduplicate sentences and paragraphs to prevent infinite repeating loops
@@ -280,7 +343,8 @@ function deduplicateSentences(text: string): string {
     resultLines.push(cleanedSentences.join(" "));
   }
 
-  return resultLines.join("\n").trim();
+  const result = resultLines.join("\n").trim();
+  return cleanChristianWalkCliché(result);
 }
 
 // Dedicated System Prompts for Specific Biblical, Mathematical, and Pastoral Personas
@@ -380,9 +444,9 @@ async function generateWithGeminiCascade(options: {
         return { text, modelUsed: model, durationMs };
       }
     } catch (err: any) {
-      const errMsg = err?.status || err?.code || err?.message || "unknown error";
+      const errMsg = formatGeminiErrorMessage(err);
       console.warn(`[GEMINI CASCADE] Model ${model} encountered issue (${errMsg}). Switching to next model in cascade...`);
-      // If error is 404, 429, 403, or timeout, proceed immediately to the next model without stalling
+      // If error is 404, 429, 403, 503, or timeout, proceed immediately to the next model without stalling
       continue;
     }
   }
@@ -421,7 +485,7 @@ async function streamGeminiCascade(options: {
   const maxOutputTokens = options.maxOutputTokens ?? (options.fastMode ? 600 : 2048);
 
   const modelsToTry = options.fastMode 
-    ? ["gemini-3.7-flash", "gemini-flash-latest", "gemini-3.1-flash-lite"]
+    ? ["gemini-3.1-flash-lite", "gemini-3.8-flash", "gemini-3.6-flash"]
     : GEMINI_MODELS_CASCADE;
 
   for (const model of modelsToTry) {
@@ -457,7 +521,7 @@ async function streamGeminiCascade(options: {
         return { text: cleanedText, modelUsed: model, durationMs };
       }
     } catch (err: any) {
-      console.warn(`[GEMINI STREAM RETRY] Model ${model} stream issue: ${err?.message || "error"}. Trying next model...`);
+      console.warn(`[GEMINI STREAM RETRY] Model ${model} stream issue: ${formatGeminiErrorMessage(err)}. Trying next model...`);
       continue;
     }
   }
@@ -478,12 +542,14 @@ function safeJsonParse<T = any>(rawText: string | undefined | null): T | null {
 
   // Try direct parse first
   try {
-    return JSON.parse(clean);
+    const parsed = JSON.parse(clean);
+    return recursivelyCleanObjectClichés(parsed);
   } catch (e1) {
     try {
       // Fix unescaped backslashes (e.g. \lim, \frac, \Delta, \int, \cdot in LaTeX formulas)
       const fixedBackslashes = clean.replace(/(?<!\\)\\(?!["\\/bfnrtu]|u[0-9a-fA-F]{4})/g, "\\\\");
-      return JSON.parse(fixedBackslashes);
+      const parsed = JSON.parse(fixedBackslashes);
+      return recursivelyCleanObjectClichés(parsed);
     } catch (e2) {
       try {
         const firstBrace = clean.indexOf("{");
@@ -491,14 +557,16 @@ function safeJsonParse<T = any>(rawText: string | undefined | null): T | null {
         if (firstBrace !== -1 && lastBrace > firstBrace) {
           const substr = clean.substring(firstBrace, lastBrace + 1);
           const fixedSub = substr.replace(/(?<!\\)\\(?!["\\/bfnrtu]|u[0-9a-fA-F]{4})/g, "\\\\");
-          return JSON.parse(fixedSub);
+          const parsed = JSON.parse(fixedSub);
+          return recursivelyCleanObjectClichés(parsed);
         }
         const firstBracket = clean.indexOf("[");
         const lastBracket = clean.lastIndexOf("]");
         if (firstBracket !== -1 && lastBracket > firstBracket) {
           const substr = clean.substring(firstBracket, lastBracket + 1);
           const fixedSub = substr.replace(/(?<!\\)\\(?!["\\/bfnrtu]|u[0-9a-fA-F]{4})/g, "\\\\");
-          return JSON.parse(fixedSub);
+          const parsed = JSON.parse(fixedSub);
+          return recursivelyCleanObjectClichés(parsed);
         }
       } catch (e3) {
         // Fallthrough
@@ -1500,7 +1568,9 @@ const handleUnifiedAiGenerate = async (req: any, res: any) => {
     } = req.body || {};
 
     let finalPrompt = prompt || "";
-    let finalSystem = systemInstruction || "You are an apostolic Christian theologian and pastoral guide.";
+    let finalSystem = systemInstruction
+      ? `${systemInstruction}\n${AI_OUTPUT_IMPROVEMENT_RULES}`
+      : `You are an apostolic Christian theologian and pastoral guide.\n${AI_OUTPUT_IMPROVEMENT_RULES}`;
     let responseMimeType: string | undefined = undefined;
 
     if (actionType || scriptureReference) {
@@ -1510,26 +1580,29 @@ const handleUnifiedAiGenerate = async (req: any, res: any) => {
       const act = (actionType || "").toLowerCase();
 
       if (act.includes("prayer") && !act.includes("point")) {
-        finalPrompt = `You are a reverent, apostolic Christian pastoral leader. Compose a powerful prayer on: ${ref} ("${text}"). Format as JSON with keys: title, adoration, thanksgiving, petition, warfareDeclaration, closing.`;
+        finalPrompt = `You are a reverent, apostolic Christian pastoral leader. Compose a powerful prayer on: ${ref} ("${text}").\nContext & Scripture: ${ref} ("${text}")\n${AI_OUTPUT_IMPROVEMENT_RULES}\nFormat as JSON with keys: title, adoration, thanksgiving, petition, warfareDeclaration, closing.`;
         responseMimeType = "application/json";
       } else if (act.includes("point")) {
-        finalPrompt = `Generate 5 high-impact prayer points on: ${ref} ("${text}"). Format as JSON with keys: title, scriptureAnchor, prayerPoints (array of {pointNumber, focus, scripturePromise, prayerDeclaration}), propheticDecree.`;
+        finalPrompt = `Generate 5 high-impact prayer points on: ${ref} ("${text}").\nContext & Scripture: ${ref} ("${text}")\n${AI_OUTPUT_IMPROVEMENT_RULES}\nFormat as JSON with keys: title, scriptureAnchor, prayerPoints (array of {pointNumber, focus, scripturePromise, prayerDeclaration}), propheticDecree.`;
+        responseMimeType = "application/json";
+      } else if (act.includes("context") || act.includes("historical") || act.includes("background")) {
+        finalPrompt = `You are a world-class Christian Biblical historian, archaeologist, and theologian. Provide an exhaustive, authoritative Historical and Cultural Context analysis of: ${ref} ("${text}").\nContext & Scripture: ${ref} ("${text}")\n${AI_OUTPUT_IMPROVEMENT_RULES}\nFormat as JSON with keys: title, scriptureAnchor, historicalContext, culturalBackground, originalLanguageInsight, doctrinalMeaning, crossReferences, lifeTransformation.`;
         responseMimeType = "application/json";
       } else if (act.includes("explain")) {
-        finalPrompt = `Provide a comprehensive expository breakdown on: ${ref} ("${text}"). Format as JSON with keys: title, historicalContext, originalLanguageInsight, doctrinalMeaning, lifeTransformation.`;
+        finalPrompt = `Provide a comprehensive expository breakdown on: ${ref} ("${text}").\nContext & Scripture: ${ref} ("${text}")\n${AI_OUTPUT_IMPROVEMENT_RULES}\nFormat as JSON with keys: title, historicalContext, originalLanguageInsight, doctrinalMeaning, lifeTransformation.`;
         responseMimeType = "application/json";
       } else if (act.includes("math")) {
-        finalPrompt = `Formulate a MathemaSermon lesson connecting: ${ref} ("${text}") with a mathematical concept and LaTeX formula. Format as JSON with keys: title, mathematicalConcept, formula, mathematicalAnalogy, homileticApplication, altarCallPrayer.`;
+        finalPrompt = `Formulate a MathemaSermon lesson connecting: ${ref} ("${text}") with a mathematical concept and LaTeX formula.\nContext & Scripture: ${ref} ("${text}")\n${AI_OUTPUT_IMPROVEMENT_RULES}\nFormat as JSON with keys: title, mathematicalConcept, formula, mathematicalAnalogy, homileticApplication, altarCallPrayer.`;
         responseMimeType = "application/json";
       } else {
-        finalPrompt = `Compose an inspiring Christian devotion on: ${ref} ("${text}"). Format as JSON with keys: title, reflection, practicalApplication, guidedPrayer, actionStep.`;
+        finalPrompt = `Compose an inspiring Christian devotion on: ${ref} ("${text}").\nContext & Scripture: ${ref} ("${text}")\nTheme: ${theme}\n${AI_OUTPUT_IMPROVEMENT_RULES}\nFormat as JSON with keys: title, reflection, practicalApplication, guidedPrayer, actionStep.`;
         responseMimeType = "application/json";
       }
     } else if (topic) {
-      finalPrompt = `Compose an inspiring Christian daily devotion on the topic: "${topic}". Format as JSON with keys: devotion { title, keyScripture, passageText, reflection, practicalApplication, guidedPrayer, actionStep }.`;
+      finalPrompt = `Compose an inspiring Christian daily devotion on the topic: "${topic}".\nContext / Topic: "${topic}"\n${AI_OUTPUT_IMPROVEMENT_RULES}\nFormat as JSON with keys: devotion { title, keyScripture, passageText, reflection, practicalApplication, guidedPrayer, actionStep }.`;
       responseMimeType = "application/json";
     } else if (question) {
-      finalPrompt = `User question: "${question}". Category: ${category || "Christian Orthodoxy"}. Provide a biblically sound, orthodox response citing scripture.`;
+      finalPrompt = `User question: "${question}". Category: ${category || "Christian Orthodoxy"}.\nContext: "${question}"\n${AI_OUTPUT_IMPROVEMENT_RULES}\nProvide a biblically sound, orthodox response citing scripture.`;
     }
 
     const temp = generationConfig?.temperature ?? 0.45;
@@ -1618,7 +1691,9 @@ app.post("/api/generate-stream", async (req, res) => {
     } = req.body || {};
 
     let finalPrompt = prompt || "";
-    let finalSystem = systemInstruction || "You are an apostolic Christian theologian and pastoral guide.";
+    let finalSystem = systemInstruction
+      ? `${systemInstruction}\n${AI_OUTPUT_IMPROVEMENT_RULES}`
+      : `You are an apostolic Christian theologian and pastoral guide.\n${AI_OUTPUT_IMPROVEMENT_RULES}`;
     let responseMimeType: string | undefined = undefined;
 
     if (actionType || scriptureReference) {
@@ -1627,13 +1702,15 @@ app.post("/api/generate-stream", async (req, res) => {
       const act = (actionType || "").toLowerCase();
 
       if (act.includes("prayer") && !act.includes("point")) {
-        finalPrompt = `You are a reverent, apostolic Christian pastoral leader. Compose a powerful prayer on: ${ref} ("${text}"). Format as JSON with keys: title, adoration, thanksgiving, petition, warfareDeclaration, closing.`;
+        finalPrompt = `You are a reverent, apostolic Christian pastoral leader. Compose a powerful prayer on: ${ref} ("${text}").\nContext & Scripture: ${ref} ("${text}")\n${AI_OUTPUT_IMPROVEMENT_RULES}\nFormat as JSON with keys: title, adoration, thanksgiving, petition, warfareDeclaration, closing.`;
         responseMimeType = "application/json";
       } else if (act.includes("point")) {
-        finalPrompt = `Generate 5 high-impact prayer points on: ${ref} ("${text}"). Format as JSON with keys: title, scriptureAnchor, prayerPoints (array of {pointNumber, focus, scripturePromise, prayerDeclaration}), propheticDecree.`;
+        finalPrompt = `Generate 5 high-impact prayer points on: ${ref} ("${text}").\nContext & Scripture: ${ref} ("${text}")\n${AI_OUTPUT_IMPROVEMENT_RULES}\nFormat as JSON with keys: title, scriptureAnchor, prayerPoints (array of {pointNumber, focus, scripturePromise, prayerDeclaration}), propheticDecree.`;
         responseMimeType = "application/json";
       } else if (act.includes("interlinear") || act.includes("greek") || act.includes("hebrew") || act.includes("lexicon")) {
         finalPrompt = `You are an expert Biblical Hebrew and Koine Greek scholar, textual critic, and linguist. For the scripture ${ref} ("${text}"), provide the authentic original language interlinear breakdown (Hebrew for Old Testament with Niqqud vowels, or Greek for New Testament with polytonic accents).
+Context & Scripture: ${ref} ("${text}")
+${AI_OUTPUT_IMPROVEMENT_RULES}
 Format as JSON with keys:
 - testament ("Old Testament" or "New Testament")
 - language ("Biblical Hebrew" or "Koine Greek" or "Biblical Aramaic")
@@ -1659,23 +1736,26 @@ Format as JSON with keys:
 - apostolicRhema (prophetic and kingdom decree based on the original language)`;
         responseMimeType = "application/json";
       } else if (act.includes("commentary")) {
-        finalPrompt = `You are a preeminent Christian Biblical scholar synthesizing Matthew Henry, Charles Spurgeon, and Apostolic Rhema revelation. Provide an in-depth verse-by-verse commentary for: ${ref} ("${text}"). Format as JSON with keys: title, scriptureAnchor, keyTheme, historicalContext, matthewHenryInsight, spurgeonInsight, apostolicRhema, originalLanguageInsight, crossReferences, theologicalDoctrine, lifeApplication.`;
+        finalPrompt = `You are a preeminent Christian Biblical scholar synthesizing Matthew Henry, Charles Spurgeon, and Apostolic Rhema revelation. Provide an in-depth verse-by-verse commentary for: ${ref} ("${text}").\nContext & Scripture: ${ref} ("${text}")\n${AI_OUTPUT_IMPROVEMENT_RULES}\nFormat as JSON with keys: title, scriptureAnchor, keyTheme, historicalContext, matthewHenryInsight, spurgeonInsight, apostolicRhema, originalLanguageInsight, crossReferences, theologicalDoctrine, lifeApplication.`;
+        responseMimeType = "application/json";
+      } else if (act.includes("context") || act.includes("historical") || act.includes("background")) {
+        finalPrompt = `You are a world-class Christian Biblical historian, archaeologist, and theologian. Provide an exhaustive, authoritative Historical and Cultural Context analysis of: ${ref} ("${text}").\nContext & Scripture: ${ref} ("${text}")\n${AI_OUTPUT_IMPROVEMENT_RULES}\nFormat as JSON with keys: title, scriptureAnchor, historicalContext, culturalBackground, originalLanguageInsight, doctrinalMeaning, crossReferences, lifeTransformation.`;
         responseMimeType = "application/json";
       } else if (act.includes("explain")) {
-        finalPrompt = `Provide a comprehensive expository breakdown on: ${ref} ("${text}"). Format as JSON with keys: title, historicalContext, originalLanguageInsight, doctrinalMeaning, lifeTransformation.`;
+        finalPrompt = `Provide a comprehensive expository breakdown on: ${ref} ("${text}").\nContext & Scripture: ${ref} ("${text}")\n${AI_OUTPUT_IMPROVEMENT_RULES}\nFormat as JSON with keys: title, historicalContext, originalLanguageInsight, doctrinalMeaning, lifeTransformation.`;
         responseMimeType = "application/json";
       } else if (act.includes("math")) {
-        finalPrompt = `Formulate a MathemaSermon lesson connecting: ${ref} ("${text}") with a mathematical concept and LaTeX formula. Format as JSON with keys: title, mathematicalConcept, formula, mathematicalAnalogy, homileticApplication, altarCallPrayer.`;
+        finalPrompt = `Formulate a MathemaSermon lesson connecting: ${ref} ("${text}") with a mathematical concept and LaTeX formula.\nContext & Scripture: ${ref} ("${text}")\n${AI_OUTPUT_IMPROVEMENT_RULES}\nFormat as JSON with keys: title, mathematicalConcept, formula, mathematicalAnalogy, homileticApplication, altarCallPrayer.`;
         responseMimeType = "application/json";
       } else {
-        finalPrompt = `Compose an inspiring Christian devotion on: ${ref} ("${text}"). Format as JSON with keys: title, reflection, practicalApplication, guidedPrayer, actionStep.`;
+        finalPrompt = `Compose an inspiring Christian devotion on: ${ref} ("${text}").\nContext & Scripture: ${ref} ("${text}")\n${AI_OUTPUT_IMPROVEMENT_RULES}\nFormat as JSON with keys: title, reflection, practicalApplication, guidedPrayer, actionStep.`;
         responseMimeType = "application/json";
       }
     } else if (topic) {
-      finalPrompt = `Compose an inspiring Christian daily devotion on the topic: "${topic}". Format as JSON with keys: devotion { title, keyScripture, passageText, reflection, practicalApplication, guidedPrayer, actionStep }.`;
+      finalPrompt = `Compose an inspiring Christian daily devotion on the topic: "${topic}".\nContext / Topic: "${topic}"\n${AI_OUTPUT_IMPROVEMENT_RULES}\nFormat as JSON with keys: devotion { title, keyScripture, passageText, reflection, practicalApplication, guidedPrayer, actionStep }.`;
       responseMimeType = "application/json";
     } else if (need) {
-      finalPrompt = `Generate a structured, biblically grounded Christian prayer for need: "${need}", category: "${category || "Breakthrough"}". Format as JSON with keys: title, subtitle, category, theme, sections { adoration, confessionAndSurrender, thanksgiving, scripturePromise, petition, spiritualWarfare, declarationInJesusName }.`;
+      finalPrompt = `Generate a structured, biblically grounded Christian prayer for need: "${need}", category: "${category || "Breakthrough"}".\nContext / Need: "${need}"\n${AI_OUTPUT_IMPROVEMENT_RULES}\nFormat as JSON with keys: title, subtitle, category, theme, sections { adoration, confessionAndSurrender, thanksgiving, scripturePromise, petition, spiritualWarfare, declarationInJesusName }.`;
       responseMimeType = "application/json";
     }
 
@@ -1982,6 +2062,33 @@ Format your response as a valid JSON object with this exact schema:
   ],
   "propheticDecree": "Concluding collective decree sealing the prayer session in Jesus' name."
 }`;
+    } else if (
+      actionType === "Context & Historical Background" ||
+      actionType === "Historical Context" ||
+      (actionType && (actionType.toLowerCase().includes("context") || actionType.toLowerCase().includes("historical") || actionType.toLowerCase().includes("background")))
+    ) {
+      prompt = `You are a world-class Christian Biblical historian, archaeologist, and theologian. Provide an exhaustive, authoritative Historical, Cultural, and Expository analysis of:
+Reference: ${ref}
+Passage: "${text}"
+Theme: ${theme}
+
+${AI_OUTPUT_IMPROVEMENT_RULES}
+
+Format your response as a valid JSON object with this exact schema:
+{
+  "title": "Historical Context & Biblical Setting of ${ref}",
+  "scriptureAnchor": "${ref} - '${text}'",
+  "historicalContext": "Authoritative 3-4 paragraph historical setting: author, date of writing, reigning king/empire, original audience, and the geopolitical occasion/crisis for this text.",
+  "culturalBackground": "Ancient Near Eastern or Greco-Roman cultural practices, idioms, geography, and archaeological insights illuminating this verse.",
+  "originalLanguageInsight": "Deep original Hebrew or Greek root words, grammatical nuances, and etymological depth.",
+  "doctrinalMeaning": "2 paragraphs explaining the central spiritual truth, theological doctrine, and eternal revelation in this verse.",
+  "crossReferences": [
+    { "reference": "Book Chapter:Verse", "connection": "How this cross-reference illuminates the verse" },
+    { "reference": "Book Chapter:Verse", "connection": "How this cross-reference illuminates the verse" },
+    { "reference": "Book Chapter:Verse", "connection": "How this cross-reference illuminates the verse" }
+  ],
+  "lifeTransformation": "Apostolic and practical application showing how this ancient historical truth directly transforms the believer's life today."
+}`;
     } else if (actionType === "explain" || actionType === "Explain Verse" || actionType === "Explain This Verse") {
       prompt = `You are a preeminent Christian Biblical scholar and expositor. Provide a profound, deep, verse-by-verse and theological explanation of:
 Reference: ${ref}
@@ -2144,19 +2251,27 @@ Format your response as a valid JSON object matching this schema:
       });
     }
 
-    if (actionType === "explain" || actionType === "Explain Verse" || actionType === "Explain This Verse") {
+    if (
+      actionType === "explain" ||
+      actionType === "Explain Verse" ||
+      actionType === "Explain This Verse" ||
+      actionType === "Context & Historical Background" ||
+      actionType === "Historical Context" ||
+      (actionType && (actionType.toLowerCase().includes("context") || actionType.toLowerCase().includes("historical") || actionType.toLowerCase().includes("background")))
+    ) {
       const fallbackExplainData = {
-        title: `Deep Scriptural Exposition: ${ref}`,
+        title: `Historical Context & Scriptural Setting: ${ref}`,
         scriptureAnchor: `${ref} - "${text}"`,
-        historicalContext: `In this sacred passage, the author addresses believers with apostolic assurance, reminding them that faith is not anchored in shifting earthly circumstances, but in the immutable character and eternal covenant of God.`,
-        originalLanguageInsight: `The original biblical text utilizes words rich in theological weight—denoting divine enablement (*dunamis* / *ischuo*), complete inner peace (*shalom* / *eirene*), and steadfast faith (*pistis* / *emunah*) that does not waver.`,
-        doctrinalMeaning: `This scripture reveals that God's strength is made perfect in human weakness. Rather than promising an absence of challenges, Scripture guarantees the sovereign presence and indwelling power of God to transcend every limitation.`,
+        historicalContext: `In this sacred passage (${ref}), the inspired text addresses God's covenant people within their authentic historical milieu. Written in antiquity to anchor faith against imperial pressures, political tumult, and cultural compromise, the passage demonstrates that divine truth is established in concrete human history and the eternal covenant of God.`,
+        culturalBackground: `Ancient Near Eastern and Greco-Roman cultural conventions highlight the communal covenant responsibility, ancient legal oaths, and the sanctuary presence of God tabernacling among His people.`,
+        originalLanguageInsight: `The original biblical text utilizes words rich in theological weight—denoting divine enablement (*dunamis* / *ischuo*), complete inner peace (*shalom* / *eirene*), and steadfast covenant faith (*pistis* / *emunah*) that does not waver.`,
+        doctrinalMeaning: `This scripture reveals that God's sovereign covenant is unwavering across all generations. Rather than an abstract human philosophy, biblical history confirms that the living God enters human time to redeem, protect, and fulfill His promises.`,
         crossReferences: [
           { reference: "2 Corinthians 12:9", connection: "My grace is sufficient for thee: for my strength is made perfect in weakness." },
           { reference: "Isaiah 40:29-31", connection: "He giveth power to the faint; and to them that have no might he increaseth strength." },
-          { reference: "Ephesians 3:20", connection: "Unto him that is able to do exceeding abundantly above all that we ask or think." }
+          { reference: "Hebrews 11:1-3", connection: "Now faith is the substance of things hoped for, the evidence of things not seen." }
         ],
-        lifeTransformation: `To apply this verse today: surrender self-reliance, boldly step into assignments that seem beyond your natural skill, and continually speak God's promises in prayer. You are equipped by Christ for every good work.`
+        lifeTransformation: `To apply this verse today: understand that the same God who ruled over ancient empires and guided biblical saints rules over your life today. Walk with confident faith, speak God's promises in prayer, and know you are covered by His covenant.`
       };
       return res.json({
         success: true,
@@ -2190,12 +2305,112 @@ Format your response as a valid JSON object matching this schema:
   }
 });
 
+// API route: 3-Layer Interlinear Strong's Word-Study (OSHB + Berean + BDB / Thayer)
+app.post("/api/strongs-word-study", async (req, res) => {
+  try {
+    const { strongsNumber, word, transliteration, scriptureRef, englishGloss } = req.body;
+    const cleanId = (strongsNumber || "").trim().toUpperCase();
+    const isOT = cleanId.startsWith("H") || (!cleanId.startsWith("G") && scriptureRef && !scriptureRef.toLowerCase().includes("matthew"));
+    const lang = isOT ? "Biblical Hebrew (OSHB / MorphHB)" : "Koine Greek (Berean / NA28)";
+    const dict = isOT ? "Brown-Driver-Briggs (BDB) and Strong's Hebrew Concordance" : "Thayer's Greek Lexicon and Strong's Greek Concordance";
+
+    const prompt = `You are a world-renowned Christian Biblical linguist and textual scholar specializing in ${lang}.
+Provide an authoritative, rich 3-layer word-study for:
+Word: "${word}"
+Strong's Number: "${strongsNumber}"
+Transliteration: "${transliteration}"
+Context Passage: "${scriptureRef || "Scripture"}"
+English Gloss: "${englishGloss || "word"}"
+
+Lexicons & Sources to adhere to: ${dict}.
+${AI_OUTPUT_IMPROVEMENT_RULES}
+
+Format your response as a valid JSON object matching this exact 3-layer schema:
+{
+  "layer1": {
+    "word": "${word}",
+    "strongs": "${strongsNumber}",
+    "transliteration": "${transliteration}",
+    "pronunciation": "Phonetic pronunciation guide e.g. [ma-han-ah-yim]",
+    "root": "Primitive root word e.g. machaneh (H4260)",
+    "rootOccurrences": "appears X times across the ${isOT ? "Old Testament" : "New Testament"}",
+    "morphology": "${isOT ? "Noun, masculine, dual / Verb Qal Perfect" : "Noun, feminine, singular / Verb Aorist Active"}"
+  },
+  "layer2": {
+    "shortDef": "Concise definition from ${isOT ? "Strong's / BDB" : "Strong's / Thayer's"}",
+    "fullDef": "Detailed, bulleted range of meanings and lexical semantic scope in ancient literature",
+    "englishVsOriginal": "Explain the profound nuance, theological depth, or cultural weight lost when translated into generic English",
+    "alsoUsedIn": [
+      "2-3 specific canonical verses where this exact lemma or root appears with brief quote"
+    ]
+  },
+  "layer3": {
+    "wordChoice": "Explain why the inspired biblical author chose this specific word rather than common synonyms",
+    "culture": "Explain the ancient Near Eastern or Greco-Roman cultural, historical, archaeological, or covenant backdrop of this term",
+    "application": "A powerful 1-sentence devotional insight empowering the believer's walk with Christ today"
+  }
+}`;
+
+    const result = await generateWithGeminiCascade({
+      prompt,
+      responseMimeType: "application/json",
+      temperature: 0.35,
+    });
+
+    if (result && result.text) {
+      const parsed = safeJsonParse(result.text);
+      if (parsed && (parsed.layer1 || parsed.layer2 || parsed.layer3)) {
+        return res.json({
+          success: true,
+          data: parsed
+        });
+      }
+    }
+
+    // Fallback if model parsing fails
+    const fallback = {
+      layer1: {
+        word: word || "שָׁלוֹם",
+        strongs: strongsNumber || "H7965",
+        transliteration: transliteration || "shalom",
+        pronunciation: `[${(transliteration || "shalom").toLowerCase()}]`,
+        root: "Primary root lemma",
+        rootOccurrences: `appears across the biblical canon`,
+        morphology: isOT ? "Noun, masculine, singular" : "Noun, feminine, singular"
+      },
+      layer2: {
+        shortDef: `Strong's / ${isOT ? "BDB" : "Thayer's"}: Original meaning for "${englishGloss || "word"}".`,
+        fullDef: `1. In biblical linguistics, conveys foundational covenant truth.\n2. Expresses divine reality revealed in the inspired text.\n3. Preserves sacred nuance across ancient manuscripts.`,
+        englishVsOriginal: `In standard English translation, the multidimensional resonance of this root is often simplified. The original term conveys tangible covenant action and divine alignment.`,
+        alsoUsedIn: [
+          `${scriptureRef || "Scripture"}`,
+          isOT ? "Genesis 1:1" : "John 1:1",
+          isOT ? "Psalm 23:1" : "Colossians 1:15"
+        ]
+      },
+      layer3: {
+        wordChoice: `Selected under the inspiration of the Holy Spirit to convey doctrinal precision in ${scriptureRef || "this passage"}.`,
+        culture: isOT ? "Ancient Hebrew and covenant community setting." : "Greco-Roman and apostolic early church setting.",
+        application: "Let this inspired original word deepen your confidence in God's eternal covenant truth."
+      }
+    };
+
+    return res.json({ success: true, data: fallback });
+  } catch (err) {
+    console.error("Error in /api/strongs-word-study:", err);
+    res.status(500).json({ error: "Failed to load Strong's word study" });
+  }
+});
+
 // API route: Generate Custom Devotion
 app.post("/api/generate-devotion", async (req, res) => {
   try {
     const { topic, sessionType } = req.body;
-    const prompt = `Generate a rich, inspiring Christian devotion for the ${sessionType || "Daily"} edition on the specific topic: "${topic || "The Joy and Strength of the Lord"}".
-Make sure the reflection is deeply tailored to "${topic || "The Joy and Strength of the Lord"}", avoiding repetitive clichés and providing fresh theological insights and personal spiritual encouragement.
+    const effectiveTopic = topic || "The Joy and Strength of the Lord";
+    const prompt = `Generate a rich, inspiring Christian devotion for the ${sessionType || "Daily"} edition on the specific topic: "${effectiveTopic}".
+Context / Topic: "${effectiveTopic}"
+
+${AI_OUTPUT_IMPROVEMENT_RULES}
 
 Format your response as a valid JSON object matching this schema:
 {
@@ -2259,6 +2474,9 @@ app.post("/api/generate-prayer", async (req, res) => {
 Category / Theme: ${effectiveTheme}
 Specific Situation / Need: ${effectiveNeed}
 Scripture anchor (if any): ${scripture || "Philippians 4:6-7"}
+
+Context / Need: "${effectiveNeed}"
+${AI_OUTPUT_IMPROVEMENT_RULES}
 
 Address the specific details of "${effectiveNeed}" directly in the petition and warfare sections with deep spiritual authority.
 

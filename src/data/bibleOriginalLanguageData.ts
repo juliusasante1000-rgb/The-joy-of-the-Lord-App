@@ -1,3 +1,5 @@
+import { getStrongsWordStudy } from "./strongsLexiconData";
+
 export interface InterlinearWord {
   id: string;
   order: number;
@@ -13,6 +15,17 @@ export interface InterlinearWord {
   rootEtymology: string; // Etymology and primitive root derivation
   lexicalDefinition: string; // Full Thayer's / BDB / Strong's lexical meaning
   theologicalSignificance: string; // Kingdom and apostolic revelation of the word
+  // 3-Layer Word Study Extensions (OSHB, Berean, Strong's, BDB/Thayer)
+  root?: string;
+  rootOccurrences?: string;
+  morphology?: string;
+  shortDefinition?: string;
+  fullDefinition?: string;
+  englishVsOriginal?: string;
+  alsoUsedIn?: string[];
+  wordChoice?: string;
+  culturalContext?: string;
+  application?: string;
 }
 
 export interface VerseInterlinear {
@@ -1739,21 +1752,39 @@ export function getInterlinearForVerse(
       }
     }
 
+    // Dynamically pull full 3-layer word study from Strong's JSON database
+    const study = getStrongsWordStudy(
+      entry.strongs,
+      entry.original,
+      entry.translit || rawToken,
+      `${cleanBook} ${chapter}:${verse}`
+    );
+
     return {
       id: `${normalizedKey}-${idx + 1}`,
       order: idx + 1,
-      originalText: entry.original,
-      transliteration: entry.translit,
-      pronunciation: entry.pronunciation || entry.translit.toLowerCase(),
+      originalText: study.word || entry.original,
+      transliteration: study.transliteration || entry.translit,
+      pronunciation: study.pronunciation || entry.pronunciation || (entry.translit ? entry.translit.toLowerCase() : rawToken),
       englishGloss: rawToken,
-      strongsNumber: entry.strongs,
-      lemma: entry.original,
-      partOfSpeech: entry.pos,
-      grammaticalParsing: entry.parsing,
-      literalMeaning: entry.literal,
-      rootEtymology: entry.etym,
-      lexicalDefinition: entry.lex,
-      theologicalSignificance: entry.theology || `Linguistic exegesis reveals covenant truth in '${rawToken}' within ${cleanBook} ${chapter}:${verse}.`
+      strongsNumber: study.strongs || entry.strongs,
+      lemma: study.word || entry.original,
+      partOfSpeech: study.partOfSpeech || entry.pos,
+      morphology: study.morphology || entry.parsing,
+      grammaticalParsing: study.morphology || entry.parsing,
+      root: study.root,
+      rootOccurrences: study.rootOccurrences,
+      shortDefinition: study.shortDef,
+      fullDefinition: study.fullDef,
+      englishVsOriginal: study.englishVsOriginal,
+      alsoUsedIn: study.alsoUsedIn,
+      wordChoice: study.wordChoice,
+      culturalContext: study.culture,
+      application: study.application,
+      literalMeaning: study.shortDef || entry.literal,
+      rootEtymology: study.root || entry.etym,
+      lexicalDefinition: study.fullDef || entry.lex,
+      theologicalSignificance: study.application || entry.theology || `Linguistic exegesis reveals covenant truth in '${rawToken}' within ${cleanBook} ${chapter}:${verse}.`
     };
   });
 

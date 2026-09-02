@@ -784,3 +784,96 @@ export function downloadScripturalPlaceDocument(place: SpiritualPlace, scripture
   URL.revokeObjectURL(url);
 }
 
+export interface QuoteExportItem {
+  quote: string;
+  author: string;
+  title?: string;
+  reference?: string;
+  principle?: string;
+  reflection?: string;
+  category?: string;
+}
+
+/**
+ * Universal HTML generator for Quotes and Wisdom Insights that formats the quote
+ * using the exact same standard 1-page paper document layout, typography,
+ * double gold borders, and signature closing with app logo and creator name.
+ */
+export function generateQuoteDocumentHTML(
+  item: QuoteExportItem,
+  creatorProfile?: CreatorProfile
+): string {
+  const authorName = item.author || "God's General";
+  const titleText = item.title || (item.author ? `${item.author} Spiritual Wisdom` : "Sacred Spiritual Quote");
+  const scriptureRef = item.reference || "Holy Scripture";
+  const cat = item.category || "Divine Wisdom & Faith";
+
+  let reflectionContent = "";
+  if (item.principle && item.reflection) {
+    reflectionContent = `✦ SPIRITUAL PRINCIPLE & REVELATION:\n${item.principle}\n\n✦ EXPOSITION & BIBLICAL MEDITATION:\n${item.reflection}`;
+  } else if (item.principle) {
+    reflectionContent = `✦ SPIRITUAL PRINCIPLE & REVELATION:\n${item.principle}`;
+  } else if (item.reflection) {
+    reflectionContent = `✦ SPIRITUAL EXPOSITION & WISDOM:\n${item.reflection}`;
+  } else {
+    reflectionContent = `✦ SPIRITUAL REVELATION:\nMeditate upon this sacred wisdom and truth. Let the power of God's Word renew your mind, establish your steps, and fill your spirit with divine peace and strength today.`;
+  }
+
+  const syntheticDevotion: Devotion = {
+    id: `quote-${Date.now()}`,
+    edition: "morning",
+    editionLabel: `SPIRITUAL WISDOM • ${authorName.toUpperCase()}`,
+    title: titleText,
+    keyScripture: scriptureRef,
+    passageText: item.quote,
+    reflection: reflectionContent,
+    practicalApplication: item.principle ? `Live out this truth: ${item.principle}` : `Walk in the light of this divine wisdom today. Trust the Lord with all your heart.`,
+    guidedPrayer: `Lord God Almighty, thank You for the truth revealed in Your Word and the wisdom passed down through Your servants. Anchor this revelation deep within my spirit today. In Jesus' mighty Name, Amen.`,
+    actionStep: `Faith Decree: "The joy of the Lord is my strength" (Nehemiah 8:10)`,
+    theme: `${authorName} • ${cat}`,
+    category: cat,
+    readTimeMinutes: 3
+  };
+
+  return generateDevotionDocumentHTML(syntheticDevotion, creatorProfile);
+}
+
+/**
+ * Universal print/save as 1-Page PDF for Quotes and Wisdom Insights
+ */
+export function printQuoteOnePageDocument(
+  item: QuoteExportItem,
+  creatorProfile?: CreatorProfile
+) {
+  const html = generateQuoteDocumentHTML(item, creatorProfile);
+  const printWindow = window.open("", "_blank");
+  if (printWindow) {
+    printWindow.document.open();
+    printWindow.document.write(html);
+    printWindow.document.close();
+  } else {
+    downloadQuoteDocument(item, creatorProfile);
+  }
+}
+
+/**
+ * Downloads a high-quality standalone HTML one-page printable paper document for a Quote
+ */
+export function downloadQuoteDocument(
+  item: QuoteExportItem,
+  creatorProfile?: CreatorProfile
+) {
+  const html = generateQuoteDocumentHTML(item, creatorProfile);
+  const blob = new Blob([html], { type: "text/html;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  const authorClean = (item.author || "quote").toLowerCase().replace(/[^a-z0-9]/g, "-");
+  const filename = `joy-of-the-lord-${authorClean}-1page-document.html`;
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}
+

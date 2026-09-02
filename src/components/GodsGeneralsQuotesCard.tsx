@@ -13,7 +13,8 @@ import {
   ChevronRight,
   Search,
   Filter,
-  Image as ImageIcon
+  Image as ImageIcon,
+  Printer
 } from "lucide-react";
 import {
   GODS_GENERALS_QUOTES,
@@ -22,6 +23,7 @@ import {
   FamousChristianQuote
 } from "../data/godsGeneralsQuotesData";
 import { QuotePictureItem } from "./QuotePictureModal";
+import { printQuoteOnePageDocument } from "../utils/devotionDocumentExporter";
 
 interface GodsGeneralsQuotesCardProps {
   onToggleBookmark?: (item: any) => void;
@@ -255,6 +257,25 @@ export const GodsGeneralsQuotesCard: React.FC<GodsGeneralsQuotesCardProps> = ({
                 <span className="hidden sm:inline">Picture</span>
               </button>
             )}
+
+            {/* Print / Save 1-Page PDF Document */}
+            <button
+              onClick={() =>
+                printQuoteOnePageDocument({
+                  quote: activeQuote.quote,
+                  author: activeQuote.author,
+                  title: activeQuote.title,
+                  reference: activeQuote.biblicalAnchor,
+                  category: activeQuote.category,
+                  reflection: `Spiritual quote from ${activeQuote.author} (${activeQuote.title}). Biblical Anchor: ${activeQuote.biblicalAnchor}.`
+                })
+              }
+              className="px-2 py-1 rounded-lg bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-800 text-[11px] font-bold flex items-center gap-1 transition-colors cursor-pointer"
+              title="Print or Save 1-Page PDF Document"
+            >
+              <Printer className="w-3.5 h-3.5 text-[#B48C35]" />
+              <span className="hidden sm:inline">PDF</span>
+            </button>
 
             {/* Copy */}
             <button

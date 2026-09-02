@@ -84,7 +84,20 @@ export function deduplicateSentences(text: string): string {
     resultLines.push(cleanedSentences.join(" "));
   }
 
-  return resultLines.join("\n").trim();
+  const rawResult = resultLines.join("\n").trim();
+  return cleanChristianWalkCliché(rawResult);
+}
+
+/**
+ * Remove clichéd openings like "In our Christian walk"
+ */
+export function cleanChristianWalkCliché(text: string): string {
+  if (!text) return "";
+  let cleaned = text.replace(/^(?:["']?\s*)In our (?:Christian|daily|spiritual) walk(?: with (?:God|Christ|the Lord))?,?\s*/i, "");
+  cleaned = cleaned.replace(/^(?:["']?\s*)As Christians?,?\s*/i, "");
+  cleaned = cleaned.replace(/(\n\s*)In our (?:Christian|daily|spiritual) walk(?: with (?:God|Christ|the Lord))?,?\s*/gi, "$1");
+  cleaned = cleaned.replace(/^([a-z])/, (m, c) => c.toUpperCase());
+  return cleaned;
 }
 
 /**
@@ -99,9 +112,19 @@ export function getClientGeminiApiKey(): string | null {
 }
 
 /**
+ * Core User Directives to Improve AI Quality & Output
+ */
+export const AI_OUTPUT_IMPROVEMENT_RULES = `
+Rules:
+a. You must write based ONLY on the context provided below. Do not give a generic Christian message.
+b. Vary your tone and starting words each time. Do not start with "In our Christian walk" every time. Never open with clichéd expressions like "In our Christian walk", "As Christians", or "In our daily walk".
+c. Be warm, clear, and specific to the TOPIC.`;
+
+/**
  * Master Anti-Loop System Prompt
  */
-export const ANTI_LOOP_DIRECTIVE = "Provide deep, unique, and illuminating theological, historical, and practical insight. Never repeat phrases or loop. Be precise, profound, and substantive. Do not use generic filler.";
+export const ANTI_LOOP_DIRECTIVE = `Provide deep, unique, and illuminating theological, historical, and practical insight. Never repeat phrases or loop. Be precise, profound, and substantive. Do not use generic filler.
+${AI_OUTPUT_IMPROVEMENT_RULES}`;
 
 /**
  * Core AI Generation Service
@@ -113,7 +136,7 @@ export async function generateAiContent<T = any>(
   const temperature = options.temperature ?? 0.45;
   const topP = options.topP ?? 0.90;
   const maxOutputTokens = options.maxOutputTokens ?? 2048;
-  const targetModel = options.model || "gemini-3.7-flash";
+  const targetModel = options.model || "gemini-3.1-flash-lite";
 
   const systemPrompt = options.systemInstruction
     ? `${options.systemInstruction} ${ANTI_LOOP_DIRECTIVE}`
@@ -177,7 +200,7 @@ export async function generateAiContent<T = any>(
   // Step 2: Direct Client-Side Gemini API call (Vercel, Netlify, Static Builds)
   const clientApiKey = getClientGeminiApiKey();
   if (clientApiKey) {
-    const modelsToTry = [targetModel, "gemini-3.7-flash", "gemini-flash-latest", "gemini-3.1-flash-lite", "gemini-2.5-flash"].filter(
+    const modelsToTry = [targetModel, "gemini-3.1-flash-lite", "gemini-3.8-flash", "gemini-3.6-flash", "gemini-flash-latest"].filter(
       (v, i, a) => Boolean(v) && a.indexOf(v) === i
     );
 

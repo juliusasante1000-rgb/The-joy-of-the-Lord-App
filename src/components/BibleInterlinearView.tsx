@@ -24,6 +24,7 @@ import {
 } from "../data/bibleOriginalLanguageData";
 import { streamAiContent, getIsFastMode } from "../utils/aiStreaming";
 import { AiFastLoadingView } from "./AiFastLoadingView";
+import { InterlinearWordStudyBottomSheet } from "./InterlinearWordStudyBottomSheet";
 
 interface BibleInterlinearViewProps {
   book: string;
@@ -34,6 +35,7 @@ interface BibleInterlinearViewProps {
   onSaveToNotes?: (verseKey: string, noteContent: string) => void;
   onShareItem?: (title: string, content: string, ref: string) => void;
   onToggleSpeak?: (text: string) => void;
+  onVerseClick?: (verseRef: string) => void;
 }
 
 export const BibleInterlinearView: React.FC<BibleInterlinearViewProps> = ({
@@ -44,7 +46,8 @@ export const BibleInterlinearView: React.FC<BibleInterlinearViewProps> = ({
   version = "KJV",
   onSaveToNotes,
   onShareItem,
-  onToggleSpeak
+  onToggleSpeak,
+  onVerseClick
 }) => {
   const [viewMode, setViewMode] = useState<"grid" | "flow" | "table">("grid");
   const [sublinearDisplay, setSublinearDisplay] = useState<"gloss" | "literal" | "both" | "translit">("both");
