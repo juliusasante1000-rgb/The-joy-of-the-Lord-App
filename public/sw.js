@@ -45,7 +45,32 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // 2. Public Content API (/api/public/content, /api/creator-profile) - Network-First with Cache Fallback
+  // 2. Bible Scripture Static Content - Cache-First for instant, 100% offline Bible rendering
+  if (url.pathname.startsWith("/bible/")) {
+    event.respondWith(
+      caches.match(event.request).then((cachedResponse) => {
+        if (cachedResponse) {
+          return cachedResponse;
+        }
+        return fetch(event.request)
+          .then((networkResponse) => {
+            if (networkResponse && networkResponse.status === 200) {
+              const responseToCache = networkResponse.clone();
+              caches.open(CACHE_NAME).then((cache) => {
+                cache.put(event.request, responseToCache);
+              });
+            }
+            return networkResponse;
+          })
+          .catch(() => {
+            return caches.match(event.request);
+          });
+      })
+    );
+    return;
+  }
+
+  // 3. Public Content API (/api/public/content, /api/creator-profile) - Network-First with Cache Fallback
   if (url.pathname.startsWith("/api/")) {
     event.respondWith(
       fetch(event.request)

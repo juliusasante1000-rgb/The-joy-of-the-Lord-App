@@ -31,7 +31,8 @@ import {
   ArrowLeftRight,
   MessageSquare,
   Zap,
-  Info
+  Info,
+  Languages
 } from "lucide-react";
 import { BIBLE_BOOKS_CATALOG } from "../data/bibleData";
 import { BibleBook, BibleVerse, BibleVersionCode } from "../types";
@@ -47,6 +48,7 @@ import {
   getChapterCommentary
 } from "../data/bibleCommentaryData";
 import { BibleCommentaryModal } from "./BibleCommentaryModal";
+import { BibleInterlinearModal } from "./BibleInterlinearModal";
 import { AiFastLoadingView } from "./AiFastLoadingView";
 
 interface BibleTabProps {
@@ -116,6 +118,12 @@ export const BibleTab: React.FC<BibleTabProps> = ({
     verse?: number;
     text: string;
     initialFullscreen?: boolean;
+  } | null>(null);
+  const [selectedInterlinearVerse, setSelectedInterlinearVerse] = useState<{
+    book: string;
+    chapter: number;
+    verse: number;
+    text: string;
   } | null>(null);
   const [showInlineCommentary, setShowInlineCommentary] = useState(false);
   const [expandedInlineCommentaries, setExpandedInlineCommentaries] = useState<Record<string, boolean>>({});
@@ -368,12 +376,19 @@ export const BibleTab: React.FC<BibleTabProps> = ({
             setAiModalContent(mathText);
           } else if (action.includes("Explain") || action.includes("Exposition") || action.includes("Context")) {
             const refs = (item.crossReferences || []).map((r: any) => typeof r === "string" ? `• ${r}` : `• ${r.reference}: ${r.connection}`).join("\n");
-            const exposText = `${item.title || "Expository Analysis"}\n\n` +
-              `HISTORICAL CONTEXT:\n${item.historicalContext || ""}\n\n` +
-              `ORIGINAL LANGUAGE INSIGHT:\n${item.originalLanguageInsight || item.originalLanguageWordStudy || ""}\n\n` +
-              `DOCTRINAL MEANING:\n${item.doctrinalMeaning || item.theologicalDoctrine || ""}\n\n` +
+            const hist = item.historicalContext || item.reflection || `Set within the sacred biblical narrative of ${activeVerseMenu.book} ${activeVerseMenu.chapter}:${activeVerseMenu.verse}, this passage speaks directly to God's covenant people in their authentic historical milieu.`;
+            const cult = item.culturalBackground ? `CULTURAL & ARCHAEOLOGICAL SETTING:\n${item.culturalBackground}\n\n` : "";
+            const orig = item.originalLanguageInsight || item.originalLanguageWordStudy ? `ORIGINAL LANGUAGE INSIGHT:\n${item.originalLanguageInsight || item.originalLanguageWordStudy}\n\n` : "";
+            const doct = item.doctrinalMeaning || item.theologicalDoctrine ? `DOCTRINAL MEANING & THEOLOGY:\n${item.doctrinalMeaning || item.theologicalDoctrine}\n\n` : "";
+            const life = item.lifeTransformation || item.lifeApplication || item.practicalApplication || "Anchor your faith in the immutable covenant of God, speaking His promises daily with apostolic boldness.";
+            
+            const exposText = `${item.title || `Exposition & Historical Setting: ${activeVerseMenu.book} ${activeVerseMenu.chapter}:${activeVerseMenu.verse}`}\n\n` +
+              `HISTORICAL CONTEXT:\n${hist}\n\n` +
+              cult +
+              orig +
+              doct +
               (refs ? `CROSS REFERENCES:\n${refs}\n\n` : "") +
-              `LIFE TRANSFORMATION:\n${item.lifeTransformation || item.lifeApplication || ""}`;
+              `LIFE TRANSFORMATION:\n${life}`;
             setAiModalContent(exposText);
           } else {
             // Devotion or general reflection
@@ -1378,6 +1393,23 @@ export const BibleTab: React.FC<BibleTabProps> = ({
                   onClick={() => {
                     const v = activeVerseMenu;
                     setActiveVerseMenu(null);
+                    setSelectedInterlinearVerse({
+                      book: v.book,
+                      chapter: v.chapter,
+                      verse: v.verse,
+                      text: v.text
+                    });
+                  }}
+                  className="p-3 rounded-xl bg-purple-50 hover:bg-purple-100 border border-purple-200 text-purple-900 font-bold text-left flex items-center gap-2 cursor-pointer transition-colors"
+                >
+                  <Languages className="w-4 h-4 text-purple-700" />
+                  <span>Hebrew & Greek Interlinear Word Study</span>
+                </button>
+
+                <button
+                  onClick={() => {
+                    const v = activeVerseMenu;
+                    setActiveVerseMenu(null);
                     setSelectedCommentaryVerse({
                       book: v.book,
                       chapter: v.chapter,
@@ -1513,6 +1545,41 @@ export const BibleTab: React.FC<BibleTabProps> = ({
           verseText={selectedCommentaryVerse.text}
           version={selectedVersion}
           initialFullscreen={selectedCommentaryVerse.initialFullscreen}
+          onShareItem={onShareItem}
+          onToggleSpeak={onToggleSpeak}
+          onToggleBookmark={onToggleBookmark}
+          isBookmarked={isBookmarked}
+          onSaveToNotes={(vKey, noteContent) => {
+            const updated = {
+              ...verseNotes,
+              [vKey]: {
+                verseKey: vKey,
+                note: noteContent,
+                updatedAt: new Date().toLocaleDateString()
+              }
+            };
+            setVerseNotes(updated);
+            try {
+              localStorage.setItem("sir_bismark_bible_notes", JSON.stringify(updated));
+            } catch {
+              // ignore
+            }
+          }}
+        />
+      )}
+
+      {/* ======================================================== */}
+      {/* 7. BIBLE HEBREW & GREEK INTERLINEAR WORD STUDY MODAL      */}
+      {/* ======================================================== */}
+      {selectedInterlinearVerse && (
+        <BibleInterlinearModal
+          isOpen={!!selectedInterlinearVerse}
+          onClose={() => setSelectedInterlinearVerse(null)}
+          book={selectedInterlinearVerse.book}
+          chapter={selectedInterlinearVerse.chapter}
+          verse={selectedInterlinearVerse.verse}
+          verseText={selectedInterlinearVerse.text}
+          version={selectedVersion}
           onShareItem={onShareItem}
           onToggleSpeak={onToggleSpeak}
           onToggleBookmark={onToggleBookmark}

@@ -178,7 +178,10 @@ export async function streamAiContent<T = any>(
 
   // 2. 5-Minute Cache Hit Check
   const cached = getCachedAiResult(cacheKey);
-  if (cached) {
+  const isContextAction = (options.actionType || "").toLowerCase().includes("context") || (options.actionType || "").toLowerCase().includes("historical");
+  const isInvalidContextCache = isContextAction && cached?.data && !cached.data.historicalContext && !cached.data.culturalBackground;
+
+  if (cached && !isInvalidContextCache) {
     console.log(`[AI CACHE HIT (5-min)] ⚡ Returning cached response instantly:`, {
       key: cacheKey.substring(0, 40),
       ageSec: Math.round((Date.now() - cached.timestamp) / 1000)
@@ -446,6 +449,53 @@ export async function streamAiContent<T = any>(
             }
           ],
           propheticDecree: `I decree that the living truth of ${ref} is established over my life, my home, and my calling today and forever. In Jesus' Name, Amen.`
+        };
+      } else if (act.includes("context") || act.includes("historical") || act.includes("background")) {
+        // Book-specific dynamic historical and cultural extraction
+        const bookName = ref.split(" ")[0] || "";
+        const isOT = !["Matthew", "Mark", "Luke", "John", "Acts", "Romans", "Corinthians", "Galatians", "Ephesians", "Philippians", "Colossians", "Thessalonians", "Timothy", "Titus", "Philemon", "Hebrews", "James", "Peter", "John", "Jude", "Revelation"].some(b => ref.includes(b));
+        
+        let eraSetting = `Within the canonical setting of ${ref}, the inspired text was delivered into a decisive historical epoch.`;
+        let cultDetail = `Ancient covenant conventions, sacrificial symbolism, and communal gatherings formed the immediate horizon of this sacred declaration.`;
+        
+        if (ref.includes("Genesis")) {
+          eraSetting = `Authored by Moses during the Wilderness Wanderings (~1446–1406 BC), Genesis records God's primeval and patriarchal covenant with Abraham, Isaac, and Jacob in the ancient Bronze Age Levant.`;
+          cultDetail = `Patriarchal kinship covenants, ancient Near Eastern suzerainty treaties, nomadic tent-dwelling pastoralism, and altars of unhewn stone establish the physical reality behind this text.`;
+        } else if (ref.includes("Exodus") || ref.includes("Leviticus") || ref.includes("Numbers") || ref.includes("Deuteronomy")) {
+          eraSetting = `Delivered through Moses at Mount Sinai and the Plains of Moab (~1406 BC), addressing the newly redeemed nation of Israel freshly emancipated from Egyptian bondage under the New Kingdom pharaohs.`;
+          cultDetail = `Tabernacle priesthood rituals, cloud and fire theophanies, Egyptian monumental architecture contrasts, and divine covenant stipulations defined Israel's sanctification.`;
+        } else if (ref.includes("Psalm")) {
+          eraSetting = `Composed primarily during the United Monarchy of King David and Solomon (~1000–930 BC) and preserved by the Levitical guild of temple musicians for sanctuary worship in Jerusalem.`;
+          cultDetail = `Ancient Hebrew poetic parallelism, antiphonal choir chanting, harp and lyre instrumentation in the First Temple, and royal enthronement terminology frame the verse.`;
+        } else if (ref.includes("Isaiah") || ref.includes("Jeremiah") || ref.includes("Ezekiel") || ref.includes("Daniel")) {
+          eraSetting = `Spoken by classical Hebrew prophets amidst the existential geopolitical crises of the Assyrian invasion (8th century BC) and the Babylonian siege and exile of Jerusalem (586 BC).`;
+          cultDetail = `Imperial vassalage treaties, exile mourning rites by the rivers of Babylon, prophetic symbolic actions, and holy temple desecration tensions permeate this passage.`;
+        } else if (ref.includes("Matthew") || ref.includes("Mark") || ref.includes("Luke") || ref.includes("John")) {
+          eraSetting = `Set in 1st-century Roman-occupied Judea and Galilee under Emperor Tiberius, Governor Pontius Pilate, and the Herodian tetrarchy, chronicling the earthly ministry and resurrection of Jesus the Messiah.`;
+          cultDetail = `Second Temple Judaism, synagogue Torah readings, Pharisaic oral traditions, Roman taxation systems, and the expectation of the Davidic Messiah illuminate this passage.`;
+        } else if (ref.includes("Romans") || ref.includes("Corinthians") || ref.includes("Galatians") || ref.includes("Ephesians") || ref.includes("Philippians") || ref.includes("Colossians")) {
+          eraSetting = `Written by the Apostle Paul during his apostolic missionary journeys (circa 50–65 AD) under the Roman imperial reigns of Claudius and Nero, addressing pioneering multi-ethnic house churches across the Mediterranean.`;
+          cultDetail = `Greco-Roman patronage customs, Agora marketplace dialogue, imperial Caesar cult tensions, house-church agape feasts, and ancient epistolary letter conventions underpin the instruction.`;
+        } else if (ref.includes("Revelation")) {
+          eraSetting = `Delivered by the Apostle John exiled upon the Aegean island penal colony of Patmos during the severe anti-Christian persecutions under Roman Emperor Domitian (~95 AD).`;
+          cultDetail = `Imperial Caesar worship coercion, apocalyptic symbolic visions, heavenly throne-room liturgies, and letters addressed to the seven historical trade-route cities of Asia Minor.`;
+        }
+
+        generatedData = {
+          title: `Historical & Cultural Context: ${ref}`,
+          scriptureAnchor: `${ref} — "${text}"`,
+          historicalContext: `${eraSetting}\n\nThis passage in ${ref} specifically addresses the original covenant community amidst their authentic historical environment. Rather than an abstract philosophical adage, the Holy Spirit inspired this exact word into real human history—anchoring believers' trust in God's sovereign providence across changing kings, empires, and geopolitical crises.`,
+          culturalBackground: `${cultDetail}\n\nUnderstanding the ancient linguistic idioms and social structures of the period reveals that this passage carried immediate, high-stakes clarity to its original hearers, dismantling contemporary pagan anxieties with divine truth.`,
+          originalLanguageInsight: isOT
+            ? `In the original Biblical Hebrew text (OSHB), key terms carry deep covenant resonance—connecting to roots of steadfast lovingkindness (*chesed*), enduring divine peace (*shalom*), and sovereign divine authority (*YHWH Tzva'ot*).`
+            : `In the inspired Koine Greek of the apostolic text, verbs and syntax emphasize active divine grace (*charis*), supernatural empowerment (*dunamis*), and complete covenant alignment (*pistis*).`,
+          doctrinalMeaning: `The doctrinal revelation of ${ref} establishes God's absolute sovereignty, unchanging fidelity to His covenant, and the redemptive victory available to all who walk by faith. Earthly circumstances change, but the eternal decree of God remains immovable.`,
+          crossReferences: [
+            { reference: isOT ? "Deuteronomy 7:9" : "Romans 8:28", connection: "God keeps covenant and mercy with those who love Him unto a thousand generations." },
+            { reference: isOT ? "Psalm 119:89" : "Colossians 1:16-17", connection: "Forever, O LORD, Your word is settled in heaven; in Christ all things hold together." },
+            { reference: isOT ? "Isaiah 40:8" : "Hebrews 13:8", connection: "The grass withers, the flower fades, but the word of our God stands forever." }
+          ],
+          lifeTransformation: `How to apply this historical truth today: Recognizing that the God who sustained His people through ancient trials is your faithful Father today. Refuse fear, speak His Word with authority, and stand firm in your covenant calling.`
         };
       } else if (act.includes("explain")) {
         generatedData = {

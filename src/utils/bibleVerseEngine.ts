@@ -2,6 +2,7 @@ import { BibleBook, BibleVerse, BibleVersionCode } from "../types";
 import { BIBLE_BOOKS_CATALOG } from "../data/bibleData";
 import { getTranslatedVerseText } from "../data/bibleTranslationsData";
 import { getRegisteredFullChapter, CANONICAL_BIBLE_STRUCTURE } from "../data/fullBibleChaptersData";
+import { getOfflineBook, saveOfflineBook } from "./offlineBibleManager";
 
 // Local in-memory and persistent cache for loaded chapters
 const chapterCache: Record<string, BibleVerse[]> = {};
@@ -98,7 +99,7 @@ const BOOK_ORDER_INDEX: Record<string, number> = {
 };
 
 /**
- * Fetch and cache entire book JSON dataset from local static assets
+ * Fetch and cache entire book JSON dataset from local offline storage or static assets
  */
 async function fetchLocalBookDataset(bookName: string) {
   const normalized = bookName.trim();
@@ -106,6 +107,18 @@ async function fetchLocalBookDataset(bookName: string) {
     return bookDatasetCache[normalized];
   }
 
+  // 1. Check offline IndexedDB storage (instant, 100% offline)
+  try {
+    const offlineBook = await getOfflineBook(normalized);
+    if (offlineBook && Array.isArray(offlineBook.chapters) && offlineBook.chapters.length > 0) {
+      bookDatasetCache[normalized] = offlineBook;
+      return offlineBook;
+    }
+  } catch {
+    // Continue to network fetch
+  }
+
+  // 2. Fetch from static local assets
   const fileNames = [
     `${normalized}.json`,
     `${normalized.toLowerCase().replace(/[^a-z0-9]/g, "_")}.json`
@@ -118,6 +131,8 @@ async function fetchLocalBookDataset(bookName: string) {
         const data = await res.json();
         if (data && Array.isArray(data.chapters) && data.chapters.length > 0) {
           bookDatasetCache[normalized] = data;
+          // Persist asynchronously into offline IndexedDB storage
+          saveOfflineBook(normalized, data).catch(() => {});
           return data;
         }
       }
