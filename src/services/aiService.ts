@@ -115,10 +115,10 @@ export function getClientGeminiApiKey(): string | null {
  * Core User Directives to Improve AI Quality & Output
  */
 export const AI_OUTPUT_IMPROVEMENT_RULES = `
-Rules:
-a. You must write based ONLY on the context provided below. Do not give a generic Christian message.
-b. Vary your tone and starting words each time. Do not start with "In our Christian walk" every time. Never open with clichéd expressions like "In our Christian walk", "As Christians", or "In our daily walk".
-c. Be warm, clear, and specific to the TOPIC.`;
+Rules for Uniqueness and Concurrence:
+a. CONCURRENCE WITH SCRIPTURE: Anchor your output intimately in the SPECIFIC scripture, verse vocabulary, historical context, and exact theme provided. Draw out the unique metaphors, Hebrew/Greek roots, and spiritual dynamics native to this exact text. Never produce generic Christian filler or interchangeable advice.
+b. FRESHNESS & VARIETY: Make every generation distinctly unique. Radically vary your opening hook, sentence cadence, and structure. Never open with clichéd expressions like "In our Christian walk", "As Christians", "In our daily walk", "In this passage", or "Today we examine". Open directly with an arresting biblical insight, historical moment, or linguistic revelation.
+c. RICH HOMILETIC DEPTH: Tailor your voice to match the character of the scripture—exultant for praise, reverent for holiness, strategic for warfare, pastoral for affliction. Ensure every point is fresh, concrete, and deeply impactful.`;
 
 /**
  * Master Anti-Loop System Prompt
@@ -133,8 +133,8 @@ export async function generateAiContent<T = any>(
   options: AiGenerationOptions
 ): Promise<AiServiceResult<T>> {
   const startTime = performance.now();
-  const temperature = options.temperature ?? 0.45;
-  const topP = options.topP ?? 0.90;
+  const temperature = options.temperature ?? 0.82;
+  const topP = options.topP ?? 0.95;
   const maxOutputTokens = options.maxOutputTokens ?? 2048;
   const targetModel = options.model || "gemini-3.1-flash-lite";
 

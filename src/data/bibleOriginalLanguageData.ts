@@ -19,6 +19,8 @@ export interface InterlinearWord {
   root?: string;
   rootOccurrences?: string;
   morphology?: string;
+  pcStudyBibleMorphology?: string; // e.g. "ncfsa Pp", "vqp3ms", "ncmpa", "Po", "ncmpa Pa", "Po Pc", "ncfsa Pa"
+  pcStudyBibleTranslit?: string; // e.g. "B'ree'shiyt", "baaraa'", "'Elohiym", "'eet", "hashaamayim", "w'eet", "haa'aarets"
   shortDefinition?: string;
   fullDefinition?: string;
   englishVsOriginal?: string;
@@ -26,6 +28,57 @@ export interface InterlinearWord {
   wordChoice?: string;
   culturalContext?: string;
   application?: string;
+}
+
+/**
+ * Decodes PC Study Bible 5 compact morphological codes into plain English linguistic parsing
+ */
+export function decodePcStudyBibleMorphology(code: string): string {
+  if (!code) return "";
+  const parts = code.trim().split(/\s+/);
+  const decodedParts: string[] = [];
+
+  for (const part of parts) {
+    // Check prefix/particle markers
+    if (part === "Pp") decodedParts.push("Preposition Prefix");
+    else if (part === "Pa") decodedParts.push("Article Prefix ('the')");
+    else if (part === "Pc") decodedParts.push("Conjunction Prefix ('and')");
+    else if (part === "Po") decodedParts.push("Direct Object Marker");
+    // Verbs
+    else if (part.startsWith("v")) {
+      let stem = "Verb";
+      if (part.startsWith("vqp")) stem = "Verb Qal Perfect";
+      else if (part.startsWith("vqi")) stem = "Verb Qal Imperfect";
+      else if (part.startsWith("vqc")) stem = "Verb Qal Imperative";
+      else if (part.startsWith("vpp")) stem = "Verb Piel";
+      else if (part.startsWith("vh")) stem = "Verb Hiphil";
+      else if (part.startsWith("vn")) stem = "Verb Niphal";
+      else if (part.startsWith("vt")) stem = "Verb Hithpael";
+
+      let pgn = "";
+      if (part.includes("3ms")) pgn = "3rd Person Masculine Singular";
+      else if (part.includes("3fs")) pgn = "3rd Person Feminine Singular";
+      else if (part.includes("2ms")) pgn = "2nd Person Masculine Singular";
+      else if (part.includes("2fs")) pgn = "2nd Person Feminine Singular";
+      else if (part.includes("1cs")) pgn = "1st Person Common Singular";
+      else if (part.includes("3cp")) pgn = "3rd Person Common Plural";
+      else if (part.includes("fsa")) pgn = "Participle Feminine Singular Absolute";
+      else if (part.includes("msa")) pgn = "Participle Masculine Singular Absolute";
+
+      decodedParts.push([stem, pgn].filter(Boolean).join(" "));
+    }
+    // Nouns
+    else if (part.startsWith("nc")) {
+      const g = part[2] === "m" ? "Masculine" : part[2] === "f" ? "Feminine" : "Both-gender";
+      const num = part[3] === "s" ? "Singular" : part[3] === "p" ? "Plural" : "Dual";
+      const state = part[4] === "a" ? "Absolute" : part[4] === "c" ? "Construct" : "";
+      decodedParts.push(`Noun Common ${g} ${num} ${state}`.trim());
+    } else {
+      decodedParts.push(part);
+    }
+  }
+
+  return decodedParts.join(" + ");
 }
 
 export interface VerseInterlinear {
@@ -76,12 +129,14 @@ export const INTERLINEAR_DATABASE: Record<string, VerseInterlinear> = {
         order: 1,
         originalText: "בְּרֵאשִׁ֖ית",
         transliteration: "Bərē’šīṯ",
+        pcStudyBibleTranslit: "B'ree'shiyt",
         pronunciation: "b'ray-SHEETH",
         englishGloss: "In the beginning",
         strongsNumber: "H7225",
         lemma: "רֵאשִׁית (reshith)",
         partOfSpeech: "Preposition + Noun, Feminine Singular Construct",
         grammaticalParsing: "Prep 'be' (in/at) + Noun 'reshith' (first/beginning)",
+        pcStudyBibleMorphology: "ncfsa Pp",
         literalMeaning: "At the initial point / headwaters of created time",
         rootEtymology: "Derived from 'rosh' (H7218) meaning 'head', 'chief', 'summit', or 'supreme starting point'.",
         lexicalDefinition: "First, beginning, best, chief, choice part, firstfruits. Denotes temporal priority and primary status.",
@@ -92,12 +147,14 @@ export const INTERLINEAR_DATABASE: Record<string, VerseInterlinear> = {
         order: 2,
         originalText: "בָּרָ֣א",
         transliteration: "bārā’",
+        pcStudyBibleTranslit: "baaraa'",
         pronunciation: "bah-RAH",
         englishGloss: "created",
         strongsNumber: "H1254",
         lemma: "בָּרָא (bara)",
         partOfSpeech: "Verb, Qal Perfect 3rd Person Masculine Singular",
         grammaticalParsing: "Qal stem, Perfect aspect (completed action), 3ms",
+        pcStudyBibleMorphology: "vqp3ms",
         literalMeaning: "Originated ex nihilo; brought into existence without pre-existing materials",
         rootEtymology: "A specialized divine verb never used with a human subject in the Old Testament; exclusively an act of God.",
         lexicalDefinition: "To create, shape, form, fashion out of nothing. To initiate something entirely unprecedented and supernatural.",
@@ -108,12 +165,14 @@ export const INTERLINEAR_DATABASE: Record<string, VerseInterlinear> = {
         order: 3,
         originalText: "אֱלֹהִ֑ים",
         transliteration: "’Ělōhīm",
+        pcStudyBibleTranslit: "'Elohiym",
         pronunciation: "el-oh-HEEM",
         englishGloss: "God",
         strongsNumber: "H430",
         lemma: "אֱלוֹהַּ (Eloah) / אֱלֹהִים (Elohim)",
         partOfSpeech: "Noun, Masculine Plural (Plural of Majesty)",
         grammaticalParsing: "Noun Masculine Plural functioning with singular verb (bara)",
+        pcStudyBibleMorphology: "ncmpa",
         literalMeaning: "The Supreme Sovereign Powers / The Mighty Majesty",
         rootEtymology: "From 'El' / 'Alah' meaning strength, power, preeminence, and awesome authority.",
         lexicalDefinition: "God, the true supreme deity, ruler, judge. The plural ending '-im' combined with a singular verb grammatically reveals the Plurality-in-Unity (the Triune Godhead).",
@@ -124,12 +183,14 @@ export const INTERLINEAR_DATABASE: Record<string, VerseInterlinear> = {
         order: 4,
         originalText: "אֵ֥ת",
         transliteration: "’ēṯ",
+        pcStudyBibleTranslit: "'eet",
         pronunciation: "ayt",
         englishGloss: "[direct object]",
         strongsNumber: "H853",
         lemma: "אֵת (et)",
         partOfSpeech: "Definite Direct Object Marker",
         grammaticalParsing: "Untranslated particle pointing to the direct object of the verb",
+        pcStudyBibleMorphology: "Po",
         literalMeaning: "Composed of Aleph (first letter) and Tav (last letter) of the Hebrew alphabet",
         rootEtymology: "Marks the definitive reality and focus of the action.",
         lexicalDefinition: "Untranslated sign of the definite direct object. In rabbinic and apostolic hermeneutics, Aleph-Tav symbolizes the Alpha and Omega (Jesus Christ).",
@@ -140,12 +201,14 @@ export const INTERLINEAR_DATABASE: Record<string, VerseInterlinear> = {
         order: 5,
         originalText: "הַשָּׁמַ֖יִם",
         transliteration: "haššāmayim",
+        pcStudyBibleTranslit: "hashaamayim",
         pronunciation: "hash-shah-MAH-yim",
         englishGloss: "the heavens",
         strongsNumber: "H8064",
         lemma: "שָׁמַיִם (shamayim)",
         partOfSpeech: "Article + Noun, Masculine Dual/Plural",
         grammaticalParsing: "Article 'ha' (the) + Noun Masculine Dual 'shamayim'",
+        pcStudyBibleMorphology: "ncmpa Pa",
         literalMeaning: "The lofty celestial realms / visible skies and invisible heaven of heavens",
         rootEtymology: "From an unused root meaning 'to be lofty' or 'where waters are aloft'.",
         lexicalDefinition: "The visible sky, atmospheric realm, stellar cosmos, and the transcendent dwelling place of God.",
@@ -156,12 +219,14 @@ export const INTERLINEAR_DATABASE: Record<string, VerseInterlinear> = {
         order: 6,
         originalText: "וְאֵ֥ת",
         transliteration: "wə’ēṯ",
+        pcStudyBibleTranslit: "w'eet",
         pronunciation: "v'ayt",
         englishGloss: "and [direct object]",
         strongsNumber: "H853",
         lemma: "וְ (ve) + אֵת (et)",
         partOfSpeech: "Conjunction + Direct Object Marker",
         grammaticalParsing: "Conjunction 've' (and) + Direct Object marker 'et'",
+        pcStudyBibleMorphology: "Po Pc",
         literalMeaning: "And specifically",
         rootEtymology: "Coupling particle binding heaven and earth together in creation.",
         lexicalDefinition: "And (connective conjunction) plus definite object sign.",
@@ -172,16 +237,286 @@ export const INTERLINEAR_DATABASE: Record<string, VerseInterlinear> = {
         order: 7,
         originalText: "הָאָֽרֶץ׃",
         transliteration: "hā’āreṣ",
+        pcStudyBibleTranslit: "haa'aarets",
         pronunciation: "hah-AH-rets",
         englishGloss: "the earth.",
         strongsNumber: "H776",
         lemma: "אֶרֶץ (erets)",
         partOfSpeech: "Article + Noun, Feminine Singular",
         grammaticalParsing: "Article 'ha' (the) + Noun Feminine Singular 'erets' with pause mark (sof pasuq)",
+        pcStudyBibleMorphology: "ncfsa Pa",
         literalMeaning: "The terrestrial world, land, ground, and habitable planetary realm",
         rootEtymology: "From an unused root meaning to be firm, solid, or earth-ground.",
         lexicalDefinition: "Earth, land, territory, world, ground.",
         theologicalSignificance: "The stage crafted by God to be filled with His glory and inhabited by mankind created in His image."
+      }
+    ]
+  },
+
+  "genesis-1-2": {
+    book: "Genesis",
+    chapter: 1,
+    verse: 2,
+    testament: "Old Testament",
+    language: "Biblical Hebrew",
+    scriptDirection: "rtl",
+    originalScriptFull: "וְהָאָ֗רֶץ הָיְתָ֥ה תֹ֙הוּ֙ וָבֹ֔הוּ וְחֹ֖שֶׁךְ עַל־פְּנֵ֣י תְה֑וֹם וְר֣וּחַ אֱלֹהִ֔ים מְרַחֶ֖פֶת עַל־פְּנֵ֥י הַמָּֽיִם׃",
+    transliterationFull: "Wəhā’āreṣ hāyətâ ṯōhû wāḇōhû, wəḥōšeḵ ‘al-pənê ṯəhôm, wərûaḥ ’Ělōhīm məraḥep̱eṯ ‘al-pənê hammāyim.",
+    literalEnglishFull: "And the earth was without form, and void; and darkness was upon the face of the deep. And the Spirit of God moved upon the face of the waters.",
+    synthesisedExegesis: "Genesis 1:2 portrays the primeval canvas of creation. Far from a realm of defeated chaos, the unformed earth and watery deep are peacefully overshadowed by the Holy Spirit (Ruach Elohim), hovering with affectionate maternal power preparing to hatch forth life at the spoken Word.",
+    apostolicRhema: "The Holy Spirit broods over every formless and empty situation. When your circumstances feel void or dark, the Spirit of God is already hovering upon the face of your waters to birth supernatural light, order, and destiny.",
+    words: [
+      {
+        id: "gen-1-2-1",
+        order: 1,
+        originalText: "וְהָאָ֗רֶץ",
+        transliteration: "Wəhā’āreṣ",
+        pcStudyBibleTranslit: "W'haa'aarets",
+        pronunciation: "v'hah-AH-rets",
+        englishGloss: "And the earth",
+        strongsNumber: "H776",
+        lemma: "אֶרֶץ (erets)",
+        partOfSpeech: "Conjunction + Article + Noun Feminine Singular",
+        grammaticalParsing: "Conj 've' (and) + Art 'ha' (the) + Noun Fem Sing 'erets'",
+        pcStudyBibleMorphology: "ncfsa Pa Pc",
+        literalMeaning: "And the terrestrial planetary realm",
+        rootEtymology: "From an unused root probably meaning to be firm.",
+        lexicalDefinition: "Earth, land, world, ground.",
+        theologicalSignificance: "Moses shifts focus immediately from cosmic scope to our earthly home."
+      },
+      {
+        id: "gen-1-2-2",
+        order: 2,
+        originalText: "הָיְתָ֥ה",
+        transliteration: "hāyətâ",
+        pcStudyBibleTranslit: "haay'taah",
+        pronunciation: "hah-y'TAH",
+        englishGloss: "was",
+        strongsNumber: "H1961",
+        lemma: "הָיָה (hayah)",
+        partOfSpeech: "Verb Qal Perfect 3rd Person Feminine Singular",
+        grammaticalParsing: "Qal Perfect 3fs",
+        pcStudyBibleMorphology: "vqp3fs",
+        literalMeaning: "Existed / was in a condition of",
+        rootEtymology: "Primitive root meaning to exist, be, or become.",
+        lexicalDefinition: "To be, exist, happen, come to pass.",
+        theologicalSignificance: "Describes the dynamic, unfolding readiness of creation."
+      },
+      {
+        id: "gen-1-2-3",
+        order: 3,
+        originalText: "תֹ֙הוּ֙",
+        transliteration: "ṯōhû",
+        pcStudyBibleTranslit: "tohuw",
+        pronunciation: "TOH-hoo",
+        englishGloss: "without form,",
+        strongsNumber: "H8414",
+        lemma: "תֹּהוּ (tohu)",
+        partOfSpeech: "Noun Masculine Singular Absolute",
+        grammaticalParsing: "Noun Masc Sing Absolute",
+        pcStudyBibleMorphology: "ncmsa",
+        literalMeaning: "Formless, raw, uncultivated, desolate",
+        rootEtymology: "From an unused root meaning to lie waste.",
+        lexicalDefinition: "Formlessness, confusion, empty place, waste.",
+        theologicalSignificance: "The embryonic stage of creation awaiting architectural organization."
+      },
+      {
+        id: "gen-1-2-4",
+        order: 4,
+        originalText: "וָבֹ֔הוּ",
+        transliteration: "wāḇōhû",
+        pcStudyBibleTranslit: "waabohuw",
+        pronunciation: "vah-VOH-hoo",
+        englishGloss: "and void;",
+        strongsNumber: "H922",
+        lemma: "בֹּהוּ (bohu)",
+        partOfSpeech: "Conjunction + Noun Masculine Singular",
+        grammaticalParsing: "Conj 'va' + Noun Masc Sing Absolute",
+        pcStudyBibleMorphology: "ncmsa Pc",
+        literalMeaning: "And empty of inhabitants",
+        rootEtymology: "From an unused root meaning to be empty.",
+        lexicalDefinition: "Void, emptiness, vacuity.",
+        theologicalSignificance: "Formed to be inhabited; God first forms spaces, then fills them."
+      },
+      {
+        id: "gen-1-2-5",
+        order: 5,
+        originalText: "וְחֹ֖שֶׁךְ",
+        transliteration: "wəḥōšeḵ",
+        pcStudyBibleTranslit: "w'choshek",
+        pronunciation: "v'KHOH-shekh",
+        englishGloss: "and darkness",
+        strongsNumber: "H2822",
+        lemma: "חֹשֶׁךְ (choshek)",
+        partOfSpeech: "Conjunction + Noun Masculine Singular",
+        grammaticalParsing: "Conj 've' + Noun Masc Sing Absolute",
+        pcStudyBibleMorphology: "ncmsa Pc",
+        literalMeaning: "And obscurity / absence of radiant light",
+        rootEtymology: "From H2821; darkness, obscurity.",
+        lexicalDefinition: "Darkness, night, obscurity.",
+        theologicalSignificance: "The backdrop over which God's first spoken decree bursts forth."
+      },
+      {
+        id: "gen-1-2-6",
+        order: 6,
+        originalText: "עַל־",
+        transliteration: "‘al-",
+        pcStudyBibleTranslit: "'al-",
+        pronunciation: "ahl",
+        englishGloss: "upon",
+        strongsNumber: "H5921",
+        lemma: "עַל (al)",
+        partOfSpeech: "Preposition Prefix",
+        grammaticalParsing: "Preposition with maqqef",
+        pcStudyBibleMorphology: "Pp",
+        literalMeaning: "Upon / over / above",
+        rootEtymology: "From H5927 meaning properly the top.",
+        lexicalDefinition: "Above, over, upon, on.",
+        theologicalSignificance: "Expresses divine positioning and oversight."
+      },
+      {
+        id: "gen-1-2-7",
+        order: 7,
+        originalText: "פְּנֵ֣י",
+        transliteration: "pənê",
+        pcStudyBibleTranslit: "p'neey",
+        pronunciation: "p'NAY",
+        englishGloss: "the face of",
+        strongsNumber: "H6440",
+        lemma: "פָּנִים (panim)",
+        partOfSpeech: "Noun Both-Genders Plural Construct",
+        grammaticalParsing: "Noun Plural Construct",
+        pcStudyBibleMorphology: "ncbpc",
+        literalMeaning: "The surface / presence / forefront of",
+        rootEtymology: "Plural of an unused noun; face.",
+        lexicalDefinition: "Face, surface, presence.",
+        theologicalSignificance: "The physical surface open to the gaze of heaven."
+      },
+      {
+        id: "gen-1-2-8",
+        order: 8,
+        originalText: "תְה֑וֹם",
+        transliteration: "ṯəhôm",
+        pcStudyBibleTranslit: "t'howm",
+        pronunciation: "t'HOHM",
+        englishGloss: "the deep.",
+        strongsNumber: "H8415",
+        lemma: "תְּהוֹם (tehom)",
+        partOfSpeech: "Noun Both-Genders Singular Absolute",
+        grammaticalParsing: "Noun Sing Absolute with athnach pause mark",
+        pcStudyBibleMorphology: "ncbsa",
+        literalMeaning: "The watery primeval abyss",
+        rootEtymology: "From H1949; surging mass of water.",
+        lexicalDefinition: "The deep, abyss, subterranean waters.",
+        theologicalSignificance: "The oceanic realm awaiting the dividing of the waters."
+      },
+      {
+        id: "gen-1-2-9",
+        order: 9,
+        originalText: "וְר֣וּחַ",
+        transliteration: "wərûaḥ",
+        pcStudyBibleTranslit: "w'ruwach",
+        pronunciation: "v'ROO-akh",
+        englishGloss: "And the Spirit of",
+        strongsNumber: "H7307",
+        lemma: "רוּחַ (ruach)",
+        partOfSpeech: "Conjunction + Noun Both-Genders Singular Construct",
+        grammaticalParsing: "Conj 've' + Noun Sing Construct",
+        pcStudyBibleMorphology: "ncbsc Pc",
+        literalMeaning: "And the living Breath / Holy Spirit of",
+        rootEtymology: "From H7306; wind, breath, exhalation, spirit.",
+        lexicalDefinition: "Wind, breath, mind, spirit.",
+        theologicalSignificance: "The personal Third Person of the Trinity actively executing creation."
+      },
+      {
+        id: "gen-1-2-10",
+        order: 10,
+        originalText: "אֱלֹהִ֔ים",
+        transliteration: "’Ělōhīm",
+        pcStudyBibleTranslit: "'Elohiym",
+        pronunciation: "el-oh-HEEM",
+        englishGloss: "God",
+        strongsNumber: "H430",
+        lemma: "אֱלֹהִים (Elohim)",
+        partOfSpeech: "Noun Masculine Plural",
+        grammaticalParsing: "Noun Masc Plural",
+        pcStudyBibleMorphology: "ncmpa",
+        literalMeaning: "The Sovereign Majesty",
+        rootEtymology: "From El/Alah; supreme ruler.",
+        lexicalDefinition: "God, supreme deity.",
+        theologicalSignificance: "Ruach Elohim—the Spirit of God in divine fullness."
+      },
+      {
+        id: "gen-1-2-11",
+        order: 11,
+        originalText: "מְרַחֶ֖פֶת",
+        transliteration: "məraḥep̱eṯ",
+        pcStudyBibleTranslit: "m'rachepet",
+        pronunciation: "m'rah-KHEH-fet",
+        englishGloss: "moved",
+        strongsNumber: "H7363",
+        lemma: "רָחַף (rachaph)",
+        partOfSpeech: "Verb Piel Participle Feminine Singular Absolute",
+        grammaticalParsing: "Piel (intensive) Participle fsa",
+        pcStudyBibleMorphology: "vppfsa",
+        literalMeaning: "Was brooding / hovering tenderly as an eagle over her young",
+        rootEtymology: "Primitive root; to brood, hover, flutter, shake.",
+        lexicalDefinition: "To hover, brood, flutter affectionately.",
+        theologicalSignificance: "The Holy Spirit's tender, protective, life-infusing warmth."
+      },
+      {
+        id: "gen-1-2-12",
+        order: 12,
+        originalText: "עַל־",
+        transliteration: "‘al-",
+        pcStudyBibleTranslit: "'al-",
+        pronunciation: "ahl",
+        englishGloss: "upon",
+        strongsNumber: "H5921",
+        lemma: "עַל (al)",
+        partOfSpeech: "Preposition Prefix",
+        grammaticalParsing: "Preposition with maqqef",
+        pcStudyBibleMorphology: "Pp",
+        literalMeaning: "Upon / over",
+        rootEtymology: "From H5927.",
+        lexicalDefinition: "Upon, above, over.",
+        theologicalSignificance: "Overshadowing with divine glory."
+      },
+      {
+        id: "gen-1-2-13",
+        order: 13,
+        originalText: "פְּנֵ֥י",
+        transliteration: "pənê",
+        pcStudyBibleTranslit: "p'neey",
+        pronunciation: "p'NAY",
+        englishGloss: "the face of",
+        strongsNumber: "H6440",
+        lemma: "פָּנִים (panim)",
+        partOfSpeech: "Noun Both-Genders Plural Construct",
+        grammaticalParsing: "Noun Plural Construct",
+        pcStudyBibleMorphology: "ncbpc",
+        literalMeaning: "The surface / presence of",
+        rootEtymology: "Face, surface.",
+        lexicalDefinition: "Face, countenance, surface.",
+        theologicalSignificance: "Meeting the earthly sphere directly."
+      },
+      {
+        id: "gen-1-2-14",
+        order: 14,
+        originalText: "הַמָּֽיִם׃",
+        transliteration: "hammāyim",
+        pcStudyBibleTranslit: "hammaayim",
+        pronunciation: "hah-MAH-yim",
+        englishGloss: "the waters.",
+        strongsNumber: "H4325",
+        lemma: "מַיִם (mayim)",
+        partOfSpeech: "Article + Noun Masculine Plural",
+        grammaticalParsing: "Art 'ha' + Noun Masc Plural with sof pasuq",
+        pcStudyBibleMorphology: "ncmpa Pa",
+        literalMeaning: "The primeval waters / oceans",
+        rootEtymology: "Dual of a primitive noun; water.",
+        lexicalDefinition: "Waters, ocean, springs.",
+        theologicalSignificance: "Living waters awaiting the command to bring forth living creatures."
       }
     ]
   },

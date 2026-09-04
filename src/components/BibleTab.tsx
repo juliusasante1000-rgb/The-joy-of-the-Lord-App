@@ -32,10 +32,15 @@ import {
   MessageSquare,
   Zap,
   Info,
-  Languages
+  Languages,
+  Download,
+  CloudOff,
+  Printer,
+  CheckCircle,
+  Image as ImageIcon
 } from "lucide-react";
 import { BIBLE_BOOKS_CATALOG } from "../data/bibleData";
-import { BibleBook, BibleVerse, BibleVersionCode } from "../types";
+import { BibleBook, BibleVerse, BibleVersionCode, CreatorProfile, Devotion } from "../types";
 import {
   BIBLE_VERSIONS,
   getTranslatedVerseText,
@@ -47,8 +52,12 @@ import {
   getCommentaryForVerse,
   getChapterCommentary
 } from "../data/bibleCommentaryData";
+import { downloadBibleVersePicture } from "../utils/sanctuaryPictureExporter";
+import { printBibleVerseDocument } from "../utils/devotionDocumentExporter";
+import { getOfflineBibleStats, preloadAllBooksOffline } from "../utils/offlineBibleManager";
 import { BibleCommentaryModal } from "./BibleCommentaryModal";
 import { BibleInterlinearModal } from "./BibleInterlinearModal";
+import { DevotionPictureModal } from "./DevotionPictureModal";
 import { AiFastLoadingView } from "./AiFastLoadingView";
 
 interface BibleTabProps {
@@ -62,6 +71,7 @@ interface BibleTabProps {
   targetVerse?: number;
   onExploreMathemaSermon?: (reference?: string) => void;
   onExploreApostleMath?: (reference?: string) => void;
+  creatorProfile?: CreatorProfile;
 }
 
 type ReaderTheme = "parchment" | "light" | "night";
@@ -84,7 +94,8 @@ export const BibleTab: React.FC<BibleTabProps> = ({
   targetChapter,
   targetVerse,
   onExploreMathemaSermon,
-  onExploreApostleMath
+  onExploreApostleMath,
+  creatorProfile
 }) => {
   // Version Selection State
   const [selectedVersion, setSelectedVersion] = useState<BibleVersionCode>("KJV");
@@ -94,6 +105,66 @@ export const BibleTab: React.FC<BibleTabProps> = ({
     verse: number;
     baseText: string;
   } | null>(null);
+  const [pictureDevotion, setPictureDevotion] = useState<Devotion | null>(null);
+
+  const convertVerseToDevotion = (verseData: {
+    book: string;
+    chapter: number;
+    verse: number;
+    text: string;
+    version: string;
+    testament: string;
+    group?: string;
+  }): Devotion => {
+    return {
+      id: `bible-${verseData.book}-${verseData.chapter}-${verseData.verse}`,
+      edition: "morning",
+      editionLabel: `HOLY SCRIPTURE • ${verseData.testament.toUpperCase()} TESTAMENT (${verseData.version})`,
+      title: `${verseData.book} ${verseData.chapter}:${verseData.verse}`,
+      keyScripture: `${verseData.book} ${verseData.chapter}:${verseData.verse} (${verseData.version})`,
+      passageText: `"${verseData.text}"`,
+      reflection: `Scripture declares: "${verseData.text}"\n\nThis inspired Word of the Lord in ${verseData.book} Chapter ${verseData.chapter} stands eternal in the heavens. As disciples of Jesus Christ, we anchor our faith upon this divine foundation, meditating upon its truth day and night.`,
+      practicalApplication: `Walk in the light of ${verseData.book} ${verseData.chapter}:${verseData.verse} today. Let this scripture guide your thoughts, actions, and speech.`,
+      guidedPrayer: `Heavenly Father, sanctify my heart through Your truth; Your Word is truth. Plant ${verseData.book} ${verseData.chapter}:${verseData.verse} deep within my soul. May it bear fruit of righteousness and peace, through Jesus Christ our Lord. Amen.`,
+      actionStep: `Memorize and declare ${verseData.book} ${verseData.chapter}:${verseData.verse} three times today.`,
+      theme: `${verseData.book} Scripture Sanctuary`,
+      category: "Holy Scripture",
+      readTimeMinutes: 2
+    };
+  };
+
+  // Offline Bible Status State
+  const [offlineStats, setOfflineStats] = useState<{
+    total: number;
+    cached: number;
+    isReady: boolean;
+    cachedBookNames: string[];
+  }>({ total: 66, cached: 0, isReady: false, cachedBookNames: [] });
+  const [isDownloadingOffline, setIsDownloadingOffline] = useState(false);
+  const [offlineProgressText, setOfflineProgressText] = useState("");
+  const [showOfflineModal, setShowOfflineModal] = useState(false);
+
+  useEffect(() => {
+    getOfflineBibleStats().then(setOfflineStats).catch(() => {});
+  }, []);
+
+  const handleDownloadEntireBibleOffline = async () => {
+    setIsDownloadingOffline(true);
+    setShowOfflineModal(true);
+    try {
+      await preloadAllBooksOffline((cached, total, currentBook) => {
+        setOfflineProgressText(`Caching ${currentBook}... (${cached}/${total} books ready)`);
+        setOfflineStats((prev) => ({ ...prev, cached, isReady: cached >= total }));
+      });
+      const stats = await getOfflineBibleStats();
+      setOfflineStats(stats);
+      setOfflineProgressText("All 66 Books of the Holy Bible are cached and ready for 100% offline rendering!");
+    } catch (err) {
+      setOfflineProgressText("Offline download encountered an issue, but cached books remain available.");
+    } finally {
+      setIsDownloadingOffline(false);
+    }
+  };
 
   // Navigation State
   const [selectedTestament, setSelectedTestament] = useState<"All" | "Old Testament" | "New Testament">("All");
@@ -499,6 +570,27 @@ export const BibleTab: React.FC<BibleTabProps> = ({
           </div>
 
           <div className="flex items-center gap-2">
+            {/* Offline Bible Status & Downloader */}
+            <button
+              onClick={() => setShowOfflineModal(true)}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-colors shadow-xs cursor-pointer ${
+                offlineStats.isReady
+                  ? "bg-emerald-600/30 text-emerald-300 border border-emerald-500/40 hover:bg-emerald-600/40"
+                  : "bg-white/10 hover:bg-white/20 text-[#DCC398] border border-white/10"
+              }`}
+              title="Manage Offline Bible (all 66 books available without internet)"
+            >
+              <CloudOff className="w-3.5 h-3.5 text-[#DCC398]" />
+              <span className="hidden sm:inline">
+                {offlineStats.isReady
+                  ? "Offline Ready (66/66)"
+                  : `Offline Bible (${offlineStats.cached}/66)`}
+              </span>
+              <span className="sm:hidden">
+                {offlineStats.isReady ? "Offline" : `${offlineStats.cached}/66`}
+              </span>
+            </button>
+
             <button
               onClick={handleReadChapterAloud}
               className="px-3 py-1.5 rounded-xl bg-[#B48C35] hover:bg-[#996515] text-white text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-colors shadow-xs cursor-pointer"
@@ -1179,6 +1271,28 @@ export const BibleTab: React.FC<BibleTabProps> = ({
                         <Volume2 className="w-3.5 h-3.5" />
                         <span>Audio</span>
                       </button>
+
+                      {/* Download Verse Picture */}
+                      <button
+                        onClick={() =>
+                          setPictureDevotion(
+                            convertVerseToDevotion({
+                              book: currentBook.name,
+                              chapter: selectedChapter,
+                              verse: v.verse,
+                              text: renderedVerseText,
+                              version: selectedVersion,
+                              testament: currentBook.testament,
+                              group: currentBook.group
+                            })
+                          )
+                        }
+                        className="px-2 py-1 rounded-lg bg-[#B48C35]/15 hover:bg-[#B48C35]/25 text-[#926F28] dark:text-[#DCC398] font-bold flex items-center gap-1 text-[11px] cursor-pointer"
+                        title="Download Publication-Grade Picture (Parchment & Gold Pattern)"
+                      >
+                        <ImageIcon className="w-3.5 h-3.5" />
+                        <span>Picture</span>
+                      </button>
                     </div>
                   </div>
                 );
@@ -1347,6 +1461,65 @@ export const BibleTab: React.FC<BibleTabProps> = ({
                 </p>
               </div>
 
+              {/* Publication-Grade Document Downloads Bar */}
+              <div className="p-3.5 rounded-xl bg-gradient-to-r from-[#B48C35]/20 via-[#B48C35]/10 to-transparent border border-[#B48C35]/40 flex flex-wrap items-center justify-between gap-3">
+                <div className="space-y-0.5">
+                  <div className="flex items-center gap-1.5 font-serif font-bold text-[#16235A] dark:text-[#DCC398] text-xs">
+                    <ImageIcon className="w-4 h-4 text-[#B48C35]" />
+                    <span>Download Verse Picture (PNG)</span>
+                  </div>
+                  <p className="text-[11px] text-slate-600 dark:text-slate-300">
+                    Publication-grade sacred art picture with verse text, double gold frame, sanctuary logo & author subscription.
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() =>
+                      downloadBibleVersePicture(
+                        {
+                          book: activeVerseMenu.book,
+                          chapter: activeVerseMenu.chapter,
+                          verse: activeVerseMenu.verse,
+                          text: activeVerseMenu.text,
+                          version: selectedVersion,
+                          testament: currentBook?.testament,
+                          group: currentBook?.group,
+                          reflection: aiModalContent || undefined
+                        },
+                        creatorProfile
+                      )
+                    }
+                    className="px-3 py-1.5 rounded-lg bg-[#B48C35] hover:bg-[#996515] text-white font-bold text-xs flex items-center gap-1.5 shadow-xs cursor-pointer"
+                    title="Download Publication-Grade Picture (PNG)"
+                  >
+                    <ImageIcon className="w-3.5 h-3.5" />
+                    <span>Download Picture</span>
+                  </button>
+                  <button
+                    onClick={() =>
+                      printBibleVerseDocument(
+                        {
+                          book: activeVerseMenu.book,
+                          chapter: activeVerseMenu.chapter,
+                          verse: activeVerseMenu.verse,
+                          text: activeVerseMenu.text,
+                          version: selectedVersion,
+                          testament: currentBook?.testament,
+                          group: currentBook?.group,
+                          reflection: aiModalContent || undefined
+                        },
+                        creatorProfile
+                      )
+                    }
+                    className="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 border border-[#B48C35]/40 hover:bg-slate-100 text-[#16235A] dark:text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer"
+                    title="Print or Save PDF"
+                  >
+                    <Printer className="w-3.5 h-3.5 text-[#B48C35]" />
+                    <span>Print / PDF</span>
+                  </button>
+                </div>
+              </div>
+
               {/* Action Buttons Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 <button
@@ -1506,6 +1679,28 @@ export const BibleTab: React.FC<BibleTabProps> = ({
                       >
                         <Share2 className="w-3.5 h-3.5" /> Share
                       </button>
+
+                      <button
+                        onClick={() =>
+                          downloadBibleVersePicture(
+                            {
+                              book: activeVerseMenu.book,
+                              chapter: activeVerseMenu.chapter,
+                              verse: activeVerseMenu.verse,
+                              text: activeVerseMenu.text,
+                              version: selectedVersion,
+                              testament: currentBook?.testament,
+                              group: currentBook?.group,
+                              reflection: `[${aiModalAction}]\n\n${aiModalContent}`
+                            },
+                            creatorProfile
+                          )
+                        }
+                        className="text-xs text-amber-300 hover:text-white flex items-center gap-1 cursor-pointer font-bold"
+                        title="Download Picture with this AI Exposition"
+                      >
+                        <ImageIcon className="w-3.5 h-3.5" /> Picture (PNG)
+                      </button>
                     </div>
                   </div>
                   <p className="text-xs sm:text-sm text-slate-100 whitespace-pre-line leading-relaxed font-serif">
@@ -1516,7 +1711,29 @@ export const BibleTab: React.FC<BibleTabProps> = ({
             </div>
 
             {/* Modal Footer */}
-            <div className="p-3 bg-slate-50 border-t border-slate-200 flex justify-end">
+            <div className="p-3 bg-slate-50 border-t border-slate-200 flex items-center justify-between">
+              <button
+                onClick={() =>
+                  downloadBibleVersePicture(
+                    {
+                      book: activeVerseMenu.book,
+                      chapter: activeVerseMenu.chapter,
+                      verse: activeVerseMenu.verse,
+                      text: activeVerseMenu.text,
+                      version: selectedVersion,
+                      testament: currentBook?.testament,
+                      group: currentBook?.group,
+                      reflection: aiModalContent || undefined
+                    },
+                    creatorProfile
+                  )
+                }
+                className="px-3 py-1.5 rounded-xl bg-[#B48C35] hover:bg-[#996515] text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer shadow-xs"
+              >
+                <ImageIcon className="w-3.5 h-3.5" />
+                <span>Download Verse Picture (PNG)</span>
+              </button>
+
               <button
                 onClick={() => {
                   setActiveVerseMenu(null);
@@ -1602,6 +1819,122 @@ export const BibleTab: React.FC<BibleTabProps> = ({
           }}
         />
       )}
+
+      {/* ======================================================== */}
+      {/* 8. OFFLINE BIBLE CACHE & RENDERING MANAGER MODAL         */}
+      {/* ======================================================== */}
+      {showOfflineModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in">
+          <div className="bg-white dark:bg-slate-900 w-full max-w-lg rounded-2xl shadow-2xl border-2 border-[#B48C35] overflow-hidden flex flex-col animate-in zoom-in-95">
+            {/* Modal Header */}
+            <div className="p-4 sm:p-5 bg-[#16235A] text-white flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <div className="p-2 rounded-xl bg-[#B48C35]/30 text-[#DCC398] border border-[#B48C35]/50">
+                  <CloudOff className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-serif font-bold text-base sm:text-lg text-white">
+                    Offline Bible Sanctuary
+                  </h3>
+                  <p className="text-xs text-[#DCC398] font-mono">
+                    All 66 Books • Zero Internet Required
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowOfflineModal(false)}
+                className="p-1 rounded-lg text-slate-300 hover:text-white"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Modal Body */}
+            <div className="p-5 sm:p-6 space-y-4 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+              <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-900 dark:text-amber-200 space-y-1.5">
+                <div className="flex items-center gap-1.5 font-bold text-xs uppercase tracking-wider text-[#B48C35]">
+                  <CheckCircle className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                  <span>Permanent Device Storage (IndexedDB + PWA Cache)</span>
+                </div>
+                <p className="text-xs leading-relaxed">
+                  Every chapter and verse of the Holy Scriptures is rendered directly from your device's local database. Once cached, you can read anywhere—even on remote flights, retreats, or without cellular data.
+                </p>
+              </div>
+
+              {/* Progress Card */}
+              <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-2">
+                <div className="flex items-center justify-between text-xs font-mono font-bold">
+                  <span className="text-slate-600 dark:text-slate-400">Offline Caching Status:</span>
+                  <span className="text-[#B48C35]">
+                    {offlineStats.cached} / {offlineStats.total} Books ({Math.round((offlineStats.cached / Math.max(1, offlineStats.total)) * 100)}%)
+                  </span>
+                </div>
+
+                <div className="w-full bg-slate-200 dark:bg-slate-700 h-3 rounded-full overflow-hidden">
+                  <div
+                    className="bg-[#B48C35] h-full transition-all duration-300 rounded-full"
+                    style={{
+                      width: `${Math.round((offlineStats.cached / Math.max(1, offlineStats.total)) * 100)}%`
+                    }}
+                  />
+                </div>
+
+                {offlineProgressText && (
+                  <p className="text-[11px] font-mono text-[#B48C35] pt-1 animate-pulse">
+                    {offlineProgressText}
+                  </p>
+                )}
+              </div>
+
+              <div className="text-xs text-slate-500 dark:text-slate-400 space-y-1">
+                <p>
+                  ✦ <strong>Instant Auto-Caching:</strong> Books automatically save locally as you navigate through chapters.
+                </p>
+                <p>
+                  ✦ <strong>Full 66-Book Download:</strong> Click below to pre-cache every single Old & New Testament book in one tap.
+                </p>
+              </div>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="p-4 bg-slate-100 dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 flex flex-wrap items-center justify-between gap-2">
+              <button
+                onClick={handleDownloadEntireBibleOffline}
+                disabled={isDownloadingOffline}
+                className={`px-4 py-2 rounded-xl text-white font-bold text-xs flex items-center gap-1.5 shadow-sm transition-colors cursor-pointer ${
+                  isDownloadingOffline
+                    ? "bg-slate-400 cursor-not-allowed"
+                    : "bg-[#B48C35] hover:bg-[#996515]"
+                }`}
+              >
+                <Download className="w-4 h-4" />
+                <span>
+                  {isDownloadingOffline
+                    ? "Downloading All 66 Books..."
+                    : offlineStats.isReady
+                    ? "Re-verify / Update All 66 Books"
+                    : "Download Entire Bible Offline (66 Books)"}
+                </span>
+              </button>
+
+              <button
+                onClick={() => setShowOfflineModal(false)}
+                className="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-200 font-semibold text-xs cursor-pointer"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Devotion / Scripture Picture Studio Modal (Exact Parchment & Gold Style) */}
+      <DevotionPictureModal
+        devotion={pictureDevotion}
+        isOpen={Boolean(pictureDevotion)}
+        onClose={() => setPictureDevotion(null)}
+        activeProfile={creatorProfile}
+      />
     </div>
   );
 };

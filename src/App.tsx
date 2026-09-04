@@ -407,6 +407,7 @@ export function App() {
               targetVerse={targetBibleVerse}
               onExploreMathemaSermon={() => setActiveTab("mathema_sermons")}
               onExploreApostleMath={() => setActiveTab("apostle_math")}
+              creatorProfile={creatorProfile}
             />
           )}
 
@@ -546,6 +547,7 @@ export function App() {
               onToggleBookmark={toggleBookmark}
               onShareItem={handleOpenShare}
               onToggleSpeak={speakText}
+              creatorProfile={creatorProfile}
             />
           )}
         </main>

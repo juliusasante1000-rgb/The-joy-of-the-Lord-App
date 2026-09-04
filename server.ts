@@ -261,15 +261,16 @@ export function formatGeminiErrorMessage(err: any): string {
 
 /**
  * User Quality Rules for AI Output:
- * a. You must write based ONLY on the context provided below. Do not give a generic Christian message.
- * b. Vary your tone and starting words each time. Do not start with "In our Christian walk" every time.
- * c. Be warm, clear, and specific to the TOPIC.
+ * 1. Concurrence with the exact scripture/theme: Ground the response uniquely in the precise vocabulary, Hebrew/Greek roots, metaphors, and narrative world of the specific scripture or theme provided. Avoid generic Christian messages.
+ * 2. High Variation & Uniqueness: Never repeat structural patterns, outlines, or opening clichés across outputs. Start each generation with fresh, distinct phrasing (e.g. an arresting historical fact, a linguistic discovery, a vivid narrative setting, or a piercing spiritual contrast).
+ * 3. Never open with clichéd expressions like "In our Christian walk", "As Christians", "In our daily walk", "In this passage", or "Today we explore".
+ * 4. Distinct Voice: Tailor the tone dynamically to the text—prophetic for Isaiah, liturgical for Psalms, forensic for Romans, intimate for John, wisdom-focused for Proverbs.
  */
 export const AI_OUTPUT_IMPROVEMENT_RULES = `
-Rules:
-a. You must write based ONLY on the context provided below. Do not give a generic Christian message.
-b. Vary your tone and starting words each time. Do not start with "In our Christian walk" every time. Never open with clichéd expressions like "In our Christian walk", "As Christians", or "In our daily walk".
-c. Be warm, clear, and specific to the TOPIC.`;
+Rules for Uniqueness and Concurrence:
+a. CONCURRENCE WITH SCRIPTURE: Anchor your output intimately in the SPECIFIC scripture, verse vocabulary, historical context, and exact theme provided. Draw out the unique metaphors, Hebrew/Greek roots, and spiritual dynamics native to this exact text. Never produce generic Christian filler or interchangeable advice.
+b. FRESHNESS & VARIETY: Make every generation distinctly unique. Radically vary your opening hook, sentence cadence, and structure. Never open with clichéd expressions like "In our Christian walk", "As Christians", "In our daily walk", "In this passage", or "Today we examine". Open directly with an arresting biblical insight, historical moment, or linguistic revelation.
+c. RICH HOMILETIC DEPTH: Tailor your voice to match the character of the scripture—exultant for praise, reverent for holiness, strategic for warfare, pastoral for affliction. Ensure every point is fresh, concrete, and deeply impactful.`;
 
 export const ANTI_LOOP_DIRECTIVE = `Provide deep, unique, and illuminating theological, historical, and practical insight. Never repeat phrases or loop. Be precise, profound, and substantive. Do not use generic filler.
 ${AI_OUTPUT_IMPROVEMENT_RULES}`;
@@ -399,8 +400,8 @@ async function generateWithGeminiCascade(options: {
     : CHRISTIAN_SYSTEM_INSTRUCTION;
   const sysPreview = sysPrompt.substring(0, 60);
 
-  const temperature = options.temperature ?? 0.45;
-  const topP = options.topP ?? 0.90;
+  const temperature = options.temperature ?? 0.82;
+  const topP = options.topP ?? 0.95;
   const maxOutputTokens = options.maxOutputTokens ?? 2048;
 
   console.log(`[GEMINI REQUEST] 🚀 [Temp: ${temperature}, TopP: ${topP}, MaxTokens: ${maxOutputTokens}] Prompt: "${promptPreview}" | Sys: "${sysPreview}..."`);
@@ -1605,8 +1606,8 @@ const handleUnifiedAiGenerate = async (req: any, res: any) => {
       finalPrompt = `User question: "${question}". Category: ${category || "Christian Orthodoxy"}.\nContext: "${question}"\n${AI_OUTPUT_IMPROVEMENT_RULES}\nProvide a biblically sound, orthodox response citing scripture.`;
     }
 
-    const temp = generationConfig?.temperature ?? 0.45;
-    const topP = generationConfig?.topP ?? 0.90;
+    const temp = generationConfig?.temperature ?? 0.82;
+    const topP = generationConfig?.topP ?? 0.95;
     const maxTokens = generationConfig?.maxOutputTokens ?? 2048;
 
     const result = await generateWithGeminiCascade({
@@ -1759,8 +1760,8 @@ Format as JSON with keys:
       responseMimeType = "application/json";
     }
 
-    const temp = generationConfig?.temperature ?? (fastMode ? 0.3 : 0.45);
-    const topP = generationConfig?.topP ?? 0.85;
+    const temp = generationConfig?.temperature ?? (fastMode ? 0.72 : 0.82);
+    const topP = generationConfig?.topP ?? 0.95;
     const maxTokens = generationConfig?.maxOutputTokens ?? (fastMode ? 600 : 2048);
 
     // Check server cache first for instant delivery
@@ -2153,7 +2154,8 @@ Format your response as a valid JSON object matching this schema:
           ? SYSTEM_PROMPT_PRAYER 
           : SYSTEM_PROMPT_DEVOTION,
       responseMimeType: "application/json",
-      temperature: 0.45,
+      temperature: 0.82,
+      topP: 0.95,
     });
 
     if (result && result.text) {

@@ -24,25 +24,32 @@ import {
   ChevronDown,
   BookMarked,
   SlidersHorizontal,
-  Compass
+  Compass,
+  Download,
+  Printer,
+  Image as ImageIcon
 } from "lucide-react";
 import { CHURCH_TENETS, DOCTRINE_CATEGORIES, DOCTRINE_ARTICLES } from "../data/doctrinalData";
 import { SYSTEMATIC_TOPICS_500_CATALOG, ALL_SYSTEMATIC_CATEGORIES } from "../data/systematicTopicsFullCatalog";
-import { DoctrineCategory, DoctrineArticle, ChurchTenet, SystematicTopicItem } from "../types";
+import { DoctrineCategory, DoctrineArticle, ChurchTenet, SystematicTopicItem, CreatorProfile, Devotion } from "../types";
 import { fetchAiWithRetry, getCachedAiHistory } from "../utils/aiClient";
+import { downloadSystematicTopicPicture } from "../utils/sanctuaryPictureExporter";
+import { DevotionPictureModal } from "./DevotionPictureModal";
 
 interface DoctrinesTabProps {
   isBookmarked: (targetId: string, type?: string) => boolean;
   onToggleBookmark: (item: any) => void;
   onShareItem: (title: string, text: string, reference?: string, subtext?: string) => void;
   onToggleSpeak: (text: string) => void;
+  creatorProfile?: CreatorProfile;
 }
 
 export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
   isBookmarked,
   onToggleBookmark,
   onShareItem,
-  onToggleSpeak
+  onToggleSpeak,
+  creatorProfile
 }) => {
   const [activeViewMode, setActiveViewMode] = useState<"tenets" | "systematic500" | "pillars" | "askAi">("systematic500");
   const [searchQuery, setSearchQuery] = useState("");
@@ -54,7 +61,34 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
   const [expandedTenetId, setExpandedTenetId] = useState<string | null>(null);
   const [expandedTopicId, setExpandedTopicId] = useState<string | null>(null);
   const [topicPage, setTopicPage] = useState<number>(1);
+  const [pictureDevotion, setPictureDevotion] = useState<Devotion | null>(null);
   const TOPICS_PER_PAGE = 40;
+
+  const convertTopicToDevotion = (topic: SystematicTopicItem): Devotion => {
+    const scripturesList = topic.anchorScriptures.map((s) => s.reference).join("; ");
+    const scriptureQuotes = topic.anchorScriptures
+      .map((s) => (s.text ? `"${s.text}" (${s.reference})` : s.reference))
+      .join("\n\n");
+    const insightsList = topic.keyInsights && topic.keyInsights.length > 0
+      ? `\n\nKey Insights:\n${topic.keyInsights.map((k) => `• ${k}`).join("\n")}`
+      : "";
+
+    return {
+      id: `topic-${topic.topicNumber}`,
+      edition: "morning",
+      editionLabel: `SYSTEMATIC THEOLOGY • ${topic.category.toUpperCase()}`,
+      title: `Topic ${topic.topicNumber}: ${topic.title}`,
+      keyScripture: scripturesList,
+      passageText: scriptureQuotes || topic.title,
+      reflection: `${topic.theologicalSummary}${insightsList}\n\nApostolic Significance:\n${topic.practicalApplication || "Sound doctrine anchors the believer in spiritual maturity and fruitfulness."}`,
+      practicalApplication: topic.practicalApplication || `Apply ${topic.title} in daily discipleship.`,
+      guidedPrayer: `Lord God of All Truth, establish my soul in this sound doctrine. Grant me wisdom and spiritual discernment to walk uprightly in Your Word. Let ${topic.title} bear fruit of righteousness in my life, through Jesus Christ our Lord. Amen.`,
+      actionStep: `Meditate upon ${topic.anchorScriptures[0]?.reference || "Scripture"} and apply the truth of ${topic.title} to your daily Christian walk.`,
+      theme: topic.category,
+      category: "Systematic Theology",
+      readTimeMinutes: 3
+    };
+  };
 
   // AI Q&A Assistant state
   const [aiQuestion, setAiQuestion] = useState("");
@@ -142,6 +176,52 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
     const start = (topicPage - 1) * TOPICS_PER_PAGE;
     return filtered500Topics.slice(0, start + TOPICS_PER_PAGE);
   }, [filtered500Topics, topicPage]);
+
+  // Helper to retrieve or synthesize the deep study catalog message article for any systematic topic
+  const getArticleForTopic = (topic: SystematicTopicItem): DoctrineArticle => {
+    if (topic.deepStudyArticle) return topic.deepStudyArticle;
+    const match = DOCTRINE_ARTICLES.find(
+      (a) =>
+        a.title.toLowerCase().includes(topic.title.toLowerCase()) ||
+        topic.title.toLowerCase().includes(a.title.toLowerCase()) ||
+        a.categoryId.toLowerCase().includes(topic.category.toLowerCase().split(" ")[0])
+    );
+    if (match) return match;
+
+    return {
+      id: `topic-catalog-message-${topic.id}`,
+      categoryId: topic.category,
+      categoryTitle: `${topic.division} • Topic #${topic.topicNumber}`,
+      title: topic.title,
+      subtitle: `Biblical Exegesis and Systematic Confession of Topic #${topic.topicNumber}`,
+      theologicalOverview: topic.theologicalSummary,
+      keyScriptures: topic.anchorScriptures.map((s) => ({
+        ref: s.reference,
+        text: s.text || "",
+        context: `Anchor Scriptural foundation for ${topic.title}`
+      })),
+      doctrinalPillars: (topic.keyInsights || [
+        "Biblical Foundation: Anchored in the infallible inspiration of Holy Scripture.",
+        "Redemptive Reality: Centered on the Gospel of Jesus Christ and His Kingdom.",
+        "Living Walk: Walk in faith, holiness, and the overcoming joy of the Lord."
+      ]).map((ins, i) => {
+        const parts = ins.split(":");
+        return {
+          title: parts.length > 1 ? parts[0].trim() : `Doctrinal Pillar ${i + 1}`,
+          explanation: parts.length > 1 ? parts.slice(1).join(":").trim() : ins,
+          scripture: topic.anchorScriptures[i % topic.anchorScriptures.length]?.reference || "Nehemiah 8:10"
+        };
+      }),
+      practicalApplication: [
+        topic.practicalApplication ||
+          `Apply the living truth of "${topic.title}" in daily discipleship, personal prayer, and loving service to the body of Christ.`,
+        "Walk in steadfast obedience to the Holy Spirit, allowing Scripture to shape your worldview.",
+        "Confess God's promises daily: 'The joy of the Lord is my strength' (Nehemiah 8:10)."
+      ],
+      historicalAndConfessionalBasis: `Affirmed across classical apostolic doctrine, orthodox Christian creeds, and biblical systematic theology concerning ${topic.title}.`,
+      guidedReflection: `Lord God Almighty, thank You for the truth of ${topic.title}. Write this sacred doctrine upon my heart, grant me spiritual illumination, and lead me in paths of righteousness for Your Name's sake. Amen.`
+    };
+  };
 
   // Filter categories and articles
   const filteredCategories = useMemo(() => {
@@ -505,6 +585,14 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
                         >
                           <Share2 className="w-3.5 h-3.5 text-[#B48C35]" />
                         </button>
+
+                        <button
+                          onClick={() => setPictureDevotion(convertTopicToDevotion(topic))}
+                          className="p-1.5 rounded text-slate-400 hover:text-[#B48C35] hover:bg-[#FDFBF7] cursor-pointer"
+                          title="Download Publication-Grade Picture (Parchment & Gold Pattern)"
+                        >
+                          <ImageIcon className="w-3.5 h-3.5 text-[#B48C35]" />
+                        </button>
                       </div>
                     </div>
 
@@ -593,6 +681,27 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
                     </button>
 
                     <div className="flex items-center gap-1.5">
+                      <button
+                        onClick={() => downloadSystematicTopicPicture(topic, creatorProfile)}
+                        className="py-1 px-2.5 rounded bg-[#FAF7F2] hover:bg-[#B48C35] text-[#0F172A] hover:text-white border border-[#E5D5BC] text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 transition-colors cursor-pointer"
+                        title="Download Publication-Grade Picture (PNG) with Logo & Subscription"
+                      >
+                        <ImageIcon className="w-3 h-3 text-[#B48C35]" />
+                        <span>Picture (PNG)</span>
+                      </button>
+
+                      <button
+                        onClick={() => {
+                          const art = getArticleForTopic(topic);
+                          setActiveArticleModal(art);
+                        }}
+                        className="py-1 px-2.5 rounded bg-[#FAF7F2] hover:bg-[#0F172A] text-[#0F172A] hover:text-white border border-[#E5D5BC] text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 transition-colors cursor-pointer"
+                        title="Read Deep Study Catalog Message"
+                      >
+                        <BookOpen className="w-3 h-3 text-[#B48C35]" />
+                        <span>Catalog Message</span>
+                      </button>
+
                       <button
                         onClick={() => {
                           setAiQuestion(`Explain the biblical doctrine of "${topic.title}" (${topic.anchorScriptures.map(s => s.reference).join(', ')}) according to orthodox Christian theology.`);
@@ -1168,30 +1277,82 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
                   </p>
                 </div>
               )}
+
+              {/* Deep Study Catalog Message Option */}
+              <div className="p-4 rounded-lg bg-gradient-to-r from-[#F1E6D2] via-[#FAF7F2] to-white border border-[#DCC398] flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
+                <div className="space-y-1">
+                  <div className="flex items-center gap-1.5">
+                    <BookOpen className="w-4 h-4 text-[#B48C35]" />
+                    <span className="text-[11px] font-bold uppercase tracking-widest text-[#B48C35]">
+                      Deep Study Catalog Message & Exposition
+                    </span>
+                  </div>
+                  <p className="text-xs text-[#0F172A] font-serif leading-relaxed">
+                    Read the comprehensive systematic theology discourse, historical and confessional basis, and guided apostolic reflection for this topic.
+                  </p>
+                </div>
+                <button
+                  onClick={() => {
+                    const art = getArticleForTopic(activeTopicModal);
+                    setActiveTopicModal(null);
+                    setActiveArticleModal(art);
+                  }}
+                  className="py-2 px-3.5 rounded bg-[#0F172A] hover:bg-[#B48C35] text-white text-xs font-bold uppercase tracking-widest flex items-center gap-1.5 transition-colors shrink-0 cursor-pointer shadow-xs"
+                >
+                  <BookOpen className="w-3.5 h-3.5 text-[#DCC398]" />
+                  <span>Read Catalog Message</span>
+                </button>
+              </div>
             </div>
 
             {/* Modal Footer */}
-            <div className="p-4 border-t border-[#E5D5BC] flex justify-between items-center bg-white">
-              <button
-                onClick={() => {
-                  const topic = activeTopicModal;
-                  setActiveTopicModal(null);
-                  setAiQuestion(`Provide a detailed theological exposition of "${topic.title}" (${topic.anchorScriptures.map(s => s.reference).join(', ')}) with historic Christian context and practical life application.`);
-                  setActiveViewMode("askAi");
-                  handleAskDoctrinalAi(undefined, `Provide a detailed theological exposition of "${topic.title}" (${topic.anchorScriptures.map(s => s.reference).join(', ')}) with historic Christian context and practical life application.`);
-                }}
-                className="py-2 px-4 rounded bg-[#0F172A] hover:bg-[#B48C35] text-white font-bold uppercase tracking-widest text-xs transition-colors flex items-center gap-1.5"
-              >
-                <Sparkles className="w-3.5 h-3.5 text-[#DCC398]" />
-                <span>Ask AI Scholar</span>
-              </button>
+            <div className="p-4 border-t border-[#E5D5BC] flex flex-wrap justify-between items-center bg-white gap-2">
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => downloadSystematicTopicPicture(activeTopicModal, creatorProfile)}
+                  className="py-2 px-3.5 rounded bg-[#FAF7F2] hover:bg-[#B48C35] text-[#0F172A] hover:text-white border border-[#E5D5BC] font-bold uppercase tracking-widest text-xs transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs"
+                  title="Download Publication-Grade Picture (PNG) with Logo & Subscription"
+                >
+                  <ImageIcon className="w-3.5 h-3.5 text-[#B48C35]" />
+                  <span>Download Picture (PNG)</span>
+                </button>
 
-              <button
-                onClick={() => setActiveTopicModal(null)}
-                className="py-2 px-6 rounded bg-[#B48C35] hover:bg-[#967226] text-white font-bold uppercase tracking-widest text-xs transition-colors"
-              >
-                Done Reading
-              </button>
+                <button
+                  onClick={() => {
+                    const art = getArticleForTopic(activeTopicModal);
+                    setActiveTopicModal(null);
+                    setActiveArticleModal(art);
+                  }}
+                  className="py-2 px-3 rounded bg-[#0F172A] hover:bg-[#B48C35] text-white font-bold uppercase tracking-widest text-xs transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs"
+                  title="Read Deep Study Catalog Message"
+                >
+                  <BookOpen className="w-3.5 h-3.5 text-[#DCC398]" />
+                  <span>Catalog Message</span>
+                </button>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => {
+                    const topic = activeTopicModal;
+                    setActiveTopicModal(null);
+                    setAiQuestion(`Provide a detailed theological exposition of "${topic.title}" (${topic.anchorScriptures.map(s => s.reference).join(', ')}) with historic Christian context and practical life application.`);
+                    setActiveViewMode("askAi");
+                    handleAskDoctrinalAi(undefined, `Provide a detailed theological exposition of "${topic.title}" (${topic.anchorScriptures.map(s => s.reference).join(', ')}) with historic Christian context and practical life application.`);
+                  }}
+                  className="py-2 px-3.5 rounded bg-white hover:bg-slate-100 text-[#0F172A] border border-[#E5D5BC] font-bold uppercase tracking-widest text-xs transition-colors flex items-center gap-1.5 cursor-pointer"
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-[#B48C35]" />
+                  <span>Ask AI Scholar</span>
+                </button>
+
+                <button
+                  onClick={() => setActiveTopicModal(null)}
+                  className="py-2 px-5 rounded bg-[#B48C35] hover:bg-[#967226] text-white font-bold uppercase tracking-widest text-xs transition-colors cursor-pointer"
+                >
+                  Done Reading
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -1458,6 +1619,14 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
           </div>
         </div>
       )}
+
+      {/* Systematic Theology Picture Studio Modal (Exact Parchment & Gold Style) */}
+      <DevotionPictureModal
+        devotion={pictureDevotion}
+        isOpen={Boolean(pictureDevotion)}
+        onClose={() => setPictureDevotion(null)}
+        activeProfile={creatorProfile}
+      />
     </div>
   );
 };
