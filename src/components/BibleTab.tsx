@@ -59,6 +59,7 @@ import { BibleCommentaryModal } from "./BibleCommentaryModal";
 import { BibleInterlinearModal } from "./BibleInterlinearModal";
 import { DevotionPictureModal } from "./DevotionPictureModal";
 import { AiFastLoadingView } from "./AiFastLoadingView";
+import { AiWriteupThemedCard } from "./AiWriteupThemedCard";
 
 interface BibleTabProps {
   isBookmarked: (targetId: string, type?: string) => boolean;
@@ -422,59 +423,103 @@ export const BibleTab: React.FC<BibleTabProps> = ({
       },
       onComplete: (fullText, data) => {
         setIsAiLoading(false);
-        if (data) {
-          const item = data.data || data;
-          if (action.includes("Prayer") && !action.includes("Points")) {
-            const prayerText = `${item.title || "Prayer of Faith"}\n\n` +
-              `ADORATION:\n${item.adoration || item.sections?.adoration || ""}\n\n` +
-              `CONFESSION & SURRENDER:\n${item.confession || item.confessionAndSurrender || item.sections?.confessionAndSurrender || ""}\n\n` +
-              `THANKSGIVING:\n${item.thanksgiving || item.sections?.thanksgiving || ""}\n\n` +
-              `PETITION:\n${item.petition || item.sections?.petition || ""}\n\n` +
-              `WARFARE AUTHORITY:\n${item.warfareDeclaration || item.spiritualWarfare || item.sections?.spiritualWarfare || ""}\n\n` +
-              `${item.closing || item.declarationInJesusName || "In Jesus' mighty Name, Amen."}`;
-            setAiModalContent(prayerText);
-          } else if (action.includes("Points") || action.includes("Prayer Points")) {
-            const points = (item.prayerPoints || []).map((p: any) => `${p.pointNumber}. ${p.focus}\nPromise: ${p.scripturePromise}\nDeclaration: ${p.prayerDeclaration}`).join("\n\n");
-            const pointsText = `${item.title || "Strategic Prayer Points"}\n\n${item.introduction || ""}\n\n${points}\n\nPROPHETIC DECREE:\n${item.propheticDecree || ""}`;
-            setAiModalContent(pointsText);
-          } else if (action.includes("MathemaSermon")) {
-            const mathText = `${item.title || "MathemaSermon Insight"}\n` +
-              `Mathematical Concept: ${item.mathematicalConcept || "Geometric Alignment"}\n` +
-              (item.formula ? `Formula: ${item.formula}\n\n` : "\n") +
-              `ANALOGY & EXEGESIS:\n${item.mathematicalAnalogy || item.reflection || ""}\n\n` +
-              `HOMILETIC REVELATION:\n${item.homileticApplication || ""}\n\n` +
-              `ALTAR CALL PRAYER:\n${item.altarCallPrayer || "In Jesus' Name, Amen."}`;
-            setAiModalContent(mathText);
-          } else if (action.includes("Explain") || action.includes("Exposition") || action.includes("Context")) {
-            const refs = (item.crossReferences || []).map((r: any) => typeof r === "string" ? `• ${r}` : `• ${r.reference}: ${r.connection}`).join("\n");
-            const hist = item.historicalContext || item.reflection || `Set within the sacred biblical narrative of ${activeVerseMenu.book} ${activeVerseMenu.chapter}:${activeVerseMenu.verse}, this passage speaks directly to God's covenant people in their authentic historical milieu.`;
-            const cult = item.culturalBackground ? `CULTURAL & ARCHAEOLOGICAL SETTING:\n${item.culturalBackground}\n\n` : "";
-            const orig = item.originalLanguageInsight || item.originalLanguageWordStudy ? `ORIGINAL LANGUAGE INSIGHT:\n${item.originalLanguageInsight || item.originalLanguageWordStudy}\n\n` : "";
-            const doct = item.doctrinalMeaning || item.theologicalDoctrine ? `DOCTRINAL MEANING & THEOLOGY:\n${item.doctrinalMeaning || item.theologicalDoctrine}\n\n` : "";
-            const life = item.lifeTransformation || item.lifeApplication || item.practicalApplication || "Anchor your faith in the immutable covenant of God, speaking His promises daily with apostolic boldness.";
-            
-            const exposText = `${item.title || `Exposition & Historical Setting: ${activeVerseMenu.book} ${activeVerseMenu.chapter}:${activeVerseMenu.verse}`}\n\n` +
-              `HISTORICAL CONTEXT:\n${hist}\n\n` +
-              cult +
-              orig +
-              doct +
-              (refs ? `CROSS REFERENCES:\n${refs}\n\n` : "") +
-              `LIFE TRANSFORMATION:\n${life}`;
-            setAiModalContent(exposText);
+        const ref = `${activeVerseMenu.book} ${activeVerseMenu.chapter}:${activeVerseMenu.verse}`;
+        const rawVerse = activeVerseMenu.text;
+        const item = data?.data || data || {};
+
+        if (action.includes("Prayer") && !action.includes("Points")) {
+          // Guided Apostolic Prayer
+          let prayerContent = "";
+          if (item.adoration || item.petition || item.thanksgiving || item.warfareDeclaration || item.sections) {
+            prayerContent = `${item.title || `Sacred Prayer of Faith: ${ref}`}\n\n` +
+              `ADORATION:\n${item.adoration || item.sections?.adoration || `Father, You are sovereign over all creation, holy and worthy of praise. We exalt You through ${ref}.`}\n\n` +
+              `CONFESSION & SURRENDER:\n${item.confession || item.confessionAndSurrender || item.sections?.confessionAndSurrender || `I surrender all anxiety, fear, and self-sufficiency into Your gracious hands.`}\n\n` +
+              `THANKSGIVING:\n${item.thanksgiving || item.sections?.thanksgiving || `Thank You for Your covenant promises and for giving me supernatural victory in Christ Jesus.`}\n\n` +
+              `PETITION:\n${item.petition || item.sections?.petition || `Lord God, manifest the living reality of "${rawVerse}" in my daily life, family, and spiritual walk.`}\n\n` +
+              `WARFARE AUTHORITY:\n${item.warfareDeclaration || item.spiritualWarfare || item.sections?.spiritualWarfare || `In the Name of Jesus Christ, I break every spirit of heaviness and delay. The Joy of the Lord is my unassailable fortress!`}\n\n` +
+              `CLOSING DECLARATION:\n${item.closing || item.declarationInJesusName || `I seal this prayer in heavenly places. In Jesus' mighty and victorious Name, Amen.`}`;
+          } else if (item.prayer || item.guidedPrayer || item.prayerText || item.reflection || fullText) {
+            const body = item.prayer || item.guidedPrayer || item.prayerText || item.reflection || fullText;
+            prayerContent = `${item.title || `Guided Apostolic Prayer: ${ref}`}\n\n${body}\n\n` +
+              `PROPHETIC SEAL:\n"The Joy of the Lord is my unshakeable fortress, my shield, and my eternal victory. Amen!"`;
           } else {
-            // Devotion or general reflection
-            const dev = item.devotion || item;
-            const devText = `${dev.title || "Daily Devotion"}\n\n` +
-              `${dev.reflection || ""}\n\n` +
-              `Practical Application: ${dev.practicalApplication || ""}\n\n` +
-              `Guided Prayer: ${dev.guidedPrayer || ""}\n\n` +
-              `Action Step: ${dev.actionStep || ""}`;
-            setAiModalContent(devText);
+            prayerContent = `Guided Apostolic Prayer on ${ref} (${selectedVersion})\n\n"${rawVerse}"\n\n` +
+              `ADORATION:\nHeavenly Father, Almighty Creator and Eternal King, we worship You for the timeless truth revealed in ${ref}.\n\n` +
+              `THANKSGIVING:\nThank You for Your unfailing love, unshakeable covenant, and supernatural grace that sustains us in every season.\n\n` +
+              `PETITION:\nLord, write this living scripture upon the tablets of my heart. Grant me discernment, endurance, and resurrection boldness to fulfill Your will.\n\n` +
+              `WARFARE AUTHORITY:\nBy the power of the Holy Spirit, I silence every voice of despair. I declare that joy, peace, and righteousness reign in my atmosphere.\n\n` +
+              `CLOSING DECLARATION:\nI decree that the Joy of the Lord is my daily fortress and supernatural strength! In Jesus' mighty Name, Amen.`;
           }
-        } else if (fullText) {
-          setAiModalContent(fullText);
+          setAiModalContent(prayerContent);
+        } else if (action.includes("Points") || action.includes("Prayer Points")) {
+          // Strategic Prayer Points
+          const points = Array.isArray(item.prayerPoints) && item.prayerPoints.length > 0
+            ? item.prayerPoints.map((p: any) => `${p.pointNumber || "•"}. ${p.focus}\nScripture Promise: ${p.scripturePromise || ref}\nPrayer Declaration: ${p.prayerDeclaration}`).join("\n\n")
+            : `1. Spiritual Illumination: Lord, open my understanding to receive the deep revelation embedded in ${ref}.\n\n` +
+              `2. Covenant Preservation: Guard my heart and home under the shadow of Your wings according to "${rawVerse}".\n\n` +
+              `3. Kingdom Empowerment: Empower me to walk in apostolic authority and supernatural boldness today.`;
+          const pointsText = `${item.title || `Strategic Prayer Points: ${ref}`}\n\n${item.introduction || `Targeted prophetic intercession anchored in ${ref}:`}\n\n${points}\n\nPROPHETIC DECREE:\n${item.propheticDecree || "I decree that every promise of God concerning my life and generation is Yes and Amen in Christ Jesus!"}`;
+          setAiModalContent(pointsText);
+        } else if (action.includes("Joy") || action.includes("The Joy of the Lord")) {
+          const decrees = Array.isArray(item.propheticDecrees) && item.propheticDecrees.length > 0
+            ? item.propheticDecrees.map((d: string, idx: number) => `• Decree ${idx + 1}: ${d}`).join("\n")
+            : `• The Joy of the Lord is my unshakeable fortress and daily strength.\n• No temporal circumstance can strip away my eternal hope in Christ.\n• I walk in resurrection joy and divine victory today.`;
+          const joyText = `🔥 ${item.title || `The Joy of the Lord in ${ref}: Our Supernatural Stronghold`}\n\n` +
+            (item.originalLanguageJoyInsight ? `ORIGINAL LANGUAGE INSIGHT:\n${item.originalLanguageJoyInsight}\n\n` : "") +
+            (item.mathemaAnalogy ? `MATHEMASERMON ANALOGY:\n${item.mathemaAnalogy}\n\n` : "") +
+            `THE JOY EXPOSITION:\n${item.theologicalJoyExposition || item.reflection || `In ${ref} ("${rawVerse}"), God anchors His people in an unshakeable joy that transcends earthly tribulations. This joy is not a fragile emotion, but a supernatural covenant fortress.`}\n\n` +
+            `🌟 CONCLUSION — UNSHAKEABLE HOPE & ENCOURAGEMENT:\n${item.hopeAndEncouragementConclusion || item.practicalApplication || "Rejoice in the Lord always! The Joy of the Lord is your supernatural fortress and unquenchable strength. You are triumphant through Christ!"}\n\n` +
+            `PROPHETIC DECREES:\n${decrees}\n\n` +
+            `EMPOWERMENT PRAYER:\n${item.closingPrayer || item.guidedPrayer || "In the Name of Jesus Christ, I receive the fullness of the Joy of the Lord as my eternal strength. Amen."}`;
+          setAiModalContent(joyText);
+        } else if (action.includes("MathemaSermon")) {
+          const mathText = `📐 ${item.title || `MathemaSermon Insight: ${ref}`}\n\n` +
+            `Mathematical Concept: ${item.mathematicalConcept || "Geometric Alignment & Invariant Principles"}\n` +
+            (item.formula ? `Formula: ${item.formula}\n\n` : "\n") +
+            `ANALOGY & EXEGESIS:\n${item.mathematicalAnalogy || item.reflection || `Just as universal mathematical constants remain completely invariant regardless of external coordinates, God's eternal covenant in ${ref} remains absolute across all human seasons.`}\n\n` +
+            `HOMILETIC REVELATION:\n${item.homileticApplication || "When human faith intersects divine sovereignty, spiritual entropy is reversed and divine order is established."}\n\n` +
+            `🌟 CONCLUSION — HOPE & ENCOURAGEMENT:\n${item.hopeAndEncouragementConclusion || "Walk with unshakeable confidence! The foundational laws of the cosmos declare God's immutable faithfulness to His covenant promises."}\n\n` +
+            `ALTAR CALL PRAYER:\n${item.altarCallPrayer || "Lord God, align my spirit with Your eternal truth and let Your peace reign in my heart. In Jesus' Name, Amen."}`;
+          setAiModalContent(mathText);
+        } else if (action.includes("Explain") || action.includes("Exposition") || action.includes("Context")) {
+          const refs = Array.isArray(item.crossReferences) && item.crossReferences.length > 0
+            ? item.crossReferences.map((r: any) => typeof r === "string" ? `• ${r}` : `• ${r.reference}: ${r.connection}`).join("\n")
+            : `• Psalm 119:105 - Thy Word is a lamp unto my feet\n• Hebrews 4:12 - The Word of God is quick and powerful`;
+          const hist = item.historicalContext || item.reflection || `Set within the inspired context of ${ref}, this passage communicates God's covenant revelation to His people in their authentic historical milieu.`;
+          const cult = item.culturalBackground ? `CULTURAL & ARCHAEOLOGICAL SETTING:\n${item.culturalBackground}\n\n` : "";
+          const orig = item.originalLanguageInsight || item.originalLanguageWordStudy ? `ORIGINAL LANGUAGE INSIGHT:\n${item.originalLanguageInsight || item.originalLanguageWordStudy}\n\n` : "";
+          const doct = item.doctrinalMeaning || item.theologicalDoctrine ? `DOCTRINAL MEANING & THEOLOGY:\n${item.doctrinalMeaning || item.theologicalDoctrine}\n\n` : "";
+          const life = item.lifeTransformation || item.lifeApplication || item.practicalApplication || "Anchor your life in the unchanging covenant of God, speaking His promises daily with holy boldness.";
+          
+          const exposText = `${item.title || `Exposition & Historical Setting: ${ref}`}\n\n` +
+            `HISTORICAL CONTEXT:\n${hist}\n\n` +
+            cult +
+            orig +
+            doct +
+            `CROSS REFERENCES:\n${refs}\n\n` +
+            `🌟 CONCLUSION — LIFE TRANSFORMATION & HOPE:\n${life}`;
+          setAiModalContent(exposText);
         } else {
-          setAiModalContent(`Scripture Exposition on ${activeVerseMenu.book} ${activeVerseMenu.chapter}:${activeVerseMenu.verse} (${selectedVersion}):\n\n"${activeVerseMenu.text}"\n\nThis passage emphasizes God's sovereign covenant, holy love, and eternal faithfulness.`);
+          // Devotion from Verse (Guaranteed Rich, Non-Empty, Inspiring)
+          const dev = item.devotion || item;
+          const title = dev.title || `Devotion on ${ref}: Living in Covenant Grace`;
+          const reflection = dev.reflection || dev.theologicalExposition || dev.exposition || dev.content || dev.text || (typeof item === "string" && item ? item : "") ||
+            `Standing firmly upon ${ref} ("${rawVerse}"), we discover an everlasting fountain of divine grace. The Holy Scriptures remind us that God's covenant promises are living, active, and capable of anchoring our hearts amid all life's storms. When we place our trust in Him, anxiety gives way to supernatural peace.`;
+          const practicalApp = dev.practicalApplication || dev.lifeApplication || dev.application ||
+            `Throughout today, meditate upon the truth of ${ref}. Speak words of faith, extend grace to others, and anchor your mind in the presence of the Lord.`;
+          const guidedPrayer = dev.guidedPrayer || dev.prayer || dev.closingPrayer ||
+            `Heavenly Father, thank You for speaking directly to my heart through ${ref}. Let Your peace govern my thoughts, and let the Joy of the Lord be my daily strength. In Jesus' mighty Name, Amen.`;
+          const actionStep = dev.actionStep || `Memorize ${ref} and speak it aloud today whenever you need spiritual encouragement.`;
+          const hope = dev.hopeAndEncouragementConclusion || dev.hopeEncouragementConclusion ||
+            `Be greatly encouraged! God is with you in every circumstance, and His Joy is your unshakeable fortress. You are loved, chosen, and upheld by His righteous right hand!`;
+
+          const devText = `${title}\n\n` +
+            `THEOLOGICAL REFLECTION:\n${reflection}\n\n` +
+            `PRACTICAL APPLICATION:\n${practicalApp}\n\n` +
+            `ACTION STEP:\n${actionStep}\n\n` +
+            `GUIDED PRAYER:\n${guidedPrayer}\n\n` +
+            `🌟 CONCLUSION — HOPE & ENCOURAGEMENT:\n${hope}`;
+          setAiModalContent(devText);
         }
       },
       onError: () => {
@@ -1475,6 +1520,27 @@ export const BibleTab: React.FC<BibleTabProps> = ({
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() =>
+                      setPictureDevotion({
+                        id: `verse-pic-${activeVerseMenu.book}-${activeVerseMenu.chapter}-${activeVerseMenu.verse}`,
+                        title: `${activeVerseMenu.book} ${activeVerseMenu.chapter}:${activeVerseMenu.verse}`,
+                        reference: `${activeVerseMenu.book} ${activeVerseMenu.chapter}:${activeVerseMenu.verse}`,
+                        passageText: activeVerseMenu.text,
+                        version: selectedVersion,
+                        reflection: aiModalContent || `"${activeVerseMenu.text}"\n\n— Holy Scriptures (${selectedVersion})`,
+                        guidedPrayer: "Heavenly Father, thank You for the living power of Your Word. Let Your truth dwell richly in my heart, and let the joy of the Lord be my strength today and forevermore. In Jesus' Name, Amen.",
+                        category: "Sacred Scripture",
+                        theme: `${activeVerseMenu.book} Exegesis`,
+                        date: new Date().toISOString()
+                      })
+                    }
+                    className="px-3 py-1.5 rounded-lg bg-[#16235A] hover:bg-[#1f3073] text-[#DCC398] border border-[#B48C35]/50 font-bold text-xs flex items-center gap-1.5 shadow-xs cursor-pointer"
+                    title="Open in Parchment & Gold Picture Studio"
+                  >
+                    <ImageIcon className="w-3.5 h-3.5 text-[#B48C35]" />
+                    <span>Picture Studio</span>
+                  </button>
+                  <button
+                    onClick={() =>
                       downloadBibleVersePicture(
                         {
                           book: activeVerseMenu.book,
@@ -1492,8 +1558,8 @@ export const BibleTab: React.FC<BibleTabProps> = ({
                     className="px-3 py-1.5 rounded-lg bg-[#B48C35] hover:bg-[#996515] text-white font-bold text-xs flex items-center gap-1.5 shadow-xs cursor-pointer"
                     title="Download Publication-Grade Picture (PNG)"
                   >
-                    <ImageIcon className="w-3.5 h-3.5" />
-                    <span>Download Picture</span>
+                    <Download className="w-3.5 h-3.5" />
+                    <span>Direct PNG</span>
                   </button>
                   <button
                     onClick={() =>
@@ -1617,96 +1683,69 @@ export const BibleTab: React.FC<BibleTabProps> = ({
                 />
               )}
 
-              {/* AI Content Output */}
+              {/* AI Content Output on Sacred Themed Background */}
               {aiModalContent && !isAiLoading && (
-                <div className="p-5 rounded-2xl bg-slate-900 text-white border border-[#B48C35]/50 space-y-3 animate-in fade-in shadow-lg">
-                  <div className="flex items-center justify-between border-b border-white/10 pb-2 flex-wrap gap-2">
-                    <span className="font-mono font-bold text-[#DCC398] uppercase text-xs">
-                      ✨ {aiModalAction}
-                    </span>
-                    <div className="flex items-center gap-2">
-                      <button
-                        onClick={() => {
-                          const vKey = `${activeVerseMenu.book}-${activeVerseMenu.chapter}-${activeVerseMenu.verse}`;
-                          const updated = {
-                            ...verseNotes,
-                            [vKey]: {
-                              verseKey: vKey,
-                              note: `[AI ${aiModalAction}]\n\n${aiModalContent}`,
-                              updatedAt: new Date().toLocaleDateString()
-                            }
-                          };
-                          setVerseNotes(updated);
-                          try {
-                            localStorage.setItem("sir_bismark_bible_notes", JSON.stringify(updated));
-                          } catch {
-                            // ignore
-                          }
-                          setCopiedVerseId("ai-note-saved");
-                          setTimeout(() => setCopiedVerseId(null), 2000);
-                        }}
-                        className="text-xs text-amber-300 hover:text-white flex items-center gap-1 font-semibold cursor-pointer"
-                      >
-                        <Edit3 className="w-3.5 h-3.5" />
-                        <span>{copiedVerseId === "ai-note-saved" ? "Saved to Notes!" : "Save to Notes"}</span>
-                      </button>
-
-                      <button
-                        onClick={() => onToggleSpeak(aiModalContent)}
-                        className="text-xs text-slate-300 hover:text-white flex items-center gap-1 cursor-pointer"
-                        title="Listen to AI Exposition"
-                      >
-                        <Volume2 className="w-3.5 h-3.5" /> Audio
-                      </button>
-
-                      <button
-                        onClick={() => handleCopyVerse(activeVerseMenu.book, activeVerseMenu.chapter, activeVerseMenu.verse, aiModalContent)}
-                        className="text-xs text-slate-300 hover:text-white flex items-center gap-1 cursor-pointer"
-                        title="Copy text"
-                      >
-                        <Copy className="w-3.5 h-3.5" /> Copy
-                      </button>
-
-                      <button
-                        onClick={() =>
-                          onShareItem(
-                            `${aiModalAction} • ${activeVerseMenu.book} ${activeVerseMenu.chapter}:${activeVerseMenu.verse}`,
-                            aiModalContent,
-                            `${activeVerseMenu.book} ${activeVerseMenu.chapter}:${activeVerseMenu.verse} (${selectedVersion})`
-                          )
-                        }
-                        className="text-xs text-[#DCC398] hover:underline flex items-center gap-1 cursor-pointer"
-                      >
-                        <Share2 className="w-3.5 h-3.5" /> Share
-                      </button>
-
-                      <button
-                        onClick={() =>
-                          downloadBibleVersePicture(
-                            {
-                              book: activeVerseMenu.book,
-                              chapter: activeVerseMenu.chapter,
-                              verse: activeVerseMenu.verse,
-                              text: activeVerseMenu.text,
-                              version: selectedVersion,
-                              testament: currentBook?.testament,
-                              group: currentBook?.group,
-                              reflection: `[${aiModalAction}]\n\n${aiModalContent}`
-                            },
-                            creatorProfile
-                          )
-                        }
-                        className="text-xs text-amber-300 hover:text-white flex items-center gap-1 cursor-pointer font-bold"
-                        title="Download Picture with this AI Exposition"
-                      >
-                        <ImageIcon className="w-3.5 h-3.5" /> Picture (PNG)
-                      </button>
-                    </div>
-                  </div>
-                  <p className="text-xs sm:text-sm text-slate-100 whitespace-pre-line leading-relaxed font-serif">
-                    {aiModalContent}
-                  </p>
-                </div>
+                <AiWriteupThemedCard
+                  actionType={aiModalAction || "Verse Exegesis"}
+                  scriptureReference={`${activeVerseMenu.book} ${activeVerseMenu.chapter}:${activeVerseMenu.verse}`}
+                  verseText={activeVerseMenu.text}
+                  version={selectedVersion}
+                  content={aiModalContent}
+                  onSaveToNotes={(noteContent) => {
+                    const vKey = `${activeVerseMenu.book}-${activeVerseMenu.chapter}-${activeVerseMenu.verse}`;
+                    const updated = {
+                      ...verseNotes,
+                      [vKey]: {
+                        verseKey: vKey,
+                        note: noteContent,
+                        updatedAt: new Date().toLocaleDateString()
+                      }
+                    };
+                    setVerseNotes(updated);
+                    try {
+                      localStorage.setItem("sir_bismark_bible_notes", JSON.stringify(updated));
+                    } catch {
+                      // ignore
+                    }
+                  }}
+                  onToggleSpeak={(txt) => onToggleSpeak(txt)}
+                  onShare={(title, txt) =>
+                    onShareItem(
+                      title,
+                      txt,
+                      `${activeVerseMenu.book} ${activeVerseMenu.chapter}:${activeVerseMenu.verse} (${selectedVersion})`
+                    )
+                  }
+                  onOpenPictureStudio={() =>
+                    setPictureDevotion({
+                      id: `ai-pic-${activeVerseMenu.book}-${activeVerseMenu.chapter}-${activeVerseMenu.verse}`,
+                      title: `${aiModalAction}: ${activeVerseMenu.book} ${activeVerseMenu.chapter}:${activeVerseMenu.verse}`,
+                      reference: `${activeVerseMenu.book} ${activeVerseMenu.chapter}:${activeVerseMenu.verse}`,
+                      passageText: activeVerseMenu.text,
+                      version: selectedVersion,
+                      reflection: `[${aiModalAction}]\n\n${aiModalContent}`,
+                      guidedPrayer: "Almighty God, I receive this sacred revelation into my spirit. Let the joy of the Lord be my unassailable strength today. In Jesus' mighty Name, Amen.",
+                      category: aiModalAction || "Sacred Scripture",
+                      theme: `${activeVerseMenu.book} Study`,
+                      date: new Date().toISOString()
+                    })
+                  }
+                  onDownloadPng={() =>
+                    downloadBibleVersePicture(
+                      {
+                        book: activeVerseMenu.book,
+                        chapter: activeVerseMenu.chapter,
+                        verse: activeVerseMenu.verse,
+                        text: activeVerseMenu.text,
+                        version: selectedVersion,
+                        testament: currentBook?.testament,
+                        group: currentBook?.group,
+                        reflection: `[${aiModalAction}]\n\n${aiModalContent}`
+                      },
+                      creatorProfile
+                    )
+                  }
+                />
               )}
             </div>
 

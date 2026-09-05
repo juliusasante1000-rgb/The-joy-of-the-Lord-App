@@ -65,177 +65,106 @@ export const CHURCH_TENETS: ChurchTenet[] = [
     practicalApplication: "Rest in the unshakeable peace that God is in complete control of your life and circumstances, trusting His wisdom in all seasons."
   },
   {
-    id: "tenet-4-humanity-depravity",
+    id: "tenet-4-humanity-depravity-perseverance",
     number: 4,
-    title: "Imago Dei, The Utter Depravity of Human Nature & The Doom of the Impenitent",
+    title: "The Image of God, Utter Depravity of Human Nature, The Possibility of Falling from Grace & The Call to Persevere",
     category: "Humanity and Sin",
-    statement: "Humans were created in the image and likeness of God (Imago Dei) with inherent dignity, moral agency, and purpose to glorify their Creator. Through the disobedience and Fall of Adam, all humanity inherited a corrupted, sinful nature, becoming spiritually dead and alienated from God. Actual sin is the personal and corporate transgression of God's moral law. Because of human inability, repentance and regeneration are urgent necessities; the finally impenitent who persistently reject God's grace face eternal doom and separation from God in the Lake of Fire.",
+    statement: "Humans were created in the image and likeness of God (Imago Dei) with inherent dignity, moral agency, and purpose to glorify their Creator. Through the disobedience and Fall of Adam, all humanity inherited a corrupted, sinful nature, becoming spiritually dead, utterly depraved, and alienated from God. Actual sin is the transgression of God's moral law, demanding repentance and regeneration through divine grace alone; the finally impenitent face eternal condemnation. While believers are kept and preserved by the power of God through faith, Scripture gives solemn warnings against willful apostasy and backsliding: a believer can depart from the living God through persistent unfaithfulness and hardening of heart unless they heed the call to persevere and abide steadfastly in Christ to the end.",
     scripturalReferences: [
       { reference: "Genesis 1:26-27", text: "And God said, Let us make man in our image, after our likeness... So God created man in his own image." },
       { reference: "Romans 3:10,23", text: "As it is written, There is none righteous, no, not one... For all have sinned, and come short of the glory of God." },
       { reference: "Romans 5:12", text: "Wherefore, as by one man sin entered into the world, and death by sin; and so death passed upon all men, for that all have sinned." },
       { reference: "Ephesians 2:1-3", text: "And you hath he quickened, who were dead in trespasses and sins... and were by nature the children of wrath, even as others." },
-      { reference: "Revelation 20:15", text: "And whosoever was not found written in the book of life was cast into the lake of fire." },
-      { reference: "Luke 13:3", text: "Except ye repent, ye shall all likewise perish." }
-    ],
-    theologicalBreakdown: [
-      "Inherent Dignity (Imago Dei): Every human life is sacred, possessing God-given value, creativity, and moral responsibility.",
-      "Total Depravity: Sin has damaged every human faculty (intellect, emotion, will), leaving humanity helpless to save itself apart from divine grace.",
-      "Actual Sin & Eternal Consequence: Transgression of God's holy law demands divine justice, which culminates in eternal condemnation for those who refuse Christ."
-    ],
-    practicalApplication: "Acknowledge personal moral bankruptcy before God, preach repentance with urgent compassion, and treat every human being with Christlike dignity."
-  },
-  {
-    id: "tenet-5-christ-incarnation-atonement",
-    number: 5,
-    title: "The Person & Finished Work of Jesus Christ",
-    category: "Jesus Christ",
-    statement: "The Virgin Birth, Sinless Life, Atoning Death, Triumphant Bodily Resurrection, Ascension, and Abiding Intercession of our Lord Jesus Christ; His Second Coming and Millennial Reign upon the earth. Jesus Christ is the eternal Son of God, fully God and fully human in one divine Person (Hypostatic Union), miraculously conceived by the Holy Spirit and born of the virgin Mary. He lived a completely sinless life, died as a substitutionary sacrificial atonement for our sins, physically rose from the grave on the third day, ascended into heaven to intercede as our High Priest, and shall return bodily to reign as King over all the earth.",
-    scripturalReferences: [
-      { reference: "Luke 1:34-35", text: "Then said Mary unto the angel, How shall this be, seeing I know not a man? And the angel answered... The Holy Ghost shall come upon thee, and the power of the Highest shall overshadow thee." },
-      { reference: "John 1:1,14", text: "In the beginning was the Word, and the Word was with God, and the Word was God... And the Word was made flesh, and dwelt among us." },
-      { reference: "Hebrews 4:15", text: "For we have not an high priest which cannot be touched with the feeling of our infirmities; but was in all points tempted like as we are, yet without sin." },
-      { reference: "1 Peter 2:24", text: "Who his own self bare our sins in his own body on the tree, that we, being dead to sins, should live unto righteousness: by whose stripes ye were healed." },
-      { reference: "1 Corinthians 15:3-4", text: "For I delivered unto you first of all that which I also received, how that Christ died for our sins according to the scriptures; And that he was buried, and that he rose again the third day according to the scriptures." },
-      { reference: "Hebrews 7:25", text: "Wherefore he is able also to save them to the uttermost that come unto God by him, seeing he ever liveth to make intercession for them." },
-      { reference: "Revelation 20:4-6", text: "And they lived and reigned with Christ a thousand years." }
-    ],
-    theologicalBreakdown: [
-      "Incarnation & Hypostatic Union: Truly God and truly man—two distinct natures united in one indivisible divine Person.",
-      "Substitutionary Penal Atonement: Christ bore our punishment and satisfied the holy justice of God on the Cross.",
-      "Bodily Resurrection & Session: Christ physically defeated the grave, ascended to the Father's right hand, and continually pleads for His saints.",
-      "Millennial Reign: Jesus Christ will physically return and establish His literal thousand-year reign of righteousness upon the earth."
-    ],
-    practicalApplication: "Look unto Jesus as the sole Author and Finisher of faith, confident in His eternal advocacy and eager for His glorious appearing."
-  },
-  {
-    id: "tenet-6-salvation-justification-sanctification",
-    number: 6,
-    title: "Justification & Sanctification through Grace Alone by Faith",
-    category: "Salvation and the Christian Life",
-    statement: "Justification and Sanctification of the Believer through the finished work of Christ. Salvation is an unearned gift initiated purely by God's sovereign grace (Sola Gratia). Believers are justified—declared legally righteous before God—solely through faith in Jesus Christ (Sola Fide) and not by human works. In regeneration (the New Birth), the Holy Spirit imparts spiritual life, transforming the inner heart. Sanctification is the continuous work of God's grace wherein believers grow in personal holiness, moral purity, and joyful obedience through the indwelling Spirit.",
-    scripturalReferences: [
-      { reference: "Ephesians 2:8-9", text: "For by grace are ye saved through faith; and that not of yourselves: it is the gift of God: Not of works, lest any man should boast." },
-      { reference: "Romans 5:1", text: "Therefore being justified by faith, we have peace with God through our Lord Jesus Christ." },
-      { reference: "Titus 3:5", text: "Not by works of righteousness which we have done, but according to his mercy he saved us, by the washing of regeneration, and renewing of the Holy Ghost." },
-      { reference: "2 Corinthians 5:17", text: "Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new." },
-      { reference: "1 Thessalonians 4:3", text: "For this is the will of God, even your sanctification." },
-      { reference: "Hebrews 12:14", text: "Follow peace with all men, and holiness, without which no man shall see the Lord." }
-    ],
-    theologicalBreakdown: [
-      "Grace Alone (Sola Gratia): Salvation is wholly of divine initiative and mercy, leaving no room for human boast.",
-      "Justification by Faith Alone: Imputation of Christ's perfect righteousness to the believer's account upon believing.",
-      "Regeneration (The New Birth): A spiritual resurrection from death to life, receiving a new heart and divine nature.",
-      "Progressive Sanctification: Daily transformation into the character of Jesus through the Word, prayer, and Spirit-led obedience."
-    ],
-    practicalApplication: "Rest securely from self-righteous striving, and vigorously pursue personal holiness, integrity, and love as the fruit of true salvation."
-  },
-  {
-    id: "tenet-7-falling-from-grace",
-    number: 7,
-    title: "The Possibility of Falling from Grace & The Call to Persevere",
-    category: "Salvation and the Christian Life",
-    statement: "The possibility of falling from grace: While believers are kept and preserved by the power of God through faith, Scripture gives solemn and sober warnings against willful apostasy, backsliding, and abandoning the faith. A believer can depart from the living God through persistent unfaithfulness, hardening of the heart by the deceitfulness of sin, and rejecting the truth, thereby severing their vital connection to Christ unless they repent.",
-    scripturalReferences: [
       { reference: "Galatians 5:4", text: "Christ is become of no effect unto you, whosoever of you are justified by the law; ye are fallen from grace." },
       { reference: "Hebrews 3:12-14", text: "Take heed, brethren, lest there be in any of you an evil heart of unbelief, in departing from the living God. But exhort one another daily... For we are made partakers of Christ, if we hold the beginning of our confidence stedfast unto the end." },
-      { reference: "Hebrews 6:4-6", text: "For it is impossible for those who were once enlightened, and have tasted of the heavenly gift... If they shall fall away, to renew them again unto repentance; seeing they crucify to themselves the Son of God afresh." },
-      { reference: "Hebrews 10:26,29", text: "For if we sin wilfully after that we have received the knowledge of the truth, there remaineth no more sacrifice for sins... who hath trodden under foot the Son of God, and hath counted the blood of the covenant, wherewith he was sanctified, an unholy thing." },
+      { reference: "Hebrews 6:4-6", text: "For it is impossible for those who were once enlightened, and have tasted of the heavenly gift... If they shall fall away, to renew them again unto repentance." },
+      { reference: "Hebrews 10:26,29", text: "For if we sin wilfully after that we have received the knowledge of the truth, there remaineth no more sacrifice for sins... who hath trodden under foot the Son of God." },
       { reference: "1 Corinthians 10:12", text: "Wherefore let him that thinketh he standeth take heed lest he fall." },
       { reference: "2 Peter 2:20-21", text: "For if after they have escaped the pollutions of the world through the knowledge of the Lord and Saviour Jesus Christ, they are again entangled therein, and overcome, the latter end is worse with them than the beginning." }
     ],
     theologicalBreakdown: [
-      "Covenant Responsibility: Salvation is a living, abiding relationship with Jesus Christ, requiring enduring faith and watchfulness.",
-      "Biblical Warnings: The Holy Spirit warns believers against spiritual presumption, compromise, and hardening through sin.",
-      "The Call to Endurance: Believers are preserved by abiding in Christ, remaining in fellowship, and quickly repenting of sin."
+      "Inherent Dignity & The Fall: Humanity was created in God's sacred image (Imago Dei) but plunged into spiritual death and total depravity through Adam's rebellion.",
+      "Urgent Necessity of Sovereign Grace: Sin renders humanity morally bankrupt and utterly unable to save itself apart from the regenerating grace of God.",
+      "Covenant Responsibility & Holy Perseverance: Believers are preserved by the power of God through enduring faith, called to watchfulness and perseverance against the deceitfulness of sin."
     ],
-    practicalApplication: "Examine yourself to ensure you are in the faith, guard your heart with all diligence, and encourage your brethren daily to finish the race with joy."
+    practicalApplication: "Acknowledge personal moral bankruptcy apart from Christ, examine yourself daily to remain steadfast in the faith, and encourage the brethren to finish the race with holy diligence."
   },
   {
-    id: "tenet-8-baptism-holy-ghost",
-    number: 8,
-    title: "The Baptism of the Holy Ghost with Signs Following",
+    id: "tenet-5-christ-finished-work-salvation",
+    number: 5,
+    title: "The Person and Finished Work of Christ, Justification & Sanctification by Grace Through Faith",
+    category: "Jesus Christ & Salvation",
+    statement: "The Virgin Birth, Sinless Life, Substitutionary Atoning Death, Triumphant Bodily Resurrection, Ascension, and Abiding Intercession of our Lord Jesus Christ, and His finished work on Calvary. Salvation is initiated purely by God's sovereign grace (Sola Gratia). Believers are justified—declared legally righteous before God—solely through faith in Jesus Christ (Sola Fide) and not by human merit or works. In regeneration (the New Birth), the Holy Spirit imparts spiritual life, making the believer a new creation. Sanctification is the continuous work of God's grace wherein believers grow in personal holiness, moral purity, and Christlikeness through the indwelling Holy Spirit.",
+    scripturalReferences: [
+      { reference: "John 1:1,14", text: "In the beginning was the Word, and the Word was with God, and the Word was God... And the Word was made flesh, and dwelt among us." },
+      { reference: "Luke 1:34-35", text: "The Holy Ghost shall come upon thee, and the power of the Highest shall overshadow thee: therefore also that holy thing which shall be born of thee shall be called the Son of God." },
+      { reference: "1 Peter 2:24", text: "Who his own self bare our sins in his own body on the tree, that we, being dead to sins, should live unto righteousness: by whose stripes ye were healed." },
+      { reference: "1 Corinthians 15:3-4", text: "For I delivered unto you first of all that which I also received, how that Christ died for our sins according to the scriptures; And that he was buried, and that he rose again the third day." },
+      { reference: "Hebrews 7:25", text: "Wherefore he is able also to save them to the uttermost that come unto God by him, seeing he ever liveth to make intercession for them." },
+      { reference: "Ephesians 2:8-9", text: "For by grace are ye saved through faith; and that not of yourselves: it is the gift of God: Not of works, lest any man should boast." },
+      { reference: "Romans 5:1", text: "Therefore being justified by faith, we have peace with God through our Lord Jesus Christ." },
+      { reference: "Titus 3:5", text: "Not by works of righteousness which we have done, but according to his mercy he saved us, by the washing of regeneration, and renewing of the Holy Ghost." },
+      { reference: "2 Corinthians 5:17", text: "Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new." },
+      { reference: "Hebrews 12:14", text: "Follow peace with all men, and holiness, without which no man shall see the Lord." }
+    ],
+    theologicalBreakdown: [
+      "Incarnation & Hypostatic Union: Truly God and truly man, Christ lived a sinless life and died as our substitutionary atonement on the Cross.",
+      "Triumphant Resurrection & Session: Christ bodily conquered death, ascended into heaven, and perpetually intercedes as our eternal High Priest.",
+      "Justification by Faith Alone (Sola Fide): Imputation of Christ's perfect righteousness to all who believe, without human boast.",
+      "Regeneration & Progressive Sanctification: Impartation of a new nature by the Holy Spirit and continuous daily growth in holiness and love."
+    ],
+    practicalApplication: "Rest securely in the finished work of Jesus Christ, and passionately pursue personal holiness and joyful obedience in the power of the Holy Spirit."
+  },
+  {
+    id: "tenet-6-holy-ghost-baptism-gifts",
+    number: 6,
+    title: "The Baptism of the Holy Ghost with Signs Following & The Operation of Spiritual Gifts",
     category: "The Holy Spirit and Spiritual Gifts",
-    statement: "The Baptism of the Holy Ghost for believers, with signs following. This is a distinct and subsequent spiritual experience to the New Birth, wherein the resurrected Lord Jesus immerses the believer in the Holy Spirit, endowing them with supernatural power for holy living, bold Christian witness, and divine service, with initial physical evidence and signs following (including speaking with other tongues as the Spirit gives utterance).",
+    statement: "The Baptism of the Holy Ghost for believers with signs following. This is a distinct spiritual experience subsequent to the New Birth, wherein the resurrected Lord Jesus immerses the believer in the Holy Spirit, endowing them with supernatural power for holy living, bold Christian witness, and ministry, with initial physical evidence and signs following (including speaking with other tongues as the Spirit gives utterance). Furthermore, the Holy Spirit distributes the Nine Supernatural Gifts (Revelation Gifts: Word of Wisdom, Word of Knowledge, Discerning of Spirits; Power Gifts: Faith, Gifts of Healing, Working of Miracles; and Utterance Gifts: Prophecy, Divers Kinds of Tongues, Interpretation of Tongues) for the edification, exhortation, and comfort of the Body of Christ, operating in divine love, decency, and biblical order.",
     scripturalReferences: [
       { reference: "Acts 1:8", text: "But ye shall receive power, after that the Holy Ghost is come upon you: and ye shall be witnesses unto me both in Jerusalem, and in all Judaea, and in Samaria, and unto the uttermost part of the earth." },
       { reference: "Acts 2:1-4", text: "And they were all filled with the Holy Ghost, and began to speak with other tongues, as the Spirit gave them utterance." },
       { reference: "Acts 10:44-46", text: "While Peter yet spake these words, the Holy Ghost fell on all them which heard the word... For they heard them speak with tongues, and magnify God." },
       { reference: "Acts 19:6", text: "And when Paul had laid his hands upon them, the Holy Ghost came on them; and they spake with tongues, and prophesied." },
-      { reference: "Mark 16:17", text: "And these signs shall follow them that believe; In my name shall they cast out devils; they shall speak with new tongues." }
+      { reference: "Mark 16:17", text: "And these signs shall follow them that believe; In my name shall they cast out devils; they shall speak with new tongues." },
+      { reference: "1 Corinthians 12:4,7-11", text: "Now there are diversities of gifts, but the same Spirit... For to one is given by the Spirit the word of wisdom; to another the word of knowledge... To another faith... to another the gifts of healing... To another the working of miracles; to another prophecy; to another discerning of spirits; to another divers kinds of tongues; to another the interpretation of tongues." },
+      { reference: "1 Corinthians 14:3,12", text: "But he that prophesieth speaketh unto men to edification, and exhortation, and comfort... seek that ye may excel to the edifying of the church." }
     ],
     theologicalBreakdown: [
-      "Subsequent & Distinct Experience: An intentional filling and immersion in the Holy Spirit for power after salvation.",
-      "Signs Following: Supernatural manifestations that confirm the Gospel and authenticate the presence of the Holy Spirit.",
-      "Empowerment for Mission: Divine boldness, supernatural prayer language, and increased spiritual hunger."
+      "Subsequent Immersion in Power: A distinctive endowment of divine authority and power for global evangelism and holy witness.",
+      "Signs Following: Supernatural manifestations, including speaking in tongues, that confirm the Gospel and authenticate the Spirit's presence.",
+      "Ninefold Spiritual Gifts: Divine abilities distributed sovereignly by the Spirit to build up, comfort, and strengthen the Church in agape love."
     ],
-    practicalApplication: "Seek with a clean and expectant heart the full baptism of the Holy Ghost, allowing the Spirit to pray through you and empower your witness."
+    practicalApplication: "Seek with a clean and expectant heart the full baptism of the Holy Ghost, welcome His spiritual gifts with humility, and minister with supernatural boldness to edify the brethren."
   },
   {
-    id: "tenet-9-spiritual-gifts",
-    number: 9,
-    title: "The Nine Gifts of the Holy Ghost",
-    category: "The Holy Spirit and Spiritual Gifts",
-    statement: "The Nine Gifts of the Holy Ghost for the edification, exhortation, and comfort of the church, which is the Body of Christ. These supernatural gifts are distributed by the Holy Spirit as He wills and are categorized into: Revelation Gifts (Word of Wisdom, Word of Knowledge, Discerning of Spirits), Power Gifts (Faith, Gifts of Healing, Working of Miracles), and Utterance/Inspiration Gifts (Prophecy, Divers Kinds of Tongues, Interpretation of Tongues). They operate in divine love and decency for the equipping and building up of believers.",
-    scripturalReferences: [
-      { reference: "1 Corinthians 12:4,7-11", text: "Now there are diversities of gifts, but the same Spirit... For to one is given by the Spirit the word of wisdom; to another the word of knowledge... To another faith... to another the gifts of healing... To another the working of miracles; to another prophecy; to another discerning of spirits; to another divers kinds of tongues; to another the interpretation of tongues: But all these worketh that one and the selfsame Spirit, dividing to every man severally as he will." },
-      { reference: "1 Corinthians 14:3,12", text: "But he that prophesieth speaketh unto men to edification, and exhortation, and comfort... Even so ye, forasmuch as ye are zealous of spiritual gifts, seek that ye may excel to the edifying of the church." },
-      { reference: "Romans 12:6", text: "Having then gifts differing according to the grace that is given to us, whether prophecy, let us prophesy according to the proportion of faith." }
-    ],
-    theologicalBreakdown: [
-      "Ninefold Supernatural Operations: Distinct spiritual abilities imparted by the Spirit for specific ministry needs.",
-      "Purpose of Edification: Gifts are not for selfish display or pride, but to strengthen, comfort, and build up the Body of Christ.",
-      "Governed by Love & Order: Gifts must operate within the bounds of biblical decency, mutual respect, and agape love (1 Cor 13-14)."
-    ],
-    practicalApplication: "Covet earnestly the best gifts in love, welcoming the Holy Spirit to move through you to heal the sick, impart wisdom, and encourage the brethren."
-  },
-  {
-    id: "tenet-10-church-sacraments-government",
-    number: 10,
-    title: "The Church, Sacraments of Baptism & The Lord's Supper, and Apostolic Church Government",
-    category: "The Church and Future Things",
-    statement: "The Church is the universal Body and Bride of Christ composed of all true believers, unified in worship, mission, and the sacraments. The Church observes two sacred Ordinances/Sacraments: Water Baptism by Immersion (in the name of the Father, Son, and Holy Ghost as an outward declaration of dying and rising with Christ) and the Lord’s Supper (Holy Communion as a holy remembrance of Christ's broken body and shed blood). The Church is governed biblically by the Ascension Ministry Gifts: Apostles, Prophets, Evangelists, Pastors, and Teachers, alongside Elders, Deacons, and Deaconesses for the spiritual oversight, order, and perfecting of the saints.",
+    id: "tenet-7-church-sacraments-tithes-offerings",
+    number: 7,
+    title: "The Church, The Sacraments of Baptism & The Lord's Supper, and The Obligatory Nature of Tithes & Offerings",
+    category: "The Church and Covenant Worship",
+    statement: "The Church is the universal Body and Bride of Christ composed of all true believers, unified in worship, fellowship, and the sacraments. The Church observes two sacred Sacraments/Ordinances instituted by Christ: Water Baptism by Immersion (in the name of the Father, Son, and Holy Ghost as an outward declaration of dying and rising with Christ) and the Lord’s Supper (Holy Communion as a holy remembrance and proclamation of Christ's broken body and shed blood until He returns). Furthermore, tithing (returning the first tenth of all increase to God's storehouse) and giving freewill offerings are continuous biblical obligations and covenant acts of worship, instituted before the Law of Moses, affirmed by Jesus in the Gospels, acknowledging God's absolute ownership, supporting the ministry of the Church, funding Gospel missions, and unlocking God's providential blessing upon His people.",
     scripturalReferences: [
       { reference: "Matthew 28:19", text: "Go ye therefore, and teach all nations, baptizing them in the name of the Father, and of the Son, and of the Holy Ghost." },
       { reference: "Romans 6:3-4", text: "Know ye not, that so many of us as were baptized into Jesus Christ were baptized into his death? Therefore we are buried with him by baptism into death: that like as Christ was raised up from the dead by the glory of the Father, even so we also should walk in newness of life." },
       { reference: "1 Corinthians 11:23-26", text: "For I have received of the Lord that which also I delivered unto you, That the Lord Jesus the same night in which he was betrayed took bread... For as often as ye eat this bread, and drink this cup, ye do shew the Lord's death till he come." },
-      { reference: "Ephesians 4:11-13", text: "And he gave some, apostles; and some, prophets; and some, evangelists; and some, pastors and teachers; For the perfecting of the saints, for the work of the ministry, for the edifying of the body of Christ." },
-      { reference: "1 Timothy 3:1-13", text: "This is a true saying, If a man desire the office of a bishop, he desireth a good work... Likewise must the deacons be grave..." },
-      { reference: "Romans 16:1", text: "I commend unto you Phebe our sister, which is a servant (deaconess) of the church which is at Cenchrea." },
-      { reference: "Titus 1:5", text: "For this cause left I thee in Crete, that thou shouldest set in order the things that are wanting, and ordain elders in every city." }
-    ],
-    theologicalBreakdown: [
-      "Sacrament of Baptism by Immersion: Symbolic burial of the old sinful nature and resurrection to new life in Christ.",
-      "Sacrament of the Lord's Supper: Sacred communion with Christ and believers, proclaiming His atoning death until His return.",
-      "Fivefold Ministry & Leadership Order: Apostles, Prophets, Evangelists, Pastors, Teachers, Elders, Deacons, and Deaconesses serving in unity and holiness."
-    ],
-    practicalApplication: "Be baptized in water, partake reverently of the Lord's Table with self-examination, and honor godly spiritual leadership in the local assembly."
-  },
-  {
-    id: "tenet-11-tithes-offerings",
-    number: 11,
-    title: "The Obligatory Nature of Tithes & Offerings",
-    category: "The Church and Future Things",
-    statement: "The obligatory nature of Tithes and Offerings: Tithing (giving the first tenth of all our increase to God's storehouse) and giving freewill offerings are continuous biblical obligations and acts of covenant worship. Instituted before the Law of Moses, affirmed by Jesus in the Gospels, and practiced by the Apostolic Church, tithing acknowledges God's absolute ownership over our lives, supports the ministry of the Church, funds the propagation of the Gospel, and unlocks God's providential blessing upon His people.",
-    scripturalReferences: [
       { reference: "Malachi 3:10", text: "Bring ye all the tithes into the storehouse, that there may be meat in mine house, and prove me now herewith, saith the Lord of hosts, if I will not open you the windows of heaven, and pour you out a blessing, that there shall not be room enough to receive it." },
       { reference: "Matthew 23:23", text: "Woe unto you, scribes and Pharisees, hypocrites! for ye pay tithe of mint and anise and cummin, and have omitted the weightier matters of the law, judgment, mercy, and faith: these ought ye to have done, and not to leave the other undone." },
       { reference: "Genesis 14:20", text: "And blessed be the most high God, which hath delivered thine enemies into thy hand. And he gave him tithes of all." },
       { reference: "Genesis 28:22", text: "And of all that thou shalt give me I will surely give the tenth unto thee." },
       { reference: "Hebrews 7:8", text: "And here men that die receive tithes; but there he receiveth them, of whom it is witnessed that he liveth." },
-      { reference: "1 Corinthians 16:2", text: "Upon the first day of the week let every one of you lay by him in store, as God hath prospered him." },
       { reference: "2 Corinthians 9:6-7", text: "He which soweth sparingly shall reap also sparingly; and he which soweth bountifully shall reap also bountifully. Every man according as he purposeth in his heart, so let him give; not grudgingly, or of necessity: for God loveth a cheerful giver." }
     ],
     theologicalBreakdown: [
-      "Eternal Covenant Principle: Pre-dated the Mosaic Law through Abraham and Jacob, affirming God as the source of all increase.",
-      "Storehouse Ministry Support: Ensures the house of God is fully resourced for pastoral ministry, care of the needy, and world missions.",
-      "Sacred Trust & Stewardship: Honoring God with the firstfruits of income breaks the spirit of greed and aligns finances with heaven's economy."
+      "The Body & Bride of Christ: The company of all regenerated believers unified in holy fellowship, mission, and worship.",
+      "Sacrament of Baptism by Immersion: Outward symbolic burial of the old nature and joyous resurrection to walk in newness of life in Christ.",
+      "Sacrament of the Lord's Supper: Sacred spiritual communion with Christ, reverently remembering His atoning sacrifice until His glorious return.",
+      "Eternal Covenant Stewardship: Returning tithes and giving generous offerings acknowledges God as owner of all and faithfully resources His Kingdom."
     ],
-    practicalApplication: "Faithfully return the first tenth of your income to the local church storehouse and give cheerful, generous offerings to advance the Kingdom of God."
+    practicalApplication: "Be baptized in water by immersion, partake reverently of the Lord's Table with self-examination, and faithfully return the first tenth of your income to the house of God with cheerful, generous offerings."
   },
   {
-    id: "tenet-12-second-coming-eschatology",
-    number: 12,
+    id: "tenet-8-second-coming-eschatology",
+    number: 8,
     title: "The Second Coming of Christ, Millennial Reign & Final Judgment",
     category: "The Church and Future Things",
     statement: "The Second Coming of Jesus Christ is the blessed hope of the Church. Jesus Christ will return physically, visibly, and triumphantly in glory to gather His elect, judge the living and the dead, execute His Millennial Reign of peace upon the earth, and consummate His eternal Kingdom. The dead shall be raised—the righteous to the resurrection of eternal life in the New Heavens and New Earth, and the unrepentant wicked to the resurrection of damnation and eternal punishment.",
@@ -254,8 +183,8 @@ export const CHURCH_TENETS: ChurchTenet[] = [
     practicalApplication: "Live in holy anticipation, purify your heart, and tirelessly win souls while it is day, for the King is coming soon."
   },
   {
-    id: "tenet-13-spiritual-warfare-healing",
-    number: 13,
+    id: "tenet-9-spiritual-warfare-healing",
+    number: 9,
     title: "Spiritual Warfare, Divine Authority & Divine Healing",
     category: "Spiritual Warfare & Divine Healing",
     statement: "Angels, Satan, Demons, Spiritual Warfare, Armor of God, Divine Healing & Miraculous Provision: Holy angels are ministering spirits sent to serve the heirs of salvation and execute God's purposes. Satan fell through pride and now operates with his demons to deceive, oppress, and afflict humanity. Divine healing and health were secured in the Atonement and are received through believing prayer and faith in Jesus' name.",
@@ -273,8 +202,8 @@ export const CHURCH_TENETS: ChurchTenet[] = [
     practicalApplication: "Put on the whole armor of God daily, exercise divine authority in Jesus' Name over demonic oppression, minister healing to the sick through the prayer of faith, and rest in angelic watchcare."
   },
   {
-    id: "tenet-14-holy-matrimony-family-life",
-    number: 14,
+    id: "tenet-10-holy-matrimony-family-life",
+    number: 10,
     title: "Holy Matrimony, Family, Life & Christian Responsibility",
     category: "Holy Matrimony, Family & Life",
     statement: "The Institution of Marriage, Family, Human Sexuality, Sanctity of Human Life, Civil Government, Divine Providence & Social Responsibility: God ordained marriage as a lifelong covenant between one man and one woman and the foundation of the family. All human life from conception is sacred, bearing the Imago Dei, and must be defended and valued. Civil government is ordained by God for order and justice, and believers must live as law-abiding, prayerful citizens.",
@@ -292,8 +221,8 @@ export const CHURCH_TENETS: ChurchTenet[] = [
     practicalApplication: "Honor the holy covenant of marriage, protect and cherish human life at all stages from conception, pray for governing authorities, and shine as light in society through integrity and social responsibility."
   },
   {
-    id: "tenet-15-mission-repentance-destiny",
-    number: 15,
+    id: "tenet-11-mission-repentance-destiny",
+    number: 11,
     title: "The Mission, Repentance & Eternal Destiny",
     category: "The Mission, Repentance & Destiny",
     statement: "The Great Commission, Evangelism, Priesthood of All Believers, True Repentance, Restitution, Intermediate State & Conscious Existence After Death: The supreme mission of every believer and the Church is to evangelize the world and make disciples of all nations. True repentance is godly sorrow that turns from sin unto God and bears fruit in restitution where possible. At death, the righteous are present with the Lord in conscious joy while the wicked are reserved in Hades for judgment.",

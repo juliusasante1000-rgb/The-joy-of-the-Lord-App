@@ -59,6 +59,7 @@ export const BibleInterlinearView: React.FC<BibleInterlinearViewProps> = ({
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const [savedNoteSuccess, setSavedNoteSuccess] = useState(false);
   const [filterQuery, setFilterQuery] = useState("");
+  const [authenticOriginalScript, setAuthenticOriginalScript] = useState<string>("");
 
   // AI Deep Lexicon Streaming
   const [isAiStreaming, setIsAiStreaming] = useState(false);
@@ -74,8 +75,67 @@ export const BibleInterlinearView: React.FC<BibleInterlinearViewProps> = ({
   const isHebrew = interlinearData.language.includes("Hebrew") || isOldTestamentBook(book);
   const scriptDirection = isHebrew ? "rtl" : "ltr";
 
+  // Fetch authentic Hebrew (WLC) or Greek (TR) script from backend
+  React.useEffect(() => {
+    let active = true;
+    fetch(`/api/bible/original?book=${encodeURIComponent(book)}&chapter=${chapter}&verse=${verse}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (active && data && data.originalText) {
+          setAuthenticOriginalScript(data.originalText);
+        }
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, [book, chapter, verse]);
+
+  // Active word list: Enriched dynamically when AI Lexicon is generated
+  const activeWords: InterlinearWord[] = React.useMemo(() => {
+    if (aiLexiconResult && Array.isArray(aiLexiconResult.words) && aiLexiconResult.words.length > 0) {
+      return aiLexiconResult.words.map((w: any, idx: number) => {
+        const rawOrig = w.originalScript || w.originalText || w.word || "";
+        const rawGloss = w.englishGloss || w.gloss || "";
+        const rawStrongs = w.strongsNumber || w.strongs || (isHebrew ? `H${idx + 1000}` : `G${idx + 2000}`);
+        const study = getStrongsWordStudy(rawStrongs, rawOrig, w.transliteration || rawGloss, `${book} ${chapter}:${verse}`);
+
+        return {
+          id: `ai-word-${idx + 1}`,
+          order: Number(w.wordOrder || w.order || idx + 1),
+          originalText: rawOrig,
+          transliteration: w.transliteration || study.transliteration || "",
+          pronunciation: w.pronunciation || study.pronunciation || (w.transliteration ? w.transliteration.toLowerCase() : ""),
+          englishGloss: rawGloss,
+          strongsNumber: rawStrongs,
+          lemma: w.lemma || study.word || rawOrig,
+          partOfSpeech: w.partOfSpeech || w.pos || study.partOfSpeech || "Noun",
+          grammaticalParsing: w.grammaticalParsing || w.morphology || study.morphology || "Parsed form",
+          literalMeaning: w.literalMeaning || w.literal || study.shortDef || "Literal rendering",
+          rootEtymology: w.rootEtymology || study.root || "Primitive root",
+          lexicalDefinition: w.lexicalDefinition || study.fullDef || "Full lexical definition",
+          theologicalSignificance: w.theologicalSignificance || study.application || "Theological kingdom significance",
+          root: study.root,
+          shortDefinition: study.shortDef,
+          fullDefinition: study.fullDef,
+          englishVsOriginal: study.englishVsOriginal,
+          alsoUsedIn: study.alsoUsedIn,
+          wordChoice: study.wordChoice,
+          culturalContext: study.culture,
+          application: study.application
+        };
+      });
+    }
+    return interlinearData.words;
+  }, [aiLexiconResult, interlinearData.words, isHebrew, book, chapter, verse]);
+
+  // Display texts (prefers authentic script if available)
+  const displayOriginalScript = authenticOriginalScript || aiLexiconResult?.originalScriptFull || interlinearData.originalScriptFull;
+  const displayTransliteration = aiLexiconResult?.transliterationFull || interlinearData.transliterationFull;
+  const displayLiteralEnglish = aiLexiconResult?.literalEnglishFull || interlinearData.literalEnglishFull;
+
   // Filtered words for search
-  const filteredWords = interlinearData.words.filter((w) => {
+  const filteredWords = activeWords.filter((w) => {
     if (!filterQuery) return true;
     const q = filterQuery.toLowerCase();
     return (
@@ -91,6 +151,12 @@ export const BibleInterlinearView: React.FC<BibleInterlinearViewProps> = ({
     navigator.clipboard.writeText(text);
     setCopiedKey(key);
     setTimeout(() => setCopiedKey(null), 2000);
+  };
+
+  const handlePronounce = (w: InterlinearWord) => {
+    if (onToggleSpeak) {
+      onToggleSpeak(`${w.transliteration || w.originalText}. Meaning: ${w.englishGloss}`);
+    }
   };
 
   const handleSaveWordNote = (w: InterlinearWord) => {
@@ -141,7 +207,7 @@ export const BibleInterlinearView: React.FC<BibleInterlinearViewProps> = ({
     });
   };
 
-  const fullInterlinearCopyText = interlinearData.words
+  const fullInterlinearCopyText = activeWords
     .map((w) => `${w.order}. ${w.originalText} (${w.transliteration}) [${w.strongsNumber}] -> English: "${w.englishGloss}" | Literal: ${w.literalMeaning}`)
     .join("\n");
 
@@ -204,10 +270,22 @@ export const BibleInterlinearView: React.FC<BibleInterlinearViewProps> = ({
 
         {/* Full Original Script Display */}
         <div className="space-y-2">
-          <div className="flex items-center justify-between text-xs text-amber-200/80">
-            <span className="font-semibold uppercase tracking-wider text-[11px]">
-              Authentic {interlinearData.language} Text:
-            </span>
+          <div className="flex items-center justify-between text-xs text-amber-200/80 flex-wrap gap-2">
+            <div className="flex items-center gap-2">
+              <span className="font-semibold uppercase tracking-wider text-[11px]">
+                Authentic {interlinearData.language} Text:
+              </span>
+              {authenticOriginalScript && (
+                <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                  WLC / TR Source Verified
+                </span>
+              )}
+              {aiLexiconResult && (
+                <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-purple-500/20 text-purple-300 border border-purple-500/30">
+                  AI Lexicon Active
+                </span>
+              )}
+            </div>
             <span className="text-[11px] font-mono text-slate-300">
               {book} {chapter}:{verse}
             </span>
@@ -219,21 +297,21 @@ export const BibleInterlinearView: React.FC<BibleInterlinearViewProps> = ({
               isHebrew ? "text-right tracking-wide" : "text-left"
             }`}
           >
-            {interlinearData.originalScriptFull}
+            {displayOriginalScript}
           </div>
 
           <div className="text-xs text-slate-300 font-serif italic flex items-center gap-2 pt-0.5">
             <span className="text-[#DCC398] font-sans font-bold text-[11px] uppercase tracking-wider not-italic">
               Phonetic Transliteration:
             </span>
-            <span className="text-slate-200">{interlinearData.transliterationFull}</span>
+            <span className="text-slate-200">{displayTransliteration}</span>
           </div>
 
           <div className="text-xs text-slate-200 font-serif flex items-start gap-2 pt-1 border-t border-white/10">
             <span className="text-amber-300 font-sans font-bold text-[11px] uppercase tracking-wider shrink-0 mt-0.5">
               Literal English:
             </span>
-            <span className="leading-relaxed">"{interlinearData.literalEnglishFull}"</span>
+            <span className="leading-relaxed">"{displayLiteralEnglish}"</span>
           </div>
         </div>
       </div>

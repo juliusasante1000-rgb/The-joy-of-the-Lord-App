@@ -144,9 +144,41 @@ async function fetchLocalBookDataset(bookName: string) {
   return null;
 }
 
+const VERSION_TO_BOLLS: Record<string, string> = {
+  "KJV": "KJV",
+  "NKJV": "NKJV",
+  "NIV": "NIV",
+  "ESV": "ESV",
+  "NLT": "NLT",
+  "AMP": "AMP",
+  "NASB": "NASB",
+  "CSB": "CSB17",
+  "MSG": "MSG",
+  "BSB": "BSB",
+  "ASV": "ASV",
+  "YLT": "YLT",
+  "WEB": "WEB"
+};
+
+/**
+ * Clean scripture text from raw HTML, footnote links, and circular character markers
+ */
+function cleanVerseText(raw: string): string {
+  if (!raw) return "";
+  let text = raw;
+  // Strip headings and tags
+  text = text.replace(/<h\d+>[^<]*<\/h\d+>/gi, " ");
+  text = text.replace(/<sup[^>]*>.*?<\/sup>/gi, " ");
+  text = text.replace(/<[^>]+>/g, " ");
+  // Strip footnote circles ⓐ ⓑ ⓜ and brackets [1]
+  text = text.replace(/[\u2460-\u2473\u24B6-\u24E9\u2776-\u277F]/g, "");
+  text = text.replace(/\[\d+\]/g, "");
+  return text.replace(/\s+/g, " ").trim();
+}
+
 /**
  * Retrieve verses for any book and chapter across the entire 66 books of the Bible.
- * First checks local verified KJV canonical files, then registered chapters, then backend API.
+ * For non-KJV translations, dynamically retrieves authentic translation text.
  */
 export async function getChapterVerses(
   bookName: string,
@@ -158,7 +190,65 @@ export async function getChapterVerses(
     return chapterCache[cacheKey];
   }
 
-  // 1. Check local static verified canonical KJV dataset (instant, 100% offline)
+  const bookNum = BOOK_ORDER_INDEX[bookName] || BOOK_ORDER_INDEX[bookName.replace(/s$/, "")] || 1;
+  const isKjv = version === "KJV";
+
+  // For non-KJV versions, prioritize authentic translation APIs
+  if (!isKjv) {
+    // 1. Try local server translation API
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 3500);
+      const res = await fetch(
+        `/api/bible/chapter?version=${encodeURIComponent(version)}&book=${encodeURIComponent(bookName)}&chapter=${chapter}`,
+        { signal: controller.signal }
+      );
+      clearTimeout(timeoutId);
+
+      if (res.ok) {
+        const data = await res.json();
+        if (data && Array.isArray(data.verses) && data.verses.length > 0) {
+          const verses: BibleVerse[] = data.verses.map((v: any) => ({
+            verse: Number(v.verse),
+            text: cleanVerseText(v.text),
+            isRedLetter: false
+          }));
+          validateBibleVerses(verses, bookName, chapter);
+          chapterCache[cacheKey] = verses;
+          persistCache();
+          return verses;
+        }
+      }
+    } catch {
+      // Continue to direct Bolls CDN
+    }
+
+    // 2. Direct Bolls Life Open API with specific translation code
+    try {
+      const bollsCode = VERSION_TO_BOLLS[version] || version;
+      const bollsRes = await fetch(`https://bolls.life/get-chapter/${bollsCode}/${bookNum}/${chapter}/`, {
+        headers: { "Accept": "application/json" }
+      });
+      if (bollsRes.ok) {
+        const bollsData = await bollsRes.json();
+        if (Array.isArray(bollsData) && bollsData.length > 0) {
+          const formatted: BibleVerse[] = bollsData.map((item: any, idx: number) => ({
+            verse: Number(item.verse || idx + 1),
+            text: cleanVerseText(item.text || ""),
+            isRedLetter: false
+          }));
+          if (formatted.length > 0) {
+            validateBibleVerses(formatted, bookName, chapter);
+            chapterCache[cacheKey] = formatted;
+            persistCache();
+            return formatted;
+          }
+        }
+      }
+    } catch {}
+  }
+
+  // 1. For KJV or as fallback for non-KJV: Check local static verified canonical KJV dataset (instant, 100% offline)
   try {
     const bookData = await fetchLocalBookDataset(bookName);
     if (bookData && Array.isArray(bookData.chapters)) {
@@ -173,7 +263,7 @@ export async function getChapterVerses(
           }
           return {
             verse: vNum,
-            text: getTranslatedVerseText(v.text, bookName, chapter, vNum, version),
+            text: isKjv ? v.text : getTranslatedVerseText(v.text, bookName, chapter, vNum, version),
             isRedLetter: isRed
           };
         });
@@ -193,7 +283,7 @@ export async function getChapterVerses(
   if (registered && registered.length > 0) {
     const translated = registered.map((v) => ({
       verse: v.verse,
-      text: getTranslatedVerseText(v.text, bookName, chapter, v.verse, version),
+      text: isKjv ? v.text : getTranslatedVerseText(v.text, bookName, chapter, v.verse, version),
       isRedLetter: v.isRedLetter
     }));
     validateBibleVerses(translated, bookName, chapter);
@@ -202,16 +292,17 @@ export async function getChapterVerses(
     return translated;
   }
 
-  // 3. Check if local BIBLE_BOOKS_CATALOG has curated verses
+  // 3. For KJV only: check local BIBLE_BOOKS_CATALOG for instant offline response
   const book = BIBLE_BOOKS_CATALOG.find(
     (b) => b.name.toLowerCase() === bookName.toLowerCase() || b.abbreviation.toLowerCase() === bookName.toLowerCase()
   );
   const exactCount = getStandardVerseCount(bookName, chapter);
-  if (book && book.chapters && book.chapters[chapter] && book.chapters[chapter].length >= exactCount) {
+
+  if (isKjv && book && book.chapters && book.chapters[chapter] && book.chapters[chapter].length >= exactCount) {
     const rawVerses = book.chapters[chapter];
     const translated = rawVerses.map((v) => ({
       verse: v.verse,
-      text: getTranslatedVerseText(v.text, book.name, chapter, v.verse, version),
+      text: v.text,
       isRedLetter: v.isRedLetter
     }));
     validateBibleVerses(translated, bookName, chapter);
@@ -220,12 +311,12 @@ export async function getChapterVerses(
     return translated;
   }
 
-  // 4. Fetch from backend Bible API (/api/bible-chapter)
+  // 4. For non-KJV (or missing KJV): Fetch from backend Bible API (/api/bible/chapter)
   try {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 4000);
     const res = await fetch(
-      `/api/bible-chapter?book=${encodeURIComponent(bookName)}&chapter=${chapter}&version=${encodeURIComponent(version)}`,
+      `/api/bible/chapter?book=${encodeURIComponent(bookName)}&chapter=${chapter}&version=${encodeURIComponent(version)}`,
       { signal: controller.signal }
     );
     clearTimeout(timeoutId);
@@ -243,10 +334,9 @@ export async function getChapterVerses(
     // ignore
   }
 
-  // 5. Try Bolls Life Open Bible API CDN
+  // 5. Try Bolls Life Open Bible API CDN directly
   try {
-    const bookNum = BOOK_ORDER_INDEX[bookName] || BOOK_ORDER_INDEX[bookName.replace(/s$/, "")] || 1;
-    const bollsTrans = version === "WEB" ? "WEB" : version === "YLT" ? "YLT" : "KJV";
+    const bollsTrans = VERSION_TO_BOLLS[version] || (isKjv ? "KJV" : "WEB");
     const bollsRes = await fetch(`https://bolls.life/get-chapter/${bollsTrans}/${bookNum}/${chapter}/`, {
       headers: { "Accept": "application/json" }
     });
@@ -254,10 +344,10 @@ export async function getChapterVerses(
       const bollsData = await bollsRes.json();
       if (Array.isArray(bollsData) && bollsData.length > 0) {
         const formatted = bollsData.map((item: any, idx: number) => {
-          const rawText = (item.text || "").replace(/<[^>]*>?/gm, "").replace(/\s+/g, " ").trim();
+          const cleanText = cleanVerseText(item.text || "");
           return {
             verse: Number(item.verse || idx + 1),
-            text: getTranslatedVerseText(rawText, bookName, chapter, Number(item.verse || idx + 1), version),
+            text: cleanText,
             isRedLetter: false
           };
         });
@@ -273,7 +363,7 @@ export async function getChapterVerses(
 
   // 6. Try Bible-API.com
   try {
-    const trans = version === "KJV" ? "kjv" : version === "WEB" ? "web" : "kjv";
+    const trans = isKjv ? "kjv" : version === "WEB" ? "web" : "kjv";
     const directRes = await fetch(
       `https://bible-api.com/${encodeURIComponent(bookName)}+${chapter}?translation=${trans}`
     );
@@ -282,7 +372,7 @@ export async function getChapterVerses(
       if (directData && Array.isArray(directData.verses) && directData.verses.length > 0) {
         const formatted = directData.verses.map((v: any) => ({
           verse: Number(v.verse),
-          text: getTranslatedVerseText((v.text || "").replace(/\s+/g, " ").trim(), bookName, chapter, Number(v.verse), version),
+          text: (v.text || "").replace(/\s+/g, " ").trim(),
           isRedLetter: false
         }));
         validateBibleVerses(formatted, bookName, chapter);
@@ -292,6 +382,20 @@ export async function getChapterVerses(
       }
     }
   } catch {}
+
+  // 7. Fallback to local catalog if network is unavailable
+  if (book && book.chapters && book.chapters[chapter] && book.chapters[chapter].length >= exactCount) {
+    const rawVerses = book.chapters[chapter];
+    const translated = rawVerses.map((v) => ({
+      verse: v.verse,
+      text: isKjv ? v.text : getTranslatedVerseText(v.text, book.name, chapter, v.verse, version),
+      isRedLetter: v.isRedLetter
+    }));
+    validateBibleVerses(translated, bookName, chapter);
+    chapterCache[cacheKey] = translated;
+    persistCache();
+    return translated;
+  }
 
   return [];
 }

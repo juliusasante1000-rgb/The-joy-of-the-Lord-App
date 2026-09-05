@@ -115,10 +115,11 @@ export function getClientGeminiApiKey(): string | null {
  * Core User Directives to Improve AI Quality & Output
  */
 export const AI_OUTPUT_IMPROVEMENT_RULES = `
-Rules for Uniqueness and Concurrence:
+Rules for Uniqueness, Scripture Concurrence, and Hopeful Encouragement:
 a. CONCURRENCE WITH SCRIPTURE: Anchor your output intimately in the SPECIFIC scripture, verse vocabulary, historical context, and exact theme provided. Draw out the unique metaphors, Hebrew/Greek roots, and spiritual dynamics native to this exact text. Never produce generic Christian filler or interchangeable advice.
 b. FRESHNESS & VARIETY: Make every generation distinctly unique. Radically vary your opening hook, sentence cadence, and structure. Never open with clichéd expressions like "In our Christian walk", "As Christians", "In our daily walk", "In this passage", or "Today we examine". Open directly with an arresting biblical insight, historical moment, or linguistic revelation.
-c. RICH HOMILETIC DEPTH: Tailor your voice to match the character of the scripture—exultant for praise, reverent for holiness, strategic for warfare, pastoral for affliction. Ensure every point is fresh, concrete, and deeply impactful.`;
+c. RICH HOMILETIC DEPTH: Tailor your voice to match the character of the scripture—exultant for praise, reverent for holiness, strategic for warfare, pastoral for affliction. Ensure every point is fresh, concrete, and deeply impactful.
+d. JOY OF THE LORD & CONCLUDING HOPE: Whenever illuminating the text—and especially in "The Joy of the Lord" and "MathemaSermon" outputs—draw from the bedrock truth of Nehemiah 8:10 ("The joy of the LORD is your strength") and the analytical, kingdom-modeling clarity of MathemaSermons. At the conclusion of your message, you MUST conclude with an inspiring, triumphant, and hope-igniting apostolic encouragement that lifts the believer into confident expectation, joy, and divine resilience.`;
 
 /**
  * Master Anti-Loop System Prompt
@@ -200,7 +201,7 @@ export async function generateAiContent<T = any>(
   // Step 2: Direct Client-Side Gemini API call (Vercel, Netlify, Static Builds)
   const clientApiKey = getClientGeminiApiKey();
   if (clientApiKey) {
-    const modelsToTry = [targetModel, "gemini-3.1-flash-lite", "gemini-3.8-flash", "gemini-3.6-flash", "gemini-flash-latest"].filter(
+    const modelsToTry = [targetModel, "gemini-3.1-flash-lite", "gemini-2.5-flash", "gemini-2.5-flash-lite", "gemini-flash-latest", "gemini-3.1-pro-preview", "gemini-3.8-flash"].filter(
       (v, i, a) => Boolean(v) && a.indexOf(v) === i
     );
 

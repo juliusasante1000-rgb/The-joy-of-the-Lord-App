@@ -450,7 +450,7 @@ export async function streamAiContent<T = any>(
           ],
           propheticDecree: `I decree that the living truth of ${ref} is established over my life, my home, and my calling today and forever. In Jesus' Name, Amen.`
         };
-      } else if (act.includes("context") || act.includes("historical") || act.includes("background")) {
+      } else if (act.includes("context") || act.includes("historical") || act.includes("background") || act.includes("explain") || act.includes("exposition") || act.includes("exegesis")) {
         // Book-specific dynamic historical and cultural extraction
         const bookName = ref.split(" ")[0] || "";
         const isOT = !["Matthew", "Mark", "Luke", "John", "Acts", "Romans", "Corinthians", "Galatians", "Ephesians", "Philippians", "Colossians", "Thessalonians", "Timothy", "Titus", "Philemon", "Hebrews", "James", "Peter", "John", "Jude", "Revelation"].some(b => ref.includes(b));

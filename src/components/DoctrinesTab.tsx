@@ -319,7 +319,7 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
               }`}
             >
               <Scroll className="w-3.5 h-3.5" />
-              <span>Core Tenets (15)</span>
+              <span>Core Tenets ({CHURCH_TENETS.length})</span>
               <span className="ml-1 px-1.5 py-0.2 rounded-full bg-black/30 text-[10px]">
                 {CHURCH_TENETS.length}
               </span>
