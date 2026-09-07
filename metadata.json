@@ -1,6 +1,6 @@
 {
   "name": "The Joy of the Lord",
-  "description": "A comprehensive Christian spiritual platform featuring 1,000 Rhema Now-Words, 1,000 Joy Overcoming Messages, 482 Author's Favourite Scriptures curated by Bismark Twum, 1,000+ God's Generals Quotes, 1,500 Scriptural Places, Daily Bible Verse with midnight rollover, complete Holy Bible reader, ApostleMath, and MathemaSermons.",
+  "description": "A comprehensive Christian spiritual platform featuring 1,000 Rhema Now-Words, 1,000 Joy Overcoming Messages, 482 Author's Favourite Scriptures curated by Bismark Twum, 1,000+ God's Generals Quotes, 1,500 Scriptural Places, 500 Shemot Geulah (Redemptive Names), 500 Unpopular Biblical Names, Daily Bible Verse with midnight rollover, complete Holy Bible reader, ApostleMath, and MathemaSermons.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

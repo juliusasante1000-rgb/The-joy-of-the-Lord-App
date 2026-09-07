@@ -13,11 +13,17 @@ import {
   Share2,
   Volume2,
   VolumeX,
-  Star
+  Star,
+  Crown,
+  Shield
 } from "lucide-react";
 import { SpiritualPlace } from "../types";
 import { getAllSpiritualPlaces } from "../data/spiritualPlacesData";
 import { SpiritualPlaceSanctuaryModal } from "./SpiritualPlaceSanctuaryModal";
+import { ShemotGeulahTab } from "./ShemotGeulahTab";
+import { UnpopularBiblicalNamesTab } from "./UnpopularBiblicalNamesTab";
+
+export type SpiritualPlacesSubTab = "scriptural_places" | "shemot_geulah" | "unpopular_names";
 
 interface SpiritualPlacesTabProps {
   onNavigateToBibleChapter?: (book: string, chapter: number, verse?: number) => void;
@@ -28,6 +34,7 @@ interface SpiritualPlacesTabProps {
   onShareItem?: (item: any) => void;
   isSpeaking?: boolean;
   onToggleSpeak?: (text: string) => void;
+  initialSubTab?: SpiritualPlacesSubTab;
 }
 
 export const SpiritualPlacesTab: React.FC<SpiritualPlacesTabProps> = ({
@@ -38,8 +45,10 @@ export const SpiritualPlacesTab: React.FC<SpiritualPlacesTabProps> = ({
   onToggleBookmark,
   onShareItem,
   isSpeaking,
-  onToggleSpeak
+  onToggleSpeak,
+  initialSubTab = "scriptural_places"
 }) => {
+  const [activeSubTab, setActiveSubTab] = useState<SpiritualPlacesSubTab>(initialSubTab);
   const [places] = useState<SpiritualPlace[]>(() =>
     getAllSpiritualPlaces().filter((p) => p.isPublished)
   );
@@ -126,8 +135,68 @@ export const SpiritualPlacesTab: React.FC<SpiritualPlacesTabProps> = ({
 
   return (
     <div className="space-y-6 pb-20 animate-in fade-in duration-200">
-      {/* Header Banner */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[#16235A] via-[#1E2E72] to-[#9333EA] text-white shadow-xl relative overflow-hidden">
+      {/* Unique Sub-Tabs Navigation */}
+      <div className="bg-slate-100 p-1.5 rounded-2xl flex flex-col sm:flex-row gap-1.5 border border-slate-200/80 shadow-2xs">
+        <button
+          id="subtab-scriptural-places"
+          onClick={() => setActiveSubTab("scriptural_places")}
+          className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+            activeSubTab === "scriptural_places"
+              ? "bg-[#16235A] text-white shadow-xs"
+              : "text-slate-600 hover:text-slate-900 hover:bg-white/60"
+          }`}
+        >
+          <Compass className="w-4 h-4" />
+          <span>Scriptural Places</span>
+          <span className={`px-2 py-0.5 rounded-full text-[10px] font-extrabold ${
+            activeSubTab === "scriptural_places" ? "bg-amber-400 text-slate-950" : "bg-slate-200 text-slate-700"
+          }`}>
+            {places.length}
+          </span>
+        </button>
+
+        <button
+          id="subtab-shemot-geulah"
+          onClick={() => setActiveSubTab("shemot_geulah")}
+          className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+            activeSubTab === "shemot_geulah"
+              ? "bg-purple-900 text-white shadow-xs"
+              : "text-slate-600 hover:text-purple-950 hover:bg-white/60"
+          }`}
+        >
+          <Crown className="w-4 h-4 text-amber-400" />
+          <span>Shemot Geulah (Redemptive Names)</span>
+          <span className={`px-2 py-0.5 rounded-full text-[10px] font-extrabold ${
+            activeSubTab === "shemot_geulah" ? "bg-amber-400 text-purple-950" : "bg-purple-100 text-purple-900"
+          }`}>
+            500
+          </span>
+        </button>
+
+        <button
+          id="subtab-unpopular-names"
+          onClick={() => setActiveSubTab("unpopular_names")}
+          className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+            activeSubTab === "unpopular_names"
+              ? "bg-sky-950 text-white shadow-xs"
+              : "text-slate-600 hover:text-sky-950 hover:bg-white/60"
+          }`}
+        >
+          <Shield className="w-4 h-4 text-teal-300" />
+          <span>Unpopular Biblical Names</span>
+          <span className={`px-2 py-0.5 rounded-full text-[10px] font-extrabold ${
+            activeSubTab === "unpopular_names" ? "bg-amber-400 text-sky-950" : "bg-sky-100 text-sky-900"
+          }`}>
+            500
+          </span>
+        </button>
+      </div>
+
+      {/* Scriptural Places View */}
+      {activeSubTab === "scriptural_places" && (
+        <div className="space-y-6">
+          {/* Header Banner */}
+          <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[#16235A] via-[#1E2E72] to-[#9333EA] text-white shadow-xl relative overflow-hidden">
         <div className="absolute right-0 top-0 w-80 h-80 bg-white/5 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
 
         <div className="relative z-10 space-y-3">
@@ -350,6 +419,34 @@ export const SpiritualPlacesTab: React.FC<SpiritualPlacesTabProps> = ({
         hasNextPlace={filteredPlaces.length > 1}
         hasPrevPlace={filteredPlaces.length > 1}
       />
+        </div>
+      )}
+
+      {/* Unique Tab 2: Shemot Geulah (500 Redemptive Names) */}
+      {activeSubTab === "shemot_geulah" && (
+        <ShemotGeulahTab
+          onNavigateToBibleChapter={onNavigateToBibleChapter}
+          onOpenDevotion={onOpenDevotion}
+          isBookmarked={isBookmarked}
+          onToggleBookmark={onToggleBookmark}
+          onShareItem={onShareItem}
+          isSpeaking={isSpeaking}
+          onToggleSpeak={onToggleSpeak}
+        />
+      )}
+
+      {/* Unique Tab 3: Unpopular Biblical Names (500 Rare Biblical Figures) */}
+      {activeSubTab === "unpopular_names" && (
+        <UnpopularBiblicalNamesTab
+          onNavigateToBibleChapter={onNavigateToBibleChapter}
+          onOpenDevotion={onOpenDevotion}
+          isBookmarked={isBookmarked}
+          onToggleBookmark={onToggleBookmark}
+          onShareItem={onShareItem}
+          isSpeaking={isSpeaking}
+          onToggleSpeak={onToggleSpeak}
+        />
+      )}
     </div>
   );
 };

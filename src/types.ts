@@ -16,6 +16,31 @@ export interface SpiritualPlace {
   historicalContext?: string;
 }
 
+export interface ShemotGeulahName {
+  id: number;
+  name: string;
+  hebrew: string;
+  transliteration: string;
+  meaning: string;
+  scriptureReference: string;
+  category: string;
+  propheticDeclaration?: string;
+  biblicalContext?: string;
+}
+
+export interface UnpopularBiblicalName {
+  id: number;
+  name: string;
+  originalScript: string;
+  transliteration: string;
+  meaning: string;
+  scriptureReference: string;
+  personType: "Man of Blessing" | "Woman of Blessing" | "Hero of Faith" | "Royal & Levite Watchman";
+  category: string;
+  historicalRole: string;
+  blessingApplication?: string;
+}
+
 export interface PlaceScripture {
   id: string;
   placeIds: string[];
