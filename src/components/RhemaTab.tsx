@@ -22,7 +22,8 @@ import {
 import { RHEMA_CATALOG, RHEMA_SEASONS } from "../data/rhemaData";
 import { RhemaWordItem, Devotion } from "../types";
 import { RhemaSanctuaryModal } from "./RhemaSanctuaryModal";
-import { fetchAiWithRetry } from "../utils/aiClient";
+import { streamAiContent, getIsFastMode, setIsFastMode } from "../utils/aiStreaming";
+import { AiFastLoadingView } from "./AiFastLoadingView";
 import { useSyncedContent } from "../utils/useSyncedContent";
 
 interface RhemaTabProps {
@@ -63,6 +64,8 @@ export const RhemaTab: React.FC<RhemaTabProps> = ({
   const [isGeneratingAi, setIsGeneratingAi] = useState(false);
   const [aiError, setAiError] = useState<string | null>(null);
   const [aiRhemaWord, setAiRhemaWord] = useState<RhemaWordItem | null>(null);
+  const [streamingAiText, setStreamingAiText] = useState("");
+  const [streamingProgress, setStreamingProgress] = useState(25);
 
   const activeWord = useMemo(() => {
     if (aiRhemaWord && selectedWordId === aiRhemaWord.id) return aiRhemaWord;
@@ -161,54 +164,63 @@ export const RhemaTab: React.FC<RhemaTabProps> = ({
     if (!customNeed.trim()) return;
     setIsGeneratingAi(true);
     setAiError(null);
+    setStreamingAiText("");
+    setStreamingProgress(25);
 
     try {
-      const res = await fetchAiWithRetry<any>(
-        "/api/generate-rhema",
-        {
-          seasonCategory: selectedSeason !== "All" ? selectedSeason : "Breakthrough",
-          focusNeed: customNeed
+      const res = await streamAiContent<any>({
+        actionType: "rhema_word",
+        seasonCategory: selectedSeason !== "All" ? selectedSeason : "Breakthrough",
+        focusNeed: customNeed,
+        fastMode: getIsFastMode(),
+        storageKey: "ai_rhema_history",
+        onProgress: (prog) => {
+          setStreamingProgress(prog);
         },
-        {
-          maxRetries: 2,
-          retryDelayMs: 1500,
-          storageKey: "ai_rhema_history"
+        onChunk: (_chunk, accText) => {
+          setStreamingAiText(accText);
+        },
+        onComplete: (_fullText, data) => {
+          const inner = data || {};
+          const generated: RhemaWordItem = {
+            id: inner.id || `ai-rhema-${Date.now()}`,
+            seasonCategory: inner.seasonCategory || (selectedSeason !== "All" ? selectedSeason : "Fresh Oil"),
+            title: inner.title || "Now Word of Prophetic Breakthrough",
+            propheticDeclaration: inner.propheticDeclaration || "The Lord is declaring a season of sudden turnaround and victory.",
+            spiritualAtmosphere: inner.spiritualAtmosphere || "Open Heavens & Fresh Grace",
+            scriptureAnchor: inner.scriptureAnchor || {
+              reference: "Isaiah 43:19",
+              text: "Behold, I will do a new thing; now it shall spring forth; shall ye not know it? I will even make a way in the wilderness, and rivers in the desert.",
+              version: "KJV"
+            },
+            nowWordText: inner.nowWordText || "Hear the voice of the Lord: every delayed harvest is being released. Stand in steadfast faith and rejoice.",
+            dailyActivationGuide: Array.isArray(inner.dailyActivationGuide) ? inner.dailyActivationGuide : [
+              "1. Meditate on the scripture anchor in morning stillness.",
+              "2. Proclaim the prophetic declaration aloud over your family and work.",
+              "3. Execute the Holy commandment of faith boldly today."
+            ],
+            actionCommandment: inner.actionCommandment || "Speak the Word out loud 3 times daily and sow a seed of thanksgiving.",
+            propheticDecree: inner.propheticDecree || "I decree and declare that every closed door is opened now in Jesus' Name!"
+          };
+
+          setAiRhemaWord(generated);
+          setSelectedWordId(generated.id);
+          setCustomNeed("");
+          setIsGeneratingAi(false);
+          handleOpenSanctuary(generated);
+        },
+        onError: (err) => {
+          setAiError(err);
+          setIsGeneratingAi(false);
         }
-      );
+      });
 
-      if (res.success && res.data && res.data.title) {
-        const data = res.data;
-        const generated: RhemaWordItem = {
-          id: data.id || `ai-rhema-${Date.now()}`,
-          seasonCategory: data.seasonCategory || (selectedSeason !== "All" ? selectedSeason : "Fresh Oil"),
-          title: data.title,
-          propheticDeclaration: data.propheticDeclaration || "The Lord is declaring a season of sudden turnaround and victory.",
-          spiritualAtmosphere: data.spiritualAtmosphere || "Open Heavens & Fresh Grace",
-          scriptureAnchor: data.scriptureAnchor || {
-            reference: "Isaiah 43:19",
-            text: "Behold, I will do a new thing; now it shall spring forth; shall ye not know it? I will even make a way in the wilderness, and rivers in the desert.",
-            version: "KJV"
-          },
-          nowWordText: data.nowWordText || "Hear the voice of the Lord: every delayed harvest is being released. Stand in steadfast faith and rejoice.",
-          dailyActivationGuide: data.dailyActivationGuide || [
-            "1. Meditate on the scripture anchor in morning stillness.",
-            "2. Proclaim the prophetic declaration aloud over your family and work.",
-            "3. Execute the Holy commandment of faith boldly today."
-          ],
-          actionCommandment: data.actionCommandment || "Speak the Word out loud 3 times daily and sow a seed of thanksgiving.",
-          propheticDecree: data.propheticDecree || "I decree and declare that every closed door is opened now in Jesus' Name!"
-        };
-
-        setAiRhemaWord(generated);
-        setSelectedWordId(generated.id);
-        setCustomNeed("");
-        handleOpenSanctuary(generated);
-      } else {
-        setAiError("Unable to discern Rhema word at this moment. Please try again.");
+      if (!res.success && res.error) {
+        setAiError(res.error);
       }
-    } catch (err) {
+    } catch (err: any) {
       console.warn("Error generating AI Rhema:", err);
-      setAiError("Network connection issue. Please check your connection and retry.");
+      setAiError(err?.message || "Network connection issue. Please check your connection and retry.");
     } finally {
       setIsGeneratingAi(false);
     }
@@ -566,7 +578,7 @@ export const RhemaTab: React.FC<RhemaTabProps> = ({
               className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 hover:brightness-110 transition-all cursor-pointer disabled:opacity-50"
             >
               {isGeneratingAi ? (
-                <span>Generating...</span>
+                <span>Receiving...</span>
               ) : (
                 <>
                   <Send className="w-3.5 h-3.5" />
@@ -576,6 +588,20 @@ export const RhemaTab: React.FC<RhemaTabProps> = ({
             </button>
           </div>
         </form>
+
+        {/* AI Streaming Loading View */}
+        {isGeneratingAi && (
+          <div className="pt-2">
+            <AiFastLoadingView
+              progress={streamingProgress}
+              title="Discerning Anointed Rhema Word"
+              actionType="Prophetic Season Discerner"
+              streamingText={streamingAiText}
+              isStreaming={true}
+              onCancel={() => setIsGeneratingAi(false)}
+            />
+          </div>
+        )}
       </div>
 
       {/* 5. Dedicated Rhema Sanctuary Tab Modal */}

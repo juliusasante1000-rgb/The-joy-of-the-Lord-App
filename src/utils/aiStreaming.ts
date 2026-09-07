@@ -66,6 +66,7 @@ export interface StreamAiOptions extends StreamCallbacks {
   scriptureReference?: string;
   scriptureText?: string;
   scriptureTheme?: string;
+  version?: string;
   topic?: string;
   need?: string;
   category?: string;
@@ -75,20 +76,19 @@ export interface StreamAiOptions extends StreamCallbacks {
   fastMode?: boolean;
   timeoutMs?: number;
   storageKey?: string;
+  mathBranch?: string;
+  spiritualConcept?: string;
+  question?: string;
+  specificChallenge?: string;
+  seasonCategory?: string;
+  focusNeed?: string;
+  placeName?: string;
+  biblicalReference?: string;
+  context?: string;
+  [key: string]: any;
 }
 
-// 5-Minute In-Memory and Local Cache
-interface CacheEntry {
-  text: string;
-  data: any;
-  timestamp: number;
-  fastMode: boolean;
-}
-
-const STREAM_CACHE = new Map<string, CacheEntry>();
-const CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes cache TTL
-
-// In-Flight Debounce Tracker: Prevents duplicate triggers within 1000ms
+// In-Flight Debounce Tracker: Prevents duplicate triggers within 600ms
 const IN_FLIGHT_REQUESTS = new Map<string, Promise<any>>();
 const LAST_TRIGGER_TIMESTAMPS = new Map<string, number>();
 
@@ -111,50 +111,39 @@ export function setIsFastMode(enabled: boolean): void {
 }
 
 /**
- * Compute unique deterministic cache key for AI request
+ * Compute unique request key for AI request debouncing
  */
 export function getAiCacheKey(options: StreamAiOptions): string {
   const parts = [
     options.actionType || "",
     options.scriptureReference || "",
+    options.version || "",
     options.topic || "",
     options.need || "",
     options.category || "",
     options.mathematicalConcept || "",
-    options.prompt || "",
-    options.fastMode ? "fast" : "deep"
+    options.prompt || ""
   ];
   return parts.join("::").toLowerCase().trim();
 }
 
 /**
- * Helper to check and get cached AI result
+ * RULE 1 COMPLIANCE: No persistent caching of AI responses between requests.
+ * Always returns null so every AI request generates fresh, non-cached content.
  */
-export function getCachedAiResult(cacheKey: string): CacheEntry | null {
-  const entry = STREAM_CACHE.get(cacheKey);
-  if (entry && Date.now() - entry.timestamp < CACHE_TTL_MS) {
-    return entry;
-  }
-  if (entry) {
-    STREAM_CACHE.delete(cacheKey);
-  }
+export function getCachedAiResult(_cacheKey: string): null {
   return null;
 }
 
 /**
- * Helper to save AI result to cache
+ * RULE 1 COMPLIANCE: Do not store AI responses in persistent cache between requests.
  */
-export function saveAiResultToCache(cacheKey: string, text: string, data: any, fastMode: boolean): void {
-  STREAM_CACHE.set(cacheKey, {
-    text,
-    data,
-    timestamp: Date.now(),
-    fastMode
-  });
+export function saveAiResultToCache(_cacheKey: string, _text: string, _data: any, _fastMode: boolean): void {
+  // Deliberately no-op to satisfy Rule 1 (no persistent caching across requests)
 }
 
 /**
- * Primary Streaming Generator with Caching, Debouncing, SSE Chunk Processing,
+ * Primary Streaming Generator with Vercel Caching Bypass, SSE Chunk Processing,
  * and Fallback Mechanism
  */
 export async function streamAiContent<T = any>(
@@ -176,31 +165,7 @@ export async function streamAiContent<T = any>(
   }
   LAST_TRIGGER_TIMESTAMPS.set(cacheKey, now);
 
-  // 2. 5-Minute Cache Hit Check
-  const cached = getCachedAiResult(cacheKey);
-  const isContextAction = (options.actionType || "").toLowerCase().includes("context") || (options.actionType || "").toLowerCase().includes("historical");
-  const isInvalidContextCache = isContextAction && cached?.data && !cached.data.historicalContext && !cached.data.culturalBackground;
-
-  if (cached && !isInvalidContextCache) {
-    console.log(`[AI CACHE HIT (5-min)] ⚡ Returning cached response instantly:`, {
-      key: cacheKey.substring(0, 40),
-      ageSec: Math.round((Date.now() - cached.timestamp) / 1000)
-    });
-
-    options.onProgress?.(100);
-    // Instant streaming delivery for responsive feel
-    options.onChunk?.(cached.text, cached.text, cached.data);
-    options.onComplete?.(cached.text, cached.data, true);
-
-    return {
-      success: true,
-      text: cached.text,
-      data: cached.data as T,
-      isCached: true
-    };
-  }
-
-  // 3. Initiate Streaming Call & register in-flight promise
+  // 2. Initiate Streaming Call & register in-flight promise
   const streamPromise = (async () => {
     const isFast = options.fastMode ?? getIsFastMode();
     const timeoutMs = options.timeoutMs ?? (isFast ? 12000 : 25000);
@@ -213,34 +178,50 @@ export async function streamAiContent<T = any>(
     options.onProgress?.(15);
 
     try {
-      console.log(`[AI STREAM START] 🚀 [FastMode: ${isFast}] Calling /api/generate-stream...`);
+      console.log(`[AI STREAM START] 🚀 [FastMode: ${isFast}] Calling /api/generate-stream with cache: no-store...`);
 
+      // RULE 1: Non-cacheable payload with random timestamp and nonce
       const payload = {
+        ...options,
         prompt: options.prompt,
         actionType: options.actionType,
         scriptureReference: options.scriptureReference,
         scriptureText: options.scriptureText,
         scriptureTheme: options.scriptureTheme,
+        version: options.version,
         topic: options.topic,
         need: options.need,
         category: options.category,
         mathematicalConcept: options.mathematicalConcept,
+        mathBranch: options.mathBranch,
+        spiritualConcept: options.spiritualConcept,
+        question: options.question,
+        specificChallenge: options.specificChallenge,
+        seasonCategory: options.seasonCategory,
+        focusNeed: options.focusNeed,
+        placeName: options.placeName,
+        biblicalReference: options.biblicalReference,
+        context: options.context,
         systemInstruction: options.systemInstruction,
         fastMode: isFast,
         stream: true,
+        timestamp: Date.now(),
+        _nonce: Math.random().toString(36).substring(2),
         generationConfig: isFast
           ? { temperature: 0.3, topP: 0.85, maxOutputTokens: 600 }
           : { temperature: 0.45, topP: 0.90, maxOutputTokens: 2048 }
       };
 
-      // Tier 1: Try SSE streaming endpoint first
+      // Tier 1: Try SSE streaming endpoint first (POST with cache: 'no-store')
       let sseSuccess = false;
       try {
         const response = await fetch("/api/generate-stream", {
           method: "POST",
+          cache: "no-store",
           headers: {
             "Content-Type": "application/json",
-            "Accept": "text/event-stream"
+            "Accept": "text/event-stream",
+            "Cache-Control": "no-store, no-cache, must-revalidate"
           },
           body: JSON.stringify(payload),
           signal: controller.signal
@@ -357,7 +338,11 @@ export async function streamAiContent<T = any>(
         try {
           const fallbackRes = await fetch(targetUrl, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            cache: "no-store",
+            headers: {
+              "Content-Type": "application/json",
+              "Cache-Control": "no-store, no-cache, must-revalidate"
+            },
             body: JSON.stringify(payload)
           });
 

@@ -12,7 +12,14 @@ const bookDatasetCache: Record<string, { book: string; chapters: { chapter: numb
 try {
   const savedCache = localStorage.getItem("joy_offline_bible_cache_v4");
   if (savedCache) {
-    Object.assign(chapterCache, JSON.parse(savedCache));
+    const parsed = JSON.parse(savedCache);
+    // Purge any non-KJV keys that might have been mistakenly cached with KJV text
+    for (const key of Object.keys(parsed)) {
+      if (!key.endsWith("-kjv")) {
+        delete parsed[key];
+      }
+    }
+    Object.assign(chapterCache, parsed);
   }
 } catch {
   // ignore
@@ -157,7 +164,10 @@ const VERSION_TO_BOLLS: Record<string, string> = {
   "BSB": "BSB",
   "ASV": "ASV",
   "YLT": "YLT",
-  "WEB": "WEB"
+  "WEB": "WEB",
+  "NET": "NET",
+  "CEV": "CEVD",
+  "TPT": "TPT"
 };
 
 /**
@@ -195,19 +205,23 @@ export async function getChapterVerses(
 
   // For non-KJV versions, prioritize authentic translation APIs
   if (!isKjv) {
-    // 1. Try local server translation API
+    // 1. Try local server translation API with generous timeout
     try {
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 3500);
+      const timeoutId = setTimeout(() => controller.abort(), 8000);
       const res = await fetch(
         `/api/bible/chapter?version=${encodeURIComponent(version)}&book=${encodeURIComponent(bookName)}&chapter=${chapter}`,
-        { signal: controller.signal }
+        {
+          signal: controller.signal,
+          headers: { "Cache-Control": "no-store" }
+        }
       );
       clearTimeout(timeoutId);
 
       if (res.ok) {
         const data = await res.json();
-        if (data && Array.isArray(data.verses) && data.verses.length > 0) {
+        // Ensure the returned version is the requested one, not a KJV fallback
+        if (data && Array.isArray(data.verses) && data.verses.length > 0 && data.version === version) {
           const verses: BibleVerse[] = data.verses.map((v: any) => ({
             verse: Number(v.verse),
             text: cleanVerseText(v.text),
@@ -226,9 +240,14 @@ export async function getChapterVerses(
     // 2. Direct Bolls Life Open API with specific translation code
     try {
       const bollsCode = VERSION_TO_BOLLS[version] || version;
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 8000);
       const bollsRes = await fetch(`https://bolls.life/get-chapter/${bollsCode}/${bookNum}/${chapter}/`, {
-        headers: { "Accept": "application/json" }
+        headers: { "Accept": "application/json", "User-Agent": "ChristianScriptureEngine/1.0" },
+        signal: controller.signal
       });
+      clearTimeout(timeoutId);
+
       if (bollsRes.ok) {
         const bollsData = await bollsRes.json();
         if (Array.isArray(bollsData) && bollsData.length > 0) {
@@ -243,6 +262,32 @@ export async function getChapterVerses(
             persistCache();
             return formatted;
           }
+        }
+      }
+    } catch {}
+
+    // 3. Try bible-api.com for public domain / modern translations supported there
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 5000);
+      const bibleApiRes = await fetch(
+        `https://bible-api.com/${encodeURIComponent(bookName)}%20${chapter}?translation=${encodeURIComponent(version.toLowerCase())}`,
+        { signal: controller.signal }
+      );
+      clearTimeout(timeoutId);
+
+      if (bibleApiRes.ok) {
+        const bData = await bibleApiRes.json();
+        if (bData && Array.isArray(bData.verses) && bData.verses.length > 0) {
+          const formatted: BibleVerse[] = bData.verses.map((item: any) => ({
+            verse: Number(item.verse),
+            text: cleanVerseText(item.text || ""),
+            isRedLetter: false
+          }));
+          validateBibleVerses(formatted, bookName, chapter);
+          chapterCache[cacheKey] = formatted;
+          persistCache();
+          return formatted;
         }
       }
     } catch {}
@@ -269,8 +314,11 @@ export async function getChapterVerses(
         });
 
         validateBibleVerses(verses, bookName, chapter);
-        chapterCache[cacheKey] = verses;
-        persistCache();
+        // Only persist to cache if it's actually KJV so we don't poison non-KJV version keys
+        if (isKjv) {
+          chapterCache[cacheKey] = verses;
+          persistCache();
+        }
         return verses;
       }
     }
@@ -392,10 +440,86 @@ export async function getChapterVerses(
       isRedLetter: v.isRedLetter
     }));
     validateBibleVerses(translated, bookName, chapter);
-    chapterCache[cacheKey] = translated;
-    persistCache();
+    if (isKjv) {
+      chapterCache[cacheKey] = translated;
+      persistCache();
+    }
     return translated;
   }
 
   return [];
 }
+
+/**
+ * Fetch a single verse authentic text in any requested translation (e.g. NIV, ESV, NKJV, NLT, AMP)
+ */
+export async function fetchAuthenticVerseText(
+  referenceOrBook: string,
+  chapter?: number,
+  verse?: number,
+  version: string = "KJV"
+): Promise<{ text: string; version: string }> {
+  const reqVersion = String(version || "KJV").toUpperCase();
+  let ref = referenceOrBook;
+  if (chapter !== undefined && verse !== undefined) {
+    ref = `${referenceOrBook} ${chapter}:${verse}`;
+  }
+
+  // 1. Try local server API
+  try {
+    const res = await fetch(`/api/bible/verse?reference=${encodeURIComponent(ref)}&version=${encodeURIComponent(reqVersion)}`, {
+      headers: { "Cache-Control": "no-store" }
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.verseText && typeof data.verseText === "string" && data.verseText.trim().length > 0) {
+        return { text: data.verseText, version: data.version || reqVersion };
+      }
+    }
+  } catch {}
+
+  // 2. Try direct Bolls if book chapter verse is parsed
+  const parsed = parseScriptureRef(ref);
+  if (parsed) {
+    const bollsCode = VERSION_TO_BOLLS[reqVersion] || reqVersion;
+    try {
+      const bollsRes = await fetch(`https://bolls.life/get-verse/${bollsCode}/${parsed.bookNum}/${parsed.chapter}/${parsed.verse}/`);
+      if (bollsRes.ok) {
+        const bollsData = await bollsRes.json();
+        if (bollsData && bollsData.text) {
+          return { text: cleanVerseText(bollsData.text), version: reqVersion };
+        }
+      }
+    } catch {}
+  }
+
+  return { text: "", version: "KJV" };
+}
+
+function parseScriptureRef(ref: string): { bookNum: number; chapter: number; verse: number } | null {
+  const match = ref.match(/^([\d\s\w]+?)\s+(\d+)[:\.](\d+)/i);
+  if (!match) return null;
+  const bookName = match[1].trim();
+  const chapter = parseInt(match[2], 10);
+  const verse = parseInt(match[3], 10);
+  const bookNum = BOOK_NAME_TO_NUMBER[bookName.toLowerCase()] || 1;
+  return { bookNum, chapter, verse };
+}
+
+const BOOK_NAME_TO_NUMBER: Record<string, number> = {
+  "genesis": 1, "exodus": 2, "leviticus": 3, "numbers": 4, "deuteronomy": 5,
+  "joshua": 6, "judges": 7, "ruth": 8, "1 samuel": 9, "2 samuel": 10,
+  "1 kings": 11, "2 kings": 12, "1 chronicles": 13, "2 chronicles": 14,
+  "ezra": 15, "nehemiah": 16, "esther": 17, "job": 18, "psalm": 19, "psalms": 19,
+  "proverbs": 20, "ecclesiastes": 21, "song of solomon": 22, "isaiah": 23,
+  "jeremiah": 24, "lamentations": 25, "ezekiel": 26, "daniel": 27,
+  "hosea": 28, "joel": 29, "amos": 30, "obadiah": 31, "jonah": 32,
+  "micah": 33, "nahum": 34, "habakkuk": 35, "zephaniah": 36, "haggai": 37,
+  "zechariah": 38, "malachi": 39, "matthew": 40, "mark": 41, "luke": 42,
+  "john": 43, "acts": 44, "romans": 45, "1 corinthians": 46, "2 corinthians": 47,
+  "galatians": 48, "ephesians": 49, "philippians": 50, "colossians": 51,
+  "1 thessalonians": 52, "2 thessalonians": 53, "1 timothy": 54, "2 timothy": 55,
+  "titus": 56, "philemon": 57, "hebrews": 58, "james": 59, "1 peter": 60,
+  "2 peter": 61, "1 john": 62, "2 john": 63, "3 john": 64, "jude": 65,
+  "revelation": 66
+};

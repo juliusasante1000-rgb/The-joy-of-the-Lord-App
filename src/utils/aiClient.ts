@@ -176,11 +176,17 @@ export async function fetchAiWithRetry<T = any>(
         const startTime = performance.now();
         const response = await fetch(targetUrl, {
           method: "POST",
+          cache: "no-store",
           headers: {
             "Content-Type": "application/json",
+            "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+            "Pragma": "no-cache",
+            "Expires": "0",
           },
           body: JSON.stringify({
             ...payload,
+            timestamp: Date.now(),
+            _nonce: Math.random().toString(36).substring(2) + Date.now(),
             generationConfig: {
               temperature: options.temperature ?? 0.45,
               topP: options.topP ?? 0.90,

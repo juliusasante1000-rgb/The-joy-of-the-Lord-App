@@ -37,7 +37,8 @@ import {
   Music,
   Mic,
   Zap,
-  User
+  User,
+  Languages
 } from "lucide-react";
 import { TimeScheduleState, DailyScripture, Devotion, DevotionEdition, CreatorProfile, SpiritualPlace } from "../types";
 import { downloadDevotionDocument, printDevotionOnePageDocument } from "../utils/devotionDocumentExporter";
@@ -50,6 +51,9 @@ import { CreatorCard } from "./CreatorCard";
 import { SpiritualPlacesSection } from "./SpiritualPlacesSection";
 import { fetchAiWithRetry } from "../utils/aiClient";
 import { streamAiContent, getIsFastMode, setIsFastMode } from "../utils/aiStreaming";
+import { fetchAuthenticVerseText } from "../utils/bibleVerseEngine";
+import { downloadBibleVersePicture } from "../utils/sanctuaryPictureExporter";
+import { BibleVerseExportItem } from "../utils/devotionDocumentExporter";
 import { AiFastLoadingView } from "./AiFastLoadingView";
 import { SpiritualPlaceSanctuaryModal } from "./SpiritualPlaceSanctuaryModal";
 import { GodsGeneralsQuotesCard } from "./GodsGeneralsQuotesCard";
@@ -71,7 +75,7 @@ interface HomeTabProps {
   completedDevotions: string[];
   onCompleteDevotion: (id: string) => void;
   onNavigateTab?: (tab: NavTab) => void;
-  onNavigateToBibleChapter?: (book: string, chapter: number, verse?: number) => void;
+  onNavigateToBibleChapter?: (book: string, chapter: number, verse?: number, version?: string) => void;
   profile: CreatorProfile;
   onOpenAbout: () => void;
   onOpenQuotePictureModal?: (item: QuotePictureItem) => void;
@@ -106,6 +110,42 @@ export const HomeTab: React.FC<HomeTabProps> = ({
 
   // Selected Daily Verse (defaults to today's active verse)
   const [activeDisplayVerse, setActiveDisplayVerse] = useState<ScheduledVerse>(scheduledVerse);
+  const [selectedDailyVerseVersion, setSelectedDailyVerseVersion] = useState<string>("KJV");
+  const [isLoadingDailyVerseVersion, setIsLoadingDailyVerseVersion] = useState(false);
+
+  // Switch Daily Scripture version to authentic translation (NIV, NKJV, ESV, NLT, AMP, KJV)
+  const handleSelectDailyVerseVersion = async (ver: string) => {
+    setSelectedDailyVerseVersion(ver);
+    if (ver === "KJV") {
+      setActiveDisplayVerse((prev) => ({
+        ...prev,
+        text: scheduledVerse.text,
+        version: "KJV"
+      }));
+      return;
+    }
+
+    setIsLoadingDailyVerseVersion(true);
+    try {
+      const res = await fetchAuthenticVerseText(
+        activeDisplayVerse.reference,
+        undefined,
+        undefined,
+        ver
+      );
+      if (res && res.text) {
+        setActiveDisplayVerse((prev) => ({
+          ...prev,
+          text: res.text,
+          version: res.version || ver
+        }));
+      }
+    } catch (err) {
+      console.warn(`[DAILY VERSE] Could not fetch authentic ${ver}:`, err);
+    } finally {
+      setIsLoadingDailyVerseVersion(false);
+    }
+  };
 
   // AI Verse Generator Modal / Output State
   const [aiActionType, setAiActionType] = useState<string | null>(null);
@@ -352,16 +392,52 @@ export const HomeTab: React.FC<HomeTabProps> = ({
           </div>
         </div>
 
+        {/* Translation Selector Bar for Verse of the Day */}
+        <div className="flex flex-wrap items-center justify-between gap-2 bg-black/25 px-3.5 py-2 rounded-xl border border-white/10 relative z-10">
+          <div className="flex items-center gap-1.5 text-xs text-[#DCC398] font-bold">
+            <Languages className="w-3.5 h-3.5 text-[#B48C35]" />
+            <span>Select Bible Translation:</span>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-1">
+            {["KJV", "NIV", "NKJV", "ESV", "NLT", "AMP"].map((verCode) => {
+              const isSel = (activeDisplayVerse.version || "KJV").toUpperCase() === verCode;
+              return (
+                <button
+                  key={verCode}
+                  onClick={() => handleSelectDailyVerseVersion(verCode)}
+                  disabled={isLoadingDailyVerseVersion}
+                  className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+                    isSel
+                      ? "bg-[#B48C35] text-white shadow-md ring-1 ring-white/30"
+                      : "bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white"
+                  }`}
+                  title={`Read Verse of the Day in ${verCode}`}
+                >
+                  {verCode}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
         {/* Primary Scripture Text */}
         <div className="space-y-2.5 relative z-10">
-          <blockquote className="text-2xl sm:text-3xl md:text-4xl font-serif leading-tight text-white italic">
-            "{activeDisplayVerse.text}"
-          </blockquote>
+          {isLoadingDailyVerseVersion ? (
+            <div className="py-6 flex items-center justify-center gap-3 text-amber-200">
+              <RefreshCw className="w-5 h-5 animate-spin text-[#B48C35]" />
+              <span className="font-serif italic text-base sm:text-lg">Fetching authentic {selectedDailyVerseVersion} scripture...</span>
+            </div>
+          ) : (
+            <blockquote className="text-2xl sm:text-3xl md:text-4xl font-serif leading-tight text-white italic">
+              "{activeDisplayVerse.text}"
+            </blockquote>
+          )}
 
           <div className="flex items-center justify-between pt-1">
             <p className="text-sm sm:text-base uppercase tracking-widest font-bold text-[#DCC398] font-mono flex items-center gap-1.5">
               <span>{activeDisplayVerse.reference}</span>
-              <span className="text-xs opacity-75 font-normal">({activeDisplayVerse.version})</span>
+              <span className="text-xs px-1.5 py-0.5 rounded bg-white/10 font-bold border border-white/10">({activeDisplayVerse.version})</span>
             </p>
 
             <span className="text-xs text-slate-300 italic font-serif">
@@ -384,7 +460,12 @@ export const HomeTab: React.FC<HomeTabProps> = ({
           <button
             onClick={() => {
               if (onNavigateToBibleChapter) {
-                onNavigateToBibleChapter(activeDisplayVerse.book, activeDisplayVerse.chapter, activeDisplayVerse.verse);
+                onNavigateToBibleChapter(
+                  activeDisplayVerse.book,
+                  activeDisplayVerse.chapter,
+                  activeDisplayVerse.verse,
+                  selectedDailyVerseVersion
+                );
               } else if (onNavigateTab) {
                 onNavigateTab("bible");
               }
@@ -392,7 +473,7 @@ export const HomeTab: React.FC<HomeTabProps> = ({
             className="px-4 py-2 rounded-xl bg-[#B48C35] hover:bg-[#996515] text-white text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-md cursor-pointer"
           >
             <BookOpen className="w-3.5 h-3.5" />
-            <span>Read Full Chapter ({activeDisplayVerse.book} {activeDisplayVerse.chapter})</span>
+            <span>Read Full Chapter ({activeDisplayVerse.book} {activeDisplayVerse.chapter} {selectedDailyVerseVersion})</span>
             <ChevronRight className="w-3.5 h-3.5" />
           </button>
 
@@ -588,6 +669,34 @@ export const HomeTab: React.FC<HomeTabProps> = ({
                 >
                   <Bookmark className="w-3.5 h-3.5 text-amber-300" />
                   <span className="hidden sm:inline">Save</span>
+                </button>
+
+                {/* Download Sacred Picture PNG */}
+                <button
+                  onClick={() => {
+                    const verseParts = activeDisplayVerse.reference.match(/^(.+?)\s+(\d+)[:.](\d+)/) || [];
+                    const book = verseParts[1] || activeDisplayVerse.reference;
+                    const chapter = parseInt(verseParts[2], 10) || 1;
+                    const verse = parseInt(verseParts[3], 10) || 1;
+
+                    const exportItem: BibleVerseExportItem = {
+                      book,
+                      chapter,
+                      verse,
+                      text: activeDisplayVerse.text,
+                      version: activeDisplayVerse.version,
+                      historicalContext: aiActionData?.historicalContext || activeDisplayVerse.context,
+                      reflection: aiActionResult || activeDisplayVerse.reflection,
+                      guidedPrayer: aiActionData?.closing || aiActionData?.guidedPrayer || "The joy of the LORD is my strength. Amen.",
+                      faithDecree: aiActionData?.warfareDeclaration || aiActionData?.propheticDecree || "The Lord is my strength and shield.",
+                    };
+                    downloadBibleVersePicture(exportItem, profile);
+                  }}
+                  className="p-1.5 px-2.5 rounded-lg bg-white/10 hover:bg-[#B48C35]/40 text-[#DCC398] text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer"
+                  title="Download Sacred Verse Picture PNG"
+                >
+                  <ImageIcon className="w-3.5 h-3.5 text-[#B48C35]" />
+                  <span className="hidden sm:inline">Picture PNG</span>
                 </button>
 
                 {/* Close */}

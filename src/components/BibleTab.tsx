@@ -46,7 +46,7 @@ import {
   getTranslatedVerseText,
   getParallelTranslations
 } from "../data/bibleTranslationsData";
-import { getChapterVerses } from "../utils/bibleVerseEngine";
+import { getChapterVerses, fetchAuthenticVerseText } from "../utils/bibleVerseEngine";
 import { streamAiContent, getIsFastMode, setIsFastMode } from "../utils/aiStreaming";
 import {
   getCommentaryForVerse,
@@ -70,6 +70,7 @@ interface BibleTabProps {
   targetBookName?: string;
   targetChapter?: number;
   targetVerse?: number;
+  targetVersion?: BibleVersionCode;
   onExploreMathemaSermon?: (reference?: string) => void;
   onExploreApostleMath?: (reference?: string) => void;
   creatorProfile?: CreatorProfile;
@@ -94,6 +95,7 @@ export const BibleTab: React.FC<BibleTabProps> = ({
   targetBookName,
   targetChapter,
   targetVerse,
+  targetVersion,
   onExploreMathemaSermon,
   onExploreApostleMath,
   creatorProfile
@@ -106,7 +108,50 @@ export const BibleTab: React.FC<BibleTabProps> = ({
     verse: number;
     baseText: string;
   } | null>(null);
+  const [compareTranslations, setCompareTranslations] = useState<Record<string, string>>({});
+  const [loadingCompareVersions, setLoadingCompareVersions] = useState<Record<string, boolean>>({});
   const [pictureDevotion, setPictureDevotion] = useState<Devotion | null>(null);
+
+  // Fetch authentic live translations whenever compare modal opens
+  useEffect(() => {
+    if (!compareModalVerse) {
+      setCompareTranslations({});
+      setLoadingCompareVersions({});
+      return;
+    }
+
+    let isMounted = true;
+    const { book, chapter, verse, baseText } = compareModalVerse;
+
+    // KJV is immediately available
+    setCompareTranslations({ KJV: baseText });
+
+    // Concurrently fetch authentic text for all requested translations
+    BIBLE_VERSIONS.forEach((ver) => {
+      if (ver.code === "KJV") return;
+
+      setLoadingCompareVersions((prev) => ({ ...prev, [ver.code]: true }));
+
+      fetchAuthenticVerseText(book, chapter, verse, ver.code)
+        .then((res) => {
+          if (isMounted && res && res.text) {
+            setCompareTranslations((prev) => ({ ...prev, [ver.code]: res.text }));
+          }
+        })
+        .catch((err) => {
+          console.warn(`[PARALLEL] Failed to fetch ${ver.code} for ${book} ${chapter}:${verse}:`, err);
+        })
+        .finally(() => {
+          if (isMounted) {
+            setLoadingCompareVersions((prev) => ({ ...prev, [ver.code]: false }));
+          }
+        });
+    });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [compareModalVerse]);
 
   const convertVerseToDevotion = (verseData: {
     book: string;
@@ -239,7 +284,10 @@ export const BibleTab: React.FC<BibleTabProps> = ({
     if (targetVerse) {
       setHighlightedVerse(targetVerse);
     }
-  }, [targetBookName, targetChapter, targetVerse]);
+    if (targetVersion) {
+      setSelectedVersion(targetVersion);
+    }
+  }, [targetBookName, targetChapter, targetVerse, targetVersion]);
 
   // Current Book and Chapter
   const currentBook: BibleBook = useMemo(() => {
@@ -267,14 +315,16 @@ export const BibleTab: React.FC<BibleTabProps> = ({
     let isMounted = true;
     setIsLoadingVerses(true);
 
-    // If current book has local pre-cached chapter, load instantly
-    if (currentBook.chapters && currentBook.chapters[selectedChapter]) {
+    // If KJV and current book has local pre-cached chapter, load instantly
+    if (selectedVersion === "KJV" && currentBook.chapters && currentBook.chapters[selectedChapter]) {
       const immediate = currentBook.chapters[selectedChapter].map((v) => ({
         verse: v.verse,
-        text: getTranslatedVerseText(v.text, currentBook.name, selectedChapter, v.verse, selectedVersion),
+        text: v.text,
         isRedLetter: v.isRedLetter
       }));
       setLoadedVerses(immediate);
+    } else {
+      setLoadedVerses([]);
     }
 
     getChapterVerses(currentBook.name, selectedChapter, selectedVersion)
@@ -298,10 +348,10 @@ export const BibleTab: React.FC<BibleTabProps> = ({
     if (loadedVerses.length > 0) {
       return loadedVerses;
     }
-    if (currentBook.chapters && currentBook.chapters[selectedChapter]) {
+    if (selectedVersion === "KJV" && currentBook.chapters && currentBook.chapters[selectedChapter]) {
       return currentBook.chapters[selectedChapter].map((v) => ({
         verse: v.verse,
-        text: getTranslatedVerseText(v.text, currentBook.name, selectedChapter, v.verse, selectedVersion),
+        text: v.text,
         isRedLetter: v.isRedLetter
       }));
     }
@@ -415,6 +465,7 @@ export const BibleTab: React.FC<BibleTabProps> = ({
       scriptureReference: ref,
       scriptureText: activeVerseMenu.text,
       scriptureTheme: `${activeVerseMenu.book} Exegesis`,
+      version: selectedVersion,
       fastMode: getIsFastMode(),
       storageKey: cacheKey,
       onProgress: (p) => setAiProgress(p),
@@ -432,15 +483,18 @@ export const BibleTab: React.FC<BibleTabProps> = ({
           let prayerContent = "";
           if (item.adoration || item.petition || item.thanksgiving || item.warfareDeclaration || item.sections) {
             prayerContent = `${item.title || `Sacred Prayer of Faith: ${ref}`}\n\n` +
-              `ADORATION:\n${item.adoration || item.sections?.adoration || `Father, You are sovereign over all creation, holy and worthy of praise. We exalt You through ${ref}.`}\n\n` +
-              `CONFESSION & SURRENDER:\n${item.confession || item.confessionAndSurrender || item.sections?.confessionAndSurrender || `I surrender all anxiety, fear, and self-sufficiency into Your gracious hands.`}\n\n` +
-              `THANKSGIVING:\n${item.thanksgiving || item.sections?.thanksgiving || `Thank You for Your covenant promises and for giving me supernatural victory in Christ Jesus.`}\n\n` +
-              `PETITION:\n${item.petition || item.sections?.petition || `Lord God, manifest the living reality of "${rawVerse}" in my daily life, family, and spiritual walk.`}\n\n` +
-              `WARFARE AUTHORITY:\n${item.warfareDeclaration || item.spiritualWarfare || item.sections?.spiritualWarfare || `In the Name of Jesus Christ, I break every spirit of heaviness and delay. The Joy of the Lord is my unassailable fortress!`}\n\n` +
-              `CLOSING DECLARATION:\n${item.closing || item.declarationInJesusName || `I seal this prayer in heavenly places. In Jesus' mighty and victorious Name, Amen.`}`;
+              `SCRIPTURE ANCHOR:\n${ref} (${selectedVersion}) - "${rawVerse}"\n\n` +
+              `ADORATION & REVERENCE:\n${item.adoration || item.sections?.adoration || `Father, You are sovereign over all creation, holy and worthy of eternal praise. We exalt Your majesty through ${ref}.`}\n\n` +
+              `CONFESSION & SURRENDER:\n${item.confession || item.confessionAndSurrender || item.sections?.confessionAndSurrender || `I surrender all human weakness, anxiety, and self-reliance into Your gracious covenant hands.`}\n\n` +
+              `THANKSGIVING:\n${item.thanksgiving || item.sections?.thanksgiving || `Thank You for Your unfailing love, Christ's finished work, and giving me supernatural victory in every trial.`}\n\n` +
+              `TARGETED PETITIONS:\n${item.petition || item.sections?.petition || `Lord God, manifest the living power of "${rawVerse}" in my daily life, family, calling, and spiritual walk.`}\n\n` +
+              `SPIRITUAL WARFARE AUTHORITY:\n${item.warfareDeclaration || item.spiritualWarfare || item.sections?.spiritualWarfare || `In the Name of Jesus Christ, I break every spirit of fear, delay, and oppression. The Joy of the Lord is my unassailable fortress!`}\n\n` +
+              `CLOSING FAITH DECLARATION:\n${item.closing || item.declarationInJesusName || `I seal this prayer in heavenly places. In Jesus' mighty and victorious Name, Amen.`}`;
           } else if (item.prayer || item.guidedPrayer || item.prayerText || item.reflection || fullText) {
             const body = item.prayer || item.guidedPrayer || item.prayerText || item.reflection || fullText;
-            prayerContent = `${item.title || `Guided Apostolic Prayer: ${ref}`}\n\n${body}\n\n` +
+            prayerContent = `${item.title || `Guided Apostolic Prayer: ${ref}`}\n\n` +
+              `SCRIPTURE ANCHOR:\n${ref} (${selectedVersion}) - "${rawVerse}"\n\n` +
+              `${body}\n\n` +
               `PROPHETIC SEAL:\n"The Joy of the Lord is my unshakeable fortress, my shield, and my eternal victory. Amen!"`;
           } else {
             prayerContent = `Guided Apostolic Prayer on ${ref} (${selectedVersion})\n\n"${rawVerse}"\n\n` +
@@ -481,23 +535,49 @@ export const BibleTab: React.FC<BibleTabProps> = ({
             `🌟 CONCLUSION — HOPE & ENCOURAGEMENT:\n${item.hopeAndEncouragementConclusion || "Walk with unshakeable confidence! The foundational laws of the cosmos declare God's immutable faithfulness to His covenant promises."}\n\n` +
             `ALTAR CALL PRAYER:\n${item.altarCallPrayer || "Lord God, align my spirit with Your eternal truth and let Your peace reign in my heart. In Jesus' Name, Amen."}`;
           setAiModalContent(mathText);
-        } else if (action.includes("Explain") || action.includes("Exposition") || action.includes("Context")) {
+        } else if (action.includes("Context") || action.includes("Historical")) {
+          // Historical Context & Background (Deep & Specific to this verse)
           const refs = Array.isArray(item.crossReferences) && item.crossReferences.length > 0
             ? item.crossReferences.map((r: any) => typeof r === "string" ? `• ${r}` : `• ${r.reference}: ${r.connection}`).join("\n")
             : `• Psalm 119:105 - Thy Word is a lamp unto my feet\n• Hebrews 4:12 - The Word of God is quick and powerful`;
-          const hist = item.historicalContext || item.reflection || `Set within the inspired context of ${ref}, this passage communicates God's covenant revelation to His people in their authentic historical milieu.`;
+          const hist = item.historicalContext || `Set in the era of ${activeVerseMenu.book}, this passage addresses God's covenant people during a decisive historical juncture.`;
           const cult = item.culturalBackground ? `CULTURAL & ARCHAEOLOGICAL SETTING:\n${item.culturalBackground}\n\n` : "";
+          const cov = item.covenantalContext ? `COVENANTAL REDEMPTIVE SIGNIFICANCE:\n${item.covenantalContext}\n\n` : "";
           const orig = item.originalLanguageInsight || item.originalLanguageWordStudy ? `ORIGINAL LANGUAGE INSIGHT:\n${item.originalLanguageInsight || item.originalLanguageWordStudy}\n\n` : "";
           const doct = item.doctrinalMeaning || item.theologicalDoctrine ? `DOCTRINAL MEANING & THEOLOGY:\n${item.doctrinalMeaning || item.theologicalDoctrine}\n\n` : "";
-          const life = item.lifeTransformation || item.lifeApplication || item.practicalApplication || "Anchor your life in the unchanging covenant of God, speaking His promises daily with holy boldness.";
-          
-          const exposText = `${item.title || `Exposition & Historical Setting: ${ref}`}\n\n` +
-            `HISTORICAL CONTEXT:\n${hist}\n\n` +
+          const life = item.lifeTransformation || item.lifeApplication || item.practicalApplication || "Anchor your daily decisions in this eternal historical truth, standing firm on God's unchanging promises.";
+
+          const histText = `🏛️ ${item.title || `Historical Context & Biblical Setting: ${ref}`}\n\n` +
+            `SCRIPTURE ANCHOR:\n${ref} (${selectedVersion}) - "${rawVerse}"\n\n` +
+            `HISTORICAL SETTING & CRISIS:\n${hist}\n\n` +
             cult +
+            cov +
             orig +
             doct +
             `CROSS REFERENCES:\n${refs}\n\n` +
-            `🌟 CONCLUSION — LIFE TRANSFORMATION & HOPE:\n${life}`;
+            `🌟 LIFE TRANSFORMATION & KINGDOM IMPACT:\n${life}`;
+          setAiModalContent(histText);
+        } else if (action.includes("Explain") || action.includes("Exposition")) {
+          // Explain This Verse (Exposition Clause-by-Clause)
+          const refs = Array.isArray(item.crossReferences) && item.crossReferences.length > 0
+            ? item.crossReferences.map((r: any) => typeof r === "string" ? `• ${r}` : `• ${r.reference}: ${r.connection}`).join("\n")
+            : `• John 1:1-5 - In the beginning was the Word\n• 2 Timothy 3:16-17 - All Scripture is given by inspiration of God`;
+          const hist = item.historicalContext ? `HISTORICAL SETTING:\n${item.historicalContext}\n\n` : "";
+          const orig = item.originalLanguageInsight || item.originalLanguageWordStudy ? `ORIGINAL LANGUAGE WORD STUDY:\n${item.originalLanguageInsight || item.originalLanguageWordStudy}\n\n` : "";
+          const breakdown = item.expositoryBreakdown || item.theologicalExposition || item.reflection || `In ${ref}, every phrase is pregnant with divine intention. The verse establishes God's covenant sovereignty, calling the believer to unwavering trust in Christ.`;
+          const doct = item.doctrinalMeaning ? `DOCTRINAL THEOLOGY:\n${item.doctrinalMeaning}\n\n` : "";
+          const life = item.lifeTransformation || item.practicalApplication || "Live out this scripture by speaking it over your challenges and resting in Christ's finished work.";
+          const blessing = item.apostolicBlessing ? `\n\nAPOSTOLIC BLESSING:\n${item.apostolicBlessing}` : "";
+
+          const exposText = `📖 ${item.title || `Deep Expository Analysis: ${ref}`}\n\n` +
+            `SCRIPTURE ANCHOR:\n${ref} (${selectedVersion}) - "${rawVerse}"\n\n` +
+            hist +
+            orig +
+            `CLAUSE-BY-CLAUSE EXPOSITION:\n${breakdown}\n\n` +
+            doct +
+            `CROSS REFERENCES:\n${refs}\n\n` +
+            `🌟 LIFE TRANSFORMATION & APPLICATION:\n${life}` +
+            blessing;
           setAiModalContent(exposText);
         } else {
           // Devotion from Verse (Guaranteed Rich, Non-Empty, Inspiring)
@@ -510,15 +590,18 @@ export const BibleTab: React.FC<BibleTabProps> = ({
           const guidedPrayer = dev.guidedPrayer || dev.prayer || dev.closingPrayer ||
             `Heavenly Father, thank You for speaking directly to my heart through ${ref}. Let Your peace govern my thoughts, and let the Joy of the Lord be my daily strength. In Jesus' mighty Name, Amen.`;
           const actionStep = dev.actionStep || `Memorize ${ref} and speak it aloud today whenever you need spiritual encouragement.`;
+          const decree = dev.apostolicDecree ? `\n\nAPOSTOLIC DECREE:\n${dev.apostolicDecree}` : "";
           const hope = dev.hopeAndEncouragementConclusion || dev.hopeEncouragementConclusion ||
             `Be greatly encouraged! God is with you in every circumstance, and His Joy is your unshakeable fortress. You are loved, chosen, and upheld by His righteous right hand!`;
 
-          const devText = `${title}\n\n` +
+          const devText = `✨ ${title}\n\n` +
+            `SCRIPTURE ANCHOR:\n${ref} (${selectedVersion}) - "${rawVerse}"\n\n` +
             `THEOLOGICAL REFLECTION:\n${reflection}\n\n` +
             `PRACTICAL APPLICATION:\n${practicalApp}\n\n` +
-            `ACTION STEP:\n${actionStep}\n\n` +
-            `GUIDED PRAYER:\n${guidedPrayer}\n\n` +
-            `🌟 CONCLUSION — HOPE & ENCOURAGEMENT:\n${hope}`;
+            `ACTION STEP FOR TODAY:\n${actionStep}\n\n` +
+            `GUIDED PRAYER:\n${guidedPrayer}` +
+            decree + `\n\n` +
+            `🌟 CONCLUSION — UNSHAKEABLE HOPE & ENCOURAGEMENT:\n${hope}`;
           setAiModalContent(devText);
         }
       },
@@ -1394,13 +1477,15 @@ export const BibleTab: React.FC<BibleTabProps> = ({
 
             <div className="p-5 overflow-y-auto space-y-3.5">
               {BIBLE_VERSIONS.map((ver) => {
-                const text = getTranslatedVerseText(
+                const authenticText = compareTranslations[ver.code];
+                const isFetching = loadingCompareVersions[ver.code];
+                const text = authenticText || (ver.code === "KJV" ? compareModalVerse.baseText : getTranslatedVerseText(
                   compareModalVerse.baseText,
                   compareModalVerse.book,
                   compareModalVerse.chapter,
                   compareModalVerse.verse,
                   ver.code
-                );
+                ));
 
                 return (
                   <div
@@ -1418,6 +1503,16 @@ export const BibleTab: React.FC<BibleTabProps> = ({
                         </span>
                         <span className="font-bold text-xs text-[#16235A]">{ver.name}</span>
                         <span className="text-[10px] text-slate-500 hidden sm:inline">({ver.badge})</span>
+                        {isFetching && (
+                          <span className="text-[10px] text-amber-600 animate-pulse font-mono font-semibold">
+                            • Loading authentic {ver.code}...
+                          </span>
+                        )}
+                        {!isFetching && authenticText && (
+                          <span className="text-[9px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 font-mono font-bold">
+                            AUTHENTIC
+                          </span>
+                        )}
                       </div>
 
                       <div className="flex items-center gap-1">

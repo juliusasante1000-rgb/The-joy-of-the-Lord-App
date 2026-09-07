@@ -24,7 +24,8 @@ import {
 import { JOY_OVERCOMING_CATALOG, JOY_CHALLENGES_CATEGORIES } from "../data/joyOvercomingData";
 import { JoyOvercomingChallenge, Devotion } from "../types";
 import { JoySanctuaryModal } from "./JoySanctuaryModal";
-import { fetchAiWithRetry } from "../utils/aiClient";
+import { streamAiContent, getIsFastMode, setIsFastMode } from "../utils/aiStreaming";
+import { AiFastLoadingView } from "./AiFastLoadingView";
 import { useSyncedContent } from "../utils/useSyncedContent";
 
 interface JoyOvercomingTabProps {
@@ -63,6 +64,9 @@ export const JoyOvercomingTab: React.FC<JoyOvercomingTabProps> = ({
   const [customCrisis, setCustomCrisis] = useState("");
   const [isGeneratingAi, setIsGeneratingAi] = useState(false);
   const [aiGeneratedChallenge, setAiGeneratedChallenge] = useState<JoyOvercomingChallenge | null>(null);
+  const [streamingAiText, setStreamingAiText] = useState("");
+  const [streamingProgress, setStreamingProgress] = useState(25);
+  const [aiError, setAiError] = useState<string | null>(null);
 
   const activeChallenge = useMemo(() => {
     if (aiGeneratedChallenge && selectedChallengeId === aiGeneratedChallenge.id) return aiGeneratedChallenge;
@@ -148,60 +152,73 @@ export const JoyOvercomingTab: React.FC<JoyOvercomingTabProps> = ({
     e.preventDefault();
     if (!customCrisis.trim()) return;
     setIsGeneratingAi(true);
+    setAiError(null);
+    setStreamingAiText("");
+    setStreamingProgress(25);
 
     try {
-      const res = await fetchAiWithRetry<any>(
-        "/api/generate-joy-battle",
-        {
-          category: selectedCategory !== "All" ? selectedCategory : "Anxiety & Fear",
-          specificChallenge: customCrisis
+      const res = await streamAiContent<any>({
+        actionType: "joy_battle",
+        category: selectedCategory !== "All" ? selectedCategory : "Anxiety & Fear",
+        specificChallenge: customCrisis,
+        fastMode: getIsFastMode(),
+        storageKey: "ai_joy_overcoming_history",
+        onProgress: (prog) => {
+          setStreamingProgress(prog);
         },
-        {
-          maxRetries: 2,
-          retryDelayMs: 1500,
-          storageKey: "ai_joy_overcoming_history"
+        onChunk: (_chunk, accText) => {
+          setStreamingAiText(accText);
+        },
+        onComplete: (_fullText, data) => {
+          const inner = data || {};
+          const generated: JoyOvercomingChallenge = {
+            id: inner.id || `ai-joy-${Date.now()}`,
+            challengeTitle: inner.challengeTitle || customCrisis,
+            category: inner.category || (selectedCategory !== "All" ? selectedCategory : "Spiritual Warfare"),
+            rootDeception: inner.rootDeception || "The adversary whispers that you are isolated and defeated.",
+            scripturalTruth: inner.scripturalTruth || "The joy of the Lord is an impregnable spiritual fortress that dismantles demonic resistance.",
+            anchorVerses: Array.isArray(inner.anchorVerses) && inner.anchorVerses.length > 0 ? inner.anchorVerses : [
+              {
+                reference: "Nehemiah 8:10",
+                text: "The joy of the LORD is your strength.",
+                version: "KJV"
+              },
+              {
+                reference: "Philippians 4:4",
+                text: "Rejoice in the Lord always: and again I say, Rejoice.",
+                version: "KJV"
+              }
+            ],
+            joyStrategySteps: Array.isArray(inner.joyStrategySteps) && inner.joyStrategySteps.length > 0 ? inner.joyStrategySteps : [
+              "Acknowledge the trial truthfully before God while exalting His supreme authority.",
+              "Offer high sacrificial praise in the midst of the challenge to break the spirit of heaviness.",
+              "Speak the specific biblical promises out loud over your situation multiple times daily.",
+              "Maintain an attitude of expectant thanksgiving, knowing that victory is guaranteed in Christ."
+            ],
+            fortressDeclaration: inner.fortressDeclaration || "I declare that the joy of the Lord is my fortress! Every storm must bow before the Name of Jesus.",
+            deliverancePrayer: inner.deliverancePrayer || "Lord God, flood my spirit with Your supernatural joy and break every chain in Jesus' Name. Amen.",
+            praisePrescription: "Praise the Lord continuously for 10 minutes with thanksgiving songs.",
+            testimonyOfVictory: "Believers across generations have found that supernatural praise in deep trials opens prison doors and releases breakthrough."
+          };
+
+          setAiGeneratedChallenge(generated);
+          setSelectedChallengeId(generated.id);
+          setCustomCrisis("");
+          setIsGeneratingAi(false);
+          handleOpenSanctuaryModal(generated);
+        },
+        onError: (err) => {
+          setAiError(err);
+          setIsGeneratingAi(false);
         }
-      );
+      });
 
-      if (res.success && res.data && res.data.challengeTitle) {
-        const data = res.data;
-        const generated: JoyOvercomingChallenge = {
-          id: data.id || `ai-joy-${Date.now()}`,
-          challengeTitle: data.challengeTitle,
-          category: data.category || (selectedCategory !== "All" ? selectedCategory : "Spiritual Warfare"),
-          rootDeception: data.rootDeception || "The adversary whispers that you are isolated and defeated.",
-          scripturalTruth: data.scripturalTruth || "The joy of the Lord is an impregnable spiritual fortress that dismantles demonic resistance.",
-          anchorVerses: Array.isArray(data.anchorVerses) && data.anchorVerses.length > 0 ? data.anchorVerses : [
-            {
-              reference: "Nehemiah 8:10",
-              text: "The joy of the Lord is your strength.",
-              version: "KJV"
-            },
-            {
-              reference: "Philippians 4:4",
-              text: "Rejoice in the Lord always: and again I say, Rejoice.",
-              version: "KJV"
-            }
-          ],
-          joyStrategySteps: Array.isArray(data.joyStrategySteps) && data.joyStrategySteps.length > 0 ? data.joyStrategySteps : [
-            "Acknowledge the trial truthfully before God while exalting His supreme authority.",
-            "Offer high sacrificial praise in the midst of the challenge to break the spirit of heaviness.",
-            "Speak the specific biblical promises out loud over your situation multiple times daily.",
-            "Maintain an attitude of expectant thanksgiving, knowing that victory is guaranteed in Christ."
-          ],
-          fortressDeclaration: data.fortressDeclaration || "I declare that the joy of the Lord is my fortress! Every storm must bow before the Name of Jesus.",
-          deliverancePrayer: data.deliverancePrayer || "Lord God, flood my spirit with Your supernatural joy and break every chain of fear and anxiety in Jesus' Name. Amen.",
-          praisePrescription: "Praise the Lord continuously for 10 minutes with thanksgiving songs.",
-          testimonyOfVictory: "Believers across generations have found that supernatural praise in deep trials opens prison doors and releases breakthrough."
-        };
-
-        setAiGeneratedChallenge(generated);
-        setSelectedChallengeId(generated.id);
-        setCustomCrisis("");
-        handleOpenSanctuaryModal(generated);
+      if (!res.success && res.error) {
+        setAiError(res.error);
       }
-    } catch (err) {
+    } catch (err: any) {
       console.warn("Error generating Joy blueprint AI challenge:", err);
+      setAiError(err?.message || "Generation failed. Please try again.");
     } finally {
       setIsGeneratingAi(false);
     }
@@ -585,7 +602,7 @@ export const JoyOvercomingTab: React.FC<JoyOvercomingTabProps> = ({
             className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#B48C35] to-[#DCC398] text-[#16235A] font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 hover:brightness-110 transition-all cursor-pointer disabled:opacity-50"
           >
             {isGeneratingAi ? (
-              <span>Generating...</span>
+              <span>Formulating...</span>
             ) : (
               <>
                 <Send className="w-3.5 h-3.5" />
@@ -594,6 +611,34 @@ export const JoyOvercomingTab: React.FC<JoyOvercomingTabProps> = ({
             )}
           </button>
         </form>
+
+        {/* AI Streaming Loading View */}
+        {isGeneratingAi && (
+          <div className="pt-2">
+            <AiFastLoadingView
+              progress={streamingProgress}
+              title="Formulating Anointed Joy Strategy"
+              actionType="Joy of the Lord Diagnostic"
+              streamingText={streamingAiText}
+              isStreaming={true}
+              onCancel={() => setIsGeneratingAi(false)}
+            />
+          </div>
+        )}
+
+        {/* AI Error View */}
+        {!isGeneratingAi && aiError && (
+          <div className="p-4 rounded-xl bg-red-950/60 border border-red-500/40 text-xs text-red-200 space-y-2">
+            <div className="font-bold font-mono uppercase text-red-300">Strategy Generation Notice</div>
+            <p>{aiError}</p>
+            <button
+              onClick={handleGenerateAiBlueprint}
+              className="px-3 py-1.5 rounded-lg bg-red-600 hover:bg-red-500 text-white text-xs font-bold cursor-pointer transition-colors"
+            >
+              Retry
+            </button>
+          </div>
+        )}
       </div>
 
       {/* 5. Dedicated Joy Sanctuary Tab Modal */}

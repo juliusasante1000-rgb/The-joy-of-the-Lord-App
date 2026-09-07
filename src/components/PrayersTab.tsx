@@ -28,7 +28,6 @@ import { STRUCTURED_PRAYERS_CATALOG } from "../data/prayersData";
 import { StructuredPrayer, PrayerJournalEntry, DevotionEdition, Devotion } from "../types";
 import { DevotionPictureModal } from "./DevotionPictureModal";
 import { printDevotionOnePageDocument } from "../utils/devotionDocumentExporter";
-import { fetchAiWithRetry } from "../utils/aiClient";
 import { streamAiContent, getIsFastMode, setIsFastMode } from "../utils/aiStreaming";
 import { AiFastLoadingView } from "./AiFastLoadingView";
 

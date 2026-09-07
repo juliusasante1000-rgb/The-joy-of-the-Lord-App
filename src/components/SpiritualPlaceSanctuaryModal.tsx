@@ -34,7 +34,9 @@ import {
 } from "../data/spiritualPlacesData";
 import { DevotionPictureModal } from "./DevotionPictureModal";
 import { printScripturalPlaceDocument, downloadScripturalPlaceDocument } from "../utils/devotionDocumentExporter";
-import { fetchAiWithRetry, getCachedAiHistory } from "../utils/aiClient";
+import { getCachedAiHistory } from "../utils/aiClient";
+import { streamAiContent, getIsFastMode, setIsFastMode } from "../utils/aiStreaming";
+import { AiFastLoadingView } from "./AiFastLoadingView";
 
 interface SpiritualPlaceSanctuaryModalProps {
   place: SpiritualPlace | null;
@@ -90,6 +92,8 @@ export const SpiritualPlaceSanctuaryModal: React.FC<SpiritualPlaceSanctuaryModal
   } | null>(null);
   const [isLoadingHistory, setIsLoadingHistory] = useState(false);
   const [historyError, setHistoryError] = useState<string | null>(null);
+  const [streamingAiText, setStreamingAiText] = useState("");
+  const [streamingProgress, setStreamingProgress] = useState(25);
 
   const getPlaceDevotion = (): Devotion => {
     const scrip = currentScripture || {
@@ -141,33 +145,50 @@ export const SpiritualPlaceSanctuaryModal: React.FC<SpiritualPlaceSanctuaryModal
     if (!place) return;
     setIsLoadingHistory(true);
     setHistoryError(null);
+    setStreamingAiText("");
+    setStreamingProgress(25);
 
-    const res = await fetchAiWithRetry<{
-      place: string;
-      historicalAccount: string;
-      biblicalReference?: string;
-      keyFigures?: string[];
-      historicalOutcome?: string;
-    }>(
-      "/api/scriptural-place-history",
-      {
+    try {
+      const res = await streamAiContent<any>({
+        actionType: "scriptural_place_history",
         placeName: place.name,
         biblicalReference: place.biblicalReference,
-        context: place.historicalContext || place.description
-      },
-      {
-        maxRetries: 2,
-        retryDelayMs: 2000,
-        storageKey: `place_history_${place.id}`
-      }
-    );
+        context: place.historicalContext || place.description,
+        fastMode: getIsFastMode(),
+        storageKey: `place_history_${place.id}`,
+        onProgress: (prog) => {
+          setStreamingProgress(prog);
+        },
+        onChunk: (_chunk, accText) => {
+          setStreamingAiText(accText);
+        },
+        onComplete: (fullText, data) => {
+          if (data && data.historicalAccount) {
+            setHistoryData(data);
+          } else {
+            setHistoryData({
+              historicalAccount: fullText || `Biblical events at ${place.name} occurred according to Scripture (${place.biblicalReference}).`,
+              biblicalReference: place.biblicalReference,
+              keyFigures: [],
+              historicalOutcome: ""
+            });
+          }
+          setIsLoadingHistory(false);
+        },
+        onError: (err) => {
+          setHistoryError(err);
+          setIsLoadingHistory(false);
+        }
+      });
 
-    if (res.success && res.data) {
-      setHistoryData(res.data);
-    } else {
-      setHistoryError(res.error || "Failed to load historical biblical account.");
+      if (!res.success && res.error) {
+        setHistoryError(res.error);
+      }
+    } catch (err: any) {
+      setHistoryError(err?.message || "Failed to load historical biblical account.");
+    } finally {
+      setIsLoadingHistory(false);
     }
-    setIsLoadingHistory(false);
   };
 
   if (!isOpen || !place) return null;
@@ -450,31 +471,47 @@ export const SpiritualPlaceSanctuaryModal: React.FC<SpiritualPlaceSanctuaryModal
                   </div>
                 )}
 
-                <div className="text-sm text-slate-200 leading-relaxed space-y-2">
-                  {historyData ? (
-                    <>
-                      <p className="font-serif">{historyData.historicalAccount}</p>
-                      {historyData.historicalOutcome && (
-                        <p className="text-xs text-emerald-300 pt-1 border-t border-white/10 font-medium">
-                          <strong>Biblical Outcome:</strong> {historyData.historicalOutcome}
-                        </p>
-                      )}
-                      {historyData.keyFigures && historyData.keyFigures.length > 0 && (
-                        <div className="flex flex-wrap gap-1.5 pt-1">
-                          {historyData.keyFigures.map((fig, idx) => (
-                            <span key={idx} className="px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 text-[11px] border border-slate-700">
-                              {fig}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                    </>
-                  ) : (
-                    <p className="font-serif text-slate-300">
-                      {place.historicalContext || `At ${place.name}, significant biblical events transpired according to Scripture (${place.biblicalReference}).`}
-                    </p>
-                  )}
-                </div>
+                {/* Live Historian Exegesis Streaming Loading View */}
+                {isLoadingHistory && (
+                  <div className="pt-1">
+                    <AiFastLoadingView
+                      progress={streamingProgress}
+                      title={`Exegeting Biblical History for ${place.name}`}
+                      actionType="Biblical Historian Engine"
+                      streamingText={streamingAiText}
+                      isStreaming={true}
+                      onCancel={() => setIsLoadingHistory(false)}
+                    />
+                  </div>
+                )}
+
+                {!isLoadingHistory && (
+                  <div className="text-sm text-slate-200 leading-relaxed space-y-2">
+                    {historyData ? (
+                      <>
+                        <p className="font-serif">{historyData.historicalAccount}</p>
+                        {historyData.historicalOutcome && (
+                          <p className="text-xs text-emerald-300 pt-1 border-t border-white/10 font-medium">
+                            <strong>Biblical Outcome:</strong> {historyData.historicalOutcome}
+                          </p>
+                        )}
+                        {historyData.keyFigures && historyData.keyFigures.length > 0 && (
+                          <div className="flex flex-wrap gap-1.5 pt-1">
+                            {historyData.keyFigures.map((fig, idx) => (
+                              <span key={idx} className="px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 text-[11px] border border-slate-700">
+                                {fig}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </>
+                    ) : (
+                      <p className="font-serif text-slate-300">
+                        {place.historicalContext || `At ${place.name}, significant biblical events transpired according to Scripture (${place.biblicalReference}).`}
+                      </p>
+                    )}
+                  </div>
+                )}
               </div>
 
               {/* Scripture Display Card */}

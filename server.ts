@@ -393,18 +393,6 @@ async function generateWithGeminiCascade(options: {
   maxOutputTokens?: number;
 }): Promise<{ text: string; modelUsed: string; durationMs: number } | null> {
   const startTime = Date.now();
-  const cacheKey = `${options.prompt}__${options.systemInstruction || ""}__${options.responseMimeType || ""}`.toLowerCase();
-
-  // Check cache first to conserve quota
-  const cached = AI_RESPONSE_CACHE.get(cacheKey);
-  if (cached && (Date.now() - cached.timestamp < AI_CACHE_TTL_MS)) {
-    console.log(`[GEMINI CACHE HIT] ⚡ Reusing cached response for prompt: "${options.prompt.substring(0, 50)}..."`);
-    return {
-      text: cached.text,
-      modelUsed: `${cached.modelUsed}-cached`,
-      durationMs: 5
-    };
-  }
 
   const ai = getGeminiClient();
   if (!ai) {
@@ -462,13 +450,6 @@ async function generateWithGeminiCascade(options: {
         
         // Reset quota cooldown upon successful call
         quotaCooldownUntil = 0;
-
-        // Save in cache
-        AI_RESPONSE_CACHE.set(cacheKey, {
-          text,
-          modelUsed: model,
-          timestamp: Date.now()
-        });
 
         return { text, modelUsed: model, durationMs };
       }
@@ -1589,202 +1570,302 @@ app.post("/api/creator-profile", (req, res) => {
 // 6. DEVOTION, PRAYER & BIBLE GENERATORS
 // ==========================================
 
+// Comprehensive Verse Context Analyzer and Exegetical Engine
+interface VerseExegesisProfile {
+  book: string;
+  chapter: number;
+  verse: number;
+  testament: "Old Testament" | "New Testament";
+  author: string;
+  historicalEra: string;
+  culturalSetting: string;
+  genre: string;
+  originalLanguage: string;
+  keyHebrewGreekRoots: { term: string; transliteration: string; strongs: string; meaning: string };
+  crossRefs: { reference: string; connection: string }[];
+  primaryTheme: string;
+}
+
+function analyzeVerseContext(reference: string, text: string): VerseExegesisProfile {
+  const match = (reference || "").match(/^([\d\s\w]+?)\s+(\d+):(\d+)/i);
+  const rawBook = match ? match[1].trim() : "Nehemiah";
+  const chapter = match ? parseInt(match[2], 10) : 8;
+  const verse = match ? parseInt(match[3], 10) : 10;
+  const book = rawBook.replace(/\s+/g, " ");
+  const bLower = book.toLowerCase();
+
+  const isNT = [
+    "matthew", "mark", "luke", "john", "acts", "romans", "1 corinthians", "2 corinthians",
+    "galatians", "ephesians", "philippians", "colossians", "1 thessalonians", "2 thessalonians",
+    "1 timothy", "2 timothy", "titus", "philemon", "hebrews", "james", "1 peter", "2 peter",
+    "1 john", "2 john", "3 john", "jude", "revelation"
+  ].some(nt => bLower.startsWith(nt) || bLower.includes(nt));
+
+  const testament = isNT ? "New Testament" : "Old Testament";
+  const originalLanguage = isNT ? "Koine Greek" : "Biblical Hebrew";
+
+  let author = "Inspired Biblical Author";
+  let historicalEra = "Ancient Biblical Antiquity";
+  let culturalSetting = "Ancient Near Eastern Covenant Community";
+  let genre = "Sacred Scripture";
+
+  if (["genesis", "exodus", "leviticus", "numbers", "deuteronomy"].includes(bLower)) {
+    author = "Moses, Prophet of the Most High God";
+    historicalEra = "Wilderness Sojourn and Sinai Covenant Foundations (c. 1446–1406 BC)";
+    culturalSetting = "Ancient Near Eastern covenant treaties, sacrificial priesthood, and wilderness tabernacle worship";
+    genre = "Torah / Pentateuch & Covenant Law";
+  } else if (["joshua", "judges", "ruth", "1 samuel", "2 samuel", "1 kings", "2 kings", "1 chronicles", "2 chronicles", "ezra", "nehemiah", "esther"].includes(bLower)) {
+    author = bLower.includes("nehemiah") ? "Nehemiah, Governor of Judah" : bLower.includes("ezra") ? "Ezra the Scribe" : "Biblical Chroniclers & Prophets";
+    historicalEra = bLower.includes("nehemiah") || bLower.includes("ezra") ? "Post-Exilic Persian Restoration under Artaxerxes (c. 458–445 BC)" : "Monarchy of Israel & Judah (c. 1050–586 BC)";
+    culturalSetting = "Rebuilding the walls of Jerusalem, covenant renewal at the Water Gate, and civic temple worship";
+    genre = "Sacred Biblical History";
+  } else if (bLower.startsWith("psalm")) {
+    author = "King David & Inspired Levitical Worship Leaders (Asaph, Sons of Korah)";
+    historicalEra = "United Monarchy in Jerusalem (c. 1010–970 BC)";
+    culturalSetting = "Sanctuary worship in Zion, poetic harp liturgy, and royal Davidic covenant celebrations";
+    genre = "Sacred Hebrew Poetry & Hymnic Prayer";
+  } else if (["proverbs", "ecclesiastes", "song of solomon"].includes(bLower)) {
+    author = "King Solomon, King of Israel";
+    historicalEra = "Golden Age of the United Monarchy in Jerusalem (c. 970–931 BC)";
+    culturalSetting = "Royal scribal wisdom traditions, court jurisprudence, and family discipleship";
+    genre = "Wisdom Literature & Sacred Poetry";
+  } else if (["isaiah", "jeremiah", "lamentations", "ezekiel", "daniel"].includes(bLower)) {
+    author = bLower.startsWith("isaiah") ? "Prophet Isaiah son of Amoz" : bLower.startsWith("jeremiah") ? "Prophet Jeremiah" : bLower.startsWith("daniel") ? "Prophet Daniel in the Royal Babylonian Court" : "Prophet Ezekiel by the River Chebar";
+    historicalEra = "Pre-Exilic Warnings and Babylonian Exile Epoch (c. 740–536 BC)";
+    culturalSetting = "Geopolitical turbulence under the Assyrian, Babylonian, and Persian Empires";
+    genre = "Major Prophecy & Messianic Revelation";
+  } else if (["hosea", "joel", "amos", "obadiah", "jonah", "micah", "nahum", "habakkuk", "zephaniah", "haggai", "zechariah", "malachi"].includes(bLower)) {
+    author = `Prophet ${book}`;
+    historicalEra = "Divided Kingdom and Post-Exilic Reconstruction (c. 780–430 BC)";
+    culturalSetting = "Agrarian covenant life, prophetic lawsuit against injustice, and anticipation of the Day of the Lord";
+    genre = "Minor Prophets";
+  } else if (["matthew", "mark", "luke", "john"].includes(bLower)) {
+    author = bLower.startsWith("john") ? "John the Beloved Apostle" : bLower.startsWith("luke") ? "Luke the Physician and Evangelist" : bLower.startsWith("matthew") ? "Matthew (Levi) the Apostle" : "Mark the Evangelist";
+    historicalEra = "1st-Century Roman Judea under Emperor Augustus & Tiberius Caesar (c. 27–33 AD)";
+    culturalSetting = "Second Temple Judaism under Roman military occupation, synagogues, and Galilee ministries";
+    genre = "Gospel / Messianic Narrative";
+  } else if (bLower === "acts") {
+    author = "Luke the Evangelist and Missionary Companion";
+    historicalEra = "Early Apostolic Era from Pentecost to Rome (c. 30–62 AD)";
+    culturalSetting = "Greco-Roman Mediterranean cities, synagogues, and house church networks";
+    genre = "Apostolic Church History";
+  } else if (["romans", "1 corinthians", "2 corinthians", "galatians", "ephesians", "philippians", "colossians", "1 thessalonians", "2 thessalonians", "1 timothy", "2 timothy", "titus", "philemon"].includes(bLower)) {
+    author = "Apostle Paul, Servant of Jesus Christ";
+    historicalEra = "Apostolic Expansion during the Pax Romana under Emperor Nero (c. 48–67 AD)";
+    culturalSetting = "Urban Greco-Roman house churches, civic marketplaces (Agora), and Roman imprisonment";
+    genre = "Pauline Apostolic Epistle";
+  } else if (bLower === "hebrews") {
+    author = "Apostolic Preacher / Canonical Author";
+    historicalEra = "Pre-70 AD Second Temple Period";
+    culturalSetting = "Jewish-Christian disciples tempted to return to Levitical shadows rather than the substance in Christ";
+    genre = "Theological Epistle & Word of Exhortation";
+  } else if (["james", "1 peter", "2 peter", "1 john", "2 john", "3 john", "jude"].includes(bLower)) {
+    author = bLower.startsWith("1 peter") || bLower.startsWith("2 peter") ? "Apostle Simon Peter" : bLower.startsWith("james") ? "James the Just, Brother of the Lord" : bLower.startsWith("jude") ? "Jude, Brother of James" : "Apostle John";
+    historicalEra = "Persecuted Early Church Era (c. 60–90 AD)";
+    culturalSetting = "Diaspora disciples undergoing fiery trials and imperial Roman suspicion";
+    genre = "General Apostolic Epistle";
+  } else if (bLower === "revelation") {
+    author = "Apostle John on the Isle of Patmos";
+    historicalEra = "Reign of Roman Emperor Domitian (c. 95 AD)";
+    culturalSetting = "Seven churches of Asia Minor facing emperor cult pressure and spiritual lethargy";
+    genre = "Apocalyptic Prophecy & Epistolary Consummation";
+  }
+
+  // Determine key Hebrew / Greek terms
+  let keyRoots = isNT
+    ? { term: "χάρις / δύναμις", transliteration: "charis / dynamis", strongs: "G5485 / G1411", meaning: "Divine unmerited favor and supernatural resurrection power" }
+    : { term: "חֶסֶד / שָׁלוֹם", transliteration: "chesed / shalom", strongs: "H2617 / H7965", meaning: "Unfailing covenant love and complete wholeness/peace" };
+
+  const tLower = (text || "").toLowerCase();
+  let primaryTheme = "Divine Grace & Covenant Faithfulness";
+
+  if (tLower.includes("love") || tLower.includes("loved")) {
+    primaryTheme = "God's Infinite Sacrificial Love";
+    keyRoots = isNT
+      ? { term: "ἀγάπη (agape)", transliteration: "agapē", strongs: "G26", meaning: "Self-sacrificing, unconditional divine covenant love" }
+      : { term: "אַהֲבָה (ahavah)", transliteration: "ahavah", strongs: "H160", meaning: "Passionate covenant love and steadfast commitment" };
+  } else if (tLower.includes("strength") || tLower.includes("power") || tLower.includes("might")) {
+    primaryTheme = "Supernatural Strength & Spiritual Fortitude";
+    keyRoots = isNT
+      ? { term: "ἰσχύς / δύναμις (ischys / dynamis)", transliteration: "ischys / dynamis", strongs: "G2479 / G1411", meaning: "Inherent divine might and miraculous operational energy" }
+      : { term: "מָעוֹז / כֹּחַ (ma'oz / koach)", transliteration: "ma'oz / koach", strongs: "H4581 / H3581", meaning: "Impenetrable fortress, refuge, and endurance" };
+  } else if (tLower.includes("joy") || tLower.includes("rejoice") || tLower.includes("glad")) {
+    primaryTheme = "The Eternal Joy of the Lord as an Unshakeable Fortress";
+    keyRoots = isNT
+      ? { term: "χαρά (chara)", transliteration: "chara", strongs: "G5479", meaning: "Deep spiritual gladness derived from divine presence and grace" }
+      : { term: "חֶדְוָה (chedvah)", transliteration: "chedvah", strongs: "H2304", meaning: "Holy exultation and covenant rejoicing before God" };
+  } else if (tLower.includes("peace") || tLower.includes("rest")) {
+    primaryTheme = "Divine Shalom and Tranquility in Christ";
+    keyRoots = isNT
+      ? { term: "εἰρήνη (eirēnē)", transliteration: "eirēnē", strongs: "G1515", meaning: "Restoration of harmony, tranquil security in the soul" }
+      : { term: "שָׁלוֹם (shalom)", transliteration: "shalom", strongs: "H7965", meaning: "Completeness, soundness, welfare, and covenant safety" };
+  } else if (tLower.includes("faith") || tLower.includes("believe") || tLower.includes("trust")) {
+    primaryTheme = "Unwavering Faith and Trust in God's Character";
+    keyRoots = isNT
+      ? { term: "πίστις (pistis)", transliteration: "pistis", strongs: "G4102", meaning: "Conviction of the truth of God, total reliance on Christ" }
+      : { term: "אֱמוּנָה (emunah)", transliteration: "emunah", strongs: "H530", meaning: "Steadfastness, fidelity, firmness, and unwavering reliability" };
+  } else if (tLower.includes("light") || tLower.includes("walk") || tLower.includes("way")) {
+    primaryTheme = "Divine Illumination and Walking in Kingdom Truth";
+    keyRoots = isNT
+      ? { term: "φῶς (phōs)", transliteration: "phōs", strongs: "G5457", meaning: "Radiant divine illumination revealing truth and purity" }
+      : { term: "אוֹר (or)", transliteration: "or", strongs: "H216", meaning: "Light of God's countenance bringing life, order, and guidance" };
+  }
+
+  // Cross references tailored to testament and theme
+  const crossRefs = isNT
+    ? [
+        { reference: "John 15:5", connection: "Abiding in Christ as the true Vine is the sole source of spiritual vitality." },
+        { reference: "Romans 8:31-39", connection: "Nothing in all creation can sever the believer from the love and triumph of God in Christ." },
+        { reference: "Philippians 4:6-7", connection: "Surrendering anxiety to God unleashes supernatural peace that guards heart and mind." }
+      ]
+    : [
+        { reference: "Proverbs 3:5-6", connection: "Trusting in the Lord with all our heart directs our paths beyond human understanding." },
+        { reference: "Isaiah 40:29-31", connection: "Those who wait upon the Lord renew their strength, mounting up on wings like eagles." },
+        { reference: "Psalm 23:1-6", connection: "The Lord as our Shepherd guarantees guidance, protection, and overflowing goodness." }
+      ];
+
+  return {
+    book,
+    chapter,
+    verse,
+    testament,
+    author,
+    historicalEra,
+    culturalSetting,
+    genre,
+    originalLanguage,
+    keyHebrewGreekRoots: keyRoots,
+    crossRefs,
+    primaryTheme
+  };
+}
+
 // Comprehensive Apostolic Theological Generator & Fallback Engine
 const generateTheologicalFallbackData = (
   actionType: string = "",
   scriptureReference: string = "Nehemiah 8:10",
   scriptureText: string = "The joy of the LORD is your strength.",
-  scriptureTheme: string = "Divine Covenant Strength"
+  scriptureTheme: string = "Divine Covenant Strength",
+  version: string = "KJV",
+  disclaimer?: string
 ): any => {
   const act = (actionType || "").toLowerCase();
   const ref = scriptureReference || "Nehemiah 8:10";
   const txt = scriptureText || "The joy of the LORD is your strength.";
+  const profile = analyzeVerseContext(ref, txt);
 
+  // 1. GUIDED PRAYER (Create Prayer)
   if (act.includes("prayer") && !act.includes("point")) {
     return {
-      title: `Apostolic Prayer of Faith & Covenant Victory: ${ref}`,
-      scriptureAnchor: `${ref} — "${txt}"`,
-      adoration: `Heavenly Father, Sovereign God of glory and grace, we worship and adore You! You are exalted far above all heavens and principalities. In Your presence is fullness of joy, and at Your right hand are pleasures forevermore. We honor Your holy, unfailing Name.`,
-      confession: `Lord Jesus, we surrender our natural weaknesses, anxieties, and human frailties at the foot of the Cross. Forgive us for any moments where doubt clouded our spiritual vision. Cleanse our hearts and renew a steadfast, unwavering spirit within us.`,
-      confessionAndSurrender: `Lord Jesus, we surrender our natural weaknesses, anxieties, and human frailties at the foot of the Cross. Forgive us for any moments where doubt clouded our spiritual vision. Cleanse our hearts and renew a steadfast, unwavering spirit within us.`,
-      thanksgiving: `Father, with overflowing gratitude, we thank You for the living power of Your Word in ${ref}. Thank You that Your covenant joy is our eternal defense, and that in Christ Jesus, every one of Your promises is Yes and Amen!`,
-      petition: `In the mighty Name of Jesus Christ, we ask for an abundant outpouring of the Holy Spirit upon our spirits. Let the living truth of ${ref} manifest with signs, wonders, and supernatural peace in our lives, our families, and our callings. Impart divine wisdom, supernatural strength, and holy boldness today.`,
-      warfareDeclaration: `In the all-conquering Name of Jesus Christ, we break every assignment of heaviness, fear, and depression. We decree that no weapon formed against us shall prosper! The Joy of the Lord is our unassailable fortress, our buckler, and our high tower of victory.`,
-      spiritualWarfare: `In the all-conquering Name of Jesus Christ, we break every assignment of heaviness, fear, and depression. We decree that no weapon formed against us shall prosper! The Joy of the Lord is our unassailable fortress, our buckler, and our high tower of victory.`,
-      closing: `We seal this prayer in the matchless, triumphant Name of Jesus Christ our Lord and Savior. Amen!`,
-      declarationInJesusName: `We seal this prayer in the matchless, triumphant Name of Jesus Christ our Lord and Savior. Amen!`,
-      guidedPrayer: `Heavenly Father, as I stand upon ${ref} ("${txt}"), I welcome the living presence of the Holy Spirit. Wash away all weariness and fill my inner being with Your resurrection joy and supernatural peace. In Jesus' mighty Name, Amen.`
+      title: `Apostolic Prayer of Faith & Victory: ${ref}`,
+      subtitle: `Standing in Covenant Authority on ${ref} (${version})`,
+      scriptureAnchor: `${ref} (${version}) — "${txt}"`,
+      adoration: `O Sovereign Lord God Almighty, Creator of the ends of the earth, You are clothed in majesty and girded with infinite strength! Through ${ref}, You reveal Your unchanging character and tender mercy. We magnify Your holy Name, exalting You above all principalities and earthly circumstances. You are worthy of all praise!`,
+      confession: `Lord Jesus, as we stand before Your sacred Word in ${ref}, we lay down every anxiety, self-reliant ambition, and shadow of doubt at the foot of the Cross. Forgive us for any moments we allowed natural fear to obscure Your supernatural promises. Cleanse our hearts and renew a steadfast spirit within us today.`,
+      confessionAndSurrender: `Lord Jesus, as we stand before Your sacred Word in ${ref}, we lay down every anxiety, self-reliant ambition, and shadow of doubt at the foot of the Cross. Forgive us for any moments we allowed natural fear to obscure Your supernatural promises. Cleanse our hearts and renew a steadfast spirit within us today.`,
+      thanksgiving: `Father, with hearts overflowing with gratitude, we praise You for the living reality of "${txt}". Thank You that Your covenant promises never fail, that Your grace is sufficient in every trial, and that through Jesus Christ our Lord, our victory is eternally sealed!`,
+      petition: `In the mighty Name of Jesus Christ, we ask that the living truth of ${ref} be made tangible in our everyday walk. Release supernatural wisdom into our decisions, divine health into our bodies, peace into our households, and fruitfulness into our kingdom assignments. Let Your favor surround us as with a shield.`,
+      warfareDeclaration: `In the all-conquering authority of Jesus Christ, we break every spiritual chain of heaviness, delay, and oppression! We decree that every weapon formed against our divine destiny is rendered powerless. According to ${ref}, we stand victorious, unshaken, and covered by the precious Blood of the Lamb.`,
+      spiritualWarfare: `In the all-conquering authority of Jesus Christ, we break every spiritual chain of heaviness, delay, and oppression! We decree that every weapon formed against our divine destiny is rendered powerless. According to ${ref}, we stand victorious, unshaken, and covered by the precious Blood of the Lamb.`,
+      closing: `We seal this prayer in heavenly places, decreeing that God's Word in ${ref} shall not return void, but shall accomplish everything for which it was sent. In the matchless, triumphant Name of Jesus Christ our Lord, Amen!`,
+      declarationInJesusName: `We seal this prayer in the matchless, triumphant Name of Jesus Christ our Lord, Amen!`,
+      guidedPrayer: `Heavenly Father, as I meditate upon ${ref} ("${txt}"), I surrender my life afresh to Your Holy Spirit. Let Your presence saturate my soul, breaking every limitation and establishing Your victory in my daily walk. In Jesus' mighty Name, Amen.`,
+      disclaimer
     };
   }
 
+  // 2. TARGETED PRAYER POINTS
   if (act.includes("point")) {
     return {
-      title: `5 Prophetic Prayer Points on ${ref}`,
-      scriptureAnchor: `${ref} — "${txt}"`,
+      title: `5 Strategic Prayer Points on ${ref}`,
+      scriptureAnchor: `${ref} (${version}) — "${txt}"`,
+      introduction: `Engage in targeted apostolic intercession anchored upon the divine promise of ${ref}. Speak these declarations aloud with uncompromising faith.`,
       prayerPoints: [
         {
           pointNumber: 1,
-          focus: "Awakening Divine Joy & Fortitude",
-          scripturePromise: ref,
-          prayerDeclaration: `Father, in Jesus' Name, I release the unquenchable joy of the Lord over my soul. Every spirit of heaviness is broken and cast out right now in Jesus' Name.`
+          focus: `Manifestation of ${profile.primaryTheme}`,
+          scripturePromise: `${ref} — "${txt}"`,
+          prayerDeclaration: `Heavenly Father, in the Name of Jesus, I lay claim to the living reality of ${ref}. Let Your covenant power and grace manifest in my spirit, establishing divine order in every area of my life!`
         },
         {
           pointNumber: 2,
-          focus: "Covenant Resilience & Strength",
-          scripturePromise: "Isaiah 40:29",
-          prayerDeclaration: `Lord, infuse my inner man with resurrection power. Where human energy fails, let Your supernatural vigor take over.`
+          focus: "Breaking All Spiritual Limitations & Delays",
+          scripturePromise: profile.crossRefs[0].reference,
+          prayerDeclaration: `By the Blood of Jesus and the authority of God's Word, I dismantle every barrier and delay erected against my destiny. I advance into divine favor and fruitfulness today!`
         },
         {
           pointNumber: 3,
-          focus: "Destruction of Generational Limits",
-          scripturePromise: "Galatians 3:13-14",
-          prayerDeclaration: `By the Blood of Jesus, I break free from every past limitation. I walk in divine liberty, kingdom authority, and favor.`
+          focus: "Impartation of Divine Fortitude & Peace",
+          scripturePromise: profile.crossRefs[1].reference,
+          prayerDeclaration: `I cast down all spirit of fear, fatigue, and heaviness. The peace of God which surpasses all human understanding guards my heart and mind through Christ Jesus.`
         },
         {
           pointNumber: 4,
-          focus: "Supernatural Peace & Spiritual Clarity",
-          scripturePromise: "Philippians 4:7",
-          prayerDeclaration: `I decree that the peace of God which surpasses all human understanding guards my heart and mind through Christ Jesus.`
+          focus: "Walking in Kingdom Wisdom & Clarity",
+          scripturePromise: profile.crossRefs[2].reference,
+          prayerDeclaration: `Holy Spirit, grant me supernatural discernment and unshakeable clarity. Order my footsteps in righteousness and make my path shine brighter and brighter unto the perfect day!`
         },
         {
           pointNumber: 5,
-          focus: "Triumphant Manifestation of Glory",
-          scripturePromise: "Romans 8:37",
-          prayerDeclaration: `I declare that in all things I am more than a conqueror. Today I experience breakthroughs, divine health, and fruitful answers to prayer.`
+          focus: "Covenant Victory & Prophetic Breakthrough",
+          scripturePromise: "Romans 8:37 — 'In all these things we are more than conquerors through Him that loved us.'",
+          prayerDeclaration: `I decree that I am more than a conqueror in Christ! Every promise of God for my life is Yes and Amen. The Joy of the Lord is my permanent fortress and eternal shield.`
         }
       ],
-      propheticDecree: `I decree and declare that according to ${ref}, my season of sorrow has ended and my dawn of covenant rejoicing has arrived. In Jesus' mighty Name!`
+      propheticDecree: `I decree and declare that according to ${ref}, the Word of God is settled in my life forever. No storm shall prevail against me, for the Lord God Almighty is my defense. In Jesus' Name, Amen!`,
+      disclaimer
     };
   }
 
-  if (act.includes("context") || act.includes("historical") || act.includes("background") || act.includes("explain") || act.includes("exposition") || act.includes("exegesis")) {
+  // 3. HISTORICAL CONTEXT & CULTURAL BACKGROUND
+  if (
+    act === "historical context" ||
+    act === "context & historical background" ||
+    (act.includes("context") && !act.includes("explain")) ||
+    act.includes("historical") ||
+    act.includes("background")
+  ) {
     return {
-      title: `Historical & Expository Exegesis of ${ref}`,
-      scriptureAnchor: `${ref} — "${txt}"`,
-      historicalContext: `This sacred passage in ${ref} was delivered during a decisive epoch in biblical history, where God's covenant people were summoned to return to the divine law, covenant faithfulness, and the sovereign majesty of Yahweh.`,
-      culturalBackground: `In ancient Semitic culture, divine proclamations were communal covenants celebrated with solemn reverence and joyful feasts. To confess God's joy or covenant blessing was a radical statement of spiritual victory and covenant identity.`,
-      originalLanguageInsight: `Linguistic analysis reveals terms of deep ontological certainty rather than passing emotion. The original Hebrew or Greek terms convey an unshakeable fortress anchored by God Himself.`,
-      doctrinalMeaning: `Theological doctrine underscores that God is the author and sustainer of our salvation. His covenant mercy endures through all generations, proving that human frailty cannot overturn divine promises.`,
-      crossReferences: ["Nehemiah 8:10", "Psalm 16:11", "Romans 8:31", "Philippians 4:4"],
-      lifeTransformation: `Grounded in this historical truth, modern believers can face modern uncertainties with the same ancient, tested confidence that sustained the prophets and apostles.`,
-      hopeAndEncouragementConclusion: `Be deeply fortified in spirit! Grounded in the sovereign covenant of God revealed in ${ref}, know that His promises are steadfast, His presence is near, and His unfailing joy is your impenetrable fortress.`
+      title: `Historical Context & Biblical Setting of ${ref}`,
+      scriptureAnchor: `${ref} (${version}) — "${txt}"`,
+      historicalContext: `The inspired text of ${ref} is rooted in the concrete redemptive history of God's people during the ${profile.historicalEra}. Authored under the inspiration of the Holy Spirit by ${profile.author}, this passage was written to address covenant believers during a critical juncture of spiritual testing, renewal, and divine intervention.\n\nWithin this historical landscape, God's people faced immense pressure from surrounding empires, geopolitical upheaval, and the constant temptation to compromise their distinct covenant calling. Through ${ref}, God spoke directly into the crisis, providing divine reassurance that earthly kingdoms rise and fall, but His eternal covenant remains unshakable.`,
+      culturalBackground: `In the ancient setting (${profile.culturalSetting}), words of covenant blessing and divine assurance were not abstract ideas; they were solemn legal and liturgical proclamations. Ancient audiences understood that when God spoke, His word carried the weight of royal decree and absolute sovereignty. The communal setting required every hearer to align their personal conduct, family life, and civic allegiance with the living God.`,
+      covenantalContext: `Within God's grand unfolding redemptive plan across the ${profile.testament}, this passage marks a pivotal milestone. It points forward to the supreme fulfillment of all divine promises in the person and finished work of Jesus Christ, through whom all covenant blessings are secured for believers across every generation.`,
+      originalLanguageInsight: `Written in ${profile.originalLanguage}, the passage centers on the root term ${profile.keyHebrewGreekRoots.term} (${profile.keyHebrewGreekRoots.transliteration}, Strong's ${profile.keyHebrewGreekRoots.strongs}), which denotes "${profile.keyHebrewGreekRoots.meaning}". Unlike modern subjective sentiments, this original biblical vocabulary signifies an objective, divine reality established by God Himself.`,
+      doctrinalMeaning: `Theological doctrine confirmed in ${ref} underscores the sovereignty, immutability, and covenant faithfulness of God. It teaches that human salvation, preservation, and spiritual victory originate entirely in the initiative of God rather than human merit. As believers, our confidence is anchored not in transient earthly stability, but in the eternal decree of the Almighty.`,
+      crossReferences: profile.crossRefs,
+      lifeTransformation: `For modern believers navigating contemporary challenges, the historical truth of ${ref} provides an unshakeable anchor. The same living God who preserved His saints through ancient perils is actively ordering your steps today. Stand firm, anchor your mind on His covenant promises, and walk with the holy confidence of a redeemed child of God.`,
+      disclaimer
     };
   }
 
-  if (act.includes("commentary")) {
+  // 4. EXPLAIN THIS VERSE (Deep Expository Breakdown)
+  if (act.includes("explain") || act.includes("exposition") || act.includes("exegesis")) {
     return {
-      title: `Apostolic Commentary: The Sovereign Depths of ${ref}`,
-      scriptureAnchor: `${ref} — "${txt}"`,
-      keyTheme: "Covenant Fortitude & Divine Presence",
-      historicalContext: `Grounded in ${ref}, this text speaks directly into the human condition, establishing that true fortitude springs not from human reserves but from divine fellowship.`,
-      matthewHenryInsight: `As Matthew Henry observed, the joy of the Lord is both our duty and our defense. When we rejoice in God's goodness, our hearts are fortified against the snares of the tempter and the discouragements of the wilderness.`,
-      spurgeonInsight: `"Let no believer live on yesterday's bread," proclaimed Spurgeon. "God's joy is fresh every morning. Cast yourself upon His sovereign mercy, and you shall find Him to be an inexhaustible fountain of living waters."`,
-      apostolicRhema: `The apostolic rhema of ${ref} reveals that you are seated in heavenly places in Christ. What was meant to diminish you has been transformed by divine decree into the platform of your greater testimony.`,
-      theologicalDoctrine: `The immutable covenant of God ensures that every trial is under His sovereign dominion, working together for the eternal good of those who love Him.`,
-      lifeApplication: `Walk today with holy dignity. Refuse to be intimidated by circumstances. Decree the joy and victory of Christ over your life, and watch the peace of God establish your steps.`
+      title: `Expository Breakdown & Deep Exegesis of ${ref}`,
+      scriptureAnchor: `${ref} (${version}) — "${txt}"`,
+      historicalContext: `In ${ref}, ${profile.author} writes during the ${profile.historicalEra} to provide theological clarity and unshakeable assurance to the covenant community.`,
+      originalLanguageInsight: `Linguistic exegesis in the original ${profile.originalLanguage} centers on ${profile.keyHebrewGreekRoots.term} (${profile.keyHebrewGreekRoots.transliteration}), Strong's ${profile.keyHebrewGreekRoots.strongs}. This key term conveys ${profile.keyHebrewGreekRoots.meaning}, demonstrating that God's promise is an active, supernatural force imparted to the believer.`,
+      expositoryBreakdown: `Examining the syntactic clauses of "${txt}":\n\n1. **The Divine Source**: The passage identifies God as the primary initiator and guarantor of our life and salvation. Human strength is finite, but the grace revealed here is limitless.\n2. **The Living Reality**: The promise is not a distant hypothesis, but a present-tense possession. Believers are summoned to enter into this truth by faith.\n3. **The Covenant Consequence**: Embracing this passage shatters the grip of fear, anxiety, and defeat, releasing the triumphant peace of the Holy Spirit into the inner man.`,
+      doctrinalMeaning: `The core doctrinal revelation of ${ref} is that God's grace and covenant power are completely sufficient for every trial. In the theology of the ${profile.testament}, this truth harmonizes with the revelation of Christ as our all-sufficient Savior, High Priest, and coming King. Believers are not left to their own devices; they are upheld by the sovereign hand of God.`,
+      crossReferences: profile.crossRefs,
+      lifeTransformation: `To live out ${ref} today: (1) Meditate on this verse morning and evening until it shapes your perspective; (2) Replace every negative or anxious thought with this scriptural promise; (3) Act in faith, knowing that God's power is perfected in your surrender.`,
+      apostolicBlessing: `May the God of peace, who brought again from the dead our Lord Jesus Christ, equip you with everything good for doing His will, and may the truth of ${ref} shine brightly in your life today!`,
+      disclaimer
     };
   }
 
-  if (act.includes("interlinear") || act.includes("greek") || act.includes("hebrew")) {
-    const isOT = !["Matthew", "Mark", "Luke", "John", "Acts", "Romans", "1 Corinthians", "2 Corinthians", "Galatians", "Ephesians", "Philippians", "Colossians", "1 Thessalonians", "2 Thessalonians", "1 Timothy", "2 Timothy", "Titus", "Philemon", "Hebrews", "James", "1 Peter", "2 Peter", "1 John", "2 John", "3 John", "Jude", "Revelation"].some(b => ref.startsWith(b));
-    return {
-      testament: isOT ? "Old Testament" : "New Testament",
-      language: isOT ? "Biblical Hebrew" : "Koine Greek",
-      scriptDirection: isOT ? "rtl" : "ltr",
-      originalScriptFull: isOT ? "חֶדְוַ֧ת יְהוָ֛ה הִ֥יא מָֽעֻזְּכֶֽם׃" : "ἡ δὲ χαρὰ τοῦ κυρίου ἰσχὺς ὑμῶν ἐστιν",
-      transliterationFull: isOT ? "chedvat Yahweh hi ma'uzzekhem" : "hē de chara tou kyriou ischys hymōn estin",
-      literalEnglishFull: isOT ? "The joy of Yahweh, it is your fortress" : "The joy of the Lord is your strength",
-      words: [
-        {
-          wordOrder: 1,
-          originalScript: isOT ? "חֶדְוַ֧ת" : "χαρὰ",
-          transliteration: isOT ? "chedvat" : "chara",
-          pronunciation: isOT ? "khed-VAHT" : "khar-AH",
-          englishGloss: "The joy of",
-          strongsNumber: isOT ? "H2304" : "G5479",
-          lemma: isOT ? "חֶדְוָה" : "χαρά",
-          partOfSpeech: "Noun Feminine Construct",
-          grammaticalParsing: isOT ? "Noun Feminine Singular Construct" : "Noun Nominative Feminine Singular",
-          literalMeaning: "Deep holy celebration, rejoiceful covenant gladness",
-          rootEtymology: isOT ? "From chada (H2302) to rejoice" : "From chairo (G5463) to be cheerful",
-          lexicalDefinition: "Divine rejoicing, covenant exuberance",
-          theologicalSignificance: "The joy of the Lord is supernatural, proceeding from God's Throne."
-        },
-        {
-          wordOrder: 2,
-          originalScript: isOT ? "יְהוָ֛ה" : "κυρίου",
-          transliteration: isOT ? "Yahweh" : "kyriou",
-          pronunciation: isOT ? "yah-WAY" : "koo-REE-oo",
-          englishGloss: "the LORD",
-          strongsNumber: isOT ? "H3068" : "G2962",
-          lemma: isOT ? "יהוה" : "κύριος",
-          partOfSpeech: "Proper Noun",
-          grammaticalParsing: isOT ? "Proper Noun Singular Absolute" : "Noun Genitive Masculine Singular",
-          literalMeaning: "The Self-Existent Covenant King",
-          rootEtymology: isOT ? "From havah to exist" : "From kyros supreme power",
-          lexicalDefinition: "The eternal covenant God of Israel",
-          theologicalSignificance: "The eternal sovereign God who keeps covenant forever."
-        },
-        {
-          wordOrder: 3,
-          originalScript: isOT ? "מָֽעֻזְּכֶֽם" : "ἰσχὺς",
-          transliteration: isOT ? "ma'uzzekhem" : "ischys",
-          pronunciation: isOT ? "mah-ooz-ZEH-khem" : "is-KHOOS",
-          englishGloss: "your stronghold",
-          strongsNumber: isOT ? "H4581" : "G2479",
-          lemma: isOT ? "מָעוֹז" : "ἰσχύς",
-          partOfSpeech: "Noun Masculine",
-          grammaticalParsing: isOT ? "Noun Masculine Singular + 2mp suffix" : "Noun Nominative Feminine Singular",
-          literalMeaning: "Impenetrable fortress, place of divine refuge and defense",
-          rootEtymology: isOT ? "From azaz (H5810) to be strong" : "From is (force/might)",
-          lexicalDefinition: "Fortress, stronghold, divine defense",
-          theologicalSignificance: "God's joy is not a passive sentiment; it is an active defense fortress."
-        }
-      ],
-      expositoryWordStudy: `In ${ref}, the original language unlocks a transformative revelation: God's joy is an ontological fortress ('ma'oz'). It protects the believer from spiritual erosion and imparts invincible strength in times of testing.`,
-      apostolicRhema: `Take refuge in the high tower of God's joy! The original script confirms that the sovereign God Himself is your impenetrable defense.`
-    };
-  }
-
-  if (act.includes("joy")) {
-    return {
-      title: `The Joy of the Lord in ${ref}: Our Supernatural Stronghold`,
-      scriptureAnchor: ref,
-      originalLanguageJoyInsight: `In the sacred scriptures, divine joy ('chedvah' in Hebrew, 'chara' in Greek) is not a fleeting emotional reaction to favorable circumstances, but an ontological fortress ('ma'oz') rooted in God's eternal covenant.`,
-      mathemaAnalogy: `Like a fundamental mathematical constant that preserves invariant symmetry across coordinate transformations, the Joy of the Lord remains an unshakeable constant regardless of earthly fluctuations.`,
-      theologicalJoyExposition: `Standing firmly upon ${ref} ("${txt}"), this revelation reveals that God's joy is imparted directly from the Throne of Grace. It operates as divine armor, supernatural endurance, and covenant triumph over all distress.`,
-      hopeAndEncouragementConclusion: `Be greatly encouraged today! No weapon formed against you shall prosper, and no grief or storm can extinguish the covenant joy that God has breathed into your spirit. The joy of the Lord is your fortress, your resurrection power, and your everlasting victory. Rise up with holy confidence, for the Lord is fighting your battles!`,
-      propheticDecrees: [
-        "I decree that the Joy of the Lord is my unassailable fortress and daily strength.",
-        "I cast down all spirit of heaviness and put on the garment of praise and divine victory.",
-        "I declare that my steps are ordered by the Lord and full of unshakable hope in Christ Jesus."
-      ],
-      closingPrayer: `Heavenly Father, in the mighty Name of Jesus Christ, I receive the fullness of Your joy into my spirit. Let the living waters of Your presence wash away fear, despair, and fatigue. Fill me with triumphant hope and holy boldness today. Amen.`
-    };
-  }
-
-  if (act.includes("math")) {
-    return {
-      title: `MathemaSermon: Divine Convergence in ${ref}`,
-      mathematicalConcept: "Asymptotic Convergence & Constant Multipliers",
-      formula: "J(t) = C_0 \\cdot e^{k t} \\quad \\text{where} \\; k > 0",
-      mathematicalAnalogy: `In mathematical analysis, an asymptotic limit models the inexorable convergence of a spiritual trajectory toward divine promises under the influence of covenant constants.`,
-      homileticApplication: `Applying this to ${ref}, God's covenant promises are immutable invariants. As faith aligns with His eternal Word, spiritual entropy collapses and resurrection vitality expands exponentially.`,
-      hopeAndEncouragementConclusion: `Take heart and rejoice! The mathematical laws of creation reflect the absolute faithfulness of our God. When you anchor your heart in Christ, your outcome is guaranteed by His eternal covenant. Hope is not an uncertainty—it is the confident expectation of God's revealed glory in your life!`,
-      altarCallPrayer: `Lord God of all creation, align my thoughts with Your eternal truth. Let Your divine power multiply my faith and renew my joy today. In Jesus' Holy Name, Amen.`
-    };
-  }
-
-  // Default: High-theology Devotion
+  // 5. DEVOTION (Create Devotion)
   return {
-    title: `Walking in Covenant Victory: ${ref}`,
-    scriptureAnchor: ref,
+    title: `Daily Sanctuary Devotion: Walking in the Truth of ${ref}`,
+    keyScripture: `${ref} (${version}) — "${txt}"`,
     passageText: txt,
-    reflection: `Standing upon the eternal foundation of ${ref} ("${txt}"), we are reminded that God's Word does not return void. In a world characterized by shifting sands, this passage anchors the soul in divine assurance. The Joy of the Lord is not contingent upon earthly circumstances; it is an unshakeable covenant fortress that sustains the believer in every trial and triumphs over all opposition.`,
-    practicalApplication: `Take 3 intentional pauses today. Speak ${ref} aloud over your family, work, and spiritual life. Replace anxious thoughts with bold declarations of God's unchanging goodness.`,
-    guidedPrayer: `Lord God Almighty, I thank You for the truth of ${ref}. Let Your Holy Spirit fill my heart with supernatural joy, unwavering peace, and bold faith. Strengthen my hands to do Your will today. In Jesus' holy Name, Amen.`,
-    actionStep: `Commit ${ref} to memory today. Share this scripture promise with someone who needs encouragement, and stand firm in the victory Christ has secured for you.`,
-    hopeAndEncouragementConclusion: `Lift up your head with triumphant joy! The Lord who created the heavens and the earth is fighting for you. No circumstance can overturn His sovereign love. In Christ Jesus, you are an overcomer, and your future is bright with His eternal purpose. Stand firm, rejoice, and walk in the fullness of His joy!`
+    reflection: `When we pause to consider the living words of ${ref} ("${txt}"), our hearts are drawn into the sacred sanctuary of God's presence. In a world full of rapid changes, conflicting voices, and daily pressures, Scripture provides an eternal, immovable bedrock for our souls. Written by ${profile.author} during the ${profile.historicalEra}, this text speaks directly into our human need for divine strength, clarity, and peace.\n\nTrue spiritual resilience does not come from human willpower, positive thinking, or material security. It is born from a living relationship with the Holy Spirit and an unwavering trust in God's covenant promises. When we acknowledge our human limitations and look to Christ, His supernatural power infuses our inner being with renewed joy and fortitude.\n\nAs you meditate on this passage today, recognize that you are not walking alone. The same sovereign God who guided the biblical patriarchs, prophets, and apostles is with you right now. He knows your trials, He hears your prayers, and His unfailing love surrounds you every step of the journey.`,
+    practicalApplication: `Identify one situation today that has caused you anxiety or weariness. Write down ${ref} on an index card or in your phone notes. Each time that worry surfaces, speak this verse out loud as an act of trust and worship.`,
+    guidedPrayer: `Gracious Heavenly Father, I thank You for the living power of ${ref}. Forgive me for the times I have relied on my own frail understanding rather than Your eternal truth. Fill my heart afresh with the Holy Spirit, renew my mind with Your peace, and let Your strength be made perfect in my weakness today. In the precious and victorious Name of Jesus Christ, Amen.`,
+    actionStep: `Memorize ${ref} today and share its encouraging truth with at least one family member or friend who needs divine encouragement.`,
+    apostolicDecree: `I decree that the Word of the Lord in ${ref} is alive and active in my life. I walk in divine favor, supernatural joy, and triumphant faith today. Amen!`,
+    disclaimer
   };
 };
 
@@ -1882,6 +1963,9 @@ export function formatTheologicalDataToText(item: any, actionType: string = ""):
 
 // Universal Serverless-Compatible AI Generation Endpoint (supports /api/generate and /.netlify/functions/generate)
 const handleUnifiedAiGenerate = async (req: any, res: any) => {
+  res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+  res.setHeader("Pragma", "no-cache");
+  res.setHeader("Expires", "0");
   console.log("Calling AI...");
   const apiKey = process.env.API_KEY || process.env.GEMINI_API_KEY;
 
@@ -2070,7 +2154,9 @@ app.post("/api/generate-stream", async (req, res) => {
 
   // Set SSE streaming headers
   res.setHeader("Content-Type", "text/event-stream");
-  res.setHeader("Cache-Control", "no-cache, no-transform");
+  res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, no-transform");
+  res.setHeader("Pragma", "no-cache");
+  res.setHeader("Expires", "0");
   res.setHeader("Connection", "keep-alive");
   res.setHeader("X-Accel-Buffering", "no"); // Prevent reverse proxy / nginx buffering
   res.flushHeaders?.();
@@ -2088,6 +2174,7 @@ app.post("/api/generate-stream", async (req, res) => {
       scriptureReference,
       scriptureText,
       scriptureTheme,
+      version,
       topic,
       need,
       category,
@@ -2103,13 +2190,86 @@ app.post("/api/generate-stream", async (req, res) => {
       : `You are an apostolic Christian theologian and pastoral guide.\n${AI_OUTPUT_IMPROVEMENT_RULES}`;
     let responseMimeType: string | undefined = undefined;
 
-    if (actionType || scriptureReference) {
+    const act = (actionType || "").toLowerCase();
+
+    if (act.includes("hymn") || act === "hymnal_devotion") {
+      finalPrompt = prompt || `You are a reverent Christian hymnologist and pastoral theologian.
+Generate an inspirational, soul-stirring devotional reflection exploring the profound spiritual legacy of traditional Christian hymnals and spiritual songs, specifically connecting to the user's topic: "${topic || ""}".
+Include:
+1. Spiritual Foundation & Biblical Anchor (cite relevant KJV/NKJV scriptures)
+2. Hymnic Heritage & Old Spiritual Analogy (mention how saints and early revivalists found power through songs in the night)
+3. Three Practical Stanzas of Faith (actionable steps for worship in trials)
+4. Pastoral Closing Prayer & Benediction.
+Keep the tone deeply reverent, majestic, and grounded in the Lord Jesus Christ.
+${AI_OUTPUT_IMPROVEMENT_RULES}`;
+    } else if (req.body.placeName || act === "place_history" || act === "scriptural_place_history" || act.includes("place")) {
+      const place = req.body.placeName || topic || "Bethel";
+      const bRef = req.body.biblicalReference || "Genesis 28";
+      const bCtx = req.body.context || "Sacred encounter";
+      finalPrompt = `Scriptural Place: ${place}
+Biblical Reference: ${bRef}
+Context / Background: ${bCtx}
+
+Provide the historical biblical facts of what took place at ${place}.
+Requirements:
+1. Describe factually what happened there in the Bible, who was involved, book/chapter/verse citation, and the outcome.
+2. Keep it purely historical, exegetical, and accurate (maximum 3 concise sentences).
+
+${AI_OUTPUT_IMPROVEMENT_RULES}
+Format as JSON with keys: place, historicalAccount, biblicalReference, keyFigures, historicalOutcome.`;
+      responseMimeType = "application/json";
+    } else if (
+      scriptureReference ||
+      act.includes("verse") ||
+      act.includes("scripture") ||
+      act.includes("commentary") ||
+      act.includes("interlinear") ||
+      act.includes("greek") ||
+      act.includes("hebrew") ||
+      act.includes("context") ||
+      act.includes("historical") ||
+      act.includes("explain") ||
+      act.includes("exposition") ||
+      act === "the joy of the lord" ||
+      act === "mathemasermons" ||
+      act === "daily devotion" ||
+      act === "daily scripture" ||
+      act === "5 high-impact prayer points" ||
+      act === "warfare prayer"
+    ) {
       const ref = scriptureReference || "Nehemiah 8:10";
-      const text = scriptureText || "The joy of the LORD is your strength.";
-      const act = (actionType || "").toLowerCase();
+      const requestedVersion = String(version || "KJV").toUpperCase();
+      let actualText = scriptureText || "";
+      let actualVersion = requestedVersion;
+
+      if (!actualText || requestedVersion !== "KJV") {
+        const liveVerse = await fetchAuthenticVerse(ref, requestedVersion);
+        if (liveVerse.verseText) {
+          actualText = liveVerse.verseText;
+          actualVersion = liveVerse.version;
+        }
+      }
+      if (!actualText) actualText = "The joy of the LORD is your strength.";
+
+      const text = actualText;
 
       if (act.includes("prayer") && !act.includes("point")) {
-        finalPrompt = `You are a reverent, apostolic Christian pastoral leader. Compose a powerful prayer on: ${ref} ("${text}").\nContext & Scripture: ${ref} ("${text}")\n${AI_OUTPUT_IMPROVEMENT_RULES}\nFormat as JSON with keys: title, adoration, thanksgiving, petition, warfareDeclaration, closing.`;
+        finalPrompt = `You are a reverent, apostolic Christian pastoral leader. Compose an anointed, deeply transformative Guided Prayer rooted directly in:
+Reference: ${ref} (${actualVersion})
+Scripture Text: "${text}"
+${AI_OUTPUT_IMPROVEMENT_RULES}
+
+Format your response as a valid JSON object matching this schema:
+{
+  "title": "Sacred Prayer of Faith on ${ref}",
+  "scriptureAnchor": "${ref} (${actualVersion}) - '${text}'",
+  "adoration": "Exalt God's supreme holiness, sovereignty, and faithfulness demonstrated in this passage.",
+  "confession": "Surrender human insufficiency, worry, and fleshly strivings into His loving covenant hands.",
+  "thanksgiving": "Thank God for the finished work of Christ and His unshakeable promises in this verse.",
+  "petition": "Direct, heartfelt, and targeted petitions applying this scripture into the believer's life, family, calling, and circumstances.",
+  "warfareDeclaration": "Authoritative apostolic decrees breaking doubt, fear, and demonic limitations in Jesus' Name.",
+  "closing": "Triumphant seal and affirmation in Jesus' victorious Name."
+}`;
         responseMimeType = "application/json";
       } else if (act.includes("point")) {
         finalPrompt = `Generate 5 high-impact prayer points on: ${ref} ("${text}").\nContext & Scripture: ${ref} ("${text}")\n${AI_OUTPUT_IMPROVEMENT_RULES}\nFormat as JSON with keys: title, scriptureAnchor, prayerPoints (array of {pointNumber, focus, scripturePromise, prayerDeclaration}), propheticDecree.`;
@@ -2146,10 +2306,50 @@ Format as JSON with keys:
         finalPrompt = `You are a preeminent Christian Biblical scholar synthesizing Matthew Henry, Charles Spurgeon, and Apostolic Rhema revelation. Provide an in-depth verse-by-verse commentary for: ${ref} ("${text}").\nContext & Scripture: ${ref} ("${text}")\n${AI_OUTPUT_IMPROVEMENT_RULES}\nFormat as JSON with keys: title, scriptureAnchor, keyTheme, historicalContext, matthewHenryInsight, spurgeonInsight, apostolicRhema, originalLanguageInsight, crossReferences, theologicalDoctrine, lifeApplication.`;
         responseMimeType = "application/json";
       } else if (act.includes("context") || act.includes("historical") || act.includes("background")) {
-        finalPrompt = `You are a world-class Christian Biblical historian, archaeologist, and theologian. Provide an exhaustive, authoritative Historical and Cultural Context analysis of: ${ref} ("${text}").\nContext & Scripture: ${ref} ("${text}")\n${AI_OUTPUT_IMPROVEMENT_RULES}\nFormat as JSON with keys: title, scriptureAnchor, historicalContext, culturalBackground, originalLanguageInsight, doctrinalMeaning, crossReferences, lifeTransformation.`;
+        finalPrompt = `You are a world-class Christian Biblical historian, archaeologist, and theologian. Provide an exhaustive, authoritative Historical, Cultural, and Expository analysis of:
+Reference: ${ref} (${actualVersion})
+Passage: "${text}"
+${AI_OUTPUT_IMPROVEMENT_RULES}
+
+Format your response as a valid JSON object with this exact schema:
+{
+  "title": "Historical Context & Biblical Setting of ${ref}",
+  "scriptureAnchor": "${ref} (${actualVersion}) - '${text}'",
+  "historicalContext": "Authoritative 3-4 paragraph historical setting: author, date of writing, reigning king/empire, original audience, and the geopolitical occasion/crisis for this text.",
+  "culturalBackground": "Ancient Near Eastern or Greco-Roman cultural practices, idioms, geography, and archaeological insights illuminating this verse.",
+  "covenantalContext": "Pivotal covenantal milestone in redemptive history linking Old and New Testaments.",
+  "originalLanguageInsight": "Deep original Hebrew or Greek root words, grammatical nuances, and etymological depth.",
+  "doctrinalMeaning": "2 paragraphs explaining the central spiritual truth, theological doctrine, and eternal revelation in this verse.",
+  "crossReferences": [
+    { "reference": "Book Chapter:Verse", "connection": "How this cross-reference illuminates the verse" },
+    { "reference": "Book Chapter:Verse", "connection": "How this cross-reference illuminates the verse" },
+    { "reference": "Book Chapter:Verse", "connection": "How this cross-reference illuminates the verse" }
+  ],
+  "lifeTransformation": "Apostolic and practical application showing how this ancient historical truth directly transforms the believer's life today."
+}`;
         responseMimeType = "application/json";
-      } else if (act.includes("explain")) {
-        finalPrompt = `Provide a comprehensive expository breakdown on: ${ref} ("${text}").\nContext & Scripture: ${ref} ("${text}")\n${AI_OUTPUT_IMPROVEMENT_RULES}\nFormat as JSON with keys: title, historicalContext, originalLanguageInsight, doctrinalMeaning, lifeTransformation.`;
+      } else if (act.includes("explain") || act.includes("exposition")) {
+        finalPrompt = `You are a preeminent Christian Biblical scholar and expositor. Provide a profound, deep, verse-by-verse and theological explanation of:
+Reference: ${ref} (${actualVersion})
+Passage: "${text}"
+${AI_OUTPUT_IMPROVEMENT_RULES}
+
+Format your response as a valid JSON object with this exact schema:
+{
+  "title": "Deep Expository Analysis of ${ref}",
+  "scriptureAnchor": "${ref} (${actualVersion}) - '${text}'",
+  "historicalContext": "Historical, cultural, authorial, and situational setting of this passage",
+  "originalLanguageInsight": "Analysis of key original Greek or Hebrew root words, transliterations, and their theological depth",
+  "expositoryBreakdown": "Clause-by-clause detailed exegetical breakdown of the exact text and phrasing",
+  "doctrinalMeaning": "2 paragraphs explaining the central spiritual truth, theological doctrine, and eternal revelation in this verse",
+  "crossReferences": [
+    { "reference": "Book Chapter:Verse", "connection": "How this cross-reference illuminates the verse" },
+    { "reference": "Book Chapter:Verse", "connection": "How this cross-reference illuminates the verse" },
+    { "reference": "Book Chapter:Verse", "connection": "How this cross-reference illuminates the verse" }
+  ],
+  "lifeTransformation": "Practical, transformative life application showing how a believer today walks in this truth daily",
+  "apostolicBlessing": "A short, anointed scriptural blessing and decree over the believer"
+}`;
         responseMimeType = "application/json";
       } else if (act.includes("joy")) {
         finalPrompt = `You are an apostolic pastor and theologian drawing upon the profound revelations of "The Joy of the Lord" (Nehemiah 8:10, Psalm 16:11, Philippians 4:4) and the analytical clarity of MathemaSermons.
@@ -2192,9 +2392,106 @@ Format as JSON with keys:
 - altarCallPrayer: Fervent prayer sealing the revelation`;
         responseMimeType = "application/json";
       } else {
-        finalPrompt = `Compose an inspiring Christian devotion on: ${ref} ("${text}").\nContext & Scripture: ${ref} ("${text}")\n${AI_OUTPUT_IMPROVEMENT_RULES}\nAt the conclusion, inspire deep hope and encouragement in Christ.\nFormat as JSON with keys: title, reflection, practicalApplication, guidedPrayer, actionStep, hopeEncouragementConclusion.`;
+        finalPrompt = `Generate a rich, inspiring Christian devotion for the Daily Scripture edition on:
+Reference: ${ref} (${actualVersion})
+Passage: "${text}"
+${AI_OUTPUT_IMPROVEMENT_RULES}
+
+Format your response as a valid JSON object matching this schema:
+{
+  "title": "Inspiring Devotion Title for ${ref}",
+  "keyScripture": "${ref} (${actualVersion}) - '${text}'",
+  "passageText": "${text}",
+  "reflection": "A 3-paragraph deep theological and spiritual reflection grounded in biblical truth and Christ's finished work",
+  "practicalApplication": "Concrete, actionable step for daily Christian living",
+  "guidedPrayer": "A reverent, faith-filled prayer concluding in Jesus' name",
+  "actionStep": "A memorable action or reflection question for the day",
+  "apostolicDecree": "A triumphant faith decree declaring the truth of this verse over the believer",
+  "hopeEncouragementConclusion": "An inspiring, triumphant conclusion anchoring the believer in hope and encouragement"
+}`;
         responseMimeType = "application/json";
       }
+    } else if (req.body.question || act === "doctrine" || act === "ask_doctrine" || actionType === "doctrine" || actionType === "ask_doctrine") {
+      const q = req.body.question || prompt;
+      finalPrompt = `Topic Category: ${category || "Christian Theology & Orthodoxy"}
+User Question: ${q}
+
+Deliver an in-depth, rigorous, and deeply inspiring theological exposition with exceptional biblical scholarship and apostolic power:
+1. **Scriptural Exegesis & Cross-References**: Cite exact Scripture passages across Old and New Testaments.
+2. **Original Language Nuance**: Analyze relevant Hebrew or Greek root terms.
+3. **Covenantal & Creedal Context**: Ground the response in historic orthodox theology.
+4. **Practical Life Transformation**: Concrete, actionable guidance for living out this truth.
+5. **Apostolic Warfare & Faith Decree**: Conclude with a bold scriptural faith declaration.
+
+${AI_OUTPUT_IMPROVEMENT_RULES}
+Format as JSON with keys: answer, scriptures, keyTakeaway.`;
+      responseMimeType = "application/json";
+    } else if (req.body.seasonCategory || act === "rhema" || act === "rhema_word" || act === "rhema prophetic word" || actionType === "rhema" || actionType === "Rhema Prophetic Word") {
+      const season = req.body.seasonCategory || category || "Breakthrough";
+      const focus = req.body.focusNeed || need || "Spiritual open doors and clarity";
+      let rRef = req.body.scriptureReference || "Revelation 3:8";
+      let rVersion = String(version || "KJV").toUpperCase();
+      let rText = req.body.scriptureText || "";
+      if (!rText || rVersion !== "KJV") {
+        const liveV = await fetchAuthenticVerse(rRef, rVersion);
+        if (liveV.verseText) {
+          rText = liveV.verseText;
+          rVersion = liveV.version;
+        }
+      }
+      finalPrompt = `Generate an anointed, living prophetic Rhema Word for a Christian believer.
+Season Category: ${season}
+Focus Need / Desire: ${focus}
+Scripture Anchor: ${rRef} (${rVersion})
+VERBATIM AUTHENTIC SCRIPTURE: "${rText || "I have set before thee an open door..."}"
+
+${AI_OUTPUT_IMPROVEMENT_RULES}
+Format as JSON with keys: id, title, seasonCategory, propheticDeclaration, nowWordText, scriptureAnchor { reference, text }, actionCommandment, propheticDecree, dailyActivationGuide, spiritualAtmosphere.`;
+      responseMimeType = "application/json";
+    } else if (req.body.mathBranch || act === "apostlemath" || act === "mathemasermon" || actionType === "apostlemath" || actionType === "ApostleMath" || actionType === "MathemaSermon") {
+      const mb = req.body.mathBranch || "Trigonometry & Vectors";
+      const sc = req.body.spiritualConcept || topic || "Directional Alignment and Holy Spirit Bearing";
+      let mRef = req.body.scriptureReference || "Proverbs 3:5-6";
+      let mVersion = String(version || "KJV").toUpperCase();
+      let mText = req.body.scriptureText || "";
+      if (!mText || mVersion !== "KJV") {
+        const liveV = await fetchAuthenticVerse(mRef, mVersion);
+        if (liveV.verseText) {
+          mText = liveV.verseText;
+          mVersion = liveV.version;
+        }
+      }
+      finalPrompt = `Generate a profound ApostleMath lesson by Apostle Bismark Twum.
+Math Branch: ${mb}
+Spiritual Concept: ${sc}
+Scripture Anchor: ${mRef} (${mVersion})
+VERBATIM AUTHENTIC SCRIPTURE: "${mText || "Trust in the LORD with all thine heart..."}"
+
+${AI_OUTPUT_IMPROVEMENT_RULES}
+Format as JSON with keys: id, title, subtitle, mathBranch, mathPrinciple, mathFormula, mathIllustration, lifeConnection, biblicalTruth, keyScripture { reference, text }, mathemaSermon, practicalApplication, prayer, tags, readTimeMinutes.`;
+      responseMimeType = "application/json";
+    } else if (req.body.specificChallenge || act === "joy_battle" || act === "joy overcoming" || actionType === "joy_battle" || actionType === "Joy Overcoming") {
+      const sc = req.body.specificChallenge || need || "Overcoming sudden distress and finding supernatural peace";
+      const jCat = category || "Anxiety & Fear";
+      let jRef = req.body.scriptureReference || "Nehemiah 8:10";
+      let jVersion = String(version || "KJV").toUpperCase();
+      let jText = req.body.scriptureText || "";
+      if (!jText || jVersion !== "KJV") {
+        const liveV = await fetchAuthenticVerse(jRef, jVersion);
+        if (liveV.verseText) {
+          jText = liveV.verseText;
+          jVersion = liveV.version;
+        }
+      }
+      finalPrompt = `Generate a comprehensive Joy of the Lord Overcoming Guide for a believer battling:
+Category: ${jCat}
+Challenge: ${sc}
+Scripture Anchor: ${jRef} (${jVersion})
+VERBATIM AUTHENTIC SCRIPTURE: "${jText || "The joy of the LORD is your strength."}"
+
+${AI_OUTPUT_IMPROVEMENT_RULES}
+Format as JSON with keys: id, challengeTitle, category, rootDeception, scripturalTruth, anchorVerses (array of {reference, text, version}), joyStrategySteps, fortressDeclaration, deliverancePrayer.`;
+      responseMimeType = "application/json";
     } else if (topic) {
       finalPrompt = `Compose an inspiring Christian daily devotion on the topic: "${topic}".\nContext / Topic: "${topic}"\n${AI_OUTPUT_IMPROVEMENT_RULES}\nFormat as JSON with keys: devotion { title, keyScripture, passageText, reflection, practicalApplication, guidedPrayer, actionStep }.`;
       responseMimeType = "application/json";
@@ -2207,14 +2504,17 @@ Format as JSON with keys:
     const topP = generationConfig?.topP ?? 0.95;
     const maxTokens = generationConfig?.maxOutputTokens ?? (fastMode ? 600 : 2048);
 
-    // Check server cache first for instant delivery
+    // RULE 1: If dynamic timestamp, nonce, or no-cache header is provided, bypass cache completely
+    const isDynamic = !!(req.body.timestamp || req.body._nonce || req.headers["cache-control"]?.includes("no-cache"));
     const cacheKey = `${finalPrompt}__${finalSystem}__${fastMode ? "fast" : "deep"}`.toLowerCase();
-    const cached = AI_RESPONSE_CACHE.get(cacheKey);
-    if (cached && (Date.now() - cached.timestamp < AI_CACHE_TTL_MS)) {
-      console.log(`[STREAM CACHE HIT] ⚡ Sending cached data immediately.`);
-      res.write(`data: ${JSON.stringify({ chunk: cached.text, fullText: cached.text, done: true, data: safeJsonParse(cached.text) })}\n\n`);
-      res.write("data: [DONE]\n\n");
-      return res.end();
+    if (!isDynamic) {
+      const cached = AI_RESPONSE_CACHE.get(cacheKey);
+      if (cached && (Date.now() - cached.timestamp < AI_CACHE_TTL_MS)) {
+        console.log(`[STREAM CACHE HIT] ⚡ Sending cached data immediately.`);
+        res.write(`data: ${JSON.stringify({ chunk: cached.text, fullText: cached.text, done: true, data: safeJsonParse(cached.text) })}\n\n`);
+        res.write("data: [DONE]\n\n");
+        return res.end();
+      }
     }
 
     let streamAccumulator = "";
@@ -2285,23 +2585,151 @@ Format as JSON with keys:
 // ==========================================
 const BIBLE_CHAPTER_CACHE = new Map<string, any[]>();
 
-const BOLLS_BOOK_MAP: Record<string, number> = {
-  "genesis": 1, "exodus": 2, "leviticus": 3, "numbers": 4, "deuteronomy": 5,
-  "joshua": 6, "judges": 7, "ruth": 8, "1 samuel": 9, "2 samuel": 10,
-  "1 kings": 11, "2 kings": 12, "1 chronicles": 13, "2 chronicles": 14,
-  "ezra": 15, "nehemiah": 16, "esther": 17, "job": 18, "psalm": 19, "psalms": 19,
-  "proverbs": 20, "ecclesiastes": 21, "song of solomon": 22, "song of songs": 22,
-  "isaiah": 23, "jeremiah": 24, "lamentations": 25, "ezekiel": 26, "daniel": 27,
-  "hosea": 28, "joel": 29, "amos": 30, "obadiah": 31, "jonah": 32, "micah": 33,
-  "nahum": 34, "habakkuk": 35, "zephaniah": 36, "haggai": 37, "zechariah": 38,
-  "malachi": 39, "matthew": 40, "mark": 41, "luke": 42, "john": 43,
-  "acts": 44, "romans": 45, "1 corinthians": 46, "2 corinthians": 47,
-  "galatians": 48, "ephesians": 49, "philippians": 50, "colossians": 51,
-  "1 thessalonians": 52, "2 thessalonians": 53, "1 timothy": 54, "2 timothy": 55,
-  "titus": 56, "philemon": 57, "hebrews": 58, "james": 59, "1 peter": 60,
-  "2 peter": 61, "1 john": 62, "2 john": 63, "3 john": 64, "jude": 65,
-  "revelation": 66
-};
+const CANONICAL_BOOKS = [
+  { num: 1, name: "Genesis", aliases: ["gen", "ge", "gn"], tpt: "" },
+  { num: 2, name: "Exodus", aliases: ["exod", "exo", "ex"], tpt: "" },
+  { num: 3, name: "Leviticus", aliases: ["lev", "le", "lv"], tpt: "" },
+  { num: 4, name: "Numbers", aliases: ["num", "nu", "nm", "nb"], tpt: "" },
+  { num: 5, name: "Deuteronomy", aliases: ["deut", "deu", "de", "dt"], tpt: "" },
+  { num: 6, name: "Joshua", aliases: ["josh", "jos", "jsh"], tpt: "" },
+  { num: 7, name: "Judges", aliases: ["judg", "jdg", "jg", "jdgs"], tpt: "" },
+  { num: 8, name: "Ruth", aliases: ["rut", "ru", "rth"], tpt: "" },
+  { num: 9, name: "1 Samuel", aliases: ["1sam", "1 sam", "1samuel", "1s", "1sa", "i samuel", "i sam"], tpt: "" },
+  { num: 10, name: "2 Samuel", aliases: ["2sam", "2 sam", "2samuel", "2s", "2sa", "ii samuel", "ii sam"], tpt: "" },
+  { num: 11, name: "1 Kings", aliases: ["1kgs", "1 kgs", "1kings", "1ki", "1k", "i kings", "i kgs"], tpt: "" },
+  { num: 12, name: "2 Kings", aliases: ["2kgs", "2 kgs", "2kings", "2ki", "2k", "ii kings", "ii kgs"], tpt: "" },
+  { num: 13, name: "1 Chronicles", aliases: ["1chr", "1 chr", "1chronicles", "1ch", "i chronicles"], tpt: "" },
+  { num: 14, name: "2 Chronicles", aliases: ["2chr", "2 chr", "2chronicles", "2ch", "ii chronicles"], tpt: "" },
+  { num: 15, name: "Ezra", aliases: ["ezr", "ez"], tpt: "" },
+  { num: 16, name: "Nehemiah", aliases: ["neh", "ne"], tpt: "" },
+  { num: 17, name: "Esther", aliases: ["esth", "est", "es"], tpt: "" },
+  { num: 18, name: "Job", aliases: ["jb"], tpt: "" },
+  { num: 19, name: "Psalms", aliases: ["psalm", "ps", "psa", "pss"], tpt: "PSA" },
+  { num: 20, name: "Proverbs", aliases: ["prov", "pro", "pr", "prv"], tpt: "PRO" },
+  { num: 21, name: "Ecclesiastes", aliases: ["eccl", "ecc", "ec", "qoh"], tpt: "" },
+  { num: 22, name: "Song of Solomon", aliases: ["song of songs", "song", "sos", "canticles", "cant"], tpt: "SNG" },
+  { num: 23, name: "Isaiah", aliases: ["isa", "is"], tpt: "" },
+  { num: 24, name: "Jeremiah", aliases: ["jer", "je", "jr"], tpt: "" },
+  { num: 25, name: "Lamentations", aliases: ["lam", "la"], tpt: "" },
+  { num: 26, name: "Ezekiel", aliases: ["ezek", "eze", "ezk"], tpt: "" },
+  { num: 27, name: "Daniel", aliases: ["dan", "da", "dn"], tpt: "" },
+  { num: 28, name: "Hosea", aliases: ["hos", "ho"], tpt: "" },
+  { num: 29, name: "Joel", aliases: ["joe", "jl"], tpt: "" },
+  { num: 30, name: "Amos", aliases: ["amo", "am"], tpt: "" },
+  { num: 31, name: "Obadiah", aliases: ["obad", "oba", "ob"], tpt: "" },
+  { num: 32, name: "Jonah", aliases: ["jnh", "jon"], tpt: "" },
+  { num: 33, name: "Micah", aliases: ["mic", "mc"], tpt: "" },
+  { num: 34, name: "Nahum", aliases: ["nah", "na"], tpt: "" },
+  { num: 35, name: "Habakkuk", aliases: ["hab", "hb"], tpt: "" },
+  { num: 36, name: "Zephaniah", aliases: ["zeph", "zep", "zp"], tpt: "" },
+  { num: 37, name: "Haggai", aliases: ["hag", "hg"], tpt: "" },
+  { num: 38, name: "Zechariah", aliases: ["zech", "zec", "zc"], tpt: "" },
+  { num: 39, name: "Malachi", aliases: ["mal", "ml"], tpt: "" },
+  { num: 40, name: "Matthew", aliases: ["matt", "mat", "mt"], tpt: "MAT" },
+  { num: 41, name: "Mark", aliases: ["mrk", "mar", "mk"], tpt: "MRK" },
+  { num: 42, name: "Luke", aliases: ["luk", "lu", "lk"], tpt: "LUK" },
+  { num: 43, name: "John", aliases: ["jhn", "joh", "jn"], tpt: "JHN" },
+  { num: 44, name: "Acts", aliases: ["act", "ac"], tpt: "ACT" },
+  { num: 45, name: "Romans", aliases: ["rom", "ro", "rm"], tpt: "ROM" },
+  { num: 46, name: "1 Corinthians", aliases: ["1cor", "1 cor", "1corinthians", "1co", "1c", "i corinthians", "i cor"], tpt: "1CO" },
+  { num: 47, name: "2 Corinthians", aliases: ["2cor", "2 cor", "2corinthians", "2co", "2c", "ii corinthians", "ii cor"], tpt: "2CO" },
+  { num: 48, name: "Galatians", aliases: ["gal", "ga"], tpt: "GAL" },
+  { num: 49, name: "Ephesians", aliases: ["eph", "ep"], tpt: "EPH" },
+  { num: 50, name: "Philippians", aliases: ["phil", "php", "pp"], tpt: "PHP" },
+  { num: 51, name: "Colossians", aliases: ["col", "co"], tpt: "COL" },
+  { num: 52, name: "1 Thessalonians", aliases: ["1thess", "1 thess", "1thessalonians", "1th", "i thessalonians", "i thess"], tpt: "1TH" },
+  { num: 53, name: "2 Thessalonians", aliases: ["2thess", "2 thess", "2thessalonians", "2th", "ii thessalonians", "ii thess"], tpt: "2TH" },
+  { num: 54, name: "1 Timothy", aliases: ["1tim", "1 tim", "1timothy", "1ti", "i timothy", "i tim"], tpt: "1TI" },
+  { num: 55, name: "2 Timothy", aliases: ["2tim", "2 tim", "2timothy", "2ti", "ii timothy", "ii tim"], tpt: "2TI" },
+  { num: 56, name: "Titus", aliases: ["tit", "ti"], tpt: "TIT" },
+  { num: 57, name: "Philemon", aliases: ["phlm", "phm", "pm"], tpt: "PHM" },
+  { num: 58, name: "Hebrews", aliases: ["heb", "he"], tpt: "HEB" },
+  { num: 59, name: "James", aliases: ["jas", "jm"], tpt: "JAS" },
+  { num: 60, name: "1 Peter", aliases: ["1pet", "1 pet", "1peter", "1pe", "1pt", "1p", "i peter", "i pet"], tpt: "1PE" },
+  { num: 61, name: "2 Peter", aliases: ["2pet", "2 pet", "2peter", "2pe", "2pt", "2p", "ii peter", "ii pet"], tpt: "2PE" },
+  { num: 62, name: "1 John", aliases: ["1jn", "1 jn", "1john", "1jhn", "1j", "i john", "i jn"], tpt: "1JN" },
+  { num: 63, name: "2 John", aliases: ["2jn", "2 jn", "2john", "2jhn", "2j", "ii john", "ii jn"], tpt: "2JN" },
+  { num: 64, name: "3 John", aliases: ["3jn", "3 jn", "3john", "3jhn", "3j", "iii john", "iii jn"], tpt: "3JN" },
+  { num: 65, name: "Jude", aliases: ["jud", "jd"], tpt: "JUD" },
+  { num: 66, name: "Revelation", aliases: ["rev", "re", "revelations", "apocalypse"], tpt: "REV" }
+];
+
+const BOOK_LOOKUP_MAP = new Map<string, { num: number; name: string; tpt: string }>();
+for (const b of CANONICAL_BOOKS) {
+  const normName = b.name.toLowerCase().replace(/[^a-z0-9]/g, "");
+  BOOK_LOOKUP_MAP.set(normName, { num: b.num, name: b.name, tpt: b.tpt });
+  BOOK_LOOKUP_MAP.set(b.name.toLowerCase(), { num: b.num, name: b.name, tpt: b.tpt });
+  for (const alias of b.aliases) {
+    BOOK_LOOKUP_MAP.set(alias.toLowerCase(), { num: b.num, name: b.name, tpt: b.tpt });
+    BOOK_LOOKUP_MAP.set(alias.toLowerCase().replace(/[^a-z0-9]/g, ""), { num: b.num, name: b.name, tpt: b.tpt });
+  }
+}
+
+function resolveCanonicalBook(rawBook: string): { num: number; name: string; tpt: string } | null {
+  if (!rawBook) return null;
+  const clean = rawBook.toLowerCase().trim();
+  const direct = BOOK_LOOKUP_MAP.get(clean);
+  if (direct) return direct;
+  const alphanumeric = clean.replace(/[^a-z0-9]/g, "");
+  return BOOK_LOOKUP_MAP.get(alphanumeric) || null;
+}
+
+function parseScriptureReference(referenceOrBook: string): {
+  book: string;
+  bookNum: number;
+  chapter: number;
+  verse: number;
+  canonicalName: string;
+  tptCode: string;
+  extractedVersion?: string;
+} | null {
+  if (!referenceOrBook) return null;
+  // Check if version is appended like (NIV) or NIV
+  let cleanRef = referenceOrBook.trim();
+  let extractedVersion: string | undefined;
+  const verMatch = cleanRef.match(/\s*[\(\[]([A-Za-z0-9]+)[\)\]]$/i) || cleanRef.match(/\s+([A-Za-z]{3,4})$/i);
+  if (verMatch) {
+    const candidate = verMatch[1].toUpperCase();
+    if (["NIV", "NKJV", "ESV", "NLT", "AMP", "NASB", "CSB", "MSG", "BSB", "TPT", "KJV", "ASV", "YLT", "WEB", "NET", "CEV"].includes(candidate)) {
+      extractedVersion = candidate;
+      cleanRef = cleanRef.replace(verMatch[0], "").trim();
+    }
+  }
+
+  const match = cleanRef.match(/^([\d\s\w]+?)\s+(\d+)[:\.](\d+)/i);
+  if (!match) return null;
+
+  const rawBook = match[1].trim();
+  const chapter = parseInt(match[2], 10);
+  const verse = parseInt(match[3], 10);
+  const resolved = resolveCanonicalBook(rawBook);
+  if (!resolved) return null;
+
+  return {
+    book: rawBook,
+    bookNum: resolved.num,
+    chapter,
+    verse,
+    canonicalName: resolved.name,
+    tptCode: resolved.tpt,
+    extractedVersion
+  };
+}
+
+function cleanVerseText(raw: string): string {
+  if (!raw) return "";
+  let text = String(raw);
+  // Strip Strong's tags like <S>1063</S>
+  text = text.replace(/<S>\d+<\/S>/gi, " ");
+  // Strip HTML headings and general tags
+  text = text.replace(/<h\d+>[^<]*<\/h\d+>/gi, " ");
+  text = text.replace(/<sup[^>]*>.*?<\/sup>/gi, " ");
+  text = text.replace(/<[^>]+>/g, " ");
+  // Strip footnote circles ⓐ ⓑ ⓜ etc. and brackets [1]
+  text = text.replace(/[\u2460-\u2473\u24B6-\u24E9\u2776-\u277F]/g, "");
+  text = text.replace(/\[\d+\]/g, "");
+  return text.replace(/\s+/g, " ").trim();
+}
 
 const BOLLS_VERSION_MAP: Record<string, string> = {
   "kjv": "KJV",
@@ -2322,70 +2750,317 @@ const BOLLS_VERSION_MAP: Record<string, string> = {
   "cev": "CEVD"
 };
 
-// Endpoint to fetch authentic chapter text across all Bible translations
+// Helper to fetch KJV verse text as reliable fallback
+async function fetchKjvVerse(book: string, chapter: number, verse: number, bookNum?: number): Promise<string> {
+  if (bookNum) {
+    try {
+      const res = await fetch(`https://bolls.life/get-verse/KJV/${bookNum}/${chapter}/${verse}/`, {
+        headers: { "User-Agent": "ChristianScriptureEngine/1.0" },
+        signal: AbortSignal.timeout(4000)
+      });
+      if (res.ok) {
+        const data: any = await res.json();
+        if (data && data.text) return cleanVerseText(data.text);
+      }
+    } catch {}
+  }
+
+  try {
+    const res = await fetch(`https://bible-api.com/${encodeURIComponent(book)}%20${chapter}:${verse}?translation=kjv`, {
+      signal: AbortSignal.timeout(4000)
+    });
+    if (res.ok) {
+      const data: any = await res.json();
+      if (data && data.text) return cleanVerseText(data.text);
+    }
+  } catch {}
+
+  return "";
+}
+
+// Live Bible API fetcher bypassing copyright filters with live endpoints and automatic KJV fallback
+async function fetchAuthenticVerse(
+  referenceOrBook: string,
+  requestedVersion: string = "KJV"
+): Promise<{ verseText: string; version: string; disclaimer?: string }> {
+  let vUpper = (requestedVersion || "KJV").toUpperCase().trim();
+  const parsed = parseScriptureReference(referenceOrBook);
+
+  if (!parsed) {
+    return { verseText: "", version: vUpper };
+  }
+
+  if (parsed.extractedVersion) {
+    vUpper = parsed.extractedVersion;
+  }
+
+  const { canonicalName, bookNum, chapter, verse, tptCode } = parsed;
+
+  // 1. TPT (The Passion Translation)
+  if (vUpper === "TPT") {
+    if (tptCode) {
+      try {
+        const tptUrl = `https://raw.githubusercontent.com/hargarpay/bible-translations/main/json/TPT/${tptCode}/${chapter}.json`;
+        const res = await fetch(tptUrl, { signal: AbortSignal.timeout(4000) });
+        if (res.ok) {
+          const tptData = await res.json();
+          if (tptData && tptData[String(verse)]) {
+            return {
+              verseText: cleanVerseText(tptData[String(verse)]),
+              version: "TPT"
+            };
+          }
+        }
+      } catch (err) {
+        console.warn("[TPT FETCH NOTICE] TPT live fetch error:", err);
+      }
+    }
+    const kjvText = await fetchKjvVerse(canonicalName, chapter, verse, bookNum);
+    return {
+      verseText: kjvText,
+      version: "KJV",
+      disclaimer: `Could not fetch TPT, showing KJV instead`
+    };
+  }
+
+  // 2. KJV
+  if (vUpper === "KJV") {
+    const kjvText = await fetchKjvVerse(canonicalName, chapter, verse, bookNum);
+    return { verseText: kjvText, version: "KJV" };
+  }
+
+  // 3. For all other requested versions: NKJV, NIV, AMP, ESV, NLT, NASB, CSB, MSG, ASV, NET, WEB, YLT, CEV, BSB
+  // Step A: Query bolls.life live API FIRST (it reliably serves NIV, ESV, NKJV, NLT, AMP, NASB, CSB, MSG, etc.)
+  try {
+    const bollsCode = BOLLS_VERSION_MAP[vUpper.toLowerCase()] || (vUpper === "CSB" ? "CSB17" : vUpper === "CEV" ? "CEVD" : vUpper);
+    const bollsUrl = `https://bolls.life/get-verse/${bollsCode}/${bookNum}/${chapter}/${verse}/`;
+    const res = await fetch(bollsUrl, {
+      headers: { "User-Agent": "ChristianScriptureEngine/1.0" },
+      signal: AbortSignal.timeout(6000)
+    });
+    if (res.ok) {
+      const data: any = await res.json();
+      if (data && data.text && typeof data.text === "string" && data.text.trim().length > 0) {
+        return {
+          verseText: cleanVerseText(data.text),
+          version: vUpper
+        };
+      }
+    }
+  } catch (err) {
+    // continue to secondary live API fallback
+  }
+
+  // Step B: Try bible-api.com live API (good for ASV, WEB, BSB, etc.)
+  try {
+    const bibleApiUrl = `https://bible-api.com/${encodeURIComponent(canonicalName)}%20${chapter}:${verse}?translation=${encodeURIComponent(vUpper.toLowerCase())}`;
+    const res = await fetch(bibleApiUrl, { signal: AbortSignal.timeout(4000) });
+    if (res.ok) {
+      const data: any = await res.json();
+      if (data && data.text && typeof data.text === "string" && data.text.trim().length > 0) {
+        return {
+          verseText: cleanVerseText(data.text),
+          version: vUpper
+        };
+      }
+    }
+  } catch (err) {
+    // continue to KJV fallback
+  }
+
+  // Step C: Fallback to KJV with explicit disclaimer
+  const kjvText = await fetchKjvVerse(canonicalName, chapter, verse, bookNum);
+  return {
+    verseText: kjvText,
+    version: "KJV",
+    disclaimer: `Could not fetch ${vUpper}, showing KJV instead`
+  };
+}
+
+// API endpoint to fetch a single authentic verse live across all 15+ translations
+app.post("/api/bible/verse", async (req, res) => {
+  res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+  res.setHeader("Pragma", "no-cache");
+  res.setHeader("Expires", "0");
+  try {
+    const { reference, version = "KJV" } = req.body || {};
+    if (!reference) {
+      return res.status(400).json({ error: "Missing reference" });
+    }
+    const result = await fetchAuthenticVerse(reference, String(version).toUpperCase());
+    return res.json({
+      success: true,
+      reference,
+      requestedVersion: version,
+      version: result.version,
+      verseText: result.verseText,
+      disclaimer: result.disclaimer
+    });
+  } catch (err: any) {
+    return res.status(500).json({ error: err?.message || "Failed to fetch verse" });
+  }
+});
+
+app.get("/api/bible/verse", async (req, res) => {
+  res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+  res.setHeader("Pragma", "no-cache");
+  res.setHeader("Expires", "0");
+  try {
+    const reference = String(req.query.reference || "");
+    const version = String(req.query.version || "KJV");
+    if (!reference) {
+      return res.status(400).json({ error: "Missing reference parameter" });
+    }
+    const result = await fetchAuthenticVerse(reference, version.toUpperCase());
+    return res.json({
+      success: true,
+      reference,
+      requestedVersion: version,
+      version: result.version,
+      verseText: result.verseText,
+      disclaimer: result.disclaimer
+    });
+  } catch (err: any) {
+    return res.status(500).json({ error: err?.message || "Failed to fetch verse" });
+  }
+});
+
+// Endpoint to fetch authentic chapter text across all Bible translations with KJV fallback
 app.get("/api/bible/chapter", async (req, res) => {
+  res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+  res.setHeader("Pragma", "no-cache");
+  res.setHeader("Expires", "0");
   try {
     const version = String(req.query.version || "KJV").toUpperCase();
     const book = String(req.query.book || "Genesis");
     const chapter = parseInt(String(req.query.chapter || "1"), 10);
 
-    const bookKey = book.toLowerCase().trim();
-    const bookNum = BOLLS_BOOK_MAP[bookKey];
-    const bollsVersion = BOLLS_VERSION_MAP[version.toLowerCase()] || (version === "CSB" ? "CSB17" : version);
-
-    if (!bookNum || isNaN(chapter)) {
+    const resolved = resolveCanonicalBook(book);
+    if (!resolved || isNaN(chapter)) {
       return res.status(400).json({ error: "Invalid book or chapter parameters" });
     }
+
+    const { num: bookNum, name: canonicalName, tpt: tptCode } = resolved;
+    const bollsVersion = BOLLS_VERSION_MAP[version.toLowerCase()] || (version === "CSB" ? "CSB17" : version === "CEV" ? "CEVD" : version);
 
     const cacheKey = `ch_${bollsVersion}_${bookNum}_${chapter}`;
     const cached = BIBLE_CHAPTER_CACHE.get(cacheKey);
     if (cached) {
-      return res.json({ success: true, version, book, chapter, verses: cached });
+      return res.json({ success: true, version, requestedVersion: version, book: canonicalName, chapter, verses: cached });
     }
 
-    const bollsUrl = `https://bolls.life/get-chapter/${bollsVersion}/${bookNum}/${chapter}/`;
-    const response = await fetch(bollsUrl, {
-      headers: { "User-Agent": "ChristianScriptureEngine/1.0" }
-    });
+    // Special handling for TPT translation
+    if (version === "TPT") {
+      if (tptCode) {
+        try {
+          const tptUrl = `https://raw.githubusercontent.com/hargarpay/bible-translations/main/json/TPT/${tptCode}/${chapter}.json`;
+          const tptRes = await fetch(tptUrl, { signal: AbortSignal.timeout(5000) });
+          if (tptRes.ok) {
+            const tptData = await tptRes.json();
+            const verses = Object.keys(tptData).map((vKey) => ({
+              verse: parseInt(vKey, 10),
+              text: cleanVerseText(tptData[vKey])
+            })).sort((a, b) => a.verse - b.verse);
 
-    if (!response.ok) {
-      throw new Error(`External Scripture API error: ${response.statusText}`);
+            if (verses.length > 0) {
+              BIBLE_CHAPTER_CACHE.set(cacheKey, verses);
+              return res.json({ success: true, version: "TPT", requestedVersion: "TPT", book: canonicalName, chapter, verses });
+            }
+          }
+        } catch (tptErr) {
+          console.warn("[TPT CHAPTER FETCH ERROR]", tptErr);
+        }
+      }
     }
 
-    const data: any = await response.json();
-    if (!Array.isArray(data)) {
-      throw new Error("Invalid response received from Scripture provider");
+    let verses: { verse: number; text: string }[] = [];
+    let actualVersion = version;
+    let disclaimer: string | undefined;
+
+    // Try bolls.life
+    try {
+      const bollsUrl = `https://bolls.life/get-chapter/${bollsVersion}/${bookNum}/${chapter}/`;
+      const response = await fetch(bollsUrl, {
+        headers: { "User-Agent": "ChristianScriptureEngine/1.0" },
+        signal: AbortSignal.timeout(8000)
+      });
+
+      if (response.ok) {
+        const data: any = await response.json();
+        if (Array.isArray(data) && data.length > 0) {
+          verses = data.map((v: any) => ({
+            verse: v.verse,
+            text: cleanVerseText(v.text || "")
+          }));
+        }
+      }
+    } catch (bollsErr) {
+      console.warn(`[BOLLS CHAPTER ERROR for ${version}]`, (bollsErr as any)?.message);
     }
 
-    const verses = data.map((v: any) => {
-      let rawText = String(v.text || "");
-      // Remove HTML headings
-      rawText = rawText.replace(/<h\d+>[^<]*<\/h\d+>/gi, " ");
-      // Remove footnote markers & superscripts
-      rawText = rawText.replace(/<sup[^>]*>.*?<\/sup>/gi, " ");
-      rawText = rawText.replace(/<[^>]+>/g, " ");
-      // Remove footnote circular symbols and footnote index brackets
-      rawText = rawText.replace(/[\u2460-\u2473\u24B6-\u24E9\u2776-\u277F]/g, "");
-      rawText = rawText.replace(/\[\d+\]/g, "");
-      rawText = rawText.replace(/\s+/g, " ").trim();
-
-      return {
-        verse: v.verse,
-        text: rawText,
-      };
-    });
-
-    // Cache up to 1000 chapters in memory
-    if (BIBLE_CHAPTER_CACHE.size > 1000) {
-      const firstKey = BIBLE_CHAPTER_CACHE.keys().next().value;
-      if (firstKey) BIBLE_CHAPTER_CACHE.delete(firstKey);
+    // If fetch failed and not KJV, fallback to KJV
+    if (verses.length === 0 && version !== "KJV") {
+      try {
+        const kjvUrl = `https://bolls.life/get-chapter/KJV/${bookNum}/${chapter}/`;
+        const kjvRes = await fetch(kjvUrl, {
+          headers: { "User-Agent": "ChristianScriptureEngine/1.0" },
+          signal: AbortSignal.timeout(6000)
+        });
+        if (kjvRes.ok) {
+          const kjvData: any = await kjvRes.json();
+          if (Array.isArray(kjvData) && kjvData.length > 0) {
+            verses = kjvData.map((v: any) => ({
+              verse: v.verse,
+              text: cleanVerseText(v.text || "")
+            }));
+            actualVersion = "KJV";
+            disclaimer = `Could not fetch ${version}, showing KJV instead`;
+          }
+        }
+      } catch {}
     }
-    BIBLE_CHAPTER_CACHE.set(cacheKey, verses);
 
-    return res.json({ success: true, version, book, chapter, verses });
+    if (verses.length === 0) {
+      throw new Error(`Failed to retrieve chapter for ${canonicalName} ${chapter}`);
+    }
+
+    // Only cache if the retrieved version actually matches the requested version
+    if (actualVersion === version) {
+      if (BIBLE_CHAPTER_CACHE.size > 1000) {
+        const firstKey = BIBLE_CHAPTER_CACHE.keys().next().value;
+        if (firstKey) BIBLE_CHAPTER_CACHE.delete(firstKey);
+      }
+      BIBLE_CHAPTER_CACHE.set(cacheKey, verses);
+    }
+
+    return res.json({ success: true, version: actualVersion, requestedVersion: version, disclaimer, book: canonicalName, chapter, verses });
   } catch (err: any) {
     console.error("[BIBLE CHAPTER FETCH ERROR]", err?.message);
-    return res.status(500).json({ error: "Failed to fetch chapter", message: err?.message });
+    return res.status(500).json({ error: err?.message || "Failed to fetch Bible chapter" });
+  }
+});
+
+// Dynamic non-cacheable POST endpoint for single verse lookup with authentic version fetching
+app.post("/api/bible/verse", async (req, res) => {
+  res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+  res.setHeader("Pragma", "no-cache");
+  res.setHeader("Expires", "0");
+
+  try {
+    const { reference, version } = req.body;
+    const requestedVersion = String(version || "KJV").toUpperCase();
+    const result = await fetchAuthenticVerse(reference || "John 3:16", requestedVersion);
+    return res.json({
+      success: true,
+      reference,
+      requestedVersion,
+      version: result.version,
+      verseText: result.verseText,
+      disclaimer: result.disclaimer,
+      timestamp: Date.now()
+    });
+  } catch (err: any) {
+    return res.status(500).json({ error: "Failed to fetch verse", message: err?.message });
   }
 });
 
@@ -2396,11 +3071,11 @@ app.get("/api/bible/original", async (req, res) => {
     const chapter = parseInt(String(req.query.chapter || "1"), 10);
     const verse = parseInt(String(req.query.verse || "1"), 10);
 
-    const bookKey = book.toLowerCase().trim();
-    const bookNum = BOLLS_BOOK_MAP[bookKey];
-    if (!bookNum || isNaN(chapter)) {
+    const resolved = resolveCanonicalBook(book);
+    if (!resolved || isNaN(chapter)) {
       return res.status(400).json({ error: "Invalid book or chapter" });
     }
+    const bookNum = resolved.num;
 
     const isOT = bookNum <= 39;
     const originalCode = isOT ? "WLC" : "TR";
@@ -2482,8 +3157,11 @@ app.post("/api/ai-test", async (req, res) => {
 
 // Dedicated Scriptural Place Biblical Exegesis / Historian Endpoint
 app.post("/api/scriptural-place-history", async (req, res) => {
+  res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+  res.setHeader("Pragma", "no-cache");
+  res.setHeader("Expires", "0");
   try {
-    const { placeName, biblicalReference, context } = req.body;
+    const { placeName, biblicalReference, context, version = "KJV" } = req.body;
     if (!placeName) {
       return res.status(400).json({ error: "placeName is required" });
     }
@@ -2561,8 +3239,11 @@ Format your response as a valid JSON object:
 
 // API route: Ask Doctrine / Bible Q&A
 app.post("/api/ask-doctrine", async (req, res) => {
+  res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+  res.setHeader("Pragma", "no-cache");
+  res.setHeader("Expires", "0");
   try {
-    const { question, category } = req.body;
+    const { question, category, reference, version = "KJV" } = req.body;
     if (!question) {
       return res.status(400).json({ error: "Question is required" });
     }
@@ -2608,29 +3289,53 @@ Deliver an in-depth, rigorous, and deeply inspiring theological exposition with 
 
 // API route: Universal Daily Verse AI Action Generator (Prayer, Prayer Points, Deep Explanation, Devotion, MathemaSermon)
 app.post("/api/generate-verse-action", async (req, res) => {
+  res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+  res.setHeader("Pragma", "no-cache");
+  res.setHeader("Expires", "0");
+
   try {
-    const { actionType, scriptureReference, scriptureText, scriptureTheme } = req.body;
+    const { actionType, scriptureReference, scriptureText, scriptureTheme, version } = req.body;
     const ref = scriptureReference || "Philippians 4:13";
-    const text = scriptureText || "I can do all things through Christ which strengtheneth me.";
+    const requestedVersion = String(version || "KJV").toUpperCase();
+
+    // Authentically fetch the verse if not already provided or if a specific translation requested
+    let actualText = scriptureText || "";
+    let actualVersion = requestedVersion;
+    let disclaimer: string | undefined;
+
+    if (!actualText || requestedVersion !== "KJV") {
+      const fetched = await fetchAuthenticVerse(ref, requestedVersion);
+      if (fetched.verseText) {
+        actualText = fetched.verseText;
+        actualVersion = fetched.version;
+        disclaimer = fetched.disclaimer;
+      }
+    }
+    if (!actualText) {
+      actualText = "I can do all things through Christ which strengtheneth me.";
+    }
+
     const theme = scriptureTheme || "Divine Strength & Faith";
 
     let prompt = "";
     if (actionType === "prayer" || actionType === "Create Prayer") {
       prompt = `You are a reverent, apostolic Christian pastoral leader. Compose an anointed, deeply personal, and spiritually powerful prayer based specifically on this Scripture:
-Reference: ${ref}
-Passage: "${text}"
+Reference: ${ref} (${actualVersion})
+Passage: "${actualText}"
 Theme: ${theme}
+
+${AI_OUTPUT_IMPROVEMENT_RULES}
 
 Format your response as a valid JSON object with this exact schema:
 {
   "title": "A Heartfelt Prayer of Faith & Victory (${ref})",
-  "subtitle": "Standing in faith on ${ref}",
-  "scriptureAnchor": "${ref} - '${text}'",
+  "subtitle": "Standing in faith on ${ref} (${actualVersion})",
+  "scriptureAnchor": "${ref} (${actualVersion}) - '${actualText}'",
   "adoration": "Opening praise exalting God's holiness, majesty, and eternal faithfulness anchored in this verse",
   "confession": "Humble surrender of human weakness, worry, and self-reliance to God",
   "confessionAndSurrender": "Humble surrender of human weakness, worry, and self-reliance to God",
   "thanksgiving": "Heartfelt gratitude for Christ's sacrifice, the Holy Spirit, and the living promises of this Scripture",
-  "scripturePromise": "${ref} - '${text}'",
+  "scripturePromise": "${ref} - '${actualText}'",
   "petition": "Specific, faith-filled prayer petitions asking God to manifest the power of this verse in every dimension of life (work, family, health, calling)",
   "warfareDeclaration": "Bold spiritual warfare decree shattering fear, doubt, stagnation, and enemy opposition in the authority of Christ",
   "spiritualWarfare": "Bold spiritual warfare decree shattering fear, doubt, stagnation, and enemy opposition in the authority of Christ",
@@ -2640,7 +3345,7 @@ Format your response as a valid JSON object with this exact schema:
     "adoration": "Opening praise exalting God's holiness, majesty, and eternal faithfulness anchored in this verse",
     "confessionAndSurrender": "Humble surrender of human weakness, worry, and self-reliance to God",
     "thanksgiving": "Heartfelt gratitude for Christ's sacrifice, the Holy Spirit, and the living promises of this Scripture",
-    "scripturePromise": "${ref} - '${text}'",
+    "scripturePromise": "${ref} - '${actualText}'",
     "petition": "Specific, faith-filled prayer petitions asking God to manifest the power of this verse in every dimension of life",
     "spiritualWarfare": "Bold spiritual warfare decree shattering fear, doubt, and opposition",
     "declarationInJesusName": "Reverent closing in the mighty Name of Jesus Christ, Amen."
@@ -2648,14 +3353,16 @@ Format your response as a valid JSON object with this exact schema:
 }`;
     } else if (actionType === "prayer_points" || actionType === "Prayer Points" || actionType === "Create Prayer Points") {
       prompt = `You are an apostolic Christian prayer leader. Generate 5 to 7 high-impact, biblically grounded prayer points based directly on:
-Reference: ${ref}
-Passage: "${text}"
+Reference: ${ref} (${actualVersion})
+Passage: "${actualText}"
 Theme: ${theme}
+
+${AI_OUTPUT_IMPROVEMENT_RULES}
 
 Format your response as a valid JSON object with this exact schema:
 {
   "title": "Strategic Prayer Points on ${ref}",
-  "scriptureAnchor": "${ref} - '${text}'",
+  "scriptureAnchor": "${ref} (${actualVersion}) - '${actualText}'",
   "introduction": "A brief 2-sentence spiritual charge setting the atmosphere for targeted intercession",
   "prayerPoints": [
     {
@@ -2697,8 +3404,8 @@ Format your response as a valid JSON object with this exact schema:
       (actionType && (actionType.toLowerCase().includes("context") || actionType.toLowerCase().includes("historical") || actionType.toLowerCase().includes("background")))
     ) {
       prompt = `You are a world-class Christian Biblical historian, archaeologist, and theologian. Provide an exhaustive, authoritative Historical, Cultural, and Expository analysis of:
-Reference: ${ref}
-Passage: "${text}"
+Reference: ${ref} (${actualVersion})
+Passage: "${actualText}"
 Theme: ${theme}
 
 ${AI_OUTPUT_IMPROVEMENT_RULES}
@@ -2706,9 +3413,10 @@ ${AI_OUTPUT_IMPROVEMENT_RULES}
 Format your response as a valid JSON object with this exact schema:
 {
   "title": "Historical Context & Biblical Setting of ${ref}",
-  "scriptureAnchor": "${ref} - '${text}'",
+  "scriptureAnchor": "${ref} (${actualVersion}) - '${actualText}'",
   "historicalContext": "Authoritative 3-4 paragraph historical setting: author, date of writing, reigning king/empire, original audience, and the geopolitical occasion/crisis for this text.",
   "culturalBackground": "Ancient Near Eastern or Greco-Roman cultural practices, idioms, geography, and archaeological insights illuminating this verse.",
+  "covenantalContext": "Pivotal covenantal milestone in redemptive history linking Old and New Testaments.",
   "originalLanguageInsight": "Deep original Hebrew or Greek root words, grammatical nuances, and etymological depth.",
   "doctrinalMeaning": "2 paragraphs explaining the central spiritual truth, theological doctrine, and eternal revelation in this verse.",
   "crossReferences": [
@@ -2720,29 +3428,35 @@ Format your response as a valid JSON object with this exact schema:
 }`;
     } else if (actionType === "explain" || actionType === "Explain Verse" || actionType === "Explain This Verse") {
       prompt = `You are a preeminent Christian Biblical scholar and expositor. Provide a profound, deep, verse-by-verse and theological explanation of:
-Reference: ${ref}
-Passage: "${text}"
+Reference: ${ref} (${actualVersion})
+Passage: "${actualText}"
 Theme: ${theme}
+
+${AI_OUTPUT_IMPROVEMENT_RULES}
 
 Format your response as a valid JSON object with this exact schema:
 {
   "title": "Deep Expository Analysis of ${ref}",
-  "scriptureAnchor": "${ref} - '${text}'",
-  "historicalContext": "2-3 sentences explaining the historical, cultural, authorial, and situational setting of this passage",
+  "scriptureAnchor": "${ref} (${actualVersion}) - '${actualText}'",
+  "historicalContext": "Historical, cultural, authorial, and situational setting of this passage",
   "originalLanguageInsight": "Analysis of key original Greek or Hebrew root words, transliterations, and their theological depth",
+  "expositoryBreakdown": "Clause-by-clause detailed exegetical breakdown of the exact text and phrasing",
   "doctrinalMeaning": "2 paragraphs explaining the central spiritual truth, theological doctrine, and eternal revelation in this verse",
   "crossReferences": [
     { "reference": "Book Chapter:Verse", "connection": "How this cross-reference illuminates the verse" },
     { "reference": "Book Chapter:Verse", "connection": "How this cross-reference illuminates the verse" },
     { "reference": "Book Chapter:Verse", "connection": "How this cross-reference illuminates the verse" }
   ],
-  "lifeTransformation": "Practical, transformative life application showing how a believer today walks in this truth daily"
+  "lifeTransformation": "Practical, transformative life application showing how a believer today walks in this truth daily",
+  "apostolicBlessing": "A short, anointed scriptural blessing and decree over the believer"
 }`;
     } else if (actionType === "mathemasermon" || actionType === "MathemaSermon") {
       prompt = `You are Apostle Bismark Twum, author of 'MathemaSermons'. Create a powerful mathematical analogy and homiletic sermon outline connecting this scripture to divine mathematics:
-Reference: ${ref}
-Passage: "${text}"
+Reference: ${ref} (${actualVersion})
+Passage: "${actualText}"
 Theme: ${theme}
+
+${AI_OUTPUT_IMPROVEMENT_RULES}
 
 Format your response as a valid JSON object with this exact schema:
 {
@@ -2750,7 +3464,7 @@ Format your response as a valid JSON object with this exact schema:
   "subtitle": "The Divine Mathematical Harmony of Scripture",
   "mathematicalConcept": "The specific mathematical theorem or formula (e.g. Linear Independence, Vectors, Limits, Calculus, Quadratic Vertex)",
   "formula": "LaTeX formula with clean standardized notation",
-  "scriptureAnchor": "${ref} - '${text}'",
+  "scriptureAnchor": "${ref} (${actualVersion}) - '${actualText}'",
   "mathematicalAnalogy": "A 2-paragraph clear explanation of the mathematical concept and how it reflects this biblical principle",
   "homileticApplication": "Spiritual preaching revelation showing God's unshakeable order and glory",
   "altarCallPrayer": "Anointed closing prayer in Jesus' Name"
@@ -2758,19 +3472,22 @@ Format your response as a valid JSON object with this exact schema:
     } else {
       // Default: Full Devotion
       prompt = `Generate a rich, inspiring Christian devotion for the Daily Scripture edition on:
-Reference: ${ref}
-Passage: "${text}"
+Reference: ${ref} (${actualVersion})
+Passage: "${actualText}"
 Theme: ${theme}
+
+${AI_OUTPUT_IMPROVEMENT_RULES}
 
 Format your response as a valid JSON object matching this schema:
 {
   "title": "Inspiring Devotion Title for ${ref}",
-  "keyScripture": "${ref} - '${text}'",
-  "passageText": "${text}",
-  "reflection": "A 3-paragraph deep theological and spiritual reflection grounded in biblical truth",
+  "keyScripture": "${ref} (${actualVersion}) - '${actualText}'",
+  "passageText": "${actualText}",
+  "reflection": "A 3-paragraph deep theological and spiritual reflection grounded in biblical truth and Christ's finished work",
   "practicalApplication": "Concrete, actionable step for daily Christian living",
   "guidedPrayer": "A reverent, faith-filled prayer concluding in Jesus' name",
-  "actionStep": "A memorable action or reflection question for the day"
+  "actionStep": "A memorable action or reflection question for the day",
+  "apostolicDecree": "A triumphant faith decree declaring the truth of this verse over the believer"
 }`;
     }
 
@@ -2792,6 +3509,12 @@ Format your response as a valid JSON object matching this schema:
         return res.json({
           success: true,
           actionType,
+          version: actualVersion,
+          requestedVersion,
+          disclaimer,
+          scriptureReference: ref,
+          scriptureText: actualText,
+          timestamp: Date.now(),
           data: parsed,
           devotion: parsed,
           prayer: parsed,
@@ -2800,134 +3523,21 @@ Format your response as a valid JSON object matching this schema:
       }
     }
 
-    // High quality fallback based on actionType
-    if (actionType === "prayer" || actionType === "Create Prayer") {
-      const fallbackPrayerData = {
-        title: `Prayer of Faith on ${ref}`,
-        subtitle: `Anchored in ${ref}`,
-        scriptureAnchor: `${ref} - "${text}"`,
-        scripturePromise: `${ref} - "${text}"`,
-        adoration: `Almighty Father, King of kings and Lord of lords, You are sovereign, all-powerful, and faithful through all generations. In You we live, move, and have our being.`,
-        confession: `Lord Jesus, forgive us for the moments we have allowed worry, human inadequacy, or self-doubt to overshadow the eternal truth of Your Word. We lay down our weakness at Your feet.`,
-        confessionAndSurrender: `Lord Jesus, forgive us for the moments we have allowed worry, human inadequacy, or self-doubt to overshadow the eternal truth of Your Word. We lay down our weakness at Your feet.`,
-        thanksgiving: `We thank You that Your Word is alive and active. Thank You for the gift of the Holy Spirit who strengthens us with supernatural might in our inner being.`,
-        petition: `Father, according to ${ref}, release Your divine grace, wisdom, and capacity into our daily endeavors. Overcome every barrier and let Your strength be magnified in our lives.`,
-        warfareDeclaration: `In the mighty Name of Jesus Christ, we break every assignment of defeat, stagnation, and fear. No weapon formed against our purpose shall prosper.`,
-        spiritualWarfare: `In the mighty Name of Jesus Christ, we break every assignment of defeat, stagnation, and fear. No weapon formed against our purpose shall prosper.`,
-        closing: `We seal this prayer in the matchless Name of Jesus Christ, our Lord, Savior, and eternal Champion. Amen!`,
-        declarationInJesusName: `We seal this prayer in the matchless Name of Jesus Christ, our Lord, Savior, and eternal Champion. Amen!`,
-        sections: {
-          adoration: `Almighty Father, King of kings and Lord of lords, You are sovereign, all-powerful, and faithful through all generations.`,
-          confessionAndSurrender: `Lord Jesus, forgive us for the moments we have allowed worry or self-doubt to overshadow Your Word.`,
-          thanksgiving: `We thank You that Your Word is alive and active, and for the Holy Spirit who strengthens us.`,
-          scripturePromise: `${ref} - "${text}"`,
-          petition: `Father, according to ${ref}, release Your divine grace, wisdom, and strength into our daily walk.`,
-          spiritualWarfare: `In Jesus' Name, we break every assignment of fear and declare supernatural victory.`,
-          declarationInJesusName: `We seal this prayer in the matchless Name of Jesus Christ. Amen!`
-        }
-      };
-      return res.json({
-        success: true,
-        actionType,
-        data: fallbackPrayerData,
-        ...fallbackPrayerData
-      });
-    }
-
-    if (actionType === "prayer_points" || actionType === "Prayer Points" || actionType === "Create Prayer Points") {
-      const fallbackPointsData = {
-        title: `Targeted Prayer Points on ${ref}`,
-        scriptureAnchor: `${ref} - "${text}"`,
-        introduction: `Stand in faith on ${ref} as we enter into targeted intercession with apostolic boldness.`,
-        prayerPoints: [
-          {
-            pointNumber: 1,
-            focus: "Supernatural Divine Capacity",
-            scripturePromise: `${ref} — Christ supplies all our capacity.`,
-            prayerDeclaration: `Lord Jesus, I declare that my natural limitations are swallowed up by Your supernatural strength. Empower me to accomplish every assignment today!`
-          },
-          {
-            pointNumber: 2,
-            focus: "Overcoming Every Mountain",
-            scripturePromise: "Zechariah 4:6 — 'Not by might, nor by power, but by my Spirit, says the Lord.'",
-            prayerDeclaration: `Father, by the power of the Holy Spirit, every obstacle standing before my destiny is turned into a stepping stone for Your glory.`
-          },
-          {
-            pointNumber: 3,
-            focus: "Divine Peace & Unshakeable Joy",
-            scripturePromise: "Nehemiah 8:10 — 'The joy of the Lord is your strength.'",
-            prayerDeclaration: `I rebuke anxiety and discouragement. The eternal joy of the Lord fills my heart and guards my mind in Christ Jesus.`
-          },
-          {
-            pointNumber: 4,
-            focus: "Kingdom Alignment & Wisdom",
-            scripturePromise: "James 1:5 — God gives wisdom generously to all who ask.",
-            prayerDeclaration: `Holy Spirit, grant me divine discernment and clarity in every decision I make today. Guide my steps in righteousness.`
-          },
-          {
-            pointNumber: 5,
-            focus: "Total Victory & Preservation",
-            scripturePromise: "Romans 8:37 — 'In all these things we are more than conquerors through Him who loved us.'",
-            prayerDeclaration: `I decree that I am more than a conqueror through Christ. Favor surrounds me as a shield and victory is my portion in Jesus' Name!`
-          }
-        ],
-        propheticDecree: `I decree that the Word of God in ${ref} is established over my life, my family, and my calling, now and forever. In Jesus' Name, Amen.`
-      };
-      return res.json({
-        success: true,
-        actionType,
-        data: fallbackPointsData,
-        ...fallbackPointsData
-      });
-    }
-
-    if (
-      actionType === "explain" ||
-      actionType === "Explain Verse" ||
-      actionType === "Explain This Verse" ||
-      actionType === "Context & Historical Background" ||
-      actionType === "Historical Context" ||
-      (actionType && (actionType.toLowerCase().includes("context") || actionType.toLowerCase().includes("historical") || actionType.toLowerCase().includes("background")))
-    ) {
-      const fallbackExplainData = {
-        title: `Historical Context & Scriptural Setting: ${ref}`,
-        scriptureAnchor: `${ref} - "${text}"`,
-        historicalContext: `In this sacred passage (${ref}), the inspired text addresses God's covenant people within their authentic historical milieu. Written in antiquity to anchor faith against imperial pressures, political tumult, and cultural compromise, the passage demonstrates that divine truth is established in concrete human history and the eternal covenant of God.`,
-        culturalBackground: `Ancient Near Eastern and Greco-Roman cultural conventions highlight the communal covenant responsibility, ancient legal oaths, and the sanctuary presence of God tabernacling among His people.`,
-        originalLanguageInsight: `The original biblical text utilizes words rich in theological weight—denoting divine enablement (*dunamis* / *ischuo*), complete inner peace (*shalom* / *eirene*), and steadfast covenant faith (*pistis* / *emunah*) that does not waver.`,
-        doctrinalMeaning: `This scripture reveals that God's sovereign covenant is unwavering across all generations. Rather than an abstract human philosophy, biblical history confirms that the living God enters human time to redeem, protect, and fulfill His promises.`,
-        crossReferences: [
-          { reference: "2 Corinthians 12:9", connection: "My grace is sufficient for thee: for my strength is made perfect in weakness." },
-          { reference: "Isaiah 40:29-31", connection: "He giveth power to the faint; and to them that have no might he increaseth strength." },
-          { reference: "Hebrews 11:1-3", connection: "Now faith is the substance of things hoped for, the evidence of things not seen." }
-        ],
-        lifeTransformation: `To apply this verse today: understand that the same God who ruled over ancient empires and guided biblical saints rules over your life today. Walk with confident faith, speak God's promises in prayer, and know you are covered by His covenant.`
-      };
-      return res.json({
-        success: true,
-        actionType,
-        data: fallbackExplainData,
-        ...fallbackExplainData
-      });
-    }
-
-    // Default devotion fallback
-    const fallbackDevotionData = {
-      title: `Walking in Divine Strength: ${ref}`,
-      keyScripture: `${ref} - "${text}"`,
-      passageText: text,
-      reflection: `When life's pressures mount, our natural instinct is to rely on our own capacity. Yet Scripture reveals that true supernatural endurance is not manufactured through human willpower, but received through communion with God. The joy of the Lord is not mere emotional happiness; it is an unshakeable confidence anchored in God's sovereignty and faithfulness.\n\nIn every season of testing, God is refining our character, teaching our hands to war and our fingers to fight in the spiritual realm. As we anchor our gaze on Christ, He infuses us with divine resilience.`,
-      practicalApplication: `Take 5 minutes today to praise God specifically for His faithfulness in past trials. Let His peace guard your heart as you surrender current worries to Him.`,
-      guidedPrayer: `Heavenly Father, I thank You that my strength does not depend on my circumstances, but on the eternal joy found in Your presence. Fill me afresh with the Holy Spirit today, and let Your joy be my fortress. In Jesus' mighty name, Amen.`,
-      actionStep: `Recite and meditate on ${ref} throughout the day whenever anxiety or fatigue attempts to creep in.`
-    };
-
+    // High quality dynamic fallback tailored to the exact verse and actionType
+    const fallbackData = generateTheologicalFallbackData(actionType, ref, actualText, theme, actualVersion, disclaimer);
     return res.json({
       success: true,
       actionType,
-      data: fallbackDevotionData,
-      devotion: fallbackDevotionData,
-      ...fallbackDevotionData
+      version: actualVersion,
+      requestedVersion,
+      disclaimer,
+      scriptureReference: ref,
+      scriptureText: actualText,
+      timestamp: Date.now(),
+      data: fallbackData,
+      devotion: fallbackData,
+      prayer: fallbackData,
+      ...fallbackData
     });
   } catch (error: any) {
     console.error("Error in /api/generate-verse-action:", error);
@@ -2937,6 +3547,9 @@ Format your response as a valid JSON object matching this schema:
 
 // API route: 3-Layer Interlinear Strong's Word-Study (OSHB + Berean + BDB / Thayer)
 app.post("/api/strongs-word-study", async (req, res) => {
+  res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+  res.setHeader("Pragma", "no-cache");
+  res.setHeader("Expires", "0");
   try {
     const { strongsNumber, word, transliteration, scriptureRef, englishGloss } = req.body;
     const cleanId = (strongsNumber || "").trim().toUpperCase();
@@ -3034,20 +3647,42 @@ Format your response as a valid JSON object matching this exact 3-layer schema:
 
 // API route: Generate Custom Devotion
 app.post("/api/generate-devotion", async (req, res) => {
+  res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+  res.setHeader("Pragma", "no-cache");
+  res.setHeader("Expires", "0");
   try {
-    const { topic, sessionType } = req.body;
+    const { topic, sessionType, scriptureReference, scriptureText, version = "KJV" } = req.body;
     const effectiveTopic = topic || "The Joy and Strength of the Lord";
+    const requestedVersion = String(version || "KJV").toUpperCase();
+
+    let actualRef = scriptureReference || "Nehemiah 8:10";
+    let actualText = scriptureText || "";
+    let actualVersion = requestedVersion;
+
+    if (actualRef) {
+      const live = await fetchAuthenticVerse(actualRef, requestedVersion);
+      if (live.verseText) {
+        actualText = live.verseText;
+        actualVersion = live.version;
+      }
+    }
+    if (!actualText) actualText = "The joy of the LORD is your strength.";
+
     const prompt = `Generate a rich, inspiring Christian devotion for the ${sessionType || "Daily"} edition on the specific topic: "${effectiveTopic}".
 Context / Topic: "${effectiveTopic}"
+Scripture Anchor Reference: ${actualRef} (${actualVersion})
+VERBATIM AUTHENTIC SCRIPTURE: "${actualText}"
+
+MANDATORY TRANSLATION RULE: The above scripture is verbatim in the ${actualVersion} translation. Anchor your devotion reflection directly on this authentic wording. Do NOT alter, rewrite, or revert this scripture to KJV.
 
 ${AI_OUTPUT_IMPROVEMENT_RULES}
 
 Format your response as a valid JSON object matching this schema:
 {
   "title": "Inspiring Devotion Title tailored to topic",
-  "keyScripture": "Book Chapter:Verse - 'Verse text'",
-  "passageText": "Full biblical passage text (1-3 verses)",
-  "reflection": "A 2-3 paragraph deep theological and spiritual reflection grounded in biblical truth, speaking directly to the nuances of ${topic || "faith"}",
+  "keyScripture": "${actualRef} (${actualVersion}) - '${actualText}'",
+  "passageText": "${actualText}",
+  "reflection": "A 2-3 paragraph deep theological and spiritual reflection grounded in biblical truth, speaking directly to the nuances of ${effectiveTopic}",
   "practicalApplication": "Concrete, actionable step for daily Christian living",
   "guidedPrayer": "A reverent, faith-filled prayer concluding in Jesus' name",
   "actionStep": "A memorable action or reflection question for the day"
@@ -3095,15 +3730,35 @@ Format your response as a valid JSON object matching this schema:
 
 // API route: Generate Guided Prayer
 app.post("/api/generate-prayer", async (req, res) => {
+  res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+  res.setHeader("Pragma", "no-cache");
+  res.setHeader("Expires", "0");
   try {
-    const { need, theme, category, scripture } = req.body;
+    const { need, theme, category, scripture, scriptureReference, scriptureText, version = "KJV" } = req.body;
     const effectiveTheme = theme || category || "Divine Strength & Peace";
     const effectiveNeed = need || "Personal spiritual renewal, guidance, and peace";
-    
+    const requestedVersion = String(version || "KJV").toUpperCase();
+
+    let anchorRef = scriptureReference || scripture || "Philippians 4:6-7";
+    let anchorText = scriptureText || "";
+    let actualVersion = requestedVersion;
+
+    if (anchorRef) {
+      const live = await fetchAuthenticVerse(anchorRef, requestedVersion);
+      if (live.verseText) {
+        anchorText = live.verseText;
+        actualVersion = live.version;
+      }
+    }
+    if (!anchorText) anchorText = "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God.";
+
     const prompt = `Generate a structured, biblically grounded Christian apostolic prayer specifically addressing this situation:
 Category / Theme: ${effectiveTheme}
 Specific Situation / Need: ${effectiveNeed}
-Scripture anchor (if any): ${scripture || "Philippians 4:6-7"}
+Scripture anchor: ${anchorRef} (${actualVersion})
+VERBATIM AUTHENTIC SCRIPTURE: "${anchorText}"
+
+MANDATORY TRANSLATION RULE: The scripture anchor is provided in the ${actualVersion} translation. Root the prayer's spiritual promises in this exact authentic wording. Do NOT substitute or rewrite with KJV.
 
 Context / Need: "${effectiveNeed}"
 ${AI_OUTPUT_IMPROVEMENT_RULES}
@@ -3116,8 +3771,8 @@ Format as a valid JSON object matching:
   "subtitle": "Faith-filled intercession for ${effectiveNeed}",
   "category": "${effectiveTheme}",
   "theme": "${effectiveNeed}",
-  "scriptureAnchor": "Verse reference and quote",
-  "scripturePromise": "Key scripture promise citation and text",
+  "scriptureAnchor": "${anchorRef} (${actualVersion}) - '${anchorText}'",
+  "scripturePromise": "${anchorRef} (${actualVersion}) - '${anchorText}'",
   "adoration": "Opening praise acknowledging God's attributes, holiness, and sovereignty",
   "confession": "Humble surrender of anxiety, fear, and human self-reliance",
   "confessionAndSurrender": "Humble surrender of anxiety, fear, and human self-reliance",
@@ -3131,7 +3786,7 @@ Format as a valid JSON object matching:
     "adoration": "Opening praise acknowledging God's attributes, holiness, and sovereignty",
     "confessionAndSurrender": "Humble surrender of anxiety, fear, and human self-reliance",
     "thanksgiving": "Heartfelt gratitude for God's past mercies, the cross of Christ, and unfailing promises",
-    "scripturePromise": "Key scripture promise citation and text",
+    "scripturePromise": "${anchorRef} (${actualVersion}) - '${anchorText}'",
     "petition": "Direct, faith-filled petitions specifically targeting ${effectiveNeed}",
     "spiritualWarfare": "Biblical declaration of victory in Christ over spiritual oppression and fear",
     "declarationInJesusName": "I declare this prayer sealed in the mighty Name of Jesus Christ, Amen."
@@ -3345,12 +4000,34 @@ app.get("/api/bible-chapter", async (req, res) => {
 
 // API route: Generate AI MathemaSermon
 app.post("/api/generate-mathemasermon", async (req, res) => {
+  res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+  res.setHeader("Pragma", "no-cache");
+  res.setHeader("Expires", "0");
   try {
-    const { topic, mathematicalConcept, series } = req.body;
+    const { topic, mathematicalConcept, series, scriptureReference, scriptureText, version = "KJV" } = req.body;
+    const requestedVersion = String(version || "KJV").toUpperCase();
+
+    let actualRef = scriptureReference || "Amos 9:13";
+    let actualText = scriptureText || "";
+    let actualVersion = requestedVersion;
+
+    if (actualRef) {
+      const live = await fetchAuthenticVerse(actualRef, requestedVersion);
+      if (live.verseText) {
+        actualText = live.verseText;
+        actualVersion = live.version;
+      }
+    }
+    if (!actualText) actualText = "Behold, the days come, saith the LORD, that the plowman shall overtake the reaper...";
+
     const prompt = `You are Apostle Bismark Twum, author and preacher of 'MathemaSermons'. Generate a powerful, homiletically sound sermon manuscript uniting higher mathematics and biblical theology.
 Topic: ${topic || "The Quantum Jump of Faith"}
 Mathematical Concept: ${mathematicalConcept || "Differential Calculus & Rate of Change"}
 Sermon Series: ${series || "exponential-grace"}
+Scripture Anchor: ${actualRef} (${actualVersion})
+VERBATIM AUTHENTIC SCRIPTURE: "${actualText}"
+
+MANDATORY TRANSLATION RULE: The anchor scripture is in the ${actualVersion} translation. Ground all mathematical-homiletic connections in this authentic text. Do NOT replace with KJV.
 
 Format your response as a valid JSON object matching this schema:
 {
@@ -3360,8 +4037,8 @@ Format your response as a valid JSON object matching this schema:
   "mathematicalConcept": "Specific mathematical theorem or concept",
   "formula": "LaTeX formula (e.g. \\\\lim_{t \\\\to 0} \\\\Delta y / \\\\Delta t)",
   "keyScripture": {
-    "reference": "Scripture citation",
-    "text": "Scripture text"
+    "reference": "${actualRef} (${actualVersion})",
+    "text": "${actualText}"
   },
   "sermonSeries": "${series || "exponential-grace"}",
   "estimatedPreachTimeMinutes": 30,
@@ -3457,11 +4134,33 @@ Format your response as a valid JSON object matching this schema:
 
 // API route: Generate AI Rhema Prophetic Word
 app.post("/api/generate-rhema", async (req, res) => {
+  res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+  res.setHeader("Pragma", "no-cache");
+  res.setHeader("Expires", "0");
   try {
-    const { seasonCategory, focusNeed } = req.body;
+    const { seasonCategory, focusNeed, scriptureReference, scriptureText, version = "KJV" } = req.body;
+    const requestedVersion = String(version || "KJV").toUpperCase();
+
+    let actualRef = scriptureReference || "Revelation 3:8";
+    let actualText = scriptureText || "";
+    let actualVersion = requestedVersion;
+
+    if (actualRef) {
+      const live = await fetchAuthenticVerse(actualRef, requestedVersion);
+      if (live.verseText) {
+        actualText = live.verseText;
+        actualVersion = live.version;
+      }
+    }
+    if (!actualText) actualText = "I know thy works: behold, I have set before thee an open door, and no man can shut it...";
+
     const prompt = `Generate an anointed, living prophetic Rhema Word for a Christian believer.
 Season Category: ${seasonCategory || "Breakthrough"}
 Focus Need / Desire: ${focusNeed || "Spiritual open doors and clarity"}
+Scripture Anchor: ${actualRef} (${actualVersion})
+VERBATIM AUTHENTIC SCRIPTURE: "${actualText}"
+
+MANDATORY TRANSLATION RULE: The scripture anchor is in the ${actualVersion} translation. Root the prophetic word and decrees in this authentic phrasing. Do NOT rewrite in KJV.
 
 Format as JSON matching:
 {
@@ -3471,8 +4170,8 @@ Format as JSON matching:
   "propheticDeclaration": "A 1-sentence declarative prophecy in all-caps bold authority.",
   "nowWordText": "A 2-3 paragraph anointed, encouraging, and direct prophetic now-word message.",
   "scriptureAnchor": {
-    "reference": "Scripture citation",
-    "text": "Scripture text"
+    "reference": "${actualRef} (${actualVersion})",
+    "text": "${actualText}"
   },
   "actionCommandment": "Specific prophetic action step or activation",
   "propheticDecree": "First-person decree starting with 'I decree and declare...'",
@@ -3521,11 +4220,33 @@ Format as JSON matching:
 
 // API route: Generate AI ApostleMath Lesson
 app.post("/api/generate-apostlemath", async (req, res) => {
+  res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+  res.setHeader("Pragma", "no-cache");
+  res.setHeader("Expires", "0");
   try {
-    const { mathBranch, spiritualConcept } = req.body;
+    const { mathBranch, spiritualConcept, scriptureReference, scriptureText, version = "KJV" } = req.body;
+    const requestedVersion = String(version || "KJV").toUpperCase();
+
+    let actualRef = scriptureReference || "Proverbs 3:5-6";
+    let actualText = scriptureText || "";
+    let actualVersion = requestedVersion;
+
+    if (actualRef) {
+      const live = await fetchAuthenticVerse(actualRef, requestedVersion);
+      if (live.verseText) {
+        actualText = live.verseText;
+        actualVersion = live.version;
+      }
+    }
+    if (!actualText) actualText = "Trust in the LORD with all thine heart; and lean not unto thine own understanding...";
+
     const prompt = `Generate a profound ApostleMath lesson by Apostle Bismark Twum.
 Math Branch: ${mathBranch || "Trigonometry & Vectors"}
 Spiritual Concept: ${spiritualConcept || "Directional Alignment and Holy Spirit Bearing"}
+Scripture Anchor: ${actualRef} (${actualVersion})
+VERBATIM AUTHENTIC SCRIPTURE: "${actualText}"
+
+MANDATORY TRANSLATION RULE: The scripture anchor is in the ${actualVersion} translation. Ground the mathematical-apostolic thesis in this authentic text. Do NOT rewrite in KJV.
 
 Format as JSON matching:
 {
@@ -3539,8 +4260,8 @@ Format as JSON matching:
   "lifeConnection": "How this mirrors the Christian life experience",
   "biblicalTruth": "The biblical theology and scriptural backing",
   "keyScripture": {
-    "reference": "Scripture reference",
-    "text": "Scripture text"
+    "reference": "${actualRef} (${actualVersion})",
+    "text": "${actualText}"
   },
   "mathemaSermon": "1-paragraph inspirational homily summary",
   "practicalApplication": ["Step 1", "Step 2", "Step 3"],
@@ -3595,11 +4316,33 @@ Format as JSON matching:
 
 // API route: Generate AI Joy Overcoming Challenge
 app.post("/api/generate-joy-battle", async (req, res) => {
+  res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+  res.setHeader("Pragma", "no-cache");
+  res.setHeader("Expires", "0");
   try {
-    const { category, specificChallenge } = req.body;
+    const { category, specificChallenge, scriptureReference, scriptureText, version = "KJV" } = req.body;
+    const requestedVersion = String(version || "KJV").toUpperCase();
+
+    let actualRef = scriptureReference || "Nehemiah 8:10";
+    let actualText = scriptureText || "";
+    let actualVersion = requestedVersion;
+
+    if (actualRef) {
+      const live = await fetchAuthenticVerse(actualRef, requestedVersion);
+      if (live.verseText) {
+        actualText = live.verseText;
+        actualVersion = live.version;
+      }
+    }
+    if (!actualText) actualText = "The joy of the LORD is your strength.";
+
     const prompt = `Generate a comprehensive Joy of the Lord Overcoming Guide for a believer battling:
 Category: ${category || "Anxiety & Fear"}
 Challenge: ${specificChallenge || "Overcoming sudden distress and finding supernatural peace"}
+Scripture Anchor: ${actualRef} (${actualVersion})
+VERBATIM AUTHENTIC SCRIPTURE: "${actualText}"
+
+MANDATORY TRANSLATION RULE: The scripture anchor is in the ${actualVersion} translation. Anchor all warfare and victory steps in this authentic text. Do NOT rewrite in KJV.
 
 Format as JSON matching:
 {
@@ -3609,8 +4352,7 @@ Format as JSON matching:
   "rootDeception": "The enemy's lie or deception during this trial",
   "scripturalTruth": "The counteracting eternal truth in Scripture",
   "anchorVerses": [
-    { "reference": "Verse 1 reference", "text": "Verse 1 text", "version": "NKJV" },
-    { "reference": "Verse 2 reference", "text": "Verse 2 text", "version": "KJV" }
+    { "reference": "${actualRef} (${actualVersion})", "text": "${actualText}", "version": "${actualVersion}" }
   ],
   "joyStrategySteps": ["Praise Strategy Step 1", "Strategy Step 2", "Strategy Step 3"],
   "fortressDeclaration": "A bold first-person fortress declaration",

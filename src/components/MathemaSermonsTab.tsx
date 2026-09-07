@@ -38,7 +38,7 @@ import { MathemaSermonItem, Devotion } from "../types";
 import { MathView, RichMathContent } from "./MathView";
 import { DevotionPictureModal } from "./DevotionPictureModal";
 import { printDevotionOnePageDocument } from "../utils/devotionDocumentExporter";
-import { fetchAiWithRetry, getCachedAiHistory } from "../utils/aiClient";
+import { getCachedAiHistory } from "../utils/aiClient";
 import { streamAiContent, getIsFastMode, setIsFastMode } from "../utils/aiStreaming";
 import { AiFastLoadingView } from "./AiFastLoadingView";
 import { useSyncedContent } from "../utils/useSyncedContent";

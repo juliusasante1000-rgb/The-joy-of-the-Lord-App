@@ -38,7 +38,8 @@ import { MathView, RichMathContent } from "./MathView";
 import { Devotion } from "../types";
 import { DevotionPictureModal } from "./DevotionPictureModal";
 import { printDevotionOnePageDocument } from "../utils/devotionDocumentExporter";
-import { fetchAiWithRetry } from "../utils/aiClient";
+import { streamAiContent, getIsFastMode, setIsFastMode } from "../utils/aiStreaming";
+import { AiFastLoadingView } from "./AiFastLoadingView";
 import { useSyncedContent } from "../utils/useSyncedContent";
 
 interface ApostleMathTabProps {
@@ -102,6 +103,9 @@ export const ApostleMathTab: React.FC<ApostleMathTabProps> = ({
   const [customScripture, setCustomScripture] = useState("");
   const [isGeneratingAi, setIsGeneratingAi] = useState(false);
   const [aiGeneratedLesson, setAiGeneratedLesson] = useState<ApostleMathLesson | null>(null);
+  const [streamingAiText, setStreamingAiText] = useState("");
+  const [streamingProgress, setStreamingProgress] = useState(25);
+  const [aiError, setAiError] = useState<string | null>(null);
 
   // Extract unique categories (math branches)
   const categories = useMemo(() => {
@@ -193,53 +197,66 @@ export const ApostleMathTab: React.FC<ApostleMathTabProps> = ({
     e.preventDefault();
     if (!customMathTopic.trim() && !customScripture.trim()) return;
     setIsGeneratingAi(true);
+    setAiError(null);
+    setStreamingAiText("");
+    setStreamingProgress(25);
 
     try {
-      const res = await fetchAiWithRetry<any>(
-        "/api/generate-apostlemath",
-        {
-          mathBranch: customMathTopic || "Vectors & Divine Trajectory",
-          spiritualConcept: customScripture || "Kingdom Alignment and Prophetic Velocity"
+      const res = await streamAiContent<any>({
+        actionType: "apostlemath",
+        mathBranch: customMathTopic || "Vectors & Divine Trajectory",
+        spiritualConcept: customScripture || "Kingdom Alignment and Prophetic Velocity",
+        fastMode: getIsFastMode(),
+        storageKey: "ai_apostlemath_history",
+        onProgress: (prog) => {
+          setStreamingProgress(prog);
         },
-        {
-          maxRetries: 2,
-          retryDelayMs: 1500,
-          storageKey: "ai_apostlemath_history"
+        onChunk: (_chunk, accText) => {
+          setStreamingAiText(accText);
+        },
+        onComplete: (_fullText, data) => {
+          const inner = data || {};
+          const newLesson: ApostleMathLesson = {
+            id: inner.id || `ai-math-${Date.now()}`,
+            title: inner.title || "The Axiom of Spiritual Vectors",
+            subtitle: inner.subtitle || "Divine Mathematics for Spiritual Mastery",
+            mathBranch: inner.mathBranch || customMathTopic || "Applied Mathematical Theology",
+            mathPrinciple: inner.mathPrinciple || "Axiomatic Alignment with Kingdom Truth",
+            mathFormula: inner.mathFormula || "\\vec{R}_{\\text{faith}} = \\vec{R}_0 + \\int_{0}^{t} \\vec{v}_{\\text{grace}}(\\tau) \\, d\\tau",
+            mathIllustration: inner.mathIllustration || "In mathematics, precise equations determine outcome.",
+            lifeConnection: inner.lifeConnection || "Human choices create trajectory angles that define destiny.",
+            biblicalTruth: inner.biblicalTruth || "The Word of God is living, active, and mathematically immutable.",
+            keyScripture: {
+              reference: inner.keyScripture?.reference || customScripture || "Proverbs 3:5-6",
+              text: inner.keyScripture?.text || "Trust in the Lord with all thine heart and lean not unto thine own understanding."
+            },
+            mathemaSermon: inner.mathemaSermon || "Align your spiritual vector with the Holy Spirit and accelerate into destiny.",
+            practicalApplication: Array.isArray(inner.practicalApplication) ? inner.practicalApplication : [
+              "Audit your life vectors to point in alignment with God's Word.",
+              "Pray in the Holy Ghost before making strategic decisions.",
+              "Reject counter-directional forces of doubt and hesitation."
+            ],
+            prayer: inner.prayer || "Lord Jesus, calibrate my heart to Your divine order. Amen.",
+            tags: Array.isArray(inner.tags) ? inner.tags : ["ApostleMath", "AI Generated", "Wisdom"],
+            readTimeMinutes: inner.readTimeMinutes || 4
+          };
+
+          setAiGeneratedLesson(newLesson);
+          handleSelectLesson(newLesson.id);
+          setIsGeneratingAi(false);
+        },
+        onError: (err) => {
+          setAiError(err);
+          setIsGeneratingAi(false);
         }
-      );
+      });
 
-      if (res.success && res.data && res.data.title) {
-        const data = res.data;
-        const newLesson: ApostleMathLesson = {
-          id: data.id || `ai-math-${Date.now()}`,
-          title: data.title,
-          subtitle: data.subtitle || "Divine Mathematics for Spiritual Mastery",
-          mathBranch: data.mathBranch || customMathTopic || "Applied Mathematical Theology",
-          mathPrinciple: data.mathPrinciple || "Axiomatic Alignment with Kingdom Truth",
-          mathFormula: data.mathFormula || "\\vec{R}_{\\text{faith}} = \\vec{R}_0 + \\int_{0}^{t} \\vec{v}_{\\text{grace}}(\\tau) \\, d\\tau",
-          mathIllustration: data.mathIllustration || "In mathematics, precise equations determine outcome.",
-          lifeConnection: data.lifeConnection || "Human choices create trajectory angles that define destiny.",
-          biblicalTruth: data.biblicalTruth || "The Word of God is living, active, and mathematically immutable.",
-          keyScripture: {
-            reference: data.keyScripture?.reference || customScripture || "Proverbs 3:5-6",
-            text: data.keyScripture?.text || "Trust in the Lord with all thine heart and lean not unto thine own understanding."
-          },
-          mathemaSermon: data.mathemaSermon || "Align your spiritual vector with the Holy Spirit and accelerate into destiny.",
-          practicalApplication: Array.isArray(data.practicalApplication) ? data.practicalApplication : [
-            "Audit your life vectors to point in alignment with God's Word.",
-            "Pray in the Holy Ghost before making strategic decisions.",
-            "Reject counter-directional forces of doubt and hesitation."
-          ],
-          prayer: data.prayer || "Lord Jesus, calibrate my heart to Your divine order. Amen.",
-          tags: Array.isArray(data.tags) ? data.tags : ["ApostleMath", "AI Generated", "Wisdom"],
-          readTimeMinutes: data.readTimeMinutes || 4
-        };
-
-        setAiGeneratedLesson(newLesson);
-        handleSelectLesson(newLesson.id);
+      if (!res.success && res.error) {
+        setAiError(res.error);
       }
-    } catch (err) {
+    } catch (err: any) {
       console.warn("Error generating ApostleMath AI lesson:", err);
+      setAiError(err?.message || "Generation failed. Please try again.");
     } finally {
       setIsGeneratingAi(false);
     }
@@ -857,7 +874,7 @@ export const ApostleMathTab: React.FC<ApostleMathTabProps> = ({
             className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#9333EA] to-[#DB2777] hover:brightness-110 text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all cursor-pointer disabled:opacity-50 shadow-md"
           >
             {isGeneratingAi ? (
-              <span>Generating...</span>
+              <span>Exploring...</span>
             ) : (
               <>
                 <Send className="w-3.5 h-3.5" />
@@ -866,6 +883,34 @@ export const ApostleMathTab: React.FC<ApostleMathTabProps> = ({
             )}
           </button>
         </form>
+
+        {/* AI Streaming Loading View */}
+        {isGeneratingAi && (
+          <div className="pt-2">
+            <AiFastLoadingView
+              progress={streamingProgress}
+              title="Formulating ApostleMath Expository Sermon"
+              actionType="ApostleMath Laboratory"
+              streamingText={streamingAiText}
+              isStreaming={true}
+              onCancel={() => setIsGeneratingAi(false)}
+            />
+          </div>
+        )}
+
+        {/* AI Error View */}
+        {!isGeneratingAi && aiError && (
+          <div className="p-4 rounded-xl bg-red-950/60 border border-red-500/40 text-xs text-red-200 space-y-2">
+            <div className="font-bold font-mono uppercase text-red-300">ApostleMath Explorer Notice</div>
+            <p>{aiError}</p>
+            <button
+              onClick={handleGenerateAiMathemaSermon}
+              className="px-3 py-1.5 rounded-lg bg-red-600 hover:bg-red-500 text-white text-xs font-bold cursor-pointer transition-colors"
+            >
+              Retry
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Devotion Picture Export Modal */}

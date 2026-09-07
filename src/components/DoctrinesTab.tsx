@@ -32,7 +32,9 @@ import {
 import { CHURCH_TENETS, DOCTRINE_CATEGORIES, DOCTRINE_ARTICLES } from "../data/doctrinalData";
 import { SYSTEMATIC_TOPICS_500_CATALOG, ALL_SYSTEMATIC_CATEGORIES } from "../data/systematicTopicsFullCatalog";
 import { DoctrineCategory, DoctrineArticle, ChurchTenet, SystematicTopicItem, CreatorProfile, Devotion } from "../types";
-import { fetchAiWithRetry, getCachedAiHistory } from "../utils/aiClient";
+import { getCachedAiHistory } from "../utils/aiClient";
+import { streamAiContent, getIsFastMode, setIsFastMode } from "../utils/aiStreaming";
+import { AiFastLoadingView } from "./AiFastLoadingView";
 import { downloadSystematicTopicPicture } from "../utils/sanctuaryPictureExporter";
 import { DevotionPictureModal } from "./DevotionPictureModal";
 
@@ -95,6 +97,8 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
   const [isAskingAi, setIsAskingAi] = useState(false);
   const [aiAnswer, setAiAnswer] = useState<string | null>(null);
   const [aiError, setAiError] = useState<string | null>(null);
+  const [streamingAiText, setStreamingAiText] = useState("");
+  const [streamingProgress, setStreamingProgress] = useState(25);
 
   useEffect(() => {
     const cached = getCachedAiHistory<{ question: string; answer: string }>("joy_doctrine_ai_history");
@@ -237,26 +241,35 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
     setAiAnswer("");
     setIsAskingAi(true);
     setAiError(null);
+    setStreamingAiText("");
+    setStreamingProgress(25);
 
     try {
-      const res = await fetchAiWithRetry<{ answer: string; scriptures?: string[]; keyTakeaway?: string }>(
-        "/api/ask-doctrine",
-        {
-          question: query.trim(),
-          category: selectedCategory !== "all" ? selectedCategory : "Christian Orthodoxy"
+      const res = await streamAiContent<any>({
+        actionType: "ask_doctrine",
+        question: query.trim(),
+        category: selectedCategory !== "all" ? selectedCategory : "Christian Orthodoxy",
+        fastMode: getIsFastMode(),
+        storageKey: "joy_doctrine_ai_history",
+        onProgress: (prog) => {
+          setStreamingProgress(prog);
         },
-        {
-          maxRetries: 2,
-          retryDelayMs: 2000,
-          storageKey: "joy_doctrine_ai_history"
+        onChunk: (_chunk, accText) => {
+          setStreamingAiText(accText);
+        },
+        onComplete: (fullText, data) => {
+          const textToSet = data?.answer || fullText || "Answer received.";
+          setAiAnswer(textToSet);
+          setIsAskingAi(false);
+        },
+        onError: (err) => {
+          setAiError(err);
+          setIsAskingAi(false);
         }
-      );
+      });
 
-      if (res.success && (res.data?.answer || res.text || res.data)) {
-        const textToSet = res.data?.answer || res.text || (typeof res.data === "string" ? res.data : JSON.stringify(res.data));
-        setAiAnswer(textToSet);
-      } else {
-        setAiError(res.error || "Unable to retrieve doctrinal answer at this time.");
+      if (!res.success && res.error) {
+        setAiError(res.error);
       }
     } catch (err: any) {
       console.error("[DOCTRINE AI ERROR]", err);
@@ -1142,6 +1155,20 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
               </button>
             ))}
           </div>
+
+          {/* AI Streaming Loading View */}
+          {isAskingAi && (
+            <div className="pt-2">
+              <AiFastLoadingView
+                progress={streamingProgress}
+                title="Consulting Doctrinal & Theological Scholar"
+                actionType="Scriptural Orthodoxy Engine"
+                streamingText={streamingAiText}
+                isStreaming={true}
+                onCancel={() => setIsAskingAi(false)}
+              />
+            </div>
+          )}
 
           {/* AI Error Alert */}
           {aiError && (

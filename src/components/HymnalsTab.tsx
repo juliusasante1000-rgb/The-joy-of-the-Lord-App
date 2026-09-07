@@ -27,7 +27,8 @@ import {
 } from "lucide-react";
 import { HYMNALS_COLLECTION, HYMN_CATEGORIES } from "../data/hymnalsData";
 import { HymnItem } from "../types";
-import { fetchAiWithRetry } from "../utils/aiClient";
+import { streamAiContent, getIsFastMode, setIsFastMode } from "../utils/aiStreaming";
+import { AiFastLoadingView } from "./AiFastLoadingView";
 
 interface HymnalsTabProps {
   isBookmarked: (targetId: string, type?: string) => boolean;
@@ -104,6 +105,8 @@ export const HymnalsTab: React.FC<HymnalsTabProps> = ({
   const [aiResult, setAiResult] = useState<string | null>(null);
   const [isGeneratingAi, setIsGeneratingAi] = useState(false);
   const [showAiModal, setShowAiModal] = useState(false);
+  const [streamingAiText, setStreamingAiText] = useState("");
+  const [streamingProgress, setStreamingProgress] = useState(25);
 
   const selectedHymn =
     HYMNALS_COLLECTION.find((h) => h.id === selectedHymnId) || HYMNALS_COLLECTION[0];
@@ -366,6 +369,8 @@ Scripture Anchor: ${selectedHymn.scriptureAnchor.reference}
     if (!aiTopic.trim()) return;
     setIsGeneratingAi(true);
     setAiResult(null);
+    setStreamingAiText("");
+    setStreamingProgress(25);
 
     try {
       const prompt = `You are a reverent Christian hymnologist and pastoral theologian.
@@ -377,25 +382,35 @@ Include:
 4. Pastoral Closing Prayer & Benediction.
 Keep the tone deeply reverent, majestic, and grounded in the Lord Jesus Christ.`;
 
-      const res = await fetchAiWithRetry<any>(
-        "/api/generate",
-        {
-          prompt,
-          systemInstruction: "You are an apostolic Christian theologian and hymnologist.",
+      const res = await streamAiContent<any>({
+        actionType: "hymnal_devotion",
+        topic: aiTopic,
+        prompt,
+        fastMode: getIsFastMode(),
+        storageKey: `ai_hymn_devotion_${aiTopic.trim().toLowerCase().slice(0, 40)}`,
+        onProgress: (prog) => {
+          setStreamingProgress(prog);
         },
-        {
-          maxRetries: 2,
-          retryDelayMs: 1200,
-          storageKey: `ai_hymn_devotion_${aiTopic.trim().toLowerCase().slice(0, 40)}`
+        onChunk: (_chunk, accText) => {
+          setStreamingAiText(accText);
+          setAiResult(accText);
+        },
+        onComplete: (fullText) => {
+          setAiResult(fullText);
+          setIsGeneratingAi(false);
+        },
+        onError: (err) => {
+          console.warn("AI generation note:", err);
+          setAiResult(
+            `Grace to You: In the midnight hour of trial, remember that Paul and Silas sang hymns in prison and the foundations shook (Acts 16:25). Whatever storm you face with "${aiTopic}", lift your voice in praise. The Lord inhabits the praises of His people!`
+          );
+          setIsGeneratingAi(false);
         }
-      );
+      });
 
-      if (res.success && res.text) {
-        setAiResult(res.text);
-      } else if (res.success && res.data && typeof res.data === "string") {
-        setAiResult(res.data);
-      } else {
+      if (!res.success && !aiResult) {
         setAiResult(
+          res.text ||
           `Grace to You: In the midnight hour of trial, remember that Paul and Silas sang hymns in prison and the foundations shook (Acts 16:25). Whatever storm you face with "${aiTopic}", lift your voice in praise. The Lord inhabits the praises of His people!`
         );
       }
@@ -1138,7 +1153,21 @@ Keep the tone deeply reverent, majestic, and grounded in the Lord Jesus Christ.`
               </div>
             </div>
 
-            {aiResult && (
+            {/* AI Streaming Loading View */}
+            {isGeneratingAi && (
+              <div className="pt-1">
+                <AiFastLoadingView
+                  progress={streamingProgress}
+                  title="Composing Hymnic Devotional Reflection"
+                  actionType="Hymnology Treasury Engine"
+                  streamingText={streamingAiText}
+                  isStreaming={true}
+                  onCancel={() => setIsGeneratingAi(false)}
+                />
+              </div>
+            )}
+
+            {aiResult && !isGeneratingAi && (
               <div className="p-5 rounded-2xl bg-[#FAF9F6] border border-amber-200/80 space-y-3 animate-in fade-in">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-mono font-bold uppercase text-[#B48C35] flex items-center gap-1.5">

@@ -154,11 +154,17 @@ export async function generateAiContent<T = any>(
   try {
     const serverRes = await fetch("/api/generate", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      cache: "no-store",
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "no-store, no-cache, must-revalidate"
+      },
       body: JSON.stringify({
         prompt: options.prompt,
         systemInstruction: systemPrompt,
         responseMimeType: options.responseMimeType,
+        timestamp: Date.now(),
+        _nonce: Math.random().toString(36).substring(2),
         generationConfig: {
           temperature,
           topP,

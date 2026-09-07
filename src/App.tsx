@@ -165,6 +165,7 @@ export function App() {
   const [targetBibleBook, setTargetBibleBook] = useState<string>("Genesis");
   const [targetBibleChapter, setTargetBibleChapter] = useState<number>(1);
   const [targetBibleVerse, setTargetBibleVerse] = useState<number | undefined>(undefined);
+  const [targetBibleVersion, setTargetBibleVersion] = useState<any | undefined>(undefined);
 
   // Sync latest creator profile and published content from global backend server
   const syncWithGlobalServer = useCallback(async () => {
@@ -300,10 +301,11 @@ export function App() {
     });
   };
 
-  const handleNavigateToBibleChapter = (book: string, chapter: number, verse?: number) => {
+  const handleNavigateToBibleChapter = (book: string, chapter: number, verse?: number, version?: string) => {
     setTargetBibleBook(book);
     setTargetBibleChapter(chapter);
     setTargetBibleVerse(verse);
+    if (version) setTargetBibleVersion(version);
     setActiveTab("bible");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -405,6 +407,7 @@ export function App() {
               targetBookName={targetBibleBook}
               targetChapter={targetBibleChapter}
               targetVerse={targetBibleVerse}
+              targetVersion={targetBibleVersion}
               onExploreMathemaSermon={() => setActiveTab("mathema_sermons")}
               onExploreApostleMath={() => setActiveTab("apostle_math")}
               creatorProfile={creatorProfile}

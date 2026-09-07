@@ -369,19 +369,19 @@ export const DOCTRINE_CATEGORIES: DoctrineCategory[] = [
   },
   {
     id: "church-sacraments-government",
-    title: "The Church, Sacraments, Government & Tithes",
+    title: "The Church, Sacraments & Covenant Tithes",
     slug: "church-sacraments-government",
     icon: "Crown",
-    shortDesc: "The Body of Christ, Baptism by Immersion, The Lord's Supper, Church Government by Fivefold Ministry/Elders/Deacons, and Tithes & Offerings.",
-    doctrinalFocus: "Ecclesiology, Sacraments, Church Offices, Stewardship",
+    shortDesc: "The Body of Christ, Baptism by Immersion, The Lord's Supper, and the Obligatory Nature of Tithes & Offerings.",
+    doctrinalFocus: "Ecclesiology, Sacraments, Christian Fellowship, Stewardship",
     keyScriptures: [
       { reference: "Matthew 28:19", text: "Go ye therefore, and teach all nations, baptizing them in the name of the Father, and of the Son, and of the Holy Ghost." },
       { reference: "1 Corinthians 11:26", text: "For as often as ye eat this bread, and drink this cup, ye do shew the Lord's death till he come." },
-      { reference: "Ephesians 4:11-12", text: "And he gave some, apostles; and some, prophets; and some, evangelists; and some, pastors and teachers; For the perfecting of the saints, for the work of the ministry." },
+      { reference: "Hebrews 10:24-25", text: "And let us consider one another to provoke unto love and to good works: Not forsaking the assembling of ourselves together, as the manner of some is; but exhorting one another." },
       { reference: "Malachi 3:10", text: "Bring ye all the tithes into the storehouse, that there may be meat in mine house, and prove me now herewith, saith the Lord of hosts." },
       { reference: "Matthew 23:23", text: "These ought ye to have done, and not to leave the other undone." }
     ],
-    theologicalSummary: "The Church is the universal body of Christ. It celebrates two Sacraments: Water Baptism by Immersion and the Lord's Supper. Church Government is ordered biblically by Apostles, Prophets, Evangelists, Pastors, Teachers, Elders, Deacons, and Deaconesses for perfecting the saints. The obligatory nature of Tithes and Offerings is honored as a vital spiritual covenant to support ministry and advance God's Kingdom.",
+    theologicalSummary: "The Church is the universal body of Christ composed of all true believers, unified in worship, fellowship, and the sacraments. It celebrates two Sacraments: Water Baptism by Immersion and the Lord's Supper. The obligatory nature of Tithes and Offerings is honored as a vital spiritual covenant to support ministry and advance God's Kingdom.",
     foundationalDocumentInsights: [
       "Water baptism by immersion visibly portrays our union with Christ in His death, burial, and resurrection.",
       "The Lord's Table is a holy remembrance of Calvary and a communion of spiritual nourishment and covenant renewal.",
@@ -676,21 +676,21 @@ export const DOCTRINE_ARTICLES: DoctrineArticle[] = [
   {
     id: "art-church-sacraments-government-1",
     categoryId: "church-sacraments-government",
-    categoryTitle: "The Church, Sacraments, Government & Tithes",
-    title: "The Body of Christ, Sacred Ordinances, Fivefold Ministry & Covenant Tithing",
-    subtitle: "Understanding Baptism by Immersion, The Lord's Supper, Apostolic Leadership, and Biblical Tithing",
-    theologicalOverview: "The Church is the living Body and Bride of Christ, composed of all born-again believers. The Church celebrates two holy Sacraments: Water Baptism by Immersion (an outward public declaration of dying and rising with Christ) and the Lord's Supper (Holy Communion in remembrance of Christ's atoning death). The Church is governed biblically by the Ascension Fivefold Ministry (Apostles, Prophets, Evangelists, Pastors, Teachers) alongside Elders, Deacons, and Deaconesses for spiritual oversight and equipping the saints. Furthermore, Scripture mandates the obligatory nature of Tithes and Offerings as a vital act of worship and kingdom stewardship.",
+    categoryTitle: "The Church, Sacraments & Covenant Tithes",
+    title: "The Body of Christ, Sacred Ordinances & Covenant Tithing",
+    subtitle: "Understanding Baptism by Immersion, The Lord's Supper, and Biblical Tithing",
+    theologicalOverview: "The Church is the living Body and Bride of Christ, composed of all born-again believers. The Church celebrates two holy Sacraments: Water Baptism by Immersion (an outward public declaration of dying and rising with Christ) and the Lord's Supper (Holy Communion in remembrance of Christ's atoning death). The members of the Body of Christ dwell in unity, mutual care, and fellowship, functioning together to build up the saints in faith and love. Furthermore, Scripture mandates the obligatory nature of Tithes and Offerings as a vital act of worship and kingdom stewardship.",
     keyScriptures: [
       { ref: "Matthew 28:19", text: "Go ye therefore, and teach all nations, baptizing them in the name of the Father, and of the Son, and of the Holy Ghost.", context: "The Great Commission mandate for believer's baptism." },
       { ref: "1 Corinthians 11:23-26", text: "For as often as ye eat this bread, and drink this cup, ye do shew the Lord's death till he come.", context: "Paul's transmission of the sacred institution of Holy Communion." },
-      { ref: "Ephesians 4:11-13", text: "And he gave some, apostles; and some, prophets; and some, evangelists; and some, pastors and teachers; For the perfecting of the saints, for the work of the ministry.", context: "The divine governmental order for church maturity and alignment." },
+      { ref: "Hebrews 10:24-25", text: "And let us consider one another to provoke unto love and to good works: Not forsaking the assembling of ourselves together, as the manner of some is; but exhorting one another.", context: "The vital call to Christian assembly and mutual encouragement." },
       { ref: "Malachi 3:10", text: "Bring ye all the tithes into the storehouse, that there may be meat in mine house, and prove me now herewith, saith the Lord of hosts, if I will not open you the windows of heaven.", context: "The unchanging covenant promise and obligation of returning the tithe to God's storehouse." },
       { ref: "Matthew 23:23", text: "These ought ye to have done, and not to leave the other undone.", context: "Jesus Christ affirming the ongoing validity of tithing alongside justice and faith." }
     ],
     doctrinalPillars: [
       { title: "The Universal & Local Church", explanation: "The Church is the pillar and ground of the truth, visibly gathered in local assemblies for worship and discipleship.", scripture: "1 Timothy 3:15, Hebrews 10:25" },
       { title: "Sacraments of Baptism & Lord's Supper", explanation: "Water immersion signifies death to sin and resurrection to life; Communion proclaims Christ's death till He comes.", scripture: "Romans 6:3-5, 1 Corinthians 10:16" },
-      { title: "Apostolic Church Government", explanation: "Fivefold ministry gifts, elders, deacons, and deaconesses functioning in holy order for the perfecting of the saints.", scripture: "1 Timothy 3:1-13, Titus 1:5, Romans 16:1" },
+      { title: "Holy Fellowship & Unity in the Body", explanation: "Believers are united under the headship of Christ alone, functioning as a holy priesthood to build one another up in faith.", scripture: "1 Peter 2:9, 1 Corinthians 12:12-27" },
       { title: "Obligatory Tithes & Cheerful Offerings", explanation: "Returning the first tenth of all income to the local church storehouse supports ministry and releases kingdom blessing.", scripture: "Genesis 14:20, 2 Corinthians 9:6-8" }
     ],
     practicalApplication: [
@@ -699,7 +699,7 @@ export const DOCTRINE_ARTICLES: DoctrineArticle[] = [
       "Faithfully tithe to your local church: Honor God with the firstfruits of all your income, trusting His covenant promises to supply all your needs."
     ],
     historicalAndConfessionalBasis: "Rooted in the Apostolic New Testament epistles, the historic practice of the Early Church, and historic orthodox church constitutions.",
-    guidedReflection: "Lord Jesus, Head of the Church, thank You for placing me in Your living Body. I commit to honoring Your ordinances, submitting to godly spiritual leadership, and faithfully returning my tithes and offerings to build Your Kingdom on earth."
+    guidedReflection: "Lord Jesus, Head of the Church, thank You for placing me in Your living Body. I commit to honoring Your ordinances, walking in holy love and fellowship with the brethren, and faithfully returning my tithes and offerings to build Your Kingdom on earth."
   },
   {
     id: "art-eschatology-1",
