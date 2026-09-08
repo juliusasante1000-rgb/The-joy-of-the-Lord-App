@@ -1,8 +1,8 @@
 import express from "express";
 import path from "path";
 import fs from "fs";
+import os from "os";
 import crypto from "crypto";
-import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
 import dotenv from "dotenv";
 
@@ -13,20 +13,27 @@ const PORT = 3000;
 
 app.use(express.json({ limit: "50mb" }));
 
-app.get("/api/health", (req, res) => {
-  res.json({ status: "ok" });
+app.get(["/api/health", "/health"], (req, res) => {
+  res.json({ status: "ok", environment: process.env.VERCEL ? "vercel" : "cloud-run" });
 });
 
-// Server storage directory for global synced live data
-const DATA_DIR = path.join(process.cwd(), "server_data");
+// Server storage directory: Safe writable directory for local or serverless environments
+const isServerless = Boolean(process.env.VERCEL || process.env.VERCEL_ENV || process.env.AWS_LAMBDA_FUNCTION_NAME || process.env.NETLIFY);
+const DATA_DIR = isServerless
+  ? path.join(os.tmpdir(), "joy_of_lord_server_data")
+  : path.join(process.cwd(), "server_data");
 const PROFILE_FILE = path.join(DATA_DIR, "creator_profile_live.json");
 const DEVICES_FILE = path.join(DATA_DIR, "enrolled_devices.json");
 const ADMIN_ACCOUNT_FILE = path.join(DATA_DIR, "admin_credentials.json");
 const AUDIT_LOG_FILE = path.join(DATA_DIR, "audit_log.json");
 const CONTENT_STORE_FILE = path.join(DATA_DIR, "content_store.json");
 
-if (!fs.existsSync(DATA_DIR)) {
-  fs.mkdirSync(DATA_DIR, { recursive: true });
+try {
+  if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR, { recursive: true });
+  }
+} catch (e) {
+  console.warn("[STORAGE] Using safe in-memory data store for serverless environment");
 }
 
 // Authorized Administrator / Creator Emails
@@ -36,33 +43,63 @@ const AUTHORIZED_ADMIN_EMAILS = ["twumbismark304@gmail.com", "twumbismark90@gmai
 // Master Enrollment Secret Key (used for initial device enrollment)
 const MASTER_ENROLLMENT_SECRET = process.env.ADMIN_ENROLLMENT_SECRET || "JOY_OF_LORD_CREATOR_KEY_1990_DEV_SECURE";
 
-// Initialize default admin credentials if not existing
+// In-memory fallbacks for serverless environments
+let inMemoryAdminAccount: any = null;
+let inMemoryAuditLog: any[] = [];
+let inMemoryContentStore: any = null;
+
+// Initialize default admin credentials safely
 function initAdminCredentials() {
-  if (!fs.existsSync(ADMIN_ACCOUNT_FILE)) {
-    const salt = crypto.randomBytes(16).toString("hex");
-    // Initial default password is "TheJoyOfTheLordIsMyStrength2026!"
-    const passwordHash = crypto.pbkdf2Sync("TheJoyOfTheLordIsMyStrength2026!", salt, 10000, 64, "sha512").toString("hex");
-    const accountData = {
-      email: PRIMARY_ADMIN_EMAIL,
-      creatorName: "Bismark Twum",
-      role: "CREATOR_AND_PRIMARY_ADMINISTRATOR",
-      passwordHash,
-      salt,
-      pinCode: "7777",
-      requiresPasswordChange: false,
-      createdAt: new Date().toISOString(),
-      lastChangedAt: null,
-      lastLoginAt: null
-    };
-    fs.writeFileSync(ADMIN_ACCOUNT_FILE, JSON.stringify(accountData, null, 2), "utf-8");
+  try {
+    if (!fs.existsSync(ADMIN_ACCOUNT_FILE)) {
+      const salt = crypto.randomBytes(16).toString("hex");
+      // Initial default password is "TheJoyOfTheLordIsMyStrength2026!"
+      const passwordHash = crypto.pbkdf2Sync("TheJoyOfTheLordIsMyStrength2026!", salt, 10000, 64, "sha512").toString("hex");
+      const accountData = {
+        email: PRIMARY_ADMIN_EMAIL,
+        creatorName: "Bismark Twum",
+        role: "CREATOR_AND_PRIMARY_ADMINISTRATOR",
+        passwordHash,
+        salt,
+        pinCode: "7777",
+        requiresPasswordChange: false,
+        createdAt: new Date().toISOString(),
+        lastChangedAt: null,
+        lastLoginAt: null
+      };
+      inMemoryAdminAccount = accountData;
+      fs.writeFileSync(ADMIN_ACCOUNT_FILE, JSON.stringify(accountData, null, 2), "utf-8");
+    }
+  } catch (e) {
+    if (!inMemoryAdminAccount) {
+      const salt = crypto.randomBytes(16).toString("hex");
+      const passwordHash = crypto.pbkdf2Sync("TheJoyOfTheLordIsMyStrength2026!", salt, 10000, 64, "sha512").toString("hex");
+      inMemoryAdminAccount = {
+        email: PRIMARY_ADMIN_EMAIL,
+        creatorName: "Bismark Twum",
+        role: "CREATOR_AND_PRIMARY_ADMINISTRATOR",
+        passwordHash,
+        salt,
+        pinCode: "7777",
+        requiresPasswordChange: false,
+        createdAt: new Date().toISOString(),
+        lastChangedAt: null,
+        lastLoginAt: null
+      };
+    }
   }
 }
 initAdminCredentials();
 
-// Initialize audit log file if not existing
+// Initialize audit log file safely
 function initAuditLog() {
-  if (!fs.existsSync(AUDIT_LOG_FILE)) {
-    fs.writeFileSync(AUDIT_LOG_FILE, JSON.stringify([], null, 2), "utf-8");
+  try {
+    if (!fs.existsSync(AUDIT_LOG_FILE)) {
+      fs.writeFileSync(AUDIT_LOG_FILE, JSON.stringify([], null, 2), "utf-8");
+    }
+  } catch (e) {
+    // In-memory fallback
+    inMemoryAuditLog = [];
   }
 }
 initAuditLog();
@@ -183,38 +220,57 @@ function verifyAdminSession(req: express.Request): { valid: boolean; email?: str
 
 // Content Store Database Helper
 function getContentStore(): any {
-  if (!fs.existsSync(CONTENT_STORE_FILE)) {
-    const initialStore = {
-      mathema_sermons: [],
-      apostle_math: [],
-      rhema: [],
-      joy_overcoming: [],
-      spiritual_places: [],
-      daily_verses: [],
-      books: [],
-      lastUpdated: new Date().toISOString(),
-      updatedBy: "SYSTEM"
-    };
-    fs.writeFileSync(CONTENT_STORE_FILE, JSON.stringify(initialStore, null, 2), "utf-8");
-    return initialStore;
+  if (inMemoryContentStore) {
+    return inMemoryContentStore;
   }
   try {
-    return JSON.parse(fs.readFileSync(CONTENT_STORE_FILE, "utf-8"));
+    if (!fs.existsSync(CONTENT_STORE_FILE)) {
+      const initialStore = {
+        mathema_sermons: [],
+        apostle_math: [],
+        rhema: [],
+        joy_overcoming: [],
+        spiritual_places: [],
+        daily_verses: [],
+        books: [],
+        lastUpdated: new Date().toISOString(),
+        updatedBy: "SYSTEM"
+      };
+      inMemoryContentStore = initialStore;
+      try {
+        fs.writeFileSync(CONTENT_STORE_FILE, JSON.stringify(initialStore, null, 2), "utf-8");
+      } catch (writeErr) {}
+      return initialStore;
+    }
+    const store = JSON.parse(fs.readFileSync(CONTENT_STORE_FILE, "utf-8"));
+    inMemoryContentStore = store;
+    return store;
   } catch (e) {
-    return { mathema_sermons: [], apostle_math: [], rhema: [], joy_overcoming: [], spiritual_places: [], daily_verses: [], books: [] };
+    if (!inMemoryContentStore) {
+      inMemoryContentStore = { mathema_sermons: [], apostle_math: [], rhema: [], joy_overcoming: [], spiritual_places: [], daily_verses: [], books: [] };
+    }
+    return inMemoryContentStore;
   }
 }
 
 function saveContentStore(store: any, updatedBy: string) {
   store.lastUpdated = new Date().toISOString();
   store.updatedBy = updatedBy;
-  fs.writeFileSync(CONTENT_STORE_FILE, JSON.stringify(store, null, 2), "utf-8");
+  inMemoryContentStore = store;
+  try {
+    fs.writeFileSync(CONTENT_STORE_FILE, JSON.stringify(store, null, 2), "utf-8");
+  } catch (e) {
+    console.warn("[STORAGE] Using in-memory content store update");
+  }
 }
 
-// Initialize Gemini client lazily
-function getGeminiClient(): GoogleGenAI | null {
-  const apiKey = process.env.GEMINI_API_KEY || process.env.API_KEY;
-  if (!apiKey || apiKey === "MY_GEMINI_API_KEY") {
+// Initialize Gemini client lazily, checking all possible environment variable names and custom key
+function getGeminiClient(customApiKey?: string): GoogleGenAI | null {
+  const apiKey = (customApiKey && customApiKey.trim().length > 0)
+    ? customApiKey.trim()
+    : process.env.GEMINI_API_KEY || process.env.API_KEY || process.env.VITE_GEMINI_API_KEY;
+
+  if (!apiKey || apiKey.trim() === "" || apiKey === "MY_GEMINI_API_KEY") {
     return null;
   }
   return new GoogleGenAI({
