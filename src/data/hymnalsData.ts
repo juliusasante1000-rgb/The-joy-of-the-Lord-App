@@ -1,6 +1,7 @@
 import { HymnItem } from "../types";
 import { ADDITIONAL_50_HYMNALS } from "./additionalHymnals";
 import { ADDITIONAL_HYMNALS_PART_2 } from "./additionalHymnalsPart2";
+import { AUTHENTIC_CLASSIC_HYMNALS_PART_3 } from "./authenticClassicHymnalsPart3";
 import { HYMNAL_500_PART_1 } from "./hymnalCatalog500Part1";
 import { HYMNAL_500_PART_2 } from "./hymnalCatalog500Part2";
 import { HYMNAL_500_PART_3 } from "./hymnalCatalog500Part3";
@@ -1071,6 +1072,7 @@ const BASE_HYMNALS_COLLECTION: HymnItem[] = [
   },
   ...ADDITIONAL_50_HYMNALS,
   ...ADDITIONAL_HYMNALS_PART_2,
+  ...AUTHENTIC_CLASSIC_HYMNALS_PART_3,
   ...HYMNAL_500_PART_1,
   ...HYMNAL_500_PART_2,
   ...HYMNAL_500_PART_3,

@@ -176,11 +176,27 @@ const VERSION_TO_BOLLS: Record<string, string> = {
 function cleanVerseText(raw: string): string {
   if (!raw) return "";
   let text = raw;
-  // Strip headings and tags
-  text = text.replace(/<h\d+>[^<]*<\/h\d+>/gi, " ");
-  text = text.replace(/<sup[^>]*>.*?<\/sup>/gi, " ");
+  // Strip Strong's tags like <S>1063</S>
+  text = text.replace(/<S>\d+<\/S>/gi, "");
+  // Strip Psalm numbers prepended: e.g. "Psalm 23<br/>"
+  text = text.replace(/^Psalm\s+\d+\s*(?:<br\s*\/?>|\n)+/i, "");
+  // Strip Psalm subtitles/inscriptions: e.g. "<i>A Psalm of David.</i>", "A psalm of David.<br/>"
+  text = text.replace(/^<i>(?:A\s+Psalm|A\s+Song|Of\s+David|For\s+the\s+Chief\s+Musician|To\s+the\s+Chief\s+Musician|A\s+Prayer|Maskil|Miktam|Shiggaion)[^<]*<\/i>\s*(?:<\/i>)?\s*/i, "");
+  text = text.replace(/^(?:A\s+psalm\s+of\s+David|A\s+song\s+of\s+ascents|Of\s+David|For\s+the\s+director\s+of\s+music)[^.<]*\.\s*(?:<br\s*\/?>|\n)+/i, "");
+  // Strip publisher section headers: e.g. "Jesus Teaches Nicodemus<br/>Now there was..."
+  text = text.replace(/^([A-Z][A-Za-z0-9\s\x27\u2019,\u2014\u2013\(\)]+?)(?:<br\s*\/?>|\n)+\s*(?=[A-Z\u201C"\(])/i, (match, heading) => {
+    // If heading has no terminal sentence punctuation and is relatively short (< 65 chars), it is a publisher section heading
+    if (heading.length < 65 && !/[.!?]$/.test(heading.trim())) {
+      return "";
+    }
+    return match;
+  });
+  // Strip HTML headings and general tags
+  text = text.replace(/<h\d+>[^<]*<\/h\d+>/gi, "");
+  text = text.replace(/<sup[^>]*>.*?<\/sup>/gi, "");
+  text = text.replace(/<br\s*\/?>/gi, " ");
   text = text.replace(/<[^>]+>/g, " ");
-  // Strip footnote circles ⓐ ⓑ ⓜ and brackets [1]
+  // Strip footnote circles and brackets
   text = text.replace(/[\u2460-\u2473\u24B6-\u24E9\u2776-\u277F]/g, "");
   text = text.replace(/\[\d+\]/g, "");
   return text.replace(/\s+/g, " ").trim();

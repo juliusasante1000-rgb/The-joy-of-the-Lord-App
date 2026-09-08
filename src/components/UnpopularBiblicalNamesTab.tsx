@@ -16,7 +16,8 @@ import {
   X,
   Sparkles,
   UserCheck,
-  Users
+  Users,
+  Info
 } from "lucide-react";
 import { UnpopularBiblicalName } from "../types";
 import { UNPOPULAR_BIBLICAL_500_NAMES } from "../data/unpopularNames500Catalog";
@@ -174,6 +175,19 @@ export const UnpopularBiblicalNamesTab: React.FC<UnpopularBiblicalNamesTabProps>
               Showing {filteredList.length} of {UNPOPULAR_BIBLICAL_500_NAMES.length} Figures
             </span>
           </div>
+        </div>
+      </div>
+
+      {/* Theological Safeguard & Context Note (Spiritual Places Format) */}
+      <div className="bg-sky-50/80 border border-sky-200/90 rounded-2xl p-4 flex items-start gap-3 text-xs text-sky-950 shadow-xs">
+        <Info className="w-4 h-4 text-sky-700 shrink-0 mt-0.5" />
+        <div className="space-y-1">
+          <p className="font-bold text-sky-900 tracking-wide uppercase text-[11px]">
+            Biblical Heritage &amp; Spiritual Lessons
+          </p>
+          <p className="text-slate-700 leading-relaxed">
+            The figures in <em>Heroes of Blessing</em> (אַנְשֵׁי בְרָכָה) are authentic biblical men and women whose quiet faithfulness, sanctuary service, and covenant obedience bore lasting fruit. Their names carry prophetic meanings of peace, strength, and divine favor. Meditate on their biblical role in conjunction with Scripture.
+          </p>
         </div>
       </div>
 
@@ -368,20 +382,31 @@ export const UnpopularBiblicalNamesTab: React.FC<UnpopularBiblicalNamesTabProps>
                     </p>
                   </div>
 
-                  {/* Name Meaning Highlight */}
-                  <div className="p-2.5 rounded-xl bg-sky-50/70 border border-sky-100 text-xs">
-                    <span className="font-bold text-sky-950 block text-[11px] uppercase tracking-wide">
-                      Name Meaning &amp; Blessing
-                    </span>
-                    <p className="text-sky-950 font-serif text-sm font-semibold mt-0.5">
-                      “{item.meaning}”
+                  {/* Name Meaning Highlight (Spiritual Places Quoted Style) */}
+                  <blockquote className="text-xs text-slate-700 italic border-l-2 border-sky-500 pl-3 py-1 bg-sky-50/60 rounded-r-lg">
+                    “{item.meaning}”
+                  </blockquote>
+
+                  {/* Brief Expository Explanation (Spiritual Places Format) */}
+                  <div className="p-3 bg-slate-50/90 rounded-xl border border-slate-100 text-xs text-slate-600 leading-relaxed space-y-1">
+                    <div className="flex items-center gap-1.5 font-bold text-sky-950 text-[11px] uppercase tracking-wider">
+                      <Sparkles className="w-3 h-3 text-amber-500 shrink-0" />
+                      <span>Spiritual Significance &amp; Historical Narrative</span>
+                    </div>
+                    <p className="line-clamp-3 text-slate-600">
+                      {item.historicalRole}
                     </p>
                   </div>
 
-                  {/* Historical Role */}
-                  <p className="text-xs text-slate-600 leading-relaxed line-clamp-3">
-                    {item.historicalRole}
-                  </p>
+                  {/* Prophetic Blessing Impartation */}
+                  <div className="p-2.5 rounded-xl bg-amber-50/60 border border-amber-200/50 text-xs text-amber-950 leading-relaxed">
+                    <span className="font-bold text-amber-900 block text-[10px] uppercase tracking-wider mb-0.5">
+                      Prophetic Blessing
+                    </span>
+                    <p className="italic font-serif">
+                      &quot;{item.blessingApplication}&quot;
+                    </p>
+                  </div>
                 </div>
 
                 {/* Bottom Actions */}

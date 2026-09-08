@@ -15,7 +15,8 @@ import {
   ChevronRight,
   X,
   Heart,
-  Crown
+  Crown,
+  Info
 } from "lucide-react";
 import { ShemotGeulahName } from "../types";
 import { SHEMOT_GEULAH_500_NAMES } from "../data/shemotGeulah500Catalog";
@@ -156,7 +157,7 @@ export const ShemotGeulahTab: React.FC<ShemotGeulahTabProps> = ({
             <button
               id="shemot-random-prophetic-btn"
               onClick={handleRandomName}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-400 text-purple-950 font-bold text-xs sm:text-sm shadow-md hover:bg-amber-300 transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-400 text-purple-950 font-bold text-xs sm:text-sm shadow-md hover:bg-amber-300 transition-colors cursor-pointer"
             >
               <Shuffle className="w-4 h-4" />
               Receive Random Prophetic Name
@@ -165,6 +166,19 @@ export const ShemotGeulahTab: React.FC<ShemotGeulahTabProps> = ({
               Showing {filteredNames.length} of {SHEMOT_GEULAH_500_NAMES.length} Redemptive Names
             </span>
           </div>
+        </div>
+      </div>
+
+      {/* Theological Safeguard & Context Note (Spiritual Places Format) */}
+      <div className="bg-amber-50/80 border border-amber-200/90 rounded-2xl p-4 flex items-start gap-3 text-xs text-amber-950 shadow-xs">
+        <Info className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
+        <div className="space-y-1">
+          <p className="font-bold text-amber-900 tracking-wide uppercase text-[11px]">
+            Theological Context &amp; Prophetic Revelation
+          </p>
+          <p className="text-slate-700 leading-relaxed">
+            The titles in <em>Shemot Geulah</em> are redemptive identities spoken by the Living God in Scripture (Isaiah 62, Hosea 2, Psalms, and the Prophets). Each name replaces former rejection and sorrow with divine belonging, righteousness, and covenant favor. Meditate on each name in conjunction with its biblical narrative.
+          </p>
         </div>
       </div>
 
@@ -331,19 +345,30 @@ export const ShemotGeulahTab: React.FC<ShemotGeulahTabProps> = ({
                     </p>
                   </div>
 
-                  {/* Meaning Highlight */}
-                  <div className="p-2.5 rounded-xl bg-purple-50/70 border border-purple-100 text-xs">
-                    <span className="font-bold text-purple-950 block text-[11px] uppercase tracking-wide">
-                      Redemptive Meaning
-                    </span>
-                    <p className="text-purple-900 font-serif text-sm font-semibold mt-0.5">
-                      “{item.meaning}”
+                  {/* Meaning Highlight (Spiritual Places Quoted Style) */}
+                  <blockquote className="text-xs text-slate-700 italic border-l-2 border-purple-500 pl-3 py-1 bg-purple-50/60 rounded-r-lg">
+                    “{item.meaning}”
+                  </blockquote>
+
+                  {/* Brief Expository Explanation (Spiritual Places Format) */}
+                  <div className="p-3 bg-slate-50/90 rounded-xl border border-slate-100 text-xs text-slate-600 leading-relaxed space-y-1">
+                    <div className="flex items-center gap-1.5 font-bold text-purple-950 text-[11px] uppercase tracking-wider">
+                      <Sparkles className="w-3 h-3 text-amber-500 shrink-0" />
+                      <span>Spiritual Significance &amp; Revelation</span>
+                    </div>
+                    <p className="line-clamp-3 text-slate-600">
+                      {item.biblicalContext || `An authentic Hebrew prophetic title from ${item.scriptureReference} declaring covenant restoration, divine delight, and God's sovereign protection over your destiny.`}
                     </p>
                   </div>
 
-                  {/* Prophetic Declaration snippet */}
-                  <div className="text-xs text-slate-600 bg-slate-50/80 p-2.5 rounded-xl border border-slate-100 italic leading-relaxed">
-                    &quot;{item.propheticDeclaration}&quot;
+                  {/* Prophetic Declaration Snippet */}
+                  <div className="p-2.5 rounded-xl bg-amber-50/60 border border-amber-200/50 text-xs text-amber-950 leading-relaxed">
+                    <span className="font-bold text-amber-900 block text-[10px] uppercase tracking-wider mb-0.5">
+                      Prophetic Decree
+                    </span>
+                    <p className="italic font-serif">
+                      &quot;{item.propheticDeclaration}&quot;
+                    </p>
                   </div>
                 </div>
 

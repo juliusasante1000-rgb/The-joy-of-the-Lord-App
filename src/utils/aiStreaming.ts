@@ -50,6 +50,51 @@ export function safeJsonParse<T = any>(str: string): T | null {
     }
   }
 
+  // 5. Auto-repair truncated JSON tokens
+  try {
+    let str = cleaned;
+    let inString = false;
+    let isEscaped = false;
+    const stack: string[] = [];
+
+    for (let i = 0; i < str.length; i++) {
+      const char = str[i];
+      if (isEscaped) {
+        isEscaped = false;
+        continue;
+      }
+      if (char === "\\") {
+        isEscaped = true;
+        continue;
+      }
+      if (char === '"') {
+        inString = !inString;
+        continue;
+      }
+      if (!inString) {
+        if (char === "{" || char === "[") {
+          stack.push(char);
+        } else if (char === "}") {
+          if (stack.length > 0 && stack[stack.length - 1] === "{") stack.pop();
+        } else if (char === "]") {
+          if (stack.length > 0 && stack[stack.length - 1] === "[") stack.pop();
+        }
+      }
+    }
+
+    if (inString) str += '"';
+    while (stack.length > 0) {
+      const open = stack.pop();
+      if (open === "{") str += "}";
+      else if (open === "[") str += "]";
+    }
+
+    const fixed = str.replace(/(?<!\\)\\(?!["\\/bfnrtu])/g, "\\\\");
+    return JSON.parse(fixed) as T;
+  } catch {
+    // continue
+  }
+
   return null;
 }
 
@@ -63,6 +108,7 @@ export interface StreamCallbacks<T = any> {
 export interface StreamAiOptions extends StreamCallbacks {
   endpoint?: string;
   actionType?: string;
+  subject?: string;
   scriptureReference?: string;
   scriptureText?: string;
   scriptureTheme?: string;

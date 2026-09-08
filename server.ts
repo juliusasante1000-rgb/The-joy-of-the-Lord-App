@@ -284,11 +284,20 @@ export function formatGeminiErrorMessage(err: any): string {
  * 5. Joy of the Lord & Hopeful Conclusion: Draw from existing messages on "The Joy of the Lord" (Nehemiah 8:10, Psalm 16:11) and Apostle Bismark Twum's MathemaSermons. The conclusion MUST ALWAYS inspire triumphant hope, courage, spiritual vitality, and supernatural encouragement.
  */
 export const AI_OUTPUT_IMPROVEMENT_RULES = `
-Rules for Uniqueness, Scripture Concurrence, and Hopeful Encouragement:
-a. CONCURRENCE WITH SCRIPTURE: Anchor your output intimately in the SPECIFIC scripture, verse vocabulary, historical context, and exact theme provided. Draw out the unique metaphors, Hebrew/Greek roots, and spiritual dynamics native to this exact text. Never produce generic Christian filler or interchangeable advice.
-b. FRESHNESS & VARIETY: Make every generation distinctly unique. Radically vary your opening hook, sentence cadence, and structure. Never open with clichéd expressions like "In our Christian walk", "As Christians", "In our daily walk", "In this passage", or "Today we examine". Open directly with an arresting biblical insight, historical moment, or linguistic revelation.
-c. RICH HOMILETIC DEPTH: Tailor your voice to match the character of the scripture—exultant for praise, reverent for holiness, strategic for warfare, pastoral for affliction. Ensure every point is fresh, concrete, and deeply impactful.
-d. JOY OF THE LORD & CONCLUDING HOPE: Whenever illuminating the text—and especially in "The Joy of the Lord" and "MathemaSermon" outputs—draw from the bedrock truth of Nehemiah 8:10 ("The joy of the LORD is your strength") and the analytical, kingdom-modeling clarity of MathemaSermons. At the conclusion of your message, you MUST conclude with an inspiring, triumphant, and hope-igniting apostolic encouragement that lifts the believer into confident expectation, joy, and divine resilience.`;
+CRITICAL SCRIPTURAL CONCURRENCE & SUBJECT INTEGRATION MANDATE:
+a. CONCURRENCE WITH THEME SCRIPTURE & CURRENT SUBJECT:
+   - You MUST write uniquely and address the current subject directly in profound conjunction with the theme scripture.
+   - Ground the response in the exact vocabulary, metaphors, and original Hebrew or Greek terms of the theme scripture.
+   - Show how the living truth of this specific verse directly answers, heals, guides, and unlocks victory for the current subject.
+   - Never speak of the subject in generic terms or quote scriptures in isolation; synthesize them seamlessly.
+b. UNPARALLELED UNIQUENESS & INDIVIDUALITY:
+   - Write uniquely from others. Never output generic Christian boilerplate, formulaic sermon outlines, or repetitive filler.
+   - Never use clichéd openings like "In our Christian walk", "As Christians", "In our daily walk", "In this passage", or "Today we explore".
+   - Open immediately with an arresting biblical insight, vivid historical reality, or linguistic revelation.
+   - Tailor the cadence and voice dynamically to the spirit of the text—exultant for praise, strategic for spiritual warfare, deeply comforting for trials, prophetic for kingdom decrees.
+c. JOY OF THE LORD & TRIUMPHANT HOPE:
+   - Anchor in the bedrock truth of Nehemiah 8:10 ("The joy of the LORD is your strength") and Apostle Bismark Twum's MathemaSermons.
+   - Conclude with an inspiring, triumphant, and hope-igniting apostolic message that leaves the believer deeply empowered and joyous.`;
 
 export const ANTI_LOOP_DIRECTIVE = `Provide deep, unique, and illuminating theological, historical, and practical insight. Never repeat phrases or loop. Be precise, profound, and substantive. Do not use generic filler.
 ${AI_OUTPUT_IMPROVEMENT_RULES}`;
@@ -503,7 +512,7 @@ async function streamGeminiCascade(options: {
 
   const temperature = options.temperature ?? (options.fastMode ? 0.3 : 0.45);
   const topP = options.topP ?? 0.85;
-  const maxOutputTokens = options.maxOutputTokens ?? (options.fastMode ? 600 : 2048);
+  const maxOutputTokens = options.maxOutputTokens ?? (options.fastMode ? 1600 : 2800);
 
   const modelsToTry = options.fastMode 
     ? ["gemini-3.1-flash-lite", "gemini-3.8-flash", "gemini-flash-latest"]
@@ -537,7 +546,8 @@ async function streamGeminiCascade(options: {
 
       if (accumulated.trim().length > 0) {
         const durationMs = Date.now() - startTime;
-        const cleanedText = deduplicateSentences(accumulated);
+        const isJson = options.responseMimeType === "application/json" || accumulated.trim().startsWith("{") || accumulated.trim().startsWith("[");
+        const cleanedText = isJson ? accumulated : deduplicateSentences(accumulated);
         console.log(`[GEMINI STREAM COMPLETE] ✅ Finished stream with model '${model}' in ${durationMs}ms (${cleanedText.length} chars)`);
         
         // Reset quota cooldown upon successful call
@@ -561,8 +571,59 @@ async function streamGeminiCascade(options: {
 }
 
 /**
+ * Auto-repair truncated JSON strings by closing open strings, arrays, and objects
+ */
+function repairTruncatedJson(jsonStr: string): string {
+  let str = jsonStr.trim();
+  if (str.startsWith("```json")) str = str.replace(/^```json\s*/i, "").replace(/\s*```$/, "");
+  else if (str.startsWith("```")) str = str.replace(/^```\s*/i, "").replace(/\s*```$/, "");
+  str = str.trim();
+
+  let inString = false;
+  let isEscaped = false;
+  const stack: string[] = [];
+
+  for (let i = 0; i < str.length; i++) {
+    const char = str[i];
+    if (isEscaped) {
+      isEscaped = false;
+      continue;
+    }
+    if (char === "\\") {
+      isEscaped = true;
+      continue;
+    }
+    if (char === '"') {
+      inString = !inString;
+      continue;
+    }
+    if (!inString) {
+      if (char === "{" || char === "[") {
+        stack.push(char);
+      } else if (char === "}") {
+        if (stack.length > 0 && stack[stack.length - 1] === "{") stack.pop();
+      } else if (char === "]") {
+        if (stack.length > 0 && stack[stack.length - 1] === "[") stack.pop();
+      }
+    }
+  }
+
+  if (inString) {
+    str += '"';
+  }
+
+  while (stack.length > 0) {
+    const open = stack.pop();
+    if (open === "{") str += "}";
+    else if (open === "[") str += "]";
+  }
+
+  return str;
+}
+
+/**
  * Universal safe JSON parser that cleans markdown fences, repairs unescaped backslashes (e.g. LaTeX formulas),
- * and handles edge cases gracefully.
+ * repairs truncated tokens, and handles edge cases gracefully.
  */
 function safeJsonParse<T = any>(rawText: string | undefined | null): T | null {
   if (!rawText) return null;
@@ -571,17 +632,18 @@ function safeJsonParse<T = any>(rawText: string | undefined | null): T | null {
   else if (clean.startsWith("```")) clean = clean.replace(/^```\s*/i, "").replace(/\s*```$/, "");
   clean = clean.trim();
 
-  // Try direct parse first
+  // 1. Direct parse
   try {
     const parsed = JSON.parse(clean);
     return recursivelyCleanObjectClichés(parsed);
   } catch (e1) {
+    // 2. Fix unescaped backslashes (LaTeX formulas, math, etc.)
     try {
-      // Fix unescaped backslashes (e.g. \lim, \frac, \Delta, \int, \cdot in LaTeX formulas)
       const fixedBackslashes = clean.replace(/(?<!\\)\\(?!["\\/bfnrtu]|u[0-9a-fA-F]{4})/g, "\\\\");
       const parsed = JSON.parse(fixedBackslashes);
       return recursivelyCleanObjectClichés(parsed);
     } catch (e2) {
+      // 3. Extract substring between outer braces
       try {
         const firstBrace = clean.indexOf("{");
         const lastBrace = clean.lastIndexOf("}");
@@ -591,17 +653,15 @@ function safeJsonParse<T = any>(rawText: string | undefined | null): T | null {
           const parsed = JSON.parse(fixedSub);
           return recursivelyCleanObjectClichés(parsed);
         }
-        const firstBracket = clean.indexOf("[");
-        const lastBracket = clean.lastIndexOf("]");
-        if (firstBracket !== -1 && lastBracket > firstBracket) {
-          const substr = clean.substring(firstBracket, lastBracket + 1);
-          const fixedSub = substr.replace(/(?<!\\)\\(?!["\\/bfnrtu]|u[0-9a-fA-F]{4})/g, "\\\\");
-          const parsed = JSON.parse(fixedSub);
-          return recursivelyCleanObjectClichés(parsed);
-        }
-      } catch (e3) {
-        // Fallthrough
-      }
+      } catch (e3) {}
+
+      // 4. Auto-repair truncated JSON tokens
+      try {
+        const repaired = repairTruncatedJson(clean);
+        const fixedRepaired = repaired.replace(/(?<!\\)\\(?!["\\/bfnrtu]|u[0-9a-fA-F]{4})/g, "\\\\");
+        const parsed = JSON.parse(fixedRepaired);
+        return recursivelyCleanObjectClichés(parsed);
+      } catch (e4) {}
     }
   }
   return null;
@@ -2252,30 +2312,44 @@ Format as JSON with keys: place, historicalAccount, biblicalReference, keyFigure
       if (!actualText) actualText = "The joy of the LORD is your strength.";
 
       const text = actualText;
+      const currentSubject = req.body.subject || req.body.topic || req.body.scriptureTheme || "Divine Strength and Unshakeable Faith";
 
       if (act.includes("prayer") && !act.includes("point")) {
-        finalPrompt = `You are a reverent, apostolic Christian pastoral leader. Compose an anointed, deeply transformative Guided Prayer rooted directly in:
-Reference: ${ref} (${actualVersion})
+        finalPrompt = `You are a reverent, apostolic Christian pastoral leader. Compose an anointed, deeply transformative Guided Prayer rooted directly in the conjunction of the current subject and theme scripture:
+Current Subject: "${currentSubject}"
+Theme Scripture: ${ref} (${actualVersion})
 Scripture Text: "${text}"
+
+MANDATORY INSTRUCTIONS:
+1. Address the subject "${currentSubject}" directly in living conjunction with theme scripture ${ref}.
+2. Write uniquely from others. Never output generic boilerplate or clichéd prayers.
+3. Show how the exact truth of "${text}" empowers, delivers, and anchors the believer concerning "${currentSubject}".
+4. Conclude with a bold, faith-igniting apostolic decree.
+
 ${AI_OUTPUT_IMPROVEMENT_RULES}
 
 Format your response as a valid JSON object matching this schema:
 {
-  "title": "Sacred Prayer of Faith on ${ref}",
+  "title": "Sacred Prayer of Faith: ${currentSubject}",
   "scriptureAnchor": "${ref} (${actualVersion}) - '${text}'",
-  "adoration": "Exalt God's supreme holiness, sovereignty, and faithfulness demonstrated in this passage.",
-  "confession": "Surrender human insufficiency, worry, and fleshly strivings into His loving covenant hands.",
+  "adoration": "Exalt God's supreme holiness, sovereignty, and faithfulness demonstrated in this passage regarding ${currentSubject}.",
+  "confession": "Surrender human insufficiency, worry, and fleshly strivings regarding ${currentSubject} into His loving covenant hands.",
   "thanksgiving": "Thank God for the finished work of Christ and His unshakeable promises in this verse.",
-  "petition": "Direct, heartfelt, and targeted petitions applying this scripture into the believer's life, family, calling, and circumstances.",
-  "warfareDeclaration": "Authoritative apostolic decrees breaking doubt, fear, and demonic limitations in Jesus' Name.",
+  "petition": "Direct, heartfelt, and targeted petitions applying ${ref} directly to the subject of ${currentSubject}.",
+  "warfareDeclaration": "Authoritative apostolic decrees breaking doubt, fear, and enemy limitations in Jesus' Name.",
   "closing": "Triumphant seal and affirmation in Jesus' victorious Name."
 }`;
         responseMimeType = "application/json";
       } else if (act.includes("point")) {
-        finalPrompt = `Generate 5 high-impact prayer points on: ${ref} ("${text}").\nContext & Scripture: ${ref} ("${text}")\n${AI_OUTPUT_IMPROVEMENT_RULES}\nFormat as JSON with keys: title, scriptureAnchor, prayerPoints (array of {pointNumber, focus, scripturePromise, prayerDeclaration}), propheticDecree.`;
+        finalPrompt = `Generate 5 strategic, high-impact prayer points addressing the subject "${currentSubject}" in direct, living conjunction with theme scripture ${ref} ("${text}").
+Requirements:
+1. Write uniquely from others, tailoring each prayer point specifically to the intersection of "${currentSubject}" and ${ref}.
+2. Ground each decree in the exact vocabulary and theological revelation of ${ref}.
+${AI_OUTPUT_IMPROVEMENT_RULES}
+Format as JSON with keys: title, scriptureAnchor, prayerPoints (array of {pointNumber, focus, scripturePromise, prayerDeclaration}), propheticDecree.`;
         responseMimeType = "application/json";
       } else if (act.includes("interlinear") || act.includes("greek") || act.includes("hebrew") || act.includes("lexicon")) {
-        finalPrompt = `You are an expert Biblical Hebrew and Koine Greek scholar, textual critic, and linguist. For the scripture ${ref} ("${text}"), provide the authentic original language interlinear breakdown (Hebrew for Old Testament with Niqqud vowels, or Greek for New Testament with polytonic accents).
+        finalPrompt = `You are an expert Biblical Hebrew and Koine Greek scholar, textual critic, and linguist. For the scripture ${ref} ("${text}"), illuminate the original language interlinear breakdown in light of the subject "${currentSubject}".
 Context & Scripture: ${ref} ("${text}")
 ${AI_OUTPUT_IMPROVEMENT_RULES}
 Format as JSON with keys:
@@ -2303,12 +2377,13 @@ Format as JSON with keys:
 - apostolicRhema (prophetic and kingdom decree based on the original language)`;
         responseMimeType = "application/json";
       } else if (act.includes("commentary")) {
-        finalPrompt = `You are a preeminent Christian Biblical scholar synthesizing Matthew Henry, Charles Spurgeon, and Apostolic Rhema revelation. Provide an in-depth verse-by-verse commentary for: ${ref} ("${text}").\nContext & Scripture: ${ref} ("${text}")\n${AI_OUTPUT_IMPROVEMENT_RULES}\nFormat as JSON with keys: title, scriptureAnchor, keyTheme, historicalContext, matthewHenryInsight, spurgeonInsight, apostolicRhema, originalLanguageInsight, crossReferences, theologicalDoctrine, lifeApplication.`;
+        finalPrompt = `You are a preeminent Christian Biblical scholar synthesizing Matthew Henry, Charles Spurgeon, and Apostolic Rhema revelation. Provide an in-depth verse-by-verse commentary for: ${ref} ("${text}") addressing the subject "${currentSubject}".\nContext & Scripture: ${ref} ("${text}")\n${AI_OUTPUT_IMPROVEMENT_RULES}\nFormat as JSON with keys: title, scriptureAnchor, keyTheme, historicalContext, matthewHenryInsight, spurgeonInsight, apostolicRhema, originalLanguageInsight, crossReferences, theologicalDoctrine, lifeApplication.`;
         responseMimeType = "application/json";
       } else if (act.includes("context") || act.includes("historical") || act.includes("background")) {
         finalPrompt = `You are a world-class Christian Biblical historian, archaeologist, and theologian. Provide an exhaustive, authoritative Historical, Cultural, and Expository analysis of:
 Reference: ${ref} (${actualVersion})
 Passage: "${text}"
+Current Subject: "${currentSubject}"
 ${AI_OUTPUT_IMPROVEMENT_RULES}
 
 Format your response as a valid JSON object with this exact schema:
@@ -2319,46 +2394,48 @@ Format your response as a valid JSON object with this exact schema:
   "culturalBackground": "Ancient Near Eastern or Greco-Roman cultural practices, idioms, geography, and archaeological insights illuminating this verse.",
   "covenantalContext": "Pivotal covenantal milestone in redemptive history linking Old and New Testaments.",
   "originalLanguageInsight": "Deep original Hebrew or Greek root words, grammatical nuances, and etymological depth.",
-  "doctrinalMeaning": "2 paragraphs explaining the central spiritual truth, theological doctrine, and eternal revelation in this verse.",
+  "doctrinalMeaning": "2 paragraphs explaining the central spiritual truth, theological doctrine, and eternal revelation in this verse in relation to ${currentSubject}.",
   "crossReferences": [
     { "reference": "Book Chapter:Verse", "connection": "How this cross-reference illuminates the verse" },
     { "reference": "Book Chapter:Verse", "connection": "How this cross-reference illuminates the verse" },
     { "reference": "Book Chapter:Verse", "connection": "How this cross-reference illuminates the verse" }
   ],
-  "lifeTransformation": "Apostolic and practical application showing how this ancient historical truth directly transforms the believer's life today."
+  "lifeTransformation": "Apostolic and practical application showing how this ancient historical truth directly transforms the believer's life today regarding ${currentSubject}."
 }`;
         responseMimeType = "application/json";
       } else if (act.includes("explain") || act.includes("exposition")) {
-        finalPrompt = `You are a preeminent Christian Biblical scholar and expositor. Provide a profound, deep, verse-by-verse and theological explanation of:
+        finalPrompt = `You are a preeminent Christian Biblical scholar and expositor. Provide a profound, deep, verse-by-verse and theological explanation addressing the subject "${currentSubject}" in conjunction with theme scripture:
 Reference: ${ref} (${actualVersion})
 Passage: "${text}"
+Current Subject: "${currentSubject}"
 ${AI_OUTPUT_IMPROVEMENT_RULES}
 
 Format your response as a valid JSON object with this exact schema:
 {
-  "title": "Deep Expository Analysis of ${ref}",
+  "title": "Deep Expository Analysis: ${currentSubject}",
   "scriptureAnchor": "${ref} (${actualVersion}) - '${text}'",
   "historicalContext": "Historical, cultural, authorial, and situational setting of this passage",
   "originalLanguageInsight": "Analysis of key original Greek or Hebrew root words, transliterations, and their theological depth",
-  "expositoryBreakdown": "Clause-by-clause detailed exegetical breakdown of the exact text and phrasing",
+  "expositoryBreakdown": "Clause-by-clause detailed exegetical breakdown showing how ${ref} speaks directly into ${currentSubject}",
   "doctrinalMeaning": "2 paragraphs explaining the central spiritual truth, theological doctrine, and eternal revelation in this verse",
   "crossReferences": [
     { "reference": "Book Chapter:Verse", "connection": "How this cross-reference illuminates the verse" },
     { "reference": "Book Chapter:Verse", "connection": "How this cross-reference illuminates the verse" },
     { "reference": "Book Chapter:Verse", "connection": "How this cross-reference illuminates the verse" }
   ],
-  "lifeTransformation": "Practical, transformative life application showing how a believer today walks in this truth daily",
+  "lifeTransformation": "Practical, transformative life application showing how a believer today walks in this truth daily regarding ${currentSubject}",
   "apostolicBlessing": "A short, anointed scriptural blessing and decree over the believer"
 }`;
         responseMimeType = "application/json";
       } else if (act.includes("joy")) {
         finalPrompt = `You are an apostolic pastor and theologian drawing upon the profound revelations of "The Joy of the Lord" (Nehemiah 8:10, Psalm 16:11, Philippians 4:4) and the analytical clarity of MathemaSermons.
-Compose a deeply transformative, text-concurrent revelation for ${ref} ("${text}").
+Compose a deeply transformative, text-concurrent revelation addressing "${currentSubject}" through ${ref} ("${text}").
 Context & Scripture: ${ref} ("${text}")
+Current Subject: "${currentSubject}"
 ${AI_OUTPUT_IMPROVEMENT_RULES}
 
 MANDATORY INSTRUCTIONS:
-1. Ground the exegesis directly in the exact wording, setting, and spiritual movement of this specific passage (${ref}).
+1. Ground the exegesis directly in the exact wording, setting, and spiritual movement of this specific passage (${ref}) and subject "${currentSubject}".
 2. Show how the eternal Joy of the Lord operates in this text—not as shallow emotionalism, but as divine fortress, supernatural resilience, and covenant victory.
 3. Draw upon MathemaSermon analogies (e.g. constant multiplier, asymptotic convergence upon God's promises, vector alignment with the Holy Ghost, coordinate transformation from sorrow to joy) to illustrate the spiritual mechanics.
 4. AT THE CONCLUSION: You MUST conclude with an inspiring, triumphant message of unshakeable HOPE, STRENGTH, and RESTORATION that deeply encourages the believer to stand bold and joyous.
@@ -2367,18 +2444,19 @@ Format as JSON with keys:
 - scriptureAnchor: "${ref}"
 - originalLanguageJoyInsight: Original Hebrew/Greek lexical revelation of joy or divine fortitude in this text
 - mathemaAnalogy: A mathematical or scientific analogy linking this scripture's truth to divine principles
-- theologicalJoyExposition: Rich, text-anchored exposition of how God's joy sustains and triumphs in this passage
+- theologicalJoyExposition: Rich, text-anchored exposition of how God's joy sustains and triumphs in this passage regarding "${currentSubject}"
 - hopeAndEncouragementConclusion: A powerful, hope-igniting, triumphant apostolic message of encouragement and resilience that concludes the discourse
 - propheticDecrees: An array of 3 bold, first-person decrees of joy, strength, and victory
 - closingPrayer: A reverent, faith-filled prayer releasing the joy of the Lord into the believer's spirit`;
         responseMimeType = "application/json";
       } else if (act.includes("math")) {
-        finalPrompt = `You are Apostle Bismark Twum, Christian educator and creator of MathemaSermons. Formulate a rich MathemaSermon homiletic lesson connecting: ${ref} ("${text}") with an authentic mathematical or physical concept and LaTeX formula.
+        finalPrompt = `You are Apostle Bismark Twum, Christian educator and creator of MathemaSermons. Formulate a rich MathemaSermon homiletic lesson connecting: ${ref} ("${text}") with an authentic mathematical or physical concept and LaTeX formula, addressing the subject "${currentSubject}".
 Context & Scripture: ${ref} ("${text}")
+Current Subject: "${currentSubject}"
 ${AI_OUTPUT_IMPROVEMENT_RULES}
 
 MANDATORY INSTRUCTIONS:
-1. Connect the exact spiritual movement of ${ref} to a genuine mathematical/scientific principle (e.g. calculus derivatives of growth, coordinate translation of repentance, vector projection of divine guidance, exponential resurrection power, wave-particle duality of faith, invariant constants of God's covenant).
+1. Connect the exact spiritual movement of ${ref} and "${currentSubject}" to a genuine mathematical/scientific principle (e.g. calculus derivatives of growth, coordinate translation of repentance, vector projection of divine guidance, exponential resurrection power, wave-particle duality of faith, invariant constants of God's covenant).
 2. Detail the mathematical formula in clear LaTeX.
 3. Provide rich exegesis, preachable life analogies, and practical kingdom application.
 4. At the conclusion, conclude with an inspiring message of hope and encouragement anchored in the Joy of the Lord.
@@ -2392,18 +2470,26 @@ Format as JSON with keys:
 - altarCallPrayer: Fervent prayer sealing the revelation`;
         responseMimeType = "application/json";
       } else {
-        finalPrompt = `Generate a rich, inspiring Christian devotion for the Daily Scripture edition on:
-Reference: ${ref} (${actualVersion})
-Passage: "${text}"
+        finalPrompt = `Generate a rich, deeply inspiring Christian daily devotion addressing the subject "${currentSubject}" in direct, living conjunction with the theme scripture:
+Theme Scripture: ${ref} (${actualVersion})
+Passage Text: "${text}"
+Current Subject: "${currentSubject}"
+
+CRITICAL SCRIPTURAL & SUBJECT CONJUNCTION:
+1. Address the current subject: "${currentSubject}" directly in living conjunction with theme scripture ${ref}.
+2. Write uniquely from others. Never output generic Christian boilerplate or interchangeable advice.
+3. Unpack how the exact vocabulary, metaphors, and original Hebrew/Greek roots in ${ref} specifically speak to and resolve "${currentSubject}".
+4. Conclude with an inspiring, triumphant message of hope, joy, and divine strength anchored in the Joy of the Lord (Nehemiah 8:10).
+
 ${AI_OUTPUT_IMPROVEMENT_RULES}
 
 Format your response as a valid JSON object matching this schema:
 {
-  "title": "Inspiring Devotion Title for ${ref}",
+  "title": "Inspiring Devotion Title for ${currentSubject}",
   "keyScripture": "${ref} (${actualVersion}) - '${text}'",
   "passageText": "${text}",
-  "reflection": "A 3-paragraph deep theological and spiritual reflection grounded in biblical truth and Christ's finished work",
-  "practicalApplication": "Concrete, actionable step for daily Christian living",
+  "reflection": "A 3-paragraph deep theological and spiritual reflection addressing '${currentSubject}' through the lens of ${ref}",
+  "practicalApplication": "Concrete, actionable step for daily Christian living addressing '${currentSubject}'",
   "guidedPrayer": "A reverent, faith-filled prayer concluding in Jesus' name",
   "actionStep": "A memorable action or reflection question for the day",
   "apostolicDecree": "A triumphant faith decree declaring the truth of this verse over the believer",
@@ -2502,7 +2588,7 @@ Format as JSON with keys: id, challengeTitle, category, rootDeception, scriptura
 
     const temp = generationConfig?.temperature ?? (fastMode ? 0.72 : 0.82);
     const topP = generationConfig?.topP ?? 0.95;
-    const maxTokens = generationConfig?.maxOutputTokens ?? (fastMode ? 600 : 2048);
+    const maxTokens = generationConfig?.maxOutputTokens ?? (fastMode ? 1600 : 3000);
 
     // RULE 1: If dynamic timestamp, nonce, or no-cache header is provided, bypass cache completely
     const isDynamic = !!(req.body.timestamp || req.body._nonce || req.headers["cache-control"]?.includes("no-cache"));
@@ -2720,12 +2806,26 @@ function cleanVerseText(raw: string): string {
   if (!raw) return "";
   let text = String(raw);
   // Strip Strong's tags like <S>1063</S>
-  text = text.replace(/<S>\d+<\/S>/gi, " ");
+  text = text.replace(/<S>\d+<\/S>/gi, "");
+  // Strip Psalm numbers prepended: e.g. "Psalm 23<br/>"
+  text = text.replace(/^Psalm\s+\d+\s*(?:<br\s*\/?>|\n)+/i, "");
+  // Strip Psalm subtitles/inscriptions: e.g. "<i>A Psalm of David.</i>", "A psalm of David.<br/>"
+  text = text.replace(/^<i>(?:A\s+Psalm|A\s+Song|Of\s+David|For\s+the\s+Chief\s+Musician|To\s+the\s+Chief\s+Musician|A\s+Prayer|Maskil|Miktam|Shiggaion)[^<]*<\/i>\s*(?:<\/i>)?\s*/i, "");
+  text = text.replace(/^(?:A\s+psalm\s+of\s+David|A\s+song\s+of\s+ascents|Of\s+David|For\s+the\s+director\s+of\s+music)[^.<]*\.\s*(?:<br\s*\/?>|\n)+/i, "");
+  // Strip publisher section headers: e.g. "Jesus Teaches Nicodemus<br/>Now there was..."
+  text = text.replace(/^([A-Z][A-Za-z0-9\s\x27\u2019,\u2014\u2013\(\)]+?)(?:<br\s*\/?>|\n)+\s*(?=[A-Z\u201C"\(])/i, (match, heading) => {
+    // If heading has no terminal sentence punctuation and is relatively short (< 65 chars), it is a publisher section heading
+    if (heading.length < 65 && !/[.!?]$/.test(heading.trim())) {
+      return "";
+    }
+    return match;
+  });
   // Strip HTML headings and general tags
-  text = text.replace(/<h\d+>[^<]*<\/h\d+>/gi, " ");
-  text = text.replace(/<sup[^>]*>.*?<\/sup>/gi, " ");
+  text = text.replace(/<h\d+>[^<]*<\/h\d+>/gi, "");
+  text = text.replace(/<sup[^>]*>.*?<\/sup>/gi, "");
+  text = text.replace(/<br\s*\/?>/gi, " ");
   text = text.replace(/<[^>]+>/g, " ");
-  // Strip footnote circles ⓐ ⓑ ⓜ etc. and brackets [1]
+  // Strip footnote circles and brackets
   text = text.replace(/[\u2460-\u2473\u24B6-\u24E9\u2776-\u277F]/g, "");
   text = text.replace(/\[\d+\]/g, "");
   return text.replace(/\s+/g, " ").trim();

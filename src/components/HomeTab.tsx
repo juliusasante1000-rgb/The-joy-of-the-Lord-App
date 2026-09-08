@@ -242,11 +242,13 @@ export const HomeTab: React.FC<HomeTabProps> = ({
     setIsGeneratingAi(true);
 
     try {
+      const currentSubj = activeDisplayVerse.theme || activeDisplayVerse.title || "Faith, Supernatural Strength & Victory";
       const res = await streamAiContent<any>({
         actionType: action,
+        subject: currentSubj,
         scriptureReference: activeDisplayVerse.reference,
         scriptureText: activeDisplayVerse.text,
-        scriptureTheme: activeDisplayVerse.theme || "Faith & Divine Joy",
+        scriptureTheme: currentSubj,
         fastMode: getIsFastMode(),
         storageKey: `ai_verse_action_${activeDisplayVerse.id || "today"}_${action}`,
         onProgress: (prog) => {
@@ -265,23 +267,33 @@ export const HomeTab: React.FC<HomeTabProps> = ({
 
           if (action === "Create Prayer" || action === "prayer") {
             setAiActionResult(
-              `${inner.title || "Prayer of Faith"}\n\n${inner.adoration || ""}\n\n${inner.petition || ""}\n\n${inner.warfareDeclaration || ""}\n\n${inner.closing || "In Jesus' Name, Amen."}`
+              inner.adoration || inner.petition
+                ? `${inner.title || "Prayer of Faith"}\n\n${inner.adoration || ""}\n\n${inner.petition || ""}\n\n${inner.warfareDeclaration || ""}\n\n${inner.closing || "In Jesus' Name, Amen."}`
+                : (fullText || "")
             );
           } else if (action === "Prayer Points" || action === "Create Prayer Points" || action === "prayer_points") {
             setAiActionResult(
-              `${inner.title || "Strategic Prayer Points"}\n\n${(inner.prayerPoints || []).map((p: any) => `${p.pointNumber || ""}. ${p.focus || ""}: ${p.prayerDeclaration || ""}`).join("\n\n")}\n\n${inner.propheticDecree || ""}`
+              inner.prayerPoints && inner.prayerPoints.length > 0
+                ? `${inner.title || "Strategic Prayer Points"}\n\n${(inner.prayerPoints || []).map((p: any) => `${p.pointNumber || ""}. ${p.focus || ""}: ${p.prayerDeclaration || ""}`).join("\n\n")}\n\n${inner.propheticDecree || ""}`
+                : (fullText || "")
             );
           } else if (action === "Explain Verse" || action === "Explain This Verse" || action === "explain") {
             setAiActionResult(
-              `${inner.title || "Exposition"}\n\n${inner.historicalContext || ""}\n\n${inner.originalLanguageInsight || ""}\n\n${inner.doctrinalMeaning || ""}\n\n${inner.lifeTransformation || ""}`
+              inner.historicalContext || inner.originalLanguageInsight || inner.doctrinalMeaning
+                ? `${inner.title || "Exposition"}\n\n${inner.historicalContext || ""}\n\n${inner.originalLanguageInsight || ""}\n\n${inner.doctrinalMeaning || ""}\n\n${inner.lifeTransformation || ""}`
+                : (fullText || "")
             );
           } else if (action === "MathemaSermon" || action === "mathemasermon") {
             setAiActionResult(
-              `${inner.title || "MathemaSermon"}\nConcept: ${inner.mathematicalConcept || ""}\nFormula: ${inner.formula || ""}\n\n${inner.mathematicalAnalogy || ""}\n\n${inner.homileticApplication || ""}\n\n${inner.altarCallPrayer || ""}`
+              inner.mathematicalConcept || inner.homileticApplication
+                ? `${inner.title || "MathemaSermon"}\nConcept: ${inner.mathematicalConcept || ""}\nFormula: ${inner.formula || ""}\n\n${inner.mathematicalAnalogy || ""}\n\n${inner.homileticApplication || ""}\n\n${inner.altarCallPrayer || ""}`
+                : (fullText || "")
             );
           } else {
             setAiActionResult(
-              `${inner.title || "Devotion"}\n\n${inner.reflection || ""}\n\nPractical Application: ${inner.practicalApplication || ""}\n\nPrayer: ${inner.guidedPrayer || ""}`
+              inner.reflection || inner.guidedPrayer
+                ? `${inner.title || "Devotion"}\n\n${inner.reflection || ""}\n\nPractical Application: ${inner.practicalApplication || ""}\n\nPrayer: ${inner.guidedPrayer || ""}`
+                : (fullText || "")
             );
           }
           setIsGeneratingAi(false);
