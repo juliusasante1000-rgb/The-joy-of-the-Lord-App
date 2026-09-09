@@ -1,0 +1,718 @@
+import React, { useState, useEffect } from "react";
+import {
+  X,
+  Sparkles,
+  BookOpen,
+  Volume2,
+  VolumeX,
+  Share2,
+  Printer,
+  ChevronLeft,
+  ChevronRight,
+  Maximize2,
+  Minimize2,
+  Layers,
+  HeartHandshake,
+  Compass,
+  ArrowRight,
+  ExternalLink,
+  Info,
+  Flame,
+  Check,
+  Zap,
+  Image as ImageIcon,
+  Download
+} from "lucide-react";
+import { ShemotGeulahName, Devotion } from "../types";
+import { getRedemptiveNameFullProfile, RedemptiveNameFullProfile } from "../utils/redemptiveNameExpositionHelper";
+import { printRedemptiveNameDocument } from "../utils/devotionDocumentExporter";
+import { streamAiContent } from "../utils/aiStreaming";
+import { DevotionPictureModal } from "./DevotionPictureModal";
+
+interface RedemptiveNameSanctuaryModalProps {
+  item: ShemotGeulahName;
+  onClose: () => void;
+  onOpenScripture?: (ref: string) => void;
+  onCreateDevotion?: (devotion: Devotion) => void;
+  onOpenPictureStudio?: (options: {
+    reference: string;
+    text: string;
+    theme: string;
+    category?: string;
+  }) => void;
+  onDownloadDirectImage?: (options: {
+    reference: string;
+    text: string;
+    theme: string;
+    category?: string;
+  }) => void;
+  onToggleSpeak?: (text: string) => void;
+  isSpeaking?: boolean;
+  onPreviousName?: () => void;
+  onNextName?: () => void;
+  hasPrevious?: boolean;
+  hasNext?: boolean;
+  currentIndex?: number;
+  totalCount?: number;
+}
+
+export const RedemptiveNameSanctuaryModal: React.FC<RedemptiveNameSanctuaryModalProps> = ({
+  item,
+  onClose,
+  onOpenScripture,
+  onCreateDevotion,
+  onOpenPictureStudio,
+  onDownloadDirectImage,
+  onToggleSpeak,
+  isSpeaking = false,
+  onPreviousName,
+  onNextName,
+  hasPrevious = false,
+  hasNext = false,
+  currentIndex = 0,
+  totalCount = 500
+}) => {
+  const [profile, setProfile] = useState<RedemptiveNameFullProfile>(() => getRedemptiveNameFullProfile(item));
+  const [activeTab, setActiveTab] = useState<"revelation" | "vault" | "prayer" | "historian">("revelation");
+  const [isFullOverlap, setIsFullOverlap] = useState(false);
+  const [copiedNotification, setCopiedNotification] = useState(false);
+  const [pictureDevotion, setPictureDevotion] = useState<Devotion | null>(null);
+
+  // Dynamic AI Historian streaming state
+  const [aiStreamingText, setAiStreamingText] = useState<string>("");
+  const [isAiLoading, setIsAiLoading] = useState<boolean>(false);
+  const [aiGeneratedSuccess, setAiGeneratedSuccess] = useState<boolean>(false);
+  const [fastMode, setFastMode] = useState<boolean>(false);
+
+  useEffect(() => {
+    setProfile(getRedemptiveNameFullProfile(item));
+    setAiStreamingText("");
+    setAiGeneratedSuccess(false);
+    setIsAiLoading(false);
+  }, [item]);
+
+  const handleCopyDeclaration = () => {
+    const textToCopy = `✨ ${item.name} (${item.hebrew}) — ${item.meaning}\n` +
+      `Prophetic Scripture Anchor: ${item.scriptureReference}\n\n` +
+      `PROPHETIC DECLARATION:\n"${profile.propheticDeclaration}"\n\n` +
+      `THEOLOGICAL EXPOSITION:\n${profile.theologicalExposition}`;
+    navigator.clipboard.writeText(textToCopy);
+    setCopiedNotification(true);
+    setTimeout(() => setCopiedNotification(false), 2500);
+  };
+
+  const handleDeepenHistorianExegesis = async () => {
+    setIsAiLoading(true);
+    setAiStreamingText("");
+
+    await streamAiContent<{ exegesis: string }>({
+      actionType: "redemptive_name_exegesis",
+      scriptureReference: item.scriptureReference,
+      scriptureText: `Redemptive Name: ${item.name} (${item.hebrew} / ${item.transliteration}). Meaning: ${item.meaning}. Category: ${item.category}.`,
+      scriptureTheme: item.category || "Redemptive Covenant Identity",
+      fastMode,
+      onChunk: (_chunk, accumulated) => {
+        setAiStreamingText(accumulated);
+      },
+      onComplete: (fullText, data) => {
+        setIsAiLoading(false);
+        setAiGeneratedSuccess(true);
+        if (data?.exegesis) {
+          setAiStreamingText(data.exegesis);
+        } else if (fullText) {
+          setAiStreamingText(fullText);
+        }
+      },
+      onError: () => {
+        setIsAiLoading(false);
+        setAiStreamingText(
+          `Historical & Exegetical Synthesis for ${item.name} (${item.hebrew}):\n\n` +
+          `• Biblical Historical Setting: ${profile.historicalContext}\n` +
+          `• Contemporaries & Figures: ${profile.keyBiblicalFigures.join(", ")}\n` +
+          `• Covenant Significance: Revealed under ${profile.covenantEra}, demonstrating that God clothes His people in royal righteousness.\n\n` +
+          profile.theologicalExposition
+        );
+      }
+    });
+  };
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={`Redemptive Name Sanctuary: ${item.name}`}
+      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-950/80 backdrop-blur-md animate-in fade-in duration-200"
+    >
+      <div
+        className={`relative w-full bg-slate-900 border border-amber-500/30 rounded-3xl shadow-2xl flex flex-col overflow-hidden text-slate-100 transition-all duration-300 ${
+          isFullOverlap
+            ? "fixed inset-0 rounded-none border-none h-full max-h-screen z-50"
+            : "max-w-4xl max-h-[92vh] h-[90vh]"
+        }`}
+      >
+        {/* Modal Header */}
+        <div className="relative p-5 sm:p-6 bg-gradient-to-r from-amber-950/60 via-slate-900 to-indigo-950/60 border-b border-amber-500/20 shrink-0">
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-3 min-w-0">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500/20 to-amber-600/30 border border-amber-400/40 flex items-center justify-center shrink-0 shadow-inner">
+                <Flame className="w-6 h-6 text-amber-300" />
+              </div>
+
+              <div className="min-w-0">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-widest bg-amber-400/20 text-amber-300 border border-amber-400/30">
+                    Shemot Geulah #{item.id}
+                  </span>
+                  <span className="text-xs text-amber-200/80 font-serif italic">
+                    {item.category}
+                  </span>
+                  {totalCount && (
+                    <span className="text-[11px] text-slate-400">
+                      ({currentIndex + 1} of {totalCount})
+                    </span>
+                  )}
+                </div>
+
+                <div className="flex items-baseline gap-2.5 mt-0.5">
+                  <h2 className="text-xl sm:text-2xl font-serif font-bold text-white tracking-wide truncate">
+                    {item.name}
+                  </h2>
+                  <span className="text-lg sm:text-xl font-serif text-amber-300 font-bold" dir="rtl">
+                    {item.hebrew}
+                  </span>
+                </div>
+
+                <p className="text-xs sm:text-sm text-amber-200/90 font-medium truncate">
+                  "{item.meaning}" • <span className="font-mono text-slate-300">{item.transliteration}</span>
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-1.5 shrink-0">
+              <button
+                onClick={() => setIsFullOverlap(!isFullOverlap)}
+                className={`p-2 rounded-xl transition-colors cursor-pointer ${
+                  isFullOverlap ? "bg-amber-600 text-white" : "bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white"
+                }`}
+                title={isFullOverlap ? "Exit Full Page" : "Expand to Full Page"}
+                aria-label="Toggle Full Page"
+              >
+                {isFullOverlap ? <Minimize2 className="w-5 h-5" /> : <Maximize2 className="w-5 h-5" />}
+              </button>
+
+              <button
+                onClick={onClose}
+                className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white transition-colors cursor-pointer shrink-0"
+                aria-label="Close"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+
+          {/* Meaning & Theological Distinction Guard */}
+          <div className="mt-3.5 pt-3 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-slate-300">
+            <p className="italic text-slate-200 flex items-center gap-1.5">
+              <BookOpen className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+              <span>Scripture Anchor: <strong>{item.scriptureReference}</strong></span>
+            </p>
+            <div className="flex items-center gap-1.5 shrink-0 text-[11px] text-amber-300/80 bg-black/30 px-2.5 py-1 rounded-lg border border-amber-400/20">
+              <Info className="w-3.5 h-3.5" />
+              <span>Sanctuary Redemptive Profile</span>
+            </div>
+          </div>
+
+          {/* Navigation Tabs (matching Scriptural Places architecture) */}
+          <div className="mt-4 flex items-center gap-2 overflow-x-auto no-scrollbar pt-1">
+            <button
+              onClick={() => setActiveTab("revelation")}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
+                activeTab === "revelation"
+                  ? "bg-amber-500 text-slate-950 shadow-md font-extrabold"
+                  : "bg-white/10 text-slate-300 hover:bg-white/15"
+              }`}
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              Revelation & Sacred Exposition
+            </button>
+
+            <button
+              onClick={() => setActiveTab("vault")}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
+                activeTab === "vault"
+                  ? "bg-amber-500 text-slate-950 shadow-md font-extrabold"
+                  : "bg-white/10 text-slate-300 hover:bg-white/15"
+              }`}
+            >
+              <Layers className="w-3.5 h-3.5" />
+              Scripture Vault ({profile.scriptureVault.length})
+            </button>
+
+            <button
+              onClick={() => setActiveTab("prayer")}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
+                activeTab === "prayer"
+                  ? "bg-amber-500 text-slate-950 shadow-md font-extrabold"
+                  : "bg-white/10 text-slate-300 hover:bg-white/15"
+              }`}
+            >
+              <HeartHandshake className="w-3.5 h-3.5" />
+              Prophetic Altar & Apostolic Prayer
+            </button>
+
+            <button
+              onClick={() => setActiveTab("historian")}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
+                activeTab === "historian"
+                  ? "bg-amber-500 text-slate-950 shadow-md font-extrabold"
+                  : "bg-white/10 text-slate-300 hover:bg-white/15"
+              }`}
+            >
+              <Compass className="w-3.5 h-3.5" />
+              Biblical Historian Exegesis
+            </button>
+          </div>
+        </div>
+
+        {/* Modal Body */}
+        <div className="flex-1 overflow-y-auto p-5 sm:p-6 space-y-5 bg-slate-950/60">
+          {/* TAB 1: REVELATION & SACRED EXPOSITION */}
+          {activeTab === "revelation" && (
+            <div className="space-y-5 animate-in fade-in duration-150">
+              {/* Primary Narrative & Theological Exegesis Card */}
+              <div className="bg-gradient-to-r from-[#16235A]/80 via-slate-900 to-indigo-950/80 border border-amber-500/30 rounded-2xl p-5 sm:p-6 shadow-xl space-y-3 relative overflow-hidden">
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-2">
+                    <span className="px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 text-xs font-bold uppercase tracking-wider border border-amber-400/30 flex items-center gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                      Sacred Redemptive Exposition
+                    </span>
+                    <span className="text-xs text-slate-400 font-serif italic hidden sm:inline">
+                      {profile.covenantEra}
+                    </span>
+                  </div>
+
+                  {onToggleSpeak && (
+                    <button
+                      onClick={() =>
+                        onToggleSpeak(
+                          `${item.name}. Hebrew: ${item.hebrew}. Transliteration: ${item.transliteration}. Meaning: ${item.meaning}. ${profile.theologicalExposition}`
+                        )
+                      }
+                      className={`p-2 rounded-lg text-xs font-medium transition-colors cursor-pointer ${
+                        isSpeaking
+                          ? "bg-amber-500 text-slate-950"
+                          : "bg-slate-800 hover:bg-slate-700 text-slate-200"
+                      }`}
+                      title={isSpeaking ? "Mute Voice" : "Listen to Sacred Exposition"}
+                    >
+                      {isSpeaking ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+                    </button>
+                  )}
+                </div>
+
+                <h3 className="text-base sm:text-lg font-serif font-bold text-amber-300">
+                  {item.name} ({item.hebrew}): {item.meaning}
+                </h3>
+
+                <div className="text-sm sm:text-base text-slate-200 leading-relaxed font-serif space-y-3 whitespace-pre-line">
+                  {profile.theologicalExposition}
+                </div>
+
+                <div className="text-xs text-slate-400 pt-3 border-t border-white/10 flex items-start gap-1.5">
+                  <Info className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
+                  <span><strong>Covenant Context:</strong> {profile.historicalContext}</span>
+                </div>
+              </div>
+
+              {/* Prophetic Identity Declaration Card */}
+              <div className="bg-gradient-to-br from-amber-950/40 via-slate-900 to-amber-900/20 border border-amber-500/40 rounded-2xl p-5 shadow-lg space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold uppercase tracking-wider text-amber-300 flex items-center gap-1.5">
+                    <Flame className="w-4 h-4 text-amber-400" />
+                    Prophetic Identity Declaration
+                  </span>
+                  <button
+                    onClick={handleCopyDeclaration}
+                    className="text-xs text-amber-300 hover:text-amber-200 flex items-center gap-1 cursor-pointer font-medium"
+                  >
+                    {copiedNotification ? <Check className="w-3.5 h-3.5" /> : <Share2 className="w-3.5 h-3.5" />}
+                    <span>{copiedNotification ? "Copied!" : "Copy Declaration"}</span>
+                  </button>
+                </div>
+
+                <blockquote className="text-base sm:text-lg font-serif font-semibold text-amber-100 italic border-l-4 border-amber-400 pl-4 py-1 leading-relaxed">
+                  "{profile.propheticDeclaration}"
+                </blockquote>
+
+                <p className="text-xs text-slate-300 pt-2 border-t border-white/10 leading-relaxed">
+                  <strong>Practical Application:</strong> {profile.practicalApplication}
+                </p>
+              </div>
+
+              {/* Action Toolbar Inside Modal */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2">
+                {onCreateDevotion && (
+                  <button
+                    onClick={() => {
+                      onCreateDevotion(profile.syntheticDevotion);
+                      onClose();
+                    }}
+                    className="p-3 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5"
+                  >
+                    <BookOpen className="w-3.5 h-3.5" />
+                    Create Devotion
+                  </button>
+                )}
+
+                {onOpenScripture && (
+                  <button
+                    onClick={() => {
+                      onOpenScripture(item.scriptureReference);
+                      onClose();
+                    }}
+                    className="p-3 bg-indigo-500/20 hover:bg-indigo-500/30 text-indigo-300 border border-indigo-500/40 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5" />
+                    Read in Bible
+                  </button>
+                )}
+
+                <button
+                  onClick={() => {
+                    if (onOpenPictureStudio) {
+                      onOpenPictureStudio({
+                        reference: item.scriptureReference,
+                        text: `"${profile.propheticDeclaration}"`,
+                        theme: `${item.name} (${item.hebrew}) — ${item.meaning}`,
+                        category: item.category
+                      });
+                    } else {
+                      setPictureDevotion(profile.syntheticDevotion);
+                    }
+                  }}
+                  className="p-3 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5"
+                >
+                  <ImageIcon className="w-3.5 h-3.5" />
+                  Picture Studio
+                </button>
+
+                <button
+                  onClick={() => printRedemptiveNameDocument(item)}
+                  className="p-3 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-white/10 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5"
+                >
+                  <Printer className="w-3.5 h-3.5" />
+                  Print / Save PDF
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* TAB 2: SCRIPTURE VAULT */}
+          {activeTab === "vault" && (
+            <div className="space-y-4 animate-in fade-in duration-150">
+              <div className="p-4 rounded-2xl bg-indigo-950/40 border border-indigo-500/30 flex items-center justify-between">
+                <div>
+                  <h4 className="text-sm font-bold text-indigo-200 flex items-center gap-2">
+                    <Layers className="w-4 h-4 text-indigo-400" />
+                    Scripture Vault for {item.name}
+                  </h4>
+                  <p className="text-xs text-slate-400 mt-0.5">
+                    Canonical scriptures anchoring this redemptive covenant name
+                  </p>
+                </div>
+                <span className="px-2.5 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-bold">
+                  {profile.scriptureVault.length} Scriptures
+                </span>
+              </div>
+
+              <div className="space-y-3">
+                {profile.scriptureVault.map((scrip, idx) => (
+                  <div
+                    key={idx}
+                    className="p-4 rounded-2xl bg-slate-900/90 border border-white/10 hover:border-amber-500/30 transition-all space-y-2"
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-bold text-amber-300 uppercase tracking-wider">
+                        {scrip.theme}
+                      </span>
+                      {onOpenScripture && (
+                        <button
+                          onClick={() => {
+                            onOpenScripture(scrip.reference);
+                            onClose();
+                          }}
+                          className="text-xs text-indigo-400 hover:text-indigo-300 flex items-center gap-1 cursor-pointer font-medium"
+                        >
+                          <BookOpen className="w-3 h-3" />
+                          <span>{scrip.reference}</span>
+                        </button>
+                      )}
+                    </div>
+
+                    <p className="text-sm font-serif italic text-slate-200">
+                      "{scrip.text}"
+                    </p>
+
+                    <p className="text-xs text-slate-400 pt-1 border-t border-white/5">
+                      <strong>Theological Note:</strong> {scrip.reflection}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* TAB 3: PROPHETIC ALTAR & APOSTOLIC PRAYER */}
+          {activeTab === "prayer" && (
+            <div className="space-y-4 animate-in fade-in duration-150">
+              <div className="p-4 rounded-2xl bg-amber-950/40 border border-amber-500/30 flex items-center justify-between">
+                <div>
+                  <h4 className="text-sm font-bold text-amber-200 flex items-center gap-2">
+                    <HeartHandshake className="w-4 h-4 text-amber-400" />
+                    Prophetic Altar: {item.name} ({item.hebrew})
+                  </h4>
+                  <p className="text-xs text-slate-400 mt-0.5">
+                    Structured 5-fold apostolic prayer of covenant victory & faith
+                  </p>
+                </div>
+                <button
+                  onClick={() => {
+                    const fullPrayer = `APOSTOLIC PRAYER OF FAITH: ${item.name}\n\n` +
+                      `✦ ADORATION:\n${profile.apostolicPrayer.adoration}\n\n` +
+                      `✦ SURRENDER:\n${profile.apostolicPrayer.confessionAndSurrender}\n\n` +
+                      `✦ THANKSGIVING:\n${profile.apostolicPrayer.thanksgiving}\n\n` +
+                      `✦ PETITION:\n${profile.apostolicPrayer.petition}\n\n` +
+                      `✦ WARFARE DECREE:\n${profile.apostolicPrayer.warfareDeclaration}\n\n` +
+                      `✦ PROPHETIC SEAL:\n${profile.apostolicPrayer.propheticSeal}`;
+                    navigator.clipboard.writeText(fullPrayer);
+                    setCopiedNotification(true);
+                    setTimeout(() => setCopiedNotification(false), 2000);
+                  }}
+                  className="px-3 py-1.5 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5"
+                >
+                  {copiedNotification ? <Check className="w-3.5 h-3.5" /> : <Share2 className="w-3.5 h-3.5" />}
+                  <span>{copiedNotification ? "Copied!" : "Copy Full Prayer"}</span>
+                </button>
+              </div>
+
+              <div className="space-y-3">
+                <div className="p-4 rounded-2xl bg-slate-900/90 border border-white/10 space-y-1.5">
+                  <span className="text-xs font-bold uppercase tracking-wider text-amber-400">
+                    1. Adoration & Reverence
+                  </span>
+                  <p className="text-sm font-serif text-slate-200 leading-relaxed">
+                    {profile.apostolicPrayer.adoration}
+                  </p>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-slate-900/90 border border-white/10 space-y-1.5">
+                  <span className="text-xs font-bold uppercase tracking-wider text-amber-400">
+                    2. Confession & Renunciation
+                  </span>
+                  <p className="text-sm font-serif text-slate-200 leading-relaxed">
+                    {profile.apostolicPrayer.confessionAndSurrender}
+                  </p>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-slate-900/90 border border-white/10 space-y-1.5">
+                  <span className="text-xs font-bold uppercase tracking-wider text-amber-400">
+                    3. Covenant Thanksgiving
+                  </span>
+                  <p className="text-sm font-serif text-slate-200 leading-relaxed">
+                    {profile.apostolicPrayer.thanksgiving}
+                  </p>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-slate-900/90 border border-white/10 space-y-1.5">
+                  <span className="text-xs font-bold uppercase tracking-wider text-amber-400">
+                    4. Strategic Personal Petitions
+                  </span>
+                  <p className="text-sm font-serif text-slate-200 leading-relaxed">
+                    {profile.apostolicPrayer.petition}
+                  </p>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-gradient-to-r from-red-950/40 via-slate-900 to-amber-950/40 border border-red-500/30 space-y-1.5">
+                  <span className="text-xs font-bold uppercase tracking-wider text-red-400 flex items-center gap-1.5">
+                    <Flame className="w-3.5 h-3.5" />
+                    5. Spiritual Warfare Authority & Prophetic Seal
+                  </span>
+                  <p className="text-sm font-serif text-slate-200 leading-relaxed">
+                    {profile.apostolicPrayer.warfareDeclaration}
+                  </p>
+                  <p className="text-xs font-serif font-bold text-amber-300 pt-2 border-t border-white/10">
+                    {profile.apostolicPrayer.propheticSeal}
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* TAB 4: BIBLICAL HISTORIAN EXEGESIS */}
+          {activeTab === "historian" && (
+            <div className="space-y-4 animate-in fade-in duration-150">
+              <div className="p-4 rounded-2xl bg-indigo-950/40 border border-indigo-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div>
+                  <h4 className="text-sm font-bold text-indigo-200 flex items-center gap-2">
+                    <Compass className="w-4 h-4 text-indigo-400" />
+                    Biblical Historian Exegesis: {item.name}
+                  </h4>
+                  <p className="text-xs text-slate-400 mt-0.5">
+                    Historical context, era, key figures, and live AI deep study
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => setFastMode(!fastMode)}
+                    className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-colors flex items-center gap-1 cursor-pointer ${
+                      fastMode
+                        ? "bg-amber-500/20 text-amber-300 border border-amber-500/40"
+                        : "bg-slate-800 text-slate-400 border border-white/10"
+                    }`}
+                    title="Toggle Fast / Deep AI Mode"
+                  >
+                    <Zap className="w-3 h-3" />
+                    <span>{fastMode ? "Fast" : "Standard"}</span>
+                  </button>
+
+                  <button
+                    onClick={handleDeepenHistorianExegesis}
+                    disabled={isAiLoading}
+                    className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 disabled:bg-indigo-900/50 text-white rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 shadow-md shrink-0"
+                  >
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>{isAiLoading ? "Streaming..." : "Deepen with AI"}</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Streaming Output Card if AI is active */}
+              {(isAiLoading || aiStreamingText) && (
+                <div className="p-5 rounded-2xl bg-slate-900 border border-indigo-500/40 shadow-xl space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-bold uppercase tracking-wider text-indigo-300 flex items-center gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5 text-indigo-400 animate-pulse" />
+                      Dynamic Historian Exegesis
+                    </span>
+                    {isAiLoading && (
+                      <span className="text-[11px] text-amber-300 font-mono animate-pulse">
+                        Streaming exegesis...
+                      </span>
+                    )}
+                  </div>
+                  <div className="text-sm font-serif text-slate-200 leading-relaxed whitespace-pre-line">
+                    {aiStreamingText}
+                  </div>
+                </div>
+              )}
+
+              {/* Core Built-in Exegesis Profile */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div className="p-4 rounded-2xl bg-slate-900/90 border border-white/10 space-y-2">
+                  <span className="text-xs font-bold uppercase tracking-wider text-amber-400">
+                    Historical Era & Setting
+                  </span>
+                  <p className="text-sm font-serif text-slate-200">
+                    {profile.covenantEra}
+                  </p>
+                  <p className="text-xs text-slate-400 pt-1 border-t border-white/5">
+                    {profile.historicalContext}
+                  </p>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-slate-900/90 border border-white/10 space-y-2">
+                  <span className="text-xs font-bold uppercase tracking-wider text-indigo-400">
+                    Key Biblical Figures
+                  </span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {profile.keyBiblicalFigures.map((fig, idx) => (
+                      <span
+                        key={idx}
+                        className="px-2.5 py-1 rounded-lg bg-indigo-500/20 text-indigo-300 text-xs font-medium border border-indigo-500/30"
+                      >
+                        {fig}
+                      </span>
+                    ))}
+                  </div>
+                  <p className="text-xs text-slate-400 pt-1 border-t border-white/5">
+                    Connected contemporaries demonstrating covenant righteousness and divine purpose.
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Modal Footer with Previous / Next Navigation */}
+        <div className="p-4 bg-slate-900/90 border-t border-white/10 shrink-0 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2">
+            <button
+              onClick={onPreviousName}
+              disabled={!hasPrevious}
+              className="px-3 py-2 bg-white/10 hover:bg-white/15 disabled:opacity-30 disabled:pointer-events-none rounded-xl text-xs font-bold transition-colors cursor-pointer flex items-center gap-1.5 text-slate-300"
+            >
+              <ChevronLeft className="w-4 h-4" />
+              <span>Previous</span>
+            </button>
+
+            <button
+              onClick={onNextName}
+              disabled={!hasNext}
+              className="px-3 py-2 bg-white/10 hover:bg-white/15 disabled:opacity-30 disabled:pointer-events-none rounded-xl text-xs font-bold transition-colors cursor-pointer flex items-center gap-1.5 text-slate-300"
+            >
+              <span>Next</span>
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+
+          <div className="flex items-center gap-2">
+            {onDownloadDirectImage ? (
+              <button
+                onClick={() =>
+                  onDownloadDirectImage({
+                    reference: item.scriptureReference,
+                    text: `"${profile.propheticDeclaration}"`,
+                    theme: `${item.name} (${item.hebrew}) — ${item.meaning}`,
+                    category: item.category
+                  })
+                }
+                className="p-2 sm:px-3 sm:py-2 bg-emerald-600/30 hover:bg-emerald-600/40 text-emerald-300 border border-emerald-500/40 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5"
+                title="Download Verse Picture (PNG)"
+              >
+                <Download className="w-4 h-4" />
+                <span className="hidden sm:inline">PNG Image</span>
+              </button>
+            ) : (
+              <button
+                onClick={() => setPictureDevotion(profile.syntheticDevotion)}
+                className="p-2 sm:px-3 sm:py-2 bg-emerald-600/30 hover:bg-emerald-600/40 text-emerald-300 border border-emerald-500/40 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5"
+                title="Download Verse Picture (PNG)"
+              >
+                <Download className="w-4 h-4" />
+                <span className="hidden sm:inline">PNG Image</span>
+              </button>
+            )}
+
+            <button
+              onClick={() => printRedemptiveNameDocument(item)}
+              className="p-2 sm:px-3 sm:py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold rounded-xl text-xs transition-all cursor-pointer flex items-center gap-1.5 shadow-md"
+            >
+              <Printer className="w-4 h-4" />
+              <span className="hidden sm:inline">Print Document</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {pictureDevotion && (
+        <DevotionPictureModal
+          devotion={pictureDevotion}
+          isOpen={Boolean(pictureDevotion)}
+          onClose={() => setPictureDevotion(null)}
+        />
+      )}
+    </div>
+  );
+};

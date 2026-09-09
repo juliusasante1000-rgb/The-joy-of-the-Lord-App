@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { UnpopularBiblicalName } from "../types";
 import { UNPOPULAR_BIBLICAL_500_NAMES } from "../data/unpopularNames500Catalog";
+import { UnpopularNameSanctuaryModal } from "./UnpopularNameSanctuaryModal";
 
 interface UnpopularBiblicalNamesTabProps {
   onNavigateToBibleChapter?: (book: string, chapter: number, verse?: number) => void;
@@ -30,6 +31,18 @@ interface UnpopularBiblicalNamesTabProps {
   onShareItem?: (item: any) => void;
   isSpeaking?: boolean;
   onToggleSpeak?: (text: string) => void;
+  onOpenPictureStudio?: (options: {
+    reference: string;
+    text: string;
+    theme: string;
+    category?: string;
+  }) => void;
+  onDownloadDirectImage?: (options: {
+    reference: string;
+    text: string;
+    theme: string;
+    category?: string;
+  }) => void;
 }
 
 export const UnpopularBiblicalNamesTab: React.FC<UnpopularBiblicalNamesTabProps> = ({
@@ -39,7 +52,9 @@ export const UnpopularBiblicalNamesTab: React.FC<UnpopularBiblicalNamesTabProps>
   onToggleBookmark,
   onShareItem,
   isSpeaking,
-  onToggleSpeak
+  onToggleSpeak,
+  onOpenPictureStudio,
+  onDownloadDirectImage
 }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
@@ -448,153 +463,30 @@ export const UnpopularBiblicalNamesTab: React.FC<UnpopularBiblicalNamesTabProps>
         </div>
       )}
 
-      {/* Detail Modal */}
+      {/* Universal Rich Sanctuary Modal for Unpopular Biblical Figures */}
       {activeModalPerson && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200">
-          <div className="bg-white rounded-3xl max-w-xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-sky-100 flex flex-col">
-            {/* Header */}
-            <div className="p-6 bg-gradient-to-br from-[#0F2942] to-[#1E6B9B] text-white relative rounded-t-3xl">
-              <button
-                onClick={() => setActiveModalPerson(null)}
-                className="absolute right-4 top-4 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
-              >
-                <X className="w-5 h-5" />
-              </button>
-
-              <div className="flex items-center gap-2 mb-2">
-                <span className="px-2.5 py-0.5 rounded-full bg-amber-400/20 text-amber-300 text-xs font-bold border border-amber-400/30">
-                  Biblical Figure #{activeModalPerson.id}
-                </span>
-                <span className="text-xs text-sky-200">
-                  {activeModalPerson.personType}
-                </span>
-              </div>
-
-              <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
-                <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white">
-                  {activeModalPerson.name}
-                </h3>
-                <span className="text-3xl font-serif font-bold text-amber-300 font-hebrew dir-rtl">
-                  {activeModalPerson.originalScript}
-                </span>
-              </div>
-              <p className="text-sm text-sky-200 italic mt-1">
-                Original Vocalization: {activeModalPerson.transliteration}
-              </p>
-            </div>
-
-            {/* Modal Body */}
-            <div className="p-6 space-y-5 flex-1">
-              {/* Meaning */}
-              <div className="p-4 rounded-2xl bg-sky-50 border border-sky-100">
-                <span className="text-[11px] font-bold text-sky-900 uppercase tracking-wider block">
-                  Prophetic &amp; Etymological Meaning
-                </span>
-                <p className="text-xl font-serif font-bold text-sky-950 mt-1">
-                  &quot;{activeModalPerson.meaning}&quot;
-                </p>
-              </div>
-
-              {/* Scripture Reference */}
-              <div className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200">
-                <div className="flex items-center gap-2 text-sm text-slate-800">
-                  <BookOpen className="w-4 h-4 text-sky-700" />
-                  <span className="font-semibold">{activeModalPerson.scriptureReference}</span>
-                </div>
-                <button
-                  onClick={() => {
-                    handleNavigateScripture(activeModalPerson.scriptureReference);
-                    setActiveModalPerson(null);
-                  }}
-                  className="text-xs font-bold text-sky-700 hover:text-sky-950 underline"
-                >
-                  Read Chapter in Bible →
-                </button>
-              </div>
-
-              {/* Historical Role & Scriptural Legacy */}
-              <div className="space-y-1.5">
-                <span className="text-xs font-bold text-slate-700 uppercase tracking-wide flex items-center gap-1.5">
-                  <UserCheck className="w-3.5 h-3.5 text-sky-600" />
-                  Biblical Record &amp; Historic Calling
-                </span>
-                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-sm text-slate-800 leading-relaxed">
-                  {activeModalPerson.historicalRole}
-                </div>
-              </div>
-
-              {/* Blessing Application */}
-              <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-slate-700 uppercase tracking-wide flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-                    Prophetic Blessing Application
-                  </span>
-                  <button
-                    onClick={() => handleCopy(activeModalPerson)}
-                    className="text-xs font-medium text-sky-700 hover:text-sky-900 flex items-center gap-1"
-                  >
-                    {copiedId === activeModalPerson.id ? <Check className="w-3 h-3 text-emerald-600" /> : <Copy className="w-3 h-3" />}
-                    <span>Copy Blessing</span>
-                  </button>
-                </div>
-                <div className="p-4 rounded-2xl bg-amber-50/80 border border-amber-200/80 text-sm font-serif text-amber-950 leading-relaxed italic">
-                  &quot;{activeModalPerson.blessingApplication}&quot;
-                </div>
-              </div>
-            </div>
-
-            {/* Modal Footer Controls */}
-            <div className="p-4 bg-slate-50 border-t border-slate-200 rounded-b-3xl flex items-center justify-between gap-3">
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={handlePrevModal}
-                  className="px-3 py-2 rounded-xl bg-white border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-100 flex items-center gap-1"
-                >
-                  <ChevronLeft className="w-3.5 h-3.5" />
-                  Previous
-                </button>
-                <button
-                  onClick={handleNextModal}
-                  className="px-3 py-2 rounded-xl bg-white border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-100 flex items-center gap-1"
-                >
-                  Next
-                  <ChevronRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
-
-              <div className="flex items-center gap-2">
-                {onToggleSpeak && (
-                  <button
-                    onClick={() => onToggleSpeak(`${activeModalPerson.name}. ${activeModalPerson.meaning}. ${activeModalPerson.historicalRole}. ${activeModalPerson.blessingApplication}`)}
-                    className="p-2.5 rounded-xl bg-sky-100 text-sky-950 hover:bg-sky-200 transition-colors"
-                    title="Audio Vocalization"
-                  >
-                    <Volume2 className="w-4 h-4" />
-                  </button>
-                )}
-                {onShareItem && (
-                  <button
-                    onClick={() => onShareItem({
-                      title: `Biblical Figure: ${activeModalPerson.name}`,
-                      text: `${activeModalPerson.name} (${activeModalPerson.originalScript}) - "${activeModalPerson.meaning}" (${activeModalPerson.scriptureReference}): ${activeModalPerson.blessingApplication}`
-                    })}
-                    className="p-2.5 rounded-xl bg-sky-100 text-sky-950 hover:bg-sky-200 transition-colors"
-                    title="Share"
-                  >
-                    <Share2 className="w-4 h-4" />
-                  </button>
-                )}
-                <button
-                  onClick={() => setActiveModalPerson(null)}
-                  className="px-5 py-2.5 rounded-xl bg-sky-950 text-white text-xs font-bold hover:bg-sky-900 transition-colors"
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <UnpopularNameSanctuaryModal
+          item={activeModalPerson}
+          onClose={() => setActiveModalPerson(null)}
+          onOpenScripture={(ref) => {
+            handleNavigateScripture(ref);
+            setActiveModalPerson(null);
+          }}
+          onCreateDevotion={(dev) => {
+            if (onOpenDevotion) onOpenDevotion(dev);
+            setActiveModalPerson(null);
+          }}
+          onOpenPictureStudio={onOpenPictureStudio}
+          onDownloadDirectImage={onDownloadDirectImage}
+          onToggleSpeak={onToggleSpeak}
+          isSpeaking={isSpeaking}
+          onPreviousName={handlePrevModal}
+          onNextName={handleNextModal}
+          hasPrevious={filteredList.findIndex((n) => n.id === activeModalPerson.id) > 0}
+          hasNext={filteredList.findIndex((n) => n.id === activeModalPerson.id) < filteredList.length - 1}
+          currentIndex={filteredList.findIndex((n) => n.id === activeModalPerson.id)}
+          totalCount={filteredList.length}
+        />
       )}
     </div>
   );

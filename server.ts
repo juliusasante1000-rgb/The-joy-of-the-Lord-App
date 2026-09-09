@@ -11,14 +11,38 @@ dotenv.config();
 const app = express();
 const PORT = 3000;
 
+const isServerless = Boolean(process.env.VERCEL || process.env.VERCEL_ENV || process.env.AWS_LAMBDA_FUNCTION_NAME || process.env.NETLIFY);
+
 app.use(express.json({ limit: "50mb" }));
 
+// Enable CORS and ensure seamless path resolution for both direct and serverless requests
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, x-gemini-api-key");
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200);
+  }
+  // In serverless environments only (e.g. Vercel /api handler), normalize paths if /api prefix was stripped
+  if (isServerless && req.url && !req.url.startsWith("/api") && req.url !== "/" && !req.url.startsWith("/assets") && !req.url.includes(".")) {
+    req.url = `/api${req.url.startsWith("/") ? "" : "/"}${req.url}`;
+  }
+  next();
+});
+
+app.get(["/api", "/api/"], (req, res) => {
+  res.json({
+    name: "The Joy of the Lord API",
+    status: "ok",
+    environment: isServerless ? "vercel" : "cloud-run"
+  });
+});
+
 app.get(["/api/health", "/health"], (req, res) => {
-  res.json({ status: "ok", environment: process.env.VERCEL ? "vercel" : "cloud-run" });
+  res.json({ status: "ok", environment: isServerless ? "vercel" : "cloud-run" });
 });
 
 // Server storage directory: Safe writable directory for local or serverless environments
-const isServerless = Boolean(process.env.VERCEL || process.env.VERCEL_ENV || process.env.AWS_LAMBDA_FUNCTION_NAME || process.env.NETLIFY);
 const DATA_DIR = isServerless
   ? path.join(os.tmpdir(), "joy_of_lord_server_data")
   : path.join(process.cwd(), "server_data");
@@ -287,11 +311,12 @@ function getGeminiClient(customApiKey?: string): GoogleGenAI | null {
 const AI_RESPONSE_CACHE = new Map<string, { text: string; modelUsed: string; timestamp: number }>();
 const AI_CACHE_TTL_MS = 1000 * 60 * 60 * 6; // 6 hours cache
 
-// Valid models according to Gemini API specification, ordered with gemini-3.8-flash for optimal text quality and reliability
+// Valid models according to Gemini API specification, ordered with flash-lite first to avoid single-model quota exhaustion
 const GEMINI_MODELS_CASCADE = [
-  "gemini-3.8-flash",
   "gemini-3.1-flash-lite",
   "gemini-flash-latest",
+  "gemini-3.1-pro-preview",
+  "gemini-3.8-flash",
 ];
 
 // In-flight quota cooldown circuit breaker to prevent cascading 429 delays when API quota is exhausted
@@ -521,16 +546,16 @@ async function generateWithGeminiCascade(options: {
     } catch (err: any) {
       const errMsg = formatGeminiErrorMessage(err);
       if (isQuotaExceededError(err)) {
-        console.warn(`[GEMINI QUOTA EXCEEDED] ⚠️ Model '${model}' quota limit reached (${errMsg}). Engaging 60s cooldown and activating local theological engine.`);
-        quotaCooldownUntil = Date.now() + 60000;
-        break; // Stop bombarding other models with the same exhausted project quota
+        console.warn(`[GEMINI QUOTA WARNING] ⚠️ Model '${model}' quota limit reached (${errMsg}). Attempting next available cascade model...`);
+        continue;
       }
       console.warn(`[GEMINI CASCADE] Model ${model} encountered issue (${errMsg}). Switching to next model in cascade...`);
       continue;
     }
   }
 
-  console.warn(`[GEMINI CASCADE NOTICE] ℹ️ Live AI generation unavailable (Quota/Rate Limit reached). Seamlessly activating built-in rich theological datasets.`);
+  console.warn(`[GEMINI CASCADE NOTICE] ℹ️ Live AI generation unavailable across models. Seamlessly activating built-in rich theological datasets.`);
+  quotaCooldownUntil = Date.now() + 15000;
   return null;
 }
 
@@ -614,15 +639,15 @@ async function streamGeminiCascade(options: {
     } catch (err: any) {
       const errMsg = formatGeminiErrorMessage(err);
       if (isQuotaExceededError(err)) {
-        console.warn(`[GEMINI QUOTA EXCEEDED] ⚠️ Model '${model}' stream reached quota limit (${errMsg}). Engaging 60s cooldown and activating local theological engine.`);
-        quotaCooldownUntil = Date.now() + 60000;
-        break; // Stop retrying other models with the same exhausted project quota
+        console.warn(`[GEMINI QUOTA WARNING] ⚠️ Model '${model}' stream reached quota limit (${errMsg}). Trying next cascade model...`);
+        continue;
       }
       console.warn(`[GEMINI STREAM RETRY] Model ${model} stream issue: ${errMsg}. Trying next model...`);
       continue;
     }
   }
 
+  quotaCooldownUntil = Date.now() + 15000;
   return null;
 }
 
@@ -1825,6 +1850,11 @@ function analyzeVerseContext(reference: string, text: string): VerseExegesisProf
     keyRoots = isNT
       ? { term: "φῶς (phōs)", transliteration: "phōs", strongs: "G5457", meaning: "Radiant divine illumination revealing truth and purity" }
       : { term: "אוֹר (or)", transliteration: "or", strongs: "H216", meaning: "Light of God's countenance bringing life, order, and guidance" };
+  } else if (tLower.includes("beginning") || tLower.includes("created") || tLower.includes("heaven") || tLower.includes("earth") || bLower === "genesis") {
+    primaryTheme = "Divine Architecture, Sovereign Creation & The Bereshit Foundation";
+    keyRoots = isNT
+      ? { term: "κτίσις / ἀρχή (ktisis / archē)", transliteration: "ktisis / archē", strongs: "G2937 / G746", meaning: "Creation and primordial divine origin through Christ the Word (Colossians 1:16)" }
+      : { term: "בְּרֵאשִׁית / בָּרָא / אֱלֹהִים (Bereshit / Bara / Elohim)", transliteration: "Bereshit / Bara / Elohim", strongs: "H7225 / H1254 / H430", meaning: "Primordial beginning, divine ex-nihilo creation, and sovereign omnipotent power" };
   }
 
   // Cross references tailored to testament and theme
@@ -1972,13 +2002,22 @@ const generateTheologicalFallbackData = (
   }
 
   // 5. DEVOTION (Create Devotion)
+  const isGen1 = profile.book.toLowerCase() === "genesis" && String(profile.chapter) === "1";
+  const customReflection = isGen1
+    ? `To engage in Genesis 1:1 exegesis is to stand at the threshold of 'Bereshit'—not merely a chronological starting point, but the supreme theological bedrock of all existence. The Hebrew term 'Bara' (בָּרָא) signifies a divine, ex-nihilo creative act exclusive to God alone; He requires no pre-existing material or human cooperation to bring forth magnificent order, life, and destiny.\n\nWhen Scripture proclaims that God created the heavens and the earth, it immediately establishes His absolute sovereignty over every natural realm, cosmic law, and earthly circumstance. Your personal life and current situation are never bounded by the limited resources or challenges you see before you; they are held by the living Creator whose voice speaks light into primeval void.\n\nAs you meditate on Genesis 1:1 today, connect this primordial majesty to Jesus Christ—the eternal Word through whom all things were made (John 1:1-3, Colossians 1:16). The same sovereign God who framed the cosmos with His Word is actively ordering your steps with unshakeable covenant grace, peace, and triumph.`
+    : `When we pause to meditate upon the living revelation of ${ref} ("${txt}"), our spirits are anchored in the eternal counsel of God. Written under the guidance of the Holy Spirit during the ${profile.historicalEra}, this text addresses the soul with profound authority. The original ${profile.originalLanguage} vocabulary—highlighted by the root concept of ${profile.keyHebrewGreekRoots.term} (${profile.keyHebrewGreekRoots.meaning})—reminds us that God's covenant promises are not human wishes, but immovable divine realities.\n\nTrue spiritual fortitude does not emerge from earthly self-reliance or passing circumstances. It is birthed as we surrender to the Holy Spirit and fix our gaze upon Jesus Christ, the Author and Finisher of our faith. When we rest in His sovereign design, His supernatural joy infuses our hearts with unshakeable peace and resilience.\n\nWalk forward in absolute confidence today. The Lord who watched over biblical generations is faithfully ordering your steps right now. His wisdom guides you, His presence defends you, and His triumph is your eternal inheritance.`;
+
   return {
-    title: `Daily Sanctuary Devotion: Walking in the Truth of ${ref}`,
+    title: isGen1 ? `Bereshit Exegesis: Divine Architecture in Genesis 1:1` : `Daily Sanctuary Devotion: Walking in the Truth of ${ref}`,
     keyScripture: `${ref} (${version}) — "${txt}"`,
     passageText: txt,
-    reflection: `When we pause to consider the living words of ${ref} ("${txt}"), our hearts are drawn into the sacred sanctuary of God's presence. In a world full of rapid changes, conflicting voices, and daily pressures, Scripture provides an eternal, immovable bedrock for our souls. Written by ${profile.author} during the ${profile.historicalEra}, this text speaks directly into our human need for divine strength, clarity, and peace.\n\nTrue spiritual resilience does not come from human willpower, positive thinking, or material security. It is born from a living relationship with the Holy Spirit and an unwavering trust in God's covenant promises. When we acknowledge our human limitations and look to Christ, His supernatural power infuses our inner being with renewed joy and fortitude.\n\nAs you meditate on this passage today, recognize that you are not walking alone. The same sovereign God who guided the biblical patriarchs, prophets, and apostles is with you right now. He knows your trials, He hears your prayers, and His unfailing love surrounds you every step of the journey.`,
-    practicalApplication: `Identify one situation today that has caused you anxiety or weariness. Write down ${ref} on an index card or in your phone notes. Each time that worry surfaces, speak this verse out loud as an act of trust and worship.`,
-    guidedPrayer: `Gracious Heavenly Father, I thank You for the living power of ${ref}. Forgive me for the times I have relied on my own frail understanding rather than Your eternal truth. Fill my heart afresh with the Holy Spirit, renew my mind with Your peace, and let Your strength be made perfect in my weakness today. In the precious and victorious Name of Jesus Christ, Amen.`,
+    reflection: customReflection,
+    practicalApplication: isGen1
+      ? `Take 5 minutes to surrender any chaotic or uncertain situation in your life to God, acknowledging that the Elohim who formed the cosmos from nothing is creating divine order and purpose in your circumstances today.`
+      : `Identify one situation today that has caused you anxiety or weariness. Write down ${ref} on an index card or in your phone notes. Each time that worry surfaces, speak this verse out loud as an act of trust and worship.`,
+    guidedPrayer: isGen1
+      ? `Sovereign Creator God, Elohim of the Heavens and the Earth, I worship You as the Beginning and the End. You who commanded light to shine out of darkness, speak divine order, peace, and purpose into my life today. Anchor my heart in the triumphant truth of Your Word, and let the beauty of Christ shine through everything I do. In the mighty Name of Jesus Christ, Amen.`
+      : `Gracious Heavenly Father, I thank You for the living power of ${ref}. Forgive me for the times I have relied on my own frail understanding rather than Your eternal truth. Fill my heart afresh with the Holy Spirit, renew my mind with Your peace, and let Your strength be made perfect in my weakness today. In the precious and victorious Name of Jesus Christ, Amen.`,
     actionStep: `Memorize ${ref} today and share its encouraging truth with at least one family member or friend who needs divine encouragement.`,
     apostolicDecree: `I decree that the Word of the Lord in ${ref} is alive and active in my life. I walk in divine favor, supernatural joy, and triumphant faith today. Amen!`,
     disclaimer
@@ -4673,11 +4712,16 @@ app.all("/api/*", (req, res) => {
 // Vite middleware setup
 async function startServer() {
   if (process.env.NODE_ENV !== "production") {
-    const vite = await createViteServer({
-      server: { middlewareMode: true },
-      appType: "spa",
-    });
-    app.use(vite.middlewares);
+    try {
+      const { createServer: createViteServer } = await import("vite");
+      const vite = await createViteServer({
+        server: { middlewareMode: true },
+        appType: "spa",
+      });
+      app.use(vite.middlewares);
+    } catch (viteErr) {
+      console.error("[DEV SERVER] Failed to start Vite middleware:", viteErr);
+    }
   } else {
     const distPath = path.join(process.cwd(), "dist");
     app.use(express.static(distPath));
@@ -4695,7 +4739,9 @@ async function startServer() {
 }
 
 if (process.env.VERCEL !== "1" && !process.env.VERCEL_ENV) {
-  startServer();
+  startServer().catch((err) => {
+    console.error("[SERVER] Startup failed:", err);
+  });
 }
 
 export default app;

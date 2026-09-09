@@ -1,4 +1,6 @@
-import { Devotion, CreatorProfile, SpiritualPlace, PlaceScripture, MathemaSermonItem, RhemaWordItem, StructuredPrayer, SystematicTopicItem } from "../types";
+import { Devotion, CreatorProfile, SpiritualPlace, PlaceScripture, MathemaSermonItem, RhemaWordItem, StructuredPrayer, SystematicTopicItem, ShemotGeulahName, UnpopularBiblicalName } from "../types";
+import { getRedemptiveNameFullProfile } from "./redemptiveNameExpositionHelper";
+import { getUnpopularNameFullProfile } from "./unpopularNameExpositionHelper";
 import { ApostleMathLesson } from "../data/apostleMathData";
 import { loadCreatorProfile } from "../data/creatorData";
 import { SYSTEMATIC_TOPICS_500_CATALOG } from "../data/systematicTopicsFullCatalog";
@@ -778,6 +780,74 @@ export function downloadScripturalPlaceDocument(place: SpiritualPlace, scripture
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   const filename = `${place.name.toLowerCase().replace(/[^a-z0-9]/g, "-")}-theme-devotion.html`;
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}
+
+/**
+ * Universal HTML generator for Redemptive Names (Shemot Geulah)
+ */
+export function generateRedemptiveNameDocumentHTML(item: ShemotGeulahName, creatorProfile?: CreatorProfile): string {
+  const profile = getRedemptiveNameFullProfile(item);
+  return generateDevotionDocumentHTML(profile.syntheticDevotion, creatorProfile);
+}
+
+export function printRedemptiveNameDocument(item: ShemotGeulahName, creatorProfile?: CreatorProfile) {
+  const html = generateRedemptiveNameDocumentHTML(item, creatorProfile);
+  const printWindow = window.open("", "_blank");
+  if (printWindow) {
+    printWindow.document.open();
+    printWindow.document.write(html);
+    printWindow.document.close();
+  } else {
+    downloadRedemptiveNameDocument(item, creatorProfile);
+  }
+}
+
+export function downloadRedemptiveNameDocument(item: ShemotGeulahName, creatorProfile?: CreatorProfile) {
+  const html = generateRedemptiveNameDocumentHTML(item, creatorProfile);
+  const blob = new Blob([html], { type: "text/html;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  const filename = `${item.name.toLowerCase().replace(/[^a-z0-9]/g, "-")}-redemptive-name.html`;
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}
+
+/**
+ * Universal HTML generator for Unpopular Biblical Figures
+ */
+export function generateUnpopularNameDocumentHTML(item: UnpopularBiblicalName, creatorProfile?: CreatorProfile): string {
+  const profile = getUnpopularNameFullProfile(item);
+  return generateDevotionDocumentHTML(profile.syntheticDevotion, creatorProfile);
+}
+
+export function printUnpopularNameDocument(item: UnpopularBiblicalName, creatorProfile?: CreatorProfile) {
+  const html = generateUnpopularNameDocumentHTML(item, creatorProfile);
+  const printWindow = window.open("", "_blank");
+  if (printWindow) {
+    printWindow.document.open();
+    printWindow.document.write(html);
+    printWindow.document.close();
+  } else {
+    downloadUnpopularNameDocument(item, creatorProfile);
+  }
+}
+
+export function downloadUnpopularNameDocument(item: UnpopularBiblicalName, creatorProfile?: CreatorProfile) {
+  const html = generateUnpopularNameDocumentHTML(item, creatorProfile);
+  const blob = new Blob([html], { type: "text/html;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  const filename = `${item.name.toLowerCase().replace(/[^a-z0-9]/g, "-")}-biblical-figure.html`;
   link.href = url;
   link.download = filename;
   document.body.appendChild(link);
