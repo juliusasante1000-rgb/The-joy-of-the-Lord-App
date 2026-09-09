@@ -713,5 +713,63 @@ export const AUTHENTIC_CLASSIC_HYMNALS_PART_3: HymnItem[] = [
       { note: "A4", duration: 1.0 },
       { note: "F4", duration: 1.5 }
     ]
+  },
+  {
+    id: "hymn-auth-a-charge-to-keep-i-have",
+    hymnNumber: 116,
+    title: "A Charge to Keep I Have",
+    alternateTitle: "A God to Glorify • Christian Vigilance & Stewardship",
+    category: "Prayer & Consecration",
+    author: "Charles Wesley",
+    composer: "Lowell Mason (BOYLSTON)",
+    tuneName: "BOYLSTON",
+    year: "1762",
+    meter: "S.M. (6.6.8.6)",
+    keySignature: "F Major",
+    scriptureAnchor: {
+      reference: "Leviticus 8:35; 1 Corinthians 4:2; Matthew 25:21",
+      text: "Keep the charge of the Lord, that ye die not... Moreover it is required in stewards, that a man be found faithful.",
+      book: "Leviticus",
+      chapter: 8,
+      verse: 35
+    },
+    stanzas: [
+      {
+        number: 1,
+        text: "A charge to keep I have,\nA God to glorify,\nA never-dying soul to save,\nAnd fit it for the sky."
+      },
+      {
+        number: 2,
+        text: "To serve the present age,\nMy calling to fulfill:\nO may it all my powers engage\nTo do my Master’s will!"
+      },
+      {
+        number: 3,
+        text: "Arm me with jealous care,\nAs in Thy sight to live,\nAnd oh, Thy servant, Lord, prepare\nA strict account to give!"
+      },
+      {
+        number: 4,
+        text: "Help me to watch and pray,\nAnd on Thyself rely,\nAssured, if I my trust betray,\nI shall forever die."
+      }
+    ],
+    chorus: "O may it all my powers engage to do my Master's will!",
+    historicalStory: "Written by Charles Wesley in 1762 for his 'Short Hymns on Select Passages of the Holy Scriptures,' based on Leviticus 8:35 ('Keep the charge of the Lord, that ye die not'). It was paired in 1832 with Lowell Mason's solemn and revered tune 'BOYLSTON,' becoming one of the most beloved and enduring hymns on Christian vigilance, personal holiness, and eternal stewardship in the English language.",
+    theologicalInsight: "Wesley gives poetic voice to the supreme stewardship of the Christian walk: our time, our spiritual talents, and our calling 'to serve the present age.' It reminds the church that our lives are lived in the holy presence of God, summoned to watchfulness, continual prayer, and reliance upon His sustaining grace.",
+    devotionalPrayer: "Sovereign Lord and gracious Master, You have entrusted me with a sacred charge and an eternal soul redeemed by Christ's precious blood. Guard my heart from spiritual slumber. Awaken in me a spirit of watchful prayer, steadfast fidelity, and fervent love to serve this present generation faithfully until I stand before Your throne with exceeding joy. In Jesus' holy Name, Amen.",
+    tags: ["Consecration", "Stewardship", "Charles Wesley", "Calling", "Watch and Pray", "Leviticus 8", "Christian Living"],
+    melodyNotes: [
+      { note: "C4", duration: 1.0 },
+      { note: "F4", duration: 1.5 },
+      { note: "G4", duration: 0.5 },
+      { note: "A4", duration: 1.0 },
+      { note: "F4", duration: 1.0 },
+      { note: "G4", duration: 2.0 },
+      { note: "A4", duration: 1.0 },
+      { note: "Bb4", duration: 1.0 },
+      { note: "C5", duration: 1.5 },
+      { note: "Bb4", duration: 0.5 },
+      { note: "A4", duration: 2.0 },
+      { note: "G4", duration: 1.0 },
+      { note: "F4", duration: 2.0 }
+    ]
   }
 ];

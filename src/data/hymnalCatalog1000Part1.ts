@@ -2,7 +2,7 @@ import { HymnItem } from "../types";
 
 const HYMN_TITLES_506_630 = [
   "Abide with Me, 'Tis Eventide", "Above the Clear Blue Sky", "According to Thy Gracious Word",
-  "A Charge to Keep I Have", "Afflictions, Though They Seem Severe", "Again the Lord of Life and Light",
+  "A Tender Heart, a Will Resigned", "Afflictions, Though They Seem Severe", "Again the Lord of Life and Light",
   "Ah! Whither Should I Go", "Alas! and Did My Savior Bleed", "All Glory, Laud, and Honor",
   "All Hail the Power of Jesus' Name", "All My Doubts I Give to Jesus", "All People That on Earth Do Dwell",
   "All Praise to Our Redeeming Lord", "All Things Are Ready, Come", "All Things Bright and Beautiful",
