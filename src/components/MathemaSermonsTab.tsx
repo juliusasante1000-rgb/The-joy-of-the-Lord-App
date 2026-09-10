@@ -745,15 +745,25 @@ export const MathemaSermonsTab: React.FC<MathemaSermonsTabProps> = ({
 
         <form onSubmit={handleGenerateAiSermon} className="space-y-3">
           {aiError && (
-            <div className="p-3 rounded-xl bg-amber-500/20 border border-amber-400/40 text-amber-200 text-xs flex items-center justify-between">
-              <span>{aiError}</span>
-              <button
-                type="button"
-                onClick={() => setAiError(null)}
-                className="text-amber-200 hover:text-white font-bold ml-2 cursor-pointer"
-              >
-                ✕
-              </button>
+            <div className="p-3.5 rounded-xl bg-red-500/15 border border-red-400/40 text-red-200 text-xs flex items-center justify-between gap-3">
+              <span className="leading-relaxed">{aiError}</span>
+              <div className="flex items-center gap-2 shrink-0">
+                <button
+                  type="button"
+                  onClick={(e) => handleGenerateAiSermon(e)}
+                  className="px-2.5 py-1 rounded-lg bg-red-500/25 hover:bg-red-500/40 text-red-200 font-semibold text-xs transition-colors cursor-pointer"
+                >
+                  Retry
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setAiError(null)}
+                  className="text-red-300 hover:text-white font-bold px-1.5 py-0.5 cursor-pointer"
+                  title="Dismiss"
+                >
+                  ✕
+                </button>
+              </div>
             </div>
           )}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

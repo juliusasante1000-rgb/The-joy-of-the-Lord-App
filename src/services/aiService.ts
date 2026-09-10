@@ -270,14 +270,14 @@ export async function generateAiContent<T = any>(
     }
   }
 
-  // Step 3: Graceful theological fallback so the user always receives an uplifting answer
-  const fallbackReflection = `Grace and Peace unto you in Christ Jesus. "The joy of the LORD is your strength" (Nehemiah 8:10). Whatever challenge or question you bring before the Throne of Grace today, remember that God's Word is living, active, and unshakeable. Stand firm in faith and keep your eyes fixed on Jesus Christ, the author and finisher of our faith.`;
+  // Step 3: Explicit failure reporting - DO NOT substitute canned messages for failed AI calls
+  const durationMs = Math.round(performance.now() - startTime);
+  console.warn(`[AI SERVICE] ⚠️ Live AI generation could not be completed in ${durationMs}ms`);
   return {
-    success: true,
-    text: fallbackReflection,
-    data: tryParseJson(fallbackReflection) as T,
-    modelUsed: "offline-orthodox-treasury",
-    durationMs: 10
+    success: false,
+    error: "AI generation could not be completed right now. Please try again.",
+    modelUsed: "none",
+    durationMs
   };
 }
 

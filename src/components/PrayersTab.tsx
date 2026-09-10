@@ -630,15 +630,25 @@ export const PrayersTab: React.FC<PrayersTabProps> = ({
           </div>
 
           {aiError && (
-            <div className="p-3 rounded-lg bg-amber-50 border border-amber-200 text-amber-800 text-xs flex items-center justify-between">
-              <span>{aiError}</span>
-              <button
-                type="button"
-                onClick={() => setAiError(null)}
-                className="text-amber-600 hover:text-amber-900 font-bold ml-2"
-              >
-                ✕
-              </button>
+            <div className="p-3.5 rounded-xl bg-red-500/10 border border-red-500/30 text-red-200 text-xs flex items-center justify-between gap-3">
+              <span className="leading-relaxed">{aiError}</span>
+              <div className="flex items-center gap-2 shrink-0">
+                <button
+                  type="button"
+                  onClick={(e) => handleGenerateAiPrayer(e)}
+                  className="px-2.5 py-1 rounded-lg bg-red-500/20 hover:bg-red-500/30 text-red-300 font-semibold text-xs transition-colors cursor-pointer"
+                >
+                  Retry
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setAiError(null)}
+                  className="text-red-400 hover:text-red-200 font-bold px-1.5 py-0.5 cursor-pointer"
+                  title="Dismiss"
+                >
+                  ✕
+                </button>
+              </div>
             </div>
           )}
 

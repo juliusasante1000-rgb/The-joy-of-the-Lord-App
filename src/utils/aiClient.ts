@@ -188,9 +188,9 @@ export async function fetchAiWithRetry<T = any>(
             timestamp: Date.now(),
             _nonce: Math.random().toString(36).substring(2) + Date.now(),
             generationConfig: {
-              temperature: options.temperature ?? 0.45,
-              topP: options.topP ?? 0.90,
-              maxOutputTokens: options.maxOutputTokens ?? 2048,
+              temperature: options.temperature ?? 0.80,
+              topP: options.topP ?? 0.95,
+              maxOutputTokens: options.maxOutputTokens ?? 3000,
             },
             systemInstruction: options.systemInstruction
               ? `${options.systemInstruction} ${ANTI_LOOP_DIRECTIVE}`
@@ -259,7 +259,7 @@ export async function fetchAiWithRetry<T = any>(
   // Tier 2: Direct Client-Side Gemini API call if client key is configured
   const clientApiKey = getClientGeminiApiKey();
   if (clientApiKey) {
-    const modelsToTry = ["gemini-3.1-flash-lite", "gemini-3.8-flash", "gemini-3.6-flash", "gemini-flash-latest"];
+    const modelsToTry = ["gemini-2.5-flash", "gemini-flash-latest", "gemini-2.5-flash-lite", "gemini-3.1-flash-lite"];
     const promptText = payload?.prompt || payload?.question || (payload?.scriptureReference ? `Exposition on ${payload.scriptureReference}: "${payload.scriptureText || ''}"` : payload?.topic || "Christian Theology");
     
     for (const modelName of modelsToTry) {
@@ -308,145 +308,12 @@ export async function fetchAiWithRetry<T = any>(
     }
   }
 
-  // Tier 3: High-Quality Theological Treasury Fallback Engine (Guaranteed 100% Reliability with ZERO 404 errors)
-  console.log("[AI CLIENT] Activating rich apostolic doctrinal treasury fallback.");
-
-  let fallbackData: any = null;
-
-  // 1. Doctrinal Question or General Query
-  if (payload?.question || payload?.query) {
-    const q = payload.question || payload.query;
-    const cat = payload.category || "Christian Orthodoxy";
-    const doctrinalRes = buildDoctrinalAnswer(q, cat);
-    fallbackData = {
-      ...doctrinalRes,
-      question: q,
-      category: cat
-    };
-  }
-  // 2. Scriptural Place History
-  else if (payload?.placeName) {
-    const pName = payload.placeName;
-    const ref = payload.biblicalReference || "Holy Scripture";
-    fallbackData = {
-      place: pName,
-      historicalAccount: `At ${pName}, God manifested His sovereign power and covenant faithfulness according to ${ref}. Significant biblical events took place here, demonstrating divine deliverance, preservation, and holy revelation.`,
-      biblicalReference: ref,
-      keyFigures: ["Saints of God", "Prophets and Apostles"],
-      historicalOutcome: "God's eternal purpose was fulfilled and His covenant promises were confirmed."
-    };
-  }
-  // 3. Rhema / Prophetic Word
-  else if (payload?.focusNeed || payload?.seasonCategory) {
-    fallbackData = {
-      id: `rhema-${Date.now()}`,
-      seasonCategory: payload.seasonCategory || "Breakthrough",
-      title: `Prophetic Decree for ${payload.focusNeed || "Your Current Season"}`,
-      propheticDeclaration: `The Lord is declaring a season of supernatural restoration and divine turnaround. Every valley is exalted and every mountain is made low before your feet.`,
-      scriptureAnchor: {
-        reference: "Isaiah 43:19",
-        text: "Behold, I will do a new thing; now it shall spring forth; shall ye not know it? I will even make a way in the wilderness, and rivers in the desert.",
-        version: "KJV"
-      },
-      actionableSteps: [
-        "Maintain high praise before the physical manifestation occurs.",
-        "Write down your prophetic decree and speak it aloud daily.",
-        "Step forward in holy confidence, trusting the guidance of the Holy Spirit."
-      ],
-      warfareDecree: "I decree that no demonic limitation can hinder my God-given season of fruitfulness. In Jesus' Name, Amen!"
-    };
-  }
-  // 4. Apostle Math & Mathematical Theology
-  else if (payload?.mathBranch || payload?.spiritualConcept) {
-    fallbackData = {
-      id: `math-${Date.now()}`,
-      title: `${payload.mathBranch || "Mathematical Theology"}: ${payload.spiritualConcept || "Divine Trajectory"}`,
-      subtitle: "Apostolic Mathematical Analogy of Kingdom Principles",
-      mathBranch: payload.mathBranch || "Vector Calculus",
-      mathPrinciple: "Axiomatic Alignment & Prophetic Convergence",
-      mathFormula: "\\vec{R}_{\\text{destiny}} = \\vec{R}_0 + \\int_0^t \\vec{V}_{\\text{HolyGhost}}(\\tau) \\, d\\tau",
-      mathIllustration: "In vector mathematics, displacement is determined by integrating velocity over time. When your velocity is guided by the Holy Spirit, every variable aligns with divine purpose.",
-      theologicalInsight: "God is not the author of chaos; His kingdom operates with absolute mathematical precision and infallible covenant order.",
-      scriptureReferences: [
-        { reference: "Proverbs 16:9", text: "A man's heart deviseth his way: but the LORD directeth his steps." }
-      ],
-      personalDecree: "I decree that my life is calibrated to heaven's coordinate system. In Jesus' Name, Amen."
-    };
-  }
-  // 5. Joy Battle Overcoming Guide
-  else if (payload?.specificChallenge) {
-    fallbackData = {
-      id: `joy-challenge-${Date.now()}`,
-      challengeTitle: `Overcoming ${payload.specificChallenge}`,
-      category: payload.category || "Spiritual Warfare",
-      rootDeception: "The enemy attempts to convince you that your strength has failed and that defeat is imminent.",
-      scripturalTruth: "The joy of the LORD is your impenetrable shield and fortress (Nehemiah 8:10). In Christ, you are more than a conqueror.",
-      anchorVerses: [
-        { reference: "Nehemiah 8:10", text: "The joy of the LORD is your strength.", version: "KJV" },
-        { reference: "Romans 8:37", text: "Nay, in all these things we are more than conquerors through him that loved us.", version: "KJV" }
-      ],
-      joyStrategySteps: [
-        "Shift your focus from the storm to the Savior.",
-        "Engage in deep praise and thanksgiving to shatter demonic heaviness.",
-        "Stand upon the written Word of God and refuse to retreat."
-      ],
-      fortressDeclaration: "I decree that God has given me the garment of praise for the spirit of heaviness. Joy is my portion today!",
-      deliverancePrayer: "Father, in the Name of Jesus, I break every spirit of fear and anxiety. Fill me with Your supernatural joy and peace. Amen."
-    };
-  }
-  // 6. Scripture-based Prayers, Devotions, Expositions
-  else {
-    const ref = payload?.scriptureReference || "Nehemiah 8:10";
-    const text = payload?.scriptureText || "The joy of the LORD is your strength.";
-    const act = (payload?.actionType || "").toLowerCase();
-
-    if (act.includes("prayer") && !act.includes("point")) {
-      fallbackData = {
-        title: `Apostolic Prayer of Faith & Victory: ${ref}`,
-        adoration: `Sovereign Father, You are our Unshakable Rock, our eternal Fortress, and the Chief Cornerstone of our lives.`,
-        thanksgiving: `We thank You that in Christ, we are anchored beyond every storm, wind, and worldly flood.`,
-        petition: `Grant us an obedient heart to not only hear Your living Word but to build every decision, relationship, and vision upon Your truth.`,
-        warfareDeclaration: `We dismantle every deceptive philosophy and declare that our foundation in Christ cannot be shaken, compromised, or uprooted.`,
-        closing: `In the victorious, matchless name of Jesus Christ, Amen.`
-      };
-    } else if (act.includes("point")) {
-      fallbackData = {
-        title: `Strategic Prayer Decrees: ${ref}`,
-        scriptureAnchor: `${ref} — "${text}"`,
-        prayerPoints: [
-          { pointNumber: 1, focus: "Spiritual Foundation", scripturePromise: "Isaiah 28:16", prayerDeclaration: "Father, establish my spiritual life upon the immovable Rock of Jesus Christ." },
-          { pointNumber: 2, focus: "Grace for Obedience", scripturePromise: "James 1:22", prayerDeclaration: "Lord, deliver me from being a hearer only; empower me to be an active doer of Your Word." },
-          { pointNumber: 3, focus: "Storm Resistance", scripturePromise: "Psalm 125:1", prayerDeclaration: "I decree that when winds of adversity blow, my house shall stand firm by covenant grace." },
-          { pointNumber: 4, focus: "Wisdom in Building", scripturePromise: "Proverbs 24:3", prayerDeclaration: "Holy Spirit, grant me celestial discernment to build my career, family, and ministry wisely." },
-          { pointNumber: 5, focus: "Kingdom Longevity", scripturePromise: "1 Corinthians 3:11", prayerDeclaration: "I declare that my labor in the Lord is indestructible and bearing everlasting fruit." }
-        ],
-        propheticDecree: "I decree and declare that your house is built upon the Living Rock, and no storm of this age shall prevail against your destiny!"
-      };
-    } else if (act.includes("explain")) {
-      fallbackData = {
-        title: `Exposition & Hermeneutics: ${ref}`,
-        historicalContext: `Spoken in the inspired Scriptures to establish believers in unshakable truth and discipleship.`,
-        originalLanguageInsight: `Original biblical terminology emphasizes steadfast faithfulness, divine covenant protection, and the indwelling peace of God.`,
-        doctrinalMeaning: `God's promises are yes and amen in Christ. Divine strength is released as we walk in joyful obedience.`,
-        lifeTransformation: `Put God's Word into active practice today, trusting in His unshakeable faithfulness.`
-      };
-    } else {
-      fallbackData = {
-        title: `Daily Spiritual Insight: ${ref}`,
-        reflection: `The joy of the LORD is your strength (Nehemiah 8:10). When we fix our gaze upon Christ Jesus, His peace anchors our hearts beyond any earthly circumstance.`,
-        practicalApplication: `Take time today to meditate on God's Word and speak words of faith and thanksgiving.`,
-        guidedPrayer: `Heavenly Father, fill me afresh with the Holy Spirit and let Your supernatural joy be my strength today. In Jesus' name, Amen.`
-      };
-    }
-  }
-
-  const outText = fallbackData?.answer || fallbackData?.reflection || fallbackData?.historicalAccount || fallbackData?.title || JSON.stringify(fallbackData);
-
+  // Do NOT silently replace failed AI requests with generic canned content
+  console.warn("[AI CLIENT] ⚠️ Live AI generation could not be completed via server endpoints or direct calls.");
   return {
-    success: true,
-    data: fallbackData as T,
-    text: outText,
-    isCached: true
+    success: false,
+    error: "AI generation could not be completed right now. Please try again.",
+    isApiKeyMissing: !clientApiKey && !Boolean(process.env.GEMINI_API_KEY)
   };
 }
 

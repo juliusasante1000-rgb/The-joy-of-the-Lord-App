@@ -253,9 +253,11 @@ export async function streamAiContent<T = any>(
         stream: true,
         timestamp: Date.now(),
         _nonce: Math.random().toString(36).substring(2),
-        generationConfig: isFast
-          ? { temperature: 0.3, topP: 0.85, maxOutputTokens: 600 }
-          : { temperature: 0.45, topP: 0.90, maxOutputTokens: 2048 }
+        generationConfig: {
+          temperature: (options as any).temperature ?? (isFast ? 0.72 : 0.78),
+          topP: (options as any).topP ?? 0.95,
+          maxOutputTokens: (options as any).maxOutputTokens ?? (isFast ? 1800 : 3000)
+        }
       };
 
       const clientKey = getClientGeminiApiKey();
@@ -435,8 +437,8 @@ export async function streamAiContent<T = any>(
             prompt: options.prompt,
             systemInstruction: options.systemInstruction,
             actionType: options.actionType,
-            temperature: isFast ? 0.3 : 0.45,
-            model: "gemini-3.1-flash-lite"
+            temperature: 0.80,
+            model: "gemini-2.5-flash"
           });
           if (directResult && directResult.success && (directResult.data || directResult.text)) {
             const outText = directResult.text || JSON.stringify(directResult.data);
@@ -457,203 +459,25 @@ export async function streamAiContent<T = any>(
         }
       }
 
-      // Tier 3: Seamless Biblical Theological Cascade Engine (Guaranteed 100% Reliability)
-      const ref = options.scriptureReference || "Nehemiah 8:10";
-      const text = options.scriptureText || "The joy of the LORD is your strength.";
-      const theme = options.scriptureTheme || "Divine Joy and Strength";
-      const act = (options.actionType || "").toLowerCase();
-      const topic = options.topic || "The Unshakeable Peace and Joy of Christ";
-
-      let generatedData: any = null;
-
-      if (act.includes("prayer") && !act.includes("point")) {
-        generatedData = {
-          title: `Apostolic Prayer of Faith & Victory: ${ref}`,
-          subtitle: `Standing boldly on ${ref}`,
-          scriptureAnchor: `${ref} — "${text}"`,
-          adoration: `Heavenly Father, King of Glory, You are our everlasting fortress, sovereign over all creation. In Your holy presence is fullness of joy, and at Your right hand are pleasures forevermore. We exalt Your magnificent Name.`,
-          confession: `Lord Jesus, forgive us for every moment we yielded to worry, discouragement, or human limitations. We cast all our cares upon You and declare our total reliance on Your grace.`,
-          confessionAndSurrender: `Lord Jesus, forgive us for every moment we yielded to worry, discouragement, or human limitations. We cast all our cares upon You and declare our total reliance on Your grace.`,
-          thanksgiving: `We thank You that Christ has conquered every adversity on the cross. We give You praise for Your living Word in ${ref}, which is a lamp unto our feet and a light unto our path.`,
-          scripturePromise: `${ref} — "${text}"`,
-          petition: `Father, by the power of the Holy Spirit, manifest the supernatural truth of ${ref} across every area of our lives. Grant us divine wisdom, supernatural health, supernatural peace, and breakthrough in our daily walk.`,
-          warfareDeclaration: `In the mighty and victorious Name of Jesus Christ, we break every yoke of fear, heaviness, stagnation, and enemy opposition. The joy of the Lord is our unbreachable shield and high tower!`,
-          spiritualWarfare: `In the mighty and victorious Name of Jesus Christ, we break every yoke of fear, heaviness, stagnation, and enemy opposition. The joy of the Lord is our unbreachable shield and high tower!`,
-          closing: `We seal this prayer in the matchless, all-conquering Name of Jesus Christ, our Lord and King. Amen!`,
-          declarationInJesusName: `We seal this prayer in the matchless Name of Jesus Christ, our Lord and King. Amen!`
-        };
-      } else if (act.includes("point")) {
-        generatedData = {
-          title: `Strategic High-Impact Prayer Decrees on ${ref}`,
-          scriptureAnchor: `${ref} — "${text}"`,
-          introduction: `Stand in faith upon ${ref} as we enter into targeted intercession with apostolic boldness and prophetic clarity.`,
-          prayerPoints: [
-            {
-              pointNumber: 1,
-              focus: "Supernatural Strength & Divine Capacity",
-              scripturePromise: `${ref} — "${text}"`,
-              prayerDeclaration: `Lord Jesus, I declare that my natural limitations are swallowed up by Your divine power. Empower me with supernatural endurance and strength today!`
-            },
-            {
-              pointNumber: 2,
-              focus: "Overcoming Every Obstacle & Mountain",
-              scripturePromise: "Zechariah 4:6 — 'Not by might, nor by power, but by my Spirit, says the Lord.'",
-              prayerDeclaration: `Father, by the Holy Ghost, let every obstacle standing before my God-given purpose be transformed into a stepping stone for Your glory.`
-            },
-            {
-              pointNumber: 3,
-              focus: "Unshakeable Peace & Heavenly Joy",
-              scripturePromise: "Philippians 4:7 — The peace of God which surpasses all understanding guards our hearts.",
-              prayerDeclaration: `I rebuke all anxiety, heaviness, and distraction. The joy of the Lord fills my soul and protects my thoughts in Christ Jesus.`
-            },
-            {
-              pointNumber: 4,
-              focus: "Divine Alignment & Kingdom Discernment",
-              scripturePromise: "James 1:5 — God gives wisdom generously to all who ask.",
-              prayerDeclaration: `Holy Spirit, grant me heavenly wisdom and spiritual sharpness in every decision, assignment, and relationship today.`
-            },
-            {
-              pointNumber: 5,
-              focus: "Total Victory & Preservation",
-              scripturePromise: "Romans 8:37 — In all these things we are more than conquerors through Him who loved us.",
-              prayerDeclaration: `I decree that I am more than a conqueror through Christ Jesus. Divine favor surrounds me as a shield and victory is my covenant portion!`
-            }
-          ],
-          propheticDecree: `I decree that the living truth of ${ref} is established over my life, my home, and my calling today and forever. In Jesus' Name, Amen.`
-        };
-      } else if (act.includes("context") || act.includes("historical") || act.includes("background") || act.includes("explain") || act.includes("exposition") || act.includes("exegesis")) {
-        // Book-specific dynamic historical and cultural extraction
-        const bookName = ref.split(" ")[0] || "";
-        const isOT = !["Matthew", "Mark", "Luke", "John", "Acts", "Romans", "Corinthians", "Galatians", "Ephesians", "Philippians", "Colossians", "Thessalonians", "Timothy", "Titus", "Philemon", "Hebrews", "James", "Peter", "John", "Jude", "Revelation"].some(b => ref.includes(b));
-        
-        let eraSetting = `Within the canonical setting of ${ref}, the inspired text was delivered into a decisive historical epoch.`;
-        let cultDetail = `Ancient covenant conventions, sacrificial symbolism, and communal gatherings formed the immediate horizon of this sacred declaration.`;
-        
-        if (ref.includes("Genesis")) {
-          eraSetting = `Authored by Moses during the Wilderness Wanderings (~1446–1406 BC), Genesis records God's primeval and patriarchal covenant with Abraham, Isaac, and Jacob in the ancient Bronze Age Levant.`;
-          cultDetail = `Patriarchal kinship covenants, ancient Near Eastern suzerainty treaties, nomadic tent-dwelling pastoralism, and altars of unhewn stone establish the physical reality behind this text.`;
-        } else if (ref.includes("Exodus") || ref.includes("Leviticus") || ref.includes("Numbers") || ref.includes("Deuteronomy")) {
-          eraSetting = `Delivered through Moses at Mount Sinai and the Plains of Moab (~1406 BC), addressing the newly redeemed nation of Israel freshly emancipated from Egyptian bondage under the New Kingdom pharaohs.`;
-          cultDetail = `Tabernacle priesthood rituals, cloud and fire theophanies, Egyptian monumental architecture contrasts, and divine covenant stipulations defined Israel's sanctification.`;
-        } else if (ref.includes("Psalm")) {
-          eraSetting = `Composed primarily during the United Monarchy of King David and Solomon (~1000–930 BC) and preserved by the Levitical guild of temple musicians for sanctuary worship in Jerusalem.`;
-          cultDetail = `Ancient Hebrew poetic parallelism, antiphonal choir chanting, harp and lyre instrumentation in the First Temple, and royal enthronement terminology frame the verse.`;
-        } else if (ref.includes("Isaiah") || ref.includes("Jeremiah") || ref.includes("Ezekiel") || ref.includes("Daniel")) {
-          eraSetting = `Spoken by classical Hebrew prophets amidst the existential geopolitical crises of the Assyrian invasion (8th century BC) and the Babylonian siege and exile of Jerusalem (586 BC).`;
-          cultDetail = `Imperial vassalage treaties, exile mourning rites by the rivers of Babylon, prophetic symbolic actions, and holy temple desecration tensions permeate this passage.`;
-        } else if (ref.includes("Matthew") || ref.includes("Mark") || ref.includes("Luke") || ref.includes("John")) {
-          eraSetting = `Set in 1st-century Roman-occupied Judea and Galilee under Emperor Tiberius, Governor Pontius Pilate, and the Herodian tetrarchy, chronicling the earthly ministry and resurrection of Jesus the Messiah.`;
-          cultDetail = `Second Temple Judaism, synagogue Torah readings, Pharisaic oral traditions, Roman taxation systems, and the expectation of the Davidic Messiah illuminate this passage.`;
-        } else if (ref.includes("Romans") || ref.includes("Corinthians") || ref.includes("Galatians") || ref.includes("Ephesians") || ref.includes("Philippians") || ref.includes("Colossians")) {
-          eraSetting = `Written by the Apostle Paul during his apostolic missionary journeys (circa 50–65 AD) under the Roman imperial reigns of Claudius and Nero, addressing pioneering multi-ethnic house churches across the Mediterranean.`;
-          cultDetail = `Greco-Roman patronage customs, Agora marketplace dialogue, imperial Caesar cult tensions, house-church agape feasts, and ancient epistolary letter conventions underpin the instruction.`;
-        } else if (ref.includes("Revelation")) {
-          eraSetting = `Delivered by the Apostle John exiled upon the Aegean island penal colony of Patmos during the severe anti-Christian persecutions under Roman Emperor Domitian (~95 AD).`;
-          cultDetail = `Imperial Caesar worship coercion, apocalyptic symbolic visions, heavenly throne-room liturgies, and letters addressed to the seven historical trade-route cities of Asia Minor.`;
-        }
-
-        generatedData = {
-          title: `Historical & Cultural Context: ${ref}`,
-          scriptureAnchor: `${ref} — "${text}"`,
-          historicalContext: `${eraSetting}\n\nThis passage in ${ref} specifically addresses the original covenant community amidst their authentic historical environment. Rather than an abstract philosophical adage, the Holy Spirit inspired this exact word into real human history—anchoring believers' trust in God's sovereign providence across changing kings, empires, and geopolitical crises.`,
-          culturalBackground: `${cultDetail}\n\nUnderstanding the ancient linguistic idioms and social structures of the period reveals that this passage carried immediate, high-stakes clarity to its original hearers, dismantling contemporary pagan anxieties with divine truth.`,
-          originalLanguageInsight: isOT
-            ? `In the original Biblical Hebrew text (OSHB), key terms carry deep covenant resonance—connecting to roots of steadfast lovingkindness (*chesed*), enduring divine peace (*shalom*), and sovereign divine authority (*YHWH Tzva'ot*).`
-            : `In the inspired Koine Greek of the apostolic text, verbs and syntax emphasize active divine grace (*charis*), supernatural empowerment (*dunamis*), and complete covenant alignment (*pistis*).`,
-          doctrinalMeaning: `The doctrinal revelation of ${ref} establishes God's absolute sovereignty, unchanging fidelity to His covenant, and the redemptive victory available to all who walk by faith. Earthly circumstances change, but the eternal decree of God remains immovable.`,
-          crossReferences: [
-            { reference: isOT ? "Deuteronomy 7:9" : "Romans 8:28", connection: "God keeps covenant and mercy with those who love Him unto a thousand generations." },
-            { reference: isOT ? "Psalm 119:89" : "Colossians 1:16-17", connection: "Forever, O LORD, Your word is settled in heaven; in Christ all things hold together." },
-            { reference: isOT ? "Isaiah 40:8" : "Hebrews 13:8", connection: "The grass withers, the flower fades, but the word of our God stands forever." }
-          ],
-          lifeTransformation: `How to apply this historical truth today: Recognizing that the God who sustained His people through ancient trials is your faithful Father today. Refuse fear, speak His Word with authority, and stand firm in your covenant calling.`
-        };
-      } else if (act.includes("explain")) {
-        generatedData = {
-          title: `Deep Expository Analysis & Hermeneutics: ${ref}`,
-          scriptureAnchor: `${ref} — "${text}"`,
-          historicalContext: `In this sacred biblical passage, the inspired author addresses believers in the midst of challenging circumstances, reminding them that authentic faith and joy are grounded not in fluctuating earthly fortunes, but in the eternal covenant of God.`,
-          originalLanguageInsight: `The original biblical text utilizes words rich in theological weight—highlighting divine enablement, inner tranquility (*shalom* / *eirene*), and steadfast trust (*emunah* / *pistis*) that remains immovable through the storm.`,
-          doctrinalMeaning: `This scripture establishes the core apostolic doctrine that divine joy is not an emotion generated by pleasant events, but a spiritual weapon of victory. God's strength is made complete in our surrender, releasing His sovereign power through our lives.`,
-          crossReferences: [
-            { reference: "2 Corinthians 12:9", connection: "My grace is sufficient for thee: for my strength is made perfect in weakness." },
-            { reference: "Isaiah 40:29-31", connection: "He gives power to the weak, and to those who have no might He increases strength." },
-            { reference: "Psalm 28:7", connection: "The Lord is my strength and my shield; my heart trusted in Him, and I am helped." }
-          ],
-          lifeTransformation: `To live out ${ref} today: surrender self-reliance, boldly step forward into what God has called you to do, and maintain high praise regardless of circumstances. You are anchored in Christ's victory.`
-        };
-      } else if (act.includes("math")) {
-        generatedData = {
-          title: `MathemaSermon: The Divine Invariance of Joy (${ref})`,
-          mathematicalConcept: `Geometric Invariance & Constant Force Distribution: $\\Delta J = k \\cdot \\int_0^t \\text{Faith}(\\tau) \\, d\\tau$`,
-          formula: `$$\\lim_{t \\to \\infty} \\left( \\text{Trial}(t) \\cdot e^{-\\text{Grace}(t)} \\right) + \\text{Joy}_{\\text{LORD}} = \\text{Unshakeable Victory}$$`,
-          scriptureAnchor: `${ref} — "${text}"`,
-          mathematicalAnalogy: `In structural engineering mathematics, an invariant bedrock foundation ensures that external vibrational forces dissipate to zero displacement. In the spiritual realm, Christ is our invariant foundation: when worldly pressure peaks, divine joy absorbs the load and maintains equilibrium.`,
-          homileticApplication: `Just as mathematical laws reflect the unchanging order of the Creator, God's promise in ${ref} is mathematically exact and spiritually absolute. When you anchor your life in Christ, no earthly variable can alter your divine destiny.`,
-          altarCallPrayer: `Lord Jesus, I surrender all human calculations and ground my soul in Your eternal, infallible Word today. Let Your joy be my constant. Amen.`
-        };
-      } else {
-        // Devotion
-        const isGenesis1 = ref.toLowerCase().includes("genesis 1") || text.toLowerCase().includes("beginning god created");
-        const customTitle = isGenesis1
-          ? `Bereshit Exegesis: Divine Architecture in Genesis 1:1`
-          : `Daily Sanctuary Devotion: Walking in the Truth of ${ref}`;
-        const customReflection = isGenesis1
-          ? `To meditate upon Genesis 1:1 is to stand at the threshold of 'Bereshit'—the primordial foundation of all existence. The Hebrew term 'Bara' (בָּרָא) declares God's exclusive sovereign act of ex-nihilo creation, summoning order and life where there was primeval void. This reveals that your life and calling are never constrained by human scarcity or visible obstacles; they are held by Elohim, whose living Word speaks light into darkness.\n\nWhen Scripture proclaims that God created the heavens and the earth, it immediately establishes His absolute sovereignty over every natural realm, cosmic law, and earthly circumstance. Your personal life and current situation are never bounded by the limited resources or challenges you see before you; they are held by the living Creator whose voice speaks light into primeval void.\n\nThrough Jesus Christ—the eternal Word through whom all things were made (John 1:1-3, Colossians 1:16)—you are established in unshakable covenant purpose, divine order, and eternal victory.`
-          : `When we pause to meditate upon the living revelation of ${ref} ("${text}"), our spirits are anchored in the unchanging counsel of God. Authored under the direct inspiration of the Holy Spirit, this sacred text addresses the human soul with apostolic authority, sovereign peace, and eternal warmth. In the original biblical language, the inspired vocabulary reveals that God's covenant promises are not fragile human wishes; they are immovable decrees established in the heavens and sealed by His covenant faithfulness.\n\nTrue spiritual fortitude does not originate in human willpower, emotional optimism, or favorable external circumstances. It is birthed as we surrender to the Holy Spirit and fix our gaze upon Jesus Christ, the Author and Perfecter of our faith. While the world searches for peace through fleeting earthly securities, biblical faith discovers an impenetrable high tower in Christ—where our weaknesses become the very threshold across which His all-sufficient grace, supernatural fortitude, and radiant joy are manifested.\n\nWalk forward in absolute covenant assurance today. The same sovereign Lord who faithfully delivered His covenant saints through ancient trials is actively ordering and preserving your steps right now. His wisdom directs your path, His holy angels encamp around you, and His triumph is your eternal portion.`;
-
-        generatedData = {
-          title: customTitle,
-          keyScripture: `${ref} — "${text}"`,
-          passageText: text,
-          reflection: customReflection,
-          practicalApplication: isGenesis1
-            ? `Take 5 intentional minutes today to surrender every area of uncertainty into the hands of the Creator, declaring that the Elohim who formed the cosmos from nothing is creating divine order and light in your circumstances today.`
-            : `1. Write down ${ref} or save it as your phone wallpaper. 2. Whenever worry, fatigue, or pressure attempts to cloud your thoughts today, speak this verse aloud as an act of worship and spiritual authority. 3. Consciously surrender every outcome into the hands of Christ, resting in His sovereign love and perfect timing.`,
-          guidedPrayer: isGenesis1
-            ? `Sovereign Lord God, Creator of heaven and earth, You who called light out of darkness, I praise Your holy Name. Order my steps by Your Word, ignite my faith with Your Spirit, and let the majesty of Christ be reflected in everything I do today. Amen.`
-            : `Heavenly Father, Sovereign Lord and King, I thank You with all my heart for the living truth of ${ref}. Forgive me for any moment I leaned on my own understanding or allowed fear to overshadow Your faithfulness. I yield my heart afresh to the Holy Spirit right now. Infuse my inner man with supernatural peace, anchor my mind in Your Word, and let the unshakeable joy of the Lord be my strength and high fortress throughout this day. In the matchless and victorious Name of Jesus Christ, Amen.`,
-          actionStep: `Memorize ${ref} today and share its encouraging truth with at least one person who needs divine encouragement.`,
-          apostolicDecree: `I decree and declare that the living Word of God in ${ref} is established over my life, my home, and my work today. I reject fear, anxiety, and defeat. I am upheld by the righteous right hand of God, empowered by the Holy Spirit, and walking in supernatural joy and covenant victory through Jesus Christ! Amen!`,
-          hopeAndEncouragementConclusion: `Anchor your soul in this immutable truth: "The joy of the LORD is your strength" (Nehemiah 8:10). No circumstance, delay, or visible limitation can ever nullify God's covenant over your life. Lift up your eyes, rejoice in Christ Jesus, and step forward today with bold, unshakeable confidence, knowing that He who began a good work in you will faithfully bring it to completion!`,
-          hopeEncouragementConclusion: `Anchor your soul in this immutable truth: "The joy of the LORD is your strength" (Nehemiah 8:10). No circumstance, delay, or visible limitation can ever nullify God's covenant over your life. Lift up your eyes, rejoice in Christ Jesus, and step forward today with bold, unshakeable confidence, knowing that He who began a good work in you will faithfully bring it to completion!`
-        };
-      }
-
-      const finalText = JSON.stringify(generatedData, null, 2);
-      options.onProgress?.(100);
-      options.onChunk?.(finalText, finalText, generatedData);
-      options.onComplete?.(finalText, generatedData, false);
-
-      saveAiResultToCache(cacheKey, finalText, generatedData, isFast);
-
+      // Live AI generation could not be completed via streaming or endpoints
+      console.warn("[AI STREAMING] ⚠️ Live AI generation could not be completed across all endpoints.");
+      const failureMsg = "AI generation could not be completed right now. Please try again.";
+      options.onError?.(failureMsg);
       return {
-        success: true,
-        text: finalText,
-        data: generatedData as T,
+        success: false,
+        text: "",
+        error: failureMsg,
         isCached: false
       };
     } catch (err: any) {
       clearTimeout(timeoutId);
       console.error("[AI STREAMING ERROR HANDLER]", err);
-
-      // Ensure fallback data is provided so user never sees 404
-      const fallbackObj = {
-        title: `The Joy of the Lord: ${options.scriptureReference || "Daily Inspiration"}`,
-        reflection: `The joy of the LORD is your strength (Nehemiah 8:10). Cast all your anxieties upon Him, for He cares for you.`,
-        practicalApplication: "Walk in joyful obedience and faith in Jesus Christ.",
-        guidedPrayer: "Lord, let Your divine peace and joy flood my heart today. In Jesus' Name, Amen."
-      };
-      const fbText = JSON.stringify(fallbackObj, null, 2);
-
-      options.onProgress?.(100);
-      options.onChunk?.(fbText, fbText, fallbackObj);
-      options.onComplete?.(fbText, fallbackObj, false);
-
+      const failureMsg = "AI generation could not be completed right now. Please try again.";
+      options.onError?.(failureMsg);
       return {
-        success: true,
-        text: fbText,
-        data: fallbackObj as T,
+        success: false,
+        text: "",
+        error: failureMsg,
         isCached: false
       };
     } finally {

@@ -1172,11 +1172,30 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
 
           {/* AI Error Alert */}
           {aiError && (
-            <div className="p-3.5 rounded-lg bg-red-50 border border-red-200 text-xs text-red-700 flex items-start gap-2 animate-in fade-in duration-150">
-              <AlertCircle className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
-              <div>
-                <p className="font-bold">Doctrinal Scholar Notice</p>
-                <p>{aiError}</p>
+            <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-xs text-red-700 flex items-start justify-between gap-3 animate-in fade-in duration-150">
+              <div className="flex items-start gap-2 flex-1">
+                <AlertCircle className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-bold">Doctrinal Scholar Notice</p>
+                  <p className="leading-relaxed">{aiError}</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 shrink-0">
+                <button
+                  type="button"
+                  onClick={(e) => handleAskDoctrinalAi(e)}
+                  className="px-2.5 py-1 rounded-lg bg-red-600 hover:bg-red-700 text-white font-semibold text-xs transition-colors cursor-pointer"
+                >
+                  Retry
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setAiError(null)}
+                  className="text-red-500 hover:text-red-800 font-bold px-1.5 py-0.5 cursor-pointer"
+                  title="Dismiss"
+                >
+                  ✕
+                </button>
               </div>
             </div>
           )}

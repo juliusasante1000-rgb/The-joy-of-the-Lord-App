@@ -348,10 +348,10 @@ const AI_CACHE_TTL_MS = 1000 * 60 * 60 * 6; // 6 hours cache
 
 // Valid models according to Gemini API specification, ordered with flash-lite first to avoid single-model quota exhaustion
 const GEMINI_MODELS_CASCADE = [
-  "gemini-3.1-flash-lite",
+  "gemini-2.5-flash",
   "gemini-flash-latest",
-  "gemini-3.1-pro-preview",
   "gemini-3.8-flash",
+  "gemini-3.1-flash-lite",
 ];
 
 // In-flight quota cooldown circuit breaker to prevent cascading 429 delays when API quota is exhausted
@@ -492,22 +492,83 @@ function deduplicateSentences(text: string): string {
 }
 
 // Dedicated System Prompts for Specific Biblical, Mathematical, and Pastoral Personas
-export const SYSTEM_PROMPT_BIBLE_HISTORIAN = `You are a master biblical historian, archaeologist, and exegete. Deliver deep, unique historical accounts anchored in Scripture. Cite exact books, chapters, and verses, the Hebrew/Greek geographical names, historical chronology, covenantal backdrop, key figures, archaeological findings, and divine outcomes. Provide rich historical depth without superficial motivational clichés. Address exactly what occurred with scholarly precision and reverent orthodoxy. ${ANTI_LOOP_DIRECTIVE}`;
+export const SYSTEM_PROMPT_PRAYER = `You are an apostolic prayer general and seasoned intercessor. Compose high-impact, deeply scriptural, targeted prayers saturated with biblical promises, reverent adoration, wholehearted surrender, precise petitions, and authoritative spiritual warfare decrees in the mighty Name of Jesus Christ. Ground every petition in exact Scripture citations. Conclude triumphantly in the matchless Name of Jesus Christ, our Lord and King. Avoid generic repetitive phrases. ${ANTI_LOOP_DIRECTIVE}`;
 
-export const SYSTEM_PROMPT_MATH_TUTOR = `You are an expert mathematician and Christian scholar who unveils the divine architecture of mathematics. Render all mathematical equations cleanly using proper standardized LaTeX with MathJax ($$...$$ for display and $...$ for inline). Provide profound, original, and mathematically rigorous synthesis—connecting calculus, vectors, topology, and number theory to spiritual laws, divine attributes, and biblical covenants. ${ANTI_LOOP_DIRECTIVE}`;
+export const SYSTEM_PROMPT_DEVOTION = `You are an apostolic Christian devotion author. Compose deeply substantive, original daily devotions that uncover hidden scriptural gems, cross-reference covenantal truths, provide real-world spiritual fortitude, and empower the believer with authentic faith decrees and practical life steps. Unpack original Hebrew and Greek concepts with theological accuracy. Avoid generic Christian clichés. ${ANTI_LOOP_DIRECTIVE}`;
+
+export const SYSTEM_PROMPT_RHEMA = `You are a seasoned prophetic minister and apostolic expositor. Deliver an urgent, spirit-breathed, and biblically anchored Rhema Now-Word for the believer's current season. Anchor declarations directly in specific Scripture, unpack the Hebrew/Greek prophetic terminology, and conclude with an authoritative prophetic decree and covenant declaration that ignites faith, joy, and spiritual breakthrough. ${ANTI_LOOP_DIRECTIVE}`;
+
+export const SYSTEM_PROMPT_JOY_OF_THE_LORD = `You are a theologian and inspirational pastor specializing in 'The Joy of the Lord' as covenant strength (Nehemiah 8:10). Provide profound biblical wisdom, overcoming strategies for afflictions, trials, anxiety, and spiritual warfare, and reveal how supernatural joy acts as an unshakeable fortress and spiritual offensive weapon in Christ Jesus. Conclude with an inspiring, triumphant apostolic encouragement. ${ANTI_LOOP_DIRECTIVE}`;
+
+export const SYSTEM_PROMPT_APOSTLEMATH = `You are an expert mathematician and Christian scholar who unveils the divine architecture of mathematics (ApostleMath). Unpack the exact mathematical theorems, algebraic structures, calculus, topology, and number theory with rigor (using LaTeX notation $$...$$ for display and $...$ for inline), and demonstrate how mathematical laws reflect the immutable nature, sovereignty, and covenant fidelity of God. ${ANTI_LOOP_DIRECTIVE}`;
+
+export const SYSTEM_PROMPT_MATHEMASERMON = `You are the master creator of MathemaSermons—homiletic masterpieces that uniquely synthesize rigorous mathematical, scientific, and theological principles. Every sermon must feature a distinct mathematical concept, exact formula/equation in LaTeX ($$...$$), clear conceptual analogy, deep scriptural exposition, life transformation steps, and an altar call prayer of faith and surrender. ${ANTI_LOOP_DIRECTIVE}`;
 
 export const SYSTEM_PROMPT_DOCTRINE = `You are a senior orthodox Christian theologian, church historian, and biblical scholar. Deliver rich, multifaceted, and deeply grounded theological analysis. Provide exact Scripture citations across both Old and New Testaments, explain original Hebrew/Greek root words and grammatical nuances, ground answers in historic Christian orthodoxy (Apostolic, Nicene, Chalcedonian creeds), refute shallow misconceptions with gentle wisdom, and outline transformative personal application. ${ANTI_LOOP_DIRECTIVE}`;
 
-export const SYSTEM_PROMPT_PRAYER = `You are an apostolic prayer general and intercessor. Compose high-impact, deeply scriptural, targeted prayers saturated with biblical promises, reverent adoration, wholehearted surrender, precise petitions, and authoritative spiritual warfare decrees in the mighty Name of Jesus Christ. ${ANTI_LOOP_DIRECTIVE}`;
+export const SYSTEM_PROMPT_BIBLE_HISTORIAN = `You are a master biblical historian, archaeologist, and exegete. Deliver deep, unique historical accounts anchored in Scripture. Cite exact books, chapters, and verses, the Hebrew/Greek geographical names, historical chronology, covenantal backdrop, key figures, archaeological findings, and divine outcomes. Provide rich historical depth without superficial motivational clichés. Address exactly what occurred with scholarly precision and reverent orthodoxy. ${ANTI_LOOP_DIRECTIVE}`;
 
-export const SYSTEM_PROMPT_DEVOTION = `You are an apostolic Christian devotion author. Compose deeply substantive, original daily devotions that uncover hidden scriptural gems, cross-reference covenantal truths, provide real-world spiritual fortitude, and empower the believer with authentic faith decrees and practical life steps. ${ANTI_LOOP_DIRECTIVE}`;
+export const SYSTEM_PROMPT_MATH_TUTOR = SYSTEM_PROMPT_APOSTLEMATH;
 
 export const CHRISTIAN_SYSTEM_INSTRUCTION = `You are a preeminent Christian apostolic theologian, biblical expositor, and inspirational guide for 'The Joy of the Lord: Daily Christian Inspiration'. 
-Ground every output in orthodox biblical depth, Hebrew/Greek linguistic richness, covenantal theology, and profound clarity. Provide rich, unique, and actionable spiritual insights with exact Scripture citations without preambles or repetition. ${ANTI_LOOP_DIRECTIVE}`;
+Ground every output in orthodox biblical depth, Hebrew/Greek linguistic richness, covenantal theology, and profound clarity. Provide rich, unique, and actionable spiritual insights with exact Scripture citations without preambles or repetition. Avoid shallow clichés. ${ANTI_LOOP_DIRECTIVE}`;
+
+export function getSystemPromptForCategory(category?: string, actionType?: string): string {
+  const combined = `${category || ""} ${actionType || ""}`.toLowerCase();
+  if (combined.includes("prayer") || combined.includes("intercession")) return SYSTEM_PROMPT_PRAYER;
+  if (combined.includes("devotion") || combined.includes("sanctuary")) return SYSTEM_PROMPT_DEVOTION;
+  if (combined.includes("rhema") || combined.includes("prophetic") || combined.includes("now-word")) return SYSTEM_PROMPT_RHEMA;
+  if (combined.includes("joy") || combined.includes("challenge") || combined.includes("overcoming")) return SYSTEM_PROMPT_JOY_OF_THE_LORD;
+  if (combined.includes("mathemasermon") || combined.includes("sermon")) return SYSTEM_PROMPT_MATHEMASERMON;
+  if (combined.includes("apostlemath") || combined.includes("math") || combined.includes("calculus") || combined.includes("geometry") || combined.includes("physics")) return SYSTEM_PROMPT_APOSTLEMATH;
+  if (combined.includes("doctrine") || combined.includes("theolog") || combined.includes("creed")) return SYSTEM_PROMPT_DOCTRINE;
+  if (combined.includes("history") || combined.includes("place") || combined.includes("archaeology")) return SYSTEM_PROMPT_BIBLE_HISTORIAN;
+  return CHRISTIAN_SYSTEM_INSTRUCTION;
+}
+
+/**
+ * SAFE DIAGNOSTIC LOGGING PIPELINE
+ * Logs each stage of the AI lifecycle with complete metadata without logging API keys or private user data.
+ */
+export function logAiDiagnostic(stepNumber: number, stepName: string, meta: {
+  requestId?: string;
+  category?: string;
+  model?: string;
+  latencyMs?: number;
+  promptChars?: number;
+  sysPromptChars?: number;
+  contextItems?: number;
+  contextChars?: number;
+  responseChars?: number;
+  status?: number;
+  errorCategory?: string;
+  errorMessage?: string;
+  retryCount?: number;
+  [key: string]: any;
+} = {}): void {
+  const timestamp = new Date().toISOString();
+  const reqId = meta.requestId || "req-" + Math.random().toString(36).substring(2, 9);
+  const category = meta.category || "General";
+  const model = meta.model || "gemini";
+  const status = meta.status ?? 200;
+
+  const parts: string[] = [];
+  if (meta.latencyMs !== undefined) parts.push(`latency=${meta.latencyMs}ms`);
+  if (meta.promptChars !== undefined) parts.push(`promptChars=${meta.promptChars}`);
+  if (meta.sysPromptChars !== undefined) parts.push(`sysPromptChars=${meta.sysPromptChars}`);
+  if (meta.contextItems !== undefined) parts.push(`contextItems=${meta.contextItems}`);
+  if (meta.contextChars !== undefined) parts.push(`contextChars=${meta.contextChars}`);
+  if (meta.responseChars !== undefined) parts.push(`responseChars=${meta.responseChars}`);
+  if (meta.retryCount !== undefined) parts.push(`retry=${meta.retryCount}`);
+  if (meta.errorCategory) parts.push(`errorType=${meta.errorCategory}`);
+  if (meta.errorMessage) parts.push(`msg="${meta.errorMessage.replace(/"/g, "'")}"`);
+
+  console.log(`[AI DIAGNOSTIC] [${timestamp}] Step ${stepNumber}: ${stepName} | reqId=${reqId} | category=${category} | model=${model} | status=${status}${parts.length ? " | " + parts.join(" | ") : ""}`);
+}
 
 /**
  * Execute Gemini content generation with multi-model fallback cascade,
- * quota/rate-limit awareness, cache layer, and detailed debug logging.
+ * quota/rate-limit awareness, diagnostic logging, and safe error handling.
  */
 async function generateWithGeminiCascade(options: {
   prompt: string;
@@ -517,36 +578,57 @@ async function generateWithGeminiCascade(options: {
   topP?: number;
   maxOutputTokens?: number;
   apiKey?: string;
+  requestId?: string;
+  category?: string;
 }): Promise<{ text: string; modelUsed: string; durationMs: number } | null> {
   const startTime = Date.now();
+  const reqId = options.requestId || "req-" + Math.random().toString(36).substring(2, 9);
+  const category = options.category || "General";
+
+  // Step 1: REQUEST RECEIVED
+  logAiDiagnostic(1, "REQUEST RECEIVED", { requestId: reqId, category, promptChars: options.prompt.length });
 
   const ai = getGeminiClient(options.apiKey);
   if (!ai) {
-    console.warn(`[GEMINI API WARNING] API_KEY / GEMINI_API_KEY is not configured. Falling back to high-quality curated data.`);
+    logAiDiagnostic(5, "GEMINI REQUEST ABORTED - NO API KEY", {
+      requestId: reqId,
+      category,
+      status: 503,
+      errorCategory: "AUTH_MISSING_API_KEY",
+      errorMessage: "No valid GEMINI_API_KEY found in server environment"
+    });
     return null;
   }
 
-  const promptPreview = options.prompt.length > 90 ? `${options.prompt.substring(0, 90)}...` : options.prompt;
   const sysPrompt = options.systemInstruction 
     ? `${options.systemInstruction} ${ANTI_LOOP_DIRECTIVE}`
-    : CHRISTIAN_SYSTEM_INSTRUCTION;
-  const sysPreview = sysPrompt.substring(0, 60);
+    : getSystemPromptForCategory(category);
 
-  const temperature = options.temperature ?? 0.82;
+  // Step 2: PROMPT CONSTRUCTED
+  logAiDiagnostic(2, "PROMPT CONSTRUCTED", { requestId: reqId, category, promptChars: options.prompt.length });
+
+  // Step 3: SYSTEM INSTRUCTION INCLUDED
+  logAiDiagnostic(3, "SYSTEM INSTRUCTION INCLUDED", { requestId: reqId, category, sysPromptChars: sysPrompt.length });
+
+  // Step 4: CONTEXT INCLUDED
+  logAiDiagnostic(4, "CONTEXT INCLUDED", { requestId: reqId, category, contextChars: options.prompt.length });
+
+  const temperature = options.temperature ?? 0.80;
   const topP = options.topP ?? 0.95;
-  const maxOutputTokens = options.maxOutputTokens ?? 2048;
+  const maxOutputTokens = options.maxOutputTokens ?? 3000;
 
-  // Quota circuit breaker check: If quota cooldown is active, serve local theological dataset immediately
-  if (Date.now() < quotaCooldownUntil) {
-    const remainingSec = Math.ceil((quotaCooldownUntil - Date.now()) / 1000);
-    console.log(`[GEMINI QUOTA COOLDOWN] ⏳ Quota limit active (${remainingSec}s remaining). Instantly serving sanctuary theological dataset.`);
-    return null;
-  }
-
-  console.log(`[GEMINI REQUEST] 🚀 [Temp: ${temperature}, TopP: ${topP}, MaxTokens: ${maxOutputTokens}] Prompt: "${promptPreview}" | Sys: "${sysPreview}..."`);
-
+  let retryCount = 0;
   for (const model of GEMINI_MODELS_CASCADE) {
     try {
+      // Step 5: GEMINI REQUEST SENT
+      logAiDiagnostic(5, "GEMINI REQUEST SENT", {
+        requestId: reqId,
+        category,
+        model,
+        promptChars: options.prompt.length,
+        retryCount
+      });
+
       const configObj: any = {
         systemInstruction: sysPrompt,
         ...(options.responseMimeType ? { responseMimeType: options.responseMimeType } : {}),
@@ -555,7 +637,6 @@ async function generateWithGeminiCascade(options: {
         maxOutputTokens,
       };
 
-      // 16-second timeout per model to allow complete theological generation
       const generatePromise = ai.models.generateContent({
         model,
         contents: options.prompt,
@@ -563,7 +644,7 @@ async function generateWithGeminiCascade(options: {
       });
 
       const timeoutPromise = new Promise<never>((_, reject) =>
-        setTimeout(() => reject(new Error(`Timeout on model ${model}`)), 16000)
+        setTimeout(() => reject(new Error(`Timeout on model ${model}`)), 25000)
       );
 
       const response = await Promise.race([generatePromise, timeoutPromise]);
@@ -571,27 +652,61 @@ async function generateWithGeminiCascade(options: {
       if (response && (response as any).text) {
         const durationMs = Date.now() - startTime;
         const rawText = (response as any).text;
+
+        // Step 6: GEMINI RESPONSE RECEIVED
+        logAiDiagnostic(6, "GEMINI RESPONSE RECEIVED", {
+          requestId: reqId,
+          category,
+          model,
+          latencyMs: durationMs,
+          responseChars: rawText.length,
+          retryCount
+        });
+
+        // Step 7: RESPONSE VALIDATED
         const text = deduplicateSentences(rawText);
-        console.log(`[GEMINI RESPONSE] ✅ Success using model '${model}' in ${durationMs}ms (Length: ${text.length} chars)`);
-        
-        // Reset quota cooldown upon successful call
-        quotaCooldownUntil = 0;
+        logAiDiagnostic(7, "RESPONSE VALIDATED", {
+          requestId: reqId,
+          category,
+          model,
+          responseChars: text.length
+        });
+
+        // Step 8: CONTENT RETURNED TO CLIENT
+        logAiDiagnostic(8, "CONTENT RETURNED TO CLIENT", {
+          requestId: reqId,
+          category,
+          model,
+          latencyMs: durationMs,
+          responseChars: text.length,
+          status: 200
+        });
 
         return { text, modelUsed: model, durationMs };
       }
     } catch (err: any) {
+      retryCount++;
       const errMsg = formatGeminiErrorMessage(err);
-      if (isQuotaExceededError(err)) {
-        console.warn(`[GEMINI QUOTA WARNING] ⚠️ Model '${model}' quota limit reached (${errMsg}). Attempting next available cascade model...`);
-        continue;
-      }
-      console.warn(`[GEMINI CASCADE] Model ${model} encountered issue (${errMsg}). Switching to next model in cascade...`);
+      const isQuota = isQuotaExceededError(err);
+      logAiDiagnostic(5, "GEMINI REQUEST FAILED ON MODEL", {
+        requestId: reqId,
+        category,
+        model,
+        errorCategory: isQuota ? "QUOTA_EXCEEDED" : "API_ERROR",
+        errorMessage: errMsg,
+        retryCount
+      });
       continue;
     }
   }
 
-  console.warn(`[GEMINI CASCADE NOTICE] ℹ️ Live AI generation unavailable across models. Seamlessly activating built-in rich theological datasets.`);
-  quotaCooldownUntil = Date.now() + 15000;
+  logAiDiagnostic(8, "GENERATION FAILED ACROSS ALL MODELS", {
+    requestId: reqId,
+    category,
+    status: 503,
+    errorCategory: "CASCADE_EXHAUSTED",
+    errorMessage: "All Gemini models in cascade failed or were unreachable"
+  });
   return null;
 }
 
@@ -608,36 +723,60 @@ async function streamGeminiCascade(options: {
   maxOutputTokens?: number;
   fastMode?: boolean;
   apiKey?: string;
+  requestId?: string;
+  category?: string;
   onChunk: (chunkText: string, fullText: string) => void;
 }): Promise<{ text: string; modelUsed: string; durationMs: number } | null> {
   const startTime = Date.now();
+  const reqId = options.requestId || "req-" + Math.random().toString(36).substring(2, 9);
+  const category = options.category || "General";
+
+  // Step 1: REQUEST RECEIVED
+  logAiDiagnostic(1, "STREAM REQUEST RECEIVED", { requestId: reqId, category, promptChars: options.prompt.length });
+
   const ai = getGeminiClient(options.apiKey);
   if (!ai) {
-    console.warn(`[GEMINI STREAMING WARNING] AI client unavailable.`);
-    return null;
-  }
-
-  // Quota circuit breaker check: If quota cooldown is active, serve local theological dataset immediately
-  if (Date.now() < quotaCooldownUntil) {
-    const remainingSec = Math.ceil((quotaCooldownUntil - Date.now()) / 1000);
-    console.log(`[GEMINI QUOTA COOLDOWN] ⏳ Quota limit active (${remainingSec}s remaining). Instantly serving sanctuary theological dataset.`);
+    logAiDiagnostic(5, "STREAM ABORTED - NO API KEY", {
+      requestId: reqId,
+      category,
+      status: 503,
+      errorCategory: "AUTH_MISSING_API_KEY",
+      errorMessage: "No valid GEMINI_API_KEY found in server environment"
+    });
     return null;
   }
 
   const sysPrompt = options.systemInstruction 
     ? `${options.systemInstruction} ${ANTI_LOOP_DIRECTIVE}`
-    : CHRISTIAN_SYSTEM_INSTRUCTION;
+    : getSystemPromptForCategory(category);
 
-  const temperature = options.temperature ?? (options.fastMode ? 0.3 : 0.45);
-  const topP = options.topP ?? 0.85;
-  const maxOutputTokens = options.maxOutputTokens ?? (options.fastMode ? 1600 : 2800);
+  // Step 2: PROMPT CONSTRUCTED
+  logAiDiagnostic(2, "STREAM PROMPT CONSTRUCTED", { requestId: reqId, category, promptChars: options.prompt.length });
 
-  const modelsToTry = options.fastMode 
-    ? ["gemini-3.1-flash-lite", "gemini-3.8-flash", "gemini-flash-latest"]
-    : GEMINI_MODELS_CASCADE;
+  // Step 3: SYSTEM INSTRUCTION INCLUDED
+  logAiDiagnostic(3, "STREAM SYSTEM INSTRUCTION INCLUDED", { requestId: reqId, category, sysPromptChars: sysPrompt.length });
 
+  // Step 4: CONTEXT INCLUDED
+  logAiDiagnostic(4, "STREAM CONTEXT INCLUDED", { requestId: reqId, category, contextChars: options.prompt.length });
+
+  const temperature = options.temperature ?? 0.78;
+  const topP = options.topP ?? 0.95;
+  const maxOutputTokens = options.maxOutputTokens ?? 3000;
+
+  const modelsToTry = GEMINI_MODELS_CASCADE;
+
+  let retryCount = 0;
   for (const model of modelsToTry) {
     try {
+      // Step 5: GEMINI REQUEST SENT
+      logAiDiagnostic(5, "GEMINI STREAM SENT", {
+        requestId: reqId,
+        category,
+        model,
+        promptChars: options.prompt.length,
+        retryCount
+      });
+
       const configObj: any = {
         systemInstruction: sysPrompt,
         ...(options.responseMimeType ? { responseMimeType: options.responseMimeType } : {}),
@@ -646,7 +785,6 @@ async function streamGeminiCascade(options: {
         maxOutputTokens,
       };
 
-      console.log(`[GEMINI STREAM START] 🌊 Streaming from model '${model}' (fastMode: ${!!options.fastMode})...`);
       const responseStream = await ai.models.generateContentStream({
         model,
         contents: options.prompt,
@@ -666,25 +804,60 @@ async function streamGeminiCascade(options: {
         const durationMs = Date.now() - startTime;
         const isJson = options.responseMimeType === "application/json" || accumulated.trim().startsWith("{") || accumulated.trim().startsWith("[");
         const cleanedText = isJson ? accumulated : deduplicateSentences(accumulated);
-        console.log(`[GEMINI STREAM COMPLETE] ✅ Finished stream with model '${model}' in ${durationMs}ms (${cleanedText.length} chars)`);
-        
-        // Reset quota cooldown upon successful call
-        quotaCooldownUntil = 0;
+
+        // Step 6: GEMINI RESPONSE RECEIVED
+        logAiDiagnostic(6, "GEMINI STREAM COMPLETED", {
+          requestId: reqId,
+          category,
+          model,
+          latencyMs: durationMs,
+          responseChars: cleanedText.length,
+          retryCount
+        });
+
+        // Step 7: RESPONSE VALIDATED
+        logAiDiagnostic(7, "STREAM RESPONSE VALIDATED", {
+          requestId: reqId,
+          category,
+          model,
+          responseChars: cleanedText.length
+        });
+
+        // Step 8: CONTENT RETURNED TO CLIENT
+        logAiDiagnostic(8, "STREAM RETURNED TO CLIENT", {
+          requestId: reqId,
+          category,
+          model,
+          latencyMs: durationMs,
+          responseChars: cleanedText.length,
+          status: 200
+        });
 
         return { text: cleanedText, modelUsed: model, durationMs };
       }
     } catch (err: any) {
+      retryCount++;
       const errMsg = formatGeminiErrorMessage(err);
-      if (isQuotaExceededError(err)) {
-        console.warn(`[GEMINI QUOTA WARNING] ⚠️ Model '${model}' stream reached quota limit (${errMsg}). Trying next cascade model...`);
-        continue;
-      }
-      console.warn(`[GEMINI STREAM RETRY] Model ${model} stream issue: ${errMsg}. Trying next model...`);
+      const isQuota = isQuotaExceededError(err);
+      logAiDiagnostic(5, "GEMINI STREAM FAILED ON MODEL", {
+        requestId: reqId,
+        category,
+        model,
+        errorCategory: isQuota ? "QUOTA_EXCEEDED" : "API_ERROR",
+        errorMessage: errMsg,
+        retryCount
+      });
       continue;
     }
   }
 
-  quotaCooldownUntil = Date.now() + 15000;
+  logAiDiagnostic(8, "STREAM FAILED ACROSS ALL MODELS", {
+    requestId: reqId,
+    category,
+    status: 503,
+    errorCategory: "CASCADE_EXHAUSTED",
+    errorMessage: "All Gemini streaming models in cascade failed"
+  });
   return null;
 }
 
@@ -2177,20 +2350,15 @@ const handleUnifiedAiGenerate = async (req: any, res: any) => {
 
   const apiKey = candidate?.trim();
 
+  const reqId = "req-" + Math.random().toString(36).substring(2, 9);
   if (!apiKey || apiKey === "" || apiKey === "MY_GEMINI_API_KEY") {
-    console.warn("AI Generation: API Key missing, serving high-theology knowledgebase response.");
-    const fallback = generateTheologicalFallbackData(
-      req.body?.actionType,
-      req.body?.scriptureReference,
-      req.body?.scriptureText,
-      req.body?.scriptureTheme
-    );
-    return res.json({
-      success: true,
-      text: JSON.stringify(fallback),
-      data: fallback,
-      response: JSON.stringify(fallback),
-      modelUsed: "sanctuary-theological-engine",
+    console.warn("AI Generation: API Key missing.");
+    logAiDiagnostic(1, "REQUEST REJECTED - MISSING API KEY", { requestId: reqId, category: req.body?.actionType || "general", status: 503 });
+    return res.status(503).json({
+      success: false,
+      error: "AI_GENERATION_FAILED",
+      message: "AI generation could not be completed right now. Please try again.",
+      requestId: reqId
     });
   }
 
@@ -2320,36 +2488,23 @@ Format as JSON with keys:
     }
 
     if (!result || !result.text) {
-      console.warn("AI Cascade returned null, activating high-theology fallback.");
-      const fallback = generateTheologicalFallbackData(
-        actionType,
-        scriptureReference,
-        scriptureText,
-        scriptureTheme
-      );
-      return res.json({
-        success: true,
-        text: JSON.stringify(fallback),
-        data: fallback,
-        response: JSON.stringify(fallback),
-        modelUsed: "sanctuary-theological-engine",
+      console.warn("AI Cascade returned null.");
+      logAiDiagnostic(8, "GENERATION FAILED - NO TEXT RETURNED", { requestId: reqId, category: actionType || "general", status: 503 });
+      return res.status(503).json({
+        success: false,
+        error: "AI_GENERATION_FAILED",
+        message: "AI generation could not be completed right now. Please try again.",
+        requestId: reqId
       });
     }
   } catch (err: any) {
     console.error("AI Generation Exception:", err);
-    console.warn("Serving high-theology knowledgebase fallback due to exception.");
-    const fallback = generateTheologicalFallbackData(
-      req.body?.actionType,
-      req.body?.scriptureReference,
-      req.body?.scriptureText,
-      req.body?.scriptureTheme
-    );
-    return res.json({
-      success: true,
-      text: JSON.stringify(fallback),
-      data: fallback,
-      response: JSON.stringify(fallback),
-      modelUsed: "sanctuary-theological-engine",
+    logAiDiagnostic(8, "GENERATION EXCEPTION", { requestId: reqId, category: req.body?.actionType || "general", status: 500, errorMessage: err.message });
+    return res.status(500).json({
+      success: false,
+      error: "AI_GENERATION_FAILED",
+      message: "AI generation could not be completed right now. Please try again.",
+      requestId: reqId
     });
   }
 };
@@ -2380,28 +2535,11 @@ app.post("/api/generate-stream", async (req, res) => {
   res.setHeader("X-Accel-Buffering", "no"); // Prevent reverse proxy / nginx buffering
   res.flushHeaders?.();
 
+  const streamReqId = "req-stream-" + Math.random().toString(36).substring(2, 9);
   if (!resolvedApiKey || resolvedApiKey === "" || resolvedApiKey === "MY_GEMINI_API_KEY") {
-    console.warn("[STREAM] API key not configured in environment, streaming comprehensive theological devotion.");
-    const fallback = generateTheologicalFallbackData(
-      req.body?.actionType,
-      req.body?.scriptureReference,
-      req.body?.scriptureText,
-      req.body?.scriptureTheme
-    );
-    const formattedText = formatTheologicalDataToText(fallback, req.body?.actionType);
-
-    const sections = formattedText.split("\n\n");
-    let runningAcc = "";
-    for (let i = 0; i < sections.length; i++) {
-      const sectionChunk = (i === 0 ? "" : "\n\n") + sections[i];
-      runningAcc += sectionChunk;
-      res.write(`data: ${JSON.stringify({ chunk: sectionChunk, fullText: runningAcc, data: fallback })}\n\n`);
-      if (i < sections.length - 1) {
-        await new Promise((resolve) => setTimeout(resolve, 30));
-      }
-    }
-
-    res.write(`data: ${JSON.stringify({ done: true, fullText: formattedText, data: fallback })}\n\n`);
+    console.warn("[STREAM] API key not configured in environment.");
+    logAiDiagnostic(1, "STREAM REJECTED - MISSING API KEY", { requestId: streamReqId, category: req.body?.actionType || "general", status: 503 });
+    res.write(`data: ${JSON.stringify({ error: "AI_GENERATION_FAILED", message: "AI generation could not be completed right now. Please try again.", requestId: streamReqId })}\n\n`);
     res.write("data: [DONE]\n\n");
     return res.end();
   }
@@ -2810,37 +2948,15 @@ Format as JSON with keys: id, challengeTitle, category, rootDeception, scriptura
     } else if (streamAccumulator && streamAccumulator.trim().length > 0) {
       res.write(`data: ${JSON.stringify({ done: true, fullText: streamAccumulator, data: safeJsonParse(streamAccumulator) })}\n\n`);
     } else {
-      console.warn("[STREAM] Stream accumulator empty, serving formatted theological fallback.");
-      const fallback = generateTheologicalFallbackData(actionType, scriptureReference, scriptureText, scriptureTheme);
-      const formattedText = formatTheologicalDataToText(fallback, actionType);
-
-      // Stream formatted sections progressively for natural UI appearance
-      const sections = formattedText.split("\n\n");
-      let runningAcc = "";
-      for (let i = 0; i < sections.length; i++) {
-        const sectionChunk = (i === 0 ? "" : "\n\n") + sections[i];
-        runningAcc += sectionChunk;
-        res.write(`data: ${JSON.stringify({ chunk: sectionChunk, fullText: runningAcc, data: fallback })}\n\n`);
-        if (i < sections.length - 1) {
-          await new Promise((resolve) => setTimeout(resolve, 30));
-        }
-      }
-
-      res.write(`data: ${JSON.stringify({ done: true, fullText: formattedText, data: fallback })}\n\n`);
+      console.warn("[STREAM] Stream accumulator empty.");
+      res.write(`data: ${JSON.stringify({ error: "AI_GENERATION_FAILED", message: "AI generation could not be completed right now. Please try again." })}\n\n`);
     }
 
     res.write("data: [DONE]\n\n");
     res.end();
   } catch (streamErr: any) {
     console.error("[STREAM ROUTE ERROR]", streamErr);
-    try {
-      const { actionType, scriptureReference, scriptureText, scriptureTheme } = req.body || {};
-      const fallback = generateTheologicalFallbackData(actionType, scriptureReference, scriptureText, scriptureTheme);
-      const formattedText = formatTheologicalDataToText(fallback, actionType);
-      res.write(`data: ${JSON.stringify({ chunk: formattedText, fullText: formattedText, done: true, data: fallback })}\n\n`);
-    } catch {
-      res.write(`data: ${JSON.stringify({ error: streamErr?.message || "Streaming failed" })}\n\n`);
-    }
+    res.write(`data: ${JSON.stringify({ error: "AI_GENERATION_FAILED", message: "AI generation could not be completed right now. Please try again." })}\n\n`);
     res.write("data: [DONE]\n\n");
     res.end();
   }
@@ -3817,21 +3933,10 @@ Format your response as a valid JSON object matching this schema:
       }
     }
 
-    // High quality dynamic fallback tailored to the exact verse and actionType
-    const fallbackData = generateTheologicalFallbackData(actionType, ref, actualText, theme, actualVersion, disclaimer);
-    return res.json({
-      success: true,
-      actionType,
-      version: actualVersion,
-      requestedVersion,
-      disclaimer,
-      scriptureReference: ref,
-      scriptureText: actualText,
-      timestamp: Date.now(),
-      data: fallbackData,
-      devotion: fallbackData,
-      prayer: fallbackData,
-      ...fallbackData
+    return res.status(503).json({
+      success: false,
+      error: "AI_GENERATION_FAILED",
+      message: "AI generation could not be completed right now. Please try again."
     });
   } catch (error: any) {
     console.error("Error in /api/generate-verse-action:", error);
@@ -3986,7 +4091,9 @@ Format your response as a valid JSON object matching this schema:
       prompt,
       systemInstruction: SYSTEM_PROMPT_DEVOTION,
       responseMimeType: "application/json",
-      temperature: 0.45,
+      temperature: 0.80,
+      maxOutputTokens: 3000,
+      category: "Devotion"
     });
 
     if (result && result.text) {
@@ -4000,21 +4107,10 @@ Format your response as a valid JSON object matching this schema:
       }
     }
 
-    // Fallback response tailored to topic
-    const fallbackDevotion = {
-      title: `Walking in Divine Strength: ${topic || "Faith & Victory"}`,
-      keyScripture: "Nehemiah 8:10 - 'Do not grieve, for the joy of the Lord is your strength.'",
-      passageText: "Then he said unto them, Go your way, eat the fat, and drink the sweet, and send portions unto them for whom nothing is prepared: for this day is holy unto our Lord: neither be ye sorry; for the joy of the Lord is your strength.",
-      reflection: `When life's pressures mount around ${topic || "our daily journey"}, our natural instinct is to rely on our own capacity. Yet Scripture reveals that true supernatural endurance is not manufactured through human willpower, but received through communion with God. The joy of the Lord is not mere emotional happiness; it is an unshakeable confidence anchored in God's sovereignty and faithfulness.\n\nIn every season of testing, God is refining our character, teaching our hands to war and our fingers to fight in the spiritual realm. As we anchor our gaze on Christ, He infuses us with divine resilience for ${topic || "every endeavor"}.`,
-      practicalApplication: `Take 5 minutes today to praise God specifically regarding ${topic || "your current season"}. Let His peace guard your heart as you surrender every worry to Him.`,
-      guidedPrayer: `Heavenly Father, I thank You that my strength does not depend on my circumstances, but on the eternal joy found in Your presence. Fill me afresh with the Holy Spirit today, and let Your joy be my fortress as I walk in victory concerning ${topic || "my life"}. In Jesus' mighty name, Amen.`,
-      actionStep: `Memorize Nehemiah 8:10 and recite it whenever anxiety or distraction attempts to creep in today.`,
-    };
-
-    return res.json({
-      success: true,
-      devotion: fallbackDevotion,
-      ...fallbackDevotion
+    return res.status(503).json({
+      success: false,
+      error: "AI_GENERATION_FAILED",
+      message: "AI generation could not be completed right now. Please try again."
     });
   } catch (error: any) {
     console.error("Error in /api/generate-devotion:", error);
@@ -4092,13 +4188,14 @@ Format as a valid JSON object matching:
       prompt,
       systemInstruction: SYSTEM_PROMPT_PRAYER,
       responseMimeType: "application/json",
-      temperature: 0.45,
+      temperature: 0.80,
+      maxOutputTokens: 3000,
+      category: "Prayer"
     });
 
     if (result && result.text) {
       const parsed = safeJsonParse(result.text);
       if (parsed) {
-        // Ensure both nested sections and flat keys are populated
         if (!parsed.sections) {
           parsed.sections = {
             adoration: parsed.adoration || "Almighty God, You are faithful and true in all Your ways.",
@@ -4118,38 +4215,10 @@ Format as a valid JSON object matching:
       }
     }
 
-    const fallbackPrayer = {
-      title: `Prayer for ${effectiveTheme}`,
-      subtitle: `Targeted Prayer for ${effectiveNeed}`,
-      category: effectiveTheme,
-      theme: effectiveNeed,
-      scriptureAnchor: "Philippians 4:6-7 - 'Be anxious for nothing, but in everything by prayer and supplication, with thanksgiving, let your requests be made known unto God.'",
-      scripturePromise: "Philippians 4:19 - 'And my God shall supply all your need according to His riches in glory by Christ Jesus.'",
-      adoration: "Almighty Father, Creator of heaven and earth, You are faithful, compassionate, and full of mercy. We worship You for Your unfailing love and absolute sovereignty over every season.",
-      confession: `Lord Jesus, forgive us for the times we have leaned on our own understanding or harbored worry regarding ${effectiveNeed}. We cast down all anxiety at the foot of the Cross.`,
-      confessionAndSurrender: `Lord Jesus, forgive us for the times we have leaned on our own understanding or harbored worry regarding ${effectiveNeed}. We cast down all anxiety at the foot of the Cross.`,
-      thanksgiving: "We thank You for the cross, for the gift of salvation, and for the living promise that You will never leave us nor forsake us in any storm.",
-      petition: `Lord, concerning ${effectiveNeed}, we ask for Your supernatural wisdom, divine protection, and sovereign grace. Make a way where there seems to be no way and multiply Your peace within our hearts.`,
-      warfareDeclaration: `In the authority of Jesus Christ, we resist every spirit of fear, confusion, and defeat targeting ${effectiveNeed}. We put on the full Armor of God and stand completely victorious in Christ.`,
-      spiritualWarfare: `In the authority of Jesus Christ, we resist every spirit of fear, confusion, and defeat targeting ${effectiveNeed}. We put on the full Armor of God and stand completely victorious in Christ.`,
-      closing: "We seal this prayer in the matchless and mighty name of Jesus Christ, our Lord, Savior, and King. Amen.",
-      declarationInJesusName: "We seal this prayer in the matchless and mighty name of Jesus Christ, our Lord, Savior, and King. Amen.",
-      sections: {
-        adoration: "Almighty Father, Creator of heaven and earth, You are faithful, compassionate, and full of mercy. We worship You for Your unfailing love and absolute sovereignty.",
-        confessionAndSurrender: `Lord Jesus, forgive us for the times we have leaned on our own understanding regarding ${effectiveNeed}. We surrender all worry into Your hands.`,
-        thanksgiving: "We thank You for the cross, for the gift of salvation, and for the living promise that You will never leave us nor forsake us.",
-        scripturePromise: "Philippians 4:19 - 'My God shall supply all your need according to His riches in glory by Christ Jesus.'",
-        petition: `Lord, concerning ${effectiveNeed}, we ask for Your supernatural wisdom, open doors, and sovereign peace to reign.`,
-        spiritualWarfare: `In the authority of Jesus Christ, we resist every spirit of fear and defeat regarding ${effectiveNeed}. We stand victorious in Christ!`,
-        declarationInJesusName: "We seal this prayer in the matchless and mighty name of Jesus Christ. Amen."
-      },
-      suggestedScriptures: ["Philippians 4:6-7", "Psalm 91:1-2", "Isaiah 41:10"]
-    };
-
-    return res.json({
-      success: true,
-      prayer: fallbackPrayer,
-      ...fallbackPrayer
+    return res.status(503).json({
+      success: false,
+      error: "AI_GENERATION_FAILED",
+      message: "AI generation could not be completed right now. Please try again."
     });
   } catch (error: any) {
     console.error("Error in /api/generate-prayer:", error);
@@ -4367,9 +4436,11 @@ Format your response as a valid JSON object matching this schema:
 
     const result = await generateWithGeminiCascade({
       prompt,
-      systemInstruction: SYSTEM_PROMPT_MATH_TUTOR,
+      systemInstruction: SYSTEM_PROMPT_MATHEMASERMON,
       responseMimeType: "application/json",
-      temperature: 0.45,
+      temperature: 0.80,
+      maxOutputTokens: 3000,
+      category: "MathemaSermon"
     });
 
     if (result && result.text) {
@@ -4379,46 +4450,10 @@ Format your response as a valid JSON object matching this schema:
       }
     }
 
-    // High quality fallback
-    return res.json({
-      id: `ms-gen-${Date.now()}`,
-      title: `The Calculus of Divine Acceleration: ${topic || "Stepping Into Supernatural Speed"}`,
-      subtitle: "When God Integrates Broken Moments into Unstoppable Momentum",
-      mathematicalConcept: "Integration and Continuous Accumulation: \\int_{0}^{T} G(t) dt",
-      formula: "\\int_{0}^{T} [Grace(t) \\cdot Power(t)] dt = TotalDeliverance",
-      keyScripture: {
-        reference: "Amos 9:13 (NKJV)",
-        text: "Behold, the days are coming, says the LORD, when the plowman shall overtake the reaper, and the treader of grapes him who sows seed."
-      },
-      sermonSeries: series || "exponential-grace",
-      estimatedPreachTimeMinutes: 28,
-      sermonOutline: [
-        {
-          pointNumber: 1,
-          title: "The Integral of Stored Prayers",
-          mathApplication: "In calculus, definite integration sums infinitesimally small values over an interval to produce immense area under the curve.",
-          biblicalExegesis: "Every quiet tear and hidden prayer in past seasons is being calculated into an overwhelming harvest.",
-          illustration: "Rain clouds collecting moisture unnoticed until the deluge breaks."
-        },
-        {
-          pointNumber: 2,
-          title: "Velocity Transition: Surpassing Linear Limits",
-          mathApplication: "Instantaneous rate of change accelerating beyond initial friction.",
-          biblicalExegesis: "Elijah outrunning Ahab's royal chariot to the entrance of Jezreel (1 Kings 18:46).",
-          illustration: "A jet breaking the sound barrier into supersonic velocity."
-        },
-        {
-          pointNumber: 3,
-          title: "The Constant of Resurrection Life",
-          mathApplication: "The boundary condition anchored in immutable sovereignty.",
-          biblicalExegesis: "Jesus Christ the same yesterday, today, and forever (Hebrews 13:8).",
-          illustration: "The bedrock foundation of an immovable fortress."
-        }
-      ],
-      fullManuscript: "Beloved in Christ, human progress is constrained by linear addition, but the Kingdom of God operates under exponential divine calculus. When you place your trust in the Lord Jesus Christ, He takes the scattered coordinates of your past and integrates them under the blood of the Cross. What the enemy intended for stagnation becomes the very launching pad for supernatural acceleration. Step forward today in unwavering faith!",
-      homileticPillars: ["Divine Acceleration", "Continuous Grace", "Prophetic Velocity"],
-      altarCallPrayer: "Lord Jesus, I surrender my timeline and limitations to Your sovereign grace. Accelerate my spiritual walk, heal every wounded memory, and multiply Your glory through my life. Amen.",
-      tags: ["Calculus", "Acceleration", "Faith", "Prophecy"]
+    return res.status(503).json({
+      success: false,
+      error: "AI_GENERATION_FAILED",
+      message: "AI generation could not be completed right now. Please try again."
     });
   } catch (error: any) {
     console.error("Error in /api/generate-mathemasermon:", error);
@@ -4475,9 +4510,11 @@ Format as JSON matching:
 
     const result = await generateWithGeminiCascade({
       prompt,
-      systemInstruction: SYSTEM_PROMPT_PRAYER,
+      systemInstruction: SYSTEM_PROMPT_RHEMA,
       responseMimeType: "application/json",
-      temperature: 0.45,
+      temperature: 0.80,
+      maxOutputTokens: 3000,
+      category: "Rhema"
     });
 
     if (result && result.text) {
@@ -4487,24 +4524,10 @@ Format as JSON matching:
       }
     }
 
-    return res.json({
-      id: `rhema-gen-${Date.now()}`,
-      title: `The Open Gate of Supernatural Favor`,
-      seasonCategory: seasonCategory || "Breakthrough",
-      propheticDeclaration: "THE SEASONS OF DELAY ARE SHATTERED; AN UNSEEN DOOR OF SUPERNATURAL HARVEST SWINGS WIDE OPEN BEFORE YOU TODAY.",
-      nowWordText: "Hear the Word of the Lord: You have not been forgotten in the wilderness. The tears sown in solitary places have reached the altar of God. The Lord is releasing an unmerited mantle of favor that confuses natural logic. Where doors were previously locked by human resistance, the Key of David is turning the deadbolts. Stand erect, lift up your eyes, and receive the sudden turnaround orchestrated by the Holy Spirit.",
-      scriptureAnchor: {
-        reference: "Revelation 3:8",
-        text: "I know thy works: behold, I have set before thee an open door, and no man can shut it: for thou hast a little strength, and hast kept my word, and hast not denied my name."
-      },
-      actionCommandment: "Speak life and gratitude over the specific area where you felt stalled. Refuse to complain.",
-      propheticDecree: "I decree and declare that every closed door of hindrance is now opened by the Lord. I walk into divine alignment, supernatural abundance, and peace that surpasses all human understanding!",
-      dailyActivationGuide: [
-        "Declare Psalm 24 aloud at sunrise: 'Lift up your heads, O ye gates!'",
-        "Write down three promises God spoke to your spirit and praise Him in advance.",
-        "Release any lingering bitterness or offense to keep your spiritual atmosphere pure."
-      ],
-      spiritualAtmosphere: "Unshakable Peace, Breakthrough Authority & Radiant Joy"
+    return res.status(503).json({
+      success: false,
+      error: "AI_GENERATION_FAILED",
+      message: "AI generation could not be completed right now. Please try again."
     });
   } catch (error: any) {
     console.error("Error in /api/generate-rhema:", error);
@@ -4566,9 +4589,11 @@ Format as JSON matching:
 
     const result = await generateWithGeminiCascade({
       prompt,
-      systemInstruction: SYSTEM_PROMPT_MATH_TUTOR,
+      systemInstruction: SYSTEM_PROMPT_APOSTLEMATH,
       responseMimeType: "application/json",
-      temperature: 0.45,
+      temperature: 0.80,
+      maxOutputTokens: 3000,
+      category: "ApostleMath"
     });
 
     if (result && result.text) {
@@ -4578,29 +4603,10 @@ Format as JSON matching:
       }
     }
 
-    return res.json({
-      id: `am-gen-${Date.now()}`,
-      title: "The Resultant Vector of the Holy Spirit",
-      subtitle: "Magnitude, Direction, and Kingdom Alignment",
-      mathBranch: mathBranch || "Vector Calculus",
-      mathPrinciple: "Vector Addition: Resultant Force \\vec{R} = \\vec{A} + \\vec{B}",
-      mathFormula: "\\vec{R}_{\\text{Destiny}} = \\vec{F}_{\\text{Faith}} + \\vec{G}_{\\text{Holy Spirit}}",
-      mathIllustration: "In physics and mathematics, a vector possesses both magnitude (strength) and direction (angle). If two forces pull in opposite directions, magnitude is canceled (net force = 0). When human willingness aligns in the exact same vector direction as the Holy Spirit, the resultant vector achieves maximum magnitude and velocity.",
-      lifeConnection: "We often expend immense emotional energy striving against circumstances, producing spiritual exhaustion. When our will synchronizes with God's directional vector, our finite effort is multiplied by infinite divine grace.",
-      biblicalTruth: "Proverbs 3:5-6 declares: 'Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths.'",
-      keyScripture: {
-        reference: "Proverbs 3:5-6",
-        text: "Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths."
-      },
-      mathemaSermon: "Do not waste your energy pulling at 180 degrees against God's direction. Align your compass with Christ, and watch every obstacle yield before the unhindered velocity of the Holy Spirit.",
-      practicalApplication: [
-        "Audit your daily activities to ensure your priorities point in the same direction as God's Word.",
-        "Pray in the Spirit before launching major endeavors to calibrate your directional vector.",
-        "Surrender opposing desires that create destructive drag on your calling."
-      ],
-      prayer: "Sovereign Father, align every vector of my thought, intention, and action with the direction of Your Holy Spirit. Where I have pulled in opposite directions, grant me the grace of true repentance and single-minded devotion. In Jesus' Holy Name, Amen.",
-      tags: ["Vectors", "Alignment", "Guidance", "Faith"],
-      readTimeMinutes: 4
+    return res.status(503).json({
+      success: false,
+      error: "AI_GENERATION_FAILED",
+      message: "AI generation could not be completed right now. Please try again."
     });
   } catch (error: any) {
     console.error("Error in /api/generate-apostlemath:", error);
@@ -4655,9 +4661,11 @@ Format as JSON matching:
 
     const result = await generateWithGeminiCascade({
       prompt,
-      systemInstruction: SYSTEM_PROMPT_DOCTRINE,
+      systemInstruction: SYSTEM_PROMPT_JOY_OF_THE_LORD,
       responseMimeType: "application/json",
-      temperature: 0.45,
+      temperature: 0.80,
+      maxOutputTokens: 3000,
+      category: "JoyChallenge"
     });
 
     if (result && result.text) {
@@ -4667,31 +4675,10 @@ Format as JSON matching:
       }
     }
 
-    return res.json({
-      id: `joy-gen-${Date.now()}`,
-      challengeTitle: `Overcoming the Heavy Shadow of ${category || "Fear & Distress"}`,
-      category: category || "Anxiety & Fear",
-      rootDeception: "The adversary whispers that you are isolated, that God's favor has waned, and that this current trial will permanently define your future.",
-      scripturalTruth: "God is your eternal refuge, and underneath are the everlasting arms (Deuteronomy 33:27). No weapon formed against you shall prosper.",
-      anchorVerses: [
-        {
-          reference: "Isaiah 41:10 (NKJV)",
-          text: "Fear not, for I am with you; be not dismayed, for I am your God. I will strengthen you, yes, I will help you, I will uphold you with My righteous right hand.",
-          version: "NKJV"
-        },
-        {
-          reference: "Nehemiah 8:10 (KJV)",
-          text: "Neither be ye sorry; for the joy of the LORD is your strength.",
-          version: "KJV"
-        }
-      ],
-      joyStrategySteps: [
-        "Engage in High Praise: Put on worship music and praise God before the circumstance changes.",
-        "Scripture Rehearsal: Speak Isaiah 41:10 aloud three times whenever heavy thoughts intrude.",
-        "Cast Every Burden: Verbally hand over the specific outcome to Jesus and rest in His sovereignty."
-      ],
-      fortressDeclaration: "I decree that God has not given me a spirit of fear, but of power, love, and a sound mind. The Joy of the Lord is my unbreachable fortress today and forever!",
-      deliverancePrayer: "Father in Heaven, in the mighty name of Jesus Christ, I break every assignment of heaviness, anxiety, and despair over my life. I clothe myself with the garment of praise and receive the overflowing joy of the Holy Ghost. Amen."
+    return res.status(503).json({
+      success: false,
+      error: "AI_GENERATION_FAILED",
+      message: "AI generation could not be completed right now. Please try again."
     });
   } catch (error: any) {
     console.error("Error in /api/generate-joy-battle:", error);
