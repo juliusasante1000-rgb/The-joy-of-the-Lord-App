@@ -13,18 +13,44 @@ const PORT = 3000;
 
 const isServerless = Boolean(process.env.VERCEL || process.env.VERCEL_ENV || process.env.AWS_LAMBDA_FUNCTION_NAME || process.env.NETLIFY);
 
-// Parse JSON body, handling Vercel Serverless environment where req.body may already be parsed
+// Parse JSON and URL-encoded body, handling Vercel Serverless environment where req.body may already be a string, Buffer, or pre-consumed stream
 app.use((req, res, next) => {
-  if (req.body && typeof req.body === "object") {
+  if (typeof req.body === "string") {
+    try {
+      req.body = JSON.parse(req.body);
+      return next();
+    } catch {}
+  }
+  if (Buffer.isBuffer(req.body)) {
+    try {
+      req.body = JSON.parse(req.body.toString("utf-8"));
+      return next();
+    } catch {}
+  }
+  if (req.body && typeof req.body === "object" && !Buffer.isBuffer(req.body)) {
     return next();
   }
-  express.json({ limit: "50mb" })(req, res, next);
+  if (req.readableEnded || (req as any)._readableState?.ended) {
+    req.body = req.body || {};
+    return next();
+  }
+  express.json({ limit: "50mb" })(req, res, (err) => {
+    if (err) {
+      req.body = req.body || {};
+    }
+    next();
+  });
 });
 app.use((req, res, next) => {
-  if (req.body && typeof req.body === "object") {
+  if (req.body && typeof req.body === "object" && !Buffer.isBuffer(req.body) && Object.keys(req.body).length > 0) {
     return next();
   }
-  express.urlencoded({ extended: true, limit: "50mb" })(req, res, next);
+  if (req.readableEnded || (req as any)._readableState?.ended) {
+    return next();
+  }
+  express.urlencoded({ extended: true, limit: "50mb" })(req, res, () => {
+    next();
+  });
 });
 
 // Enable CORS and ensure seamless path resolution for both direct and serverless requests
@@ -352,7 +378,7 @@ function getGeminiClient(customApiKey?: string): GoogleGenAI | null {
       process.env.VITE_API_KEY ||
       process.env.GEMINI_KEY;
 
-  const apiKey = candidate?.trim();
+  const apiKey = candidate?.replace(/^["']|["']$/g, "").trim();
   if (!apiKey || apiKey === "" || apiKey === "MY_GEMINI_API_KEY") {
     return null;
   }
@@ -666,11 +692,17 @@ async function generateWithGeminiCascade(options: {
         config: configObj,
       });
 
-      const timeoutPromise = new Promise<never>((_, reject) =>
-        setTimeout(() => reject(new Error(`Timeout on model ${model}`)), 25000)
-      );
+      let timeoutTimer: any;
+      const timeoutPromise = new Promise<never>((_, reject) => {
+        timeoutTimer = setTimeout(() => reject(new Error(`Timeout on model ${model}`)), 25000);
+      });
 
-      const response = await Promise.race([generatePromise, timeoutPromise]);
+      let response: any;
+      try {
+        response = await Promise.race([generatePromise, timeoutPromise]);
+      } finally {
+        if (timeoutTimer) clearTimeout(timeoutTimer);
+      }
 
       if (response && (response as any).text) {
         const durationMs = Date.now() - startTime;
@@ -4295,7 +4327,9 @@ Format as a valid JSON object matching:
 
 // API route: Retrieve/Synthesize Full Chapter Verses for Any of the 66 Books
 const CHAPTER_CACHE: Record<string, any> = {};
-const BIBLE_CACHE_DIR = path.join(process.cwd(), "data", "bible_cache");
+const BIBLE_CACHE_DIR = isServerless
+  ? path.join(os.tmpdir(), "bible_cache")
+  : path.join(process.cwd(), "data", "bible_cache");
 if (!fs.existsSync(BIBLE_CACHE_DIR)) {
   try {
     fs.mkdirSync(BIBLE_CACHE_DIR, { recursive: true });
@@ -4884,14 +4918,14 @@ async function startServer() {
   }
 
   // Only bind port if not running in a serverless environment like Vercel
-  if (process.env.VERCEL !== "1" && !process.env.VERCEL_ENV) {
+  if (!isServerless) {
     app.listen(PORT, "0.0.0.0", () => {
       console.log(`The Joy of the Lord server running on http://0.0.0.0:${PORT}`);
     });
   }
 }
 
-if (process.env.VERCEL !== "1" && !process.env.VERCEL_ENV) {
+if (!isServerless) {
   startServer().catch((err) => {
     console.error("[SERVER] Startup failed:", err);
   });

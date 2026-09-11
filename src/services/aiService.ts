@@ -109,6 +109,12 @@ export function getClientGeminiApiKey(): string | null {
   if (viteKey && typeof viteKey === "string" && viteKey.trim().length > 0 && !viteKey.includes("MY_GEMINI")) {
     return viteKey.trim();
   }
+  try {
+    const local = localStorage.getItem("gemini_api_key") || localStorage.getItem("user_gemini_api_key");
+    if (local && local.trim().length > 0 && !local.includes("MY_GEMINI")) {
+      return local.trim();
+    }
+  } catch {}
   return null;
 }
 
