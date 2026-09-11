@@ -367,9 +367,9 @@ function saveContentStore(store: any, updatedBy: string) {
   }
 }
 
-// Initialize Gemini client lazily, checking all possible environment variable names and custom key
-function getGeminiClient(customApiKey?: string): GoogleGenAI | null {
-  const candidate = (customApiKey && customApiKey.trim().length > 0 && customApiKey !== "MY_GEMINI_API_KEY")
+// Universal API Key resolver ensuring surrounding quotes are stripped and all alias variables checked
+function resolveServerApiKey(customApiKey?: string): string | null {
+  const candidate = (customApiKey && typeof customApiKey === "string" && customApiKey.trim().length > 0 && customApiKey !== "MY_GEMINI_API_KEY")
     ? customApiKey.trim()
     : process.env.GEMINI_API_KEY ||
       process.env.API_KEY ||
@@ -378,8 +378,18 @@ function getGeminiClient(customApiKey?: string): GoogleGenAI | null {
       process.env.VITE_API_KEY ||
       process.env.GEMINI_KEY;
 
-  const apiKey = candidate?.replace(/^["']|["']$/g, "").trim();
-  if (!apiKey || apiKey === "" || apiKey === "MY_GEMINI_API_KEY") {
+  if (!candidate || typeof candidate !== "string") return null;
+  const stripped = candidate.replace(/^["']|["']$/g, "").trim();
+  if (!stripped || stripped === "" || stripped === "MY_GEMINI_API_KEY") {
+    return null;
+  }
+  return stripped;
+}
+
+// Initialize Gemini client lazily, checking all possible environment variable names and custom key
+function getGeminiClient(customApiKey?: string): GoogleGenAI | null {
+  const apiKey = resolveServerApiKey(customApiKey);
+  if (!apiKey) {
     return null;
   }
   return new GoogleGenAI({
@@ -2394,26 +2404,25 @@ const handleUnifiedAiGenerate = async (req: any, res: any) => {
   console.log("Calling AI...");
 
   const customKey = req.body?.apiKey || req.headers["x-gemini-api-key"];
-  const candidate = (customKey && customKey.trim().length > 0 && customKey !== "MY_GEMINI_API_KEY")
-    ? customKey.trim()
-    : process.env.GEMINI_API_KEY ||
-      process.env.API_KEY ||
-      process.env.GOOGLE_API_KEY ||
-      process.env.VITE_GEMINI_API_KEY ||
-      process.env.VITE_API_KEY ||
-      process.env.GEMINI_KEY;
-
-  const apiKey = candidate?.trim();
+  const apiKey = resolveServerApiKey(customKey);
 
   const reqId = "req-" + Math.random().toString(36).substring(2, 9);
-  if (!apiKey || apiKey === "" || apiKey === "MY_GEMINI_API_KEY") {
+  if (!apiKey) {
     console.warn("AI Generation: API Key missing.");
-    logAiDiagnostic(1, "REQUEST REJECTED - MISSING API KEY", { requestId: reqId, category: req.body?.actionType || "general", status: 503 });
+    const diagnostic = {
+      requestId: reqId,
+      category: req.body?.actionType || "general",
+      stage: "API_KEY_VALIDATION",
+      status: 503,
+      errorType: "Missing or unconfigured GEMINI_API_KEY"
+    };
+    logAiDiagnostic(1, "REQUEST REJECTED - MISSING API KEY", diagnostic);
     return res.status(503).json({
       success: false,
       error: "AI_GENERATION_FAILED",
       message: "AI generation could not be completed right now. Please try again.",
-      requestId: reqId
+      requestId: reqId,
+      diagnostic
     });
   }
 
@@ -2573,16 +2582,7 @@ app.post("/.netlify/functions/generate", handleUnifiedAiGenerate);
 // Real-time AI Streaming Endpoint (Server-Sent Events)
 app.post("/api/generate-stream", async (req, res) => {
   const customKey = req.body?.apiKey || req.headers["x-gemini-api-key"];
-  const candidate = (customKey && customKey.trim().length > 0 && customKey !== "MY_GEMINI_API_KEY")
-    ? customKey.trim()
-    : process.env.GEMINI_API_KEY ||
-      process.env.API_KEY ||
-      process.env.GOOGLE_API_KEY ||
-      process.env.VITE_GEMINI_API_KEY ||
-      process.env.VITE_API_KEY ||
-      process.env.GEMINI_KEY;
-
-  const resolvedApiKey = candidate?.trim();
+  const resolvedApiKey = resolveServerApiKey(customKey);
 
   // Set SSE streaming headers
   res.setHeader("Content-Type", "text/event-stream");
@@ -2594,10 +2594,22 @@ app.post("/api/generate-stream", async (req, res) => {
   res.flushHeaders?.();
 
   const streamReqId = "req-stream-" + Math.random().toString(36).substring(2, 9);
-  if (!resolvedApiKey || resolvedApiKey === "" || resolvedApiKey === "MY_GEMINI_API_KEY") {
+  if (!resolvedApiKey) {
     console.warn("[STREAM] API key not configured in environment.");
-    logAiDiagnostic(1, "STREAM REJECTED - MISSING API KEY", { requestId: streamReqId, category: req.body?.actionType || "general", status: 503 });
-    res.write(`data: ${JSON.stringify({ error: "AI_GENERATION_FAILED", message: "AI generation could not be completed right now. Please try again.", requestId: streamReqId })}\n\n`);
+    const diagnostic = {
+      requestId: streamReqId,
+      category: req.body?.actionType || "general",
+      stage: "API_KEY_VALIDATION",
+      status: 503,
+      errorType: "Missing or unconfigured GEMINI_API_KEY"
+    };
+    logAiDiagnostic(1, "STREAM REJECTED - MISSING API KEY", diagnostic);
+    res.write(`data: ${JSON.stringify({
+      error: "AI_GENERATION_FAILED",
+      message: "AI generation could not be completed right now. Please try again.",
+      requestId: streamReqId,
+      diagnostic
+    })}\n\n`);
     res.write("data: [DONE]\n\n");
     return res.end();
   }
@@ -3007,14 +3019,43 @@ Format as JSON with keys: id, challengeTitle, category, rootDeception, scriptura
       res.write(`data: ${JSON.stringify({ done: true, fullText: streamAccumulator, data: safeJsonParse(streamAccumulator) })}\n\n`);
     } else {
       console.warn("[STREAM] Stream accumulator empty.");
-      res.write(`data: ${JSON.stringify({ error: "AI_GENERATION_FAILED", message: "AI generation could not be completed right now. Please try again." })}\n\n`);
+      const diagnostic = {
+        requestId: streamReqId,
+        category: req.body?.actionType || "general",
+        stage: "Gemini Cascade Streaming",
+        status: 500,
+        errorType: "Empty generation stream"
+      };
+      logAiDiagnostic(1, "STREAM EMPTY OUTPUT", diagnostic);
+      res.write(`data: ${JSON.stringify({
+        error: "AI_GENERATION_FAILED",
+        message: "AI generation could not be completed right now. Please try again.",
+        requestId: streamReqId,
+        diagnostic
+      })}\n\n`);
     }
 
     res.write("data: [DONE]\n\n");
     res.end();
   } catch (streamErr: any) {
     console.error("[STREAM ROUTE ERROR]", streamErr);
-    res.write(`data: ${JSON.stringify({ error: "AI_GENERATION_FAILED", message: "AI generation could not be completed right now. Please try again." })}\n\n`);
+    const errorType = isQuotaExceededError(streamErr)
+      ? "Quota / Rate Limit Exceeded (429)"
+      : (streamErr?.status ? `HTTP ${streamErr.status}` : (streamErr?.message || "Internal generation error"));
+    const diagnostic = {
+      requestId: streamReqId,
+      category: req.body?.actionType || "general",
+      stage: "Gemini Cascade Streaming",
+      status: streamErr?.status || 500,
+      errorType
+    };
+    logAiDiagnostic(1, "STREAM ROUTE ERROR", diagnostic);
+    res.write(`data: ${JSON.stringify({
+      error: "AI_GENERATION_FAILED",
+      message: "AI generation could not be completed right now. Please try again.",
+      requestId: streamReqId,
+      diagnostic
+    })}\n\n`);
     res.write("data: [DONE]\n\n");
     res.end();
   }

@@ -37,6 +37,8 @@ import {
   CloudOff,
   Printer,
   CheckCircle,
+  AlertTriangle,
+  RotateCcw,
   Image as ImageIcon
 } from "lucide-react";
 import { BIBLE_BOOKS_CATALOG } from "../data/bibleData";
@@ -254,6 +256,7 @@ export const BibleTab: React.FC<BibleTabProps> = ({
   } | null>(null);
   const [aiModalAction, setAiModalAction] = useState<string | null>(null);
   const [aiModalContent, setAiModalContent] = useState<string | null>(null);
+  const [aiModalError, setAiModalError] = useState<string | null>(null);
   const [isAiLoading, setIsAiLoading] = useState(false);
   const [aiProgress, setAiProgress] = useState(25);
   const [aiStreamingText, setAiStreamingText] = useState("");
@@ -453,6 +456,7 @@ export const BibleTab: React.FC<BibleTabProps> = ({
     if (!activeVerseMenu) return;
     setAiModalAction(action);
     setAiModalContent(null);
+    setAiModalError(null);
     setIsAiLoading(true);
     setAiProgress(25);
     setAiStreamingText("");
@@ -607,47 +611,8 @@ export const BibleTab: React.FC<BibleTabProps> = ({
       },
       onError: (err) => {
         setIsAiLoading(false);
-        console.warn("[BIBLE TAB AI ACTION FALLBACK]", err);
-        const ref = `${activeVerseMenu.book} ${activeVerseMenu.chapter}:${activeVerseMenu.verse}`;
-        const rawVerse = activeVerseMenu.text;
-        const comm = getCommentaryForVerse(activeVerseMenu.book, activeVerseMenu.chapter, activeVerseMenu.verse, rawVerse);
-
-        if (action.includes("Prayer") && !action.includes("Points")) {
-          setAiModalContent(
-            `Guided Apostolic Prayer on ${ref} (${selectedVersion})\n\n"${rawVerse}"\n\n` +
-            `ADORATION:\nHeavenly Father, Almighty King of Glory, we exalt You for the eternal foundation revealed in ${ref}. You alone are worthy of all honour.\n\n` +
-            `CONFESSION & SURRENDER:\nLord, I surrender every anxiety and human limitation to Your sovereign grace.\n\n` +
-            `THANKSGIVING:\nThank You for Your covenant faithfulness and for making this scripture a living fountain of supernatural peace in my heart.\n\n` +
-            `TARGETED PETITION:\nLord, let the living reality of "${rawVerse}" manifest in my family, calling, and daily decisions.\n\n` +
-            `WARFARE AUTHORITY:\nIn the Name of Jesus Christ, I declare that no weapon formed against me shall prosper. The Joy of the Lord is my unassailable fortress!\n\n` +
-            `CLOSING DECLARATION:\nI seal this prayer in heavenly authority. In Jesus' mighty Name, Amen.`
-          );
-        } else if (action.includes("Points")) {
-          setAiModalContent(
-            `Strategic Prayer Points on ${ref} (${selectedVersion})\n\n"${rawVerse}"\n\n` +
-            `1. Divine Revelation: Lord, ignite my spiritual senses with the profound truth of ${ref}.\n\n` +
-            `2. Covenant Fortitude: Father, anchor my soul in Your unshakeable peace and joy according to "${rawVerse}".\n\n` +
-            `3. Kingdom Authority: In Jesus' Name, I decree breakthrough, divine alignment, and spiritual victory in every endeavor.\n\n` +
-            `PROPHETIC DECREE:\nI declare that every promise in ${ref} is sealed in Christ Jesus. Amen!`
-          );
-        } else if (action.includes("Joy")) {
-          setAiModalContent(
-            `The Joy of the Lord Revelation on ${ref} (${selectedVersion})\n\n"${rawVerse}"\n\n` +
-            `KEY SCRIPTURAL ANCHOR: Nehemiah 8:10 & ${ref}\n\n` +
-            `THEOLOGICAL INSIGHT:\n${comm.apostolicRhema}\n\n` +
-            `UNSHAKEABLE HOPE & ENCOURAGEMENT:\nRest confident in Christ. The joy of the Lord is not an emotion dictated by circumstances—it is a covenant fortress, an eternal wellspring, and your victory over every shadow.\n\n` +
-            `PROPHETIC DECREE:\nI decree that divine joy and resurrection power flood my spirit today!`
-          );
-        } else {
-          setAiModalContent(
-            `Scripture Exposition on ${ref} (${selectedVersion}):\n\n"${rawVerse}"\n\n` +
-            `KEY THEME: ${comm.keyTheme}\n\n` +
-            `MATTHEW HENRY EXEGESIS:\n${comm.matthewHenry}\n\n` +
-            `CHARLES SPURGEON INSIGHT:\n${comm.spurgeon}\n\n` +
-            `APOSTOLIC RHEMA & DECREE:\n${comm.apostolicRhema}\n\n` +
-            `ORIGINAL LANGUAGE WORD STUDY:\n${comm.originalLanguageNote}`
-          );
-        }
+        console.error("[BIBLE TAB AI ACTION ERROR]", err);
+        setAiModalError(err || "AI generation could not be completed right now. Please try again.");
       }
     });
   };
@@ -1809,6 +1774,38 @@ export const BibleTab: React.FC<BibleTabProps> = ({
                   isStreaming={true}
                   onCancel={() => setIsAiLoading(false)}
                 />
+              )}
+
+              {/* Explicit AI Generation Notice / Error Banner */}
+              {aiModalError && !isAiLoading && (
+                <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-900 dark:text-amber-200 space-y-2.5">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2 font-bold text-xs uppercase tracking-wider text-amber-700 dark:text-amber-300">
+                      <AlertTriangle className="w-4 h-4 text-amber-600" />
+                      <span>GENERATION NOTICE</span>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setAiModalError(null)}
+                      className="text-xs text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 cursor-pointer"
+                    >
+                      Dismiss
+                    </button>
+                  </div>
+                  <p className="text-xs leading-relaxed">
+                    {aiModalError}
+                  </p>
+                  <div className="pt-1 flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => handleRunAiVerseAction(aiModalAction || "Verse Exegesis")}
+                      className="px-3 py-1.5 rounded-lg bg-[#16235A] hover:bg-[#1f307a] text-white text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer"
+                    >
+                      <RotateCcw className="w-3.5 h-3.5" />
+                      <span>Retry Generation</span>
+                    </button>
+                  </div>
+                </div>
               )}
 
               {/* AI Content Output on Sacred Themed Background */}

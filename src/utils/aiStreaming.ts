@@ -312,6 +312,20 @@ export async function streamAiContent<T = any>(
 
               try {
                 const event = JSON.parse(jsonStr);
+
+                if (event.error) {
+                  console.error("[AI STREAMING DIAGNOSTIC ERROR]", event.diagnostic || event);
+                  const errMsg = event.message || "AI generation could not be completed right now. Please try again.";
+                  clearTimeout(timeoutId);
+                  options.onError?.(errMsg);
+                  return {
+                    success: false,
+                    text: "",
+                    error: errMsg,
+                    isCached: false
+                  };
+                }
+
                 if (event.chunk) {
                   accumulatedText += event.chunk;
                   chunkCount++;

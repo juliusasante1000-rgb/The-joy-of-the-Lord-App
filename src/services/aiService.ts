@@ -49,6 +49,12 @@ export interface AiServiceResult<T = any> {
  */
 export function deduplicateSentences(text: string): string {
   if (!text) return "";
+  const trimmed = text.trim();
+  // Do not alter or truncate structured JSON responses
+  if (trimmed.startsWith("{") || trimmed.startsWith("[")) {
+    return text;
+  }
+
   const lines = text.split("\n");
   const resultLines: string[] = [];
   const seenLineSet = new Set<string>();
