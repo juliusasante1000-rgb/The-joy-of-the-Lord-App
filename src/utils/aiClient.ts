@@ -259,7 +259,7 @@ export async function fetchAiWithRetry<T = any>(
   // Tier 2: Direct Client-Side Gemini API call if client key is configured
   const clientApiKey = getClientGeminiApiKey();
   if (clientApiKey) {
-    const modelsToTry = ["gemini-2.5-flash", "gemini-flash-latest", "gemini-2.5-flash-lite", "gemini-3.1-flash-lite"];
+    const modelsToTry = ["gemini-3.1-flash-lite", "gemini-3.8-flash", "gemini-flash-latest"];
     const promptText = payload?.prompt || payload?.question || (payload?.scriptureReference ? `Exposition on ${payload.scriptureReference}: "${payload.scriptureText || ''}"` : payload?.topic || "Christian Theology");
     
     for (const modelName of modelsToTry) {

@@ -605,16 +605,49 @@ export const BibleTab: React.FC<BibleTabProps> = ({
           setAiModalContent(devText);
         }
       },
-      onError: () => {
+      onError: (err) => {
         setIsAiLoading(false);
-        // Fallback gracefully to instant theological commentary
-        const comm = getCommentaryForVerse(activeVerseMenu.book, activeVerseMenu.chapter, activeVerseMenu.verse, activeVerseMenu.text);
-        setAiModalContent(
-          `Scripture Exposition on ${activeVerseMenu.book} ${activeVerseMenu.chapter}:${activeVerseMenu.verse} (${selectedVersion}):\n\n"${activeVerseMenu.text}"\n\n` +
-          `Matthew Henry: ${comm.matthewHenry}\n\n` +
-          `Spurgeon: "${comm.spurgeon}"\n\n` +
-          `Apostolic Rhema: ${comm.apostolicRhema}`
-        );
+        console.warn("[BIBLE TAB AI ACTION FALLBACK]", err);
+        const ref = `${activeVerseMenu.book} ${activeVerseMenu.chapter}:${activeVerseMenu.verse}`;
+        const rawVerse = activeVerseMenu.text;
+        const comm = getCommentaryForVerse(activeVerseMenu.book, activeVerseMenu.chapter, activeVerseMenu.verse, rawVerse);
+
+        if (action.includes("Prayer") && !action.includes("Points")) {
+          setAiModalContent(
+            `Guided Apostolic Prayer on ${ref} (${selectedVersion})\n\n"${rawVerse}"\n\n` +
+            `ADORATION:\nHeavenly Father, Almighty King of Glory, we exalt You for the eternal foundation revealed in ${ref}. You alone are worthy of all honour.\n\n` +
+            `CONFESSION & SURRENDER:\nLord, I surrender every anxiety and human limitation to Your sovereign grace.\n\n` +
+            `THANKSGIVING:\nThank You for Your covenant faithfulness and for making this scripture a living fountain of supernatural peace in my heart.\n\n` +
+            `TARGETED PETITION:\nLord, let the living reality of "${rawVerse}" manifest in my family, calling, and daily decisions.\n\n` +
+            `WARFARE AUTHORITY:\nIn the Name of Jesus Christ, I declare that no weapon formed against me shall prosper. The Joy of the Lord is my unassailable fortress!\n\n` +
+            `CLOSING DECLARATION:\nI seal this prayer in heavenly authority. In Jesus' mighty Name, Amen.`
+          );
+        } else if (action.includes("Points")) {
+          setAiModalContent(
+            `Strategic Prayer Points on ${ref} (${selectedVersion})\n\n"${rawVerse}"\n\n` +
+            `1. Divine Revelation: Lord, ignite my spiritual senses with the profound truth of ${ref}.\n\n` +
+            `2. Covenant Fortitude: Father, anchor my soul in Your unshakeable peace and joy according to "${rawVerse}".\n\n` +
+            `3. Kingdom Authority: In Jesus' Name, I decree breakthrough, divine alignment, and spiritual victory in every endeavor.\n\n` +
+            `PROPHETIC DECREE:\nI declare that every promise in ${ref} is sealed in Christ Jesus. Amen!`
+          );
+        } else if (action.includes("Joy")) {
+          setAiModalContent(
+            `The Joy of the Lord Revelation on ${ref} (${selectedVersion})\n\n"${rawVerse}"\n\n` +
+            `KEY SCRIPTURAL ANCHOR: Nehemiah 8:10 & ${ref}\n\n` +
+            `THEOLOGICAL INSIGHT:\n${comm.apostolicRhema}\n\n` +
+            `UNSHAKEABLE HOPE & ENCOURAGEMENT:\nRest confident in Christ. The joy of the Lord is not an emotion dictated by circumstances—it is a covenant fortress, an eternal wellspring, and your victory over every shadow.\n\n` +
+            `PROPHETIC DECREE:\nI decree that divine joy and resurrection power flood my spirit today!`
+          );
+        } else {
+          setAiModalContent(
+            `Scripture Exposition on ${ref} (${selectedVersion}):\n\n"${rawVerse}"\n\n` +
+            `KEY THEME: ${comm.keyTheme}\n\n` +
+            `MATTHEW HENRY EXEGESIS:\n${comm.matthewHenry}\n\n` +
+            `CHARLES SPURGEON INSIGHT:\n${comm.spurgeon}\n\n` +
+            `APOSTOLIC RHEMA & DECREE:\n${comm.apostolicRhema}\n\n` +
+            `ORIGINAL LANGUAGE WORD STUDY:\n${comm.originalLanguageNote}`
+          );
+        }
       }
     });
   };

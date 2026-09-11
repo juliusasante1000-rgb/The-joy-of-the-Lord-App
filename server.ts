@@ -13,7 +13,19 @@ const PORT = 3000;
 
 const isServerless = Boolean(process.env.VERCEL || process.env.VERCEL_ENV || process.env.AWS_LAMBDA_FUNCTION_NAME || process.env.NETLIFY);
 
-app.use(express.json({ limit: "50mb" }));
+// Parse JSON body, handling Vercel Serverless environment where req.body may already be parsed
+app.use((req, res, next) => {
+  if (req.body && typeof req.body === "object") {
+    return next();
+  }
+  express.json({ limit: "50mb" })(req, res, next);
+});
+app.use((req, res, next) => {
+  if (req.body && typeof req.body === "object") {
+    return next();
+  }
+  express.urlencoded({ extended: true, limit: "50mb" })(req, res, next);
+});
 
 // Enable CORS and ensure seamless path resolution for both direct and serverless requests
 app.use((req, res, next) => {
@@ -24,16 +36,28 @@ app.use((req, res, next) => {
     return res.sendStatus(200);
   }
 
-  // Restore true target path from Vercel or proxy rewrite headers (e.g. /api/(.*) -> /api)
-  const matchedPath = (req.headers["x-matched-path"] as string) || (req.headers["x-original-url"] as string) || (req.headers["x-forwarded-uri"] as string);
-  if (matchedPath && matchedPath.startsWith("/api/")) {
-    req.url = matchedPath;
-  } else if (req.url === "/api" || req.url === "/api/" || req.url.startsWith("/api?")) {
-    const rawQuery = req.url.includes("?") ? req.url.split("?")[1] : "";
+  // Restore true target path from Vercel or proxy rewrite headers (e.g. /api/(.*) -> /api?path=$1)
+  const originalUrl = (req.headers["x-original-url"] as string) || (req.headers["x-forwarded-uri"] as string);
+  const matchedPath = req.headers["x-matched-path"] as string;
+
+  const isGenericPath = !req.url || req.url === "/api" || req.url === "/api/" || req.url.startsWith("/api?") || req.url.startsWith("/api/index");
+
+  if (isGenericPath) {
+    const rawQuery = req.url && req.url.includes("?") ? req.url.split("?")[1] : "";
     const parsedQuery = new URLSearchParams(rawQuery);
-    const subRoute = parsedQuery.get("0") || parsedQuery.get("path") || (req.query && ((req.query as any)[0] || (req.query as any)["path"]));
+    const subRoute = parsedQuery.get("path") || parsedQuery.get("0") || (req.query && ((req.query as any)["path"] || (req.query as any)[0]));
+
     if (subRoute && typeof subRoute === "string") {
-      req.url = `/api/${subRoute.replace(/^\//, "")}`;
+      const cleanSub = subRoute.replace(/^\//, "");
+      const remainingQuery = Array.from(parsedQuery.entries())
+        .filter(([k]) => k !== "path" && k !== "0")
+        .map(([k, v]) => `${k}=${encodeURIComponent(v)}`)
+        .join("&");
+      req.url = `/api/${cleanSub}${remainingQuery ? `?${remainingQuery}` : ""}`;
+    } else if (originalUrl && originalUrl.startsWith("/api/") && !originalUrl.startsWith("/api/index")) {
+      req.url = originalUrl;
+    } else if (matchedPath && matchedPath.startsWith("/api/") && !matchedPath.startsWith("/api/index")) {
+      req.url = matchedPath;
     }
   } else if (isServerless && req.url && !req.url.startsWith("/api") && req.url !== "/" && !req.url.startsWith("/assets") && !req.url.includes(".")) {
     req.url = `/api${req.url.startsWith("/") ? "" : "/"}${req.url}`;
@@ -346,12 +370,11 @@ function getGeminiClient(customApiKey?: string): GoogleGenAI | null {
 const AI_RESPONSE_CACHE = new Map<string, { text: string; modelUsed: string; timestamp: number }>();
 const AI_CACHE_TTL_MS = 1000 * 60 * 60 * 6; // 6 hours cache
 
-// Valid models according to Gemini API specification, ordered with flash-lite first to avoid single-model quota exhaustion
+// Valid modern models according to Gemini API specification, ordered with high-availability low-latency models first
 const GEMINI_MODELS_CASCADE = [
-  "gemini-2.5-flash",
-  "gemini-flash-latest",
-  "gemini-3.8-flash",
   "gemini-3.1-flash-lite",
+  "gemini-3.8-flash",
+  "gemini-flash-latest",
 ];
 
 // In-flight quota cooldown circuit breaker to prevent cascading 429 delays when API quota is exhausted
@@ -2441,6 +2464,9 @@ Format as JSON with keys:
 - hopeAndEncouragementConclusion: Inspiring conclusion releasing hope, confidence in God's promises, and strength
 - altarCallPrayer: Fervent prayer sealing the revelation`;
         responseMimeType = "application/json";
+      } else if (act.includes("commentary")) {
+        finalPrompt = `You are a preeminent Christian Biblical scholar synthesizing Matthew Henry, Charles Spurgeon, and Apostolic Rhema revelation. Provide an in-depth verse-by-verse commentary for: ${ref} ("${text}") addressing the theme "${theme}".\nContext & Scripture: ${ref} ("${text}")\n${AI_OUTPUT_IMPROVEMENT_RULES}\nFormat as JSON with keys: title, scriptureAnchor, keyTheme, historicalContext, matthewHenryInsight, spurgeonInsight, apostolicRhema, originalLanguageInsight, crossReferences, theologicalDoctrine, lifeApplication.`;
+        responseMimeType = "application/json";
       } else {
         finalPrompt = `Compose an inspiring Christian devotion on: ${ref} ("${text}").\nContext & Scripture: ${ref} ("${text}")\nTheme: ${theme}\n${AI_OUTPUT_IMPROVEMENT_RULES}\nAt the conclusion, inspire deep hope and encouragement in Christ.\nFormat as JSON with keys: title, reflection, practicalApplication, guidedPrayer, actionStep, hopeEncouragementConclusion.`;
         responseMimeType = "application/json";
@@ -3864,6 +3890,47 @@ Format your response as a valid JSON object with this exact schema:
   "mathematicalAnalogy": "A 2-paragraph clear explanation of the mathematical concept and how it reflects this biblical principle",
   "homileticApplication": "Spiritual preaching revelation showing God's unshakeable order and glory",
   "altarCallPrayer": "Anointed closing prayer in Jesus' Name"
+}`;
+    } else if (actionType === "commentary" || actionType === "Theological Commentary" || (actionType && actionType.toLowerCase().includes("commentary"))) {
+      prompt = `You are a preeminent Christian Biblical scholar synthesizing Matthew Henry, Charles Spurgeon, and Apostolic Rhema revelation. Provide an in-depth verse-by-verse commentary for:
+Reference: ${ref} (${actualVersion})
+Passage: "${actualText}"
+Theme: ${theme}
+
+${AI_OUTPUT_IMPROVEMENT_RULES}
+
+Format your response as a valid JSON object with this exact schema:
+{
+  "title": "Expository Commentary on ${ref}",
+  "scriptureAnchor": "${ref} (${actualVersion}) - '${actualText}'",
+  "keyTheme": "${theme}",
+  "historicalContext": "Historical, cultural, and situational context of this passage",
+  "matthewHenryInsight": "Verse-by-verse practical exegesis in the rich pastoral tradition of Matthew Henry",
+  "spurgeonInsight": "Warm devotional, Christ-centered insight in the preaching passion of Charles Spurgeon",
+  "apostolicRhema": "High-impact prophetic and apostolic truth declaring kingdom breakthrough",
+  "originalLanguageInsight": "Key Greek or Hebrew root words, transliterations, and theological meaning",
+  "theologicalDoctrine": "Core doctrinal foundation established by this scripture",
+  "lifeApplication": "Practical personal transformation and daily living instruction"
+}`;
+    } else if (actionType === "joy" || actionType === "The Joy of the Lord" || (actionType && actionType.toLowerCase().includes("joy"))) {
+      prompt = `You are an apostolic pastor and theologian drawing upon the profound revelations of "The Joy of the Lord" (Nehemiah 8:10, Psalm 16:11, Philippians 4:4) and the analytical clarity of MathemaSermons.
+Compose a deeply transformative, text-concurrent revelation for:
+Reference: ${ref} (${actualVersion})
+Passage: "${actualText}"
+Theme: ${theme}
+
+${AI_OUTPUT_IMPROVEMENT_RULES}
+
+Format your response as a valid JSON object with this exact schema:
+{
+  "title": "The Joy of the Lord on ${ref}",
+  "scriptureAnchor": "${ref} (${actualVersion}) - '${actualText}'",
+  "originalLanguageJoyInsight": "Original Hebrew/Greek lexical revelation of joy or divine fortitude in this text",
+  "mathemaAnalogy": "A mathematical or scientific analogy linking this scripture's truth to divine principles",
+  "theologicalJoyExposition": "Rich, text-anchored exposition of how God's joy sustains and triumphs in this passage",
+  "hopeAndEncouragementConclusion": "A powerful, hope-igniting, triumphant apostolic message of encouragement and resilience that concludes the discourse",
+  "propheticDecrees": ["Decree 1", "Decree 2", "Decree 3"],
+  "closingPrayer": "A reverent, faith-filled prayer releasing the joy of the Lord into the believer's spirit"
 }`;
     } else {
       // Default: Full Devotion

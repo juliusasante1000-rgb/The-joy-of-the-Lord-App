@@ -208,7 +208,7 @@ export async function generateAiContent<T = any>(
   // Step 2: Direct Client-Side Gemini API call (Vercel, Netlify, Static Builds)
   const clientApiKey = getClientGeminiApiKey();
   if (clientApiKey) {
-    const modelsToTry = [targetModel, "gemini-3.1-flash-lite", "gemini-2.5-flash", "gemini-2.5-flash-lite", "gemini-flash-latest", "gemini-3.1-pro-preview", "gemini-3.8-flash"].filter(
+    const modelsToTry = [targetModel, "gemini-3.1-flash-lite", "gemini-3.8-flash", "gemini-flash-latest"].filter(
       (v, i, a) => Boolean(v) && a.indexOf(v) === i
     );
 

@@ -442,11 +442,114 @@ export const BIBLE_COMMENTARY_CATALOG: Record<string, ChapterCommentary> = {
   }
 };
 
+interface CanonicalProfile {
+  genre: string;
+  theme: string;
+  mhFocus: string;
+  spurgeonFocus: string;
+  rhemaFocus: string;
+  languageNote: string;
+  crossRefs: string[];
+}
+
+function getCanonicalProfile(cleanBook: string): CanonicalProfile {
+  const b = cleanBook.toLowerCase();
+  
+  // Pentateuch / Law
+  if (["genesis", "exodus", "leviticus", "numbers", "deuteronomy"].includes(b)) {
+    return {
+      genre: "Pentateuch & Torah (Covenant Foundations)",
+      theme: "Divine Sovereignty, Holiness, and Covenant Faithfulness",
+      mhFocus: `reveals the holiness of Yahweh and His foundational covenant with His chosen people. The moral law and divine decrees remind us of our sacred duty to walk blamelessly before God, seeking sanctification through His promised redemption.`,
+      spurgeonFocus: `Behold the boundless grace hidden beneath the ancient covenants! Every shadow and sacrifice points forward to the Lamb of God slain for our redemption. Rest your soul in the unalterable covenant oath of God.`,
+      rhemaFocus: `You are an heir of the Abrahamic covenant through Christ Jesus. Apply this foundational scripture to establish divine order, break generational limitations, and lay unshakeable spiritual foundations for your family and destiny.`,
+      languageNote: `Contextual Hebrew Linguistics: Features classical covenantal terminology (Berit = binding covenant; Hesed = steadfast covenant love; Qadosh = set apart in holiness).`,
+      crossRefs: ["Galatians 3:13-14", "Hebrews 9:11-14", "Romans 4:16", "Psalm 105:8-10"]
+    };
+  }
+
+  // Historical Books
+  if (["joshua", "judges", "ruth", "1 samuel", "2 samuel", "1 kings", "2 kings", "1 chronicles", "2 chronicles", "ezra", "nehemiah", "esther"].includes(b)) {
+    return {
+      genre: "Historical Books (Providential Warfare & Kingdom Rule)",
+      theme: "The Sovereign Hand of God in Human Destiny and Victorious Obedience",
+      mhFocus: `demonstrates that the Lord is the true Governor of the nations. In every historic trial, battle, and crisis of leadership, wholehearted trust in God yields supernatural deliverance, while self-reliance brings defeat.`,
+      spurgeonFocus: `The God of David, Joshua, and Elijah is your God today! Though your enemies be mighty as the Philistines or the walls as towering as Jericho, the Lord of Hosts fights for you. Stand still and see the salvation of the Lord.`,
+      rhemaFocus: `Apostolic mandate for territory taking and overcoming spiritual opposition. Step forward in bold obedience, tear down ancestral altars of defeat, and rebuild the walls of righteous kingdom influence in your sphere.`,
+      languageNote: `Contextual Hebrew Linguistics: Rooted in the language of divine warfare and covenant loyalty (Gibbor Chayil = mighty warrior of valor; Yahweh Sabaoth = Lord of the Heavenly Hosts).`,
+      crossRefs: ["Zechariah 4:6", "2 Chronicles 20:15", "Joshua 1:8-9", "Romans 8:31"]
+    };
+  }
+
+  // Wisdom & Poetry
+  if (["job", "psalms", "proverbs", "ecclesiastes", "song of solomon", "song of songs"].includes(b)) {
+    return {
+      genre: "Wisdom Literature & Sacred Poetry (Worship & Devotion)",
+      theme: "Intimacy with the Living God, Reverent Wisdom, and Joy in Suffering",
+      mhFocus: `opens a window into the spiritual sanctuary of the soul. True wisdom begins with the fear of the Lord; peace is found not in outward circumstances, but in quiet submission to God's all-wise, loving counsel.`,
+      spurgeonFocus: `Here is heavenly honey dropped from the comb of inspiration! Let your thirsty heart drink deep from this well of divine affection. In your midnight sorrow, let this sacred promise be your song and fortress.`,
+      rhemaFocus: `Prophetic melody and the weapon of high praise. Anoint your speech with the wisdom of heaven; declare this truth over anxious thoughts to release the peace that surpasses all human understanding.`,
+      languageNote: `Contextual Hebrew Linguistics: Poetic parallelism emphasizing internal heart devotion (Hokhmah = practical godly wisdom; Tehillah = jubilant praise; Shalom = divine wholeness and peace).`,
+      crossRefs: ["James 1:5", "Colossians 3:16", "Psalm 119:105", "Philippians 4:6-7"]
+    };
+  }
+
+  // Major & Minor Prophets
+  if (["isaiah", "jeremiah", "lamentations", "ezekiel", "daniel", "hosea", "joel", "amos", "obadiah", "jonah", "micah", "nahum", "habakkuk", "zephaniah", "haggai", "zechariah", "malachi"].includes(b)) {
+    return {
+      genre: "Prophetic Books (Messianic Hope, Righteousness & Revival)",
+      theme: "Divine Justice, The Outpouring of the Holy Spirit, and the Coming King",
+      mhFocus: `unveils God's righteous indignation against sin, intertwined with His everlasting mercy toward the repentant. The prophets consistently point through shadows of judgment to the radiant dawn of the Messianic King.`,
+      spurgeonFocus: `Hear the silver trumpet of the prophet! Beyond the present storm lies the promised glory of Zion. Fix your gaze upon the Suffering Servant who bore our griefs and now reigns in majestic power.`,
+      rhemaFocus: `Prophetic decree of alignment and spiritual awakening. When the mouth of the Lord has spoken it, no decree of darkness can withstand it. Decree dry bones to live and call forth supernatural restoration.`,
+      languageNote: `Contextual Hebrew Linguistics: Prophetic oracles (Massa = divine burden/revelation; Navi = inspired spokesperson; Ruach Adonai = the Spirit of the Sovereign Lord).`,
+      crossRefs: ["Joel 2:28-29", "Isaiah 53:5", "Jeremiah 29:11", "Acts 2:16-18"]
+    };
+  }
+
+  // Gospels
+  if (["matthew", "mark", "luke", "john"].includes(b)) {
+    return {
+      genre: "The Holy Gospels (The Incarnate Christ & The Kingdom)",
+      theme: "The Person, Atoneful Cross, Resurrection Power, and Teachings of Jesus Christ",
+      mhFocus: `presents the Lord Jesus Christ in His matchless beauty, divine authority, and compassionate ministry. He is the Way, the Truth, and the Life, fulfilling every type and prophecy of the Old Testament Scriptures.`,
+      spurgeonFocus: `Sit at the blessed feet of Jesus and listen to His tender voice! Here is grace upon grace poured out from the heart of God. Trust wholly in His finished work on Calvary, for in Christ your salvation is eternal and complete.`,
+      rhemaFocus: `Kingdom dominion through the Living Logos. The same resurrection authority that conquered death is active in your spirit. Command situations to align with the words and works of the Master.`,
+      languageNote: `Contextual Koine Greek Linguistics: New Covenant revelation (Logos = eternal living Word; Zoe = self-existent God-life; Dunamis = miraculous spiritual power; Charis = unmerited favor).`,
+      crossRefs: ["John 1:14", "Colossians 2:9-10", "Hebrews 1:1-3", "Romans 10:9"]
+    };
+  }
+
+  // Acts & Pauline Epistles
+  if (["acts", "romans", "1 corinthians", "2 corinthians", "galatians", "ephesians", "philippians", "colossians", "1 thessalonians", "2 thessalonians", "1 timothy", "2 timothy", "titus", "philemon"].includes(b)) {
+    return {
+      genre: "Apostolic Acts & Epistles (Grace, Identity in Christ & Church Ministry)",
+      theme: "Justification by Faith, The Indwelling Holy Spirit, and Kingdom Authority",
+      mhFocus: `articulates the deep mysteries of gospel doctrine and practical Christian walk. We are saved by grace through faith, called to holiness, mutual love in the body of Christ, and vigilant perseverance in prayer.`,
+      spurgeonFocus: `Rejoice in your irrevocable union with Christ! Clothed in His imputed righteousness, there is therefore now no condemnation. You are accepted in the Beloved, enriched with every spiritual blessing in heavenly places.`,
+      rhemaFocus: `Apostolic mandate for the New Creation. You are seated with Christ in heavenly places above all principalities and powers. Put on the whole armor of God, wield the sword of the Spirit, and walk in victorious power.`,
+      languageNote: `Contextual Koine Greek Linguistics: Doctrinal precision (Dikaiosyne = justification/righteousness; Pneuma Hagion = Holy Spirit; Koinonia = intimate fellowship; Pleroma = divine fullness).`,
+      crossRefs: ["Ephesians 2:8-10", "Romans 8:1-2", "2 Corinthians 5:17-21", "Philippians 4:13"]
+    };
+  }
+
+  // General Epistles & Revelation
+  return {
+    genre: "General Epistles & Apocalyptic Revelation (Perseverance & Eternal Triumph)",
+    theme: "The Superior High Priesthood of Christ, Steadfast Faith, and Victorious Eternity",
+    mhFocus: `exhorts believers to hold fast the confession of their hope without wavering. Through all tribulations, the eternal reward is sure, and the Lamb of God shall wipe away every tear when His kingdom is consummated.`,
+    spurgeonFocus: `Look upward, weary pilgrim! The Lion of the tribe of Judah has prevailed! Soon the King in His royal beauty shall appear, and all the trials of this present time will be swallowed up in everlasting joy.`,
+    rhemaFocus: `Overcoming authority by the blood of the Lamb and the word of your testimony. You are a king and priest unto God. Refuse intimidation, hold the frontline of faith, and anticipate the victor's crown of life.`,
+    languageNote: `Contextual Koine Greek Linguistics: Eschatological triumph (Archiereus = eternal High Priest; Nikao = to conquer/prevail; Maranatha = Our Lord comes; Pantokrator = Almighty Ruler).`,
+    crossRefs: ["Revelation 12:11", "Hebrews 12:1-2", "1 Peter 5:10", "1 John 5:4-5"]
+  };
+}
+
 /**
  * Universal helper that returns rich commentary for any book, chapter, and verse.
  * If exact curated verse is present, returns it.
  * Otherwise, generates a sound, theological expository commentary synthesizing
- * Matthew Henry, Charles Spurgeon, and Apostolic Rhema principles.
+ * Matthew Henry, Charles Spurgeon, and Apostolic Rhema principles based on canonical genre.
  */
 export function getCommentaryForVerse(
   book: string,
@@ -461,20 +564,19 @@ export function getCommentaryForVerse(
     return chapterData.verses[verse];
   }
 
-  // Synthesize theological commentary dynamically for any verse in the 66 books
+  // Synthesize genre-tailored theological commentary dynamically for any verse in the 66 books
   const cleanBook = book.trim();
+  const profile = getCanonicalProfile(cleanBook);
+  const cleanVerseText = verseText?.trim() || "";
+
   return {
     verse,
-    keyTheme: `Theological Exegesis of ${cleanBook} ${chapter}:${verse}`,
-    matthewHenry: `In ${cleanBook} ${chapter}:${verse}, Holy Scripture reveals God's eternal character and covenant faithfulness. As we meditate on "${verseText}", we see that the Lord orders all things for the salvation and instruction of His people, calling us to holy obedience and trust.`,
-    spurgeon: `Let your soul feed on the rich pasture of ${cleanBook} ${chapter}:${verse}. Here is a word spoken by the Holy Ghost to strengthen your faith: "${verseText}". Rest upon the truth of God's Word, for heaven and earth shall pass away, but not one jot or tittle of His promises shall fail.`,
-    apostolicRhema: `Apostolic Revelation on ${cleanBook} ${chapter}:${verse}: The Word of God in "${verseText}" carries divine creative power (Dunamis). Apply this scripture as a prophetic decree in prayer, breaking all demonic resistance and walking in kingdom authority.`,
-    originalLanguageNote: `Contextual Biblical Linguistics: The inspired text of ${cleanBook} highlights covenant alignment, divine righteousness, and the transformative power of God's revealed truth in Christ.`,
-    crossReferences: [
-      "2 Timothy 3:16-17",
-      "Psalm 119:105",
-      "Hebrews 4:12"
-    ]
+    keyTheme: `${cleanBook} ${chapter}:${verse} — ${profile.theme}`,
+    matthewHenry: `In ${cleanBook} ${chapter}:${verse}, Holy Scripture ${profile.mhFocus} As we meditate on "${cleanVerseText}", we observe how divine wisdom applies directly to our conscience, instructing our conduct and turning our eyes toward God's sovereign providence.`,
+    spurgeon: `Let your soul take shelter in ${cleanBook} ${chapter}:${verse}: "${cleanVerseText}". ${profile.spurgeonFocus} Heaven and earth shall pass away, but this word spoken by the Holy Ghost to your spirit shall never lose its power.`,
+    apostolicRhema: `Apostolic Revelation on ${cleanBook} ${chapter}:${verse}: "${cleanVerseText}". ${profile.rhemaFocus} Activate this scripture in your daily prayers as a living decree to enforce kingdom victory in your atmosphere.`,
+    originalLanguageNote: `${profile.languageNote} In ${cleanBook} ${chapter}:${verse}, the original inspired phrasing reinforces divine covenant integrity, kingdom transformation, and the believer's steadfast anchor in God's promises.`,
+    crossReferences: profile.crossRefs
   };
 }
 
@@ -490,13 +592,15 @@ export function getChapterCommentary(
     return BIBLE_COMMENTARY_CATALOG[chapterKey];
   }
 
+  const profile = getCanonicalProfile(book.trim());
+
   return {
     book,
     chapter,
-    title: `Exposition and Theological Overview of ${book} Chapter ${chapter}`,
-    summary: `A comprehensive expository study of ${book} Chapter ${chapter}, exploring the historical backdrop, doctrinal foundation, Christological focus, and practical life transformation for believers today.`,
-    historicalContext: `Authored under the inspiration of the Holy Spirit to reveal God's redemptive plan through the canon of the Old and New Testaments.`,
-    theologicalTheme: `Sovereignty of God, Covenant Faithfulness, Righteousness in Christ, and Divine Guidance.`,
+    title: `${book} Chapter ${chapter}: Expository Overview & Spiritual Insights`,
+    summary: `A comprehensive expository study of ${book} Chapter ${chapter}, exploring the historical backdrop of ${profile.genre}, its doctrinal foundation, Christological focus, and practical life transformation for believers today.`,
+    historicalContext: `Authored under the plenary inspiration of the Holy Spirit to reveal God's eternal redemptive covenant through ${profile.genre}.`,
+    theologicalTheme: profile.theme,
     verses: {}
   };
 }

@@ -139,21 +139,30 @@ export const BibleCommentaryModal: React.FC<BibleCommentaryModalProps> = ({
         } else if (fullText) {
           setAiCustomCommentary(fullText);
         } else {
+          const fb = getCommentaryForVerse(book, chapter, currentVerse, verseText);
           setAiCustomCommentary(
-            `Deep Expository Commentary on ${promptRef} (${version}):\n\n"${verseText}"\n\n` +
-            `1. Historical Context: This passage emphasizes God's sovereign covenant loyalty.\n` +
-            `2. Expository Meaning: In Christ, every promise of this scripture is yes and amen.\n` +
-            `3. Apostolic Rhema: Declare this verse boldly in prayer to break limitations.`
+            `Expository Commentary on ${promptRef} (${version}):\n\n"${verseText}"\n\n` +
+            `KEY THEME: ${fb.keyTheme}\n\n` +
+            `HISTORICAL CONTEXT:\n${chapterCommentary.historicalContext || ""}\n\n` +
+            `MATTHEW HENRY EXEGESIS:\n${fb.matthewHenry}\n\n` +
+            `SPURGEON DEVOTIONAL INSIGHT:\n${fb.spurgeon}\n\n` +
+            `APOSTOLIC RHEMA & PROPHETIC DECREE:\n${fb.apostolicRhema}\n\n` +
+            `ORIGINAL GREEK/HEBREW WORD STUDY:\n${fb.originalLanguageNote}`
           );
         }
       },
-      onError: () => {
+      onError: (err) => {
         setIsAiGenerating(false);
+        console.warn("[COMMENTARY AI RETRY FALLBACK]", err);
+        const fb = getCommentaryForVerse(book, chapter, currentVerse, verseText);
         setAiCustomCommentary(
-          `Commentary on ${promptRef}:\n\n"${verseText}"\n\n` +
-          `Matthew Henry: The Word of God in ${promptRef} serves as an unshakeable foundation for faith.\n\n` +
-          `Charles Spurgeon: Rest your soul upon this divine promise; God's covenant never fails.\n\n` +
-          `Apostolic Rhema: The anointing in this verse activates victory and supernatural fruitfulness in your life.`
+          `Expository Commentary on ${promptRef} (${version}):\n\n"${verseText}"\n\n` +
+          `KEY THEME: ${fb.keyTheme}\n\n` +
+          `HISTORICAL CONTEXT:\n${chapterCommentary.historicalContext || ""}\n\n` +
+          `MATTHEW HENRY EXEGESIS:\n${fb.matthewHenry}\n\n` +
+          `SPURGEON DEVOTIONAL INSIGHT:\n${fb.spurgeon}\n\n` +
+          `APOSTOLIC RHEMA & PROPHETIC DECREE:\n${fb.apostolicRhema}\n\n` +
+          `ORIGINAL GREEK/HEBREW WORD STUDY:\n${fb.originalLanguageNote}`
         );
       }
     });

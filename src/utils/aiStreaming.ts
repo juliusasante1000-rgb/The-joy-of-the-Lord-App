@@ -214,7 +214,7 @@ export async function streamAiContent<T = any>(
   // 2. Initiate Streaming Call & register in-flight promise
   const streamPromise = (async () => {
     const isFast = options.fastMode ?? getIsFastMode();
-    const timeoutMs = options.timeoutMs ?? (isFast ? 12000 : 25000);
+    const timeoutMs = options.timeoutMs ?? (isFast ? 25000 : 45000);
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
 
@@ -384,11 +384,11 @@ export async function streamAiContent<T = any>(
         };
       }
 
-      // Tier 2: Try specific endpoints (/api/generate-verse-action, /api/generate-devotion, /api/generate)
+      // Tier 2: Try specific endpoints (/api/generate, /api/generate-verse-action, /api/generate-devotion)
       const candidateUrls = [
+        "/api/generate",
         "/api/generate-verse-action",
         "/api/generate-devotion",
-        "/api/generate",
         "/.netlify/functions/generate"
       ];
 
@@ -438,7 +438,7 @@ export async function streamAiContent<T = any>(
             systemInstruction: options.systemInstruction,
             actionType: options.actionType,
             temperature: 0.80,
-            model: "gemini-2.5-flash"
+            model: "gemini-3.1-flash-lite"
           });
           if (directResult && directResult.success && (directResult.data || directResult.text)) {
             const outText = directResult.text || JSON.stringify(directResult.data);
