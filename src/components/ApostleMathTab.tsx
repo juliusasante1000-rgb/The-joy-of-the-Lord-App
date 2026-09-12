@@ -215,29 +215,30 @@ export const ApostleMathTab: React.FC<ApostleMathTabProps> = ({
           setStreamingAiText(accText);
         },
         onComplete: (_fullText, data) => {
-          const inner = data || {};
+          if (!data || (!data.mathemaSermon && !data.mathPrinciple && !data.title)) {
+            setAiError("AI generation could not be completed right now.");
+            setIsGeneratingAi(false);
+            return;
+          }
+          const inner = data;
           const newLesson: ApostleMathLesson = {
             id: inner.id || `ai-math-${Date.now()}`,
-            title: inner.title || "The Axiom of Spiritual Vectors",
-            subtitle: inner.subtitle || "Divine Mathematics for Spiritual Mastery",
-            mathBranch: inner.mathBranch || customMathTopic || "Applied Mathematical Theology",
-            mathPrinciple: inner.mathPrinciple || "Axiomatic Alignment with Kingdom Truth",
-            mathFormula: inner.mathFormula || "\\vec{R}_{\\text{faith}} = \\vec{R}_0 + \\int_{0}^{t} \\vec{v}_{\\text{grace}}(\\tau) \\, d\\tau",
-            mathIllustration: inner.mathIllustration || "In mathematics, precise equations determine outcome.",
-            lifeConnection: inner.lifeConnection || "Human choices create trajectory angles that define destiny.",
-            biblicalTruth: inner.biblicalTruth || "The Word of God is living, active, and mathematically immutable.",
+            title: inner.title || "ApostleMath Lesson",
+            subtitle: inner.subtitle || "",
+            mathBranch: inner.mathBranch || customMathTopic || "Applied Mathematics",
+            mathPrinciple: inner.mathPrinciple || "",
+            mathFormula: inner.mathFormula || "",
+            mathIllustration: inner.mathIllustration || "",
+            lifeConnection: inner.lifeConnection || "",
+            biblicalTruth: inner.biblicalTruth || "",
             keyScripture: {
               reference: inner.keyScripture?.reference || customScripture || "Proverbs 3:5-6",
-              text: inner.keyScripture?.text || "Trust in the Lord with all thine heart and lean not unto thine own understanding."
+              text: inner.keyScripture?.text || ""
             },
-            mathemaSermon: inner.mathemaSermon || "Align your spiritual vector with the Holy Spirit and accelerate into destiny.",
-            practicalApplication: Array.isArray(inner.practicalApplication) ? inner.practicalApplication : [
-              "Audit your life vectors to point in alignment with God's Word.",
-              "Pray in the Holy Ghost before making strategic decisions.",
-              "Reject counter-directional forces of doubt and hesitation."
-            ],
-            prayer: inner.prayer || "Lord Jesus, calibrate my heart to Your divine order. Amen.",
-            tags: Array.isArray(inner.tags) ? inner.tags : ["ApostleMath", "AI Generated", "Wisdom"],
+            mathemaSermon: inner.mathemaSermon || "",
+            practicalApplication: Array.isArray(inner.practicalApplication) ? inner.practicalApplication : [],
+            prayer: inner.prayer || "",
+            tags: Array.isArray(inner.tags) ? inner.tags : ["ApostleMath", "Wisdom"],
             readTimeMinutes: inner.readTimeMinutes || 4
           };
 
@@ -246,17 +247,17 @@ export const ApostleMathTab: React.FC<ApostleMathTabProps> = ({
           setIsGeneratingAi(false);
         },
         onError: (err) => {
-          setAiError(err);
+          setAiError("AI generation could not be completed right now.");
           setIsGeneratingAi(false);
         }
       });
 
-      if (!res.success && res.error) {
-        setAiError(res.error);
+      if (!res.success) {
+        setAiError("AI generation could not be completed right now.");
       }
     } catch (err: any) {
       console.warn("Error generating ApostleMath AI lesson:", err);
-      setAiError(err?.message || "Generation failed. Please try again.");
+      setAiError("AI generation could not be completed right now.");
     } finally {
       setIsGeneratingAi(false);
     }

@@ -170,35 +170,24 @@ export const JoyOvercomingTab: React.FC<JoyOvercomingTabProps> = ({
           setStreamingAiText(accText);
         },
         onComplete: (_fullText, data) => {
-          const inner = data || {};
+          if (!data || (!data.challengeTitle && !data.rootDeception && !data.joyStrategySteps)) {
+            setAiError("AI generation could not be completed right now.");
+            setIsGeneratingAi(false);
+            return;
+          }
+          const inner = data;
           const generated: JoyOvercomingChallenge = {
             id: inner.id || `ai-joy-${Date.now()}`,
             challengeTitle: inner.challengeTitle || customCrisis,
             category: inner.category || (selectedCategory !== "All" ? selectedCategory : "Spiritual Warfare"),
-            rootDeception: inner.rootDeception || "The adversary whispers that you are isolated and defeated.",
-            scripturalTruth: inner.scripturalTruth || "The joy of the Lord is an impregnable spiritual fortress that dismantles demonic resistance.",
-            anchorVerses: Array.isArray(inner.anchorVerses) && inner.anchorVerses.length > 0 ? inner.anchorVerses : [
-              {
-                reference: "Nehemiah 8:10",
-                text: "The joy of the LORD is your strength.",
-                version: "KJV"
-              },
-              {
-                reference: "Philippians 4:4",
-                text: "Rejoice in the Lord always: and again I say, Rejoice.",
-                version: "KJV"
-              }
-            ],
-            joyStrategySteps: Array.isArray(inner.joyStrategySteps) && inner.joyStrategySteps.length > 0 ? inner.joyStrategySteps : [
-              "Acknowledge the trial truthfully before God while exalting His supreme authority.",
-              "Offer high sacrificial praise in the midst of the challenge to break the spirit of heaviness.",
-              "Speak the specific biblical promises out loud over your situation multiple times daily.",
-              "Maintain an attitude of expectant thanksgiving, knowing that victory is guaranteed in Christ."
-            ],
-            fortressDeclaration: inner.fortressDeclaration || "I declare that the joy of the Lord is my fortress! Every storm must bow before the Name of Jesus.",
-            deliverancePrayer: inner.deliverancePrayer || "Lord God, flood my spirit with Your supernatural joy and break every chain in Jesus' Name. Amen.",
-            praisePrescription: "Praise the Lord continuously for 10 minutes with thanksgiving songs.",
-            testimonyOfVictory: "Believers across generations have found that supernatural praise in deep trials opens prison doors and releases breakthrough."
+            rootDeception: inner.rootDeception || "",
+            scripturalTruth: inner.scripturalTruth || "",
+            anchorVerses: Array.isArray(inner.anchorVerses) ? inner.anchorVerses : [],
+            joyStrategySteps: Array.isArray(inner.joyStrategySteps) ? inner.joyStrategySteps : [],
+            fortressDeclaration: inner.fortressDeclaration || "",
+            deliverancePrayer: inner.deliverancePrayer || "",
+            praisePrescription: inner.praisePrescription || "",
+            testimonyOfVictory: inner.testimonyOfVictory || ""
           };
 
           setAiGeneratedChallenge(generated);
@@ -208,17 +197,17 @@ export const JoyOvercomingTab: React.FC<JoyOvercomingTabProps> = ({
           handleOpenSanctuaryModal(generated);
         },
         onError: (err) => {
-          setAiError(err);
+          setAiError("AI generation could not be completed right now.");
           setIsGeneratingAi(false);
         }
       });
 
-      if (!res.success && res.error) {
-        setAiError(res.error);
+      if (!res.success) {
+        setAiError("AI generation could not be completed right now.");
       }
     } catch (err: any) {
       console.warn("Error generating Joy blueprint AI challenge:", err);
-      setAiError(err?.message || "Generation failed. Please try again.");
+      setAiError("AI generation could not be completed right now.");
     } finally {
       setIsGeneratingAi(false);
     }

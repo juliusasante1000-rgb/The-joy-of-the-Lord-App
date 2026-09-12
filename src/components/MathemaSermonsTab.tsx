@@ -204,45 +204,28 @@ export const MathemaSermonsTab: React.FC<MathemaSermonsTabProps> = ({
         },
         onComplete: (fullText, data) => {
           setStreamingProgress(100);
+          if (!data || (!data.theologicalExposition && !data.formula && !data.title && !data.sermonOutline)) {
+            setAiError("AI generation could not be completed right now.");
+            setIsGeneratingAi(false);
+            return;
+          }
           const generated: MathemaSermonItem = {
             id: data?.id || `ai-sermon-${Date.now()}`,
-            title: data?.title || aiTopic || "The Divine Calculus of Faith",
+            title: data?.title || aiTopic || "MathemaSermon",
             subtitle: data?.subtitle || "Expository Homiletics Integrating Eternal Scripture with Divine Mathematics",
-            mathematicalConcept: data?.mathematicalConcept || aiMathAnalogy || "Coordinate geometry and directional vectors",
-            formula: data?.formula || "R_{\\text{destiny}} = \\text{Origin}_{\\text{Christ}} + \\sum_{i=1}^{n} (\\vec{v}_{\\text{grace}} \\cdot \\Delta t)",
+            mathematicalConcept: data?.mathematicalConcept || aiMathAnalogy || "Applied Mathematics",
+            formula: data?.formula || "",
             keyScripture: {
-              reference: data?.keyScripture?.reference || "Hebrews 12:1-2",
-              text: data?.keyScripture?.text || "Looking unto Jesus the author and finisher of our faith."
+              reference: data?.keyScripture?.reference || "Colossians 2:3",
+              text: data?.keyScripture?.text || ""
             },
             sermonSeries: data?.sermonSeries || "exponential-grace",
             estimatedPreachTimeMinutes: data?.estimatedPreachTimeMinutes || 30,
-            sermonOutline: Array.isArray(data?.sermonOutline) && data.sermonOutline.length > 0 ? data.sermonOutline : [
-              {
-                pointNumber: 1,
-                title: "The Divine Origin: Christ as Foundation",
-                mathApplication: "Establishing the coordinate origin (0,0) from which all spiritual trajectories derive direction and magnitude.",
-                biblicalExegesis: "In Him all things hold together (Colossians 1:17).",
-                illustration: "A navigation instrument calibrated to true celestial north."
-              },
-              {
-                pointNumber: 2,
-                title: "The Vector Velocity of Grace",
-                mathApplication: "Instantaneous supernatural acceleration surpassing linear human friction.",
-                biblicalExegesis: "Elijah outrunning the chariot of Ahab by the hand of the Lord (1 Kings 18:46).",
-                illustration: "A celestial jet piercing through atmospheric resistance."
-              },
-              {
-                pointNumber: 3,
-                title: "The Infinite Convergence of Glory",
-                mathApplication: "Continuous progress towards the infinite likeness of Christ.",
-                biblicalExegesis: "We are being transformed into His image with ever-increasing glory (2 Corinthians 3:18).",
-                illustration: "Coherent light converging into laser precision."
-              }
-            ],
-            fullManuscript: data?.fullManuscript || data?.reflection || fullText || "When we subject human impossibility to the divine calculus of the cross, grace multiplies exponentially over time.",
-            homileticPillars: data?.homileticPillars || ["Christological Foundation", "Mathematical Precision", "Spiritual Acceleration"],
-            altarCallPrayer: data?.altarCallPrayer || "Father, in Jesus' Name, I align my life's trajectory with Your eternal purpose. Calibrate my heart to Your Word today. Amen.",
-            tags: data?.tags || ["MathemaSermons", "Pulpit", "Faith"]
+            sermonOutline: Array.isArray(data?.sermonOutline) ? data.sermonOutline : [],
+            fullManuscript: data?.fullManuscript || data?.reflection || fullText || "",
+            homileticPillars: Array.isArray(data?.homileticPillars) ? data.homileticPillars : [],
+            altarCallPrayer: data?.altarCallPrayer || "",
+            tags: Array.isArray(data?.tags) ? data.tags : ["MathemaSermons", "Pulpit", "Faith"]
           };
 
           setAiSermon(generated);
@@ -250,17 +233,17 @@ export const MathemaSermonsTab: React.FC<MathemaSermonsTabProps> = ({
           setIsGeneratingAi(false);
         },
         onError: (err) => {
-          setAiError(err);
+          setAiError("AI generation could not be completed right now.");
           setIsGeneratingAi(false);
         }
       });
 
       if (!res.success) {
-        setAiError(res.error || "Unable to complete sermon generation. Please try again.");
+        setAiError("AI generation could not be completed right now.");
       }
     } catch (err: any) {
       console.error("[MATHEMASERMON AI ERROR]", err);
-      setAiError(err?.message || "Error generating sermon");
+      setAiError("AI generation could not be completed right now.");
     } finally {
       setIsGeneratingAi(false);
     }

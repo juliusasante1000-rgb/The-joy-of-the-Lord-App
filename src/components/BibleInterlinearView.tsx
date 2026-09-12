@@ -66,6 +66,7 @@ export const BibleInterlinearView: React.FC<BibleInterlinearViewProps> = ({
   const [aiProgress, setAiProgress] = useState(25);
   const [aiStreamingText, setAiStreamingText] = useState("");
   const [aiLexiconResult, setAiLexiconResult] = useState<any>(null);
+  const [aiError, setAiError] = useState<string | null>(null);
 
   // Load curated or structured interlinear
   const interlinearData: VerseInterlinear = React.useMemo(() => {
@@ -182,6 +183,7 @@ export const BibleInterlinearView: React.FC<BibleInterlinearViewProps> = ({
     setAiProgress(20);
     setAiStreamingText("");
     setAiLexiconResult(null);
+    setAiError(null);
 
     const ref = `${book} ${chapter}:${verse}`;
     streamAiContent({
@@ -201,8 +203,9 @@ export const BibleInterlinearView: React.FC<BibleInterlinearViewProps> = ({
           setAiLexiconResult(data.data || data);
         }
       },
-      onError: () => {
+      onError: (err) => {
         setIsAiStreaming(false);
+        setAiError(err || "AI generation could not be completed right now. Please try again.");
       }
     });
   };
@@ -315,6 +318,33 @@ export const BibleInterlinearView: React.FC<BibleInterlinearViewProps> = ({
           </div>
         </div>
       </div>
+
+      {/* AI Error Notice with Retry */}
+      {aiError && !isAiStreaming && (
+        <div className="p-4 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-200 text-xs flex items-center justify-between gap-3 animate-in fade-in">
+          <div className="space-y-1">
+            <div className="font-bold font-mono uppercase tracking-wider text-red-300">Generation Notice</div>
+            <p className="leading-relaxed">{aiError}</p>
+          </div>
+          <div className="flex items-center gap-2 shrink-0">
+            <button
+              type="button"
+              onClick={handleDeepAiExegesis}
+              className="px-3 py-1.5 rounded-lg bg-red-600 hover:bg-red-700 text-white font-semibold text-xs transition-colors cursor-pointer"
+            >
+              Retry
+            </button>
+            <button
+              type="button"
+              onClick={() => setAiError(null)}
+              className="text-red-400 hover:text-red-200 font-bold px-1.5 py-0.5 cursor-pointer"
+              title="Dismiss"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* AI Streaming Loading View */}
       {isAiStreaming && (

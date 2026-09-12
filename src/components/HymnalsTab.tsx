@@ -103,6 +103,7 @@ export const HymnalsTab: React.FC<HymnalsTabProps> = ({
   // AI Devotional Hymn Reflection State
   const [aiTopic, setAiTopic] = useState("");
   const [aiResult, setAiResult] = useState<string | null>(null);
+  const [aiError, setAiError] = useState<string | null>(null);
   const [isGeneratingAi, setIsGeneratingAi] = useState(false);
   const [showAiModal, setShowAiModal] = useState(false);
   const [streamingAiText, setStreamingAiText] = useState("");
@@ -382,6 +383,7 @@ Include:
 4. Pastoral Closing Prayer & Benediction.
 Keep the tone deeply reverent, majestic, and grounded in the Lord Jesus Christ.`;
 
+      setAiError(null);
       const res = await streamAiContent<any>({
         actionType: "hymnal_devotion",
         topic: aiTopic,
@@ -400,25 +402,18 @@ Keep the tone deeply reverent, majestic, and grounded in the Lord Jesus Christ.`
           setIsGeneratingAi(false);
         },
         onError: (err) => {
-          console.warn("AI generation note:", err);
-          setAiResult(
-            `Grace to You: In the midnight hour of trial, remember that Paul and Silas sang hymns in prison and the foundations shook (Acts 16:25). Whatever storm you face with "${aiTopic}", lift your voice in praise. The Lord inhabits the praises of His people!`
-          );
+          console.error("AI generation failed:", err);
+          setAiError(err || "AI generation could not be completed right now. Please try again.");
           setIsGeneratingAi(false);
         }
       });
 
       if (!res.success && !aiResult) {
-        setAiResult(
-          res.text ||
-          `Grace to You: In the midnight hour of trial, remember that Paul and Silas sang hymns in prison and the foundations shook (Acts 16:25). Whatever storm you face with "${aiTopic}", lift your voice in praise. The Lord inhabits the praises of His people!`
-        );
+        setAiError(res.error || "AI generation could not be completed right now. Please try again.");
       }
     } catch (err: any) {
-      console.warn("AI generation note:", err);
-      setAiResult(
-        `Grace to You: In the midnight hour of trial, remember that Paul and Silas sang hymns in prison and the foundations shook (Acts 16:25). Whatever storm you face with "${aiTopic}", lift your voice in praise. The Lord inhabits the praises of His people!`
-      );
+      console.error("AI generation failed:", err);
+      setAiError(err?.message || "AI generation could not be completed right now. Please try again.");
     } finally {
       setIsGeneratingAi(false);
     }
@@ -1152,6 +1147,33 @@ Keep the tone deeply reverent, majestic, and grounded in the Lord Jesus Christ.`
                 )}
               </div>
             </div>
+
+            {/* AI Error Alert with Retry */}
+            {aiError && !isGeneratingAi && (
+              <div className="p-4 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-700 text-xs flex items-center justify-between gap-3 animate-in fade-in">
+                <div className="space-y-1">
+                  <div className="font-bold font-mono uppercase tracking-wider text-red-800">Generation Notice</div>
+                  <p className="leading-relaxed">{aiError}</p>
+                </div>
+                <div className="flex items-center gap-2 shrink-0">
+                  <button
+                    type="button"
+                    onClick={handleGenerateAiHymnDevotional}
+                    className="px-3 py-1.5 rounded-lg bg-red-600 hover:bg-red-700 text-white font-semibold text-xs transition-colors cursor-pointer"
+                  >
+                    Retry
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setAiError(null)}
+                    className="text-red-500 hover:text-red-800 font-bold px-1.5 py-0.5 cursor-pointer"
+                    title="Dismiss"
+                  >
+                    ✕
+                  </button>
+                </div>
+              </div>
+            )}
 
             {/* AI Streaming Loading View */}
             {isGeneratingAi && (

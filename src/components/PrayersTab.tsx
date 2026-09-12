@@ -162,14 +162,19 @@ export const PrayersTab: React.FC<PrayersTabProps> = ({
         },
         onComplete: (fullText, data) => {
           setStreamingPrayerProgress(100);
-          const pData = data?.prayer || data || {};
-          const adoration = pData.sections?.adoration || pData.adoration || "Almighty Father, Creator and Sustainer of life, we praise Your Holy Name.";
-          const confession = pData.sections?.confessionAndSurrender || pData.confessionAndSurrender || pData.confession || `Lord Jesus, we surrender every anxiety regarding ${aiNeed} into Your hands.`;
-          const thanksgiving = pData.sections?.thanksgiving || pData.thanksgiving || "Thank You, Father, for Your faithful promises that never fail.";
-          const scripturePromise = pData.sections?.scripturePromise || pData.scripturePromise || pData.scriptureAnchor || "Philippians 4:19 - 'My God shall supply all your need.'";
-          const petition = pData.sections?.petition || pData.petition || `Lord, we petition Your throne of grace for supernatural intervention in: ${aiNeed}.`;
-          const warfare = pData.sections?.spiritualWarfare || pData.spiritualWarfare || pData.warfareDeclaration || "In the Name of Jesus Christ, we break every assignment of defeat and fear.";
-          const closing = pData.sections?.declarationInJesusName || pData.declarationInJesusName || pData.closing || "We seal this prayer in the mighty Name of Jesus Christ. Amen.";
+          const pData = data?.prayer || data;
+          if (!pData || (!pData.sections && !pData.petition && !pData.title)) {
+            setAiError("AI generation could not be completed right now.");
+            setIsGeneratingPrayer(false);
+            return;
+          }
+          const adoration = pData.sections?.adoration || pData.adoration || "";
+          const confession = pData.sections?.confessionAndSurrender || pData.confessionAndSurrender || pData.confession || "";
+          const thanksgiving = pData.sections?.thanksgiving || pData.thanksgiving || "";
+          const scripturePromise = pData.sections?.scripturePromise || pData.scripturePromise || pData.scriptureAnchor || "";
+          const petition = pData.sections?.petition || pData.petition || "";
+          const warfare = pData.sections?.spiritualWarfare || pData.spiritualWarfare || pData.warfareDeclaration || "";
+          const closing = pData.sections?.declarationInJesusName || pData.declarationInJesusName || pData.closing || "";
 
           const fullPrayer: StructuredPrayer = {
             id: `ai-pr-${Date.now()}`,
@@ -186,38 +191,25 @@ export const PrayersTab: React.FC<PrayersTabProps> = ({
               spiritualWarfare: warfare,
               declarationInJesusName: closing
             },
-            suggestedScriptures: pData.suggestedScriptures || ["Philippians 4:6-7", "Psalm 91:1-2", "Isaiah 41:10"]
+            suggestedScriptures: Array.isArray(pData.suggestedScriptures) ? pData.suggestedScriptures : []
           };
           setGeneratedPrayerResult(fullPrayer);
           setActivePrayerModal(fullPrayer);
           setIsGeneratingPrayer(false);
         },
         onError: (err) => {
-          console.warn("Failed to generate prayer via stream, falling back to scriptural pattern:", err);
-          const fallbackPrayer: StructuredPrayer = {
-            id: `ai-pr-${Date.now()}`,
-            title: `Prayer of Faith for ${aiCategory}`,
-            subtitle: `Intercession concerning ${aiNeed}`,
-            category: aiCategory,
-            theme: aiNeed,
-            sections: {
-              adoration: "Holy and Sovereign Father, You are the Alpha and Omega, our refuge and strength in every time of need.",
-              confessionAndSurrender: `Lord Jesus, I surrender all worry, fatigue, and fear regarding ${aiNeed}. You are in complete control.`,
-              thanksgiving: "Thank You, Lord, for hearing my prayer and for the victory already secured through the finished work of the Cross.",
-              scripturePromise: "Philippians 4:6-7 - 'Be anxious for nothing; in everything by prayer let your requests be made known to God.'",
-              petition: `Lord, concerning ${aiNeed}, release divine wisdom, open doors of breakthrough, and grant peace that surpasses all understanding.`,
-              spiritualWarfare: `In the mighty Name of Jesus Christ, I decree that fear and confusion have no place in my life. The Lord is my shield!`,
-              declarationInJesusName: "I decree and declare this prayer established in the authority of Jesus Christ. Amen."
-            },
-            suggestedScriptures: ["Philippians 4:6-7", "Psalm 91:1-2", "Isaiah 41:10"]
-          };
-          setGeneratedPrayerResult(fallbackPrayer);
-          setActivePrayerModal(fallbackPrayer);
+          console.error("Failed to generate prayer via stream:", err);
+          setAiError("AI generation could not be completed right now.");
           setIsGeneratingPrayer(false);
         }
       });
+
+      if (!res.success) {
+        setAiError("AI generation could not be completed right now.");
+      }
     } catch (err: any) {
       console.warn("Exception in streaming prayer:", err);
+      setAiError("AI generation could not be completed right now.");
       setIsGeneratingPrayer(false);
     }
   };

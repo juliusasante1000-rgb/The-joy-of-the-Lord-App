@@ -78,6 +78,7 @@ export const BibleCommentaryModal: React.FC<BibleCommentaryModalProps> = ({
   const [aiProgress, setAiProgress] = useState(30);
   const [aiStreamingText, setAiStreamingText] = useState("");
   const [aiCustomCommentary, setAiCustomCommentary] = useState<string | null>(null);
+  const [aiError, setAiError] = useState<string | null>(null);
 
   // Base Curated & Synthesized Commentary
   const verseCommentary: VerseCommentary = getCommentaryForVerse(book, chapter, currentVerse, verseText);
@@ -107,6 +108,7 @@ export const BibleCommentaryModal: React.FC<BibleCommentaryModalProps> = ({
     setAiProgress(20);
     setAiStreamingText("");
     setAiCustomCommentary(null);
+    setAiError(null);
 
     const promptRef = `${book} ${chapter}:${currentVerse}`;
     const cacheKey = `bible_commentary_${book}_${chapter}_${currentVerse}`;
@@ -139,31 +141,13 @@ export const BibleCommentaryModal: React.FC<BibleCommentaryModalProps> = ({
         } else if (fullText) {
           setAiCustomCommentary(fullText);
         } else {
-          const fb = getCommentaryForVerse(book, chapter, currentVerse, verseText);
-          setAiCustomCommentary(
-            `Expository Commentary on ${promptRef} (${version}):\n\n"${verseText}"\n\n` +
-            `KEY THEME: ${fb.keyTheme}\n\n` +
-            `HISTORICAL CONTEXT:\n${chapterCommentary.historicalContext || ""}\n\n` +
-            `MATTHEW HENRY EXEGESIS:\n${fb.matthewHenry}\n\n` +
-            `SPURGEON DEVOTIONAL INSIGHT:\n${fb.spurgeon}\n\n` +
-            `APOSTOLIC RHEMA & PROPHETIC DECREE:\n${fb.apostolicRhema}\n\n` +
-            `ORIGINAL GREEK/HEBREW WORD STUDY:\n${fb.originalLanguageNote}`
-          );
+          setAiError("AI generation could not be completed right now. Please try again.");
         }
       },
       onError: (err) => {
         setIsAiGenerating(false);
-        console.warn("[COMMENTARY AI RETRY FALLBACK]", err);
-        const fb = getCommentaryForVerse(book, chapter, currentVerse, verseText);
-        setAiCustomCommentary(
-          `Expository Commentary on ${promptRef} (${version}):\n\n"${verseText}"\n\n` +
-          `KEY THEME: ${fb.keyTheme}\n\n` +
-          `HISTORICAL CONTEXT:\n${chapterCommentary.historicalContext || ""}\n\n` +
-          `MATTHEW HENRY EXEGESIS:\n${fb.matthewHenry}\n\n` +
-          `SPURGEON DEVOTIONAL INSIGHT:\n${fb.spurgeon}\n\n` +
-          `APOSTOLIC RHEMA & PROPHETIC DECREE:\n${fb.apostolicRhema}\n\n` +
-          `ORIGINAL GREEK/HEBREW WORD STUDY:\n${fb.originalLanguageNote}`
-        );
+        console.error("[COMMENTARY AI ERROR]", err);
+        setAiError(err || "AI generation could not be completed right now. Please try again.");
       }
     });
   };
@@ -335,6 +319,33 @@ export const BibleCommentaryModal: React.FC<BibleCommentaryModalProps> = ({
               isStreaming={true}
               onCancel={() => setIsAiGenerating(false)}
             />
+          )}
+
+          {/* AI Error Notice with Retry */}
+          {aiError && !isAiGenerating && (
+            <div className="p-4 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-200 text-xs flex items-center justify-between gap-3 animate-in fade-in">
+              <div className="space-y-1">
+                <div className="font-bold font-mono uppercase tracking-wider text-red-300">Generation Notice</div>
+                <p className="leading-relaxed">{aiError}</p>
+              </div>
+              <div className="flex items-center gap-2 shrink-0">
+                <button
+                  type="button"
+                  onClick={handleGenerateAiDeepCommentary}
+                  className="px-3 py-1.5 rounded-lg bg-red-600 hover:bg-red-700 text-white font-semibold text-xs transition-colors cursor-pointer"
+                >
+                  Retry
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setAiError(null)}
+                  className="text-red-400 hover:text-red-200 font-bold px-1.5 py-0.5 cursor-pointer"
+                  title="Dismiss"
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
           )}
 
           {/* AI Custom Generated Output (if exists) */}

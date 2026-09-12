@@ -413,6 +413,26 @@ const GEMINI_MODELS_CASCADE = [
   "gemini-flash-latest",
 ];
 
+// Production & Vercel Diagnostic Endpoint: Check environment and Gemini API key status without exposing secrets
+app.get(["/api/diagnostics/ai", "/api/status"], (req, res) => {
+  res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
+  const customKey = req.headers["x-gemini-api-key"] as string | undefined;
+  const resolved = resolveServerApiKey(customKey);
+  const isPresent = Boolean(resolved && resolved.length > 0 && resolved !== "MY_GEMINI_API_KEY");
+
+  return res.json({
+    success: true,
+    environment: isServerless ? "vercel" : "cloud-run",
+    isServerless,
+    geminiApiKeyStatus: isPresent ? "PRESENT" : "MISSING",
+    isGeminiKeyPresent: isPresent,
+    modelsCascade: GEMINI_MODELS_CASCADE,
+    nodeEnv: process.env.NODE_ENV || "development",
+    vercelEnv: process.env.VERCEL_ENV || (process.env.VERCEL ? "vercel-active" : "not-vercel"),
+    timestamp: new Date().toISOString(),
+  });
+});
+
 // In-flight quota cooldown circuit breaker to prevent cascading 429 delays when API quota is exhausted
 let quotaCooldownUntil = 0;
 
@@ -2420,7 +2440,7 @@ const handleUnifiedAiGenerate = async (req: any, res: any) => {
     return res.status(503).json({
       success: false,
       error: "AI_GENERATION_FAILED",
-      message: "AI generation could not be completed right now. Please try again.",
+      message: "GEMINI_API_KEY is not detected in your active deployment runtime. If you recently added it to Vercel Settings, please go to the Deployments tab and click Redeploy so the new environment variables take effect.",
       requestId: reqId,
       diagnostic
     });
@@ -2606,7 +2626,7 @@ app.post("/api/generate-stream", async (req, res) => {
     logAiDiagnostic(1, "STREAM REJECTED - MISSING API KEY", diagnostic);
     res.write(`data: ${JSON.stringify({
       error: "AI_GENERATION_FAILED",
-      message: "AI generation could not be completed right now. Please try again.",
+      message: "GEMINI_API_KEY is not detected in your active deployment runtime. If you recently added it to Vercel Settings, please go to the Deployments tab and click Redeploy so the new environment variables take effect.",
       requestId: streamReqId,
       diagnostic
     })}\n\n`);
@@ -3023,13 +3043,13 @@ Format as JSON with keys: id, challengeTitle, category, rootDeception, scriptura
         requestId: streamReqId,
         category: req.body?.actionType || "general",
         stage: "Gemini Cascade Streaming",
-        status: 500,
-        errorType: "Empty generation stream"
+        status: 503,
+        errorType: "Gemini models cascade exhausted or rate limited"
       };
       logAiDiagnostic(1, "STREAM EMPTY OUTPUT", diagnostic);
       res.write(`data: ${JSON.stringify({
         error: "AI_GENERATION_FAILED",
-        message: "AI generation could not be completed right now. Please try again.",
+        message: "Gemini API is temporarily busy or rate limited. Please wait a moment and click Retry.",
         requestId: streamReqId,
         diagnostic
       })}\n\n`);
@@ -3039,20 +3059,23 @@ Format as JSON with keys: id, challengeTitle, category, rootDeception, scriptura
     res.end();
   } catch (streamErr: any) {
     console.error("[STREAM ROUTE ERROR]", streamErr);
-    const errorType = isQuotaExceededError(streamErr)
+    const isQuota = isQuotaExceededError(streamErr);
+    const errorType = isQuota
       ? "Quota / Rate Limit Exceeded (429)"
       : (streamErr?.status ? `HTTP ${streamErr.status}` : (streamErr?.message || "Internal generation error"));
     const diagnostic = {
       requestId: streamReqId,
       category: req.body?.actionType || "general",
       stage: "Gemini Cascade Streaming",
-      status: streamErr?.status || 500,
+      status: streamErr?.status || (isQuota ? 429 : 500),
       errorType
     };
     logAiDiagnostic(1, "STREAM ROUTE ERROR", diagnostic);
     res.write(`data: ${JSON.stringify({
       error: "AI_GENERATION_FAILED",
-      message: "AI generation could not be completed right now. Please try again.",
+      message: isQuota
+        ? "Gemini API rate limit reached (429). Please wait a moment and click Retry."
+        : (streamErr?.message || "AI generation could not be completed right now. Please click Retry."),
       requestId: streamReqId,
       diagnostic
     })}\n\n`);

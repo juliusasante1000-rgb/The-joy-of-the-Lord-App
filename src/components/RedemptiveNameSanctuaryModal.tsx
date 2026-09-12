@@ -82,12 +82,14 @@ export const RedemptiveNameSanctuaryModal: React.FC<RedemptiveNameSanctuaryModal
   const [aiStreamingText, setAiStreamingText] = useState<string>("");
   const [isAiLoading, setIsAiLoading] = useState<boolean>(false);
   const [aiGeneratedSuccess, setAiGeneratedSuccess] = useState<boolean>(false);
+  const [aiError, setAiError] = useState<string | null>(null);
   const [fastMode, setFastMode] = useState<boolean>(false);
 
   useEffect(() => {
     setProfile(getRedemptiveNameFullProfile(item));
     setAiStreamingText("");
     setAiGeneratedSuccess(false);
+    setAiError(null);
     setIsAiLoading(false);
   }, [item]);
 
@@ -104,6 +106,7 @@ export const RedemptiveNameSanctuaryModal: React.FC<RedemptiveNameSanctuaryModal
   const handleDeepenHistorianExegesis = async () => {
     setIsAiLoading(true);
     setAiStreamingText("");
+    setAiError(null);
 
     await streamAiContent<{ exegesis: string }>({
       actionType: "redemptive_name_exegesis",
@@ -123,15 +126,9 @@ export const RedemptiveNameSanctuaryModal: React.FC<RedemptiveNameSanctuaryModal
           setAiStreamingText(fullText);
         }
       },
-      onError: () => {
+      onError: (err) => {
         setIsAiLoading(false);
-        setAiStreamingText(
-          `Historical & Exegetical Synthesis for ${item.name} (${item.hebrew}):\n\n` +
-          `• Biblical Historical Setting: ${profile.historicalContext}\n` +
-          `• Contemporaries & Figures: ${profile.keyBiblicalFigures.join(", ")}\n` +
-          `• Covenant Significance: Revealed under ${profile.covenantEra}, demonstrating that God clothes His people in royal righteousness.\n\n` +
-          profile.theologicalExposition
-        );
+        setAiError(err || "AI generation could not be completed right now. Please try again.");
       }
     });
   };
@@ -587,6 +584,33 @@ export const RedemptiveNameSanctuaryModal: React.FC<RedemptiveNameSanctuaryModal
                   </button>
                 </div>
               </div>
+
+              {/* AI Error Notice with Retry */}
+              {aiError && !isAiLoading && (
+                <div className="p-4 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-200 text-xs flex items-center justify-between gap-3 animate-in fade-in">
+                  <div className="space-y-1">
+                    <div className="font-bold font-mono uppercase tracking-wider text-red-300">Generation Notice</div>
+                    <p className="leading-relaxed">{aiError}</p>
+                  </div>
+                  <div className="flex items-center gap-2 shrink-0">
+                    <button
+                      type="button"
+                      onClick={handleDeepenHistorianExegesis}
+                      className="px-3 py-1.5 rounded-lg bg-red-600 hover:bg-red-700 text-white font-semibold text-xs transition-colors cursor-pointer"
+                    >
+                      Retry
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setAiError(null)}
+                      className="text-red-400 hover:text-red-200 font-bold px-1.5 py-0.5 cursor-pointer"
+                      title="Dismiss"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                </div>
+              )}
 
               {/* Streaming Output Card if AI is active */}
               {(isAiLoading || aiStreamingText) && (

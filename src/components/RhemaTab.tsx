@@ -181,26 +181,27 @@ export const RhemaTab: React.FC<RhemaTabProps> = ({
           setStreamingAiText(accText);
         },
         onComplete: (_fullText, data) => {
-          const inner = data || {};
+          if (!data || (!data.nowWordText && !data.propheticDeclaration && !data.title)) {
+            setAiError("AI generation could not be completed right now.");
+            setIsGeneratingAi(false);
+            return;
+          }
+          const inner = data;
           const generated: RhemaWordItem = {
             id: inner.id || `ai-rhema-${Date.now()}`,
-            seasonCategory: inner.seasonCategory || (selectedSeason !== "All" ? selectedSeason : "Fresh Oil"),
+            seasonCategory: inner.seasonCategory || (selectedSeason !== "All" ? selectedSeason : "Breakthrough"),
             title: inner.title || "Now Word of Prophetic Breakthrough",
-            propheticDeclaration: inner.propheticDeclaration || "The Lord is declaring a season of sudden turnaround and victory.",
-            spiritualAtmosphere: inner.spiritualAtmosphere || "Open Heavens & Fresh Grace",
+            propheticDeclaration: inner.propheticDeclaration || "",
+            spiritualAtmosphere: inner.spiritualAtmosphere || "",
             scriptureAnchor: inner.scriptureAnchor || {
-              reference: "Isaiah 43:19",
-              text: "Behold, I will do a new thing; now it shall spring forth; shall ye not know it? I will even make a way in the wilderness, and rivers in the desert.",
+              reference: "",
+              text: "",
               version: "KJV"
             },
-            nowWordText: inner.nowWordText || "Hear the voice of the Lord: every delayed harvest is being released. Stand in steadfast faith and rejoice.",
-            dailyActivationGuide: Array.isArray(inner.dailyActivationGuide) ? inner.dailyActivationGuide : [
-              "1. Meditate on the scripture anchor in morning stillness.",
-              "2. Proclaim the prophetic declaration aloud over your family and work.",
-              "3. Execute the Holy commandment of faith boldly today."
-            ],
-            actionCommandment: inner.actionCommandment || "Speak the Word out loud 3 times daily and sow a seed of thanksgiving.",
-            propheticDecree: inner.propheticDecree || "I decree and declare that every closed door is opened now in Jesus' Name!"
+            nowWordText: inner.nowWordText || "",
+            dailyActivationGuide: Array.isArray(inner.dailyActivationGuide) ? inner.dailyActivationGuide : [],
+            actionCommandment: inner.actionCommandment || "",
+            propheticDecree: inner.propheticDecree || ""
           };
 
           setAiRhemaWord(generated);
@@ -210,17 +211,17 @@ export const RhemaTab: React.FC<RhemaTabProps> = ({
           handleOpenSanctuary(generated);
         },
         onError: (err) => {
-          setAiError(err);
+          setAiError("AI generation could not be completed right now.");
           setIsGeneratingAi(false);
         }
       });
 
-      if (!res.success && res.error) {
-        setAiError(res.error);
+      if (!res.success) {
+        setAiError("AI generation could not be completed right now.");
       }
     } catch (err: any) {
       console.warn("Error generating AI Rhema:", err);
-      setAiError(err?.message || "Network connection issue. Please check your connection and retry.");
+      setAiError("AI generation could not be completed right now.");
     } finally {
       setIsGeneratingAi(false);
     }

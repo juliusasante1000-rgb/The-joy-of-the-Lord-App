@@ -465,9 +465,16 @@ export const SpiritualPlaceSanctuaryModal: React.FC<SpiritualPlaceSanctuaryModal
                   </button>
                 </div>
 
-                {historyError && (
-                  <div className="p-2.5 rounded-lg bg-red-950/50 border border-red-500/40 text-xs text-red-200">
-                    {historyError}
+                {historyError && !isLoadingHistory && (
+                  <div className="p-3 rounded-xl bg-red-950/50 border border-red-500/40 text-xs text-red-200 flex items-center justify-between gap-3">
+                    <span className="leading-relaxed">{historyError}</span>
+                    <button
+                      type="button"
+                      onClick={() => handleFetchPlaceHistory()}
+                      className="px-2.5 py-1 rounded-lg bg-red-600 hover:bg-red-500 text-white font-semibold text-xs transition-colors shrink-0 cursor-pointer"
+                    >
+                      Retry
+                    </button>
                   </div>
                 )}
 

@@ -263,6 +263,11 @@ export const HomeTab: React.FC<HomeTabProps> = ({
         onComplete: (fullText, data) => {
           setStreamingProgress(100);
           const inner = data || {};
+          if (!fullText && !inner.title && !inner.reflection && !inner.historicalContext && !inner.adoration && !inner.prayerPoints) {
+            setAiActionError("AI generation could not be completed right now.");
+            setIsGeneratingAi(false);
+            return;
+          }
           setAiActionData(inner);
 
           if (action === "Create Prayer" || action === "prayer") {
@@ -298,18 +303,18 @@ export const HomeTab: React.FC<HomeTabProps> = ({
           }
           setIsGeneratingAi(false);
         },
-        onError: (err) => {
-          setAiActionError(err);
+        onError: (_err) => {
+          setAiActionError("AI generation could not be completed right now.");
           setIsGeneratingAi(false);
         }
       });
 
       if (!res.success) {
-        setAiActionError(res.error || "Generation failed. Please try again.");
+        setAiActionError("AI generation could not be completed right now.");
       }
     } catch (err: any) {
       console.error("AI Generation Exception:", err);
-      setAiActionError(err?.message || "Generation failed. Please check your connection and try again.");
+      setAiActionError("AI generation could not be completed right now.");
     } finally {
       setIsGeneratingAi(false);
     }
@@ -337,18 +342,23 @@ export const HomeTab: React.FC<HomeTabProps> = ({
           setStreamingAiText(accText);
         },
         onComplete: (fullText, data) => {
-          const dev = data?.devotion || data || {};
+          const dev = data?.devotion || data;
+          if (!dev || (!dev.reflection && !dev.title && !fullText)) {
+            setAiActionError("AI generation could not be completed right now.");
+            setIsGeneratingAi(false);
+            return;
+          }
           onOpenDevotion({
             id: `ai-${Date.now()}`,
             edition: activeEdition,
             editionLabel: `Special AI ${activeBadge.label}`,
-            title: dev.title || customTopic,
-            keyScripture: dev.keyScripture || "Nehemiah 8:10",
-            passageText: dev.passageText || "The joy of the LORD is your strength.",
-            reflection: dev.reflection || fullText || "Meditate on the unshakeable peace of Christ.",
-            practicalApplication: dev.practicalApplication || "Walk in joyful obedience.",
-            guidedPrayer: dev.guidedPrayer || "Lord, let Your joy overflow in my heart.",
-            actionStep: dev.actionStep || "Share God's love with someone today.",
+            title: dev.title || customTopic || "Devotion",
+            keyScripture: dev.keyScripture || activeDisplayVerse.reference || "Scripture",
+            passageText: dev.passageText || activeDisplayVerse.text || "",
+            reflection: dev.reflection || fullText || "",
+            practicalApplication: dev.practicalApplication || "",
+            guidedPrayer: dev.guidedPrayer || "",
+            actionStep: dev.actionStep || "",
             theme: customTopic || "Spiritual Renewal",
             category: "AI Pastoral Guidance",
             readTimeMinutes: 5
@@ -356,18 +366,18 @@ export const HomeTab: React.FC<HomeTabProps> = ({
           setCustomTopic("");
           setIsGeneratingAi(false);
         },
-        onError: (err) => {
-          setAiActionError(err);
+        onError: (_err) => {
+          setAiActionError("AI generation could not be completed right now.");
           setIsGeneratingAi(false);
         }
       });
 
       if (!res.success) {
-        setAiActionError(res.error || "Failed to generate devotion");
+        setAiActionError("AI generation could not be completed right now.");
       }
     } catch (err: any) {
       console.error("AI Devotion Exception:", err);
-      setAiActionError(err?.message || "Generation failed. Please check your connection and try again.");
+      setAiActionError("AI generation could not be completed right now.");
     } finally {
       setIsGeneratingAi(false);
     }

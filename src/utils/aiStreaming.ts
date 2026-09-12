@@ -4,6 +4,7 @@
  */
 
 import { deduplicateSentences, ANTI_LOOP_DIRECTIVE, getClientGeminiApiKey, generateAiContent } from "../services/aiService";
+import { buildComprehensiveAiRequest } from "./aiPrompts";
 
 /**
  * Universal safe JSON parser that cleans markdown fences, repairs unescaped backslashes,
@@ -276,6 +277,7 @@ export async function streamAiContent<T = any>(
 
       // Tier 1: Try SSE streaming endpoint first (POST with cache: 'no-store')
       let sseSuccess = false;
+      let lastServerErrorMessage = "";
       try {
         const response = await fetch("/api/generate-stream", {
           method: "POST",
@@ -361,6 +363,13 @@ export async function streamAiContent<T = any>(
           if (accumulatedText.trim().length > 0) {
             sseSuccess = true;
           }
+        } else {
+          try {
+            const errData = await response.json();
+            if (errData?.message) {
+              lastServerErrorMessage = errData.message;
+            }
+          } catch {}
         }
       } catch (streamAttemptErr) {
         console.warn("[AI STREAMING SSE NOTICE] SSE endpoint skipped or not available:", (streamAttemptErr as any)?.message);
@@ -437,6 +446,13 @@ export async function streamAiContent<T = any>(
               data: finalData as T,
               isCached: false
             };
+          } else {
+            try {
+              const errBody = await fallbackRes.json();
+              if (errBody?.message) {
+                lastServerErrorMessage = errBody.message;
+              }
+            } catch {}
           }
         } catch (candidateErr) {
           // continue to next candidate
@@ -447,11 +463,14 @@ export async function streamAiContent<T = any>(
       const directKey = getClientGeminiApiKey();
       if (directKey) {
         try {
+          const { prompt: fullPrompt, systemInstruction: fullSysInstruction, responseMimeType } = buildComprehensiveAiRequest(options);
           const directResult = await generateAiContent<T>({
-            prompt: options.prompt,
-            systemInstruction: options.systemInstruction,
+            prompt: fullPrompt,
+            systemInstruction: fullSysInstruction,
             actionType: options.actionType,
+            responseMimeType,
             temperature: 0.80,
+            maxOutputTokens: 4096,
             model: "gemini-3.1-flash-lite"
           });
           if (directResult && directResult.success && (directResult.data || directResult.text)) {
@@ -475,7 +494,7 @@ export async function streamAiContent<T = any>(
 
       // Live AI generation could not be completed via streaming or endpoints
       console.warn("[AI STREAMING] ⚠️ Live AI generation could not be completed across all endpoints.");
-      const failureMsg = "AI generation could not be completed right now. Please try again.";
+      const failureMsg = lastServerErrorMessage || "AI generation could not be completed right now. Please try again.";
       options.onError?.(failureMsg);
       return {
         success: false,
