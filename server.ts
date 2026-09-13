@@ -406,11 +406,11 @@ function getGeminiClient(customApiKey?: string): GoogleGenAI | null {
 const AI_RESPONSE_CACHE = new Map<string, { text: string; modelUsed: string; timestamp: number }>();
 const AI_CACHE_TTL_MS = 1000 * 60 * 60 * 6; // 6 hours cache
 
-// Valid modern models according to Gemini API specification, with gemini-2.5-flash matching production
+// Valid modern models according to Gemini API specification, with gemini-2.0-flash matching production
 const GEMINI_MODELS_CASCADE = [
-  "gemini-2.5-flash",
-  "gemini-3.1-flash-lite",
-  "gemini-3.8-flash",
+  "gemini-2.0-flash",
+  "gemini-2.0-flash-lite",
+  "gemini-1.5-flash",
   "gemini-flash-latest",
 ];
 

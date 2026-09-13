@@ -91,7 +91,7 @@ export default async function handler(req: any, res: any): Promise<void> {
     res.end(JSON.stringify({
       status: "ok",
       endpoint: "/api/generate",
-      model: "gemini-2.5-flash",
+      model: "gemini-2.0-flash",
       geminiKeyConfigured: hasKey
     }));
     return;
@@ -182,18 +182,36 @@ export default async function handler(req: any, res: any): Promise<void> {
 
   try {
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({
-      model: "gemini-2.5-flash",
-      systemInstruction: fullSystemInstruction,
-      safetySettings,
-      generationConfig: {
-        temperature: 0.8,
-        topP: 0.95,
-        maxOutputTokens: 4096,
-      },
-    });
+    const candidateModels = ["gemini-2.0-flash", "gemini-2.0-flash-lite", "gemini-1.5-flash"];
+    let result: any = null;
+    let modelUsed = "gemini-2.0-flash";
+    let lastError: any = null;
 
-    const result = await model.generateContent(userPrompt);
+    for (const modName of candidateModels) {
+      try {
+        const model = genAI.getGenerativeModel({
+          model: modName,
+          systemInstruction: fullSystemInstruction,
+          safetySettings,
+          generationConfig: {
+            temperature: 0.8,
+            topP: 0.95,
+            maxOutputTokens: 4096,
+          },
+        });
+        result = await model.generateContent(userPrompt);
+        modelUsed = modName;
+        break;
+      } catch (modErr: any) {
+        lastError = modErr;
+        console.warn(`[GEMINI VERCEL SERVERLESS] Model ${modName} failed:`, modErr?.message);
+      }
+    }
+
+    if (!result) {
+      throw lastError || new Error("All candidate Gemini models failed to generate content.");
+    }
+
     let text = "";
     try {
       text = result.response.text();
@@ -235,7 +253,7 @@ export default async function handler(req: any, res: any): Promise<void> {
       text: text || "",
       raw: result.response,
       data: parsedJson || { text },
-      modelUsed: "gemini-2.5-flash"
+      modelUsed
     }));
   } catch (err: any) {
     const rawMsg = err?.message || String(err);

@@ -19,7 +19,7 @@
  *    - Fullstack proxy fallback to /api/* when running on local dev or Cloud Run
  * 
  * 4. DEBUGGING & LOGGING:
- *    - Primary model: gemini-1.5-flash-latest (with gemini-2.5-flash cascade)
+ *    - Primary model: gemini-2.0-flash (with cascade fallback)
  *    - Comprehensive console logging of request, response, and duration
  */
 
@@ -150,7 +150,7 @@ export async function generateAiContent<T = any>(
   const temperature = options.temperature ?? 0.82;
   const topP = options.topP ?? 0.95;
   const maxOutputTokens = options.maxOutputTokens ?? 2048;
-  const targetModel = options.model || "gemini-2.5-flash";
+  const targetModel = options.model || "gemini-2.0-flash";
 
   const systemPrompt = options.systemInstruction
     ? `${options.systemInstruction} ${ANTI_LOOP_DIRECTIVE}`
