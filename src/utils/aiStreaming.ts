@@ -221,6 +221,7 @@ export async function streamAiContent<T = any>(
 
     let accumulatedText = "";
     let parsedData: any = null;
+    let lastServerErrorMessage = "";
 
     options.onProgress?.(15);
 
@@ -277,7 +278,7 @@ export async function streamAiContent<T = any>(
 
       // Tier 1: Try SSE streaming endpoint first (POST with cache: 'no-store')
       let sseSuccess = false;
-      let lastServerErrorMessage = "";
+      lastServerErrorMessage = "";
       try {
         const response = await fetch("/api/generate-stream", {
           method: "POST",
@@ -368,8 +369,12 @@ export async function streamAiContent<T = any>(
             const errData = await response.json();
             if (errData?.message) {
               lastServerErrorMessage = errData.message;
+            } else {
+              lastServerErrorMessage = `Server returned status ${response.status} (${response.statusText || "Error"})`;
             }
-          } catch {}
+          } catch {
+            lastServerErrorMessage = `Server returned status ${response.status} (${response.statusText || "Error"})`;
+          }
         }
       } catch (streamAttemptErr) {
         console.warn("[AI STREAMING SSE NOTICE] SSE endpoint skipped or not available:", (streamAttemptErr as any)?.message);
@@ -451,8 +456,12 @@ export async function streamAiContent<T = any>(
               const errBody = await fallbackRes.json();
               if (errBody?.message) {
                 lastServerErrorMessage = errBody.message;
+              } else {
+                lastServerErrorMessage = `Server returned status ${fallbackRes.status} (${fallbackRes.statusText || "Error"})`;
               }
-            } catch {}
+            } catch {
+              lastServerErrorMessage = `Server returned status ${fallbackRes.status} (${fallbackRes.statusText || "Error"})`;
+            }
           }
         } catch (candidateErr) {
           // continue to next candidate
@@ -494,7 +503,7 @@ export async function streamAiContent<T = any>(
 
       // Live AI generation could not be completed via streaming or endpoints
       console.warn("[AI STREAMING] ⚠️ Live AI generation could not be completed across all endpoints.");
-      const failureMsg = lastServerErrorMessage || "AI generation could not be completed right now. Please try again.";
+      const failureMsg = lastServerErrorMessage || "AI generation could not be completed right now. If running on Vercel, please ensure the project was redeployed after adding GEMINI_API_KEY.";
       options.onError?.(failureMsg);
       return {
         success: false,
@@ -505,7 +514,9 @@ export async function streamAiContent<T = any>(
     } catch (err: any) {
       clearTimeout(timeoutId);
       console.error("[AI STREAMING ERROR HANDLER]", err);
-      const failureMsg = "AI generation could not be completed right now. Please try again.";
+      const failureMsg = err?.message
+        ? `AI request error (${err.message}). Please verify your connection or redeploy your Vercel project.`
+        : (lastServerErrorMessage || "AI generation could not be completed right now. Please check your Vercel deployment status.");
       options.onError?.(failureMsg);
       return {
         success: false,

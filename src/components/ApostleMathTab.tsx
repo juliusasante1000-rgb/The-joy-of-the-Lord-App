@@ -247,17 +247,17 @@ export const ApostleMathTab: React.FC<ApostleMathTabProps> = ({
           setIsGeneratingAi(false);
         },
         onError: (err) => {
-          setAiError("AI generation could not be completed right now.");
+          setAiError(err || "AI generation could not be completed right now. Please try again.");
           setIsGeneratingAi(false);
         }
       });
 
-      if (!res.success) {
-        setAiError("AI generation could not be completed right now.");
+      if (!res.success && !aiGeneratedLesson) {
+        setAiError(res.error || "AI generation could not be completed right now. Please try again.");
       }
     } catch (err: any) {
       console.warn("Error generating ApostleMath AI lesson:", err);
-      setAiError("AI generation could not be completed right now.");
+      setAiError(err?.message || "AI generation could not be completed right now. Please try again.");
     } finally {
       setIsGeneratingAi(false);
     }

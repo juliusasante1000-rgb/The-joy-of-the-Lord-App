@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-import app from "../server";
+import app from "../server.ts";
 import type { IncomingMessage, ServerResponse } from "http";
 
 export default async function handler(req: IncomingMessage, res: ServerResponse): Promise<void> {

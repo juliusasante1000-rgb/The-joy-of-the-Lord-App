@@ -197,17 +197,17 @@ export const JoyOvercomingTab: React.FC<JoyOvercomingTabProps> = ({
           handleOpenSanctuaryModal(generated);
         },
         onError: (err) => {
-          setAiError("AI generation could not be completed right now.");
+          setAiError(err || "AI generation could not be completed right now. Please try again.");
           setIsGeneratingAi(false);
         }
       });
 
-      if (!res.success) {
-        setAiError("AI generation could not be completed right now.");
+      if (!res.success && !aiGeneratedChallenge) {
+        setAiError(res.error || "AI generation could not be completed right now. Please try again.");
       }
     } catch (err: any) {
       console.warn("Error generating Joy blueprint AI challenge:", err);
-      setAiError("AI generation could not be completed right now.");
+      setAiError(err?.message || "AI generation could not be completed right now. Please try again.");
     } finally {
       setIsGeneratingAi(false);
     }

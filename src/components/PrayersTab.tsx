@@ -199,17 +199,17 @@ export const PrayersTab: React.FC<PrayersTabProps> = ({
         },
         onError: (err) => {
           console.error("Failed to generate prayer via stream:", err);
-          setAiError("AI generation could not be completed right now.");
+          setAiError(err || "AI generation could not be completed right now. Please try again.");
           setIsGeneratingPrayer(false);
         }
       });
 
-      if (!res.success) {
-        setAiError("AI generation could not be completed right now.");
+      if (!res.success && !generatedPrayerResult) {
+        setAiError(res.error || "AI generation could not be completed right now. Please try again.");
       }
     } catch (err: any) {
       console.warn("Exception in streaming prayer:", err);
-      setAiError("AI generation could not be completed right now.");
+      setAiError(err?.message || "AI generation could not be completed right now. Please try again.");
       setIsGeneratingPrayer(false);
     }
   };

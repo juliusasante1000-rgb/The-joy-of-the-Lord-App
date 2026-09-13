@@ -303,18 +303,18 @@ export const HomeTab: React.FC<HomeTabProps> = ({
           }
           setIsGeneratingAi(false);
         },
-        onError: (_err) => {
-          setAiActionError("AI generation could not be completed right now.");
+        onError: (err) => {
+          setAiActionError(err || "AI generation could not be completed right now. Please try again.");
           setIsGeneratingAi(false);
         }
       });
 
-      if (!res.success) {
-        setAiActionError("AI generation could not be completed right now.");
+      if (!res.success && !aiActionResult) {
+        setAiActionError(res.error || "AI generation could not be completed right now. Please try again.");
       }
     } catch (err: any) {
       console.error("AI Generation Exception:", err);
-      setAiActionError("AI generation could not be completed right now.");
+      setAiActionError(err?.message || "AI generation could not be completed right now. Please try again.");
     } finally {
       setIsGeneratingAi(false);
     }
@@ -366,18 +366,18 @@ export const HomeTab: React.FC<HomeTabProps> = ({
           setCustomTopic("");
           setIsGeneratingAi(false);
         },
-        onError: (_err) => {
-          setAiActionError("AI generation could not be completed right now.");
+        onError: (err) => {
+          setAiActionError(err || "AI generation could not be completed right now. Please try again.");
           setIsGeneratingAi(false);
         }
       });
 
       if (!res.success) {
-        setAiActionError("AI generation could not be completed right now.");
+        setAiActionError(res.error || "AI generation could not be completed right now. Please try again.");
       }
     } catch (err: any) {
       console.error("AI Devotion Exception:", err);
-      setAiActionError("AI generation could not be completed right now.");
+      setAiActionError(err?.message || "AI generation could not be completed right now. Please try again.");
     } finally {
       setIsGeneratingAi(false);
     }

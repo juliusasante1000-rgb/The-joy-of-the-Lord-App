@@ -233,17 +233,17 @@ export const MathemaSermonsTab: React.FC<MathemaSermonsTabProps> = ({
           setIsGeneratingAi(false);
         },
         onError: (err) => {
-          setAiError("AI generation could not be completed right now.");
+          setAiError(err || "AI generation could not be completed right now. Please try again.");
           setIsGeneratingAi(false);
         }
       });
 
-      if (!res.success) {
-        setAiError("AI generation could not be completed right now.");
+      if (!res.success && !aiSermon) {
+        setAiError(res.error || "AI generation could not be completed right now. Please try again.");
       }
     } catch (err: any) {
       console.error("[MATHEMASERMON AI ERROR]", err);
-      setAiError("AI generation could not be completed right now.");
+      setAiError(err?.message || "AI generation could not be completed right now. Please try again.");
     } finally {
       setIsGeneratingAi(false);
     }

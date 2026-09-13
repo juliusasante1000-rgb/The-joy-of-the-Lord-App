@@ -697,6 +697,8 @@ async function generateWithGeminiCascade(options: {
   const maxOutputTokens = options.maxOutputTokens ?? 3000;
 
   let retryCount = 0;
+  let lastErrorMessage = "";
+  let lastIsQuota = false;
   for (const model of GEMINI_MODELS_CASCADE) {
     try {
       // Step 5: GEMINI REQUEST SENT
@@ -772,7 +774,9 @@ async function generateWithGeminiCascade(options: {
     } catch (err: any) {
       retryCount++;
       const errMsg = formatGeminiErrorMessage(err);
+      lastErrorMessage = errMsg;
       const isQuota = isQuotaExceededError(err);
+      if (isQuota) lastIsQuota = true;
       logAiDiagnostic(5, "GEMINI REQUEST FAILED ON MODEL", {
         requestId: reqId,
         category,
@@ -785,14 +789,23 @@ async function generateWithGeminiCascade(options: {
     }
   }
 
+  let userFriendlyError = "All Gemini models in cascade failed or were unreachable.";
+  if (lastIsQuota) {
+    userFriendlyError = "Gemini API rate limit or quota exceeded (429). Please check your Google AI Studio plan or retry in a few moments.";
+  } else if (lastErrorMessage.includes("high demand") || lastErrorMessage.includes("503") || lastErrorMessage.includes("UNAVAILABLE")) {
+    userFriendlyError = "Gemini models are experiencing temporary high demand from Google. Please wait 10 seconds and click Retry.";
+  } else if (lastErrorMessage) {
+    userFriendlyError = `Gemini API error: ${lastErrorMessage}`;
+  }
+
   logAiDiagnostic(8, "GENERATION FAILED ACROSS ALL MODELS", {
     requestId: reqId,
     category,
     status: 503,
-    errorCategory: "CASCADE_EXHAUSTED",
-    errorMessage: "All Gemini models in cascade failed or were unreachable"
+    errorCategory: lastIsQuota ? "QUOTA_EXCEEDED" : "CASCADE_EXHAUSTED",
+    errorMessage: userFriendlyError
   });
-  return null;
+  return { error: userFriendlyError, isQuota: lastIsQuota } as any;
 }
 
 /**
@@ -851,6 +864,8 @@ async function streamGeminiCascade(options: {
   const modelsToTry = GEMINI_MODELS_CASCADE;
 
   let retryCount = 0;
+  let lastErrorMessage = "";
+  let lastIsQuota = false;
   for (const model of modelsToTry) {
     try {
       // Step 5: GEMINI REQUEST SENT
@@ -923,7 +938,9 @@ async function streamGeminiCascade(options: {
     } catch (err: any) {
       retryCount++;
       const errMsg = formatGeminiErrorMessage(err);
+      lastErrorMessage = errMsg;
       const isQuota = isQuotaExceededError(err);
+      if (isQuota) lastIsQuota = true;
       logAiDiagnostic(5, "GEMINI STREAM FAILED ON MODEL", {
         requestId: reqId,
         category,
@@ -936,14 +953,23 @@ async function streamGeminiCascade(options: {
     }
   }
 
+  let userFriendlyError = "All Gemini streaming models in cascade failed";
+  if (lastIsQuota) {
+    userFriendlyError = "Gemini API rate limit or quota exceeded (429). Please wait a moment and click Retry.";
+  } else if (lastErrorMessage.includes("high demand") || lastErrorMessage.includes("503") || lastErrorMessage.includes("UNAVAILABLE")) {
+    userFriendlyError = "Gemini models are experiencing temporary high demand from Google. Please wait 10 seconds and click Retry.";
+  } else if (lastErrorMessage) {
+    userFriendlyError = `Gemini API error: ${lastErrorMessage}`;
+  }
+
   logAiDiagnostic(8, "STREAM FAILED ACROSS ALL MODELS", {
     requestId: reqId,
     category,
     status: 503,
-    errorCategory: "CASCADE_EXHAUSTED",
-    errorMessage: "All Gemini streaming models in cascade failed"
+    errorCategory: lastIsQuota ? "QUOTA_EXCEEDED" : "CASCADE_EXHAUSTED",
+    errorMessage: userFriendlyError
   });
-  return null;
+  return { error: userFriendlyError, isQuota: lastIsQuota } as any;
 }
 
 /**
@@ -2574,23 +2600,25 @@ Format as JSON with keys:
       });
     }
 
-    if (!result || !result.text) {
-      console.warn("AI Cascade returned null.");
-      logAiDiagnostic(8, "GENERATION FAILED - NO TEXT RETURNED", { requestId: reqId, category: actionType || "general", status: 503 });
+    if (!result || !("text" in result) || !(result as any).text) {
+      console.warn("AI Cascade returned null or error.");
+      const errorMsg = (result as any)?.error || "AI generation could not be completed right now. Please try again.";
+      logAiDiagnostic(8, "GENERATION FAILED - NO TEXT RETURNED", { requestId: reqId, category: actionType || "general", status: 503, error: errorMsg });
       return res.status(503).json({
         success: false,
         error: "AI_GENERATION_FAILED",
-        message: "AI generation could not be completed right now. Please try again.",
+        message: errorMsg,
         requestId: reqId
       });
     }
   } catch (err: any) {
     console.error("AI Generation Exception:", err);
+    const errorMsg = err?.message ? `AI generation failed: ${err.message}` : "AI generation could not be completed right now. Please try again.";
     logAiDiagnostic(8, "GENERATION EXCEPTION", { requestId: reqId, category: req.body?.actionType || "general", status: 500, errorMessage: err.message });
     return res.status(500).json({
       success: false,
       error: "AI_GENERATION_FAILED",
-      message: "AI generation could not be completed right now. Please try again.",
+      message: errorMsg,
       requestId: reqId
     });
   }
@@ -3039,17 +3067,18 @@ Format as JSON with keys: id, challengeTitle, category, rootDeception, scriptura
       res.write(`data: ${JSON.stringify({ done: true, fullText: streamAccumulator, data: safeJsonParse(streamAccumulator) })}\n\n`);
     } else {
       console.warn("[STREAM] Stream accumulator empty.");
+      const errorMsg = (result as any)?.error || "Gemini API is temporarily busy or rate limited. Please wait a moment and click Retry.";
       const diagnostic = {
         requestId: streamReqId,
         category: req.body?.actionType || "general",
         stage: "Gemini Cascade Streaming",
         status: 503,
-        errorType: "Gemini models cascade exhausted or rate limited"
+        errorType: errorMsg
       };
       logAiDiagnostic(1, "STREAM EMPTY OUTPUT", diagnostic);
       res.write(`data: ${JSON.stringify({
         error: "AI_GENERATION_FAILED",
-        message: "Gemini API is temporarily busy or rate limited. Please wait a moment and click Retry.",
+        message: errorMsg,
         requestId: streamReqId,
         diagnostic
       })}\n\n`);
