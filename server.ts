@@ -406,11 +406,13 @@ function getGeminiClient(customApiKey?: string): GoogleGenAI | null {
 const AI_RESPONSE_CACHE = new Map<string, { text: string; modelUsed: string; timestamp: number }>();
 const AI_CACHE_TTL_MS = 1000 * 60 * 60 * 6; // 6 hours cache
 
-// Valid modern models according to Gemini API specification, with gemini-2.0-flash matching production
+// Valid modern dynamic models according to Gemini API specification
 const GEMINI_MODELS_CASCADE = [
-  "gemini-2.0-flash",
-  "gemini-2.0-flash-lite",
-  "gemini-1.5-flash",
+  "gemini-3.6-flash",
+  "gemini-3.5-flash-lite",
+  "gemini-flash-lite-latest",
+  "gemini-3.1-flash-lite",
+  "gemini-3.8-flash",
   "gemini-flash-latest",
 ];
 
@@ -427,11 +429,62 @@ app.get(["/api/diagnostics/ai", "/api/status"], (req, res) => {
     isServerless,
     geminiApiKeyStatus: isPresent ? "PRESENT" : "MISSING",
     isGeminiKeyPresent: isPresent,
+    primaryModel: "gemini-3.6-flash",
     modelsCascade: GEMINI_MODELS_CASCADE,
     nodeEnv: process.env.NODE_ENV || "development",
     vercelEnv: process.env.VERCEL_ENV || (process.env.VERCEL ? "vercel-active" : "not-vercel"),
     timestamp: new Date().toISOString(),
   });
+});
+
+// Production Models Endpoint: Dynamically list all available models for this API key via Gemini API
+app.get("/api/models", async (req, res) => {
+  res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
+  const customKey = req.headers["x-gemini-api-key"] as string | undefined;
+  const apiKey = resolveServerApiKey(customKey);
+
+  if (!apiKey || apiKey === "MY_GEMINI_API_KEY") {
+    return res.status(500).json({
+      error: "GEMINI_API_KEY is not configured.",
+      models: [],
+    });
+  }
+
+  try {
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${apiKey}`);
+    const data: any = await response.json();
+
+    if (!response.ok) {
+      return res.status(response.status).json({
+        error: `Gemini API returned status ${response.status}: ${response.statusText}`,
+        details: data,
+        availableFallbackCascade: GEMINI_MODELS_CASCADE,
+      });
+    }
+
+    const allModels = data.models || [];
+    const contentGenerationModels = allModels
+      .filter((m: any) => m.supportedGenerationMethods?.includes("generateContent"))
+      .map((m: any) => ({
+        id: m.name.replace(/^models\//, ""),
+        displayName: m.displayName || m.name,
+        description: m.description,
+        supportedMethods: m.supportedGenerationMethods,
+      }));
+
+    return res.json({
+      success: true,
+      totalModels: allModels.length,
+      primaryModel: "gemini-3.6-flash",
+      recommendedCascade: GEMINI_MODELS_CASCADE,
+      models: contentGenerationModels,
+    });
+  } catch (err: any) {
+    return res.status(500).json({
+      error: `Failed to list Gemini models: ${err.message}`,
+      recommendedCascade: GEMINI_MODELS_CASCADE,
+    });
+  }
 });
 
 // In-flight quota cooldown circuit breaker to prevent cascading 429 delays when API quota is exhausted

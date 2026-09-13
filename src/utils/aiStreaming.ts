@@ -496,7 +496,7 @@ export async function streamAiContent<T = any>(
           responseMimeType,
           temperature: 0.80,
           maxOutputTokens: 4096,
-          model: "gemini-2.0-flash"
+          model: "gemini-3.5-flash"
         });
         if (directResult && directResult.success && (directResult.data || directResult.text)) {
           const outText = directResult.text || JSON.stringify(directResult.data);

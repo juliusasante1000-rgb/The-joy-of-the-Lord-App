@@ -91,7 +91,14 @@ export default async function handler(req: any, res: any): Promise<void> {
     res.end(JSON.stringify({
       status: "ok",
       endpoint: "/api/generate",
-      model: "gemini-2.0-flash",
+      primaryModel: "gemini-flash-latest",
+      modelsCascade: [
+        "gemini-flash-latest",
+        "gemini-2.5-flash",
+        "gemini-3.5-flash",
+        "gemini-2.0-flash",
+        "gemini-flash-lite-latest",
+      ],
       geminiKeyConfigured: hasKey
     }));
     return;
@@ -182,9 +189,16 @@ export default async function handler(req: any, res: any): Promise<void> {
 
   try {
     const genAI = new GoogleGenerativeAI(apiKey);
-    const candidateModels = ["gemini-2.0-flash", "gemini-2.0-flash-lite", "gemini-1.5-flash"];
+    // Dynamic model aliases with automatic fallback handling to prevent 404 breaking changes
+    const candidateModels = [
+      "gemini-3.5-flash",
+      "gemini-flash-latest",
+      "gemini-2.5-flash",
+      "gemini-2.0-flash",
+      "gemini-flash-lite-latest",
+    ];
     let result: any = null;
-    let modelUsed = "gemini-2.0-flash";
+    let modelUsed = "gemini-3.5-flash";
     let lastError: any = null;
 
     for (const modName of candidateModels) {
@@ -204,7 +218,9 @@ export default async function handler(req: any, res: any): Promise<void> {
         break;
       } catch (modErr: any) {
         lastError = modErr;
-        console.warn(`[GEMINI VERCEL SERVERLESS] Model ${modName} failed:`, modErr?.message);
+        const msg = String(modErr?.message || "");
+        const is404 = msg.includes("404") || msg.includes("not found") || msg.includes("no longer available") || msg.includes("unsupported");
+        console.warn(`[GEMINI VERCEL SERVERLESS] Model alias ${modName} failed (404/deprecated: ${is404}): ${msg}. Falling back to next candidate...`);
       }
     }
 
