@@ -434,10 +434,26 @@ export async function streamAiContent<T = any>(
 
           if (fallbackRes.ok) {
             const resData = await fallbackRes.json();
+            const textContent = (typeof resData?.text === "string" && resData.text.trim())
+              ? resData.text
+              : (typeof resData?.response === "string" && resData.response.trim())
+                ? resData.response
+                : "";
+
+            if (!textContent && (resData?.error || resData?.message)) {
+              lastServerErrorMessage = resData.error || resData.message;
+              continue;
+            }
+
+            if (!textContent && !resData?.data) {
+              lastServerErrorMessage = "Generation returned empty content from AI backend.";
+              continue;
+            }
+
             const finalText = deduplicateSentences(
-              resData.text || resData.response || JSON.stringify(resData.data || resData.devotion || resData)
+              textContent || (resData.data ? JSON.stringify(resData.data) : "")
             );
-            const finalData = resData.data || resData.devotion || safeJsonParse(finalText);
+            const finalData = resData.data || safeJsonParse(finalText);
 
             options.onProgress?.(100);
             options.onChunk?.(finalText, finalText, finalData);
@@ -456,6 +472,8 @@ export async function streamAiContent<T = any>(
               const errBody = await fallbackRes.json();
               if (errBody?.message) {
                 lastServerErrorMessage = errBody.message;
+              } else if (errBody?.error) {
+                lastServerErrorMessage = errBody.error;
               } else {
                 lastServerErrorMessage = `Server returned status ${fallbackRes.status} (${fallbackRes.statusText || "Error"})`;
               }
@@ -478,7 +496,7 @@ export async function streamAiContent<T = any>(
           responseMimeType,
           temperature: 0.80,
           maxOutputTokens: 4096,
-          model: "gemini-3.1-flash-lite"
+          model: "gemini-2.5-flash"
         });
         if (directResult && directResult.success && (directResult.data || directResult.text)) {
           const outText = directResult.text || JSON.stringify(directResult.data);

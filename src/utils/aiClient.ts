@@ -151,6 +151,19 @@ export async function fetchAiWithRetry<T = any>(
         if (response.ok && parsed.ok && parsed.data) {
           let data: any = parsed.data;
 
+          const textVal = (typeof data?.text === "string" && data.text.trim())
+            ? data.text
+            : (typeof data?.response === "string" && data.response.trim())
+              ? data.response
+              : (typeof data?.answer === "string" && data.answer.trim())
+                ? data.answer
+                : "";
+
+          if (!textVal && !data?.id && (data?.error || data?.message)) {
+            lastServerError = data.error || data.message;
+            continue;
+          }
+
           // Apply sentence deduplication to string fields
           if (data && typeof data === "object") {
             if (typeof data.response === "string") data.response = deduplicateSentences(data.response);
@@ -185,7 +198,7 @@ export async function fetchAiWithRetry<T = any>(
           return {
             success: true,
             data,
-            text: (data as any)?.text || (data as any)?.response || (data as any)?.answer,
+            text: textVal || (data as any)?.text || (data as any)?.response || (data as any)?.answer,
           };
         } else if (parsed?.data && ((parsed.data as any).error || (parsed.data as any).message)) {
           lastServerError = (parsed.data as any).error || (parsed.data as any).message;

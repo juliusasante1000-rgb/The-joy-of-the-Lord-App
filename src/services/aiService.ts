@@ -150,7 +150,7 @@ export async function generateAiContent<T = any>(
   const temperature = options.temperature ?? 0.82;
   const topP = options.topP ?? 0.95;
   const maxOutputTokens = options.maxOutputTokens ?? 2048;
-  const targetModel = options.model || "gemini-3.1-flash-lite";
+  const targetModel = options.model || "gemini-2.5-flash";
 
   const systemPrompt = options.systemInstruction
     ? `${options.systemInstruction} ${ANTI_LOOP_DIRECTIVE}`
