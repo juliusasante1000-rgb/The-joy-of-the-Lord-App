@@ -3,15 +3,31 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "functions": {
+    "api/generate.ts": {
+      "maxDuration": 30,
+      "memory": 1024
+    },
     "api/index.ts": {
-      "maxDuration": 60,
+      "maxDuration": 30,
       "memory": 1024
     }
   },
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api?path=$1"
+      "source": "/api/generate",
+      "destination": "/api/generate"
+    },
+    {
+      "source": "/api/generate-stream",
+      "destination": "/api/generate"
+    },
+    {
+      "source": "/api/generate-verse-action",
+      "destination": "/api/generate"
+    },
+    {
+      "source": "/api/generate-devotion",
+      "destination": "/api/generate"
     }
   ]
 }

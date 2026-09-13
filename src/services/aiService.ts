@@ -163,7 +163,8 @@ export async function generateAiContent<T = any>(
     maxOutputTokens
   });
 
-  // Step 1: Try server-side API proxy first if in fullstack environment
+  // Step 1: Call server-side API route (/api/generate) using relative URL only
+  let lastErrorMessage = "";
   try {
     const serverRes = await fetch("/api/generate", {
       method: "POST",
@@ -184,110 +185,50 @@ export async function generateAiContent<T = any>(
           maxOutputTokens
         }
       })
-    }).catch(() => null);
+    });
 
-    if (serverRes && serverRes.ok) {
-      const serverData = await serverRes.json().catch(() => null);
-      if (serverData && (serverData.response || serverData.text)) {
-        const rawText = serverData.response || serverData.text;
-        const cleanedText = deduplicateSentences(rawText);
-        const durationMs = Math.round(performance.now() - startTime);
+    const serverData = await serverRes.json().catch(() => null);
 
-        console.log(`[AI SERVICE] ✅ Received response via Server Proxy in ${durationMs}ms:`, {
-          model: serverData.modelUsed || targetModel,
-          rawLength: rawText.length,
-          cleanedLength: cleanedText.length
-        });
+    if (serverRes.ok && serverData && (serverData.response || serverData.text)) {
+      const rawText = serverData.response || serverData.text;
+      const cleanedText = deduplicateSentences(rawText);
+      const durationMs = Math.round(performance.now() - startTime);
 
-        // Persist to localStorage if storageKey provided
-        if (options.storageKey) {
-          saveToLocalStorage(options.storageKey, cleanedText);
-        }
+      console.log(`[AI SERVICE] ✅ Received response from /api/generate in ${durationMs}ms:`, {
+        model: serverData.modelUsed || targetModel,
+        rawLength: rawText.length,
+        cleanedLength: cleanedText.length
+      });
 
-        return {
-          success: true,
-          text: cleanedText,
-          data: tryParseJson(cleanedText) as T,
-          modelUsed: serverData.modelUsed || targetModel,
-          durationMs
-        };
+      // Persist to localStorage if storageKey provided
+      if (options.storageKey) {
+        saveToLocalStorage(options.storageKey, cleanedText);
       }
+
+      return {
+        success: true,
+        text: cleanedText,
+        data: tryParseJson(cleanedText) as T,
+        modelUsed: serverData.modelUsed || targetModel,
+        durationMs
+      };
+    } else if (serverData && (serverData.error || serverData.message)) {
+      lastErrorMessage = serverData.error || serverData.message;
+    } else {
+      lastErrorMessage = `Server returned status ${serverRes.status} (${serverRes.statusText || "Error"})`;
     }
-  } catch (serverErr) {
-    console.warn("[AI SERVICE] Server proxy not responding, checking direct client API key...", serverErr);
+  } catch (serverErr: any) {
+    console.warn("[AI SERVICE] /api/generate fetch error:", serverErr);
+    lastErrorMessage = serverErr?.message || "Failed to reach /api/generate";
   }
 
-  // Step 2: Direct Client-Side Gemini API call (Vercel, Netlify, Static Builds)
-  const clientApiKey = getClientGeminiApiKey();
-  if (clientApiKey) {
-    const modelsToTry = [targetModel, "gemini-3.1-flash-lite", "gemini-3.8-flash", "gemini-flash-latest"].filter(
-      (v, i, a) => Boolean(v) && a.indexOf(v) === i
-    );
-
-    for (const modelName of modelsToTry) {
-      try {
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${clientApiKey}`;
-        
-        const requestPayload = {
-          contents: [
-            {
-              role: "user",
-              parts: [{ text: options.prompt }]
-            }
-          ],
-          systemInstruction: {
-            parts: [{ text: systemPrompt }]
-          },
-          generationConfig: {
-            temperature,
-            topP,
-            maxOutputTokens,
-            ...(options.responseMimeType ? { responseMimeType: options.responseMimeType } : {})
-          }
-        };
-
-        const response = await fetch(apiUrl, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(requestPayload)
-        });
-
-        const durationMs = Math.round(performance.now() - startTime);
-        const responseJson = await response.json().catch(() => null);
-
-        if (response.ok && responseJson) {
-          const candidate = responseJson?.candidates?.[0];
-          const candidateText = candidate?.content?.parts?.[0]?.text;
-
-          if (candidateText && candidateText.trim()) {
-            const deduplicatedText = deduplicateSentences(candidateText);
-
-            if (options.storageKey) {
-              saveToLocalStorage(options.storageKey, deduplicatedText);
-            }
-
-            console.log(`[AI SERVICE] ✅ Client-side Gemini success with ${modelName} in ${durationMs}ms`);
-            return {
-              success: true,
-              text: deduplicatedText,
-              data: tryParseJson(deduplicatedText) as T,
-              modelUsed: modelName,
-              durationMs
-            };
-          }
-        }
-      } catch (clientErr) {
-        console.warn(`[AI SERVICE] Client call with ${modelName} failed, trying next...`, clientErr);
-      }
-    }
-  }
-
-  // Step 3: Explicit failure reporting - DO NOT substitute canned messages for failed AI calls
+  // Step 2: Explicit error reporting
   const durationMs = Math.round(performance.now() - startTime);
-  console.warn(`[AI SERVICE] ⚠️ Live AI generation could not be completed in ${durationMs}ms`);
+  const finalError = lastErrorMessage || "GEMINI_API_KEY missing in Vercel Environment Variables. Add it in Vercel Dashboard > Settings > Environment Variables";
+  console.warn(`[AI SERVICE] ⚠️ Live AI generation failed: ${finalError}`);
   return {
     success: false,
-    error: "AI generation could not be completed right now. Please try again.",
+    error: finalError,
     modelUsed: "none",
     durationMs
   };

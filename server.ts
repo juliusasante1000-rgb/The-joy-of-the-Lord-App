@@ -2459,14 +2459,13 @@ const handleUnifiedAiGenerate = async (req: any, res: any) => {
       requestId: reqId,
       category: req.body?.actionType || "general",
       stage: "API_KEY_VALIDATION",
-      status: 503,
+      status: 500,
       errorType: "Missing or unconfigured GEMINI_API_KEY"
     };
     logAiDiagnostic(1, "REQUEST REJECTED - MISSING API KEY", diagnostic);
-    return res.status(503).json({
-      success: false,
-      error: "AI_GENERATION_FAILED",
-      message: "GEMINI_API_KEY is not detected in your active deployment runtime. If you recently added it to Vercel Settings, please go to the Deployments tab and click Redeploy so the new environment variables take effect.",
+    return res.status(500).json({
+      error: "GEMINI_API_KEY missing in Vercel Environment Variables. Add it in Vercel Dashboard > Settings > Environment Variables",
+      message: "GEMINI_API_KEY missing in Vercel Environment Variables. Add it in Vercel Dashboard > Settings > Environment Variables",
       requestId: reqId,
       diagnostic
     });
@@ -2648,13 +2647,13 @@ app.post("/api/generate-stream", async (req, res) => {
       requestId: streamReqId,
       category: req.body?.actionType || "general",
       stage: "API_KEY_VALIDATION",
-      status: 503,
+      status: 500,
       errorType: "Missing or unconfigured GEMINI_API_KEY"
     };
     logAiDiagnostic(1, "STREAM REJECTED - MISSING API KEY", diagnostic);
     res.write(`data: ${JSON.stringify({
-      error: "AI_GENERATION_FAILED",
-      message: "GEMINI_API_KEY is not detected in your active deployment runtime. If you recently added it to Vercel Settings, please go to the Deployments tab and click Redeploy so the new environment variables take effect.",
+      error: "GEMINI_API_KEY missing in Vercel Environment Variables. Add it in Vercel Dashboard > Settings > Environment Variables",
+      message: "GEMINI_API_KEY missing in Vercel Environment Variables. Add it in Vercel Dashboard > Settings > Environment Variables",
       requestId: streamReqId,
       diagnostic
     })}\n\n`);

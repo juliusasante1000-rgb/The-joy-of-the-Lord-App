@@ -107,6 +107,8 @@ export async function fetchAiWithRetry<T = any>(
 
   console.log("Calling AI...", { endpoint, candidateEndpoints, payloadPreview: payload?.actionType || payload?.topic || payload?.prompt || payload?.question || payload?.placeName });
 
+  let lastServerError = "";
+
   for (const targetUrl of candidateEndpoints) {
     let attempt = 0;
     while (attempt <= maxRetries) {
@@ -185,9 +187,12 @@ export async function fetchAiWithRetry<T = any>(
             data,
             text: (data as any)?.text || (data as any)?.response || (data as any)?.answer,
           };
+        } else if (parsed?.data && ((parsed.data as any).error || (parsed.data as any).message)) {
+          lastServerError = (parsed.data as any).error || (parsed.data as any).message;
+        } else {
+          lastServerError = `Server returned status ${response.status} (${response.statusText || "Error"})`;
         }
 
-        // If response is not ok (e.g. 404 on static hosting), break to try next endpoint or client fallback
         break;
       } catch (err: any) {
         clearTimeout(timeoutId);
@@ -199,73 +204,13 @@ export async function fetchAiWithRetry<T = any>(
     }
   }
 
-  // Tier 2: Direct Client-Side Gemini API call if client key is configured
-  // CRITICAL: NEVER strip down prompt to "Exposition on..." - use the exact complete specialized prompt and schema!
-  const clientApiKey = getClientGeminiApiKey();
-  if (clientApiKey) {
-    const modelsToTry = ["gemini-3.1-flash-lite", "gemini-3.8-flash", "gemini-flash-latest"];
-    const { prompt: promptText, systemInstruction: sysPrompt, responseMimeType } = buildComprehensiveAiRequest(payload);
-    
-    for (const modelName of modelsToTry) {
-      try {
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${clientApiKey}`;
-        const reqBody: any = {
-          contents: [{ role: "user", parts: [{ text: promptText }] }],
-          systemInstruction: { parts: [{ text: `${sysPrompt}\n${ANTI_LOOP_DIRECTIVE}` }] },
-          generationConfig: {
-            temperature: options.temperature ?? 0.80,
-            topP: options.topP ?? 0.95,
-            maxOutputTokens: options.maxOutputTokens ?? 4096,
-            ...(responseMimeType ? { responseMimeType } : {})
-          }
-        };
-
-        const res = await fetch(apiUrl, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(reqBody)
-        });
-
-        if (res.ok) {
-          const resJson = await res.json().catch(() => null);
-          const rawText = resJson?.candidates?.[0]?.content?.parts?.[0]?.text;
-          if (rawText && rawText.trim()) {
-            const cleaned = deduplicateSentences(rawText);
-            let parsedObj: any = null;
-            try {
-              let clean = cleaned.trim();
-              if (clean.startsWith("```json")) clean = clean.replace(/^```json\s*/i, "").replace(/\s*```$/, "");
-              else if (clean.startsWith("```")) clean = clean.replace(/^```\s*/i, "").replace(/\s*```$/, "");
-              parsedObj = JSON.parse(clean);
-            } catch {
-              parsedObj = null;
-            }
-
-            const returnData: any = parsedObj || {
-              answer: cleaned,
-              text: cleaned,
-              response: cleaned
-            };
-
-            return {
-              success: true,
-              data: returnData,
-              text: cleaned
-            };
-          }
-        }
-      } catch (clientErr) {
-        console.warn(`[AI CLIENT] Direct client call with ${modelName} failed:`, clientErr);
-      }
-    }
-  }
-
   // Do NOT silently replace failed AI requests with generic canned content
-  console.warn("[AI CLIENT] ⚠️ Live AI generation could not be completed via server endpoints or direct calls.");
+  const failureMsg = lastServerError || "GEMINI_API_KEY missing in Vercel Environment Variables. Add it in Vercel Dashboard > Settings > Environment Variables";
+  console.warn(`[AI CLIENT] ⚠️ Live AI generation failed: ${failureMsg}`);
   return {
     success: false,
-    error: "AI generation could not be completed right now. Please try again.",
-    isApiKeyMissing: !clientApiKey && !Boolean(process.env.GEMINI_API_KEY)
+    error: failureMsg,
+    isApiKeyMissing: true
   };
 }
 

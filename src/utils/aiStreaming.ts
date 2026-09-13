@@ -468,42 +468,41 @@ export async function streamAiContent<T = any>(
         }
       }
 
-      // Tier 2.5: Direct client-side Gemini fallback if client key is configured in browser
-      const directKey = getClientGeminiApiKey();
-      if (directKey) {
-        try {
-          const { prompt: fullPrompt, systemInstruction: fullSysInstruction, responseMimeType } = buildComprehensiveAiRequest(options);
-          const directResult = await generateAiContent<T>({
-            prompt: fullPrompt,
-            systemInstruction: fullSysInstruction,
-            actionType: options.actionType,
-            responseMimeType,
-            temperature: 0.80,
-            maxOutputTokens: 4096,
-            model: "gemini-3.1-flash-lite"
-          });
-          if (directResult && directResult.success && (directResult.data || directResult.text)) {
-            const outText = directResult.text || JSON.stringify(directResult.data);
-            const outData = directResult.data || safeJsonParse(outText);
-            options.onProgress?.(100);
-            options.onChunk?.(outText, outText, outData);
-            options.onComplete?.(outText, outData, false);
-            saveAiResultToCache(cacheKey, outText, outData, isFast);
-            return {
-              success: true,
-              text: outText,
-              data: outData as T,
-              isCached: false
-            };
-          }
-        } catch (directErr) {
-          console.warn("[DIRECT CLIENT GEMINI] Direct client fallback attempt:", directErr);
+      // Tier 2.5: Server-side /api/generate fallback
+      try {
+        const { prompt: fullPrompt, systemInstruction: fullSysInstruction, responseMimeType } = buildComprehensiveAiRequest(options);
+        const directResult = await generateAiContent<T>({
+          prompt: fullPrompt,
+          systemInstruction: fullSysInstruction,
+          actionType: options.actionType,
+          responseMimeType,
+          temperature: 0.80,
+          maxOutputTokens: 4096,
+          model: "gemini-3.1-flash-lite"
+        });
+        if (directResult && directResult.success && (directResult.data || directResult.text)) {
+          const outText = directResult.text || JSON.stringify(directResult.data);
+          const outData = directResult.data || safeJsonParse(outText);
+          options.onProgress?.(100);
+          options.onChunk?.(outText, outText, outData);
+          options.onComplete?.(outText, outData, false);
+          saveAiResultToCache(cacheKey, outText, outData, isFast);
+          return {
+            success: true,
+            text: outText,
+            data: outData as T,
+            isCached: false
+          };
+        } else if (directResult && directResult.error) {
+          lastServerErrorMessage = directResult.error;
         }
+      } catch (directErr: any) {
+        console.warn("[SERVER /api/generate fallback attempt]:", directErr);
       }
 
       // Live AI generation could not be completed via streaming or endpoints
       console.warn("[AI STREAMING] ⚠️ Live AI generation could not be completed across all endpoints.");
-      const failureMsg = lastServerErrorMessage || "AI generation could not be completed right now. If running on Vercel, please ensure the project was redeployed after adding GEMINI_API_KEY.";
+      const failureMsg = lastServerErrorMessage || "GEMINI_API_KEY missing in Vercel Environment Variables. Add it in Vercel Dashboard > Settings > Environment Variables";
       options.onError?.(failureMsg);
       return {
         success: false,
