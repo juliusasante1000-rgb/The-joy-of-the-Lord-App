@@ -1,4 +1,5 @@
 import { Devotion, DailyScripture, DevotionEdition } from "../types";
+import { getScheduledVerseForDate } from "./dailyVerseData";
 
 export const DAILY_SCRIPTURES_POOL: DailyScripture[] = [
   {
@@ -224,25 +225,61 @@ Close your eyes tonight knowing that your life is hidden with Christ in God. No 
   ]
 };
 
-// Date-seeded selector for synchronized daily scripture and devotions
+// Synchronized daily scripture with 366 unique scriptures (no repeats in a year)
 export function getDailyScriptureForDate(dateStr: string): DailyScripture {
-  // Hash the date string to get an index
-  let hash = 0;
-  for (let i = 0; i < dateStr.length; i++) {
-    hash = (hash << 5) - hash + dateStr.charCodeAt(i);
-    hash |= 0;
-  }
-  const index = Math.abs(hash) % DAILY_SCRIPTURES_POOL.length;
-  return DAILY_SCRIPTURES_POOL[index];
+  const v = getScheduledVerseForDate(dateStr);
+  return {
+    id: `ds-${v.dateKey || dateStr}`,
+    reference: v.reference,
+    text: v.text,
+    version: v.version || "KJV",
+    theme: v.theme,
+    reflection: v.reflection,
+    guidedPrayer: v.guidedPrayer,
+    meditationQuestions: [
+      `How does the divine truth of ${v.reference} speak into your heart today?`,
+      `What practical step can you take today to walk in the joy and strength of this Word?`
+    ],
+    refreshedAt: "12:00 PM Daily"
+  };
 }
 
 export function getDevotionForDateAndEdition(dateStr: string, edition: DevotionEdition): Devotion {
-  const pool = DEVOTIONS_COLLECTION[edition];
-  let hash = 0;
-  for (let i = 0; i < dateStr.length; i++) {
-    hash = (hash << 5) - hash + dateStr.charCodeAt(i);
-    hash |= 0;
-  }
-  const index = Math.abs(hash) % pool.length;
-  return pool[index];
+  const v = getScheduledVerseForDate(dateStr);
+
+  const editionPrefix = edition === "morning"
+    ? "Morning Revelation"
+    : edition === "afternoon"
+    ? "Noon Fortification"
+    : "Evening Sanctuary";
+
+  const timeEncouragement = edition === "morning"
+    ? "As you begin this morning, awaken your spirit with the joy of the Lord. His mercies are fresh, and His covenant hand goes ahead of you into every encounter."
+    : edition === "afternoon"
+    ? "In the midst of the midday rush, pause and draw fresh living water. The joy of the Lord is your fortress, shielding you from weariness and stress."
+    : "As twilight falls and the day draws to a close, lay every anxious burden at the feet of Jesus. Rest peacefully in His unfailing sovereignty tonight.";
+
+  const actionText = v.mathemaSermonConnection || v.apostleMathConnection || (
+    edition === "morning"
+      ? "Declare this Scripture aloud before your day starts, thanking God for divine guidance."
+      : edition === "afternoon"
+      ? "Take a 3-minute midday pause to recite this Scripture over your work and family."
+      : "Meditate on this Scripture before sleeping, trusting God's angelic watch over your household."
+  );
+
+  return {
+    id: `dev-${v.dateKey || dateStr}-${edition}`,
+    edition,
+    editionLabel: `${edition.charAt(0).toUpperCase() + edition.slice(1)} Edition`,
+    title: `${editionPrefix}: ${v.theme}`,
+    keyScripture: `${v.reference} (${v.version || "KJV"}) - "${v.text}"`,
+    passageText: v.text,
+    reflection: `${v.reflection}\n\n${timeEncouragement}`,
+    practicalApplication: `Walk today with the absolute confidence that God's Word is active in your situation. Speak ${v.reference} over your atmosphere and rejoice in His strength.`,
+    guidedPrayer: v.guidedPrayer,
+    actionStep: actionText,
+    theme: v.theme,
+    category: "The Joy of the Lord: Daily Inspiration",
+    readTimeMinutes: 4
+  };
 }

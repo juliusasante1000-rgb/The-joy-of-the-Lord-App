@@ -290,79 +290,123 @@ export async function streamAiContent<T = any>(
 
         options.onProgress?.(35);
 
-        if (response.ok && response.body) {
-          const reader = response.body.getReader();
-          const decoder = new TextDecoder();
-          let buffer = "";
-          let chunkCount = 0;
-
-          while (true) {
-            const { done, value } = await reader.read();
-            if (done) break;
-
-            buffer += decoder.decode(value, { stream: true });
-            const lines = buffer.split("\n");
-            buffer = lines.pop() || ""; // keep unfinished line in buffer
-
-            for (const line of lines) {
-              const trimmed = line.trim();
-              if (!trimmed || !trimmed.startsWith("data:")) continue;
-
-              const jsonStr = trimmed.replace(/^data:\s*/, "").trim();
-              if (jsonStr === "[DONE]") {
-                break;
+        if (response.ok) {
+          const contentType = response.headers.get("content-type") || "";
+          
+          // Instant JSON detection: if server returned application/json, parse immediately without waiting
+          if (contentType.includes("application/json")) {
+            try {
+              const jsonData = await response.json();
+              if (jsonData.error) {
+                const errMsg = jsonData.error || jsonData.message || "AI generation could not be completed right now.";
+                clearTimeout(timeoutId);
+                options.onError?.(errMsg);
+                return {
+                  success: false,
+                  text: "",
+                  error: errMsg,
+                  isCached: false
+                };
               }
+              accumulatedText = jsonData.text || (typeof jsonData.data === "string" ? jsonData.data : jsonData.data?.text) || "";
+              parsedData = jsonData.data || safeJsonParse(accumulatedText);
+              if (accumulatedText || parsedData) {
+                sseSuccess = true;
+                options.onProgress?.(100);
+                options.onChunk?.(accumulatedText, accumulatedText, parsedData);
+              }
+            } catch (jsonErr) {
+              console.warn("[AI STREAMING] JSON parse error on application/json:", jsonErr);
+            }
+          } else if (response.body) {
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder();
+            let buffer = "";
+            let chunkCount = 0;
+            let fullRawPayload = "";
 
-              try {
-                const event = JSON.parse(jsonStr);
+            while (true) {
+              const { done, value } = await reader.read();
+              if (done) break;
 
-                if (event.error) {
-                  console.error("[AI STREAMING DIAGNOSTIC ERROR]", event.diagnostic || event);
-                  const errMsg = event.message || "AI generation could not be completed right now. Please try again.";
-                  clearTimeout(timeoutId);
-                  options.onError?.(errMsg);
-                  return {
-                    success: false,
-                    text: "",
-                    error: errMsg,
-                    isCached: false
-                  };
-                }
+              const decodedChunk = decoder.decode(value, { stream: true });
+              fullRawPayload += decodedChunk;
+              buffer += decodedChunk;
+              const lines = buffer.split("\n");
+              buffer = lines.pop() || ""; // keep unfinished line in buffer
 
-                if (event.chunk) {
-                  accumulatedText += event.chunk;
-                  chunkCount++;
-                  const progress = Math.min(95, 35 + Math.round(chunkCount * 3));
-                  options.onProgress?.(progress);
+              for (const line of lines) {
+                const trimmed = line.trim();
+                if (!trimmed || !trimmed.startsWith("data:")) continue;
 
-                  // Try parsing partial JSON if applicable
-                  const tempParsed = safeJsonParse(accumulatedText);
-                  options.onChunk?.(event.chunk, accumulatedText, tempParsed);
-                }
-
-                if (event.fullText) {
-                  accumulatedText = event.fullText;
-                }
-
-                if (event.data) {
-                  parsedData = event.data;
-                }
-
-                if (event.done) {
+                const jsonStr = trimmed.replace(/^data:\s*/, "").trim();
+                if (jsonStr === "[DONE]") {
                   break;
                 }
-              } catch (jsonErr) {
-                // Raw text chunk fallback
-                if (jsonStr) {
-                  accumulatedText += jsonStr;
-                  options.onChunk?.(jsonStr, accumulatedText);
+
+                try {
+                  const event = JSON.parse(jsonStr);
+
+                  if (event.error) {
+                    console.error("[AI STREAMING DIAGNOSTIC ERROR]", event.diagnostic || event);
+                    const errMsg = event.message || "AI generation could not be completed right now. Please try again.";
+                    clearTimeout(timeoutId);
+                    options.onError?.(errMsg);
+                    return {
+                      success: false,
+                      text: "",
+                      error: errMsg,
+                      isCached: false
+                    };
+                  }
+
+                  if (event.chunk) {
+                    accumulatedText += event.chunk;
+                    chunkCount++;
+                    const progress = Math.min(95, 35 + Math.round(chunkCount * 3));
+                    options.onProgress?.(progress);
+
+                    // Try parsing partial JSON if applicable
+                    const tempParsed = safeJsonParse(accumulatedText);
+                    options.onChunk?.(event.chunk, accumulatedText, tempParsed);
+                  }
+
+                  if (event.fullText) {
+                    accumulatedText = event.fullText;
+                  }
+
+                  if (event.data) {
+                    parsedData = event.data;
+                  }
+
+                  if (event.done) {
+                    break;
+                  }
+                } catch (jsonErr) {
+                  // Raw text chunk fallback
+                  if (jsonStr) {
+                    accumulatedText += jsonStr;
+                    options.onChunk?.(jsonStr, accumulatedText);
+                  }
                 }
               }
             }
-          }
 
-          if (accumulatedText.trim().length > 0) {
-            sseSuccess = true;
+            // Fallback: If no SSE data lines were found, but the body was a raw JSON string
+            if (!accumulatedText && fullRawPayload.trim().startsWith("{")) {
+              try {
+                const rawObj = JSON.parse(fullRawPayload.trim());
+                accumulatedText = rawObj.text || rawObj.data?.text || (typeof rawObj.data === "string" ? rawObj.data : "") || "";
+                parsedData = rawObj.data || safeJsonParse(accumulatedText);
+                if (accumulatedText || parsedData) {
+                  sseSuccess = true;
+                }
+              } catch {}
+            }
+
+            if (accumulatedText.trim().length > 0 || parsedData) {
+              sseSuccess = true;
+            }
           }
         } else {
           try {

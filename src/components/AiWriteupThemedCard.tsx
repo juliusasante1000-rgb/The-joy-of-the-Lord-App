@@ -14,35 +14,45 @@ import {
   HelpCircle,
   Calculator,
   Palette,
-  CheckCircle2
+  CheckCircle2,
+  X,
+  ExternalLink
 } from "lucide-react";
 
 export type AiWriteupTheme = "parchment" | "midnight" | "royal" | "morning";
 
-interface AiWriteupThemedCardProps {
+export interface AiWriteupThemedCardProps {
   actionType: string;
   scriptureReference: string;
   verseText: string;
-  version: string;
+  version?: string;
   content: string;
-  onSaveToNotes: (noteContent: string) => void;
-  onToggleSpeak: (text: string) => void;
-  onShare: (title: string, text: string) => void;
-  onOpenPictureStudio: () => void;
-  onDownloadPng: () => void;
+  title?: string;
+  structuredData?: any;
+  onSaveToNotes?: (noteContent: string) => void;
+  onToggleSpeak?: (text: string) => void;
+  onShare?: (title: string, text: string) => void;
+  onOpenPictureStudio?: () => void;
+  onDownloadPng?: () => void;
+  onOpenDevotionReader?: () => void;
+  onDismiss?: () => void;
 }
 
 export const AiWriteupThemedCard: React.FC<AiWriteupThemedCardProps> = ({
   actionType,
   scriptureReference,
   verseText,
-  version,
+  version = "KJV",
   content,
+  title,
+  structuredData,
   onSaveToNotes,
   onToggleSpeak,
   onShare,
   onOpenPictureStudio,
-  onDownloadPng
+  onDownloadPng,
+  onOpenDevotionReader,
+  onDismiss
 }) => {
   const [theme, setTheme] = useState<AiWriteupTheme>("parchment");
   const [copied, setCopied] = useState(false);
@@ -55,7 +65,21 @@ export const AiWriteupThemedCard: React.FC<AiWriteupThemedCardProps> = ({
   };
 
   const handleSaveNotes = () => {
-    onSaveToNotes(`[AI ${actionType}]\n\n${content}`);
+    if (onSaveToNotes) {
+      onSaveToNotes(`[AI ${actionType}]\n\n${content}`);
+    } else {
+      try {
+        const key = "sir_bismark_bible_notes";
+        const existing = JSON.parse(localStorage.getItem(key) || "{}");
+        const vKey = `${scriptureReference}_${Date.now()}`;
+        existing[vKey] = {
+          verseKey: scriptureReference,
+          note: `[AI ${actionType}]\n\n${content}`,
+          updatedAt: new Date().toLocaleDateString()
+        };
+        localStorage.setItem(key, JSON.stringify(existing));
+      } catch {}
+    }
     setSavedNotes(true);
     setTimeout(() => setSavedNotes(false), 2000);
   };
@@ -73,7 +97,8 @@ export const AiWriteupThemedCard: React.FC<AiWriteupThemedCardProps> = ({
       conclusionCard: "bg-gradient-to-r from-[#B48C35]/15 via-[#FAF6ED] to-[#B48C35]/20 border-2 border-[#B48C35] text-[#2B1E0C] shadow-md",
       iconColor: "text-[#B48C35]",
       badge: "bg-[#B48C35] text-white",
-      buttonHover: "hover:bg-[#B48C35]/15 text-[#6D4C13]"
+      buttonHover: "hover:bg-[#B48C35]/15 text-[#6D4C13]",
+      quoteBlock: "bg-[#B48C35]/10 border-l-4 border-[#B48C35] text-[#3D2C1B]"
     },
     midnight: {
       wrapper: "bg-gradient-to-b from-[#0A1128] via-[#0F1C3F] to-[#080D21] text-[#F1F5F9] border-2 border-[#B48C35]/60 shadow-2xl ring-1 ring-amber-400/20",
@@ -86,7 +111,8 @@ export const AiWriteupThemedCard: React.FC<AiWriteupThemedCardProps> = ({
       conclusionCard: "bg-gradient-to-r from-amber-950/60 via-slate-900 to-amber-950/60 border-2 border-amber-400 text-amber-100 shadow-lg",
       iconColor: "text-amber-400",
       badge: "bg-amber-500 text-slate-950 font-bold",
-      buttonHover: "hover:bg-white/10 text-amber-200"
+      buttonHover: "hover:bg-white/10 text-amber-200",
+      quoteBlock: "bg-amber-500/10 border-l-4 border-amber-400 text-amber-100"
     },
     royal: {
       wrapper: "bg-gradient-to-b from-[#2E0854] via-[#3B0764] to-[#1E0538] text-[#FAF5FF] border-2 border-[#EAB308]/60 shadow-2xl ring-1 ring-purple-400/20",
@@ -99,7 +125,8 @@ export const AiWriteupThemedCard: React.FC<AiWriteupThemedCardProps> = ({
       conclusionCard: "bg-gradient-to-r from-amber-950/70 via-purple-950 to-amber-950/70 border-2 border-amber-400 text-amber-100 shadow-lg",
       iconColor: "text-amber-300",
       badge: "bg-gradient-to-r from-amber-500 to-yellow-400 text-purple-950 font-bold",
-      buttonHover: "hover:bg-purple-800/40 text-purple-200"
+      buttonHover: "hover:bg-purple-800/40 text-purple-200",
+      quoteBlock: "bg-purple-500/15 border-l-4 border-amber-400 text-amber-100"
     },
     morning: {
       wrapper: "bg-gradient-to-b from-[#FFFFFF] via-[#FDFDF7] to-[#F7F6EE] text-[#1E293B] border-2 border-[#CBD5E1] shadow-2xl",
@@ -112,7 +139,8 @@ export const AiWriteupThemedCard: React.FC<AiWriteupThemedCardProps> = ({
       conclusionCard: "bg-gradient-to-r from-amber-50 via-white to-amber-50 border-2 border-[#B48C35] text-slate-900 shadow-md",
       iconColor: "text-[#B48C35]",
       badge: "bg-[#16235A] text-white",
-      buttonHover: "hover:bg-slate-100 text-slate-700"
+      buttonHover: "hover:bg-slate-100 text-slate-700",
+      quoteBlock: "bg-amber-500/10 border-l-4 border-amber-600 text-slate-900"
     }
   };
 
@@ -130,39 +158,227 @@ export const AiWriteupThemedCard: React.FC<AiWriteupThemedCardProps> = ({
   };
 
   // Structured Content Parser
-  const parseSections = (text: string) => {
+  const parseSections = (text: string, data?: any) => {
+    // Attempt to extract structured object from text if data is not supplied
+    let effectiveData = data;
+    if (!effectiveData && text && typeof text === "string") {
+      const trimmed = text.trim();
+      if (trimmed.startsWith("{") || trimmed.includes("```json") || trimmed.includes("```")) {
+        try {
+          const cleaned = trimmed.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/, "");
+          effectiveData = JSON.parse(cleaned);
+        } catch {
+          // not JSON, continue with text parsing
+        }
+      }
+    }
+
+    // 1. Structured JSON extraction if available
+    if (effectiveData && typeof effectiveData === "object") {
+      const d = effectiveData.devotion || effectiveData.prayer || effectiveData;
+      const customSections: { title: string; body: string; isConclusion: boolean }[] = [];
+
+      // Prayer schema
+      const adoration = d.adoration || d.sections?.adoration;
+      const confession = d.confession || d.confessionAndSurrender || d.sections?.confessionAndSurrender || d.sections?.confession;
+      const thanksgiving = d.thanksgiving || d.sections?.thanksgiving;
+      const scripturePromise = d.scripturePromise || d.sections?.scripturePromise;
+      const petition = d.petition || d.sections?.petition;
+      const warfare = d.warfareDeclaration || d.spiritualWarfare || d.sections?.spiritualWarfare || d.sections?.warfareDeclaration;
+      const closing = d.closing || d.declarationInJesusName || d.sections?.declarationInJesusName || d.sections?.closing;
+
+      if (adoration || petition || warfare || confession) {
+        if (adoration) customSections.push({ title: "Adoration & Supreme Holiness", body: adoration, isConclusion: false });
+        if (confession) customSections.push({ title: "Surrender & Alignment", body: confession, isConclusion: false });
+        if (thanksgiving) customSections.push({ title: "Thanksgiving & Covenant Praise", body: thanksgiving, isConclusion: false });
+        if (scripturePromise) customSections.push({ title: "Standing on God's Infallible Promise", body: scripturePromise, isConclusion: false });
+        if (petition) customSections.push({ title: "Targeted Faith Petition", body: petition, isConclusion: false });
+        if (warfare) customSections.push({ title: "Apostolic Warfare Authority", body: warfare, isConclusion: false });
+        if (closing) customSections.push({ title: "Sealing Benediction in Jesus' Name", body: closing, isConclusion: true });
+        if (customSections.length > 0) return customSections;
+      }
+
+      // Devotion schema (supporting both reflection and theologicalReflection)
+      const reflection = d.theologicalReflection || d.reflection || d.theologicalExposition || d.body || d.content;
+      const guidedPrayer = d.guidedPrayer || d.prayer || d.deliverancePrayer || d.altarCallPrayer;
+      const practical = d.practicalApplication || d.lifeTransformation;
+      const hist = d.historicalContext;
+      const decree = d.apostolicDecree || d.propheticDecree;
+      const action = d.actionStep;
+      const hope = d.hopeEncouragementConclusion || d.conclusion;
+
+      if (reflection || guidedPrayer || practical) {
+        if (hist) customSections.push({ title: "Historical & Spiritual Setting", body: hist, isConclusion: false });
+        if (reflection) customSections.push({ title: "Theological Exegesis & Revelation", body: reflection, isConclusion: false });
+        if (practical) customSections.push({ title: "Practical Christian Application", body: practical, isConclusion: false });
+        if (action) customSections.push({ title: "Action Step of Faith", body: action, isConclusion: false });
+        if (guidedPrayer) customSections.push({ title: "Guided Covenant Prayer", body: guidedPrayer, isConclusion: false });
+        if (decree) customSections.push({ title: "Apostolic Faith Decree", body: decree, isConclusion: false });
+        if (hope) customSections.push({ title: "Triumphant Hope & Joy Conclusion", body: hope, isConclusion: true });
+        if (customSections.length > 0) return customSections;
+      }
+
+      // Joy of the Lord Overcoming schema
+      if (d.rootDeception || d.scripturalTruth || d.joyStrategySteps || d.fortressDeclaration) {
+        if (d.rootDeception) customSections.push({ title: "Exposing the Enemy's Deception", body: d.rootDeception, isConclusion: false });
+        if (d.scripturalTruth) customSections.push({ title: "Covenant Scriptural Truth", body: d.scripturalTruth, isConclusion: false });
+        if (d.joyStrategySteps) {
+          const stepsBody = Array.isArray(d.joyStrategySteps)
+            ? d.joyStrategySteps.map((s: any, idx: number) => `**Step ${idx + 1}: ${s.step || s.title || ""}**\n${s.action || s.description || ""}`).join("\n\n")
+            : String(d.joyStrategySteps);
+          customSections.push({ title: "Joy Fortress Strategic Steps", body: stepsBody, isConclusion: false });
+        }
+        if (d.fortressDeclaration) customSections.push({ title: "Supernatural Fortress Declaration", body: d.fortressDeclaration, isConclusion: false });
+        if (d.deliverancePrayer) customSections.push({ title: "Deliverance Prayer in Jesus' Name", body: d.deliverancePrayer, isConclusion: true });
+        if (customSections.length > 0) return customSections;
+      }
+
+      // MathemaSermon schema
+      if (d.mathematicalConcept || d.formula || d.theologicalExposition) {
+        if (d.mathematicalConcept) customSections.push({ title: "Divine Mathematical Principle", body: `**${d.mathematicalConcept}**\n\n\`${d.formula || ""}\``, isConclusion: false });
+        if (d.conceptualAnalogy) customSections.push({ title: "Conceptual Spiritual Analogy", body: d.conceptualAnalogy, isConclusion: false });
+        if (d.theologicalExposition) customSections.push({ title: "Theological Exposition", body: d.theologicalExposition, isConclusion: false });
+        if (d.lifeTransformation) customSections.push({ title: "Life Transformation", body: d.lifeTransformation, isConclusion: false });
+        if (d.altarCallPrayer) customSections.push({ title: "Altar Call Prayer & Surrender", body: d.altarCallPrayer, isConclusion: true });
+        if (customSections.length > 0) return customSections;
+      }
+
+      // Prayer points schema
+      const pPoints = d.prayerPoints || d.points;
+      if (Array.isArray(pPoints) && pPoints.length > 0) {
+        pPoints.forEach((p: any) => {
+          customSections.push({
+            title: `Point ${p.pointNumber || ""}: ${p.focus || "Strategic Decree"}`,
+            body: `${p.scripturePromise ? `> Promise: ${p.scripturePromise}\n\n` : ""}${p.prayerDeclaration || ""}`,
+            isConclusion: false
+          });
+        });
+        if (d.propheticDecree) customSections.push({ title: "Prophetic Decree & Victory Seal", body: d.propheticDecree, isConclusion: true });
+        if (customSections.length > 0) return customSections;
+      }
+
+      // Exposition schema
+      if (d.originalLanguageInsight || d.doctrinalMeaning) {
+        if (d.historicalContext) customSections.push({ title: "Historical & Contextual Setting", body: d.historicalContext, isConclusion: false });
+        if (d.originalLanguageInsight) customSections.push({ title: "Original Hebrew/Greek Linguistic Insights", body: d.originalLanguageInsight, isConclusion: false });
+        if (d.doctrinalMeaning) customSections.push({ title: "Covenant Doctrine & Truth", body: d.doctrinalMeaning, isConclusion: false });
+        if (d.crossReferences && Array.isArray(d.crossReferences)) {
+          const crText = d.crossReferences.map((c: any) => `• **${c.reference}**: ${c.connection}`).join("\n");
+          customSections.push({ title: "Scriptural Cross-References", body: crText, isConclusion: false });
+        }
+        if (d.lifeTransformation) customSections.push({ title: "Life Transformation", body: d.lifeTransformation, isConclusion: true });
+        if (customSections.length > 0) return customSections;
+      }
+    }
+
     if (!text) return [];
-    
-    // Split by major structural markers
-    const regex = /(ADORATION:|CONFESSION & SURRENDER:|THANKSGIVING:|PETITION:|WARFARE AUTHORITY:|WARFARE & DELIVERANCE:|CLOSING DECLARATION:|PROPHETIC DECREE:|PROPHETIC DECREES:|THEOLOGICAL REFLECTION:|THE JOY EXPOSITION:|HOMILETIC REVELATION:|HISTORICAL CONTEXT:|CULTURAL & ARCHAEOLOGICAL SETTING:|ORIGINAL LANGUAGE INSIGHT:|DOCTRINAL MEANING & THEOLOGY:|PRACTICAL APPLICATION:|ACTION STEP:|GUIDED PRAYER:|EMPOWERMENT PRAYER:|ALTAR CALL PRAYER:|🌟 CONCLUSION — HOPE & ENCOURAGEMENT:|🌟 CONCLUSION — LIFE TRANSFORMATION & HOPE:|🌟 CONCLUSION — UNSHAKEABLE HOPE & ENCOURAGEMENT:|ANALOGY & EXEGESIS:|CROSS REFERENCES:)/gi;
 
-    const parts = text.split(regex);
-    if (parts.length <= 1) {
-      return [{ title: "", body: text, isConclusion: false }];
-    }
-
+    // 2. Parse text with markdown headers (### Header) or uppercase markers
+    const lines = text.split("\n");
     const sections: { title: string; body: string; isConclusion: boolean }[] = [];
-    
-    // Intro part if exists
-    if (parts[0] && parts[0].trim().length > 0) {
-      sections.push({ title: "", body: parts[0].trim(), isConclusion: false });
-    }
+    let currentSecTitle = "";
+    let currentBodyLines: string[] = [];
 
-    for (let i = 1; i < parts.length; i += 2) {
-      const header = parts[i]?.trim() || "";
-      const body = parts[i + 1]?.trim() || "";
-      const isConclusion = header.toLowerCase().includes("conclusion") || header.toLowerCase().includes("hope");
-      sections.push({
-        title: header.replace(/[:🌟]/g, "").trim(),
-        body,
-        isConclusion
-      });
-    }
+    const flushSec = () => {
+      if (currentSecTitle || currentBodyLines.length > 0) {
+        const body = currentBodyLines.join("\n").trim();
+        if (body || currentSecTitle) {
+          const lower = currentSecTitle.toLowerCase();
+          const isConclusion = lower.includes("conclusion") || lower.includes("hope") || lower.includes("decree") || lower.includes("closing") || lower.includes("amen");
+          sections.push({ title: currentSecTitle, body, isConclusion });
+        }
+      }
+      currentSecTitle = "";
+      currentBodyLines = [];
+    };
 
-    return sections;
+    for (const rawLine of lines) {
+      const line = rawLine.trim();
+      const mdMatch = line.match(/^#{1,4}\s+(.+)$/);
+      const colonMatch = line.match(/^([A-Za-z\s&🌟—]{4,50}):$/);
+
+      if (mdMatch) {
+        flushSec();
+        currentSecTitle = mdMatch[1].replace(/[:🌟]/g, "").trim();
+      } else if (colonMatch) {
+        flushSec();
+        currentSecTitle = colonMatch[1].replace(/[:🌟]/g, "").trim();
+      } else {
+        currentBodyLines.push(rawLine);
+      }
+    }
+    flushSec();
+
+    if (sections.length > 0) return sections;
+    return [{ title: "", body: text, isConclusion: false }];
   };
 
-  const parsedSections = parseSections(content);
+  const parsedSections = parseSections(content, structuredData);
+  const displayTitle = title || structuredData?.title || `${actionType}: ${scriptureReference}`;
+
+  // Helper for inline markdown bold and italic
+  const renderInlineMarkdown = (text: string) => {
+    const parts = text.split(/(\*\*.*?\*\*|\*.*?\*)/g);
+    return parts.map((part, pIdx) => {
+      if (part.startsWith("**") && part.endsWith("**")) {
+        return <strong key={pIdx} className="font-bold opacity-100">{part.slice(2, -2)}</strong>;
+      }
+      if (part.startsWith("*") && part.endsWith("*")) {
+        return <em key={pIdx} className="italic opacity-90">{part.slice(1, -1)}</em>;
+      }
+      return part;
+    });
+  };
+
+  // Helper for formatting blockquotes and paragraphs in each section
+  const renderFormattedBody = (rawText: string) => {
+    if (!rawText) return null;
+    const blocks = rawText.split(/\n{2,}/);
+    return (
+      <div className="space-y-3">
+        {blocks.map((block, bIdx) => {
+          const trimmed = block.trim();
+          if (!trimmed) return null;
+
+          // Blockquote / Scripture Callout
+          if (trimmed.startsWith(">")) {
+            const quoteLines = trimmed
+              .split("\n")
+              .map(l => l.replace(/^>\s*/, "").trim())
+              .join(" ");
+            return (
+              <div
+                key={bIdx}
+                className={`p-3.5 my-2 rounded-xl italic text-xs sm:text-sm font-serif leading-relaxed shadow-xs ${currentTheme.quoteBlock}`}
+              >
+                {renderInlineMarkdown(quoteLines)}
+              </div>
+            );
+          }
+
+          // Bullet or numbered list
+          if (trimmed.includes("\n- ") || trimmed.startsWith("- ") || trimmed.startsWith("* ") || trimmed.startsWith("• ")) {
+            const items = trimmed.split(/\n[-*•]\s+/).filter(Boolean);
+            return (
+              <ul key={bIdx} className="space-y-1.5 pl-4 list-disc text-xs sm:text-sm">
+                {items.map((it, itIdx) => (
+                  <li key={itIdx} className="leading-relaxed">
+                    {renderInlineMarkdown(it.replace(/^[-*•]\s+/, ""))}
+                  </li>
+                ))}
+              </ul>
+            );
+          }
+
+          return (
+            <p key={bIdx} className="font-serif text-xs sm:text-sm leading-relaxed whitespace-pre-line opacity-95">
+              {renderInlineMarkdown(trimmed)}
+            </p>
+          );
+        })}
+      </div>
+    );
+  };
 
   return (
     <div className={`rounded-2xl overflow-hidden transition-all duration-300 animate-in fade-in ${currentTheme.wrapper}`}>
@@ -221,13 +437,15 @@ export const AiWriteupThemedCard: React.FC<AiWriteupThemedCardProps> = ({
           </div>
 
           {/* Audio Speak */}
-          <button
-            onClick={() => onToggleSpeak(content)}
-            className={`p-1.5 rounded-lg cursor-pointer transition-colors ${currentTheme.buttonHover}`}
-            title="Listen to Read Aloud"
-          >
-            <Volume2 className="w-4 h-4" />
-          </button>
+          {onToggleSpeak && (
+            <button
+              onClick={() => onToggleSpeak(content)}
+              className={`p-1.5 rounded-lg cursor-pointer transition-colors ${currentTheme.buttonHover}`}
+              title="Listen to Read Aloud"
+            >
+              <Volume2 className="w-4 h-4" />
+            </button>
+          )}
 
           {/* Save to Notes */}
           <button
@@ -250,36 +468,71 @@ export const AiWriteupThemedCard: React.FC<AiWriteupThemedCardProps> = ({
           </button>
 
           {/* Share */}
-          <button
-            onClick={() => onShare(`${actionType} • ${scriptureReference}`, content)}
-            className={`p-1.5 rounded-lg cursor-pointer transition-colors ${currentTheme.buttonHover}`}
-            title="Share"
-          >
-            <Share2 className="w-4 h-4" />
-          </button>
+          {onShare && (
+            <button
+              onClick={() => onShare(`${actionType} • ${scriptureReference}`, content)}
+              className={`p-1.5 rounded-lg cursor-pointer transition-colors ${currentTheme.buttonHover}`}
+              title="Share"
+            >
+              <Share2 className="w-4 h-4" />
+            </button>
+          )}
 
           {/* Picture Studio */}
-          <button
-            onClick={onOpenPictureStudio}
-            className={`p-1.5 rounded-lg cursor-pointer transition-colors ${currentTheme.buttonHover}`}
-            title="Open in Parchment & Gold Picture Studio"
-          >
-            <ImageIcon className="w-4 h-4" />
-          </button>
+          {onOpenPictureStudio && (
+            <button
+              onClick={onOpenPictureStudio}
+              className={`p-1.5 rounded-lg cursor-pointer transition-colors ${currentTheme.buttonHover}`}
+              title="Open in Picture Studio"
+            >
+              <ImageIcon className="w-4 h-4" />
+            </button>
+          )}
 
           {/* Direct PNG */}
-          <button
-            onClick={onDownloadPng}
-            className={`p-1.5 rounded-lg cursor-pointer transition-colors ${currentTheme.buttonHover}`}
-            title="Download PNG Picture"
-          >
-            <Download className="w-4 h-4" />
-          </button>
+          {onDownloadPng && (
+            <button
+              onClick={onDownloadPng}
+              className={`p-1.5 rounded-lg cursor-pointer transition-colors ${currentTheme.buttonHover}`}
+              title="Download PNG Picture"
+            >
+              <Download className="w-4 h-4" />
+            </button>
+          )}
+
+          {/* Open in Devotion Reader */}
+          {onOpenDevotionReader && (
+            <button
+              onClick={onOpenDevotionReader}
+              className={`px-2 py-1 rounded-lg text-xs font-semibold flex items-center gap-1 cursor-pointer transition-colors ${currentTheme.buttonHover}`}
+              title="Open in Full Devotion Reader"
+            >
+              <ExternalLink className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Reader</span>
+            </button>
+          )}
+
+          {/* Dismiss */}
+          {onDismiss && (
+            <button
+              onClick={onDismiss}
+              className={`p-1.5 rounded-lg cursor-pointer transition-colors ${currentTheme.buttonHover}`}
+              title="Close"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          )}
         </div>
       </div>
 
       {/* 2. SCRIPTURE ANCHOR BANNER */}
       <div className="p-4 sm:p-5 space-y-4">
+        {displayTitle && (
+          <h3 className={`text-base sm:text-lg font-serif font-bold ${currentTheme.titleText}`}>
+            {displayTitle}
+          </h3>
+        )}
+
         <div className={`p-4 rounded-xl border space-y-1.5 shadow-xs ${currentTheme.verseCard}`}>
           <div className="flex items-center justify-between">
             <span className="font-mono font-bold text-xs uppercase tracking-wider opacity-90">
@@ -309,9 +562,7 @@ export const AiWriteupThemedCard: React.FC<AiWriteupThemedCardProps> = ({
                       {sec.title || "Conclusion — Unshakeable Hope & Encouragement"}
                     </h5>
                   </div>
-                  <p className="font-serif text-xs sm:text-sm leading-relaxed whitespace-pre-line">
-                    {sec.body}
-                  </p>
+                  {renderFormattedBody(sec.body)}
                 </div>
               );
             }
@@ -319,7 +570,7 @@ export const AiWriteupThemedCard: React.FC<AiWriteupThemedCardProps> = ({
             return (
               <div
                 key={idx}
-                className={`p-4 rounded-xl border space-y-1.5 transition-all ${currentTheme.sectionCard}`}
+                className={`p-4 rounded-xl border space-y-2 transition-all ${currentTheme.sectionCard}`}
               >
                 {sec.title && (
                   <h6 className={`text-xs uppercase tracking-wider flex items-center gap-1.5 ${currentTheme.sectionHeader}`}>
@@ -327,9 +578,7 @@ export const AiWriteupThemedCard: React.FC<AiWriteupThemedCardProps> = ({
                     <span>{sec.title}</span>
                   </h6>
                 )}
-                <p className="font-serif text-xs sm:text-sm leading-relaxed whitespace-pre-line opacity-95">
-                  {sec.body}
-                </p>
+                {renderFormattedBody(sec.body)}
               </div>
             );
           })}

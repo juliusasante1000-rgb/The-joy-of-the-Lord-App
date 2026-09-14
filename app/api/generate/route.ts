@@ -92,20 +92,136 @@ export async function POST(request: Request): Promise<Response> {
       category,
       scriptureReference,
       scriptureText,
+      version,
       topic,
       question
     } = body || {};
 
     let userPrompt = prompt;
+    let responseMimeType: string | undefined = undefined;
+
+    const act = String(actionType || "").trim().toLowerCase();
+    const ref = scriptureReference || "Daily Scripture";
+    const txt = scriptureText || "";
+    const v = version || "KJV";
+    const currentSubject = topic || body?.subject || body?.scriptureTheme || "Divine Strength, Peace & Victory";
+
     if (!userPrompt) {
-      if (actionType && scriptureReference) {
-        userPrompt = `Perform ${actionType} on scripture ${scriptureReference}: "${scriptureText || ""}".`;
-      } else if (topic) {
-        userPrompt = `Compose an inspiring Christian devotion on topic: "${topic}".`;
+      if (act.includes("prayer") && !act.includes("point")) {
+        userPrompt = `You are a reverent, apostolic Christian pastoral leader and prayer general. Compose an anointed, deeply transformative Guided Prayer rooted directly in the living conjunction of the scripture and subject:
+Current Subject: "${currentSubject}"
+Theme Scripture: ${ref} (${v})
+Scripture Text: "${txt}"
+
+MANDATORY INSTRUCTIONS:
+1. Address the subject "${currentSubject}" directly in living conjunction with theme scripture ${ref}.
+2. Ground every petition in the exact truth of "${txt}".
+3. Conclude with an authoritative apostolic warfare and victory decree.
+${AI_OUTPUT_IMPROVEMENT_RULES}
+
+Format your response as a valid JSON object matching this schema:
+{
+  "title": "Sacred Prayer of Faith: ${currentSubject}",
+  "scriptureAnchor": "${ref} (${v}) - '${txt}'",
+  "adoration": "Exalt God's supreme holiness, sovereignty, and divine faithfulness demonstrated in ${ref} regarding ${currentSubject}.",
+  "confession": "Reverent surrender of human insufficiency, fear, and self-reliance into His covenant hands.",
+  "thanksgiving": "Heartfelt thanksgiving for God's steadfast promises, the finished work of Christ, and His grace.",
+  "petition": "Direct, heartfelt, and targeted petitions applying ${ref} directly to ${currentSubject}.",
+  "warfareDeclaration": "Authoritative apostolic decrees breaking doubt, fear, delay, and enemy limitations in Jesus' Name.",
+  "closing": "Triumphant seal and affirmation in Jesus' victorious Name. Amen."
+}`;
+        responseMimeType = "application/json";
+      } else if (act.includes("point")) {
+        userPrompt = `Generate 5 strategic, high-impact prayer points addressing the subject "${currentSubject}" in direct conjunction with theme scripture ${ref} ("${txt}").
+Requirements:
+1. Tailor each prayer point specifically to the intersection of "${currentSubject}" and ${ref}.
+2. Ground each decree in the exact revelation of ${ref}.
+${AI_OUTPUT_IMPROVEMENT_RULES}
+
+Format your response as a valid JSON object matching this schema:
+{
+  "title": "5 Strategic Prayer Points: ${ref}",
+  "scriptureAnchor": "${ref} (${v}) - '${txt}'",
+  "prayerPoints": [
+    { "pointNumber": 1, "focus": "Divine Alignment", "scripturePromise": "${ref}", "prayerDeclaration": "Decree of alignment..." },
+    { "pointNumber": 2, "focus": "Supernatural Strength", "scripturePromise": "${ref}", "prayerDeclaration": "Decree of divine strength..." },
+    { "pointNumber": 3, "focus": "Covenant Breakthrough", "scripturePromise": "${ref}", "prayerDeclaration": "Decree of open doors..." },
+    { "pointNumber": 4, "focus": "Spiritual Protection", "scripturePromise": "${ref}", "prayerDeclaration": "Decree of angelic shielding..." },
+    { "pointNumber": 5, "focus": "Apostolic Victory", "scripturePromise": "${ref}", "prayerDeclaration": "Decree of lasting fruitfulness..." }
+  ],
+  "propheticDecree": "Authoritative prophetic decree sealing these prayer points in Jesus' Name."
+}`;
+        responseMimeType = "application/json";
+      } else if (act.includes("explain") || act.includes("exposition")) {
+        userPrompt = `You are a preeminent Christian Biblical scholar and expositor. Provide a profound, deep verse-by-verse and theological explanation of ${ref} ("${txt}") in conjunction with "${currentSubject}".
+${AI_OUTPUT_IMPROVEMENT_RULES}
+
+Format your response as a valid JSON object matching this schema:
+{
+  "title": "Deep Expository Analysis: ${ref}",
+  "scriptureAnchor": "${ref} (${v}) - '${txt}'",
+  "historicalContext": "Authoritative historical and cultural setting of this passage: author, era, and original audience.",
+  "originalLanguageInsight": "Deep original Hebrew or Greek root terms, grammatical nuances, and lexical definitions.",
+  "doctrinalMeaning": "The central theological doctrine and eternal covenant truth revealed in this verse.",
+  "crossReferences": [
+    { "reference": "Book Chapter:Verse", "connection": "How this cross-reference illuminates the verse" },
+    { "reference": "Book Chapter:Verse", "connection": "How this cross-reference illuminates the verse" }
+  ],
+  "lifeTransformation": "Practical life transformation showing how the believer walks in this truth daily."
+}`;
+        responseMimeType = "application/json";
+      } else if (act.includes("math")) {
+        userPrompt = `You are Apostle Bismark Twum, Christian educator and creator of MathemaSermons. Formulate a rich MathemaSermon homiletic lesson connecting: ${ref} ("${txt}") with an authentic mathematical or physical concept and LaTeX formula, addressing the subject "${currentSubject}".
+${AI_OUTPUT_IMPROVEMENT_RULES}
+
+Format as JSON with keys:
+{
+  "title": "MathemaSermon: Divine Harmony in ${ref}",
+  "mathematicalConcept": "Mathematical or scientific principle name",
+  "formula": "LaTeX formula e.g. \\lim_{t \\to \\infty} P(t) = \\infty",
+  "mathematicalAnalogy": "How this mathematical law models spiritual dynamics",
+  "homileticApplication": "Apostolic preaching points connecting the math directly to ${ref} and Christian life",
+  "hopeAndEncouragementConclusion": "Inspiring conclusion releasing hope, confidence in God's promises, and strength",
+  "altarCallPrayer": "Fervent prayer sealing the revelation"
+}`;
+        responseMimeType = "application/json";
+      } else if (topic || act.includes("devotion") || act.includes("create devotion") || (actionType && scriptureReference)) {
+        userPrompt = `Generate a rich, deeply inspiring Christian daily devotion addressing the subject "${currentSubject}" in direct, living conjunction with theme scripture:
+Theme Scripture: ${ref} (${v})
+Passage Text: "${txt}"
+Current Subject: "${currentSubject}"
+
+${AI_OUTPUT_IMPROVEMENT_RULES}
+
+Format your response as a valid JSON object matching this schema:
+{
+  "title": "Devotion: ${currentSubject}",
+  "keyScripture": "${ref} (${v}) - '${txt}'",
+  "passageText": "${txt}",
+  "historicalContext": "Brief historical and biblical context of this passage.",
+  "reflection": "A 3-paragraph deep theological and spiritual reflection addressing '${currentSubject}' through the lens of ${ref}.",
+  "practicalApplication": "Concrete, actionable step for daily Christian living addressing '${currentSubject}'.",
+  "guidedPrayer": "A reverent, faith-filled prayer concluding in Jesus' name.",
+  "actionStep": "A memorable action or reflection question for the day.",
+  "apostolicDecree": "A triumphant faith decree declaring the truth of this verse over the believer.",
+  "hopeEncouragementConclusion": "An inspiring, triumphant conclusion anchoring the believer in hope and the Joy of the Lord."
+}`;
+        responseMimeType = "application/json";
       } else if (question) {
-        userPrompt = `Answer this question biblically: "${question}".`;
+        userPrompt = `Topic Category: ${category || "Christian Theology & Orthodoxy"}
+User Question: ${question}
+
+Deliver an in-depth, rigorous, and deeply inspiring theological exposition with biblical scholarship:
+1. Scriptural Exegesis & Cross-References
+2. Original Language Nuance (Hebrew/Greek)
+3. Practical Life Transformation
+4. Apostolic Faith Decree
+${AI_OUTPUT_IMPROVEMENT_RULES}
+
+Format as JSON with keys: answer, scriptures, keyTakeaway.`;
+        responseMimeType = "application/json";
       } else {
-        userPrompt = "Provide an inspiring Christian reflection and prayer on the Joy of the Lord.";
+        userPrompt = "Provide an inspiring Christian reflection, theological insight, and prayer on the Joy of the Lord as our strength.";
       }
     }
 
@@ -137,15 +253,13 @@ export async function POST(request: Request): Promise<Response> {
     const genAI = new GoogleGenerativeAI(apiKey);
     // Dynamic model aliases with automatic fallback handling to prevent 503/404 breaking changes
     const candidateModels = [
-      "gemini-3.6-flash",
-      "gemini-3.5-flash-lite",
-      "gemini-flash-lite-latest",
-      "gemini-3.1-flash-lite",
       "gemini-3.8-flash",
       "gemini-flash-latest",
+      "gemini-3.1-flash-lite",
+      "gemini-3.6-flash",
     ];
     let result: any = null;
-    let modelUsed = "gemini-3.6-flash";
+    let modelUsed = candidateModels[0];
     let lastError: any = null;
 
     for (const modName of candidateModels) {
@@ -157,7 +271,8 @@ export async function POST(request: Request): Promise<Response> {
           generationConfig: {
             temperature: 0.8,
             topP: 0.95,
-            maxOutputTokens: 4096,
+            maxOutputTokens: 3500,
+            ...(responseMimeType ? { responseMimeType } : {})
           },
         });
         result = await model.generateContent(userPrompt);
@@ -166,8 +281,7 @@ export async function POST(request: Request): Promise<Response> {
       } catch (modErr: any) {
         lastError = modErr;
         const msg = String(modErr?.message || "");
-        const is404 = msg.includes("404") || msg.includes("not found") || msg.includes("no longer available") || msg.includes("unsupported");
-        console.warn(`[GEMINI VERCEL] Model alias ${modName} failed (404/deprecated: ${is404}): ${msg}. Falling back to next candidate...`);
+        console.warn(`[GEMINI VERCEL] Model alias ${modName} failed: ${msg}. Falling back to next candidate...`);
       }
     }
 

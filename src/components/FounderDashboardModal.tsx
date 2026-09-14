@@ -134,6 +134,16 @@ export const FounderDashboardModal: React.FC<FounderDashboardModalProps> = ({
       return [updatedVerse, ...filtered];
     });
 
+    // Save to local storage for instant reactivity
+    try {
+      const existingStr = localStorage.getItem("jol_verse_overrides") || "{}";
+      const existing = JSON.parse(existingStr);
+      existing[overrideDate] = updatedVerse;
+      localStorage.setItem("jol_verse_overrides", JSON.stringify(existing));
+    } catch {
+      // ignore
+    }
+
     // Post update to global server
     try {
       await safeFetchJson("/api/creator-content", {

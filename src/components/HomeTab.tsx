@@ -59,6 +59,7 @@ import { SpiritualPlaceSanctuaryModal } from "./SpiritualPlaceSanctuaryModal";
 import { GodsGeneralsQuotesCard } from "./GodsGeneralsQuotesCard";
 import { MathView, RichMathContent } from "./MathView";
 import { QuotePictureItem } from "./QuotePictureModal";
+import { AiWriteupThemedCard } from "./AiWriteupThemedCard";
 
 interface HomeTabProps {
   scheduleState: TimeScheduleState;
@@ -273,31 +274,31 @@ export const HomeTab: React.FC<HomeTabProps> = ({
           if (action === "Create Prayer" || action === "prayer") {
             setAiActionResult(
               inner.adoration || inner.petition
-                ? `${inner.title || "Prayer of Faith"}\n\n${inner.adoration || ""}\n\n${inner.petition || ""}\n\n${inner.warfareDeclaration || ""}\n\n${inner.closing || "In Jesus' Name, Amen."}`
+                ? `### ADORATION & HOLINESS\n${inner.adoration || ""}\n\n### SURRENDER & ALIGNMENT\n${inner.confession || ""}\n\n### THANKSGIVING & PRAISE\n${inner.thanksgiving || ""}\n\n### TARGETED FAITH PETITIONS\n${inner.petition || ""}\n\n### APOSTOLIC WARFARE AUTHORITY\n${inner.warfareDeclaration || ""}\n\n### SEALING BENEDICTION\n${inner.closing || "In Jesus' victorious Name, Amen."}`
                 : (fullText || "")
             );
           } else if (action === "Prayer Points" || action === "Create Prayer Points" || action === "prayer_points") {
             setAiActionResult(
               inner.prayerPoints && inner.prayerPoints.length > 0
-                ? `${inner.title || "Strategic Prayer Points"}\n\n${(inner.prayerPoints || []).map((p: any) => `${p.pointNumber || ""}. ${p.focus || ""}: ${p.prayerDeclaration || ""}`).join("\n\n")}\n\n${inner.propheticDecree || ""}`
+                ? (inner.prayerPoints || []).map((p: any) => `### Point ${p.pointNumber || ""}: ${p.focus || "Strategic Decree"}\n${p.scripturePromise ? `> Promise: ${p.scripturePromise}\n\n` : ""}${p.prayerDeclaration || ""}`).join("\n\n") + (inner.propheticDecree ? `\n\n### PROPHETIC DECREE & SEAL\n${inner.propheticDecree}` : "")
                 : (fullText || "")
             );
           } else if (action === "Explain Verse" || action === "Explain This Verse" || action === "explain") {
             setAiActionResult(
               inner.historicalContext || inner.originalLanguageInsight || inner.doctrinalMeaning
-                ? `${inner.title || "Exposition"}\n\n${inner.historicalContext || ""}\n\n${inner.originalLanguageInsight || ""}\n\n${inner.doctrinalMeaning || ""}\n\n${inner.lifeTransformation || ""}`
+                ? `### HISTORICAL & CONTEXTUAL SETTING\n${inner.historicalContext || ""}\n\n### ORIGINAL LANGUAGE INSIGHTS\n${inner.originalLanguageInsight || ""}\n\n### COVENANT DOCTRINE & THEOLOGY\n${inner.doctrinalMeaning || ""}\n\n### LIFE TRANSFORMATION\n${inner.lifeTransformation || ""}`
                 : (fullText || "")
             );
           } else if (action === "MathemaSermon" || action === "mathemasermon") {
             setAiActionResult(
               inner.mathematicalConcept || inner.homileticApplication
-                ? `${inner.title || "MathemaSermon"}\nConcept: ${inner.mathematicalConcept || ""}\nFormula: ${inner.formula || ""}\n\n${inner.mathematicalAnalogy || ""}\n\n${inner.homileticApplication || ""}\n\n${inner.altarCallPrayer || ""}`
+                ? `### MATHEMATICAL CONCEPT & ANALOGY\n**Principle:** ${inner.mathematicalConcept || ""}\n\n**Formula:** \`${inner.formula || ""}\`\n\n${inner.mathematicalAnalogy || ""}\n\n### HOMILETIC APPLICATION\n${inner.homileticApplication || ""}\n\n### CONCLUSION & ALTAR CALL PRAYER\n${inner.altarCallPrayer || ""}`
                 : (fullText || "")
             );
           } else {
             setAiActionResult(
               inner.reflection || inner.guidedPrayer
-                ? `${inner.title || "Devotion"}\n\n${inner.reflection || ""}\n\nPractical Application: ${inner.practicalApplication || ""}\n\nPrayer: ${inner.guidedPrayer || ""}`
+                ? `### HISTORICAL CONTEXT\n${inner.historicalContext || ""}\n\n### THEOLOGICAL REFLECTION\n${inner.reflection || ""}\n\n### PRACTICAL APPLICATION\n${inner.practicalApplication || ""}\n\n### GUIDED COVENANT PRAYER\n${inner.guidedPrayer || ""}\n\n### APOSTOLIC DECREE\n${inner.apostolicDecree || ""}\n\n### CONCLUSION — UNSHAKEABLE HOPE & JOY\n${inner.hopeEncouragementConclusion || ""}`
                 : (fullText || "")
             );
           }
@@ -628,335 +629,88 @@ export const HomeTab: React.FC<HomeTabProps> = ({
           </div>
         )}
 
-        {/* AI Action Result Panel (if generated) */}
+        {/* AI Action Result Panel with Sacred Themes (Parchment, Midnight, Royal, Alabaster) */}
         {!isGeneratingAi && (aiActionData || aiActionResult) && (
-          <div className="p-5 sm:p-6 rounded-2xl bg-slate-900/95 border border-[#B48C35]/60 space-y-4 animate-in fade-in shadow-2xl relative">
-            {/* Header */}
-            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3">
-              <div className="flex items-center gap-2">
-                <span className="p-1.5 rounded-lg bg-purple-500/20 border border-purple-400/30 text-amber-300">
-                  <Sparkles className="w-4 h-4" />
-                </span>
-                <div>
-                  <span className="text-[11px] font-mono font-bold text-amber-300 uppercase tracking-wider block">
-                    ✨ Daily Scripture AI: {aiActionType}
-                  </span>
-                  <span className="text-xs text-slate-300 font-serif">
-                    {activeDisplayVerse.reference} ({activeDisplayVerse.version})
-                  </span>
-                </div>
-              </div>
+          <div className="pt-2 animate-in fade-in">
+            <AiWriteupThemedCard
+              actionType={aiActionType || "Devotion"}
+              scriptureReference={activeDisplayVerse.reference}
+              verseText={activeDisplayVerse.text}
+              version={activeDisplayVerse.version || "KJV"}
+              content={aiActionResult || ""}
+              title={aiActionData?.title}
+              structuredData={aiActionData}
+              onSaveToNotes={(note) => {
+                onToggleBookmark({
+                  id: `verse-ai-${Date.now()}`,
+                  type: "devotion",
+                  title: aiActionData?.title || `${aiActionType} on ${activeDisplayVerse.reference}`,
+                  reference: activeDisplayVerse.reference,
+                  text: note,
+                  date: new Date().toLocaleDateString()
+                });
+              }}
+              onToggleSpeak={(txt) => onToggleSpeak(txt)}
+              onShare={(title, txt) => {
+                if (navigator.share) {
+                  navigator.share({ title, text: txt }).catch(() => {});
+                } else {
+                  navigator.clipboard.writeText(`${title}\n\n${txt}`);
+                  alert("Copied to clipboard for sharing!");
+                }
+              }}
+              onOpenPictureStudio={() => onNavigateTab && onNavigateTab("pictures")}
+              onDownloadPng={() => {
+                const verseParts = activeDisplayVerse.reference.match(/^(.+?)\s+(\d+)[:.](\d+)/) || [];
+                const book = verseParts[1] || activeDisplayVerse.reference;
+                const chapter = parseInt(verseParts[2], 10) || 1;
+                const verse = parseInt(verseParts[3], 10) || 1;
 
-              {/* Action Buttons Toolbar */}
-              <div className="flex items-center gap-1.5">
-                {/* TTS */}
-                <button
-                  onClick={() => {
-                    const textToRead = aiActionData
-                      ? `${aiActionData.title || ""}. ${aiActionData.reflection || aiActionData.adoration || aiActionData.historicalContext || aiActionResult || ""}`
-                      : aiActionResult || "";
-                    onToggleSpeak(textToRead);
-                  }}
-                  className="p-1.5 px-2.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer"
-                  title="Listen aloud"
-                >
-                  {isSpeaking ? <VolumeX className="w-3.5 h-3.5 text-amber-300" /> : <Volume2 className="w-3.5 h-3.5 text-amber-300" />}
-                  <span className="hidden sm:inline">{isSpeaking ? "Pause" : "Listen"}</span>
-                </button>
-
-                {/* Copy */}
-                <button
-                  onClick={handleCopyAiResult}
-                  className="p-1.5 px-2.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer"
-                  title="Copy formatted text"
-                >
-                  {copiedAiResult ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-                  <span className="hidden sm:inline">{copiedAiResult ? "Copied" : "Copy"}</span>
-                </button>
-
-                {/* Bookmark */}
-                <button
-                  onClick={() => {
-                    onToggleBookmark({
-                      id: `verse-ai-${Date.now()}`,
-                      type: "devotion",
-                      title: aiActionData?.title || `${aiActionType} on ${activeDisplayVerse.reference}`,
-                      reference: activeDisplayVerse.reference,
-                      text: aiActionResult || "",
-                      date: new Date().toLocaleDateString()
-                    });
-                  }}
-                  className="p-1.5 px-2.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer"
-                  title="Save to bookmarks"
-                >
-                  <Bookmark className="w-3.5 h-3.5 text-amber-300" />
-                  <span className="hidden sm:inline">Save</span>
-                </button>
-
-                {/* Download Sacred Picture PNG */}
-                <button
-                  onClick={() => {
-                    const verseParts = activeDisplayVerse.reference.match(/^(.+?)\s+(\d+)[:.](\d+)/) || [];
-                    const book = verseParts[1] || activeDisplayVerse.reference;
-                    const chapter = parseInt(verseParts[2], 10) || 1;
-                    const verse = parseInt(verseParts[3], 10) || 1;
-
-                    const exportItem: BibleVerseExportItem = {
-                      book,
-                      chapter,
-                      verse,
-                      text: activeDisplayVerse.text,
-                      version: activeDisplayVerse.version,
-                      historicalContext: aiActionData?.historicalContext || activeDisplayVerse.context,
-                      reflection: aiActionResult || activeDisplayVerse.reflection,
-                      guidedPrayer: aiActionData?.closing || aiActionData?.guidedPrayer || "The joy of the LORD is my strength. Amen.",
-                      faithDecree: aiActionData?.warfareDeclaration || aiActionData?.propheticDecree || "The Lord is my strength and shield.",
-                    };
-                    downloadBibleVersePicture(exportItem, profile);
-                  }}
-                  className="p-1.5 px-2.5 rounded-lg bg-white/10 hover:bg-[#B48C35]/40 text-[#DCC398] text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer"
-                  title="Download Sacred Verse Picture PNG"
-                >
-                  <ImageIcon className="w-3.5 h-3.5 text-[#B48C35]" />
-                  <span className="hidden sm:inline">Picture PNG</span>
-                </button>
-
-                {/* Close */}
-                <button
-                  onClick={() => {
-                    setAiActionResult(null);
-                    setAiActionData(null);
-                    setAiActionType(null);
-                  }}
-                  className="p-1.5 px-2.5 rounded-lg bg-white/10 hover:bg-rose-500/30 text-slate-300 hover:text-white text-xs transition-colors cursor-pointer"
-                >
-                  Dismiss
-                </button>
-              </div>
-            </div>
-
-            {/* Structured Content Rendering */}
-            {aiActionData && (aiActionType === "Create Prayer" || aiActionType === "prayer") ? (
-              <div className="space-y-3.5 text-xs sm:text-sm text-slate-100">
-                <h4 className="text-base font-serif font-bold text-amber-200">{aiActionData.title}</h4>
-                {aiActionData.adoration && (
-                  <div className="p-3 bg-white/5 rounded-xl border border-white/10 space-y-1">
-                    <span className="text-[11px] font-bold font-mono text-purple-300 uppercase">🙏 Adoration & Exaltation</span>
-                    <p className="text-slate-200 leading-relaxed italic">{aiActionData.adoration}</p>
-                  </div>
-                )}
-                {aiActionData.confession && (
-                  <div className="p-3 bg-white/5 rounded-xl border border-white/10 space-y-1">
-                    <span className="text-[11px] font-bold font-mono text-rose-300 uppercase">🕊️ Surrender & Humility</span>
-                    <p className="text-slate-200 leading-relaxed italic">{aiActionData.confession}</p>
-                  </div>
-                )}
-                {aiActionData.thanksgiving && (
-                  <div className="p-3 bg-white/5 rounded-xl border border-white/10 space-y-1">
-                    <span className="text-[11px] font-bold font-mono text-amber-300 uppercase">✨ Thanksgiving</span>
-                    <p className="text-slate-200 leading-relaxed italic">{aiActionData.thanksgiving}</p>
-                  </div>
-                )}
-                {aiActionData.petition && (
-                  <div className="p-3 bg-white/5 rounded-xl border border-white/10 space-y-1">
-                    <span className="text-[11px] font-bold font-mono text-emerald-300 uppercase">📜 Word Petitions</span>
-                    <p className="text-slate-200 leading-relaxed font-serif">{aiActionData.petition}</p>
-                  </div>
-                )}
-                {aiActionData.warfareDeclaration && (
-                  <div className="p-3 bg-purple-900/30 rounded-xl border border-purple-500/40 space-y-1">
-                    <span className="text-[11px] font-bold font-mono text-pink-300 uppercase">⚔️ Spiritual Warfare & Victory Decree</span>
-                    <p className="text-purple-100 font-semibold leading-relaxed">{aiActionData.warfareDeclaration}</p>
-                  </div>
-                )}
-                {aiActionData.closing && (
-                  <p className="text-right text-amber-300 font-bold font-serif italic pt-1">{aiActionData.closing}</p>
-                )}
-              </div>
-            ) : aiActionData && (aiActionType === "Prayer Points" || aiActionType === "Create Prayer Points" || aiActionType === "prayer_points") ? (
-              <div className="space-y-3 text-xs sm:text-sm text-slate-100">
-                <h4 className="text-base font-serif font-bold text-amber-200">{aiActionData.title}</h4>
-                {aiActionData.introduction && (
-                  <p className="text-slate-300 italic text-xs leading-relaxed">{aiActionData.introduction}</p>
-                )}
-                <div className="space-y-2.5">
-                  {(aiActionData.prayerPoints || []).map((point: any, idx: number) => (
-                    <div key={idx} className="p-3 bg-white/5 rounded-xl border border-white/10 space-y-1.5">
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs font-bold text-amber-300 flex items-center gap-1.5">
-                          <span className="w-5 h-5 rounded-full bg-[#B48C35] text-white flex items-center justify-center text-[10px]">
-                            {point.pointNumber || idx + 1}
-                          </span>
-                          {point.focus}
-                        </span>
-                        {point.scripturePromise && (
-                          <span className="text-[10px] font-mono text-purple-300 bg-purple-900/40 px-2 py-0.5 rounded-md border border-purple-500/30">
-                            {point.scripturePromise}
-                          </span>
-                        )}
-                      </div>
-                      <p className="text-slate-200 leading-relaxed font-serif pl-6">{point.prayerDeclaration}</p>
-                    </div>
-                  ))}
-                </div>
-                {aiActionData.propheticDecree && (
-                  <div className="p-3 bg-amber-500/15 rounded-xl border border-amber-400/40 text-amber-200 font-serif leading-relaxed">
-                    <strong>Prophetic Decree: </strong> {aiActionData.propheticDecree}
-                  </div>
-                )}
-              </div>
-            ) : aiActionData && (aiActionType === "Explain Verse" || aiActionType === "Explain This Verse" || aiActionType === "explain") ? (
-              <div className="space-y-3.5 text-xs sm:text-sm text-slate-100">
-                <h4 className="text-base font-serif font-bold text-amber-200">{aiActionData.title}</h4>
-                {aiActionData.historicalContext && (
-                  <div className="p-3.5 bg-white/5 rounded-xl border border-white/10 space-y-1">
-                    <span className="text-[11px] font-bold font-mono text-amber-300 uppercase">🏛️ Historical & Setting Context</span>
-                    <p className="text-slate-200 leading-relaxed">{aiActionData.historicalContext}</p>
-                  </div>
-                )}
-                {aiActionData.originalLanguageInsight && (
-                  <div className="p-3.5 bg-purple-900/20 rounded-xl border border-purple-400/30 space-y-1">
-                    <span className="text-[11px] font-bold font-mono text-purple-300 uppercase">📖 Original Greek / Hebrew Linguistic Insights</span>
-                    <div className="text-purple-100 leading-relaxed">
-                      <RichMathContent content={aiActionData.originalLanguageInsight} className="text-slate-100" />
-                    </div>
-                  </div>
-                )}
-                {aiActionData.doctrinalMeaning && (
-                  <div className="p-3.5 bg-white/5 rounded-xl border border-white/10 space-y-1">
-                    <span className="text-[11px] font-bold font-mono text-emerald-300 uppercase">💡 Doctrinal Truth & Revelation</span>
-                    <p className="text-slate-200 leading-relaxed font-serif">{aiActionData.doctrinalMeaning}</p>
-                  </div>
-                )}
-                {aiActionData.crossReferences && aiActionData.crossReferences.length > 0 && (
-                  <div className="p-3 bg-white/5 rounded-xl border border-white/10 space-y-2">
-                    <span className="text-[11px] font-bold font-mono text-pink-300 uppercase">🔗 Biblical Cross References</span>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      {aiActionData.crossReferences.map((ref: any, rIdx: number) => (
-                        <div key={rIdx} className="p-2 bg-white/5 rounded-lg border border-white/5 text-xs">
-                          <span className="font-bold text-amber-300 block">{ref.reference}</span>
-                          <span className="text-slate-300 text-[11px]">{ref.connection}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-                {aiActionData.lifeTransformation && (
-                  <div className="p-3.5 bg-emerald-900/20 rounded-xl border border-emerald-400/30 space-y-1">
-                    <span className="text-[11px] font-bold font-mono text-emerald-300 uppercase">🌱 Practical Life Transformation</span>
-                    <p className="text-emerald-100 leading-relaxed">{aiActionData.lifeTransformation}</p>
-                  </div>
-                )}
-              </div>
-            ) : aiActionData && (aiActionType === "MathemaSermon" || aiActionType === "mathemasermon") ? (
-              <div className="space-y-3.5 text-xs sm:text-sm text-slate-100">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h4 className="text-base font-serif font-bold text-purple-300">{aiActionData.title}</h4>
-                    <p className="text-xs text-amber-200">{aiActionData.subtitle || "The Divine Mathematical Harmony of Scripture"}</p>
-                  </div>
-                  {aiActionData.mathematicalConcept && (
-                    <div className="px-2.5 py-1 rounded-full bg-purple-900/60 border border-purple-400 text-[11px] font-mono text-purple-200">
-                      <RichMathContent content={aiActionData.mathematicalConcept} />
-                    </div>
-                  )}
-                </div>
-
-                {aiActionData.formula && (
-                  <div className="p-3 bg-slate-950/80 rounded-xl border border-purple-400/40 text-center">
-                    <span className="text-[10px] font-mono text-slate-400 block mb-1 uppercase tracking-wider">Governing Mathematical Equation</span>
-                    <MathView math={aiActionData.formula} block={true} className="text-amber-300 text-base" />
-                  </div>
-                )}
-
-                {aiActionData.mathematicalAnalogy && (
-                  <div className="p-3 bg-white/5 rounded-xl border border-white/10 space-y-1">
-                    <span className="text-[11px] font-bold font-mono text-amber-300 uppercase">📐 Mathematical Analogy</span>
-                    <RichMathContent content={aiActionData.mathematicalAnalogy} className="text-slate-200" />
-                  </div>
-                )}
-
-                {aiActionData.homileticApplication && (
-                  <div className="p-3 bg-white/5 rounded-xl border border-white/10 space-y-1">
-                    <span className="text-[11px] font-bold font-mono text-emerald-300 uppercase">🔥 Homiletic Preaching Revelation</span>
-                    <RichMathContent content={aiActionData.homileticApplication} className="text-slate-200" />
-                  </div>
-                )}
-
-                {aiActionData.altarCallPrayer && (
-                  <div className="p-3 bg-purple-900/30 rounded-xl border border-purple-400/40 space-y-1">
-                    <span className="text-[11px] font-bold font-mono text-pink-300 uppercase">🙏 Apostolic Altar Call Prayer</span>
-                    <p className="text-purple-100 italic leading-relaxed">{aiActionData.altarCallPrayer}</p>
-                  </div>
-                )}
-
-                {onNavigateTab && (
-                  <button
-                    onClick={() => onNavigateTab("math")}
-                    className="w-full py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer transition-colors shadow-md"
-                  >
-                    <Calculator className="w-4 h-4" />
-                    <span>Explore All 100 ApostleMath Lessons & MathemaSermons</span>
-                  </button>
-                )}
-              </div>
-            ) : aiActionData && (aiActionData.reflection || aiActionData.guidedPrayer) ? (
-              <div className="space-y-3 text-xs sm:text-sm text-slate-100">
-                <h4 className="text-base font-serif font-bold text-amber-200">{aiActionData.title}</h4>
-                <div className="p-3 bg-white/5 rounded-xl border border-white/10 space-y-1">
-                  <span className="text-[11px] font-bold font-mono text-amber-300 uppercase">📖 Reflection</span>
-                  <p className="text-slate-200 leading-relaxed font-serif whitespace-pre-line">{aiActionData.reflection}</p>
-                </div>
-                {aiActionData.practicalApplication && (
-                  <div className="p-3 bg-white/5 rounded-xl border border-white/10 space-y-1">
-                    <span className="text-[11px] font-bold font-mono text-emerald-300 uppercase">🌱 Practical Application</span>
-                    <p className="text-slate-200 leading-relaxed">{aiActionData.practicalApplication}</p>
-                  </div>
-                )}
-                {aiActionData.guidedPrayer && (
-                  <div className="p-3 bg-white/5 rounded-xl border border-white/10 space-y-1">
-                    <span className="text-[11px] font-bold font-mono text-purple-300 uppercase">🙏 Guided Prayer</span>
-                    <p className="text-slate-200 leading-relaxed italic">{aiActionData.guidedPrayer}</p>
-                  </div>
-                )}
-                {aiActionData.actionStep && (
-                  <div className="p-3 bg-amber-500/15 rounded-xl border border-amber-400/30 text-amber-200">
-                    <strong>Action Step: </strong> {aiActionData.actionStep}
-                  </div>
-                )}
-                <button
-                  onClick={() => {
-                    onOpenDevotion({
-                      id: `ai-${Date.now()}`,
-                      edition: activeEdition,
-                      editionLabel: `Special AI ${activeBadge.label}`,
-                      title: aiActionData.title || `Devotion on ${activeDisplayVerse.reference}`,
-                      keyScripture: aiActionData.keyScripture || `${activeDisplayVerse.reference} - "${activeDisplayVerse.text}"`,
-                      passageText: aiActionData.passageText || activeDisplayVerse.text,
-                      reflection: aiActionData.reflection || "",
-                      practicalApplication: aiActionData.practicalApplication || "",
-                      guidedPrayer: aiActionData.guidedPrayer || "",
-                      actionStep: aiActionData.actionStep || "",
-                      theme: activeDisplayVerse.theme || "Faith & Victory",
-                      time: activeBadge.timeRange,
-                      tags: ["AI Devotion", activeDisplayVerse.book, activeBadge.label],
-                      reflectionQuestions: [
-                        "How does this scripture speak directly to your current spiritual journey?",
-                        "What concrete action will you take today to walk in this divine promise?"
-                      ]
-                    });
-                  }}
-                  className="w-full py-2.5 rounded-xl bg-[#B48C35] hover:bg-[#996515] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer transition-colors shadow-md mt-2"
-                >
-                  <BookOpen className="w-4 h-4" />
-                  <span>Open in Full Devotion Reader</span>
-                </button>
-              </div>
-            ) : (
-              <p className="text-xs sm:text-sm text-slate-100 whitespace-pre-line leading-relaxed">
-                {aiActionResult}
-              </p>
-            )}
+                const exportItem: BibleVerseExportItem = {
+                  book,
+                  chapter,
+                  verse,
+                  text: activeDisplayVerse.text,
+                  version: activeDisplayVerse.version,
+                  historicalContext: aiActionData?.historicalContext || activeDisplayVerse.context,
+                  reflection: aiActionResult || activeDisplayVerse.reflection,
+                  guidedPrayer: aiActionData?.closing || aiActionData?.guidedPrayer || "The joy of the LORD is my strength. Amen.",
+                  faithDecree: aiActionData?.warfareDeclaration || aiActionData?.propheticDecree || "The Lord is my strength and shield.",
+                };
+                downloadBibleVersePicture(exportItem, profile);
+              }}
+              onOpenDevotionReader={
+                aiActionData && (aiActionData.reflection || aiActionData.guidedPrayer)
+                  ? () => {
+                      onOpenDevotion({
+                        id: `ai-${Date.now()}`,
+                        edition: activeEdition,
+                        editionLabel: `Special AI ${activeBadge.label}`,
+                        title: aiActionData.title || `Devotion on ${activeDisplayVerse.reference}`,
+                        keyScripture: aiActionData.keyScripture || `${activeDisplayVerse.reference} - "${activeDisplayVerse.text}"`,
+                        passageText: aiActionData.passageText || activeDisplayVerse.text,
+                        reflection: aiActionData.reflection || "",
+                        practicalApplication: aiActionData.practicalApplication || "",
+                        guidedPrayer: aiActionData.guidedPrayer || "",
+                        faithDecree: aiActionData.apostolicDecree || aiActionData.faithDecree || "I am strong in the Lord.",
+                        actionStep: aiActionData.actionStep || "",
+                        theme: activeDisplayVerse.theme || "Faith & Victory",
+                        time: activeBadge.timeRange,
+                        tags: ["AI Devotion", activeDisplayVerse.book, activeBadge.label],
+                        reflectionQuestions: [
+                          "How does this scripture speak directly to your current spiritual journey?",
+                          "What concrete action will you take today to walk in this divine promise?"
+                        ]
+                      });
+                    }
+                  : undefined
+              }
+              onDismiss={() => {
+                setAiActionResult(null);
+                setAiActionData(null);
+                setAiActionType(null);
+              }}
+            />
           </div>
         )}
 

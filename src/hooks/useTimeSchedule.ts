@@ -53,20 +53,11 @@ export function useTimeSchedule() {
     return `${yyyy}-${mm}-${dd}`;
   }, [effectiveDate, simulatedDate]);
 
-  // Daily Scripture 24-hour cycle anchored at 12:00 PM (Noon)
+  // Daily Scripture cycle synchronized cleanly with calendar date
   const dailyScriptureCycleDate = useMemo(() => {
     if (simulatedDate) return simulatedDate;
-
-    const targetDate = new Date(effectiveDate);
-    if (hours < 12) {
-      // Prior to noon, scripture is from yesterday's noon
-      targetDate.setDate(targetDate.getDate() - 1);
-    }
-    const yyyy = targetDate.getFullYear();
-    const mm = String(targetDate.getMonth() + 1).padStart(2, "0");
-    const dd = String(targetDate.getDate()).padStart(2, "0");
-    return `${yyyy}-${mm}-${dd}`;
-  }, [effectiveDate, hours, simulatedDate]);
+    return todayDateString;
+  }, [todayDateString, simulatedDate]);
 
   // Verse of the Day: Strictly anchored to calendar date, changes at 12:00 AM midnight
   const activeScheduledVerse: ScheduledVerse = useMemo(() => {
