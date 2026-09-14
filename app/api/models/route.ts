@@ -5,11 +5,12 @@ export async function GET(request: Request): Promise<Response> {
   const apiKey = rawKey ? rawKey.replace(/^["']|["']$/g, "").trim() : "";
 
   const recommendedCascade = [
-    "gemini-flash-latest",
-    "gemini-2.5-flash",
-    "gemini-3.5-flash",
-    "gemini-2.0-flash",
+    "gemini-3.6-flash",
+    "gemini-3.5-flash-lite",
     "gemini-flash-lite-latest",
+    "gemini-3.1-flash-lite",
+    "gemini-3.8-flash",
+    "gemini-flash-latest",
   ];
 
   if (!apiKey) {
@@ -51,7 +52,7 @@ export async function GET(request: Request): Promise<Response> {
     return Response.json({
       success: true,
       totalModels: allModels.length,
-      primaryModel: "gemini-flash-latest",
+      primaryModel: "gemini-3.6-flash",
       recommendedCascade,
       models: contentGenerationModels,
     });

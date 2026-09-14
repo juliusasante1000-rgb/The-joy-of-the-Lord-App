@@ -91,13 +91,14 @@ export default async function handler(req: any, res: any): Promise<void> {
     res.end(JSON.stringify({
       status: "ok",
       endpoint: "/api/generate",
-      primaryModel: "gemini-flash-latest",
+      primaryModel: "gemini-3.6-flash",
       modelsCascade: [
-        "gemini-flash-latest",
-        "gemini-2.5-flash",
-        "gemini-3.5-flash",
-        "gemini-2.0-flash",
+        "gemini-3.6-flash",
+        "gemini-3.5-flash-lite",
         "gemini-flash-lite-latest",
+        "gemini-3.1-flash-lite",
+        "gemini-3.8-flash",
+        "gemini-flash-latest",
       ],
       geminiKeyConfigured: hasKey
     }));
@@ -189,16 +190,17 @@ export default async function handler(req: any, res: any): Promise<void> {
 
   try {
     const genAI = new GoogleGenerativeAI(apiKey);
-    // Dynamic model aliases with automatic fallback handling to prevent 404 breaking changes
+    // Dynamic model aliases with automatic fallback handling to prevent 503/404 breaking changes
     const candidateModels = [
-      "gemini-3.5-flash",
-      "gemini-flash-latest",
-      "gemini-2.5-flash",
-      "gemini-2.0-flash",
+      "gemini-3.6-flash",
+      "gemini-3.5-flash-lite",
       "gemini-flash-lite-latest",
+      "gemini-3.1-flash-lite",
+      "gemini-3.8-flash",
+      "gemini-flash-latest",
     ];
     let result: any = null;
-    let modelUsed = "gemini-3.5-flash";
+    let modelUsed = "gemini-3.6-flash";
     let lastError: any = null;
 
     for (const modName of candidateModels) {

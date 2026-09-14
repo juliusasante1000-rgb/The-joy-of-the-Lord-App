@@ -51,11 +51,12 @@ async function listGeminiModels() {
 
     console.log("\n--- Recommended Dynamic Aliases to Prevent 404 Errors ---");
     const candidates = [
-      "gemini-3.5-flash",
-      "gemini-flash-latest",
-      "gemini-2.5-flash",
-      "gemini-2.0-flash",
-      "gemini-flash-lite-latest"
+      "gemini-3.6-flash",
+      "gemini-3.5-flash-lite",
+      "gemini-flash-lite-latest",
+      "gemini-3.1-flash-lite",
+      "gemini-3.8-flash",
+      "gemini-flash-latest"
     ];
     candidates.forEach((cand) => {
       const match = data.models.find((m) => m.name === `models/${cand}` || m.name === cand);
