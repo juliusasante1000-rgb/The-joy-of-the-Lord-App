@@ -44,6 +44,38 @@ import {
 
 export function App() {
   const [activeTab, setActiveTab] = useState<TabType>("home");
+  const [visitedTabs, setVisitedTabs] = useState<Set<string>>(() => new Set(["home"]));
+
+  const handleNavigateTab = useCallback((tab: TabType) => {
+    React.startTransition(() => {
+      setActiveTab(tab);
+      setVisitedTabs((prev) => {
+        if (prev.has(tab)) return prev;
+        const next = new Set(prev);
+        next.add(tab);
+        if (tab === "spiritual_places") next.add("places");
+        if (tab === "apostle_math") next.add("math");
+        if (tab === "prayer") next.add("prayers");
+        if (tab === "creator") next.add("about");
+        if (tab === "library") next.add("books");
+        return next;
+      });
+    });
+    // Non-blocking, instant viewport repositioning
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: "instant" as any });
+    });
+  }, []);
+
+  // Sync visitedTabs on activeTab updates
+  useEffect(() => {
+    setVisitedTabs((prev) => {
+      if (prev.has(activeTab)) return prev;
+      const next = new Set(prev);
+      next.add(activeTab);
+      return next;
+    });
+  }, [activeTab]);
 
   // PWA Cross-Platform Installation & Network Engine
   const {
@@ -340,10 +372,7 @@ export function App() {
       {/* 1. Desktop & Mobile Vertical Sidebar Navigation */}
       <AppSidebar
         currentTab={activeTab}
-        onSelectTab={(tab) => {
-          setActiveTab(tab);
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }}
+        onSelectTab={handleNavigateTab}
         isCollapsed={isSidebarCollapsed}
         onToggleCollapse={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
         isMobileOpen={isMobileMenuOpen}
@@ -372,194 +401,220 @@ export function App() {
           onStopSpeaking={stopSpeaking}
         />
 
-        {/* Main Content Area */}
+        {/* Main Content Area - Instant Zero-Latency Tab Display */}
         <main className="flex-1 max-w-5xl w-full mx-auto px-3 sm:px-6 pt-4 sm:pt-6">
-          {activeTab === "home" && (
-            <HomeTab
-              scheduleState={scheduleState}
-              dailyScripture={activeDailyScripture}
-              scheduledVerse={activeScheduledVerse}
-              devotion={activeDevotion}
-              onOpenDevotion={(dev) => setSelectedDevotionModal(dev)}
-              onSelectEditionPreview={setPreviewEdition}
-              isBookmarked={isBookmarked}
-              onToggleBookmark={toggleBookmark}
-              onShareItem={handleOpenShare}
-              isSpeaking={isSpeaking}
-              onToggleSpeak={speakText}
-              completedDevotions={completedDevotions}
-              onCompleteDevotion={completeDevotion}
-              onNavigateTab={(tab) => setActiveTab(tab as TabType)}
-              onNavigateToBibleChapter={handleNavigateToBibleChapter}
-              profile={creatorProfile}
-              onOpenAbout={() => setActiveTab("creator")}
-              onOpenQuotePictureModal={(item) => setSelectedQuoteForPicture(item)}
-            />
+          {visitedTabs.has("home") && (
+            <div className={activeTab === "home" ? "block" : "hidden"}>
+              <HomeTab
+                scheduleState={scheduleState}
+                dailyScripture={activeDailyScripture}
+                scheduledVerse={activeScheduledVerse}
+                devotion={activeDevotion}
+                onOpenDevotion={(dev) => setSelectedDevotionModal(dev)}
+                onSelectEditionPreview={setPreviewEdition}
+                isBookmarked={isBookmarked}
+                onToggleBookmark={toggleBookmark}
+                onShareItem={handleOpenShare}
+                isSpeaking={isSpeaking}
+                onToggleSpeak={speakText}
+                completedDevotions={completedDevotions}
+                onCompleteDevotion={completeDevotion}
+                onNavigateTab={handleNavigateTab}
+                onNavigateToBibleChapter={handleNavigateToBibleChapter}
+                profile={creatorProfile}
+                onOpenAbout={() => handleNavigateTab("creator")}
+                onOpenQuotePictureModal={(item) => setSelectedQuoteForPicture(item)}
+              />
+            </div>
           )}
 
-          {activeTab === "bible" && (
-            <BibleTab
-              isBookmarked={isBookmarked}
-              onToggleBookmark={toggleBookmark}
-              onShareItem={handleOpenShare}
-              isSpeaking={isSpeaking}
-              onToggleSpeak={speakText}
-              targetBookName={targetBibleBook}
-              targetChapter={targetBibleChapter}
-              targetVerse={targetBibleVerse}
-              targetVersion={targetBibleVersion}
-              onExploreMathemaSermon={() => setActiveTab("mathema_sermons")}
-              onExploreApostleMath={() => setActiveTab("apostle_math")}
-              creatorProfile={creatorProfile}
-            />
+          {visitedTabs.has("bible") && (
+            <div className={activeTab === "bible" ? "block" : "hidden"}>
+              <BibleTab
+                isBookmarked={isBookmarked}
+                onToggleBookmark={toggleBookmark}
+                onShareItem={handleOpenShare}
+                isSpeaking={isSpeaking}
+                onToggleSpeak={speakText}
+                targetBookName={targetBibleBook}
+                targetChapter={targetBibleChapter}
+                targetVerse={targetBibleVerse}
+                targetVersion={targetBibleVersion}
+                onExploreMathemaSermon={() => handleNavigateTab("mathema_sermons")}
+                onExploreApostleMath={() => handleNavigateTab("apostle_math")}
+                creatorProfile={creatorProfile}
+              />
+            </div>
           )}
 
-          {(activeTab === "spiritual_places" || activeTab === "places") && (
-            <SpiritualPlacesTab
-              onNavigateToBibleChapter={handleNavigateToBibleChapter}
-              onOpenDevotion={(dev) => setSelectedDevotionModal(dev)}
-              onNavigateTab={(tab) => setActiveTab(tab as TabType)}
-              isBookmarked={isBookmarked}
-              onToggleBookmark={toggleBookmark}
-              onShareItem={handleOpenShare}
-              isSpeaking={isSpeaking}
-              onToggleSpeak={speakText}
-            />
+          {(visitedTabs.has("spiritual_places") || visitedTabs.has("places")) && (
+            <div className={(activeTab === "spiritual_places" || activeTab === "places") ? "block" : "hidden"}>
+              <SpiritualPlacesTab
+                onNavigateToBibleChapter={handleNavigateToBibleChapter}
+                onOpenDevotion={(dev) => setSelectedDevotionModal(dev)}
+                onNavigateTab={handleNavigateTab}
+                isBookmarked={isBookmarked}
+                onToggleBookmark={toggleBookmark}
+                onShareItem={handleOpenShare}
+                isSpeaking={isSpeaking}
+                onToggleSpeak={speakText}
+              />
+            </div>
           )}
 
-          {(activeTab === "apostle_math" || activeTab === "math") && (
-            <ApostleMathTab
-              isBookmarked={isBookmarked}
-              onToggleBookmark={toggleBookmark}
-              onShareItem={handleOpenShare}
-              isSpeaking={isSpeaking}
-              onToggleSpeak={speakText}
-              onNavigateToBible={(book, ch, v) => handleNavigateToBibleChapter(book, ch, v)}
-            />
+          {(visitedTabs.has("apostle_math") || visitedTabs.has("math")) && (
+            <div className={(activeTab === "apostle_math" || activeTab === "math") ? "block" : "hidden"}>
+              <ApostleMathTab
+                isBookmarked={isBookmarked}
+                onToggleBookmark={toggleBookmark}
+                onShareItem={handleOpenShare}
+                isSpeaking={isSpeaking}
+                onToggleSpeak={speakText}
+                onNavigateToBible={(book, ch, v) => handleNavigateToBibleChapter(book, ch, v)}
+              />
+            </div>
           )}
 
-          {activeTab === "mathema_sermons" && (
-            <MathemaSermonsTab
-              isBookmarked={isBookmarked}
-              onToggleBookmark={toggleBookmark}
-              onShareItem={handleOpenShare}
-              isSpeaking={isSpeaking}
-              onToggleSpeak={speakText}
-              onNavigateToBible={(book, ch, v) => handleNavigateToBibleChapter(book, ch, v)}
-              onExploreApostleMath={() => setActiveTab("apostle_math")}
-            />
+          {visitedTabs.has("mathema_sermons") && (
+            <div className={activeTab === "mathema_sermons" ? "block" : "hidden"}>
+              <MathemaSermonsTab
+                isBookmarked={isBookmarked}
+                onToggleBookmark={toggleBookmark}
+                onShareItem={handleOpenShare}
+                isSpeaking={isSpeaking}
+                onToggleSpeak={speakText}
+                onNavigateToBible={(book, ch, v) => handleNavigateToBibleChapter(book, ch, v)}
+                onExploreApostleMath={() => handleNavigateTab("apostle_math")}
+              />
+            </div>
           )}
 
-          {activeTab === "rhema" && (
-            <RhemaTab
-              isBookmarked={isBookmarked}
-              onToggleBookmark={toggleBookmark}
-              onShareItem={handleOpenShare}
-              isSpeaking={isSpeaking}
-              onToggleSpeak={speakText}
-              onNavigateToBible={(book, ch, v) => handleNavigateToBibleChapter(book, ch, v)}
-              onOpenDevotion={(dev) => setSelectedDevotionModal(dev)}
-              onNavigateTab={(tab) => setActiveTab(tab)}
-            />
+          {visitedTabs.has("rhema") && (
+            <div className={activeTab === "rhema" ? "block" : "hidden"}>
+              <RhemaTab
+                isBookmarked={isBookmarked}
+                onToggleBookmark={toggleBookmark}
+                onShareItem={handleOpenShare}
+                isSpeaking={isSpeaking}
+                onToggleSpeak={speakText}
+                onNavigateToBible={(book, ch, v) => handleNavigateToBibleChapter(book, ch, v)}
+                onOpenDevotion={(dev) => setSelectedDevotionModal(dev)}
+                onNavigateTab={handleNavigateTab}
+              />
+            </div>
           )}
 
-          {activeTab === "joy_overcoming" && (
-            <JoyOvercomingTab
-              isBookmarked={isBookmarked}
-              onToggleBookmark={toggleBookmark}
-              onShareItem={handleOpenShare}
-              isSpeaking={isSpeaking}
-              onToggleSpeak={speakText}
-              onNavigateToBible={(book, ch, v) => handleNavigateToBibleChapter(book, ch, v)}
-              onOpenDevotion={(dev) => setSelectedDevotionModal(dev)}
-              onNavigateTab={(tab) => setActiveTab(tab)}
-            />
+          {visitedTabs.has("joy_overcoming") && (
+            <div className={activeTab === "joy_overcoming" ? "block" : "hidden"}>
+              <JoyOvercomingTab
+                isBookmarked={isBookmarked}
+                onToggleBookmark={toggleBookmark}
+                onShareItem={handleOpenShare}
+                isSpeaking={isSpeaking}
+                onToggleSpeak={speakText}
+                onNavigateToBible={(book, ch, v) => handleNavigateToBibleChapter(book, ch, v)}
+                onOpenDevotion={(dev) => setSelectedDevotionModal(dev)}
+                onNavigateTab={handleNavigateTab}
+              />
+            </div>
           )}
 
-          {activeTab === "hymnals" && (
-            <HymnalsTab
-              isBookmarked={isBookmarked}
-              onToggleBookmark={toggleBookmark}
-              onShareItem={handleOpenShare}
-              isSpeaking={isSpeaking}
-              onToggleSpeak={speakText}
-              onNavigateToBible={(book, ch, v) => handleNavigateToBibleChapter(book, ch, v)}
-            />
+          {visitedTabs.has("hymnals") && (
+            <div className={activeTab === "hymnals" ? "block" : "hidden"}>
+              <HymnalsTab
+                isBookmarked={isBookmarked}
+                onToggleBookmark={toggleBookmark}
+                onShareItem={handleOpenShare}
+                isSpeaking={isSpeaking}
+                onToggleSpeak={speakText}
+                onNavigateToBible={(book, ch, v) => handleNavigateToBibleChapter(book, ch, v)}
+              />
+            </div>
           )}
 
-          {(activeTab === "library" || activeTab === "books") && (
-            <BooksTab
-              isBookmarked={isBookmarked}
-              onToggleBookmark={toggleBookmark}
-              onShareItem={handleOpenShare}
-              isSpeaking={isSpeaking}
-              onToggleSpeak={speakText}
-              isAdmin={!!adminSession}
-            />
+          {(visitedTabs.has("library") || visitedTabs.has("books")) && (
+            <div className={(activeTab === "library" || activeTab === "books") ? "block" : "hidden"}>
+              <BooksTab
+                isBookmarked={isBookmarked}
+                onToggleBookmark={toggleBookmark}
+                onShareItem={handleOpenShare}
+                isSpeaking={isSpeaking}
+                onToggleSpeak={speakText}
+                isAdmin={!!adminSession}
+              />
+            </div>
           )}
 
-          {(activeTab === "prayer" || activeTab === "prayers") && (
-            <PrayersTab
-              activeEdition={activeEdition}
-              journal={journal}
-              onAddJournalEntry={addJournalEntry}
-              onMarkAnswered={markPrayerAnswered}
-              onDeleteJournalEntry={deleteJournalEntry}
-              isBookmarked={isBookmarked}
-              onToggleBookmark={toggleBookmark}
-              onShareItem={handleOpenShare}
-              isSpeaking={isSpeaking}
-              onToggleSpeak={speakText}
-            />
+          {(visitedTabs.has("prayer") || visitedTabs.has("prayers")) && (
+            <div className={(activeTab === "prayer" || activeTab === "prayers") ? "block" : "hidden"}>
+              <PrayersTab
+                activeEdition={activeEdition}
+                journal={journal}
+                onAddJournalEntry={addJournalEntry}
+                onMarkAnswered={markPrayerAnswered}
+                onDeleteJournalEntry={deleteJournalEntry}
+                isBookmarked={isBookmarked}
+                onToggleBookmark={toggleBookmark}
+                onShareItem={handleOpenShare}
+                isSpeaking={isSpeaking}
+                onToggleSpeak={speakText}
+              />
+            </div>
           )}
 
-          {(activeTab === "creator" || activeTab === "about") && (
-            <AboutCreatorTab
-              profile={creatorProfile}
-              founderSession={adminSession ? {
-                isAuthenticated: true,
-                founderEmail: adminSession.email,
-                founderName: adminSession.creatorName,
-                token: adminSession.token,
-                loginTimestamp: Date.now()
-              } : null}
-              onOpenEditModal={handleOpenEditRequest}
-              onOpenFounderLogin={handleOpenEditRequest}
-              onFounderLogout={handleAdminLogout}
-              onNavigateTab={(tab) => setActiveTab(tab as TabType)}
-              onNavigateToBible={handleNavigateToBibleChapter}
-              onShareItem={handleOpenShare}
-              onToggleSpeak={speakText}
-              isSpeaking={isSpeaking}
-            />
+          {(visitedTabs.has("creator") || visitedTabs.has("about")) && (
+            <div className={(activeTab === "creator" || activeTab === "about") ? "block" : "hidden"}>
+              <AboutCreatorTab
+                profile={creatorProfile}
+                founderSession={adminSession ? {
+                  isAuthenticated: true,
+                  founderEmail: adminSession.email,
+                  founderName: adminSession.creatorName,
+                  token: adminSession.token,
+                  loginTimestamp: Date.now()
+                } : null}
+                onOpenEditModal={handleOpenEditRequest}
+                onOpenFounderLogin={handleOpenEditRequest}
+                onFounderLogout={handleAdminLogout}
+                onNavigateTab={handleNavigateTab}
+                onNavigateToBible={handleNavigateToBibleChapter}
+                onShareItem={handleOpenShare}
+                onToggleSpeak={speakText}
+                isSpeaking={isSpeaking}
+              />
+            </div>
           )}
 
-          {activeTab === "quotes" && (
-            <QuotesTab
-              isBookmarked={isBookmarked}
-              onToggleBookmark={toggleBookmark}
-              onShareItem={handleOpenShare}
-              onToggleSpeak={speakText}
-              onOpenQuotePictureModal={(item) => setSelectedQuoteForPicture(item)}
-            />
+          {visitedTabs.has("quotes") && (
+            <div className={activeTab === "quotes" ? "block" : "hidden"}>
+              <QuotesTab
+                isBookmarked={isBookmarked}
+                onToggleBookmark={toggleBookmark}
+                onShareItem={handleOpenShare}
+                onToggleSpeak={speakText}
+                onOpenQuotePictureModal={(item) => setSelectedQuoteForPicture(item)}
+              />
+            </div>
           )}
 
-          {activeTab === "doctrines" && (
-            <DoctrinesTab
-              isBookmarked={isBookmarked}
-              onToggleBookmark={toggleBookmark}
-              onShareItem={handleOpenShare}
-              onToggleSpeak={speakText}
-              creatorProfile={creatorProfile}
-            />
+          {visitedTabs.has("doctrines") && (
+            <div className={activeTab === "doctrines" ? "block" : "hidden"}>
+              <DoctrinesTab
+                isBookmarked={isBookmarked}
+                onToggleBookmark={toggleBookmark}
+                onShareItem={handleOpenShare}
+                onToggleSpeak={speakText}
+                creatorProfile={creatorProfile}
+              />
+            </div>
           )}
         </main>
 
         {/* Global Professional Footer */}
         <AppFooter
           profile={creatorProfile}
-          onNavigateTab={(tab) => setActiveTab(tab as TabType)}
-          onOpenAbout={() => setActiveTab("creator")}
+          onNavigateTab={handleNavigateTab}
+          onOpenAbout={() => handleNavigateTab("creator")}
           isInstalled={isInstalled}
           onOpenInstallModal={() => setIsInstallModalOpen(true)}
         />
@@ -567,7 +622,7 @@ export function App() {
         {/* Fixed Mobile Bottom Navigation */}
         <BottomNav
           activeTab={activeTab}
-          onTabChange={(tab) => setActiveTab(tab)}
+          onTabChange={handleNavigateTab}
           onOpenMore={() => setIsMobileMenuOpen(true)}
         />
 

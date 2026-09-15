@@ -2769,6 +2769,8 @@ Format as JSON with keys: place, historicalAccount, biblicalReference, keyFigure
     } else if (
       scriptureReference ||
       act.includes("verse") ||
+      act.includes("prayer") ||
+      req.body?.need ||
       act.includes("scripture") ||
       act.includes("commentary") ||
       act.includes("interlinear") ||
@@ -2785,7 +2787,7 @@ Format as JSON with keys: place, historicalAccount, biblicalReference, keyFigure
       act === "5 high-impact prayer points" ||
       act === "warfare prayer"
     ) {
-      const ref = scriptureReference || "Nehemiah 8:10";
+      const ref = scriptureReference || (act.includes("prayer") || req.body?.need ? "Philippians 4:6-7" : "Nehemiah 8:10");
       const requestedVersion = String(version || "KJV").toUpperCase();
       let actualText = scriptureText || "";
       let actualVersion = requestedVersion;
@@ -2797,35 +2799,53 @@ Format as JSON with keys: place, historicalAccount, biblicalReference, keyFigure
           actualVersion = liveVerse.version;
         }
       }
-      if (!actualText) actualText = "The joy of the LORD is your strength.";
+      if (!actualText) actualText = act.includes("prayer") || req.body?.need ? "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God." : "The joy of the LORD is your strength.";
 
       const text = actualText;
-      const currentSubject = req.body.subject || req.body.topic || req.body.scriptureTheme || "Divine Strength and Unshakeable Faith";
+      const currentSubject = req.body.need || req.body.subject || req.body.topic || req.body.scriptureTheme || "Divine Strength and Unshakeable Faith";
 
       if (act.includes("prayer") && !act.includes("point")) {
-        finalPrompt = `You are a reverent, apostolic Christian pastoral leader. Compose an anointed, deeply transformative Guided Prayer rooted directly in the conjunction of the current subject and theme scripture:
+        finalPrompt = `You are a reverent, apostolic Christian pastoral leader and prayer general. Compose an anointed, deeply transformative Structured Guided Prayer rooted directly in the living conjunction of the current subject and theme scripture:
 Current Subject: "${currentSubject}"
+Prayer Category: "${req.body.category || "Breakthrough & Faith"}"
 Theme Scripture: ${ref} (${actualVersion})
 Scripture Text: "${text}"
 
 MANDATORY INSTRUCTIONS:
 1. Address the subject "${currentSubject}" directly in living conjunction with theme scripture ${ref}.
-2. Write uniquely from others. Never output generic boilerplate or clichéd prayers.
-3. Show how the exact truth of "${text}" empowers, delivers, and anchors the believer concerning "${currentSubject}".
-4. Conclude with a bold, faith-igniting apostolic decree.
+2. Ground every petition in the exact truth, vocabulary, and revelation of "${text}".
+3. Fill all 7 prayer sections with rich apostolic authority, biblical depth, and living faith.
+4. Conclude with a bold, faith-igniting apostolic warfare and victory decree sealing the breakthrough in Jesus' Name.
 
 ${AI_OUTPUT_IMPROVEMENT_RULES}
 
 Format your response as a valid JSON object matching this schema:
 {
-  "title": "Sacred Prayer of Faith: ${currentSubject}",
+  "title": "Apostolic Prayer for ${currentSubject}",
+  "subtitle": "Faith-filled targeted intercession for ${currentSubject}",
+  "category": "${req.body.category || "Breakthrough & Faith"}",
+  "theme": "${currentSubject}",
+  "suggestedScriptures": ["${ref}", "Philippians 4:6-7", "Psalm 91:1-2"],
   "scriptureAnchor": "${ref} (${actualVersion}) - '${text}'",
-  "adoration": "Exalt God's supreme holiness, sovereignty, and faithfulness demonstrated in this passage regarding ${currentSubject}.",
-  "confession": "Surrender human insufficiency, worry, and fleshly strivings regarding ${currentSubject} into His loving covenant hands.",
-  "thanksgiving": "Thank God for the finished work of Christ and His unshakeable promises in this verse.",
-  "petition": "Direct, heartfelt, and targeted petitions applying ${ref} directly to the subject of ${currentSubject}.",
-  "warfareDeclaration": "Authoritative apostolic decrees breaking doubt, fear, and enemy limitations in Jesus' Name.",
-  "closing": "Triumphant seal and affirmation in Jesus' victorious Name."
+  "scripturePromise": "${ref} (${actualVersion}) - '${text}'",
+  "adoration": "Exalt God's supreme holiness, sovereignty, and divine faithfulness demonstrated in ${ref} regarding ${currentSubject}.",
+  "confession": "Reverent surrender of human insufficiency, fear, and self-reliance into His covenant hands.",
+  "confessionAndSurrender": "Reverent surrender of human insufficiency, fear, and self-reliance into His covenant hands.",
+  "thanksgiving": "Heartfelt thanksgiving for God's steadfast promises, the finished work of Christ on the cross, and His grace.",
+  "petition": "Direct, heartfelt, and targeted petitions applying ${ref} directly to ${currentSubject}.",
+  "warfareDeclaration": "Authoritative apostolic decrees breaking doubt, fear, delay, and enemy limitations in Jesus' Name.",
+  "spiritualWarfare": "Authoritative apostolic decrees breaking doubt, fear, delay, and enemy limitations in Jesus' Name.",
+  "closing": "Triumphant seal and affirmation in Jesus' victorious Name. Amen.",
+  "declarationInJesusName": "Triumphant seal and affirmation in Jesus' victorious Name. Amen.",
+  "sections": {
+    "adoration": "Exalt God's supreme holiness, sovereignty, and divine faithfulness demonstrated in ${ref} regarding ${currentSubject}.",
+    "confessionAndSurrender": "Reverent surrender of human insufficiency, fear, and self-reliance into His covenant hands.",
+    "thanksgiving": "Heartfelt thanksgiving for God's steadfast promises, the finished work of Christ on the cross, and His grace.",
+    "scripturePromise": "${ref} (${actualVersion}) - '${text}'",
+    "petition": "Direct, heartfelt, and targeted petitions applying ${ref} directly to ${currentSubject}.",
+    "spiritualWarfare": "Authoritative apostolic decrees breaking doubt, fear, delay, and enemy limitations in Jesus' Name.",
+    "declarationInJesusName": "Triumphant seal and affirmation in Jesus' victorious Name. Amen."
+  }
 }`;
         responseMimeType = "application/json";
       } else if (act.includes("point")) {
@@ -3114,10 +3134,49 @@ Format as JSON with keys: id, challengeTitle, category, rootDeception, scriptura
         timestamp: Date.now()
       });
 
-      const parsedJson = safeJsonParse(result.text);
+      const fallbackRef = req.body?.scriptureReference || req.body?.reference || "Philippians 4:6-7";
+      const fallbackSubject = req.body?.need || req.body?.subject || req.body?.topic || req.body?.scriptureTheme || "Divine Guidance & Strength";
+
+      let parsedJson = safeJsonParse(result.text);
+      if (parsedJson && typeof parsedJson === "object") {
+        if (!parsedJson.sections && (parsedJson.petition || parsedJson.adoration || parsedJson.spiritualWarfare)) {
+          parsedJson.sections = {
+            adoration: parsedJson.adoration || "Almighty God, Heavenly Father, You are holy and faithful in all Your ways.",
+            confessionAndSurrender: parsedJson.confessionAndSurrender || parsedJson.confession || "Lord, I surrender my anxiety, weariness, and limitations into Your loving hands.",
+            thanksgiving: parsedJson.thanksgiving || "Thank You, Lord, for Your unfailing grace, mercy, and covenant promises.",
+            scripturePromise: parsedJson.scripturePromise || parsedJson.scriptureAnchor || fallbackRef,
+            petition: parsedJson.petition || `Lord, I lift up ${fallbackSubject} before Your throne of grace.`,
+            spiritualWarfare: parsedJson.spiritualWarfare || parsedJson.warfareDeclaration || "In the Name of Jesus Christ, every opposing work of darkness and limitation is broken.",
+            declarationInJesusName: parsedJson.declarationInJesusName || parsedJson.closing || "In the mighty, victorious Name of Jesus Christ, Amen."
+          };
+        }
+        if (!parsedJson.prayer && parsedJson.sections) {
+          parsedJson.prayer = { ...parsedJson };
+        }
+      }
       res.write(`data: ${JSON.stringify({ done: true, fullText: result.text, data: parsedJson })}\n\n`);
     } else if (streamAccumulator && streamAccumulator.trim().length > 0) {
-      res.write(`data: ${JSON.stringify({ done: true, fullText: streamAccumulator, data: safeJsonParse(streamAccumulator) })}\n\n`);
+      const fallbackRef = req.body?.scriptureReference || req.body?.reference || "Philippians 4:6-7";
+      const fallbackSubject = req.body?.need || req.body?.subject || req.body?.topic || req.body?.scriptureTheme || "Divine Guidance & Strength";
+
+      let parsedJson = safeJsonParse(streamAccumulator);
+      if (parsedJson && typeof parsedJson === "object") {
+        if (!parsedJson.sections && (parsedJson.petition || parsedJson.adoration || parsedJson.spiritualWarfare)) {
+          parsedJson.sections = {
+            adoration: parsedJson.adoration || "Almighty God, Heavenly Father, You are holy and faithful in all Your ways.",
+            confessionAndSurrender: parsedJson.confessionAndSurrender || parsedJson.confession || "Lord, I surrender my anxiety, weariness, and limitations into Your loving hands.",
+            thanksgiving: parsedJson.thanksgiving || "Thank You, Lord, for Your unfailing grace, mercy, and covenant promises.",
+            scripturePromise: parsedJson.scripturePromise || parsedJson.scriptureAnchor || fallbackRef,
+            petition: parsedJson.petition || `Lord, I lift up ${fallbackSubject} before Your throne of grace.`,
+            spiritualWarfare: parsedJson.spiritualWarfare || parsedJson.warfareDeclaration || "In the Name of Jesus Christ, every opposing work of darkness and limitation is broken.",
+            declarationInJesusName: parsedJson.declarationInJesusName || parsedJson.closing || "In the mighty, victorious Name of Jesus Christ, Amen."
+          };
+        }
+        if (!parsedJson.prayer && parsedJson.sections) {
+          parsedJson.prayer = { ...parsedJson };
+        }
+      }
+      res.write(`data: ${JSON.stringify({ done: true, fullText: streamAccumulator, data: parsedJson })}\n\n`);
     } else {
       console.warn("[STREAM] Stream accumulator empty.");
       const errorMsg = (result as any)?.error || "Gemini API is temporarily busy or rate limited. Please wait a moment and click Retry.";

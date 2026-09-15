@@ -242,40 +242,40 @@ export async function downloadBibleVersePicture(
 
   // 5. Scripture Passage Card
   curY += 45;
-  const cardX = innerMargin + 60;
-  const cardW = W - (innerMargin + 60) * 2;
-  const contentMaxW = cardW - 100;
+  const cardX = innerMargin + 50;
+  const cardW = W - (innerMargin + 50) * 2;
+  const contentMaxW = cardW - 120;
 
-  ctx.font = "italic 40px 'Georgia', 'Source Serif 4', serif";
+  ctx.font = "italic 52px 'Georgia', 'Source Serif 4', serif";
   const passageLines = wrapText(ctx, `"${verseItem.text}"`, contentMaxW);
-  const passageLineH = 58;
-  const cardInnerH = Math.max(220, passageLines.length * passageLineH + 90);
+  const passageLineH = 74;
+  const cardInnerH = Math.max(260, passageLines.length * passageLineH + 110);
 
   // Card background
   ctx.fillStyle = "#FFFFFF";
   ctx.shadowColor = "rgba(180, 140, 53, 0.12)";
-  ctx.shadowBlur = 20;
-  ctx.shadowOffsetY = 8;
-  roundRect(ctx, cardX, curY, cardW, cardInnerH, 16);
+  ctx.shadowBlur = 24;
+  ctx.shadowOffsetY = 10;
+  roundRect(ctx, cardX, curY, cardW, cardInnerH, 18);
   ctx.fill();
 
   // Card border
   ctx.shadowColor = "transparent";
   ctx.strokeStyle = "#E5D5BC";
-  ctx.lineWidth = 2;
+  ctx.lineWidth = 2.5;
   ctx.stroke();
 
   // Left accent bar
   ctx.fillStyle = "#B48C35";
-  ctx.fillRect(cardX, curY + 16, 8, cardInnerH - 32);
+  ctx.fillRect(cardX, curY + 18, 10, cardInnerH - 36);
 
   // Draw Passage Text
-  ctx.fillStyle = "#0F172A";
+  ctx.fillStyle = "#0A0F1D";
   ctx.textAlign = "left";
-  ctx.font = "italic 38px 'Georgia', 'Source Serif 4', serif";
-  let textY = curY + 68;
+  ctx.font = "italic 50px 'Georgia', 'Source Serif 4', serif";
+  let textY = curY + 84;
   for (const line of passageLines) {
-    ctx.fillText(line, cardX + 50, textY);
+    ctx.fillText(line, cardX + 60, textY);
     textY += passageLineH;
   }
 
@@ -302,30 +302,30 @@ export async function downloadBibleVersePicture(
       noteBody = `Meditate upon this sacred revelation from ${refText}. The living Word of God produces supernatural life, divine clarity, and eternal hope in the believer's heart.`;
     }
 
-    ctx.font = "26px 'Georgia', serif";
+    ctx.font = "36px 'Georgia', serif";
     const noteLines = wrapText(ctx, noteBody, contentMaxW);
-    const noteLineH = 38;
-    const noteCardH = Math.min(320, noteLines.length * noteLineH + 90);
+    const noteLineH = 52;
+    const noteCardH = Math.min(420, noteLines.length * noteLineH + 110);
 
     ctx.fillStyle = "#FDFBF7";
-    roundRect(ctx, cardX, curY, cardW, noteCardH, 12);
+    roundRect(ctx, cardX, curY, cardW, noteCardH, 16);
     ctx.fill();
     ctx.strokeStyle = "#DCC398";
-    ctx.lineWidth = 1.5;
+    ctx.lineWidth = 2;
     ctx.stroke();
 
     // Section title
     ctx.fillStyle = "#B48C35";
-    ctx.font = "bold 20px 'Plus Jakarta Sans', sans-serif";
+    ctx.font = "bold 26px 'Plus Jakarta Sans', sans-serif";
     ctx.letterSpacing = "2px";
-    ctx.fillText(`✦ ${noteTitle.toUpperCase()}`, cardX + 40, curY + 42);
+    ctx.fillText(`✦ ${noteTitle.toUpperCase()}`, cardX + 45, curY + 48);
 
     // Section content
-    ctx.fillStyle = "#334155";
-    ctx.font = "24px 'Georgia', serif";
-    let ny = curY + 84;
+    ctx.fillStyle = "#1E293B";
+    ctx.font = "34px 'Georgia', serif";
+    let ny = curY + 98;
     for (let i = 0; i < Math.min(noteLines.length, 6); i++) {
-      ctx.fillText(noteLines[i], cardX + 40, ny);
+      ctx.fillText(noteLines[i], cardX + 45, ny);
       ny += noteLineH;
     }
 
@@ -333,9 +333,9 @@ export async function downloadBibleVersePicture(
   }
 
   // 7. Guided Prayer & Faith Decree Box
-  const prayerCardH = 240;
+  const prayerCardH = 280;
   ctx.fillStyle = "#0F172A";
-  roundRect(ctx, cardX, curY, cardW, prayerCardH, 14);
+  roundRect(ctx, cardX, curY, cardW, prayerCardH, 16);
   ctx.fill();
   ctx.strokeStyle = "#B48C35";
   ctx.lineWidth = 2.5;
@@ -343,20 +343,20 @@ export async function downloadBibleVersePicture(
 
   // Prayer Label
   ctx.fillStyle = "#DCC398";
-  ctx.font = "bold 20px 'Plus Jakarta Sans', sans-serif";
+  ctx.font = "bold 24px 'Plus Jakarta Sans', sans-serif";
   ctx.letterSpacing = "2px";
-  ctx.fillText("✦ GUIDED PRAYER & FAITH DECREE", cardX + 40, curY + 45);
+  ctx.fillText("✦ GUIDED PRAYER & FAITH DECREE", cardX + 45, curY + 50);
 
   const defaultPrayer = verseItem.guidedPrayer ||
     `Heavenly Father, thank You for the living truth of ${refText}. Establish my faith firmly in Your promises, grant me divine discernment, and empower me to walk in holy obedience. In Jesus' mighty Name, Amen.`;
 
   ctx.fillStyle = "#F8FAFC";
-  ctx.font = "italic 23px 'Georgia', serif";
+  ctx.font = "italic 34px 'Georgia', serif";
   const prayerLines = wrapText(ctx, defaultPrayer, contentMaxW);
-  let py = curY + 85;
+  let py = curY + 102;
   for (let i = 0; i < Math.min(prayerLines.length, 3); i++) {
-    ctx.fillText(prayerLines[i], cardX + 40, py);
-    py += 34;
+    ctx.fillText(prayerLines[i], cardX + 45, py);
+    py += 48;
   }
 
   ctx.fillStyle = "#B48C35";

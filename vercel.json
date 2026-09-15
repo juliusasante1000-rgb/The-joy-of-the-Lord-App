@@ -22,12 +22,32 @@
       "destination": "/api/generate"
     },
     {
+      "source": "/api/generate-prayer",
+      "destination": "/api/generate"
+    },
+    {
+      "source": "/api/generate-points",
+      "destination": "/api/generate"
+    },
+    {
+      "source": "/api/generate-exposition",
+      "destination": "/api/generate"
+    },
+    {
+      "source": "/api/generate-mathemasermon",
+      "destination": "/api/generate"
+    },
+    {
       "source": "/api/generate-verse-action",
       "destination": "/api/generate"
     },
     {
       "source": "/api/generate-devotion",
       "destination": "/api/generate"
+    },
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/index?path=$1"
     }
   ]
 }

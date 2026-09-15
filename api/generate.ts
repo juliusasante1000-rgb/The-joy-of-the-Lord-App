@@ -58,18 +58,83 @@ export function getSystemPromptForCategory(category?: string, actionType?: strin
 }
 
 function extractJson(text: string): any {
-  if (!text) return null;
-  let clean = text.trim();
-  if (clean.startsWith("```json")) {
-    clean = clean.replace(/^```json\s*/i, "").replace(/\s*```$/, "");
-  } else if (clean.startsWith("```")) {
-    clean = clean.replace(/^```\s*/i, "").replace(/\s*```$/, "");
-  }
+  if (!text || typeof text !== "string") return null;
+  const trimmed = text.trim();
+  if (!trimmed) return null;
+
+  // 1. Direct parse attempt
   try {
-    return JSON.parse(clean.trim());
-  } catch {
-    return null;
+    return JSON.parse(trimmed);
+  } catch {}
+
+  // 2. Strip markdown fences
+  let cleaned = trimmed;
+  if (cleaned.startsWith("```")) {
+    cleaned = cleaned.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/, "").trim();
+    try {
+      return JSON.parse(cleaned);
+    } catch {}
   }
+
+  // 3. Extract JSON object {...}
+  const firstBrace = cleaned.indexOf("{");
+  const lastBrace = cleaned.lastIndexOf("}");
+  if (firstBrace !== -1 && lastBrace > firstBrace) {
+    const candidate = cleaned.substring(firstBrace, lastBrace + 1);
+    try {
+      return JSON.parse(candidate);
+    } catch {
+      try {
+        const repaired = candidate.replace(/(?<!\\)\\(?!["\\/bfnrtu])/g, "\\\\");
+        return JSON.parse(repaired);
+      } catch {}
+    }
+  }
+
+  // 4. Auto-repair truncated JSON
+  try {
+    let str = cleaned;
+    let inString = false;
+    let isEscaped = false;
+    const stack: string[] = [];
+
+    for (let i = 0; i < str.length; i++) {
+      const char = str[i];
+      if (isEscaped) {
+        isEscaped = false;
+        continue;
+      }
+      if (char === "\\") {
+        isEscaped = true;
+        continue;
+      }
+      if (char === '"') {
+        inString = !inString;
+        continue;
+      }
+      if (!inString) {
+        if (char === "{" || char === "[") {
+          stack.push(char);
+        } else if (char === "}") {
+          if (stack.length > 0 && stack[stack.length - 1] === "{") stack.pop();
+        } else if (char === "]") {
+          if (stack.length > 0 && stack[stack.length - 1] === "[") stack.pop();
+        }
+      }
+    }
+
+    if (inString) str += '"';
+    while (stack.length > 0) {
+      const open = stack.pop();
+      if (open === "{") str += "}";
+      else if (open === "[") str += "]";
+    }
+
+    const fixed = str.replace(/(?<!\\)\\(?!["\\/bfnrtu])/g, "\\\\");
+    return JSON.parse(fixed);
+  } catch {}
+
+  return null;
 }
 
 export default async function handler(req: any, res: any): Promise<void> {
@@ -150,6 +215,8 @@ export default async function handler(req: any, res: any): Promise<void> {
     scriptureText,
     version,
     topic,
+    need,
+    subject,
     question,
     stream
   } = body || {};
@@ -159,34 +226,55 @@ export default async function handler(req: any, res: any): Promise<void> {
   let responseMimeType: string | undefined = undefined;
 
   const act = String(actionType || "").trim().toLowerCase();
-  const ref = scriptureReference || "Daily Scripture";
-  const txt = scriptureText || "";
+  const rawUrl = String(req.url || "").toLowerCase();
+  const isPrayerAction = act.includes("prayer") || Boolean(need) || rawUrl.includes("prayer");
+  const ref = scriptureReference || (isPrayerAction ? "Philippians 4:6-7" : "Daily Scripture");
+  const txt = scriptureText || (isPrayerAction ? "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God." : "");
   const v = version || "KJV";
-  const currentSubject = topic || body?.subject || body?.scriptureTheme || "Divine Strength, Peace & Victory";
+  const currentSubject = need || topic || body?.subject || body?.scriptureTheme || "Divine Strength, Peace & Breakthrough";
 
   if (!userPrompt) {
-    if (act.includes("prayer") && !act.includes("point")) {
-      userPrompt = `You are a reverent, apostolic Christian pastoral leader and prayer general. Compose an anointed, deeply transformative Guided Prayer rooted directly in the living conjunction of the scripture and subject:
+    if (isPrayerAction && !act.includes("point")) {
+      userPrompt = `You are a reverent, apostolic Christian pastoral leader and prayer general. Compose an anointed, deeply transformative Structured Guided Prayer rooted directly in the living conjunction of the scripture and subject:
 Current Subject: "${currentSubject}"
+Prayer Category: "${category || "Breakthrough & Faith"}"
 Theme Scripture: ${ref} (${v})
 Scripture Text: "${txt}"
 
 MANDATORY INSTRUCTIONS:
 1. Address the subject "${currentSubject}" directly in living conjunction with theme scripture ${ref}.
-2. Ground every petition in the exact truth of "${txt}".
-3. Conclude with an authoritative apostolic warfare and victory decree.
+2. Ground every petition in the exact truth and vocabulary of "${txt}".
+3. Fill all 7 prayer sections with rich apostolic authority, biblical depth, and living faith.
+4. Conclude with an authoritative apostolic warfare and victory decree sealing the breakthrough.
 ${AI_OUTPUT_IMPROVEMENT_RULES}
 
 Format your response as a valid JSON object matching this schema:
 {
-  "title": "Sacred Prayer of Faith: ${currentSubject}",
+  "title": "Apostolic Prayer for ${currentSubject}",
+  "subtitle": "Faith-filled targeted intercession for ${currentSubject}",
+  "category": "${category || "Breakthrough & Faith"}",
+  "theme": "${currentSubject}",
+  "suggestedScriptures": ["${ref}", "Philippians 4:6-7", "Psalm 91:1-2"],
   "scriptureAnchor": "${ref} (${v}) - '${txt}'",
+  "scripturePromise": "${ref} (${v}) - '${txt}'",
   "adoration": "Exalt God's supreme holiness, sovereignty, and divine faithfulness demonstrated in ${ref} regarding ${currentSubject}.",
   "confession": "Reverent surrender of human insufficiency, fear, and self-reliance into His covenant hands.",
-  "thanksgiving": "Heartfelt thanksgiving for God's steadfast promises, the finished work of Christ, and His grace.",
+  "confessionAndSurrender": "Reverent surrender of human insufficiency, fear, and self-reliance into His covenant hands.",
+  "thanksgiving": "Heartfelt thanksgiving for God's steadfast promises, the finished work of Christ on the cross, and His grace.",
   "petition": "Direct, heartfelt, and targeted petitions applying ${ref} directly to ${currentSubject}.",
   "warfareDeclaration": "Authoritative apostolic decrees breaking doubt, fear, delay, and enemy limitations in Jesus' Name.",
-  "closing": "Triumphant seal and affirmation in Jesus' victorious Name. Amen."
+  "spiritualWarfare": "Authoritative apostolic decrees breaking doubt, fear, delay, and enemy limitations in Jesus' Name.",
+  "closing": "Triumphant seal and affirmation in Jesus' victorious Name. Amen.",
+  "declarationInJesusName": "Triumphant seal and affirmation in Jesus' victorious Name. Amen.",
+  "sections": {
+    "adoration": "Exalt God's supreme holiness, sovereignty, and divine faithfulness demonstrated in ${ref} regarding ${currentSubject}.",
+    "confessionAndSurrender": "Reverent surrender of human insufficiency, fear, and self-reliance into His covenant hands.",
+    "thanksgiving": "Heartfelt thanksgiving for God's steadfast promises, the finished work of Christ on the cross, and His grace.",
+    "scripturePromise": "${ref} (${v}) - '${txt}'",
+    "petition": "Direct, heartfelt, and targeted petitions applying ${ref} directly to ${currentSubject}.",
+    "spiritualWarfare": "Authoritative apostolic decrees breaking doubt, fear, delay, and enemy limitations in Jesus' Name.",
+    "declarationInJesusName": "Triumphant seal and affirmation in Jesus' victorious Name. Amen."
+  }
 }`;
       responseMimeType = "application/json";
     } else if (act.includes("point")) {
@@ -399,7 +487,24 @@ Format as JSON with keys: answer, scriptures, keyTakeaway.`;
       }
     }
 
-    const parsedJson = extractJson(streamAccumulator);
+    let parsedJson = extractJson(streamAccumulator);
+    if (parsedJson && typeof parsedJson === "object") {
+      if (!parsedJson.sections && (parsedJson.petition || parsedJson.adoration || parsedJson.spiritualWarfare)) {
+        parsedJson.sections = {
+          adoration: parsedJson.adoration || "Almighty God, Heavenly Father, You are holy and faithful in all Your ways.",
+          confessionAndSurrender: parsedJson.confessionAndSurrender || parsedJson.confession || "Lord, I surrender my anxiety, weariness, and limitations into Your loving hands.",
+          thanksgiving: parsedJson.thanksgiving || "Thank You, Lord, for Your unfailing grace, mercy, and covenant promises.",
+          scripturePromise: parsedJson.scripturePromise || parsedJson.scriptureAnchor || ref,
+          petition: parsedJson.petition || `Lord, I lift up ${currentSubject} before Your throne of grace.`,
+          spiritualWarfare: parsedJson.spiritualWarfare || parsedJson.warfareDeclaration || "In the Name of Jesus Christ, every opposing work of darkness and limitation is broken.",
+          declarationInJesusName: parsedJson.declarationInJesusName || parsedJson.closing || "In the mighty, victorious Name of Jesus Christ, Amen."
+        };
+      }
+      if (!parsedJson.prayer && parsedJson.sections) {
+        parsedJson.prayer = { ...parsedJson };
+      }
+    }
+
     res.write(`data: ${JSON.stringify({
       done: true,
       fullText: streamAccumulator,
@@ -465,7 +570,23 @@ Format as JSON with keys: answer, scriptures, keyTakeaway.`;
       return;
     }
 
-    const parsedJson = extractJson(text);
+    let parsedJson = extractJson(text);
+    if (parsedJson && typeof parsedJson === "object") {
+      if (!parsedJson.sections && (parsedJson.petition || parsedJson.adoration || parsedJson.spiritualWarfare)) {
+        parsedJson.sections = {
+          adoration: parsedJson.adoration || "Almighty God, Heavenly Father, You are holy and faithful in all Your ways.",
+          confessionAndSurrender: parsedJson.confessionAndSurrender || parsedJson.confession || "Lord, I surrender my anxiety, weariness, and limitations into Your loving hands.",
+          thanksgiving: parsedJson.thanksgiving || "Thank You, Lord, for Your unfailing grace, mercy, and covenant promises.",
+          scripturePromise: parsedJson.scripturePromise || parsedJson.scriptureAnchor || ref,
+          petition: parsedJson.petition || `Lord, I lift up ${currentSubject} before Your throne of grace.`,
+          spiritualWarfare: parsedJson.spiritualWarfare || parsedJson.warfareDeclaration || "In the Name of Jesus Christ, every opposing work of darkness and limitation is broken.",
+          declarationInJesusName: parsedJson.declarationInJesusName || parsedJson.closing || "In the mighty, victorious Name of Jesus Christ, Amen."
+        };
+      }
+      if (!parsedJson.prayer && parsedJson.sections) {
+        parsedJson.prayer = { ...parsedJson };
+      }
+    }
 
     res.statusCode = 200;
     res.setHeader("Content-Type", "application/json");

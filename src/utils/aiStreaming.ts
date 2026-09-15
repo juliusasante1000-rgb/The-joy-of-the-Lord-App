@@ -293,7 +293,7 @@ export async function streamAiContent<T = any>(
         if (response.ok) {
           const contentType = response.headers.get("content-type") || "";
           
-          // Instant JSON detection: if server returned application/json, parse immediately without waiting
+          // Instant JSON detection: if server returned application/json, parse and deliver smoothly
           if (contentType.includes("application/json")) {
             try {
               const jsonData = await response.json();
@@ -312,8 +312,21 @@ export async function streamAiContent<T = any>(
               parsedData = jsonData.data || safeJsonParse(accumulatedText);
               if (accumulatedText || parsedData) {
                 sseSuccess = true;
+                // Deliver content at a calm, dignified reading speed
+                if (accumulatedText && options.onChunk) {
+                  const words = accumulatedText.split(/(\s+)/);
+                  let running = "";
+                  for (let i = 0; i < words.length; i++) {
+                    running += words[i];
+                    const prog = Math.min(96, 35 + Math.round((i / words.length) * 60));
+                    options.onProgress?.(prog);
+                    options.onChunk(words[i], running, parsedData);
+                    if (words[i].trim().length > 0) {
+                      await new Promise((r) => setTimeout(r, 18));
+                    }
+                  }
+                }
                 options.onProgress?.(100);
-                options.onChunk?.(accumulatedText, accumulatedText, parsedData);
               }
             } catch (jsonErr) {
               console.warn("[AI STREAMING] JSON parse error on application/json:", jsonErr);
@@ -456,8 +469,10 @@ export async function streamAiContent<T = any>(
         };
       }
 
-      // Tier 2: Try specific endpoints (/api/generate, /api/generate-verse-action, /api/generate-devotion)
+      // Tier 2: Try specific endpoints (/api/generate, /api/generate-prayer, /api/generate-verse-action, /api/generate-devotion)
+      const isPrayerRequest = options.need || options.actionType?.includes("prayer");
       const candidateUrls = [
+        ...(isPrayerRequest ? ["/api/generate-prayer"] : []),
         "/api/generate",
         "/api/generate-verse-action",
         "/api/generate-devotion",
@@ -499,8 +514,20 @@ export async function streamAiContent<T = any>(
             );
             const finalData = resData.data || safeJsonParse(finalText);
 
+            if (finalText && options.onChunk) {
+              const words = finalText.split(/(\s+)/);
+              let running = "";
+              for (let i = 0; i < words.length; i++) {
+                running += words[i];
+                const prog = Math.min(96, 35 + Math.round((i / words.length) * 60));
+                options.onProgress?.(prog);
+                options.onChunk(words[i], running, finalData);
+                if (words[i].trim().length > 0) {
+                  await new Promise((r) => setTimeout(r, 18));
+                }
+              }
+            }
             options.onProgress?.(100);
-            options.onChunk?.(finalText, finalText, finalData);
             options.onComplete?.(finalText, finalData, false);
 
             saveAiResultToCache(cacheKey, finalText, finalData, isFast);

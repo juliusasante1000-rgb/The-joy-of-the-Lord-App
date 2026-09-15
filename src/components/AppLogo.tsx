@@ -130,7 +130,7 @@ export const AppLogo: React.FC<AppLogoProps> = ({
             </span>
           </div>
           {showSubtitle && (
-            <p className="text-[10px] sm:text-[11px] text-[#E0E7FF] font-medium tracking-wide truncate flex items-center gap-1 mt-0.5">
+            <p className="hidden sm:flex text-[10px] sm:text-[11px] text-[#E0E7FF] font-medium tracking-wide truncate items-center gap-1 mt-0.5">
               <span className="font-bold text-[#F472B6] uppercase tracking-wider">IS MY STRENGTH</span>
               <span className="opacity-40">•</span>
               <span className="font-serif italic opacity-90 text-[#FBBF24]">Nehemiah 8:10</span>

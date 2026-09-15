@@ -477,48 +477,48 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
       (hasPrayer ? prayerContent.length : 0);
 
     // Dynamic scale factor based on content length & canvas aspect ratio
-    // If text is brief, significantly increase font scale so it is large, crystal clear and fills the canvas!
-    let dynamicTextScale = 1.15;
+    // Significantly increase font scale so it is large, crystal clear and easily readable on all devices
+    let dynamicTextScale = 1.35;
     if (totalCharCount < 500) {
-      dynamicTextScale = 1.45;
+      dynamicTextScale = 1.65;
     } else if (totalCharCount < 850) {
-      dynamicTextScale = 1.30;
+      dynamicTextScale = 1.50;
     } else if (totalCharCount < 1200) {
-      dynamicTextScale = 1.18;
+      dynamicTextScale = 1.38;
     } else if (totalCharCount < 1600) {
-      dynamicTextScale = 1.05;
-    } else if (totalCharCount > 2000) {
-      dynamicTextScale = 0.92;
+      dynamicTextScale = 1.25;
+    } else if (totalCharCount > 2400) {
+      dynamicTextScale = 1.08;
     }
 
     // Adapt for square or story aspect ratios
     if (activeFormat.id === "social-square") {
-      dynamicTextScale *= 0.88;
+      dynamicTextScale *= 0.95;
     } else if (activeFormat.id === "story-wallpaper") {
-      dynamicTextScale *= 1.08;
+      dynamicTextScale *= 1.12;
     }
 
-    const cardX = Math.round(120 * baseScale);
+    const cardX = Math.round(110 * baseScale);
     const cardW = W - cardX * 2;
     const innerTextW = cardW - Math.round(80 * baseScale);
 
-    // Font Sizes for Sections (in pixels scaled to canvas)
-    const scripFontSize = Math.round(54 * baseScale * dynamicTextScale);
-    const scripLineH = Math.round(scripFontSize * 1.48);
+    // Font Sizes for Sections (in pixels scaled to canvas for crystal-clear readability)
+    const scripFontSize = Math.round(66 * baseScale * dynamicTextScale);
+    const scripLineH = Math.round(scripFontSize * 1.50);
 
-    const introFontSize = Math.round(48 * baseScale * dynamicTextScale);
-    const introLineH = Math.round(introFontSize * 1.50);
+    const introFontSize = Math.round(58 * baseScale * dynamicTextScale);
+    const introLineH = Math.round(introFontSize * 1.52);
 
-    const expoFontSize = Math.round(48 * baseScale * dynamicTextScale);
-    const expoLineH = Math.round(expoFontSize * 1.52);
+    const expoFontSize = Math.round(58 * baseScale * dynamicTextScale);
+    const expoLineH = Math.round(expoFontSize * 1.54);
 
-    const actionFontSize = Math.round(44 * baseScale * dynamicTextScale);
-    const actionLineH = Math.round(actionFontSize * 1.48);
+    const actionFontSize = Math.round(52 * baseScale * dynamicTextScale);
+    const actionLineH = Math.round(actionFontSize * 1.50);
 
-    const prayerFontSize = Math.round(46 * baseScale * dynamicTextScale);
-    const prayerLineH = Math.round(prayerFontSize * 1.50);
+    const prayerFontSize = Math.round(54 * baseScale * dynamicTextScale);
+    const prayerLineH = Math.round(prayerFontSize * 1.52);
 
-    const badgeFontSize = Math.round(30 * baseScale);
+    const badgeFontSize = Math.round(34 * baseScale);
 
     const twoColBottom = (activeFormat.id === "full-page" || activeFormat.id === "social-square") && hasAction && hasPrayer;
     const colGap = Math.round(24 * baseScale);

@@ -69,7 +69,9 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange, on
   const handleSelectTab = (tabId: TabType) => {
     onTabChange(tabId);
     setIsMoreSheetOpen(false);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: "instant" as any });
+    });
   };
 
   return (
@@ -84,17 +86,17 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange, on
           <div className="bg-[#16235A] text-white rounded-t-3xl border-t border-[#B48C35]/40 shadow-2xl p-5 max-h-[80vh] overflow-y-auto animate-in slide-in-from-bottom duration-250">
             <div className="flex items-center justify-between pb-3 border-b border-white/10 mb-4">
               <div className="flex items-center gap-2">
-                <div className="w-2.5 h-2.5 rounded-full bg-[#B48C35] animate-pulse" />
+                <div className="w-2.5 h-2.5 rounded-full bg-[#B48C35] animate-pulse shrink-0" />
                 <h3 className="font-serif font-bold text-base text-white tracking-wide">
                   Spiritual Pillars & Navigation
                 </h3>
               </div>
               <button
                 onClick={() => setIsMoreSheetOpen(false)}
-                className="p-1.5 rounded-full bg-white/10 text-slate-300 hover:text-white"
+                className="p-1.5 rounded-full bg-white/10 text-slate-300 hover:text-white shrink-0 cursor-pointer"
                 aria-label="Close"
               >
-                <X className="w-5 h-5" />
+                <X className="w-5 h-5 shrink-0" />
               </button>
             </div>
 
@@ -115,8 +117,8 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange, on
                         : "bg-white/5 hover:bg-white/10 text-slate-200"
                     }`}
                   >
-                    <div className={`p-2 rounded-lg shrink-0 ${isActive ? "bg-white/20 text-white" : "bg-white/10 text-[#DCC398]"}`}>
-                      <Icon className="w-4 h-4" />
+                    <div className={`p-2 rounded-lg shrink-0 flex items-center justify-center ${isActive ? "bg-white/20 text-white" : "bg-white/10 text-[#DCC398]"}`}>
+                      <Icon className="w-4 h-4 shrink-0" />
                     </div>
                     <div className="min-w-0 flex-1">
                       <p className="text-xs font-serif leading-tight truncate">{tab.label}</p>
@@ -134,7 +136,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange, on
 
       {/* Fixed Ergonomic Bottom Bar */}
       <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-[#E8E0F0] transition-colors pb-safe shadow-lg">
-        <div className="max-w-md mx-auto px-2 py-1 flex items-center justify-around h-15">
+        <div className="max-w-md mx-auto px-1 sm:px-2 py-1 flex items-center justify-around h-15">
           {primaryTabs.map((tab) => {
             const Icon = tab.icon;
             const isActive =
@@ -147,15 +149,15 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange, on
                 key={tab.id}
                 id={`nav-tab-${tab.id}`}
                 onClick={() => handleSelectTab(tab.id)}
-                className={`flex-1 py-1.5 px-1 flex flex-col items-center justify-center gap-1 transition-all cursor-pointer select-none ${
+                className={`flex-1 min-w-0 py-1 px-0.5 flex flex-col items-center justify-center gap-0.5 transition-all cursor-pointer select-none ${
                   isActive ? "text-[#16235A]" : "text-slate-500 hover:text-[#16235A]"
                 }`}
               >
-                <div className={`relative px-3 py-1 rounded-full transition-all duration-150 ${
+                <div className={`relative px-2.5 py-1 rounded-full transition-all duration-150 shrink-0 flex items-center justify-center ${
                   isActive ? "bg-[#B48C35]/15 text-[#16235A]" : "text-slate-500"
                 }`}>
                   <Icon
-                    className={`w-4 h-4 transition-transform duration-150 ${
+                    className={`w-5 h-5 shrink-0 transition-transform duration-150 ${
                       isActive ? "scale-110 stroke-[2.4] text-[#B48C35]" : "stroke-[1.8]"
                     }`}
                   />
@@ -165,7 +167,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange, on
                 </div>
 
                 <span
-                  className={`text-[10px] tracking-tight text-center font-medium leading-none ${
+                  className={`text-[10px] tracking-tight text-center font-medium leading-tight truncate w-full block ${
                     isActive ? "text-[#16235A] font-bold" : "text-slate-500"
                   }`}
                 >
@@ -179,16 +181,16 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange, on
           <button
             id="nav-tab-more"
             onClick={handleMoreClick}
-            className={`flex-1 py-1.5 px-1 flex flex-col items-center justify-center gap-1 transition-all cursor-pointer select-none ${
+            className={`flex-1 min-w-0 py-1 px-0.5 flex flex-col items-center justify-center gap-0.5 transition-all cursor-pointer select-none ${
               isOverflowActive ? "text-[#16235A]" : "text-slate-500 hover:text-[#16235A]"
             }`}
             title="Explore all modules and pillars"
           >
-            <div className={`relative px-3 py-1 rounded-full transition-all duration-150 ${
+            <div className={`relative px-2.5 py-1 rounded-full transition-all duration-150 shrink-0 flex items-center justify-center ${
               isOverflowActive ? "bg-[#B48C35]/15 text-[#16235A]" : "text-slate-500"
             }`}>
               <Menu
-                className={`w-4 h-4 transition-transform duration-150 ${
+                className={`w-5 h-5 shrink-0 transition-transform duration-150 ${
                   isOverflowActive ? "scale-110 stroke-[2.4] text-[#B48C35]" : "stroke-[1.8]"
                 }`}
               />
@@ -198,7 +200,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange, on
             </div>
 
             <span
-              className={`text-[10px] tracking-tight text-center font-medium leading-none ${
+              className={`text-[10px] tracking-tight text-center font-medium leading-tight truncate w-full block ${
                 isOverflowActive ? "text-[#16235A] font-bold" : "text-slate-500"
               }`}
             >

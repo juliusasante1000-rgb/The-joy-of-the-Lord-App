@@ -93,10 +93,10 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
 
         {/* Right: Install App, Time Preview, Bookmarks & Streak */}
-        <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
+        <div className="flex items-center gap-1 sm:gap-2 shrink-0">
           {/* Active Audio Synthesis Waveform & Pause Indicator */}
           {isSpeaking && (
-            <div className="flex items-center gap-1.5 px-2 sm:px-2.5 py-1 rounded-full bg-[#DB2777]/20 border border-[#DB2777]/50 text-pink-200 text-xs font-bold animate-pulse">
+            <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-[#DB2777]/20 border border-[#DB2777]/50 text-pink-200 text-xs font-bold animate-pulse shrink-0">
               <span className="flex gap-0.5 items-end h-3">
                 <span className="w-0.5 h-2 bg-pink-300 rounded-full animate-ping" />
                 <span className="w-0.5 h-3 bg-pink-300 rounded-full" />
@@ -118,10 +118,10 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Offline Indicator if connection lost */}
           {!isOnline && (
             <div
-              className="flex items-center gap-1 px-2 py-1 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-300 text-[10px] font-bold font-mono animate-pulse"
+              className="flex items-center gap-1 px-2 py-1 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-300 text-[10px] font-bold font-mono animate-pulse shrink-0"
               title="Offline Mode Active — Cached Scripture & Devotions Available"
             >
-              <WifiOff className="w-3 h-3" />
+              <WifiOff className="w-3 h-3 shrink-0" />
               <span className="hidden sm:inline">Offline</span>
             </div>
           )}
@@ -130,14 +130,14 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             id="header-fast-mode-toggle"
             onClick={handleToggleFastMode}
-            className={`flex items-center gap-1.5 px-2 sm:px-2.5 py-1 rounded-full text-xs font-bold transition-all cursor-pointer shadow-xs border ${
+            className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs font-bold transition-all cursor-pointer shadow-xs border shrink-0 ${
               isFast
                 ? "bg-amber-400 text-slate-950 border-amber-300 shadow-amber-400/20 font-extrabold"
                 : "bg-white/10 text-slate-300 border-white/20 hover:bg-white/20"
             }`}
             title={isFast ? "Anointed Fast Mode is ON (Instant generation, 0.3 temp)" : "Deep Mode is ON (Full theological depth). Click for Fast Mode"}
           >
-            <Zap className={`w-3.5 h-3.5 ${isFast ? "text-slate-950 fill-slate-950" : "text-amber-300"}`} />
+            <Zap className={`w-3.5 h-3.5 shrink-0 ${isFast ? "text-slate-950 fill-slate-950" : "text-amber-300"}`} />
             <span className="hidden sm:inline text-[11px] font-mono uppercase">
               {isFast ? "⚡ Fast" : "Deep"}
             </span>
@@ -148,7 +148,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               id="header-install-pwa-btn"
               onClick={onOpenInstallModal}
-              className={`flex items-center gap-1.5 px-2 sm:px-2.5 py-1 rounded-full text-xs font-bold transition-all cursor-pointer shadow-xs ${
+              className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs font-bold transition-all cursor-pointer shadow-xs shrink-0 ${
                 isInstalled
                   ? "bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 hover:bg-emerald-500/30"
                   : "bg-gradient-to-r from-[#B48C35] to-[#996515] text-white hover:brightness-110 border border-amber-300/30"
@@ -157,30 +157,30 @@ export const Header: React.FC<HeaderProps> = ({
             >
               {isInstalled ? (
                 <>
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                  <span className="hidden md:inline font-mono text-[11px]">Installed</span>
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <span className="hidden sm:inline font-mono text-[11px]">Installed</span>
                 </>
               ) : (
                 <>
-                  <Download className="w-3.5 h-3.5 text-amber-100" />
-                  <span className="hidden xs:inline font-mono text-[11px]">Install App</span>
+                  <Download className="w-3.5 h-3.5 text-amber-100 shrink-0" />
+                  <span className="hidden sm:inline font-mono text-[11px]">Install</span>
                 </>
               )}
             </button>
           )}
 
           {/* Active Session Badge with dropdown */}
-          <div className="relative">
+          <div className="relative shrink-0">
             <button
               id="active-session-badge-btn"
               onClick={() => setShowTimeMenu(!showTimeMenu)}
-              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-gradient-to-r from-[#9333EA] to-[#DB2777] text-white text-[11px] sm:text-xs font-bold uppercase tracking-wider hover:brightness-110 transition-all shadow-sm"
+              className="flex items-center gap-1.5 px-2 sm:px-2.5 py-1 rounded-full bg-gradient-to-r from-[#9333EA] to-[#DB2777] text-white text-[11px] sm:text-xs font-bold uppercase tracking-wider hover:brightness-110 transition-all shadow-sm shrink-0"
               title="Click to view time schedule or preview editions"
             >
-              {getBadgeIcon()}
-              <span className="hidden xs:inline">{activeBadge.label}</span>
+              <span className="shrink-0">{getBadgeIcon()}</span>
+              <span className="hidden sm:inline">{activeBadge.label}</span>
               {isSimulatedTime && (
-                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse shrink-0" />
               )}
             </button>
 
