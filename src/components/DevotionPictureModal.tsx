@@ -459,9 +459,9 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
     const hasAction = Boolean(devotion.actionStep || devotion.practicalApplication);
 
     // Footer Height reservation & Single-Page Strict Constraint
-    const footerHeight = Math.round(230 * baseScale);
+    const footerHeight = Math.round(255 * baseScale);
     const footerY = H - innerMargin - footerHeight;
-    const maxContentY = footerY - Math.round(26 * baseScale);
+    const maxContentY = footerY - Math.round(28 * baseScale);
     const availableVerticalSpace = maxContentY - currentY;
 
     // Content length calculation
@@ -487,36 +487,36 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
     const bottomInnerW = bottomColW - Math.round(70 * baseScale);
 
     // Baseline executive publication font sizes (balanced, crisp, highly legible, strictly 1 page)
-    const baseScripFont = Math.round(36 * baseScale);
-    const baseIntroFont = Math.round(30 * baseScale);
-    const baseExpoFont = Math.round(30 * baseScale);
-    const baseActionFont = Math.round(28 * baseScale);
-    const basePrayerFont = Math.round(28 * baseScale);
-    const badgeFontSize = Math.round(22 * baseScale);
+    const baseScripFont = Math.round(32 * baseScale);
+    const baseIntroFont = Math.round(26 * baseScale);
+    const baseExpoFont = Math.round(26 * baseScale);
+    const baseActionFont = Math.round(24 * baseScale);
+    const basePrayerFont = Math.round(24 * baseScale);
+    const badgeFontSize = Math.round(20 * baseScale);
 
-    // AUTO-FIT SOLVER: Test scale from 1.10 down to 0.65 until all sections fit within availableVerticalSpace
-    let textScale = 1.0;
-    if (totalCharCount < 550) {
-      textScale = 1.12;
-    } else if (totalCharCount < 900) {
-      textScale = 1.04;
-    } else if (totalCharCount < 1400) {
-      textScale = 0.96;
-    } else if (totalCharCount < 2000) {
+    // AUTO-FIT SOLVER: Start at 0.95 and solve down smoothly so all content strictly fits on ONE page
+    let textScale = 0.95;
+    if (totalCharCount < 600) {
+      textScale = 0.95;
+    } else if (totalCharCount < 1000) {
       textScale = 0.88;
+    } else if (totalCharCount < 1600) {
+      textScale = 0.80;
+    } else if (totalCharCount < 2200) {
+      textScale = 0.72;
     } else {
-      textScale = 0.78;
+      textScale = 0.65;
     }
 
     if (activeFormat.id === "social-square") {
-      textScale *= 0.90;
+      textScale *= 0.88;
     }
 
     const numSections = 2 + (hasIntro ? 1 : 0) + (twoColBottom ? 1 : ((hasAction ? 1 : 0) + (hasPrayer ? 1 : 0)));
-    const baseGap = Math.round(22 * baseScale);
-    const totalGapsMin = (numSections - 1) * Math.round(16 * baseScale);
+    const baseGap = Math.round(18 * baseScale);
+    const totalGapsMin = (numSections - 1) * Math.round(14 * baseScale);
 
-    // Iterative fit test
+    // Iterative fit test down to 0.44 to guarantee complete single-page containment
     let scripLines: string[] = [];
     let introLines: string[] = [];
     let expoParaBlocks: { lines: string[]; isFormula: boolean; isHeading: boolean }[] = [];
@@ -524,30 +524,30 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
     let prayerLines: string[] = [];
 
     let scripFontSize = baseScripFont;
-    let scripLineH = Math.round(scripFontSize * 1.48);
+    let scripLineH = Math.round(scripFontSize * 1.45);
     let introFontSize = baseIntroFont;
-    let introLineH = Math.round(introFontSize * 1.50);
+    let introLineH = Math.round(introFontSize * 1.46);
     let expoFontSize = baseExpoFont;
-    let expoLineH = Math.round(expoFontSize * 1.52);
+    let expoLineH = Math.round(expoFontSize * 1.48);
     let actionFontSize = baseActionFont;
-    let actionLineH = Math.round(actionFontSize * 1.48);
+    let actionLineH = Math.round(actionFontSize * 1.45);
     let prayerFontSize = basePrayerFont;
-    let prayerLineH = Math.round(prayerFontSize * 1.50);
-    const expoParaGap = Math.round(12 * baseScale);
+    let prayerLineH = Math.round(prayerFontSize * 1.46);
+    const expoParaGap = Math.round(10 * baseScale);
 
     const rawExpoParas = devotion.reflection.split(/\n\n+/).filter(Boolean);
 
-    for (let testScale = textScale; testScale >= 0.62; testScale -= 0.04) {
+    for (let testScale = textScale; testScale >= 0.44; testScale -= 0.03) {
       scripFontSize = Math.round(baseScripFont * testScale);
-      scripLineH = Math.round(scripFontSize * 1.48);
+      scripLineH = Math.round(scripFontSize * 1.45);
       introFontSize = Math.round(baseIntroFont * testScale);
-      introLineH = Math.round(introFontSize * 1.50);
+      introLineH = Math.round(introFontSize * 1.46);
       expoFontSize = Math.round(baseExpoFont * testScale);
-      expoLineH = Math.round(expoFontSize * 1.52);
+      expoLineH = Math.round(expoFontSize * 1.48);
       actionFontSize = Math.round(baseActionFont * testScale);
-      actionLineH = Math.round(actionFontSize * 1.48);
+      actionLineH = Math.round(actionFontSize * 1.45);
       prayerFontSize = Math.round(basePrayerFont * testScale);
-      prayerLineH = Math.round(prayerFontSize * 1.50);
+      prayerLineH = Math.round(prayerFontSize * 1.46);
 
       ctx.font = `italic bold ${scripFontSize}px 'Georgia', serif`;
       scripLines = wrapText(ctx, `"${scriptureText}"`, innerTextW);
@@ -576,10 +576,10 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
       ctx.font = `italic 500 ${prayerFontSize}px 'Georgia', serif`;
       prayerLines = hasPrayer ? wrapText(ctx, `"${prayerContent}"`, twoColBottom ? bottomInnerW : innerTextW) : [];
 
-      const padTop = Math.round(56 * baseScale);
-      const padBottom = Math.round(26 * baseScale);
+      const padTop = Math.round(48 * baseScale);
+      const padBottom = Math.round(22 * baseScale);
 
-      const testScripH = padTop + scripLines.length * scripLineH + Math.round(36 * baseScale) + padBottom;
+      const testScripH = padTop + scripLines.length * scripLineH + Math.round(30 * baseScale) + padBottom;
       const testIntroH = hasIntro ? padTop + introLines.length * introLineH + padBottom : 0;
       const totalExpoLines = expoParaBlocks.reduce((acc, b) => acc + b.lines.length, 0);
       const testExpoH = padTop + totalExpoLines * expoLineH + Math.max(0, expoParaBlocks.length - 1) * expoParaGap + padBottom;
@@ -588,17 +588,18 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
       const testBottomH = twoColBottom ? Math.max(testActionH, testPrayerH) : testActionH + testPrayerH;
 
       const totalH = testScripH + testIntroH + testExpoH + testBottomH + totalGapsMin;
-      if (totalH <= availableVerticalSpace || testScale <= 0.64) {
+      if (totalH <= availableVerticalSpace) {
         textScale = testScale;
         break;
       }
+      textScale = testScale;
     }
 
     // Recalculate definitive natural heights with determined scale
-    const padTop = Math.round(56 * baseScale);
-    const padBottom = Math.round(26 * baseScale);
+    const padTop = Math.round(48 * baseScale);
+    const padBottom = Math.round(22 * baseScale);
 
-    const scripNaturalH = padTop + scripLines.length * scripLineH + Math.round(36 * baseScale) + padBottom;
+    const scripNaturalH = padTop + scripLines.length * scripLineH + Math.round(30 * baseScale) + padBottom;
     const introNaturalH = hasIntro ? padTop + introLines.length * introLineH + padBottom : 0;
     const totalExpoLinesCount = expoParaBlocks.reduce((acc, b) => acc + b.lines.length, 0);
     const expoNaturalH = padTop + totalExpoLinesCount * expoLineH + Math.max(0, expoParaBlocks.length - 1) * expoParaGap + padBottom;
@@ -619,39 +620,32 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
     let prayerBoxH = prayerNaturalH;
 
     if (remainingSpace > 0) {
-      // Gracefully expand cards and gaps without overflowing
-      const maxExtraGap = (numSections - 1) * Math.round(14 * baseScale);
-      const gapAdd = Math.min(remainingSpace * 0.35, maxExtraGap);
+      // Modest proportional gap expansion, avoiding any push towards footer
+      const maxExtraGap = (numSections - 1) * Math.round(8 * baseScale);
+      const gapAdd = Math.min(remainingSpace * 0.25, maxExtraGap);
       sectionGap = baseGap + Math.round(gapAdd / Math.max(1, numSections - 1));
 
-      const cardExtra = Math.min(remainingSpace - gapAdd, Math.round(300 * baseScale));
-      scripBoxH += Math.round(cardExtra * (hasIntro ? 0.15 : 0.20));
+      const cardExtra = Math.min(remainingSpace - gapAdd, Math.round(60 * baseScale));
+      scripBoxH += Math.round(cardExtra * 0.20);
       if (hasIntro) introBoxH += Math.round(cardExtra * 0.20);
-      expoBoxH += Math.round(cardExtra * (hasIntro ? 0.45 : 0.55));
+      expoBoxH += Math.round(cardExtra * 0.40);
       if (twoColBottom) {
-        const bottomAdd = Math.round(cardExtra * (hasIntro ? 0.20 : 0.25));
-        actionBoxH = Math.max(actionBoxH, prayerBoxH) + bottomAdd;
+        actionBoxH = Math.max(actionBoxH, prayerBoxH) + Math.round(cardExtra * 0.20);
         prayerBoxH = actionBoxH;
-      } else if (hasAction && hasPrayer) {
-        actionBoxH += Math.round(cardExtra * 0.12);
-        prayerBoxH += Math.round(cardExtra * 0.13);
-      } else if (hasAction) {
-        actionBoxH += Math.round(cardExtra * 0.25);
-      } else if (hasPrayer) {
-        prayerBoxH += Math.round(cardExtra * 0.25);
       }
     } else {
-      // Compress gaps slightly if tight
-      sectionGap = Math.max(Math.round(14 * baseScale), baseGap + Math.round(remainingSpace / Math.max(1, numSections)));
+      // Tighten gaps if snug
+      sectionGap = Math.max(Math.round(12 * baseScale), baseGap + Math.round(remainingSpace / Math.max(1, numSections)));
     }
 
     // Safety constraint: Cap each box height so currentY NEVER breaches maxContentY
     const enforceBoxFit = (boxH: number): number => {
-      const roomLeft = maxContentY - currentY;
-      return Math.max(Math.round(60 * baseScale), Math.min(boxH, roomLeft));
+      const roomLeft = Math.max(0, maxContentY - currentY);
+      return Math.min(boxH, roomLeft);
     };
 
     // 6. DRAW KEY SCRIPTURE BOX
+    scripBoxH = enforceBoxFit(scripBoxH);
     const scripBoxY = currentY;
     ctx.fillStyle = "#FAF6EE"; // Warm parchment card
     ctx.strokeStyle = "#DCC398";
@@ -693,6 +687,7 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
 
     // 6.5 DRAW INTRO & CENTRAL MESSAGE (If present)
     if (hasIntro && introBoxH > 0) {
+      introBoxH = enforceBoxFit(introBoxH);
       const inBoxY = currentY;
       ctx.fillStyle = "#FCF9F2"; // Warm highlighted intro card
       ctx.strokeStyle = "#C99E47";
@@ -725,6 +720,7 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
     }
 
     // 7. DRAW SCRIPTURAL EXPOSITION & SACRED MEDITATION SECTION
+    expoBoxH = enforceBoxFit(expoBoxH);
     const expoBoxY = currentY;
     ctx.fillStyle = "#FFFFFF"; // Clean contrast card
     ctx.strokeStyle = "#DCC398";
@@ -776,7 +772,7 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
     if (twoColBottom) {
       // Neat side-by-side 2-column layout matching the PDF document format
       const bottomRowY = currentY;
-      const bottomRowH = Math.max(prayerBoxH, actionBoxH);
+      const bottomRowH = enforceBoxFit(Math.max(prayerBoxH, actionBoxH));
 
       // Left Column: Guided Prayer of Faith
       const prayerCardX = cardX;
@@ -838,6 +834,7 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
     } else {
       // Stacked single column layout
       if (hasAction && actionBoxH > 0) {
+        actionBoxH = enforceBoxFit(actionBoxH);
         const actBoxY = currentY;
         ctx.fillStyle = "#FAF7F0";
         ctx.strokeStyle = "#DCC398";
@@ -869,6 +866,7 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
       }
 
       if (hasPrayer && prayerBoxH > 0) {
+        prayerBoxH = enforceBoxFit(prayerBoxH);
         const prayerBoxY = currentY;
         ctx.fillStyle = "#FCFAF5";
         ctx.strokeStyle = "#DCC398";

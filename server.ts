@@ -5,6 +5,7 @@ import os from "os";
 import crypto from "crypto";
 import { GoogleGenAI } from "@google/genai";
 import dotenv from "dotenv";
+import { getOfflineContentForRequest } from "./server_offline_content";
 
 dotenv.config();
 
@@ -367,16 +368,13 @@ function saveContentStore(store: any, updatedBy: string) {
   }
 }
 
-// Universal API Key resolver ensuring surrounding quotes are stripped and all alias variables checked
+// Universal API Key resolver ensuring surrounding quotes are stripped and server environment is authoritative
 function resolveServerApiKey(customApiKey?: string): string | null {
-  const candidate = (customApiKey && typeof customApiKey === "string" && customApiKey.trim().length > 0 && customApiKey !== "MY_GEMINI_API_KEY")
-    ? customApiKey.trim()
-    : process.env.GEMINI_API_KEY ||
-      process.env.API_KEY ||
-      process.env.GOOGLE_API_KEY ||
-      process.env.VITE_GEMINI_API_KEY ||
-      process.env.VITE_API_KEY ||
-      process.env.GEMINI_KEY;
+  const candidate = process.env.GEMINI_API_KEY ||
+    process.env.API_KEY ||
+    process.env.GOOGLE_API_KEY ||
+    process.env.GEMINI_KEY ||
+    (customApiKey && typeof customApiKey === "string" && customApiKey.trim().length > 0 && customApiKey !== "MY_GEMINI_API_KEY" ? customApiKey.trim() : null);
 
   if (!candidate || typeof candidate !== "string") return null;
   const stripped = candidate.replace(/^["']|["']$/g, "").trim();
@@ -402,18 +400,17 @@ function getGeminiClient(customApiKey?: string): GoogleGenAI | null {
   });
 }
 
-// In-memory cache for generated AI responses to conserve token quota
+// In-memory cache for generated AI responses to conserve token quota (6 hour TTL)
 const AI_RESPONSE_CACHE = new Map<string, { text: string; modelUsed: string; timestamp: number }>();
 const AI_CACHE_TTL_MS = 1000 * 60 * 60 * 6; // 6 hours cache
 
-// Valid modern dynamic models according to Gemini API specification
+// Server-side in-flight promise deduplication to prevent duplicate concurrent API executions
+const SERVER_IN_FLIGHT_GENERATIONS = new Map<string, Promise<any>>();
+
+// Valid modern stable production models: primary stable model + single backup (no runaway cascade)
 const GEMINI_MODELS_CASCADE = [
-  "gemini-3.6-flash",
-  "gemini-3.5-flash-lite",
-  "gemini-flash-lite-latest",
-  "gemini-3.1-flash-lite",
-  "gemini-3.8-flash",
-  "gemini-flash-latest",
+  "gemini-2.5-flash",
+  "gemini-2.5-flash-lite",
 ];
 
 // Production & Vercel Diagnostic Endpoint: Check environment and Gemini API key status without exposing secrets
@@ -830,12 +827,24 @@ async function generateWithGeminiCascade(options: {
       const errMsg = formatGeminiErrorMessage(err);
       lastErrorMessage = errMsg;
       const isQuota = isQuotaExceededError(err);
-      if (isQuota) lastIsQuota = true;
+      if (isQuota) {
+        lastIsQuota = true;
+        quotaCooldownUntil = Date.now() + 60000;
+        logAiDiagnostic(5, "GEMINI REQUEST FAILED WITH QUOTA 429 - STOPPING CASCADE IMMEDIATELY", {
+          requestId: reqId,
+          category,
+          model,
+          errorCategory: "QUOTA_EXCEEDED",
+          errorMessage: errMsg,
+          retryCount
+        });
+        break; // STOP CASCADE IMMEDIATELY: project quota applies across all models
+      }
       logAiDiagnostic(5, "GEMINI REQUEST FAILED ON MODEL", {
         requestId: reqId,
         category,
         model,
-        errorCategory: isQuota ? "QUOTA_EXCEEDED" : "API_ERROR",
+        errorCategory: "API_ERROR",
         errorMessage: errMsg,
         retryCount
       });
@@ -994,12 +1003,24 @@ async function streamGeminiCascade(options: {
       const errMsg = formatGeminiErrorMessage(err);
       lastErrorMessage = errMsg;
       const isQuota = isQuotaExceededError(err);
-      if (isQuota) lastIsQuota = true;
+      if (isQuota) {
+        lastIsQuota = true;
+        quotaCooldownUntil = Date.now() + 60000;
+        logAiDiagnostic(5, "GEMINI STREAM FAILED WITH QUOTA 429 - STOPPING CASCADE IMMEDIATELY", {
+          requestId: reqId,
+          category,
+          model,
+          errorCategory: "QUOTA_EXCEEDED",
+          errorMessage: errMsg,
+          retryCount
+        });
+        break; // STOP CASCADE IMMEDIATELY: project quota applies across all models
+      }
       logAiDiagnostic(5, "GEMINI STREAM FAILED ON MODEL", {
         requestId: reqId,
         category,
         model,
-        errorCategory: isQuota ? "QUOTA_EXCEEDED" : "API_ERROR",
+        errorCategory: "API_ERROR",
         errorMessage: errMsg,
         retryCount
       });
@@ -2622,26 +2643,51 @@ Format as JSON with keys:
     const topP = generationConfig?.topP ?? 0.95;
     const maxTokens = generationConfig?.maxOutputTokens ?? 2048;
 
-    const result = await generateWithGeminiCascade({
-      prompt: finalPrompt,
-      systemInstruction: finalSystem,
-      responseMimeType,
-      temperature: temp,
-      topP: topP,
-      maxOutputTokens: maxTokens,
-      apiKey,
-    });
+    // 1. Normalized server-side cache check (ignores client timestamp/nonce)
+    const normalizedPromptKey = finalPrompt.trim().toLowerCase();
+    const cacheKey = `gen__${normalizedPromptKey}__${finalSystem.trim().toLowerCase()}`;
+    const cached = AI_RESPONSE_CACHE.get(cacheKey);
+    if (cached && (Date.now() - cached.timestamp < AI_CACHE_TTL_MS)) {
+      console.log(`[AI GENERATE CACHE HIT] ⚡ Serving cached response`);
+      const parsed = safeJsonParse(cached.text);
+      return res.json({
+        success: true,
+        text: cached.text,
+        data: parsed || { text: cached.text, reflection: cached.text },
+        response: cached.text,
+        modelUsed: cached.modelUsed,
+        isCached: true
+      });
+    }
+
+    // 2. Server-side in-flight request deduplication to prevent concurrent duplicate API calls
+    let inFlightPromise = SERVER_IN_FLIGHT_GENERATIONS.get(cacheKey);
+    if (!inFlightPromise) {
+      inFlightPromise = generateWithGeminiCascade({
+        prompt: finalPrompt,
+        systemInstruction: finalSystem,
+        responseMimeType,
+        temperature: temp,
+        topP: topP,
+        maxOutputTokens: maxTokens,
+        apiKey,
+      }).finally(() => {
+        SERVER_IN_FLIGHT_GENERATIONS.delete(cacheKey);
+      });
+      SERVER_IN_FLIGHT_GENERATIONS.set(cacheKey, inFlightPromise);
+    }
+
+    const result = await inFlightPromise;
 
     if (result && result.text) {
-      let parsedJson = null;
-      try {
-        let cleanStr = result.text.trim();
-        if (cleanStr.startsWith("```json")) cleanStr = cleanStr.replace(/^```json\s*/i, "").replace(/\s*```$/, "");
-        else if (cleanStr.startsWith("```")) cleanStr = cleanStr.replace(/^```\s*/i, "").replace(/\s*```$/, "");
-        parsedJson = JSON.parse(cleanStr.trim());
-      } catch {
-        parsedJson = null;
-      }
+      // Store in server cache
+      AI_RESPONSE_CACHE.set(cacheKey, {
+        text: result.text,
+        modelUsed: result.modelUsed,
+        timestamp: Date.now()
+      });
+
+      let parsedJson = safeJsonParse(result.text);
 
       console.log(`[AI SUCCESS] Model ${result.modelUsed} in ${result.durationMs}ms`);
       return res.json({
@@ -2654,6 +2700,22 @@ Format as JSON with keys:
     }
 
     if (!result || !("text" in result) || !(result as any).text) {
+      // If quota exceeded or cascade exhausted, seamlessly provide scripture-grounded offline content
+      if ((result as any)?.isQuota) {
+        console.warn("[AI] Quota reached, serving canonical scripture-grounded fallback");
+        const offlineData = getOfflineContentForRequest(actionType || category || "general", req.body || {});
+        const offlineText = typeof offlineData === "string" ? offlineData : JSON.stringify(offlineData);
+        return res.json({
+          success: true,
+          text: offlineText,
+          data: offlineData,
+          response: offlineText,
+          modelUsed: "canonical-scripture-library",
+          isOfflineFallback: true,
+          isQuota: true
+        });
+      }
+
       console.warn("AI Cascade returned null or error.");
       const errorMsg = (result as any)?.error || "AI generation could not be completed right now. Please try again.";
       logAiDiagnostic(8, "GENERATION FAILED - NO TEXT RETURNED", { requestId: reqId, category: actionType || "general", status: 503, error: errorMsg });
@@ -3098,17 +3160,14 @@ Format as JSON with keys: id, challengeTitle, category, rootDeception, scriptura
     const topP = generationConfig?.topP ?? 0.95;
     const maxTokens = generationConfig?.maxOutputTokens ?? (fastMode ? 1600 : 3000);
 
-    // RULE 1: If dynamic timestamp, nonce, or no-cache header is provided, bypass cache completely
-    const isDynamic = !!(req.body.timestamp || req.body._nonce || req.headers["cache-control"]?.includes("no-cache"));
-    const cacheKey = `${finalPrompt}__${finalSystem}__${fastMode ? "fast" : "deep"}`.toLowerCase();
-    if (!isDynamic) {
-      const cached = AI_RESPONSE_CACHE.get(cacheKey);
-      if (cached && (Date.now() - cached.timestamp < AI_CACHE_TTL_MS)) {
-        console.log(`[STREAM CACHE HIT] ⚡ Sending cached data immediately.`);
-        res.write(`data: ${JSON.stringify({ chunk: cached.text, fullText: cached.text, done: true, data: safeJsonParse(cached.text) })}\n\n`);
-        res.write("data: [DONE]\n\n");
-        return res.end();
-      }
+    // Normalized server-side cache check (ignores cache-busting nonces or timestamps)
+    const cacheKey = `stream__${finalPrompt.trim().toLowerCase()}__${finalSystem.trim().toLowerCase()}__${fastMode ? "fast" : "deep"}`;
+    const cached = AI_RESPONSE_CACHE.get(cacheKey);
+    if (cached && (Date.now() - cached.timestamp < AI_CACHE_TTL_MS)) {
+      console.log(`[STREAM CACHE HIT] ⚡ Sending cached data immediately.`);
+      res.write(`data: ${JSON.stringify({ chunk: cached.text, fullText: cached.text, done: true, data: safeJsonParse(cached.text), isCached: true })}\n\n`);
+      res.write("data: [DONE]\n\n");
+      return res.end();
     }
 
     let streamAccumulator = "";
@@ -3178,22 +3237,37 @@ Format as JSON with keys: id, challengeTitle, category, rootDeception, scriptura
       }
       res.write(`data: ${JSON.stringify({ done: true, fullText: streamAccumulator, data: parsedJson })}\n\n`);
     } else {
-      console.warn("[STREAM] Stream accumulator empty.");
-      const errorMsg = (result as any)?.error || "Gemini API is temporarily busy or rate limited. Please wait a moment and click Retry.";
-      const diagnostic = {
-        requestId: streamReqId,
-        category: req.body?.actionType || "general",
-        stage: "Gemini Cascade Streaming",
-        status: 503,
-        errorType: errorMsg
-      };
-      logAiDiagnostic(1, "STREAM EMPTY OUTPUT", diagnostic);
-      res.write(`data: ${JSON.stringify({
-        error: "AI_GENERATION_FAILED",
-        message: errorMsg,
-        requestId: streamReqId,
-        diagnostic
-      })}\n\n`);
+      // Check if this was a quota exhaustion: deliver rich canonical fallback
+      if ((result as any)?.isQuota) {
+        console.warn("[STREAM] Quota exceeded, streaming canonical scripture-grounded offline content");
+        const offlineData = getOfflineContentForRequest(act || category || "general", req.body || {});
+        const offlineText = typeof offlineData === "string" ? offlineData : JSON.stringify(offlineData);
+        res.write(`data: ${JSON.stringify({
+          chunk: offlineText,
+          fullText: offlineText,
+          done: true,
+          data: offlineData,
+          isOfflineFallback: true,
+          isQuota: true
+        })}\n\n`);
+      } else {
+        console.warn("[STREAM] Stream accumulator empty.");
+        const errorMsg = (result as any)?.error || "Gemini API is temporarily busy or rate limited. Please wait a moment and click Retry.";
+        const diagnostic = {
+          requestId: streamReqId,
+          category: req.body?.actionType || "general",
+          stage: "Gemini Cascade Streaming",
+          status: 503,
+          errorType: errorMsg
+        };
+        logAiDiagnostic(1, "STREAM EMPTY OUTPUT", diagnostic);
+        res.write(`data: ${JSON.stringify({
+          error: "AI_GENERATION_FAILED",
+          message: errorMsg,
+          requestId: streamReqId,
+          diagnostic
+        })}\n\n`);
+      }
     }
 
     res.write("data: [DONE]\n\n");
@@ -3201,22 +3275,33 @@ Format as JSON with keys: id, challengeTitle, category, rootDeception, scriptura
   } catch (streamErr: any) {
     console.error("[STREAM ROUTE ERROR]", streamErr);
     const isQuota = isQuotaExceededError(streamErr);
-    const errorType = isQuota
-      ? "Quota / Rate Limit Exceeded (429)"
-      : (streamErr?.status ? `HTTP ${streamErr.status}` : (streamErr?.message || "Internal generation error"));
+    if (isQuota) {
+      console.warn("[STREAM ERROR] Quota exceeded in catch, returning canonical fallback");
+      const offlineData = getOfflineContentForRequest(req.body?.actionType || req.body?.category || "general", req.body || {});
+      const offlineText = typeof offlineData === "string" ? offlineData : JSON.stringify(offlineData);
+      res.write(`data: ${JSON.stringify({
+        chunk: offlineText,
+        fullText: offlineText,
+        done: true,
+        data: offlineData,
+        isOfflineFallback: true,
+        isQuota: true
+      })}\n\n`);
+      res.write("data: [DONE]\n\n");
+      return res.end();
+    }
+    const errorType = streamErr?.status ? `HTTP ${streamErr.status}` : (streamErr?.message || "Internal generation error");
     const diagnostic = {
       requestId: streamReqId,
       category: req.body?.actionType || "general",
       stage: "Gemini Cascade Streaming",
-      status: streamErr?.status || (isQuota ? 429 : 500),
+      status: streamErr?.status || 500,
       errorType
     };
     logAiDiagnostic(1, "STREAM ROUTE ERROR", diagnostic);
     res.write(`data: ${JSON.stringify({
       error: "AI_GENERATION_FAILED",
-      message: isQuota
-        ? "Gemini API rate limit reached (429). Please wait a moment and click Retry."
-        : (streamErr?.message || "AI generation could not be completed right now. Please click Retry."),
+      message: streamErr?.message || "AI generation could not be completed right now. Please click Retry.",
       requestId: streamReqId,
       diagnostic
     })}\n\n`);

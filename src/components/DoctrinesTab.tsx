@@ -53,7 +53,7 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
   onToggleSpeak,
   creatorProfile
 }) => {
-  const [activeViewMode, setActiveViewMode] = useState<"tenets" | "systematic500" | "pillars" | "askAi">("systematic500");
+  const [activeViewMode, setActiveViewMode] = useState<"tenets" | "systematic500" | "pillars" | "askAi">("pillars");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedTopicDivision, setSelectedTopicDivision] = useState<"all" | "part1" | "part2" | "part3" | "part4" | "part5">("all");

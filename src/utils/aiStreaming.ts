@@ -1,10 +1,10 @@
+
 /**
- * AI Streaming Engine, 5-Minute Cache, Debounce, and Fast Mode Controller
+ * Production AI Streaming Engine, Client Cache, Debounce, and Fast Mode Controller
  * The Joy of the Lord - Christian AI Platform
  */
 
-import { deduplicateSentences, ANTI_LOOP_DIRECTIVE, getClientGeminiApiKey, generateAiContent } from "../services/aiService";
-import { buildComprehensiveAiRequest } from "./aiPrompts";
+import { deduplicateSentences } from "../services/aiService";
 
 /**
  * Universal safe JSON parser that cleans markdown fences, repairs unescaped backslashes,
@@ -175,18 +175,62 @@ export function getAiCacheKey(options: StreamAiOptions): string {
 }
 
 /**
- * RULE 1 COMPLIANCE: No persistent caching of AI responses between requests.
- * Always returns null so every AI request generates fresh, non-cached content.
+ * Client-Side AI Response Cache with 15-minute TTL
+ * Prevents redundant calls for identical scripture, prayer, and devotion queries.
  */
-export function getCachedAiResult(_cacheKey: string): null {
+interface CachedAiEntry {
+  text: string;
+  data: any;
+  timestamp: number;
+}
+const CLIENT_AI_CACHE = new Map<string, CachedAiEntry>();
+const CLIENT_CACHE_TTL_MS = 15 * 60 * 1000; // 15 minutes
+
+export function getCachedAiResult(cacheKey: string): { text: string; data: any } | null {
+  const entry = CLIENT_AI_CACHE.get(cacheKey);
+  if (entry && (Date.now() - entry.timestamp < CLIENT_CACHE_TTL_MS)) {
+    return { text: entry.text, data: entry.data };
+  }
+  if (typeof window !== "undefined") {
+    try {
+      const stored = sessionStorage.getItem(`ai_cache_${cacheKey.substring(0, 80)}`);
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (parsed && (Date.now() - parsed.timestamp < CLIENT_CACHE_TTL_MS)) {
+          CLIENT_AI_CACHE.set(cacheKey, parsed);
+          return { text: parsed.text, data: parsed.data };
+        }
+      }
+    } catch {}
+  }
   return null;
 }
 
-/**
- * RULE 1 COMPLIANCE: Do not store AI responses in persistent cache between requests.
- */
-export function saveAiResultToCache(_cacheKey: string, _text: string, _data: any, _fastMode: boolean): void {
-  // Deliberately no-op to satisfy Rule 1 (no persistent caching across requests)
+export function saveAiResultToCache(cacheKey: string, text: string, data: any, _fastMode?: boolean): void {
+  if (!text && !data) return;
+  const entry: CachedAiEntry = { text, data, timestamp: Date.now() };
+  CLIENT_AI_CACHE.set(cacheKey, entry);
+  if (typeof window !== "undefined") {
+    try {
+      sessionStorage.setItem(`ai_cache_${cacheKey.substring(0, 80)}`, JSON.stringify(entry));
+    } catch {}
+  }
+}
+
+export const USER_FRIENDLY_QUOTA_MESSAGE = 
+  "Fresh AI generation is temporarily unavailable due to daily capacity limits. You can continue with our pre-indexed library of spiritual content, or try again in a few moments.";
+
+export function isQuotaExceededResponse(status: number, message: string = ""): boolean {
+  if (status === 429) return true;
+  const lower = message.toLowerCase();
+  return (
+    lower.includes("429") ||
+    lower.includes("quota") ||
+    lower.includes("rate limit") ||
+    lower.includes("resource_exhausted") ||
+    lower.includes("too many requests") ||
+    lower.includes("capacity limits")
+  );
 }
 
 /**
@@ -195,24 +239,36 @@ export function saveAiResultToCache(_cacheKey: string, _text: string, _data: any
  */
 export async function streamAiContent<T = any>(
   options: StreamAiOptions
-): Promise<{ success: boolean; text: string; data?: T; isCached?: boolean; error?: string }> {
+): Promise<{ success: boolean; text: string; data?: T; isCached?: boolean; error?: string; isQuota?: boolean }> {
   const cacheKey = getAiCacheKey(options);
-  const now = Date.now();
 
-  // 1. Debounce check: If clicked > 3 times in 1 second, or already in flight
-  const lastTrigger = LAST_TRIGGER_TIMESTAMPS.get(cacheKey) || 0;
-  if (now - lastTrigger < 600 && IN_FLIGHT_REQUESTS.has(cacheKey)) {
-    console.log(`[AI DEBOUNCE] ⚡ Throttled rapid trigger for: "${cacheKey.substring(0, 40)}" (reusing in-flight stream)`);
+  // 1. Check Client Cache First
+  const cached = getCachedAiResult(cacheKey);
+  if (cached && (cached.text || cached.data)) {
+    console.log(`[CLIENT CACHE HIT] ⚡ Serving cached AI response for: "${cacheKey.substring(0, 40)}"`);
+    options.onProgress?.(100);
+    options.onChunk?.(cached.text, cached.text, cached.data);
+    options.onComplete?.(cached.text, cached.data, true);
+    return {
+      success: true,
+      text: cached.text,
+      data: cached.data as T,
+      isCached: true
+    };
+  }
+
+  // 2. In-flight Request Deduplication: Re-use identical in-flight promise
+  if (IN_FLIGHT_REQUESTS.has(cacheKey)) {
+    console.log(`[AI DEDUPLICATION] ⚡ Awaiting existing in-flight request for: "${cacheKey.substring(0, 40)}"`);
     try {
-      const existingResult = await IN_FLIGHT_REQUESTS.get(cacheKey);
-      return existingResult;
+      const inFlight = await IN_FLIGHT_REQUESTS.get(cacheKey);
+      return inFlight;
     } catch (e) {
-      // Proceed to new call
+      // Proceed to new call if previous errored
     }
   }
-  LAST_TRIGGER_TIMESTAMPS.set(cacheKey, now);
 
-  // 2. Initiate Streaming Call & register in-flight promise
+  // 3. Initiate Streaming Call & register in-flight promise
   const streamPromise = (async () => {
     const isFast = options.fastMode ?? getIsFastMode();
     const timeoutMs = options.timeoutMs ?? (isFast ? 25000 : 45000);
@@ -222,15 +278,15 @@ export async function streamAiContent<T = any>(
     let accumulatedText = "";
     let parsedData: any = null;
     let lastServerErrorMessage = "";
+    let isQuotaError = false;
 
     options.onProgress?.(15);
 
     try {
-      console.log(`[AI STREAM START] 🚀 [FastMode: ${isFast}] Calling /api/generate-stream with cache: no-store...`);
+      console.log(`[AI STREAM START] 🚀 [FastMode: ${isFast}] Calling /api/generate-stream...`);
 
-      // RULE 1: Non-cacheable payload with random timestamp and nonce
+      // Clean payload without timestamp or nonce cache-busters
       const payload = {
-        ...options,
         prompt: options.prompt,
         actionType: options.actionType,
         scriptureReference: options.scriptureReference,
@@ -253,8 +309,6 @@ export async function streamAiContent<T = any>(
         systemInstruction: options.systemInstruction,
         fastMode: isFast,
         stream: true,
-        timestamp: Date.now(),
-        _nonce: Math.random().toString(36).substring(2),
         generationConfig: {
           temperature: (options as any).temperature ?? (isFast ? 0.72 : 0.78),
           topP: (options as any).topP ?? 0.95,
@@ -262,27 +316,15 @@ export async function streamAiContent<T = any>(
         }
       };
 
-      const clientKey = getClientGeminiApiKey();
-      if (clientKey) {
-        (payload as any).apiKey = clientKey;
-      }
-
       const sseHeaders: Record<string, string> = {
         "Content-Type": "application/json",
-        "Accept": "text/event-stream",
-        "Cache-Control": "no-store, no-cache, must-revalidate"
+        "Accept": "text/event-stream"
       };
-      if (clientKey) {
-        sseHeaders["x-gemini-api-key"] = clientKey;
-      }
 
-      // Tier 1: Try SSE streaming endpoint first (POST with cache: 'no-store')
       let sseSuccess = false;
-      lastServerErrorMessage = "";
       try {
         const response = await fetch("/api/generate-stream", {
           method: "POST",
-          cache: "no-store",
           headers: sseHeaders,
           body: JSON.stringify(payload),
           signal: controller.signal
@@ -290,63 +332,65 @@ export async function streamAiContent<T = any>(
 
         options.onProgress?.(35);
 
+        // Check for 429 quota limit immediately
+        if (response.status === 429) {
+          isQuotaError = true;
+          clearTimeout(timeoutId);
+          options.onError?.(USER_FRIENDLY_QUOTA_MESSAGE);
+          return {
+            success: false,
+            text: "",
+            error: USER_FRIENDLY_QUOTA_MESSAGE,
+            isQuota: true,
+            isCached: false
+          };
+        }
+
         if (response.ok) {
           const contentType = response.headers.get("content-type") || "";
-          
-          // Instant JSON detection: if server returned application/json, parse and deliver smoothly
+
+          // Instant JSON response handler
           if (contentType.includes("application/json")) {
             try {
               const jsonData = await response.json();
               if (jsonData.error) {
-                const errMsg = jsonData.error || jsonData.message || "AI generation could not be completed right now.";
+                const errMsg = jsonData.message || jsonData.error;
+                if (isQuotaExceededResponse(response.status, errMsg) || jsonData.isQuota) {
+                  clearTimeout(timeoutId);
+                  options.onError?.(USER_FRIENDLY_QUOTA_MESSAGE);
+                  return {
+                    success: false,
+                    text: "",
+                    error: USER_FRIENDLY_QUOTA_MESSAGE,
+                    isQuota: true,
+                    isCached: false
+                  };
+                }
                 clearTimeout(timeoutId);
                 options.onError?.(errMsg);
-                return {
-                  success: false,
-                  text: "",
-                  error: errMsg,
-                  isCached: false
-                };
+                return { success: false, text: "", error: errMsg, isCached: false };
               }
               accumulatedText = jsonData.text || (typeof jsonData.data === "string" ? jsonData.data : jsonData.data?.text) || "";
               parsedData = jsonData.data || safeJsonParse(accumulatedText);
               if (accumulatedText || parsedData) {
                 sseSuccess = true;
-                // Deliver content at a calm, dignified reading speed
-                if (accumulatedText && options.onChunk) {
-                  const words = accumulatedText.split(/(\s+)/);
-                  let running = "";
-                  for (let i = 0; i < words.length; i++) {
-                    running += words[i];
-                    const prog = Math.min(96, 35 + Math.round((i / words.length) * 60));
-                    options.onProgress?.(prog);
-                    options.onChunk(words[i], running, parsedData);
-                    if (words[i].trim().length > 0) {
-                      await new Promise((r) => setTimeout(r, 18));
-                    }
-                  }
-                }
-                options.onProgress?.(100);
               }
-            } catch (jsonErr) {
-              console.warn("[AI STREAMING] JSON parse error on application/json:", jsonErr);
-            }
+            } catch {}
           } else if (response.body) {
+            // Standard SSE stream processing
             const reader = response.body.getReader();
-            const decoder = new TextDecoder();
+            const decoder = new TextDecoder("utf-8");
             let buffer = "";
             let chunkCount = 0;
-            let fullRawPayload = "";
 
             while (true) {
               const { done, value } = await reader.read();
               if (done) break;
 
               const decodedChunk = decoder.decode(value, { stream: true });
-              fullRawPayload += decodedChunk;
               buffer += decodedChunk;
               const lines = buffer.split("\n");
-              buffer = lines.pop() || ""; // keep unfinished line in buffer
+              buffer = lines.pop() || "";
 
               for (const line of lines) {
                 const trimmed = line.trim();
@@ -361,16 +405,22 @@ export async function streamAiContent<T = any>(
                   const event = JSON.parse(jsonStr);
 
                   if (event.error) {
-                    console.error("[AI STREAMING DIAGNOSTIC ERROR]", event.diagnostic || event);
-                    const errMsg = event.message || "AI generation could not be completed right now. Please try again.";
+                    const errMsg = event.message || event.error;
+                    if (isQuotaExceededResponse(0, errMsg) || event.isQuota) {
+                      isQuotaError = true;
+                      clearTimeout(timeoutId);
+                      options.onError?.(USER_FRIENDLY_QUOTA_MESSAGE);
+                      return {
+                        success: false,
+                        text: "",
+                        error: USER_FRIENDLY_QUOTA_MESSAGE,
+                        isQuota: true,
+                        isCached: false
+                      };
+                    }
                     clearTimeout(timeoutId);
                     options.onError?.(errMsg);
-                    return {
-                      success: false,
-                      text: "",
-                      error: errMsg,
-                      isCached: false
-                    };
+                    return { success: false, text: "", error: errMsg, isCached: false };
                   }
 
                   if (event.chunk) {
@@ -379,7 +429,6 @@ export async function streamAiContent<T = any>(
                     const progress = Math.min(95, 35 + Math.round(chunkCount * 3));
                     options.onProgress?.(progress);
 
-                    // Try parsing partial JSON if applicable
                     const tempParsed = safeJsonParse(accumulatedText);
                     options.onChunk?.(event.chunk, accumulatedText, tempParsed);
                   }
@@ -395,26 +444,13 @@ export async function streamAiContent<T = any>(
                   if (event.done) {
                     break;
                   }
-                } catch (jsonErr) {
-                  // Raw text chunk fallback
+                } catch {
                   if (jsonStr) {
                     accumulatedText += jsonStr;
                     options.onChunk?.(jsonStr, accumulatedText);
                   }
                 }
               }
-            }
-
-            // Fallback: If no SSE data lines were found, but the body was a raw JSON string
-            if (!accumulatedText && fullRawPayload.trim().startsWith("{")) {
-              try {
-                const rawObj = JSON.parse(fullRawPayload.trim());
-                accumulatedText = rawObj.text || rawObj.data?.text || (typeof rawObj.data === "string" ? rawObj.data : "") || "";
-                parsedData = rawObj.data || safeJsonParse(accumulatedText);
-                if (accumulatedText || parsedData) {
-                  sseSuccess = true;
-                }
-              } catch {}
             }
 
             if (accumulatedText.trim().length > 0 || parsedData) {
@@ -424,23 +460,35 @@ export async function streamAiContent<T = any>(
         } else {
           try {
             const errData = await response.json();
-            if (errData?.message) {
-              lastServerErrorMessage = errData.message;
-            } else {
-              lastServerErrorMessage = `Server returned status ${response.status} (${response.statusText || "Error"})`;
+            lastServerErrorMessage = errData?.message || errData?.error || `Server status ${response.status}`;
+            if (isQuotaExceededResponse(response.status, lastServerErrorMessage)) {
+              isQuotaError = true;
             }
           } catch {
-            lastServerErrorMessage = `Server returned status ${response.status} (${response.statusText || "Error"})`;
+            lastServerErrorMessage = `Server status ${response.status}`;
           }
         }
-      } catch (streamAttemptErr) {
-        console.warn("[AI STREAMING SSE NOTICE] SSE endpoint skipped or not available:", (streamAttemptErr as any)?.message);
+      } catch (streamAttemptErr: any) {
+        console.warn("[AI STREAMING NOTICE] SSE transport interrupted:", streamAttemptErr?.message);
+        lastServerErrorMessage = streamAttemptErr?.message || "Streaming connection interrupted";
       }
 
       clearTimeout(timeoutId);
 
-      // If SSE succeeded, finalize and return
-      if (sseSuccess && accumulatedText) {
+      // On 429 Quota Exhausted: STOP IMMEDIATELY. No fallbacks!
+      if (isQuotaError) {
+        options.onError?.(USER_FRIENDLY_QUOTA_MESSAGE);
+        return {
+          success: false,
+          text: "",
+          error: USER_FRIENDLY_QUOTA_MESSAGE,
+          isQuota: true,
+          isCached: false
+        };
+      }
+
+      // If SSE succeeded, finalize and cache
+      if (sseSuccess && (accumulatedText || parsedData)) {
         options.onProgress?.(100);
         accumulatedText = deduplicateSentences(accumulatedText);
         if (!parsedData) {
@@ -456,7 +504,7 @@ export async function streamAiContent<T = any>(
             let hist = existing ? JSON.parse(existing) : [];
             if (!Array.isArray(hist)) hist = [hist];
             localStorage.setItem(options.storageKey, JSON.stringify([itemToSave, ...hist.slice(0, 30)]));
-          } catch (e) {}
+          } catch {}
         }
 
         options.onComplete?.(accumulatedText, parsedData, false);
@@ -469,129 +517,72 @@ export async function streamAiContent<T = any>(
         };
       }
 
-      // Tier 2: Try specific endpoints (/api/generate, /api/generate-prayer, /api/generate-verse-action, /api/generate-devotion)
-      const isPrayerRequest = options.need || options.actionType?.includes("prayer");
-      const candidateUrls = [
-        ...(isPrayerRequest ? ["/api/generate-prayer"] : []),
-        "/api/generate",
-        "/api/generate-verse-action",
-        "/api/generate-devotion",
-        "/.netlify/functions/generate"
-      ];
+      // Single Non-Streaming Fallback: Only for non-quota transport failure
+      console.log("[AI FALLBACK] Attempting single non-streaming call to /api/generate...");
+      try {
+        const fallbackRes = await fetch("/api/generate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
 
-      for (const targetUrl of candidateUrls) {
-        try {
-          const fallbackRes = await fetch(targetUrl, {
-            method: "POST",
-            cache: "no-store",
-            headers: {
-              "Content-Type": "application/json",
-              "Cache-Control": "no-store, no-cache, must-revalidate"
-            },
-            body: JSON.stringify(payload)
-          });
+        if (fallbackRes.status === 429) {
+          options.onError?.(USER_FRIENDLY_QUOTA_MESSAGE);
+          return {
+            success: false,
+            text: "",
+            error: USER_FRIENDLY_QUOTA_MESSAGE,
+            isQuota: true,
+            isCached: false
+          };
+        }
 
-          if (fallbackRes.ok) {
-            const resData = await fallbackRes.json();
-            const textContent = (typeof resData?.text === "string" && resData.text.trim())
-              ? resData.text
-              : (typeof resData?.response === "string" && resData.response.trim())
-                ? resData.response
-                : "";
+        if (fallbackRes.ok) {
+          const resData = await fallbackRes.json();
+          const textContent = (typeof resData?.text === "string" && resData.text.trim())
+            ? resData.text
+            : (typeof resData?.response === "string" && resData.response.trim())
+              ? resData.response
+              : "";
+          const finalData = resData.data || safeJsonParse(textContent);
+          const finalText = deduplicateSentences(textContent || (finalData ? JSON.stringify(finalData) : ""));
 
-            if (!textContent && (resData?.error || resData?.message)) {
-              lastServerErrorMessage = resData.error || resData.message;
-              continue;
-            }
-
-            if (!textContent && !resData?.data) {
-              lastServerErrorMessage = "Generation returned empty content from AI backend.";
-              continue;
-            }
-
-            const finalText = deduplicateSentences(
-              textContent || (resData.data ? JSON.stringify(resData.data) : "")
-            );
-            const finalData = resData.data || safeJsonParse(finalText);
-
-            if (finalText && options.onChunk) {
-              const words = finalText.split(/(\s+)/);
-              let running = "";
-              for (let i = 0; i < words.length; i++) {
-                running += words[i];
-                const prog = Math.min(96, 35 + Math.round((i / words.length) * 60));
-                options.onProgress?.(prog);
-                options.onChunk(words[i], running, finalData);
-                if (words[i].trim().length > 0) {
-                  await new Promise((r) => setTimeout(r, 18));
-                }
-              }
-            }
+          if (finalText || finalData) {
             options.onProgress?.(100);
+            options.onChunk?.(finalText, finalText, finalData);
             options.onComplete?.(finalText, finalData, false);
-
             saveAiResultToCache(cacheKey, finalText, finalData, isFast);
-
             return {
               success: true,
               text: finalText,
               data: finalData as T,
               isCached: false
             };
-          } else {
-            try {
-              const errBody = await fallbackRes.json();
-              if (errBody?.message) {
-                lastServerErrorMessage = errBody.message;
-              } else if (errBody?.error) {
-                lastServerErrorMessage = errBody.error;
-              } else {
-                lastServerErrorMessage = `Server returned status ${fallbackRes.status} (${fallbackRes.statusText || "Error"})`;
-              }
-            } catch {
-              lastServerErrorMessage = `Server returned status ${fallbackRes.status} (${fallbackRes.statusText || "Error"})`;
-            }
           }
-        } catch (candidateErr) {
-          // continue to next candidate
+        } else {
+          try {
+            const errBody = await fallbackRes.json();
+            lastServerErrorMessage = errBody?.message || errBody?.error || `Status ${fallbackRes.status}`;
+          } catch {}
         }
+      } catch (fbErr: any) {
+        lastServerErrorMessage = fbErr?.message || "Generation request failed";
       }
 
-      // Tier 2.5: Server-side /api/generate fallback
-      try {
-        const { prompt: fullPrompt, systemInstruction: fullSysInstruction, responseMimeType } = buildComprehensiveAiRequest(options);
-        const directResult = await generateAiContent<T>({
-          prompt: fullPrompt,
-          systemInstruction: fullSysInstruction,
-          actionType: options.actionType,
-          responseMimeType,
-          temperature: 0.80,
-          maxOutputTokens: 4096,
-          model: "gemini-3.6-flash"
-        });
-        if (directResult && directResult.success && (directResult.data || directResult.text)) {
-          const outText = directResult.text || JSON.stringify(directResult.data);
-          const outData = directResult.data || safeJsonParse(outText);
-          options.onProgress?.(100);
-          options.onChunk?.(outText, outText, outData);
-          options.onComplete?.(outText, outData, false);
-          saveAiResultToCache(cacheKey, outText, outData, isFast);
-          return {
-            success: true,
-            text: outText,
-            data: outData as T,
-            isCached: false
-          };
-        } else if (directResult && directResult.error) {
-          lastServerErrorMessage = directResult.error;
-        }
-      } catch (directErr: any) {
-        console.warn("[SERVER /api/generate fallback attempt]:", directErr);
+      // If quota error occurred during fallback
+      if (isQuotaExceededResponse(0, lastServerErrorMessage)) {
+        options.onError?.(USER_FRIENDLY_QUOTA_MESSAGE);
+        return {
+          success: false,
+          text: "",
+          error: USER_FRIENDLY_QUOTA_MESSAGE,
+          isQuota: true,
+          isCached: false
+        };
       }
 
-      // Live AI generation could not be completed via streaming or endpoints
-      console.warn("[AI STREAMING] ⚠️ Live AI generation could not be completed across all endpoints.");
-      const failureMsg = lastServerErrorMessage || "GEMINI_API_KEY missing in Vercel Environment Variables. Add it in Vercel Dashboard > Settings > Environment Variables";
+      // Live AI generation could not be completed
+      const failureMsg = lastServerErrorMessage || "AI generation could not be completed right now. Please try again.";
       options.onError?.(failureMsg);
       return {
         success: false,
@@ -602,14 +593,16 @@ export async function streamAiContent<T = any>(
     } catch (err: any) {
       clearTimeout(timeoutId);
       console.error("[AI STREAMING ERROR HANDLER]", err);
-      const failureMsg = err?.message
-        ? `AI request error (${err.message}). Please verify your connection or redeploy your Vercel project.`
-        : (lastServerErrorMessage || "AI generation could not be completed right now. Please check your Vercel deployment status.");
+      const isQuota = isQuotaExceededResponse(0, err?.message);
+      const failureMsg = isQuota
+        ? USER_FRIENDLY_QUOTA_MESSAGE
+        : (err?.message || lastServerErrorMessage || "AI generation could not be completed right now. Please try again.");
       options.onError?.(failureMsg);
       return {
         success: false,
         text: "",
         error: failureMsg,
+        isQuota,
         isCached: false
       };
     } finally {

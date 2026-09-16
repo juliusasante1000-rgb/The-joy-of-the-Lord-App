@@ -42,27 +42,26 @@ import {
   fetchPublicPublishedContent
 } from "./utils/DeviceManager";
 
+// Memoized tab components to ensure instant zero-latency tab switches without re-rendering inactive tabs
+const MemoHomeTab = React.memo(HomeTab);
+const MemoBibleTab = React.memo(BibleTab);
+const MemoSpiritualPlacesTab = React.memo(SpiritualPlacesTab);
+const MemoApostleMathTab = React.memo(ApostleMathTab);
+const MemoMathemaSermonsTab = React.memo(MathemaSermonsTab);
+const MemoRhemaTab = React.memo(RhemaTab);
+const MemoJoyOvercomingTab = React.memo(JoyOvercomingTab);
+const MemoHymnalsTab = React.memo(HymnalsTab);
+const MemoBooksTab = React.memo(BooksTab);
+const MemoPrayersTab = React.memo(PrayersTab);
+const MemoAboutCreatorTab = React.memo(AboutCreatorTab);
+const MemoQuotesTab = React.memo(QuotesTab);
+const MemoDoctrinesTab = React.memo(DoctrinesTab);
+
 export function App() {
   const [activeTab, setActiveTab] = useState<TabType>("home");
-  // Pre-seed core tabs so that tab switching is immediate and does not incur heavy mount latency on first click
+  // Keep only visited tabs in DOM; starts with "home" for instant initial responsiveness
   const [visitedTabs, setVisitedTabs] = useState<Set<string>>(
-    () => new Set([
-      "home",
-      "bible",
-      "doctrines",
-      "spiritual_places",
-      "places",
-      "apostle_math",
-      "math",
-      "hymnals",
-      "prayer",
-      "prayers",
-      "quotes",
-      "library",
-      "books",
-      "creator",
-      "about"
-    ])
+    () => new Set(["home"])
   );
 
   const handleNavigateTab = useCallback((tab: TabType) => {
@@ -421,7 +420,7 @@ export function App() {
         <main className="flex-1 max-w-5xl w-full mx-auto px-3 sm:px-6 pt-4 sm:pt-6">
           {visitedTabs.has("home") && (
             <div className={activeTab === "home" ? "block" : "hidden"}>
-              <HomeTab
+              <MemoHomeTab
                 scheduleState={scheduleState}
                 dailyScripture={activeDailyScripture}
                 scheduledVerse={activeScheduledVerse}
@@ -446,7 +445,7 @@ export function App() {
 
           {visitedTabs.has("bible") && (
             <div className={activeTab === "bible" ? "block" : "hidden"}>
-              <BibleTab
+              <MemoBibleTab
                 isBookmarked={isBookmarked}
                 onToggleBookmark={toggleBookmark}
                 onShareItem={handleOpenShare}
@@ -465,7 +464,7 @@ export function App() {
 
           {(visitedTabs.has("spiritual_places") || visitedTabs.has("places")) && (
             <div className={(activeTab === "spiritual_places" || activeTab === "places") ? "block" : "hidden"}>
-              <SpiritualPlacesTab
+              <MemoSpiritualPlacesTab
                 onNavigateToBibleChapter={handleNavigateToBibleChapter}
                 onOpenDevotion={(dev) => setSelectedDevotionModal(dev)}
                 onNavigateTab={handleNavigateTab}
@@ -480,7 +479,7 @@ export function App() {
 
           {(visitedTabs.has("apostle_math") || visitedTabs.has("math")) && (
             <div className={(activeTab === "apostle_math" || activeTab === "math") ? "block" : "hidden"}>
-              <ApostleMathTab
+              <MemoApostleMathTab
                 isBookmarked={isBookmarked}
                 onToggleBookmark={toggleBookmark}
                 onShareItem={handleOpenShare}
@@ -493,7 +492,7 @@ export function App() {
 
           {visitedTabs.has("mathema_sermons") && (
             <div className={activeTab === "mathema_sermons" ? "block" : "hidden"}>
-              <MathemaSermonsTab
+              <MemoMathemaSermonsTab
                 isBookmarked={isBookmarked}
                 onToggleBookmark={toggleBookmark}
                 onShareItem={handleOpenShare}
@@ -507,7 +506,7 @@ export function App() {
 
           {visitedTabs.has("rhema") && (
             <div className={activeTab === "rhema" ? "block" : "hidden"}>
-              <RhemaTab
+              <MemoRhemaTab
                 isBookmarked={isBookmarked}
                 onToggleBookmark={toggleBookmark}
                 onShareItem={handleOpenShare}
@@ -522,7 +521,7 @@ export function App() {
 
           {visitedTabs.has("joy_overcoming") && (
             <div className={activeTab === "joy_overcoming" ? "block" : "hidden"}>
-              <JoyOvercomingTab
+              <MemoJoyOvercomingTab
                 isBookmarked={isBookmarked}
                 onToggleBookmark={toggleBookmark}
                 onShareItem={handleOpenShare}
@@ -537,7 +536,7 @@ export function App() {
 
           {visitedTabs.has("hymnals") && (
             <div className={activeTab === "hymnals" ? "block" : "hidden"}>
-              <HymnalsTab
+              <MemoHymnalsTab
                 isBookmarked={isBookmarked}
                 onToggleBookmark={toggleBookmark}
                 onShareItem={handleOpenShare}
@@ -550,7 +549,7 @@ export function App() {
 
           {(visitedTabs.has("library") || visitedTabs.has("books")) && (
             <div className={(activeTab === "library" || activeTab === "books") ? "block" : "hidden"}>
-              <BooksTab
+              <MemoBooksTab
                 isBookmarked={isBookmarked}
                 onToggleBookmark={toggleBookmark}
                 onShareItem={handleOpenShare}
@@ -563,7 +562,7 @@ export function App() {
 
           {(visitedTabs.has("prayer") || visitedTabs.has("prayers")) && (
             <div className={(activeTab === "prayer" || activeTab === "prayers") ? "block" : "hidden"}>
-              <PrayersTab
+              <MemoPrayersTab
                 activeEdition={activeEdition}
                 journal={journal}
                 onAddJournalEntry={addJournalEntry}
@@ -580,7 +579,7 @@ export function App() {
 
           {(visitedTabs.has("creator") || visitedTabs.has("about")) && (
             <div className={(activeTab === "creator" || activeTab === "about") ? "block" : "hidden"}>
-              <AboutCreatorTab
+              <MemoAboutCreatorTab
                 profile={creatorProfile}
                 founderSession={adminSession ? {
                   isAuthenticated: true,
@@ -603,7 +602,7 @@ export function App() {
 
           {visitedTabs.has("quotes") && (
             <div className={activeTab === "quotes" ? "block" : "hidden"}>
-              <QuotesTab
+              <MemoQuotesTab
                 isBookmarked={isBookmarked}
                 onToggleBookmark={toggleBookmark}
                 onShareItem={handleOpenShare}
@@ -615,7 +614,7 @@ export function App() {
 
           {visitedTabs.has("doctrines") && (
             <div className={activeTab === "doctrines" ? "block" : "hidden"}>
-              <DoctrinesTab
+              <MemoDoctrinesTab
                 isBookmarked={isBookmarked}
                 onToggleBookmark={toggleBookmark}
                 onShareItem={handleOpenShare}

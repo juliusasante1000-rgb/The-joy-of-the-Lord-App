@@ -218,46 +218,46 @@ export function generateDevotionDocumentHTML(devotion: Devotion, creatorProfile?
   const actionText = devotion.actionStep || devotion.practicalApplication || "";
   const totalLength = titleText.length + scriptText.length + refText.length + prayerText.length + actionText.length;
 
-  let baseFontSize = "16.5px";
-  let titleFontSize = "30px";
-  let scriptureFontSize = "19px";
-  let reflectionFontSize = "16px";
-  let prayerFontSize = "15.5px";
-  let actionFontSize = "15px";
-  let sectionMargin = "16px";
-  let containerPadding = "24px 28px";
-  let scripturePadding = "16px 20px";
+  let baseFontSize = "13.5px";
+  let titleFontSize = "22px";
+  let scriptureFontSize = "14px";
+  let reflectionFontSize = "13px";
+  let prayerFontSize = "12px";
+  let actionFontSize = "12px";
+  let sectionMargin = "10px";
+  let containerPadding = "16px 20px";
+  let scripturePadding = "10px 14px";
 
-  if (totalLength < 550) {
-    baseFontSize = "19px";
-    titleFontSize = "35px";
-    scriptureFontSize = "22px";
-    reflectionFontSize = "18.5px";
-    prayerFontSize = "17.5px";
-    actionFontSize = "17px";
-    sectionMargin = "22px";
-    containerPadding = "30px 34px";
-    scripturePadding = "20px 24px";
-  } else if (totalLength < 950) {
-    baseFontSize = "17.5px";
-    titleFontSize = "31px";
-    scriptureFontSize = "20px";
-    reflectionFontSize = "17px";
-    prayerFontSize = "16.5px";
-    actionFontSize = "16px";
-    sectionMargin = "18px";
-    containerPadding = "26px 30px";
-    scripturePadding = "17px 22px";
-  } else if (totalLength > 1500) {
-    baseFontSize = "14.5px";
-    titleFontSize = "25px";
-    scriptureFontSize = "16.5px";
-    reflectionFontSize = "14.5px";
-    prayerFontSize = "14px";
-    actionFontSize = "13.5px";
+  if (totalLength < 600) {
+    baseFontSize = "14px";
+    titleFontSize = "24px";
+    scriptureFontSize = "15px";
+    reflectionFontSize = "13.5px";
+    prayerFontSize = "12.5px";
+    actionFontSize = "12.5px";
     sectionMargin = "12px";
     containerPadding = "18px 22px";
     scripturePadding = "12px 16px";
+  } else if (totalLength < 1100) {
+    baseFontSize = "13px";
+    titleFontSize = "21px";
+    scriptureFontSize = "13.5px";
+    reflectionFontSize = "12.5px";
+    prayerFontSize = "12px";
+    actionFontSize = "11.5px";
+    sectionMargin = "9px";
+    containerPadding = "14px 18px";
+    scripturePadding = "9px 13px";
+  } else {
+    baseFontSize = "12px";
+    titleFontSize = "19px";
+    scriptureFontSize = "13px";
+    reflectionFontSize = "11.5px";
+    prayerFontSize = "11px";
+    actionFontSize = "11px";
+    sectionMargin = "7px";
+    containerPadding = "12px 16px";
+    scripturePadding = "8px 12px";
   }
 
   return `<!DOCTYPE html>
@@ -270,7 +270,7 @@ export function generateDevotionDocumentHTML(devotion: Devotion, creatorProfile?
   <style>
     @page {
       size: letter portrait;
-      margin: 6mm 8mm 6mm 8mm;
+      margin: 8mm 10mm;
     }
     * {
       box-sizing: border-box;
@@ -279,19 +279,21 @@ export function generateDevotionDocumentHTML(devotion: Devotion, creatorProfile?
     }
     html, body {
       height: 100%;
+      overflow: hidden;
     }
     body {
       font-family: "Georgia", "Garamond", "Times New Roman", serif;
       color: #0f172a;
       background-color: #ffffff;
-      line-height: 1.6;
+      line-height: 1.5;
       font-size: ${baseFontSize};
       padding: 0;
     }
     .page-container {
       width: 100%;
-      max-width: 860px;
-      min-height: 100%;
+      max-width: 840px;
+      height: 100%;
+      max-height: 100vh;
       margin: 0 auto;
       border: 3px solid #b48c35;
       padding: ${containerPadding};
@@ -300,6 +302,9 @@ export function generateDevotionDocumentHTML(devotion: Devotion, creatorProfile?
       position: relative;
       display: flex;
       flex-direction: column;
+      page-break-inside: avoid;
+      page-break-after: avoid;
+      overflow: hidden;
     }
     .inner-border {
       border: 1.5px solid #dcc398;
@@ -309,6 +314,20 @@ export function generateDevotionDocumentHTML(devotion: Devotion, creatorProfile?
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      overflow: hidden;
+    }
+    @media print {
+      html, body {
+        height: 100% !important;
+        overflow: hidden !important;
+      }
+      .page-container {
+        height: 100% !important;
+        max-height: 100% !important;
+        box-shadow: none !important;
+        page-break-inside: avoid !important;
+        page-break-after: avoid !important;
+      }
     }
     .corner-decor {
       position: absolute;

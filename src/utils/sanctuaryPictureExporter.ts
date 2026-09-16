@@ -334,8 +334,8 @@ export async function downloadBibleVersePicture(
 
   // 7. Guided Prayer & Faith Decree Box
   const footerY = H - innerMargin - 110;
-  const maxPrayerH = footerY - curY - 25;
-  const prayerCardH = Math.min(280, Math.max(160, maxPrayerH));
+  const maxPrayerH = Math.max(120, footerY - curY - 24);
+  const prayerCardH = Math.min(260, maxPrayerH);
   ctx.fillStyle = "#0F172A";
   roundRect(ctx, cardX, curY, cardW, prayerCardH, 16);
   ctx.fill();
@@ -347,18 +347,20 @@ export async function downloadBibleVersePicture(
   ctx.fillStyle = "#DCC398";
   ctx.font = "bold 24px 'Plus Jakarta Sans', sans-serif";
   ctx.letterSpacing = "2px";
-  ctx.fillText("✦ GUIDED PRAYER & FAITH DECREE", cardX + 45, curY + 50);
+  ctx.fillText("✦ GUIDED PRAYER & FAITH DECREE", cardX + 45, curY + 48);
 
   const defaultPrayer = verseItem.guidedPrayer ||
     `Heavenly Father, thank You for the living truth of ${refText}. Establish my faith firmly in Your promises, grant me divine discernment, and empower me to walk in holy obedience. In Jesus' mighty Name, Amen.`;
 
   ctx.fillStyle = "#F8FAFC";
-  ctx.font = "italic 34px 'Georgia', serif";
+  ctx.font = "italic 32px 'Georgia', serif";
   const prayerLines = wrapText(ctx, defaultPrayer, contentMaxW);
-  let py = curY + 102;
+  let py = curY + 96;
   for (let i = 0; i < Math.min(prayerLines.length, 3); i++) {
-    ctx.fillText(prayerLines[i], cardX + 45, py);
-    py += 48;
+    if (py + 44 <= curY + prayerCardH - 45) {
+      ctx.fillText(prayerLines[i], cardX + 45, py);
+      py += 44;
+    }
   }
 
   ctx.fillStyle = "#B48C35";
@@ -366,7 +368,7 @@ export async function downloadBibleVersePicture(
   ctx.fillText(
     `Faith Decree: "The joy of the Lord is my strength" (Nehemiah 8:10) — Living and Victorious!`,
     cardX + 40,
-    curY + 205
+    curY + prayerCardH - 20
   );
 
   // 8. Founder Signature & Subscription Footer
