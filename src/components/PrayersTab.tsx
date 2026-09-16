@@ -272,13 +272,13 @@ export const PrayersTab: React.FC<PrayersTabProps> = ({
       {/* VIEW 1: STRUCTURED PRAYERS CATALOG */}
       {activeTabSubView === "catalog" && (
         <div className="space-y-4">
-          {/* Category Filter */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none text-xs">
+          {/* Category Filter: Fully visible at first glance */}
+          <div className="flex flex-wrap items-center gap-2 pt-1 text-xs">
             {["All", "Spiritual Warfare", "Daily Hours", "Peace & Anxiety", "Healing & Health", "Family & Guidance"].map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-3.5 py-1.5 rounded whitespace-nowrap font-bold uppercase tracking-wider transition-all ${
+                className={`px-3.5 py-1.5 rounded font-bold uppercase tracking-wider transition-all cursor-pointer ${
                   selectedCategory === cat
                     ? "bg-[#0F172A] text-white shadow-xs"
                     : "bg-white border border-[#E5D5BC] text-[#1A2A44] hover:bg-[#FDFBF7]"

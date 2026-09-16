@@ -458,12 +458,13 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
     const hasPrayer = Boolean(devotion.guidedPrayer);
     const hasAction = Boolean(devotion.actionStep || devotion.practicalApplication);
 
-    // Footer Height reservation
+    // Footer Height reservation & Single-Page Strict Constraint
     const footerHeight = Math.round(230 * baseScale);
-    const footerStartY = H - innerMargin - footerHeight;
-    const availableVerticalSpace = footerStartY - currentY - Math.round(30 * baseScale);
+    const footerY = H - innerMargin - footerHeight;
+    const maxContentY = footerY - Math.round(26 * baseScale);
+    const availableVerticalSpace = maxContentY - currentY;
 
-    // Content length calculation to dynamically scale typography so it lavishly fills the page
+    // Content length calculation
     const introContent = formatMathForCanvasDisplay((devotion.introMessage || "").trim());
     const fullReflectText = formatMathForCanvasDisplay(devotion.reflection.replace(/\n\n/g, " ").trim());
     const actionContent = formatMathForCanvasDisplay((devotion.actionStep || devotion.practicalApplication || "").trim());
@@ -476,130 +477,139 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
       (hasAction ? actionContent.length : 0) +
       (hasPrayer ? prayerContent.length : 0);
 
-    // Dynamic scale factor based on content length & canvas aspect ratio
-    // Significantly increase font scale so it is large, crystal clear and easily readable on all devices
-    let dynamicTextScale = 1.35;
-    if (totalCharCount < 500) {
-      dynamicTextScale = 1.65;
-    } else if (totalCharCount < 850) {
-      dynamicTextScale = 1.50;
-    } else if (totalCharCount < 1200) {
-      dynamicTextScale = 1.38;
-    } else if (totalCharCount < 1600) {
-      dynamicTextScale = 1.25;
-    } else if (totalCharCount > 2400) {
-      dynamicTextScale = 1.08;
-    }
-
-    // Adapt for square or story aspect ratios
-    if (activeFormat.id === "social-square") {
-      dynamicTextScale *= 0.95;
-    } else if (activeFormat.id === "story-wallpaper") {
-      dynamicTextScale *= 1.12;
-    }
-
     const cardX = Math.round(110 * baseScale);
     const cardW = W - cardX * 2;
     const innerTextW = cardW - Math.round(80 * baseScale);
-
-    // Font Sizes for Sections (in pixels scaled to canvas for crystal-clear readability)
-    const scripFontSize = Math.round(66 * baseScale * dynamicTextScale);
-    const scripLineH = Math.round(scripFontSize * 1.50);
-
-    const introFontSize = Math.round(58 * baseScale * dynamicTextScale);
-    const introLineH = Math.round(introFontSize * 1.52);
-
-    const expoFontSize = Math.round(58 * baseScale * dynamicTextScale);
-    const expoLineH = Math.round(expoFontSize * 1.54);
-
-    const actionFontSize = Math.round(52 * baseScale * dynamicTextScale);
-    const actionLineH = Math.round(actionFontSize * 1.50);
-
-    const prayerFontSize = Math.round(54 * baseScale * dynamicTextScale);
-    const prayerLineH = Math.round(prayerFontSize * 1.52);
-
-    const badgeFontSize = Math.round(34 * baseScale);
 
     const twoColBottom = (activeFormat.id === "full-page" || activeFormat.id === "social-square") && hasAction && hasPrayer;
     const colGap = Math.round(24 * baseScale);
     const bottomColW = twoColBottom ? Math.round((cardW - colGap) / 2) : cardW;
     const bottomInnerW = bottomColW - Math.round(70 * baseScale);
 
-    // Measure text lines
-    ctx.font = `italic bold ${scripFontSize}px 'Georgia', serif`;
-    const scripLines = wrapText(ctx, `"${scriptureText}"`, innerTextW);
+    // Baseline executive publication font sizes (balanced, crisp, highly legible, strictly 1 page)
+    const baseScripFont = Math.round(36 * baseScale);
+    const baseIntroFont = Math.round(30 * baseScale);
+    const baseExpoFont = Math.round(30 * baseScale);
+    const baseActionFont = Math.round(28 * baseScale);
+    const basePrayerFont = Math.round(28 * baseScale);
+    const badgeFontSize = Math.round(22 * baseScale);
 
-    ctx.font = `500 ${introFontSize}px 'Georgia', serif`;
-    const introLines = hasIntro ? wrapText(ctx, introContent, innerTextW) : [];
+    // AUTO-FIT SOLVER: Test scale from 1.10 down to 0.65 until all sections fit within availableVerticalSpace
+    let textScale = 1.0;
+    if (totalCharCount < 550) {
+      textScale = 1.12;
+    } else if (totalCharCount < 900) {
+      textScale = 1.04;
+    } else if (totalCharCount < 1400) {
+      textScale = 0.96;
+    } else if (totalCharCount < 2000) {
+      textScale = 0.88;
+    } else {
+      textScale = 0.78;
+    }
 
-    // Prepare and wrap Exposition paragraphs & mathematical formulas
+    if (activeFormat.id === "social-square") {
+      textScale *= 0.90;
+    }
+
+    const numSections = 2 + (hasIntro ? 1 : 0) + (twoColBottom ? 1 : ((hasAction ? 1 : 0) + (hasPrayer ? 1 : 0)));
+    const baseGap = Math.round(22 * baseScale);
+    const totalGapsMin = (numSections - 1) * Math.round(16 * baseScale);
+
+    // Iterative fit test
+    let scripLines: string[] = [];
+    let introLines: string[] = [];
+    let expoParaBlocks: { lines: string[]; isFormula: boolean; isHeading: boolean }[] = [];
+    let actionLines: string[] = [];
+    let prayerLines: string[] = [];
+
+    let scripFontSize = baseScripFont;
+    let scripLineH = Math.round(scripFontSize * 1.48);
+    let introFontSize = baseIntroFont;
+    let introLineH = Math.round(introFontSize * 1.50);
+    let expoFontSize = baseExpoFont;
+    let expoLineH = Math.round(expoFontSize * 1.52);
+    let actionFontSize = baseActionFont;
+    let actionLineH = Math.round(actionFontSize * 1.48);
+    let prayerFontSize = basePrayerFont;
+    let prayerLineH = Math.round(prayerFontSize * 1.50);
+    const expoParaGap = Math.round(12 * baseScale);
+
     const rawExpoParas = devotion.reflection.split(/\n\n+/).filter(Boolean);
-    ctx.font = `600 ${expoFontSize}px 'Georgia', serif`;
-    const expoParaBlocks: { lines: string[]; isFormula: boolean; isHeading: boolean }[] = [];
-    rawExpoParas.forEach((p) => {
-      const trimmedP = p.trim();
-      if (!trimmedP) return;
-      const isHeading = /^(?:[A-Z0-9\s&]{4,}:|✦|\d+\.\s+[A-Z])/.test(trimmedP) && trimmedP.length < 80;
-      const isFormula = /^(?:Mathematical\s+Analogy|Formula|Equation|Law|Calculus\s+Model):/i.test(trimmedP) ||
-        (/^[a-zA-Z0-9_\(\)\s\+\-\*\/\^\=\\·\times\{\}\[\]]{3,}$/.test(trimmedP) && trimmedP.includes("="));
-      const formatted = formatMathForCanvasDisplay(trimmedP);
-      const lines = wrapText(ctx, formatted, innerTextW);
-      if (lines.length > 0) {
-        expoParaBlocks.push({ lines, isFormula, isHeading });
+
+    for (let testScale = textScale; testScale >= 0.62; testScale -= 0.04) {
+      scripFontSize = Math.round(baseScripFont * testScale);
+      scripLineH = Math.round(scripFontSize * 1.48);
+      introFontSize = Math.round(baseIntroFont * testScale);
+      introLineH = Math.round(introFontSize * 1.50);
+      expoFontSize = Math.round(baseExpoFont * testScale);
+      expoLineH = Math.round(expoFontSize * 1.52);
+      actionFontSize = Math.round(baseActionFont * testScale);
+      actionLineH = Math.round(actionFontSize * 1.48);
+      prayerFontSize = Math.round(basePrayerFont * testScale);
+      prayerLineH = Math.round(prayerFontSize * 1.50);
+
+      ctx.font = `italic bold ${scripFontSize}px 'Georgia', serif`;
+      scripLines = wrapText(ctx, `"${scriptureText}"`, innerTextW);
+
+      ctx.font = `500 ${introFontSize}px 'Georgia', serif`;
+      introLines = hasIntro ? wrapText(ctx, introContent, innerTextW) : [];
+
+      ctx.font = `500 ${expoFontSize}px 'Georgia', serif`;
+      expoParaBlocks = [];
+      rawExpoParas.forEach((p) => {
+        const trimmedP = p.trim();
+        if (!trimmedP) return;
+        const isHeading = /^(?:[A-Z0-9\s&]{4,}:|✦|\d+\.\s+[A-Z])/.test(trimmedP) && trimmedP.length < 80;
+        const isFormula = /^(?:Mathematical\s+Analogy|Formula|Equation|Law|Calculus\s+Model):/i.test(trimmedP) ||
+          (/^[a-zA-Z0-9_\(\)\s\+\-\*\/\^\=\\·\times\{\}\[\]]{3,}$/.test(trimmedP) && trimmedP.includes("="));
+        const formatted = formatMathForCanvasDisplay(trimmedP);
+        const lines = wrapText(ctx, formatted, innerTextW);
+        if (lines.length > 0) {
+          expoParaBlocks.push({ lines, isFormula, isHeading });
+        }
+      });
+
+      ctx.font = `500 ${actionFontSize}px 'Georgia', serif`;
+      actionLines = hasAction ? wrapText(ctx, actionContent, twoColBottom ? bottomInnerW : innerTextW) : [];
+
+      ctx.font = `italic 500 ${prayerFontSize}px 'Georgia', serif`;
+      prayerLines = hasPrayer ? wrapText(ctx, `"${prayerContent}"`, twoColBottom ? bottomInnerW : innerTextW) : [];
+
+      const padTop = Math.round(56 * baseScale);
+      const padBottom = Math.round(26 * baseScale);
+
+      const testScripH = padTop + scripLines.length * scripLineH + Math.round(36 * baseScale) + padBottom;
+      const testIntroH = hasIntro ? padTop + introLines.length * introLineH + padBottom : 0;
+      const totalExpoLines = expoParaBlocks.reduce((acc, b) => acc + b.lines.length, 0);
+      const testExpoH = padTop + totalExpoLines * expoLineH + Math.max(0, expoParaBlocks.length - 1) * expoParaGap + padBottom;
+      const testActionH = hasAction ? padTop + actionLines.length * actionLineH + padBottom : 0;
+      const testPrayerH = hasPrayer ? padTop + prayerLines.length * prayerLineH + padBottom : 0;
+      const testBottomH = twoColBottom ? Math.max(testActionH, testPrayerH) : testActionH + testPrayerH;
+
+      const totalH = testScripH + testIntroH + testExpoH + testBottomH + totalGapsMin;
+      if (totalH <= availableVerticalSpace || testScale <= 0.64) {
+        textScale = testScale;
+        break;
       }
-    });
+    }
 
+    // Recalculate definitive natural heights with determined scale
+    const padTop = Math.round(56 * baseScale);
+    const padBottom = Math.round(26 * baseScale);
+
+    const scripNaturalH = padTop + scripLines.length * scripLineH + Math.round(36 * baseScale) + padBottom;
+    const introNaturalH = hasIntro ? padTop + introLines.length * introLineH + padBottom : 0;
     const totalExpoLinesCount = expoParaBlocks.reduce((acc, b) => acc + b.lines.length, 0);
-    const expoParaGap = Math.round(14 * baseScale);
-
-    ctx.font = `600 ${actionFontSize}px 'Georgia', serif`;
-    const actionLines = hasAction ? wrapText(ctx, actionContent, twoColBottom ? bottomInnerW : innerTextW) : [];
-
-    ctx.font = `italic 600 ${prayerFontSize}px 'Georgia', serif`;
-    const prayerLines = hasPrayer ? wrapText(ctx, `"${prayerContent}"`, twoColBottom ? bottomInnerW : innerTextW) : [];
-
-    // Calculate natural content heights with generous inner padding
-    const basePaddingTop = Math.round(80 * baseScale);
-    const basePaddingBottom = Math.round(40 * baseScale);
-
-    const scripNaturalH =
-      basePaddingTop +
-      scripLines.length * scripLineH +
-      Math.round(45 * baseScale) + // reference line
-      basePaddingBottom;
-
-    const introNaturalH = hasIntro
-      ? basePaddingTop + introLines.length * introLineH + basePaddingBottom
-      : 0;
-
-    const expoNaturalH =
-      basePaddingTop +
-      totalExpoLinesCount * expoLineH +
-      Math.max(0, expoParaBlocks.length - 1) * expoParaGap +
-      basePaddingBottom;
-
-    const actionNaturalH = hasAction
-      ? basePaddingTop + actionLines.length * actionLineH + basePaddingBottom
-      : 0;
-
-    const prayerNaturalH = hasPrayer
-      ? basePaddingTop + prayerLines.length * prayerLineH + basePaddingBottom
-      : 0;
-
+    const expoNaturalH = padTop + totalExpoLinesCount * expoLineH + Math.max(0, expoParaBlocks.length - 1) * expoParaGap + padBottom;
+    const actionNaturalH = hasAction ? padTop + actionLines.length * actionLineH + padBottom : 0;
+    const prayerNaturalH = hasPrayer ? padTop + prayerLines.length * prayerLineH + padBottom : 0;
     const bottomRowNaturalH = twoColBottom
       ? Math.max(actionNaturalH, prayerNaturalH)
       : actionNaturalH + prayerNaturalH;
 
     const totalNaturalContentH = scripNaturalH + introNaturalH + expoNaturalH + bottomRowNaturalH;
-    const numSections = 2 + (hasIntro ? 1 : 0) + (twoColBottom ? 1 : ((hasAction ? 1 : 0) + (hasPrayer ? 1 : 0)));
-
-    // Distribute leftover space evenly so that:
-    // 1. Boxes expand proportionately with balanced padding
-    // 2. Inter-box gaps expand gracefully
-    // 3. NO GIANT EMPTY WHITE VOID IS LEFT!
-    const baseGap = Math.round(30 * baseScale);
-    const totalBaseGaps = (numSections - 1) * baseGap;
-    const extraSpace = availableVerticalSpace - (totalNaturalContentH + totalBaseGaps);
+    const remainingSpace = availableVerticalSpace - totalNaturalContentH;
 
     let sectionGap = baseGap;
     let scripBoxH = scripNaturalH;
@@ -608,34 +618,38 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
     let actionBoxH = actionNaturalH;
     let prayerBoxH = prayerNaturalH;
 
-    if (extraSpace > 0) {
-      // Allocate 40% of extra space to inter-card gaps, 60% distributed across cards
-      const gapExtra = Math.min(extraSpace * 0.4, (numSections - 1) * Math.round(28 * baseScale));
-      sectionGap = baseGap + Math.round(gapExtra / Math.max(1, numSections - 1));
+    if (remainingSpace > 0) {
+      // Gracefully expand cards and gaps without overflowing
+      const maxExtraGap = (numSections - 1) * Math.round(14 * baseScale);
+      const gapAdd = Math.min(remainingSpace * 0.35, maxExtraGap);
+      sectionGap = baseGap + Math.round(gapAdd / Math.max(1, numSections - 1));
 
-      const cardExtraSpace = extraSpace - gapExtra;
-      // Proportional expansion for each card
-      scripBoxH += Math.round(cardExtraSpace * (hasIntro ? 0.20 : 0.25));
-      if (hasIntro) {
-        introBoxH += Math.round(cardExtraSpace * 0.25);
-      }
-      expoBoxH += Math.round(cardExtraSpace * (hasIntro ? 0.35 : 0.50));
+      const cardExtra = Math.min(remainingSpace - gapAdd, Math.round(300 * baseScale));
+      scripBoxH += Math.round(cardExtra * (hasIntro ? 0.15 : 0.20));
+      if (hasIntro) introBoxH += Math.round(cardExtra * 0.20);
+      expoBoxH += Math.round(cardExtra * (hasIntro ? 0.45 : 0.55));
       if (twoColBottom) {
-        const bottomAdd = Math.round(cardExtraSpace * (hasIntro ? 0.20 : 0.25));
+        const bottomAdd = Math.round(cardExtra * (hasIntro ? 0.20 : 0.25));
         actionBoxH = Math.max(actionBoxH, prayerBoxH) + bottomAdd;
         prayerBoxH = actionBoxH;
       } else if (hasAction && hasPrayer) {
-        actionBoxH += Math.round(cardExtraSpace * (hasIntro ? 0.10 : 0.12));
-        prayerBoxH += Math.round(cardExtraSpace * (hasIntro ? 0.10 : 0.13));
+        actionBoxH += Math.round(cardExtra * 0.12);
+        prayerBoxH += Math.round(cardExtra * 0.13);
       } else if (hasAction) {
-        actionBoxH += Math.round(cardExtraSpace * (hasIntro ? 0.20 : 0.25));
+        actionBoxH += Math.round(cardExtra * 0.25);
       } else if (hasPrayer) {
-        prayerBoxH += Math.round(cardExtraSpace * (hasIntro ? 0.20 : 0.25));
+        prayerBoxH += Math.round(cardExtra * 0.25);
       }
-    } else if (extraSpace < 0) {
-      // If slight overflow, compress gaps and padding
-      sectionGap = Math.max(Math.round(16 * baseScale), baseGap + Math.round(extraSpace / (numSections * 2)));
+    } else {
+      // Compress gaps slightly if tight
+      sectionGap = Math.max(Math.round(14 * baseScale), baseGap + Math.round(remainingSpace / Math.max(1, numSections)));
     }
+
+    // Safety constraint: Cap each box height so currentY NEVER breaches maxContentY
+    const enforceBoxFit = (boxH: number): number => {
+      const roomLeft = maxContentY - currentY;
+      return Math.max(Math.round(60 * baseScale), Math.min(boxH, roomLeft));
+    };
 
     // 6. DRAW KEY SCRIPTURE BOX
     const scripBoxY = currentY;
@@ -653,25 +667,27 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
     // Label: "✦ KEY SCRIPTURE"
     ctx.fillStyle = "#B48C35";
     ctx.font = `bold ${badgeFontSize}px 'Plus Jakarta Sans', sans-serif`;
-    ctx.letterSpacing = "2.5px";
+    ctx.letterSpacing = "2px";
     ctx.textAlign = "left";
-    ctx.fillText("✦ KEY SCRIPTURE", cardX + Math.round(40 * baseScale), scripBoxY + Math.round(52 * baseScale));
+    ctx.fillText("✦ KEY SCRIPTURE", cardX + Math.round(36 * baseScale), scripBoxY + Math.round(38 * baseScale));
 
     // Scripture Passage Text (High-contrast, razor-sharp dark navy/black)
     ctx.fillStyle = "#0A0F1D";
     ctx.font = `italic bold ${scripFontSize}px 'Georgia', serif`;
     ctx.letterSpacing = "0.2px";
-    let sY = scripBoxY + Math.round(112 * baseScale);
+    let sY = scripBoxY + Math.round(78 * baseScale);
     scripLines.forEach((line) => {
-      ctx.fillText(line, cardX + Math.round(40 * baseScale), sY);
-      sY += scripLineH;
+      if (sY + scripLineH <= scripBoxY + scripBoxH - Math.round(30 * baseScale)) {
+        ctx.fillText(line, cardX + Math.round(36 * baseScale), sY);
+        sY += scripLineH;
+      }
     });
 
     // Scripture Reference (Right Aligned)
     ctx.fillStyle = "#B48C35";
-    ctx.font = `bold ${Math.round(36 * baseScale)}px 'Georgia', serif`;
+    ctx.font = `bold ${Math.round(24 * baseScale)}px 'Georgia', serif`;
     ctx.textAlign = "right";
-    ctx.fillText(`— ${cleanReference}`, cardX + cardW - Math.round(40 * baseScale), scripBoxY + scripBoxH - Math.round(32 * baseScale));
+    ctx.fillText(`— ${cleanReference}`, cardX + cardW - Math.round(36 * baseScale), scripBoxY + scripBoxH - Math.round(18 * baseScale));
 
     currentY = scripBoxY + scripBoxH + sectionGap;
 
@@ -690,17 +706,19 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
 
       ctx.fillStyle = "#996515";
       ctx.font = `bold ${badgeFontSize}px 'Plus Jakarta Sans', sans-serif`;
-      ctx.letterSpacing = "2.5px";
+      ctx.letterSpacing = "2px";
       ctx.textAlign = "left";
-      ctx.fillText("✦ CENTRAL THEME & SPIRITUAL SIGNIFICANCE", cardX + Math.round(40 * baseScale), inBoxY + Math.round(52 * baseScale));
+      ctx.fillText("✦ CENTRAL THEME & SPIRITUAL SIGNIFICANCE", cardX + Math.round(36 * baseScale), inBoxY + Math.round(38 * baseScale));
 
       ctx.fillStyle = "#0F172A";
       ctx.font = `500 ${introFontSize}px 'Georgia', serif`;
       ctx.letterSpacing = "0.2px";
-      let iY = inBoxY + Math.round(112 * baseScale);
+      let iY = inBoxY + Math.round(78 * baseScale);
       introLines.forEach((line) => {
-        ctx.fillText(line, cardX + Math.round(40 * baseScale), iY);
-        iY += introLineH;
+        if (iY + introLineH <= inBoxY + introBoxH - Math.round(16 * baseScale)) {
+          ctx.fillText(line, cardX + Math.round(36 * baseScale), iY);
+          iY += introLineH;
+        }
       });
 
       currentY = inBoxY + introBoxH + sectionGap;
@@ -722,12 +740,12 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
     // Label: "✦ EXPOSITION & SACRED MEDITATION"
     ctx.fillStyle = "#B48C35";
     ctx.font = `bold ${badgeFontSize}px 'Plus Jakarta Sans', sans-serif`;
-    ctx.letterSpacing = "2.5px";
+    ctx.letterSpacing = "2px";
     ctx.textAlign = "left";
-    ctx.fillText("✦ EXPOSITION & SACRED MEDITATION", cardX + Math.round(40 * baseScale), expoBoxY + Math.round(52 * baseScale));
+    ctx.fillText("✦ EXPOSITION & SACRED MEDITATION", cardX + Math.round(36 * baseScale), expoBoxY + Math.round(38 * baseScale));
 
     // Reflection Body Text (High-contrast readable ink, formatted paragraph by paragraph)
-    let eY = expoBoxY + Math.round(112 * baseScale);
+    let eY = expoBoxY + Math.round(78 * baseScale);
     expoParaBlocks.forEach((block, bIdx) => {
       if (block.isFormula) {
         // Distinct, elegant amber/gold styling for mathematical equations & laws
@@ -742,8 +760,10 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
       }
       ctx.letterSpacing = "0.2px";
       block.lines.forEach((line) => {
-        ctx.fillText(line, cardX + Math.round(40 * baseScale), eY);
-        eY += expoLineH;
+        if (eY + expoLineH <= expoBoxY + expoBoxH - Math.round(16 * baseScale)) {
+          ctx.fillText(line, cardX + Math.round(36 * baseScale), eY);
+          eY += expoLineH;
+        }
       });
       if (bIdx < expoParaBlocks.length - 1) {
         eY += expoParaGap;
@@ -771,17 +791,19 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
       ctx.fillRect(prayerCardX, bottomRowY, Math.round(8 * baseScale), bottomRowH);
 
       ctx.fillStyle = "#B48C35";
-      ctx.font = `bold ${Math.round(26 * baseScale)}px 'Plus Jakarta Sans', sans-serif`;
+      ctx.font = `bold ${badgeFontSize}px 'Plus Jakarta Sans', sans-serif`;
       ctx.letterSpacing = "2px";
       ctx.textAlign = "left";
-      ctx.fillText("✦ GUIDED FAITH PRAYER", prayerCardX + Math.round(32 * baseScale), bottomRowY + Math.round(48 * baseScale));
+      ctx.fillText("✦ GUIDED FAITH PRAYER", prayerCardX + Math.round(28 * baseScale), bottomRowY + Math.round(38 * baseScale));
 
       ctx.fillStyle = "#0F172A";
       ctx.font = `italic ${prayerFontSize}px 'Georgia', serif`;
-      let pY = bottomRowY + Math.round(100 * baseScale);
+      let pY = bottomRowY + Math.round(76 * baseScale);
       prayerLines.forEach((line) => {
-        ctx.fillText(line, prayerCardX + Math.round(32 * baseScale), pY);
-        pY += prayerLineH;
+        if (pY + prayerLineH <= bottomRowY + bottomRowH - Math.round(14 * baseScale)) {
+          ctx.fillText(line, prayerCardX + Math.round(28 * baseScale), pY);
+          pY += prayerLineH;
+        }
       });
 
       // Right Column: Today's Faith Walk & Theme Decree
@@ -797,17 +819,19 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
       ctx.fillRect(actionCardX, bottomRowY, Math.round(8 * baseScale), bottomRowH);
 
       ctx.fillStyle = "#B48C35";
-      ctx.font = `bold ${Math.round(26 * baseScale)}px 'Plus Jakarta Sans', sans-serif`;
+      ctx.font = `bold ${badgeFontSize}px 'Plus Jakarta Sans', sans-serif`;
       ctx.letterSpacing = "2px";
       ctx.textAlign = "left";
-      ctx.fillText("✦ TODAY'S FAITH WALK & DECREE", actionCardX + Math.round(32 * baseScale), bottomRowY + Math.round(48 * baseScale));
+      ctx.fillText("✦ TODAY'S FAITH WALK & DECREE", actionCardX + Math.round(28 * baseScale), bottomRowY + Math.round(38 * baseScale));
 
       ctx.fillStyle = "#0F172A";
       ctx.font = `500 ${actionFontSize}px 'Georgia', serif`;
-      let aY = bottomRowY + Math.round(100 * baseScale);
+      let aY = bottomRowY + Math.round(76 * baseScale);
       actionLines.forEach((line) => {
-        ctx.fillText(line, actionCardX + Math.round(32 * baseScale), aY);
-        aY += actionLineH;
+        if (aY + actionLineH <= bottomRowY + bottomRowH - Math.round(14 * baseScale)) {
+          ctx.fillText(line, actionCardX + Math.round(28 * baseScale), aY);
+          aY += actionLineH;
+        }
       });
 
       currentY = bottomRowY + bottomRowH + sectionGap;
@@ -826,17 +850,19 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
         ctx.fillRect(cardX, actBoxY, Math.round(8 * baseScale), actionBoxH);
 
         ctx.fillStyle = "#B48C35";
-        ctx.font = `bold ${Math.round(26 * baseScale)}px 'Plus Jakarta Sans', sans-serif`;
+        ctx.font = `bold ${badgeFontSize}px 'Plus Jakarta Sans', sans-serif`;
         ctx.letterSpacing = "2px";
         ctx.textAlign = "left";
-        ctx.fillText("✦ TODAY'S FAITH WALK & DECREE", cardX + Math.round(40 * baseScale), actBoxY + Math.round(48 * baseScale));
+        ctx.fillText("✦ TODAY'S FAITH WALK & DECREE", cardX + Math.round(36 * baseScale), actBoxY + Math.round(38 * baseScale));
 
         ctx.fillStyle = "#0F172A";
         ctx.font = `500 ${actionFontSize}px 'Georgia', serif`;
-        let aY = actBoxY + Math.round(102 * baseScale);
+        let aY = actBoxY + Math.round(76 * baseScale);
         actionLines.forEach((line) => {
-          ctx.fillText(line, cardX + Math.round(40 * baseScale), aY);
-          aY += actionLineH;
+          if (aY + actionLineH <= actBoxY + actionBoxH - Math.round(14 * baseScale)) {
+            ctx.fillText(line, cardX + Math.round(36 * baseScale), aY);
+            aY += actionLineH;
+          }
         });
 
         currentY = actBoxY + actionBoxH + sectionGap;
@@ -855,17 +881,19 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
         ctx.fillRect(cardX, prayerBoxY, Math.round(8 * baseScale), prayerBoxH);
 
         ctx.fillStyle = "#B48C35";
-        ctx.font = `bold ${Math.round(26 * baseScale)}px 'Plus Jakarta Sans', sans-serif`;
+        ctx.font = `bold ${badgeFontSize}px 'Plus Jakarta Sans', sans-serif`;
         ctx.letterSpacing = "2px";
         ctx.textAlign = "left";
-        ctx.fillText("✦ GUIDED FAITH PRAYER", cardX + Math.round(40 * baseScale), prayerBoxY + Math.round(48 * baseScale));
+        ctx.fillText("✦ GUIDED FAITH PRAYER", cardX + Math.round(36 * baseScale), prayerBoxY + Math.round(38 * baseScale));
 
         ctx.fillStyle = "#0F172A";
         ctx.font = `italic ${prayerFontSize}px 'Georgia', serif`;
-        let pY = prayerBoxY + Math.round(102 * baseScale);
+        let pY = prayerBoxY + Math.round(76 * baseScale);
         prayerLines.forEach((line) => {
-          ctx.fillText(line, cardX + Math.round(40 * baseScale), pY);
-          pY += prayerLineH;
+          if (pY + prayerLineH <= prayerBoxY + prayerBoxH - Math.round(14 * baseScale)) {
+            ctx.fillText(line, cardX + Math.round(36 * baseScale), pY);
+            pY += prayerLineH;
+          }
         });
 
         currentY = prayerBoxY + prayerBoxH + sectionGap;
@@ -873,9 +901,7 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
     }
 
     // 10. MANDATORY CLOSING SIGNATURE & AUTHOR BANNER
-    const footerY = H - innerMargin - Math.round(210 * baseScale);
-
-    // Gold Divider Line
+    // Gold Divider Line strictly at footerY (guaranteed no text overlap)
     ctx.strokeStyle = "#B48C35";
     ctx.lineWidth = Math.round(2.5 * baseScale);
     ctx.beginPath();

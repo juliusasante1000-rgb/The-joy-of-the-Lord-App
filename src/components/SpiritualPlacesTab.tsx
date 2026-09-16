@@ -256,15 +256,15 @@ export const SpiritualPlacesTab: React.FC<SpiritualPlacesTabProps> = ({
           </span>
         </div>
 
-        {/* Category Filters */}
-        <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+        {/* Category Filters: Fully visible at first glance */}
+        <div className="flex flex-wrap items-center gap-2 pt-1">
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setSelectedCategory(cat.id)}
-              className={`px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
+              className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
                 selectedCategory === cat.id
-                  ? "bg-[#16235A] text-white shadow-xs"
+                  ? "bg-[#16235A] text-white shadow-xs font-bold"
                   : "bg-slate-100 text-slate-600 hover:bg-slate-200"
               }`}
             >

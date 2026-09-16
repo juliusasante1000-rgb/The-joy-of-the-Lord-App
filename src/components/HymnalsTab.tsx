@@ -510,8 +510,8 @@ Keep the tone deeply reverent, majestic, and grounded in the Lord Jesus Christ.`
           </div>
         </div>
 
-        {/* Famous Hymns Quick Jump Chips */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-thin text-xs">
+        {/* Famous Hymns Quick Jump Chips: Visible at first glance */}
+        <div className="flex flex-wrap items-center gap-1.5 pt-1 text-xs">
           <span className="text-[11px] font-mono uppercase text-slate-400 font-bold shrink-0 mr-1">
             Quick Jump:
           </span>
@@ -528,22 +528,22 @@ Keep the tone deeply reverent, majestic, and grounded in the Lord Jesus Christ.`
             <button
               key={qh.num}
               onClick={() => handleJumpToHymnNumber(qh.num.toString())}
-              className="px-2.5 py-1 rounded-lg bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-900 text-[11px] font-semibold whitespace-nowrap cursor-pointer transition-all shrink-0"
+              className="px-2.5 py-1 rounded-lg bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-900 text-[11px] font-semibold cursor-pointer transition-all"
             >
               #{qh.num} {qh.name}
             </button>
           ))}
         </div>
 
-        {/* Categories Bar */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-thin">
+        {/* Categories Bar: Visible at first glance */}
+        <div className="flex flex-wrap items-center gap-1.5 pt-1">
           {HYMN_CATEGORIES.map((cat) => {
             const isSel = selectedCategory === cat;
             return (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap cursor-pointer transition-all ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-medium cursor-pointer transition-all ${
                   isSel
                     ? "bg-[#16235A] text-white shadow-xs font-bold"
                     : "bg-slate-100 text-slate-600 hover:bg-slate-200"

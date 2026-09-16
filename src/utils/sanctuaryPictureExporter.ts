@@ -333,7 +333,9 @@ export async function downloadBibleVersePicture(
   }
 
   // 7. Guided Prayer & Faith Decree Box
-  const prayerCardH = 280;
+  const footerY = H - innerMargin - 110;
+  const maxPrayerH = footerY - curY - 25;
+  const prayerCardH = Math.min(280, Math.max(160, maxPrayerH));
   ctx.fillStyle = "#0F172A";
   roundRect(ctx, cardX, curY, cardW, prayerCardH, 16);
   ctx.fill();
@@ -368,9 +370,7 @@ export async function downloadBibleVersePicture(
   );
 
   // 8. Founder Signature & Subscription Footer
-  const footerY = H - innerMargin - 110;
-
-  // Gold Footer Line
+  // Gold Footer Line strictly at footerY (guaranteed no text overlap)
   ctx.strokeStyle = "#B48C35";
   ctx.lineWidth = 2;
   ctx.beginPath();
@@ -624,10 +624,13 @@ export async function downloadSystematicTopicPicture(
   curY += summaryCardH + 35;
 
   // 7. Core Pillars & Practical Application Box
+  const footerY = H - innerMargin - 110;
+  const maxPillarsH = footerY - curY - 25;
   const practicalText = topic.practicalApplication || "Live out this biblical truth daily through prayer, righteous walking, and steadfast trust in the Lord.";
   ctx.font = "italic 24px 'Georgia', serif";
   const practicalLines = wrapText(ctx, practicalText, contentMaxW);
-  const pillarsBoxH = Math.max(260, practicalLines.length * 36 + 140);
+  const naturalPillarsBoxH = Math.max(260, practicalLines.length * 36 + 140);
+  const pillarsBoxH = Math.min(naturalPillarsBoxH, Math.max(160, maxPillarsH));
 
   ctx.fillStyle = "#0F172A";
   roundRect(ctx, cardX, curY, cardW, pillarsBoxH, 14);
@@ -645,8 +648,10 @@ export async function downloadSystematicTopicPicture(
   ctx.font = "italic 24px 'Georgia', serif";
   let pracY = curY + 84;
   for (let i = 0; i < Math.min(practicalLines.length, 4); i++) {
-    ctx.fillText(practicalLines[i], cardX + 40, pracY);
-    pracY += 36;
+    if (pracY + 36 <= curY + pillarsBoxH - 45) {
+      ctx.fillText(practicalLines[i], cardX + 40, pracY);
+      pracY += 36;
+    }
   }
 
   // Faith decree
@@ -655,12 +660,11 @@ export async function downloadSystematicTopicPicture(
   ctx.fillText(
     `Faith Decree: "The joy of the Lord is my strength" (Nehemiah 8:10) — Established on ${topic.title}!`,
     cardX + 40,
-    curY + pillarsBoxH - 35
+    curY + pillarsBoxH - 22
   );
 
   // 8. Founder Signature & Subscription Footer
-  const footerY = H - innerMargin - 110;
-
+  // Gold Footer Line strictly at footerY (guaranteed zero overlap)
   ctx.strokeStyle = "#B48C35";
   ctx.lineWidth = 2;
   ctx.beginPath();

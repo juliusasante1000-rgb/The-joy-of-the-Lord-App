@@ -323,8 +323,8 @@ export const MathemaSermonsTab: React.FC<MathemaSermonsTabProps> = ({
           </div>
         </div>
 
-        {/* Series Horizontal Selector */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-thin">
+        {/* Series Horizontal Selector: Visible at first glance */}
+        <div className="flex flex-wrap items-center gap-1.5 pt-1">
           {seriesList.map((sId) => {
             const seriesObj = MATHEMASERMONS_SERIES.find((s) => s.id === sId);
             const label = seriesObj ? seriesObj.name : "All Series";
@@ -333,7 +333,7 @@ export const MathemaSermonsTab: React.FC<MathemaSermonsTabProps> = ({
               <button
                 key={sId}
                 onClick={() => setSelectedSeries(sId)}
-                className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
+                className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
                   isSel
                     ? "bg-[#16235A] text-white shadow-xs font-bold"
                     : "bg-slate-100 text-slate-700 hover:bg-slate-200"

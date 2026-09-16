@@ -275,7 +275,7 @@ export const JoyOvercomingTab: React.FC<JoyOvercomingTabProps> = ({
             />
           </div>
 
-          <div className="flex items-center gap-2 overflow-x-auto pb-1 w-full sm:w-auto scrollbar-none">
+          <div className="flex flex-wrap items-center gap-2 pt-1 w-full sm:w-auto">
             {computedCategories.map((cat) => (
               <button
                 key={cat.id}
@@ -283,7 +283,7 @@ export const JoyOvercomingTab: React.FC<JoyOvercomingTabProps> = ({
                   setSelectedCategory(cat.id);
                   setVisibleCount(36);
                 }}
-                className={`px-3 py-1 rounded-xl text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all cursor-pointer ${
+                className={`px-3 py-1 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
                   selectedCategory === cat.id
                     ? "bg-white text-[#16235A] shadow-xs font-black"
                     : "bg-white/10 text-white hover:bg-white/20"

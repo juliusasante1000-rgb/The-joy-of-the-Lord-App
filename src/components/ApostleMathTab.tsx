@@ -356,8 +356,8 @@ export const ApostleMathTab: React.FC<ApostleMathTabProps> = ({
           </div>
         </div>
 
-        {/* Category Pills */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs scrollbar-thin">
+        {/* Category Pills: Visible at first glance */}
+        <div className="flex flex-wrap items-center gap-1.5 pt-1 text-xs">
           <span className="text-slate-400 font-semibold flex items-center gap-1 shrink-0 mr-1">
             <Filter className="w-3 h-3" /> Branch:
           </span>
@@ -365,7 +365,7 @@ export const ApostleMathTab: React.FC<ApostleMathTabProps> = ({
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
                 selectedCategory === cat
                   ? "bg-[#9333EA] text-white shadow-xs font-bold"
                   : "bg-slate-100 text-slate-700 hover:bg-slate-200"

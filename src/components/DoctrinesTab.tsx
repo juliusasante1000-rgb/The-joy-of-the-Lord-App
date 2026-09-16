@@ -282,118 +282,182 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
   return (
     <div className="space-y-6 pb-24 animate-in fade-in duration-200">
       {/* Hero Header */}
-      <div className="p-6 rounded-lg bg-[#0F172A] text-white shadow-md border-b-4 border-[#B48C35] space-y-4">
+      <div className="p-6 sm:p-7 rounded-2xl bg-[#0F172A] text-white shadow-lg border-b-4 border-[#B48C35] space-y-5">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-full bg-[#B48C35] text-white shrink-0">
-              <GraduationCap className="w-6 h-6" />
+          <div className="flex items-center gap-3.5">
+            <div className="p-3 rounded-2xl bg-[#B48C35] text-white shrink-0 shadow-md">
+              <GraduationCap className="w-7 h-7" />
             </div>
             <div>
-              <h2 className="text-xl sm:text-2xl font-serif tracking-tight text-white flex items-center gap-2">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-serif tracking-tight text-white flex items-center gap-2.5 flex-wrap">
                 <span>Doctrinal & Systematic Treasury</span>
-                <span className="text-xs px-2 py-0.5 rounded-full bg-[#B48C35]/30 text-[#DCC398] border border-[#B48C35]/50 font-sans font-bold">
-                  500 Topics
+                <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#B48C35]/30 text-[#DCC398] border border-[#B48C35]/60 font-sans font-bold">
+                  All Portals Visible
                 </span>
               </h2>
-              <p className="text-xs sm:text-sm text-[#DCC398] font-serif italic">
-                Articles of Faith, Systematic Pillars & The 500 Topics Christian Compendium
+              <p className="text-xs sm:text-sm text-[#DCC398] font-serif italic mt-0.5">
+                The 15 Apostolic Doctrinal Pillars, 500 Topics Compendium, 20 Core Tenets & AI Scholar
               </p>
             </div>
           </div>
+        </div>
 
-          {/* View Mode Switcher */}
-          <div className="flex items-center gap-1.5 p-1 bg-white/10 rounded-lg border border-white/15 shrink-0 overflow-x-auto">
-            <button
-              onClick={() => {
-                setActiveViewMode("systematic500");
-                setSelectedCategory("all");
-              }}
-              className={`px-3 py-1.5 rounded text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all whitespace-nowrap ${
-                activeViewMode === "systematic500"
-                  ? "bg-[#B48C35] text-white shadow-xs"
-                  : "text-slate-200 hover:text-white hover:bg-white/10"
-              }`}
-            >
-              <Compass className="w-3.5 h-3.5" />
-              <span>500 Topics Catalog</span>
-              <span className="ml-1 px-1.5 py-0.2 rounded-full bg-black/30 text-[10px]">
-                500
+        {/* Grand 4-Portal View Switcher: 100% visible at first glance on all screen sizes */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 pt-1">
+          <button
+            id="doctrine-portal-pillars"
+            onClick={() => {
+              setActiveViewMode("pillars");
+              setSelectedCategory("all");
+            }}
+            className={`p-3 sm:p-3.5 rounded-xl border text-left transition-all flex flex-col justify-between gap-2 cursor-pointer ${
+              activeViewMode === "pillars"
+                ? "bg-[#B48C35] text-white border-white/40 shadow-md ring-2 ring-amber-300"
+                : "bg-white/10 text-slate-200 border-white/15 hover:bg-white/15 hover:text-white"
+            }`}
+          >
+            <div className="flex items-center justify-between gap-2">
+              <div className={`p-1.5 rounded-lg ${activeViewMode === "pillars" ? "bg-black/20 text-white" : "bg-[#B48C35]/30 text-[#DCC398]"}`}>
+                <Layers className="w-4 h-4" />
+              </div>
+              <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full font-bold ${
+                activeViewMode === "pillars" ? "bg-black/30 text-white" : "bg-black/40 text-amber-300"
+              }`}>
+                {DOCTRINE_CATEGORIES.length} Pillars
               </span>
-            </button>
-            <button
-              onClick={() => {
-                setActiveViewMode("tenets");
-                setSelectedCategory("all");
-              }}
-              className={`px-3 py-1.5 rounded text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all whitespace-nowrap ${
-                activeViewMode === "tenets"
-                  ? "bg-[#B48C35] text-white shadow-xs"
-                  : "text-slate-200 hover:text-white hover:bg-white/10"
-              }`}
-            >
-              <Scroll className="w-3.5 h-3.5" />
-              <span>Core Tenets ({CHURCH_TENETS.length})</span>
-              <span className="ml-1 px-1.5 py-0.2 rounded-full bg-black/30 text-[10px]">
-                {CHURCH_TENETS.length}
+            </div>
+            <div>
+              <div className="font-serif font-bold text-xs sm:text-sm leading-tight text-white">
+                15 Doctrinal Pillars
+              </div>
+              <div className={`text-[11px] mt-0.5 leading-tight ${activeViewMode === "pillars" ? "text-white/90" : "text-slate-300"}`}>
+                Apostolic theology & commentary
+              </div>
+            </div>
+          </button>
+
+          <button
+            id="doctrine-portal-systematic500"
+            onClick={() => {
+              setActiveViewMode("systematic500");
+              setSelectedCategory("all");
+            }}
+            className={`p-3 sm:p-3.5 rounded-xl border text-left transition-all flex flex-col justify-between gap-2 cursor-pointer ${
+              activeViewMode === "systematic500"
+                ? "bg-[#B48C35] text-white border-white/40 shadow-md ring-2 ring-amber-300"
+                : "bg-white/10 text-slate-200 border-white/15 hover:bg-white/15 hover:text-white"
+            }`}
+          >
+            <div className="flex items-center justify-between gap-2">
+              <div className={`p-1.5 rounded-lg ${activeViewMode === "systematic500" ? "bg-black/20 text-white" : "bg-[#B48C35]/30 text-[#DCC398]"}`}>
+                <Compass className="w-4 h-4" />
+              </div>
+              <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full font-bold ${
+                activeViewMode === "systematic500" ? "bg-black/30 text-white" : "bg-black/40 text-amber-300"
+              }`}>
+                500 Topics
               </span>
-            </button>
-            <button
-              onClick={() => {
-                setActiveViewMode("pillars");
-                setSelectedCategory("all");
-              }}
-              className={`px-3 py-1.5 rounded text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all whitespace-nowrap ${
-                activeViewMode === "pillars"
-                  ? "bg-[#B48C35] text-white shadow-xs"
-                  : "text-slate-200 hover:text-white hover:bg-white/10"
-              }`}
-            >
-              <Layers className="w-3.5 h-3.5" />
-              <span>15 Pillars Deep</span>
-              <span className="ml-1 px-1.5 py-0.2 rounded-full bg-black/30 text-[10px]">
-                {DOCTRINE_CATEGORIES.length}
+            </div>
+            <div>
+              <div className="font-serif font-bold text-xs sm:text-sm leading-tight text-white">
+                500 Topics Catalog
+              </div>
+              <div className={`text-[11px] mt-0.5 leading-tight ${activeViewMode === "systematic500" ? "text-white/90" : "text-slate-300"}`}>
+                Systematic & Christian life
+              </div>
+            </div>
+          </button>
+
+          <button
+            id="doctrine-portal-tenets"
+            onClick={() => {
+              setActiveViewMode("tenets");
+              setSelectedCategory("all");
+            }}
+            className={`p-3 sm:p-3.5 rounded-xl border text-left transition-all flex flex-col justify-between gap-2 cursor-pointer ${
+              activeViewMode === "tenets"
+                ? "bg-[#B48C35] text-white border-white/40 shadow-md ring-2 ring-amber-300"
+                : "bg-white/10 text-slate-200 border-white/15 hover:bg-white/15 hover:text-white"
+            }`}
+          >
+            <div className="flex items-center justify-between gap-2">
+              <div className={`p-1.5 rounded-lg ${activeViewMode === "tenets" ? "bg-black/20 text-white" : "bg-[#B48C35]/30 text-[#DCC398]"}`}>
+                <Scroll className="w-4 h-4" />
+              </div>
+              <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full font-bold ${
+                activeViewMode === "tenets" ? "bg-black/30 text-white" : "bg-black/40 text-amber-300"
+              }`}>
+                {CHURCH_TENETS.length} Tenets
               </span>
-            </button>
-            <button
-              onClick={() => setActiveViewMode("askAi")}
-              className={`px-3 py-1.5 rounded text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all whitespace-nowrap ${
-                activeViewMode === "askAi"
-                  ? "bg-[#B48C35] text-white shadow-xs"
-                  : "text-slate-200 hover:text-white hover:bg-white/10"
-              }`}
-            >
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Ask AI Scholar</span>
-            </button>
-          </div>
+            </div>
+            <div>
+              <div className="font-serif font-bold text-xs sm:text-sm leading-tight text-white">
+                20 Church Tenets
+              </div>
+              <div className={`text-[11px] mt-0.5 leading-tight ${activeViewMode === "tenets" ? "text-white/90" : "text-slate-300"}`}>
+                Foundational articles of faith
+              </div>
+            </div>
+          </button>
+
+          <button
+            id="doctrine-portal-askAi"
+            onClick={() => setActiveViewMode("askAi")}
+            className={`p-3 sm:p-3.5 rounded-xl border text-left transition-all flex flex-col justify-between gap-2 cursor-pointer ${
+              activeViewMode === "askAi"
+                ? "bg-[#B48C35] text-white border-white/40 shadow-md ring-2 ring-amber-300"
+                : "bg-white/10 text-slate-200 border-white/15 hover:bg-white/15 hover:text-white"
+            }`}
+          >
+            <div className="flex items-center justify-between gap-2">
+              <div className={`p-1.5 rounded-lg ${activeViewMode === "askAi" ? "bg-black/20 text-white" : "bg-[#B48C35]/30 text-[#DCC398]"}`}>
+                <Sparkles className="w-4 h-4" />
+              </div>
+              <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full font-bold ${
+                activeViewMode === "askAi" ? "bg-black/30 text-white" : "bg-black/40 text-amber-300"
+              }`}>
+                AI Scholar
+              </span>
+            </div>
+            <div>
+              <div className="font-serif font-bold text-xs sm:text-sm leading-tight text-white">
+                Ask AI Scholar
+              </div>
+              <div className={`text-[11px] mt-0.5 leading-tight ${activeViewMode === "askAi" ? "text-white/90" : "text-slate-300"}`}>
+                Instant theological inquiries
+              </div>
+            </div>
+          </button>
         </div>
 
         {/* Search Doctrine Input */}
-        <div className="relative">
+        <div className="relative pt-1">
           <Search className="w-4 h-4 text-[#DCC398] absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             placeholder={
               activeViewMode === "systematic500"
                 ? "Search across 500 topics (e.g. Righteousness, Altars, Blood Covenant, Trinity, Melchizedek, 666, Tithes)..."
+                : activeViewMode === "pillars"
+                ? "Search 15 Doctrinal Pillars (e.g. Infallibility, Trinity, Justification, Sanctification, Lord's Supper, Divine Healing)..."
                 : "Search doctrines (e.g. Trinity, Infallibility, Depravity, Virgin Birth, Baptism of Holy Ghost, Tithes, Second Coming)..."
             }
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 bg-[#1A2A44] border border-white/10 rounded text-xs sm:text-sm text-white placeholder:text-slate-400 focus:outline-hidden focus:border-[#B48C35]"
+            className="w-full pl-10 pr-4 py-2.5 bg-[#1A2A44] border border-white/15 rounded-xl text-xs sm:text-sm text-white placeholder:text-slate-400 focus:outline-hidden focus:border-[#B48C35] focus:ring-1 focus:ring-[#B48C35]"
           />
         </div>
 
-        {/* 500 Topics Division Pills */}
+        {/* 500 Topics Division Pills: wrapped & visible at first glance */}
         {activeViewMode === "systematic500" && (
-          <div className="space-y-2 pt-1">
-            <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
+          <div className="space-y-2.5 pt-1 border-t border-white/10">
+            <div className="flex items-center gap-1.5 flex-wrap">
               <span className="text-[11px] font-bold uppercase tracking-wider text-[#DCC398] mr-1 shrink-0 flex items-center gap-1">
                 <SlidersHorizontal className="w-3 h-3" /> Division:
               </span>
               <button
                 onClick={() => setSelectedTopicDivision("all")}
-                className={`px-3 py-1 rounded text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all ${
+                className={`px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
                   selectedTopicDivision === "all"
                     ? "bg-[#B48C35] text-white shadow-xs"
                     : "bg-white/10 text-slate-200 hover:bg-white/20"
@@ -403,7 +467,7 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
               </button>
               <button
                 onClick={() => setSelectedTopicDivision("part1")}
-                className={`px-3 py-1 rounded text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all ${
+                className={`px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
                   selectedTopicDivision === "part1"
                     ? "bg-[#B48C35] text-white shadow-xs"
                     : "bg-white/10 text-slate-200 hover:bg-white/20"
@@ -413,7 +477,7 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
               </button>
               <button
                 onClick={() => setSelectedTopicDivision("part2")}
-                className={`px-3 py-1 rounded text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all ${
+                className={`px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
                   selectedTopicDivision === "part2"
                     ? "bg-[#B48C35] text-white shadow-xs"
                     : "bg-white/10 text-slate-200 hover:bg-white/20"
@@ -423,7 +487,7 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
               </button>
               <button
                 onClick={() => setSelectedTopicDivision("part3")}
-                className={`px-3 py-1 rounded text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all ${
+                className={`px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
                   selectedTopicDivision === "part3"
                     ? "bg-[#B48C35] text-white shadow-xs"
                     : "bg-white/10 text-slate-200 hover:bg-white/20"
@@ -433,7 +497,7 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
               </button>
               <button
                 onClick={() => setSelectedTopicDivision("part4")}
-                className={`px-3 py-1 rounded text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all ${
+                className={`px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
                   selectedTopicDivision === "part4"
                     ? "bg-[#B48C35] text-white shadow-xs"
                     : "bg-white/10 text-slate-200 hover:bg-white/20"
@@ -443,7 +507,7 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
               </button>
               <button
                 onClick={() => setSelectedTopicDivision("part5")}
-                className={`px-3 py-1 rounded text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all ${
+                className={`px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
                   selectedTopicDivision === "part5"
                     ? "bg-[#B48C35] text-white shadow-xs"
                     : "bg-white/10 text-slate-200 hover:bg-white/20"
@@ -453,14 +517,14 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
               </button>
             </div>
 
-            {/* Category Sub-Filters */}
-            <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
+            {/* Category Sub-Filters: wrapped & visible */}
+            <div className="flex items-center gap-1.5 flex-wrap pt-0.5">
               <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mr-1 shrink-0">
                 Categories:
               </span>
               <button
                 onClick={() => setSelectedCategory("all")}
-                className={`px-2.5 py-0.5 rounded text-[11px] font-semibold whitespace-nowrap transition-all ${
+                className={`px-2.5 py-0.5 rounded-md text-[11px] font-semibold transition-all cursor-pointer ${
                   selectedCategory === "all"
                     ? "bg-[#DCC398] text-[#0F172A] font-bold"
                     : "bg-black/30 text-slate-300 hover:bg-white/10"
@@ -472,7 +536,7 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-2.5 py-0.5 rounded text-[11px] font-semibold whitespace-nowrap transition-all ${
+                  className={`px-2.5 py-0.5 rounded-md text-[11px] font-semibold transition-all cursor-pointer ${
                     selectedCategory === cat
                       ? "bg-[#DCC398] text-[#0F172A] font-bold"
                       : "bg-black/30 text-slate-300 hover:bg-white/10"
@@ -485,14 +549,14 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
           </div>
         )}
 
-        {/* Category Pills when in 15 Pillars view */}
+        {/* Category Pills when in 15 Pillars view: wrapped & visible at first glance */}
         {activeViewMode === "pillars" && (
-          <div className="flex items-center gap-2 overflow-x-auto pt-1 pb-1 scrollbar-none">
+          <div className="flex items-center gap-2 flex-wrap pt-1 border-t border-white/10">
             <button
               onClick={() => setSelectedCategory("all")}
-              className={`px-3.5 py-1.5 rounded text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all ${
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
                 selectedCategory === "all"
-                  ? "bg-[#B48C35] text-white shadow-xs"
+                  ? "bg-[#B48C35] text-white shadow-xs ring-1 ring-amber-300"
                   : "bg-white/10 text-slate-200 hover:bg-white/20"
               }`}
             >
@@ -502,9 +566,9 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-3.5 py-1.5 rounded text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all ${
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
                   selectedCategory === cat.id
-                    ? "bg-[#B48C35] text-white shadow-xs"
+                    ? "bg-[#B48C35] text-white shadow-xs ring-1 ring-amber-300"
                     : "bg-white/10 text-slate-200 hover:bg-white/20"
                 }`}
               >

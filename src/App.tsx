@@ -44,27 +44,43 @@ import {
 
 export function App() {
   const [activeTab, setActiveTab] = useState<TabType>("home");
-  const [visitedTabs, setVisitedTabs] = useState<Set<string>>(() => new Set(["home"]));
+  // Pre-seed core tabs so that tab switching is immediate and does not incur heavy mount latency on first click
+  const [visitedTabs, setVisitedTabs] = useState<Set<string>>(
+    () => new Set([
+      "home",
+      "bible",
+      "doctrines",
+      "spiritual_places",
+      "places",
+      "apostle_math",
+      "math",
+      "hymnals",
+      "prayer",
+      "prayers",
+      "quotes",
+      "library",
+      "books",
+      "creator",
+      "about"
+    ])
+  );
 
   const handleNavigateTab = useCallback((tab: TabType) => {
-    React.startTransition(() => {
-      setActiveTab(tab);
-      setVisitedTabs((prev) => {
-        if (prev.has(tab)) return prev;
-        const next = new Set(prev);
-        next.add(tab);
-        if (tab === "spiritual_places") next.add("places");
-        if (tab === "apostle_math") next.add("math");
-        if (tab === "prayer") next.add("prayers");
-        if (tab === "creator") next.add("about");
-        if (tab === "library") next.add("books");
-        return next;
-      });
+    // Instant, synchronous tab state switch - zero delay
+    setActiveTab(tab);
+    setVisitedTabs((prev) => {
+      if (prev.has(tab)) return prev;
+      const next = new Set(prev);
+      next.add(tab);
+      if (tab === "spiritual_places") next.add("places");
+      if (tab === "apostle_math") next.add("math");
+      if (tab === "prayer") next.add("prayers");
+      if (tab === "creator") next.add("about");
+      if (tab === "library") next.add("books");
+      return next;
     });
     // Non-blocking, instant viewport repositioning
-    requestAnimationFrame(() => {
-      window.scrollTo({ top: 0, behavior: "instant" as any });
-    });
+    window.scrollTo({ top: 0, behavior: "instant" as any });
   }, []);
 
   // Sync visitedTabs on activeTab updates

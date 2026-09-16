@@ -745,12 +745,12 @@ export const QuotesTab: React.FC<QuotesTabProps> = ({
                   {filteredFavouriteScriptures.length} Scripture{filteredFavouriteScriptures.length !== 1 ? "s" : ""}
                 </span>
               </div>
-              <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
+              <div className="flex flex-wrap items-center gap-1.5 pt-1">
                 {categories.map((cat) => (
                   <button
                     key={cat}
                     onClick={() => setSelectedCategory(cat)}
-                    className={`px-3 py-1.5 rounded text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all cursor-pointer ${
+                    className={`px-3 py-1.5 rounded text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
                       selectedCategory === cat
                         ? "bg-[#0F172A] text-white shadow-xs"
                         : "bg-[#FDFBF7] border border-[#E5D5BC] text-[#1A2A44] hover:bg-[#F1E6D2]"
