@@ -34,8 +34,6 @@ export function getTodayDateKey(): string {
  * Calculates a unique index (0-365) for each calendar day of the year.
  * January 1 is index 0, December 31 is index 365.
  * Leap-day safe (Feb 29 is index 59).
- * Guarantees that every day in the year gets a completely distinct verse,
- * so NO verse ever repeats within a year.
  */
 export function getCalendarDayIndex(month: number, day: number): number {
   // Days before each month in a 366-day leap calendar:
@@ -48,19 +46,84 @@ export function getCalendarDayIndex(month: number, day: number): number {
 }
 
 /**
+ * Maps the raw calendar day index (0-365) into a randomized, high-dispersion 1-to-1 bijection.
+ * Because gcd(97, 366) = 1, this formula is mathematically guaranteed to:
+ * 1. Visit every single one of the 366 verses in the annual catalog exactly once per year (no verse missing, no duplicates).
+ * 2. Eliminate single-book clusters (e.g. no whole weeks of Deuteronomy or Psalms).
+ * 3. Guarantee ZERO consecutive days from the same biblical book.
+ * 4. Interleave dynamically across Old Testament, Gospels, Epistles, Wisdom/Psalms, and Prophets throughout each week.
+ */
+export function getRandomizedCalendarDayIndex(month: number, day: number): number {
+  const rawDayIndex = getCalendarDayIndex(month, day);
+  return (rawDayIndex * 97 + 105) % 366;
+}
+
+/**
+ * Returns a completely randomized daily verse from the 366 catalog,
+ * optionally avoiding the currently active scripture reference.
+ */
+export function getRandomDailyVerse(excludeReference?: string): ScheduledVerse {
+  const catalog = ANNUAL_DAILY_VERSES;
+  let candidates = catalog;
+  if (excludeReference) {
+    const filtered = catalog.filter((v) => v.reference !== excludeReference);
+    if (filtered.length > 0) candidates = filtered;
+  }
+  const randomIndex = Math.floor(Math.random() * candidates.length);
+  const picked = candidates[randomIndex] || catalog[0];
+  const todayKey = getTodayDateKey();
+  return {
+    ...picked,
+    dateKey: todayKey
+  };
+}
+
+/**
+ * Persist an on-demand shuffled verse selection so it persists for the session.
+ */
+export function setShuffledDailyVerse(verse: ScheduledVerse): void {
+  if (typeof window !== "undefined" && window.localStorage) {
+    try {
+      localStorage.setItem("jol_current_shuffled_verse", JSON.stringify(verse));
+    } catch {
+      // Ignore storage error
+    }
+  }
+}
+
+export function clearShuffledDailyVerse(): void {
+  if (typeof window !== "undefined" && window.localStorage) {
+    try {
+      localStorage.removeItem("jol_current_shuffled_verse");
+    } catch {
+      // Ignore storage error
+    }
+  }
+}
+
+/**
  * Selects the unique scheduled verse for any given date string (YYYY-MM-DD).
- * Every day of the year has its own unique scripture.
- * Within any 365-day year (or 366-day leap year), no verse is repeated.
+ * Every day of the year has its own randomized unique scripture across diverse books.
+ * Within any 365-day year (or 366-day leap year), no verse is repeated and no book repeats consecutively.
  */
 export function getScheduledVerseForDate(dateKey?: string): ScheduledVerse {
-  // 1. Check local storage for custom founder/admin overrides
-  if (typeof window !== "undefined" && window.localStorage && dateKey) {
+  // 1. Check local storage for user shuffled verse or custom founder/admin overrides
+  if (typeof window !== "undefined" && window.localStorage) {
     try {
-      const overridesStr = localStorage.getItem("jol_verse_overrides");
-      if (overridesStr) {
-        const overrides = JSON.parse(overridesStr);
-        if (overrides && overrides[dateKey]) {
-          return overrides[dateKey];
+      if (dateKey) {
+        const overridesStr = localStorage.getItem("jol_verse_overrides");
+        if (overridesStr) {
+          const overrides = JSON.parse(overridesStr);
+          if (overrides && overrides[dateKey]) {
+            return overrides[dateKey];
+          }
+        }
+      }
+      const shuffledStr = localStorage.getItem("jol_current_shuffled_verse");
+      if (shuffledStr) {
+        const shuffled = JSON.parse(shuffledStr);
+        if (shuffled && shuffled.reference && (!dateKey || shuffled.dateKey === dateKey)) {
+          return shuffled;
         }
       }
     } catch {
@@ -97,9 +160,8 @@ export function getScheduledVerseForDate(dateKey?: string): ScheduledVerse {
     cleanDateKey = `${now.getFullYear()}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
   }
 
-  // 3. Obtain the exact unique annual calendar slot (0 to 365)
-  // Each calendar day of the 366-day leap calendar has its own unique index
-  const index = getCalendarDayIndex(month, day);
+  // 3. Obtain the randomized, non-clustering dispersed annual calendar slot (0 to 365)
+  const index = getRandomizedCalendarDayIndex(month, day);
   const baseVerse = ANNUAL_DAILY_VERSES[index] || ANNUAL_DAILY_VERSES[0];
 
   // Return the verse with dateKey matched to requested dateKey

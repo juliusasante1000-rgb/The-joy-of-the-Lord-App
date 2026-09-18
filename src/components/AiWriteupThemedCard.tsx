@@ -18,6 +18,7 @@ import {
   X,
   ExternalLink
 } from "lucide-react";
+import { MathView, RichMathContent } from "./MathView";
 
 export type AiWriteupTheme = "parchment" | "midnight" | "royal" | "morning";
 
@@ -182,7 +183,7 @@ export const AiWriteupThemedCard: React.FC<AiWriteupThemedCardProps> = ({
       const adoration = d.adoration || d.sections?.adoration;
       const confession = d.confession || d.confessionAndSurrender || d.sections?.confessionAndSurrender || d.sections?.confession;
       const thanksgiving = d.thanksgiving || d.sections?.thanksgiving;
-      const scripturePromise = d.scripturePromise || d.sections?.scripturePromise;
+      const scripturePromise = d.scripturePromise || d.scriptureAnchor || d.sections?.scripturePromise;
       const petition = d.petition || d.sections?.petition;
       const warfare = d.warfareDeclaration || d.spiritualWarfare || d.sections?.spiritualWarfare || d.sections?.warfareDeclaration;
       const closing = d.closing || d.declarationInJesusName || d.sections?.declarationInJesusName || d.sections?.closing;
@@ -192,7 +193,7 @@ export const AiWriteupThemedCard: React.FC<AiWriteupThemedCardProps> = ({
         if (confession) customSections.push({ title: "Surrender & Alignment", body: confession, isConclusion: false });
         if (thanksgiving) customSections.push({ title: "Thanksgiving & Covenant Praise", body: thanksgiving, isConclusion: false });
         if (scripturePromise) customSections.push({ title: "Standing on God's Infallible Promise", body: scripturePromise, isConclusion: false });
-        if (petition) customSections.push({ title: "Targeted Faith Petition", body: petition, isConclusion: false });
+        if (petition) customSections.push({ title: "Targeted Faith Petitions", body: petition, isConclusion: false });
         if (warfare) customSections.push({ title: "Apostolic Warfare Authority", body: warfare, isConclusion: false });
         if (closing) customSections.push({ title: "Sealing Benediction in Jesus' Name", body: closing, isConclusion: true });
         if (customSections.length > 0) return customSections;
@@ -205,7 +206,7 @@ export const AiWriteupThemedCard: React.FC<AiWriteupThemedCardProps> = ({
       const hist = d.historicalContext;
       const decree = d.apostolicDecree || d.propheticDecree;
       const action = d.actionStep;
-      const hope = d.hopeEncouragementConclusion || d.conclusion;
+      const hope = d.hopeEncouragementConclusion || d.hopeAndEncouragementConclusion || d.conclusion;
 
       if (reflection || guidedPrayer || practical) {
         if (hist) customSections.push({ title: "Historical & Spiritual Setting", body: hist, isConclusion: false });
@@ -215,6 +216,30 @@ export const AiWriteupThemedCard: React.FC<AiWriteupThemedCardProps> = ({
         if (guidedPrayer) customSections.push({ title: "Guided Covenant Prayer", body: guidedPrayer, isConclusion: false });
         if (decree) customSections.push({ title: "Apostolic Faith Decree", body: decree, isConclusion: false });
         if (hope) customSections.push({ title: "Triumphant Hope & Joy Conclusion", body: hope, isConclusion: true });
+        if (customSections.length > 0) return customSections;
+      }
+
+      // MathemaSermon schema
+      const mathConcept = d.mathematicalConcept || d.concept;
+      const mathFormula = d.formula || d.mathematicalFormula || d.equation;
+      const mathAnalogy = d.mathematicalAnalogy || d.conceptualAnalogy || d.analogy;
+      const homiletic = d.homileticApplication || d.theologicalExposition || d.exposition;
+      const hopeConclusion = d.hopeAndEncouragementConclusion || d.hopeConclusion || d.lifeTransformation || d.conclusion;
+      const altarPrayer = d.altarCallPrayer || d.prayer;
+
+      if (mathConcept || mathFormula || mathAnalogy || homiletic) {
+        if (mathConcept || mathFormula) {
+          const formulaBlock = mathFormula ? `\n\n$$\n${mathFormula}\n$$` : "";
+          customSections.push({
+            title: "Divine Mathematical Principle & Law",
+            body: mathConcept ? `**${mathConcept}**${formulaBlock}` : (mathFormula ? `$$\n${mathFormula}\n$$` : ""),
+            isConclusion: false
+          });
+        }
+        if (mathAnalogy) customSections.push({ title: "Spiritual Conceptual Analogy", body: mathAnalogy, isConclusion: false });
+        if (homiletic) customSections.push({ title: "Apostolic Homiletic Application", body: homiletic, isConclusion: false });
+        if (hopeConclusion) customSections.push({ title: "Triumphant Covenant Hope & Strength", body: hopeConclusion, isConclusion: false });
+        if (altarPrayer) customSections.push({ title: "Altar Call Prayer & Surrender", body: altarPrayer, isConclusion: true });
         if (customSections.length > 0) return customSections;
       }
 
@@ -233,16 +258,6 @@ export const AiWriteupThemedCard: React.FC<AiWriteupThemedCardProps> = ({
         if (customSections.length > 0) return customSections;
       }
 
-      // MathemaSermon schema
-      if (d.mathematicalConcept || d.formula || d.theologicalExposition) {
-        if (d.mathematicalConcept) customSections.push({ title: "Divine Mathematical Principle", body: `**${d.mathematicalConcept}**\n\n\`${d.formula || ""}\``, isConclusion: false });
-        if (d.conceptualAnalogy) customSections.push({ title: "Conceptual Spiritual Analogy", body: d.conceptualAnalogy, isConclusion: false });
-        if (d.theologicalExposition) customSections.push({ title: "Theological Exposition", body: d.theologicalExposition, isConclusion: false });
-        if (d.lifeTransformation) customSections.push({ title: "Life Transformation", body: d.lifeTransformation, isConclusion: false });
-        if (d.altarCallPrayer) customSections.push({ title: "Altar Call Prayer & Surrender", body: d.altarCallPrayer, isConclusion: true });
-        if (customSections.length > 0) return customSections;
-      }
-
       // Prayer points schema
       const pPoints = d.prayerPoints || d.points;
       if (Array.isArray(pPoints) && pPoints.length > 0) {
@@ -258,15 +273,17 @@ export const AiWriteupThemedCard: React.FC<AiWriteupThemedCardProps> = ({
       }
 
       // Exposition schema
-      if (d.originalLanguageInsight || d.doctrinalMeaning) {
+      if (d.originalLanguageInsight || d.doctrinalMeaning || d.expositoryBreakdown) {
         if (d.historicalContext) customSections.push({ title: "Historical & Contextual Setting", body: d.historicalContext, isConclusion: false });
         if (d.originalLanguageInsight) customSections.push({ title: "Original Hebrew/Greek Linguistic Insights", body: d.originalLanguageInsight, isConclusion: false });
+        if (d.expositoryBreakdown) customSections.push({ title: "Verse Expository Breakdown", body: d.expositoryBreakdown, isConclusion: false });
         if (d.doctrinalMeaning) customSections.push({ title: "Covenant Doctrine & Truth", body: d.doctrinalMeaning, isConclusion: false });
         if (d.crossReferences && Array.isArray(d.crossReferences)) {
           const crText = d.crossReferences.map((c: any) => `• **${c.reference}**: ${c.connection}`).join("\n");
           customSections.push({ title: "Scriptural Cross-References", body: crText, isConclusion: false });
         }
-        if (d.lifeTransformation) customSections.push({ title: "Life Transformation", body: d.lifeTransformation, isConclusion: true });
+        if (d.lifeTransformation) customSections.push({ title: "Life Transformation", body: d.lifeTransformation, isConclusion: false });
+        if (d.apostolicBlessing) customSections.push({ title: "Apostolic Blessing & Decree", body: d.apostolicBlessing, isConclusion: true });
         if (customSections.length > 0) return customSections;
       }
     }
@@ -309,30 +326,119 @@ export const AiWriteupThemedCard: React.FC<AiWriteupThemedCardProps> = ({
     }
     flushSec();
 
-    if (sections.length > 0) return sections;
+    // Deduplicate any sections that have identical titles or bodies
+    const seenTitles = new Set<string>();
+    const seenBodies = new Set<string>();
+    const uniqueSections: { title: string; body: string; isConclusion: boolean }[] = [];
+
+    const sourceSections = sections.length > 0 ? sections : [{ title: "", body: text, isConclusion: false }];
+    for (const sec of sourceSections) {
+      const cleanTitle = sec.title.trim().toLowerCase();
+      const cleanBody = sec.body.trim().toLowerCase();
+      if (!cleanBody && !cleanTitle) continue;
+      if (cleanTitle && seenTitles.has(cleanTitle) && seenBodies.has(cleanBody.slice(0, 50))) {
+        continue;
+      }
+      if (cleanTitle) seenTitles.add(cleanTitle);
+      if (cleanBody) seenBodies.add(cleanBody.slice(0, 50));
+      uniqueSections.push(sec);
+    }
+
+    if (uniqueSections.length > 0) return uniqueSections;
     return [{ title: "", body: text, isConclusion: false }];
   };
 
   const parsedSections = parseSections(content, structuredData);
   const displayTitle = title || structuredData?.title || `${actionType}: ${scriptureReference}`;
 
-  // Helper for inline markdown bold and italic
-  const renderInlineMarkdown = (text: string) => {
-    const parts = text.split(/(\*\*.*?\*\*|\*.*?\*)/g);
+  // Helper for inline markdown bold, italic, code, and standardized math
+  const renderInlineContent = (text: string): React.ReactNode => {
+    if (!text) return null;
+
+    // Tokenize by display math $$...$$, inline math $...$, \(...\), \[...\], bold **...**, italic *...*, code `...`
+    const tokenRegex = /(\$\$[\s\S]*?\$\$|\\\[[\s\S]*?\\\]|\$[^\$\n]+?\$|\\\([\s\S]*?\\\)|\*\*.*?\*\*|\*.*?\*|`[^`\n]+?`)/g;
+    const parts = text.split(tokenRegex);
+
     return parts.map((part, pIdx) => {
+      if (!part) return null;
+
+      // Display math $$...$$ or \[...\]
+      if ((part.startsWith("$$") && part.endsWith("$$")) || (part.startsWith("\\[") && part.endsWith("\\]"))) {
+        const mathContent = part.startsWith("$$") ? part.slice(2, -2) : part.slice(2, -2);
+        return (
+          <span key={pIdx} className="block my-2 text-center overflow-x-hidden">
+            <MathView math={mathContent} block={true} className="text-sm sm:text-base font-semibold" />
+          </span>
+        );
+      }
+
+      // Inline math $...$ or \(...\)
+      if ((part.startsWith("$") && part.endsWith("$") && part.length > 2) || (part.startsWith("\\(") && part.endsWith("\\)"))) {
+        const mathContent = part.startsWith("$") ? part.slice(1, -1) : part.slice(2, -2);
+        return <MathView key={pIdx} math={mathContent} block={false} className="text-xs sm:text-sm font-semibold" />;
+      }
+
+      // Bold **...**
       if (part.startsWith("**") && part.endsWith("**")) {
-        return <strong key={pIdx} className="font-bold opacity-100">{part.slice(2, -2)}</strong>;
+        return (
+          <strong key={pIdx} className="font-bold opacity-100">
+            {renderInlineContent(part.slice(2, -2))}
+          </strong>
+        );
       }
+
+      // Italic *...*
       if (part.startsWith("*") && part.endsWith("*")) {
-        return <em key={pIdx} className="italic opacity-90">{part.slice(1, -1)}</em>;
+        return (
+          <em key={pIdx} className="italic opacity-90">
+            {renderInlineContent(part.slice(1, -1))}
+          </em>
+        );
       }
+
+      // Backticks `...`: if it looks like math, render via MathView; otherwise code tag
+      if (part.startsWith("`") && part.endsWith("`") && part.length > 2) {
+        const inner = part.slice(1, -1).trim();
+        const isMathFormula =
+          /(=|<|>|\\le|\\ge|\\ne|\\approx|\^|_|\\frac|\\sum|\\int|\\lim|\\cdot|\\times|\\sqrt|\\alpha|\\beta|\\gamma|\\theta|\\vec|\\lVert|\\partial|\\to|\\iff|\\implies|\+|-|\*|\/)/.test(
+            inner
+          ) && !/\b(import|export|const|let|var|function|return|console|null|undefined)\b/.test(inner);
+
+        if (isMathFormula) {
+          return (
+            <MathView
+              key={pIdx}
+              math={inner}
+              block={false}
+              className="text-xs sm:text-sm font-semibold px-1 py-0.5 rounded bg-purple-900/20"
+            />
+          );
+        }
+        return (
+          <code key={pIdx} className="font-mono text-xs px-1.5 py-0.5 rounded bg-black/20 font-semibold">
+            {inner}
+          </code>
+        );
+      }
+
       return part;
     });
   };
 
-  // Helper for formatting blockquotes and paragraphs in each section
+  // Helper for formatting blockquotes, lists, math environments, and paragraphs in each section
   const renderFormattedBody = (rawText: string) => {
     if (!rawText) return null;
+
+    // If the text contains multi-line LaTeX environments, pass through RichMathContent
+    const hasComplexLatex = /\\begin\{(?:cases|matrix|pmatrix|bmatrix|aligned|array|align|gather)\}/.test(rawText);
+    if (hasComplexLatex) {
+      return (
+        <div className="space-y-3 font-serif leading-relaxed">
+          <RichMathContent content={rawText} className="text-xs sm:text-sm" />
+        </div>
+      );
+    }
+
     const blocks = rawText.split(/\n{2,}/);
     return (
       <div className="space-y-3">
@@ -340,30 +446,46 @@ export const AiWriteupThemedCard: React.FC<AiWriteupThemedCardProps> = ({
           const trimmed = block.trim();
           if (!trimmed) return null;
 
+          // Block display math
+          if ((trimmed.startsWith("$$") && trimmed.endsWith("$$")) || (trimmed.startsWith("\\[") && trimmed.endsWith("\\]"))) {
+            const mathContent = trimmed.startsWith("$$") ? trimmed.slice(2, -2) : trimmed.slice(2, -2);
+            return (
+              <div key={bIdx} className="my-2.5 p-3.5 bg-black/20 rounded-xl border border-white/15 text-center overflow-x-hidden">
+                <MathView math={mathContent} block={true} className="text-sm sm:text-base font-semibold text-white" />
+              </div>
+            );
+          }
+
           // Blockquote / Scripture Callout
           if (trimmed.startsWith(">")) {
             const quoteLines = trimmed
               .split("\n")
-              .map(l => l.replace(/^>\s*/, "").trim())
+              .map((l) => l.replace(/^>\s*/, "").trim())
               .join(" ");
             return (
               <div
                 key={bIdx}
                 className={`p-3.5 my-2 rounded-xl italic text-xs sm:text-sm font-serif leading-relaxed shadow-xs ${currentTheme.quoteBlock}`}
               >
-                {renderInlineMarkdown(quoteLines)}
+                {renderInlineContent(quoteLines)}
               </div>
             );
           }
 
           // Bullet or numbered list
-          if (trimmed.includes("\n- ") || trimmed.startsWith("- ") || trimmed.startsWith("* ") || trimmed.startsWith("• ")) {
-            const items = trimmed.split(/\n[-*•]\s+/).filter(Boolean);
+          if (
+            trimmed.includes("\n- ") ||
+            trimmed.startsWith("- ") ||
+            trimmed.startsWith("* ") ||
+            trimmed.startsWith("• ") ||
+            /^\d+[\.\)]\s/.test(trimmed)
+          ) {
+            const items = trimmed.split(/\n[-*•\d+[\.\)]]\s+/).filter(Boolean);
             return (
               <ul key={bIdx} className="space-y-1.5 pl-4 list-disc text-xs sm:text-sm">
                 {items.map((it, itIdx) => (
                   <li key={itIdx} className="leading-relaxed">
-                    {renderInlineMarkdown(it.replace(/^[-*•]\s+/, ""))}
+                    {renderInlineContent(it.replace(/^[-*•]\s+/, ""))}
                   </li>
                 ))}
               </ul>
@@ -372,7 +494,7 @@ export const AiWriteupThemedCard: React.FC<AiWriteupThemedCardProps> = ({
 
           return (
             <p key={bIdx} className="font-serif text-xs sm:text-sm leading-relaxed whitespace-pre-line opacity-95">
-              {renderInlineMarkdown(trimmed)}
+              {renderInlineContent(trimmed)}
             </p>
           );
         })}

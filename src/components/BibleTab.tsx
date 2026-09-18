@@ -62,6 +62,9 @@ import { BibleInterlinearModal } from "./BibleInterlinearModal";
 import { DevotionPictureModal } from "./DevotionPictureModal";
 import { AiFastLoadingView } from "./AiFastLoadingView";
 import { AiWriteupThemedCard } from "./AiWriteupThemedCard";
+import { ChapterSummaryCard } from "./ChapterSummaryCard";
+import { getChapterSummary } from "../data/bibleChapterSummaries";
+import { getTechnicalTermExplanation } from "../data/spiritualTermsData";
 
 interface BibleTabProps {
   isBookmarked: (targetId: string, type?: string) => boolean;
@@ -310,30 +313,45 @@ export const BibleTab: React.FC<BibleTabProps> = ({
     }
   }, [availableChapters, selectedChapter]);
 
-  // Asynchronous full chapter verses engine
-  const [loadedVerses, setLoadedVerses] = useState<BibleVerse[]>([]);
+  // Asynchronous full chapter verses engine strictly bound to book/chapter/version
+  const [loadedChapterInfo, setLoadedChapterInfo] = useState<{
+    book: string;
+    chapter: number;
+    version: string;
+    verses: BibleVerse[];
+  } | null>(null);
   const [isLoadingVerses, setIsLoadingVerses] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
     setIsLoadingVerses(true);
 
-    // If KJV and current book has local pre-cached chapter, load instantly
+    // If KJV and current book has local pre-cached chapter, load instantly for this exact book/chapter
     if (selectedVersion === "KJV" && currentBook.chapters && currentBook.chapters[selectedChapter]) {
       const immediate = currentBook.chapters[selectedChapter].map((v) => ({
         verse: v.verse,
         text: v.text,
         isRedLetter: v.isRedLetter
       }));
-      setLoadedVerses(immediate);
+      setLoadedChapterInfo({
+        book: currentBook.name,
+        chapter: selectedChapter,
+        version: selectedVersion,
+        verses: immediate
+      });
     } else {
-      setLoadedVerses([]);
+      setLoadedChapterInfo(null);
     }
 
     getChapterVerses(currentBook.name, selectedChapter, selectedVersion)
       .then((verses) => {
         if (isMounted) {
-          setLoadedVerses(verses);
+          setLoadedChapterInfo({
+            book: currentBook.name,
+            chapter: selectedChapter,
+            version: selectedVersion,
+            verses
+          });
           setIsLoadingVerses(false);
         }
       })
@@ -348,8 +366,14 @@ export const BibleTab: React.FC<BibleTabProps> = ({
   }, [currentBook.name, selectedChapter, selectedVersion]);
 
   const currentChapterVerses = useMemo(() => {
-    if (loadedVerses.length > 0) {
-      return loadedVerses;
+    if (
+      loadedChapterInfo &&
+      loadedChapterInfo.book === currentBook.name &&
+      loadedChapterInfo.chapter === selectedChapter &&
+      loadedChapterInfo.version === selectedVersion &&
+      loadedChapterInfo.verses.length > 0
+    ) {
+      return loadedChapterInfo.verses;
     }
     if (selectedVersion === "KJV" && currentBook.chapters && currentBook.chapters[selectedChapter]) {
       return currentBook.chapters[selectedChapter].map((v) => ({
@@ -359,7 +383,7 @@ export const BibleTab: React.FC<BibleTabProps> = ({
       }));
     }
     return [];
-  }, [loadedVerses, currentBook, selectedChapter, selectedVersion]);
+  }, [loadedChapterInfo, currentBook, selectedChapter, selectedVersion]);
 
   const filteredBooks = useMemo(() => {
     if (selectedTestament === "All") return BIBLE_BOOKS_CATALOG;
@@ -524,8 +548,8 @@ export const BibleTab: React.FC<BibleTabProps> = ({
             : `• The Joy of the Lord is my unshakeable fortress and daily strength.\n• No temporal circumstance can strip away my eternal hope in Christ.\n• I walk in resurrection joy and divine victory today.`;
           const joyText = `🔥 ${item.title || `The Joy of the Lord in ${ref}: Our Supernatural Stronghold`}\n\n` +
             (item.originalLanguageJoyInsight ? `ORIGINAL LANGUAGE INSIGHT:\n${item.originalLanguageJoyInsight}\n\n` : "") +
-            (item.mathemaAnalogy ? `MATHEMASERMON ANALOGY:\n${item.mathemaAnalogy}\n\n` : "") +
-            `THE JOY EXPOSITION:\n${item.theologicalJoyExposition || item.reflection || `In ${ref} ("${rawVerse}"), God anchors His people in an unshakeable joy that transcends earthly tribulations. This joy is not a fragile emotion, but a supernatural covenant fortress.`}\n\n` +
+            `THE JOY OF THE LORD EXPOSITION:\n${item.covenantJoyExposition || item.theologicalJoyExposition || item.reflection || `In ${ref} ("${rawVerse}"), God anchors His people in an unshakeable joy that transcends earthly tribulations. This joy is not a fragile emotion, but a supernatural covenant fortress.`}\n\n` +
+            (item.spiritualStrengthApplication ? `SPIRITUAL STRENGTH IN ACTION:\n${item.spiritualStrengthApplication}\n\n` : "") +
             `🌟 CONCLUSION — UNSHAKEABLE HOPE & ENCOURAGEMENT:\n${item.hopeAndEncouragementConclusion || item.practicalApplication || "Rejoice in the Lord always! The Joy of the Lord is your supernatural fortress and unquenchable strength. You are triumphant through Christ!"}\n\n` +
             `PROPHETIC DECREES:\n${decrees}\n\n` +
             `EMPOWERMENT PRAYER:\n${item.closingPrayer || item.guidedPrayer || "In the Name of Jesus Christ, I receive the fullness of the Joy of the Lord as my eternal strength. Amen."}`;
@@ -573,12 +597,26 @@ export const BibleTab: React.FC<BibleTabProps> = ({
           const life = item.lifeTransformation || item.practicalApplication || "Live out this scripture by speaking it over your challenges and resting in Christ's finished work.";
           const blessing = item.apostolicBlessing ? `\n\nAPOSTOLIC BLESSING:\n${item.apostolicBlessing}` : "";
 
+          const techExplanation = getTechnicalTermExplanation(`${ref} ${rawVerse} ${item.originalLanguageInsight || ""} ${item.expositoryBreakdown || ""} ${item.doctrinalMeaning || ""}`);
+          let spiritualEnrichment = "";
+          if (item.spiritualTermEnrichment && item.spiritualTermEnrichment.term && item.spiritualTermEnrichment.term.toLowerCase() !== "none") {
+            const ste = item.spiritualTermEnrichment;
+            spiritualEnrichment = `\n\n⚡ SPIRITUAL TERMS & CHARISMATIC GIFTS EXPLANATION (${ste.term}):\n` +
+              `• Definition: ${ste.simpleDefinition}\n` +
+              `• Biblical Example: ${ste.biblicalExample}\n` +
+              `• Modern Example: ${ste.modernExample}\n` +
+              `• Critical Difference: ${ste.criticalDifference}\n`;
+          } else if (techExplanation) {
+            spiritualEnrichment = `\n\n⚡ SPIRITUAL TERMS & CHARISMATIC GIFTS EXPLANATION:\n${techExplanation}\n`;
+          }
+
           const exposText = `📖 ${item.title || `Deep Expository Analysis: ${ref}`}\n\n` +
             `SCRIPTURE ANCHOR:\n${ref} (${selectedVersion}) - "${rawVerse}"\n\n` +
             hist +
             orig +
             `CLAUSE-BY-CLAUSE EXPOSITION:\n${breakdown}\n\n` +
             doct +
+            spiritualEnrichment +
             `CROSS REFERENCES:\n${refs}\n\n` +
             `🌟 LIFE TRANSFORMATION & APPLICATION:\n${life}` +
             blessing;
@@ -613,6 +651,76 @@ export const BibleTab: React.FC<BibleTabProps> = ({
         setIsAiLoading(false);
         console.error("[BIBLE TAB AI ACTION ERROR]", err);
         setAiModalError(err || "AI generation could not be completed right now. Please try again.");
+      }
+    });
+  };
+
+  // Ask AI About Chapter (Ghana-friendly Bible teacher, 0ms cache, pneumatic term accuracy)
+  const handleAskAiAboutChapter = (customPrompt?: string) => {
+    const chapterSummaryData = getChapterSummary(currentBook.name, selectedChapter, currentChapterVerses);
+    const excerpt = currentChapterVerses.slice(0, 5).map((v) => `${v.verse}. ${v.text}`).join(" ");
+
+    setActiveVerseMenu({
+      book: currentBook.name,
+      chapter: selectedChapter,
+      verse: 1,
+      text: excerpt || `${currentBook.name} Chapter ${selectedChapter}`
+    });
+
+    const actionName = "Chapter Summary & Exposition";
+    setAiModalAction(actionName);
+    setAiModalContent(null);
+    setAiModalError(null);
+    setIsAiLoading(true);
+    setAiProgress(20);
+    setAiStreamingText("");
+
+    const ref = `${currentBook.name} ${selectedChapter}`;
+    const cacheKey = `ai_chapter_stream_${currentBook.name}_${selectedChapter}_${customPrompt ? customPrompt.slice(0, 20) : "default"}`;
+
+    streamAiContent({
+      actionType: "Ask AI About This Chapter",
+      scriptureReference: ref,
+      scriptureText: excerpt,
+      scriptureTheme: chapterSummaryData.theme || `${currentBook.name} Chapter ${selectedChapter}`,
+      prompt: customPrompt || `Explain ${ref} for new believers in Ghana: what happened, key lessons, spiritual terms, and practical life application.`,
+      version: selectedVersion,
+      fastMode: getIsFastMode(),
+      storageKey: cacheKey,
+      onProgress: (p) => setAiProgress(p),
+      onChunk: (_chunk, accumulated) => {
+        setAiStreamingText(accumulated);
+      },
+      onComplete: (fullText, data) => {
+        setIsAiLoading(false);
+        const item = data?.data || data || {};
+
+        let formatted = "";
+        if (item.summary || item.lesson) {
+          formatted = `📝 ${item.title || `Chapter Exposition: ${ref}`}\n\n` +
+            `CHAPTER SUMMARY:\n${item.summary || chapterSummaryData.summary}\n\n` +
+            (item.key_verses && item.key_verses.length > 0 ? `KEY VERSES:\n${item.key_verses.map((v: string) => `• ${v}`).join("\n")}\n\n` : `KEY VERSE: ${chapterSummaryData.key_verses.join(", ")}\n\n`) +
+            `THEME: ${item.theme || chapterSummaryData.theme}\n\n` +
+            `KEY LESSON:\n${item.lesson || chapterSummaryData.lesson}\n\n` +
+            (item.practicalApplication ? `PRACTICAL APPLICATION:\n${item.practicalApplication}\n\n` : "") +
+            (item.questions && item.questions.length > 0 ? `REFLECTION QUESTIONS:\n${item.questions.map((q: string, i: number) => `${i + 1}. ${q}`).join("\n")}\n\n` : "") +
+            `🌟 APOSTOLIC ENCOURAGEMENT:\n"Walk boldly in the truth of ${ref}. The Joy of the Lord is your daily strength and fortress!"`;
+        } else {
+          formatted = fullText || `Exposition on ${ref}:\n\n${chapterSummaryData.summary}\n\nKey Lesson: ${chapterSummaryData.lesson}`;
+        }
+
+        // Clarify spiritual terms if applicable
+        const techExplanation = getTechnicalTermExplanation(`${ref} ${excerpt} ${formatted}`);
+        if (techExplanation) {
+          formatted += `\n\n⚡ SPIRITUAL TERMS & CHARISMATIC GIFTS CLARIFICATION:\n${techExplanation}`;
+        }
+
+        setAiModalContent(formatted);
+      },
+      onError: (err) => {
+        setIsAiLoading(false);
+        console.error("[CHAPTER AI ERROR]", err);
+        setAiModalError(err || "Unable to load chapter exposition right now. Please try again.");
       }
     });
   };
@@ -1424,6 +1532,23 @@ export const BibleTab: React.FC<BibleTabProps> = ({
                 );
               })}
             </div>
+
+            {/* Chapter Summary Feature (Pre-generated, zero client API cost, Ghana-friendly Bible teacher) */}
+            <ChapterSummaryCard
+              key={`${currentBook.name}-${selectedChapter}`}
+              book={currentBook.name}
+              chapter={selectedChapter}
+              chapterVerses={currentChapterVerses}
+              onAskAi={(customPrompt) => handleAskAiAboutChapter(customPrompt)}
+              onToggleSpeak={(txt) => onToggleSpeak(txt)}
+              onShare={(title, txt) => onShareItem(title, txt, `${currentBook.name} Chapter ${selectedChapter} (${selectedVersion})`)}
+              onNavigateVerse={(vNum) => {
+                const el = document.getElementById(`verse-${selectedChapter}-${vNum}`);
+                if (el) {
+                  el.scrollIntoView({ behavior: "smooth", block: "center" });
+                }
+              }}
+            />
 
             {/* Bottom Chapter Navigation Bar */}
             <div className="flex items-center justify-between border-t border-current/10 pt-6">

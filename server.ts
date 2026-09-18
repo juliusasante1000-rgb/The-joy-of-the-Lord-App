@@ -407,10 +407,15 @@ const AI_CACHE_TTL_MS = 1000 * 60 * 60 * 6; // 6 hours cache
 // Server-side in-flight promise deduplication to prevent duplicate concurrent API executions
 const SERVER_IN_FLIGHT_GENERATIONS = new Map<string, Promise<any>>();
 
-// Valid modern stable production models: primary stable model + single backup (no runaway cascade)
+// Modern Gemini 3 production models (with automatic fallback cascade)
 const GEMINI_MODELS_CASCADE = [
-  "gemini-2.5-flash",
-  "gemini-2.5-flash-lite",
+  "gemini-3.5-flash-lite",
+  "gemini-3.5-flash",
+  "gemini-flash-lite-latest",
+  "gemini-3.1-flash-lite",
+  "gemini-3.6-flash",
+  "gemini-3.8-flash",
+  "gemini-flash-latest",
 ];
 
 // Production & Vercel Diagnostic Endpoint: Check environment and Gemini API key status without exposing secrets
@@ -426,7 +431,7 @@ app.get(["/api/diagnostics/ai", "/api/status"], (req, res) => {
     isServerless,
     geminiApiKeyStatus: isPresent ? "PRESENT" : "MISSING",
     isGeminiKeyPresent: isPresent,
-    primaryModel: "gemini-3.6-flash",
+    primaryModel: "gemini-3.5-flash-lite",
     modelsCascade: GEMINI_MODELS_CASCADE,
     nodeEnv: process.env.NODE_ENV || "development",
     vercelEnv: process.env.VERCEL_ENV || (process.env.VERCEL ? "vercel-active" : "not-vercel"),
@@ -542,11 +547,44 @@ b. UNPARALLELED UNIQUENESS & INDIVIDUALITY:
    - Open immediately with an arresting biblical insight, vivid historical reality, or linguistic revelation.
    - Tailor the cadence and voice dynamically to the spirit of the text—exultant for praise, strategic for spiritual warfare, deeply comforting for trials, prophetic for kingdom decrees.
 c. JOY OF THE LORD & TRIUMPHANT HOPE:
-   - Anchor in the bedrock truth of Nehemiah 8:10 ("The joy of the LORD is your strength") and Apostle Bismark Twum's MathemaSermons.
-   - Conclude with an inspiring, triumphant, and hope-igniting apostolic message that leaves the believer deeply empowered and joyous.`;
+   - Anchor in the bedrock truth of Nehemiah 8:10 ("The joy of the LORD is your strength").
+   - Conclude with an inspiring, triumphant, and hope-igniting apostolic message that leaves the believer deeply empowered and joyous.
+d. STRICT BOUNDARY ON MATHEMATICAL ANALOGIES & FORMULAS:
+   - MATHEMATICAL ANALOGIES, FORMULAS, EQUATIONS, AND CALCULUS/GEOMETRIC CONCEPTS MUST ONLY APPEAR IN "MATHEMASERMON" AND "APOSTLEMATH" WRITE-UPS.
+   - You are STRICTLY FORBIDDEN from using mathematical analogies, equations, formulas, or geometry/calculus metaphors in any other places, including:
+     • Create Devotion
+     • Create Prayer
+     • Prayer Points
+     • Explain Verse / Expository Analysis
+     • Historical Context & Cultural Setting
+     • The Joy of the Lord
+     • Rhema Word & Daily Inspiration
+   - Keep Devotions, Prayers, Prayer Points, Verse Explanations, Historical Context, and The Joy of the Lord purely pastoral, scriptural, spiritual, and theological.
+e. STANDARDIZED MATHEMATICAL EQUATIONS MANDATE (MathemaSermons & ApostleMath ONLY):
+   - When presenting mathematical formulas in MathemaSermons or ApostleMath, you MUST format them in standardized LaTeX notation ($$...$$ for display, $...$ for inline).
+   - For standalone display equations, use $$...$$ blocks (e.g. $$P(t) = P_0 e^{kt}$$ or $$\\vec{F} = m\\vec{a}$$).
+   - For inline mathematical variables and expressions, use $...$ (e.g. $k > 0$, $x \\in \\mathbb{R}$).
+   - Never output raw unformatted ASCII code blocks or plain unstructured text for mathematical formulas.
+f. ANTI-DUPLICATION & ZERO-INCOHERENCE DIRECTIVE:
+   - Write with supreme linear clarity, progressive revelation, and tight narrative coherence.
+   - Do NOT duplicate paragraphs, repeat sentences with minor variations, or recycle points under different headings.
+   - Ensure every section develops a fresh, distinct dimension of truth with sharp biblical precision.`;
 
 export const ANTI_LOOP_DIRECTIVE = `Provide deep, unique, and illuminating theological, historical, and practical insight. Never repeat phrases or loop. Be precise, profound, and substantive. Do not use generic filler.
 ${AI_OUTPUT_IMPROVEMENT_RULES}`;
+
+export const SPIRITUAL_TERMS_EXPLANATION_DIRECTIVE = `CRITICAL SPIRITUAL TERMS & CHARISMATIC GIFTS EXPLANATION DIRECTIVE:
+You are also a Bible explainer for young Christians.
+When explaining a verse or when this passage discusses a technical spiritual term like "Word of Knowledge", "Word of Wisdom", "Prophecy", "Discerning of Spirits":
+1. Give simple definition in one sentence
+2. Give biblical example with reference
+3. Give modern example how it works today
+4. Differentiate from similar terms
+Keep it under 80 words, simple English, Ghana-friendly.
+
+CRITICAL DISTINCTION — DO NOT CONFUSE:
+- Word of Knowledge = PAST / PRESENT facts revealed. A supernatural revelation by the Holy Spirit of facts that exist NOW or in the PAST that you could not know naturally (e.g. Jesus telling the Samaritan woman about her 5 husbands in John 4:17-18; Jesus seeing Nathanael under the fig tree in John 1:48; during prayer knowing someone had an accident or sickness from childhood).
+- Word of Wisdom = FUTURE plans / instructions revealed. A supernatural revelation by the Holy Spirit of God's plan, purpose, or instruction about the FUTURE — what to do next, or what will happen (e.g. Agabus warning Paul about future imprisonment in Acts 21:10-11; Joseph's wisdom to store grain for future famine in Genesis 41:33-36; Holy Spirit warning "Do not travel tomorrow").`;
 
 /**
  * Remove clichéd repetitive phrases like "In our Christian walk"
@@ -710,6 +748,7 @@ async function generateWithGeminiCascade(options: {
   apiKey?: string;
   requestId?: string;
   category?: string;
+  model?: string;
 }): Promise<{ text: string; modelUsed: string; durationMs: number } | null> {
   const startTime = Date.now();
   const reqId = options.requestId || "req-" + Math.random().toString(36).substring(2, 9);
@@ -747,10 +786,18 @@ async function generateWithGeminiCascade(options: {
   const topP = options.topP ?? 0.95;
   const maxOutputTokens = options.maxOutputTokens ?? 3000;
 
+  const requestedModel =
+    options.model && !options.model.includes("2.5")
+      ? options.model
+      : null;
+  const modelsToTry = requestedModel
+    ? [requestedModel, ...GEMINI_MODELS_CASCADE.filter((m) => m !== requestedModel)]
+    : GEMINI_MODELS_CASCADE;
+
   let retryCount = 0;
   let lastErrorMessage = "";
   let lastIsQuota = false;
-  for (const model of GEMINI_MODELS_CASCADE) {
+  for (const model of modelsToTry) {
     try {
       // Step 5: GEMINI REQUEST SENT
       logAiDiagnostic(5, "GEMINI REQUEST SENT", {
@@ -829,8 +876,7 @@ async function generateWithGeminiCascade(options: {
       const isQuota = isQuotaExceededError(err);
       if (isQuota) {
         lastIsQuota = true;
-        quotaCooldownUntil = Date.now() + 60000;
-        logAiDiagnostic(5, "GEMINI REQUEST FAILED WITH QUOTA 429 - STOPPING CASCADE IMMEDIATELY", {
+        logAiDiagnostic(5, "GEMINI REQUEST MODEL QUOTA LIMIT - TRYING NEXT MODEL IN CASCADE", {
           requestId: reqId,
           category,
           model,
@@ -838,7 +884,8 @@ async function generateWithGeminiCascade(options: {
           errorMessage: errMsg,
           retryCount
         });
-        break; // STOP CASCADE IMMEDIATELY: project quota applies across all models
+        // Continue cascade to try next model - quotas can be model-specific
+        continue;
       }
       logAiDiagnostic(5, "GEMINI REQUEST FAILED ON MODEL", {
         requestId: reqId,
@@ -850,6 +897,10 @@ async function generateWithGeminiCascade(options: {
       });
       continue;
     }
+  }
+
+  if (lastIsQuota) {
+    quotaCooldownUntil = Date.now() + 30000;
   }
 
   let userFriendlyError = "All Gemini models in cascade failed or were unreachable.";
@@ -886,6 +937,7 @@ async function streamGeminiCascade(options: {
   apiKey?: string;
   requestId?: string;
   category?: string;
+  model?: string;
   onChunk: (chunkText: string, fullText: string) => void;
 }): Promise<{ text: string; modelUsed: string; durationMs: number } | null> {
   const startTime = Date.now();
@@ -924,7 +976,13 @@ async function streamGeminiCascade(options: {
   const topP = options.topP ?? 0.95;
   const maxOutputTokens = options.maxOutputTokens ?? 3000;
 
-  const modelsToTry = GEMINI_MODELS_CASCADE;
+  const requestedModel =
+    options.model && !options.model.includes("2.5") && options.model !== "gemini-3.8-flash"
+      ? options.model
+      : null;
+  const modelsToTry = requestedModel
+    ? [requestedModel, ...GEMINI_MODELS_CASCADE.filter((m) => m !== requestedModel)]
+    : GEMINI_MODELS_CASCADE;
 
   let retryCount = 0;
   let lastErrorMessage = "";
@@ -1005,8 +1063,7 @@ async function streamGeminiCascade(options: {
       const isQuota = isQuotaExceededError(err);
       if (isQuota) {
         lastIsQuota = true;
-        quotaCooldownUntil = Date.now() + 60000;
-        logAiDiagnostic(5, "GEMINI STREAM FAILED WITH QUOTA 429 - STOPPING CASCADE IMMEDIATELY", {
+        logAiDiagnostic(5, "GEMINI STREAM MODEL QUOTA LIMIT - TRYING NEXT MODEL IN CASCADE", {
           requestId: reqId,
           category,
           model,
@@ -1014,7 +1071,8 @@ async function streamGeminiCascade(options: {
           errorMessage: errMsg,
           retryCount
         });
-        break; // STOP CASCADE IMMEDIATELY: project quota applies across all models
+        // Continue cascade to try next model - quotas can be model-specific
+        continue;
       }
       logAiDiagnostic(5, "GEMINI STREAM FAILED ON MODEL", {
         requestId: reqId,
@@ -1026,6 +1084,10 @@ async function streamGeminiCascade(options: {
       });
       continue;
     }
+  }
+
+  if (lastIsQuota) {
+    quotaCooldownUntil = Date.now() + 30000;
   }
 
   let userFriendlyError = "All Gemini streaming models in cascade failed";
@@ -2463,7 +2525,6 @@ export function formatTheologicalDataToText(item: any, actionType: string = ""):
     if (item.title) lines.push(`# 🔥 ${item.title}`);
     if (item.scriptureAnchor) lines.push(`*Scripture: ${item.scriptureAnchor}*`);
     if (item.originalLanguageJoyInsight) lines.push(`**ORIGINAL LANGUAGE REVELATION**\n${item.originalLanguageJoyInsight}`);
-    if (item.mathemaAnalogy) lines.push(`**MATHEMASERMON ANALOGY**\n${item.mathemaAnalogy}`);
     if (item.theologicalJoyExposition || item.reflection) lines.push(`**THE JOY OF THE LORD EXPOSITION**\n${item.theologicalJoyExposition || item.reflection}`);
     if (item.hopeAndEncouragementConclusion) lines.push(`**🌟 CONCLUSION: UNSHAKEABLE HOPE & ENCOURAGEMENT**\n${item.hopeAndEncouragementConclusion}`);
     if (Array.isArray(item.propheticDecrees)) {
@@ -2492,13 +2553,35 @@ export function formatTheologicalDataToText(item: any, actionType: string = ""):
     if (item.historicalContext) lines.push(`**HISTORICAL CONTEXT**\n${item.historicalContext}`);
     if (item.culturalBackground) lines.push(`**CULTURAL BACKGROUND**\n${item.culturalBackground}`);
     if (item.originalLanguageInsight) lines.push(`**ORIGINAL LANGUAGE INSIGHT**\n${item.originalLanguageInsight}`);
+    if (item.expositoryBreakdown) lines.push(`**CLAUSE-BY-CLAUSE EXPOSITION**\n${item.expositoryBreakdown}`);
     if (item.doctrinalMeaning) lines.push(`**DOCTRINAL MEANING**\n${item.doctrinalMeaning}`);
+    if (item.spiritualTermEnrichment && item.spiritualTermEnrichment.term && item.spiritualTermEnrichment.term.toLowerCase() !== "none") {
+      const ste = item.spiritualTermEnrichment;
+      lines.push(`**⚡ SPIRITUAL TERMS & CHARISMATIC GIFTS EXPLANATION (${ste.term})**\n• Definition: ${ste.simpleDefinition}\n• Biblical Example: ${ste.biblicalExample}\n• Modern Example: ${ste.modernExample}\n• Critical Difference: ${ste.criticalDifference}`);
+    }
     if (Array.isArray(item.crossReferences)) {
       lines.push(`**CROSS REFERENCES**\n` + item.crossReferences.map((r: any) => `• ${typeof r === "string" ? r : r.reference}`).join("\n"));
     }
     if (item.lifeTransformation || item.hopeAndEncouragementConclusion) {
       lines.push(`**🌟 LIFE TRANSFORMATION & UNSHAKEABLE HOPE**\n${item.lifeTransformation || item.hopeAndEncouragementConclusion}`);
     }
+    if (item.apostolicBlessing) lines.push(`**APOSTOLIC BLESSING**\n${item.apostolicBlessing}`);
+    return lines.join("\n\n");
+  }
+
+  if (act.includes("chapter") || act.includes("summary")) {
+    const lines: string[] = [];
+    if (item.title) lines.push(`# 📝 ${item.title}`);
+    if (item.summary) lines.push(`**CHAPTER SUMMARY**\n${item.summary}`);
+    if (Array.isArray(item.key_verses) && item.key_verses.length > 0) {
+      lines.push(`**KEY VERSES**\n` + item.key_verses.map((v: string) => `• ${v}`).join("\n"));
+    }
+    if (item.theme) lines.push(`**THEME**: ${item.theme}`);
+    if (item.lesson) lines.push(`**KEY LESSON**\n${item.lesson}`);
+    if (Array.isArray(item.questions) && item.questions.length > 0) {
+      lines.push(`**REFLECTION QUESTIONS**\n` + item.questions.map((q: string, idx: number) => `${idx + 1}. ${q}`).join("\n"));
+    }
+    if (item.practicalApplication) lines.push(`**PRACTICAL APPLICATION**\n${item.practicalApplication}`);
     return lines.join("\n\n");
   }
 
@@ -2583,24 +2666,28 @@ const handleUnifiedAiGenerate = async (req: any, res: any) => {
         finalPrompt = `You are a world-class Christian Biblical historian, archaeologist, and theologian. Provide an exhaustive, authoritative Historical and Cultural Context analysis of: ${ref} ("${text}").\nContext & Scripture: ${ref} ("${text}")\n${AI_OUTPUT_IMPROVEMENT_RULES}\nFormat as JSON with keys: title, scriptureAnchor, historicalContext, culturalBackground, originalLanguageInsight, doctrinalMeaning, crossReferences, lifeTransformation.`;
         responseMimeType = "application/json";
       } else if (act.includes("explain")) {
-        finalPrompt = `Provide a comprehensive expository breakdown on: ${ref} ("${text}").\nContext & Scripture: ${ref} ("${text}")\n${AI_OUTPUT_IMPROVEMENT_RULES}\nFormat as JSON with keys: title, historicalContext, originalLanguageInsight, doctrinalMeaning, lifeTransformation.`;
+        finalPrompt = `You are a preeminent Christian Biblical scholar and expositor. Provide a profound, verse-by-verse and clause-by-clause explanation of ${ref} ("${text}").
+STRICT RULE: Do NOT use mathematical analogies, formulas, equations, or scientific theorems. Keep the explanation strictly scriptural, pastoral, and devotional.
+${SPIRITUAL_TERMS_EXPLANATION_DIRECTIVE}
+Context & Scripture: ${ref} ("${text}")
+${AI_OUTPUT_IMPROVEMENT_RULES}
+Format as JSON with keys: title, scriptureAnchor, historicalContext, originalLanguageInsight, expositoryBreakdown, doctrinalMeaning, spiritualTermEnrichment { term, simpleDefinition, biblicalExample, modernExample, criticalDifference }, crossReferences, lifeTransformation, apostolicBlessing.`;
         responseMimeType = "application/json";
       } else if (act.includes("joy")) {
-        finalPrompt = `You are an apostolic pastor and theologian drawing upon the profound revelations of "The Joy of the Lord" (Nehemiah 8:10, Psalm 16:11, Philippians 4:4) and the analytical clarity of MathemaSermons.
+        finalPrompt = `You are an apostolic pastor and theologian drawing upon the profound revelations of "The Joy of the Lord" (Nehemiah 8:10, Psalm 16:11, Philippians 4:4).
 Compose a deeply transformative, text-concurrent revelation for ${ref} ("${text}").
+STRICT RULE: Do NOT include mathematical analogies, formulas, equations, or scientific theorems. This write-up must be purely covenant-anchored, scriptural, and pastoral.
 Context & Scripture: ${ref} ("${text}")
 ${AI_OUTPUT_IMPROVEMENT_RULES}
 
 MANDATORY INSTRUCTIONS:
 1. Ground the exegesis directly in the exact wording, setting, and spiritual movement of this specific passage (${ref}).
 2. Show how the eternal Joy of the Lord operates in this text—not as shallow emotionalism, but as divine fortress, supernatural resilience, and covenant victory.
-3. Draw upon MathemaSermon analogies (e.g. constant multiplier, asymptotic convergence upon God's promises, vector alignment with the Holy Ghost, coordinate transformation from sorrow to joy) to illustrate the spiritual mechanics.
-4. AT THE CONCLUSION: You MUST conclude with an inspiring, triumphant message of unshakeable HOPE, STRENGTH, and RESTORATION that deeply encourages the believer to stand bold and joyous.
+3. AT THE CONCLUSION: You MUST conclude with an inspiring, triumphant message of unshakeable HOPE, STRENGTH, and RESTORATION that deeply encourages the believer to stand bold and joyous.
 Format as JSON with keys:
 - title: A triumphant, unique title for this scripture revelation
 - scriptureAnchor: "${ref}"
 - originalLanguageJoyInsight: Original Hebrew/Greek lexical revelation of joy or divine fortitude in this text
-- mathemaAnalogy: A mathematical or scientific analogy linking this scripture's truth to divine principles
 - theologicalJoyExposition: Rich, text-anchored exposition of how God's joy sustains and triumphs in this passage
 - hopeAndEncouragementConclusion: A powerful, hope-igniting, triumphant apostolic message of encouragement and resilience that concludes the discourse
 - propheticDecrees: An array of 3 bold, first-person decrees of joy, strength, and victory
@@ -2792,6 +2879,7 @@ app.post("/api/generate-stream", async (req, res) => {
       systemInstruction,
       fastMode,
       generationConfig,
+      model,
     } = req.body || {};
 
     let finalPrompt = prompt || "";
@@ -2854,7 +2942,7 @@ Format as JSON with keys: place, historicalAccount, biblicalReference, keyFigure
       let actualText = scriptureText || "";
       let actualVersion = requestedVersion;
 
-      if (!actualText || requestedVersion !== "KJV") {
+      if (!actualText) {
         const liveVerse = await fetchAuthenticVerse(ref, requestedVersion);
         if (liveVerse.verseText) {
           actualText = liveVerse.verseText;
@@ -2876,7 +2964,7 @@ Scripture Text: "${text}"
 MANDATORY INSTRUCTIONS:
 1. Address the subject "${currentSubject}" directly in living conjunction with theme scripture ${ref}.
 2. Ground every petition in the exact truth, vocabulary, and revelation of "${text}".
-3. Fill all 7 prayer sections with rich apostolic authority, biblical depth, and living faith.
+3. Fill all prayer sections with rich apostolic authority, biblical depth, and living faith.
 4. Conclude with a bold, faith-igniting apostolic warfare and victory decree sealing the breakthrough in Jesus' Name.
 
 ${AI_OUTPUT_IMPROVEMENT_RULES}
@@ -2891,23 +2979,11 @@ Format your response as a valid JSON object matching this schema:
   "scriptureAnchor": "${ref} (${actualVersion}) - '${text}'",
   "scripturePromise": "${ref} (${actualVersion}) - '${text}'",
   "adoration": "Exalt God's supreme holiness, sovereignty, and divine faithfulness demonstrated in ${ref} regarding ${currentSubject}.",
-  "confession": "Reverent surrender of human insufficiency, fear, and self-reliance into His covenant hands.",
   "confessionAndSurrender": "Reverent surrender of human insufficiency, fear, and self-reliance into His covenant hands.",
   "thanksgiving": "Heartfelt thanksgiving for God's steadfast promises, the finished work of Christ on the cross, and His grace.",
   "petition": "Direct, heartfelt, and targeted petitions applying ${ref} directly to ${currentSubject}.",
   "warfareDeclaration": "Authoritative apostolic decrees breaking doubt, fear, delay, and enemy limitations in Jesus' Name.",
-  "spiritualWarfare": "Authoritative apostolic decrees breaking doubt, fear, delay, and enemy limitations in Jesus' Name.",
-  "closing": "Triumphant seal and affirmation in Jesus' victorious Name. Amen.",
-  "declarationInJesusName": "Triumphant seal and affirmation in Jesus' victorious Name. Amen.",
-  "sections": {
-    "adoration": "Exalt God's supreme holiness, sovereignty, and divine faithfulness demonstrated in ${ref} regarding ${currentSubject}.",
-    "confessionAndSurrender": "Reverent surrender of human insufficiency, fear, and self-reliance into His covenant hands.",
-    "thanksgiving": "Heartfelt thanksgiving for God's steadfast promises, the finished work of Christ on the cross, and His grace.",
-    "scripturePromise": "${ref} (${actualVersion}) - '${text}'",
-    "petition": "Direct, heartfelt, and targeted petitions applying ${ref} directly to ${currentSubject}.",
-    "spiritualWarfare": "Authoritative apostolic decrees breaking doubt, fear, delay, and enemy limitations in Jesus' Name.",
-    "declarationInJesusName": "Triumphant seal and affirmation in Jesus' victorious Name. Amen."
-  }
+  "declarationInJesusName": "Triumphant seal and affirmation in Jesus' victorious Name. Amen."
 }`;
         responseMimeType = "application/json";
       } else if (act.includes("point")) {
@@ -2998,8 +3074,9 @@ Format your response as a valid JSON object with this exact schema:
 }`;
         responseMimeType = "application/json";
       } else if (act.includes("joy")) {
-        finalPrompt = `You are an apostolic pastor and theologian drawing upon the profound revelations of "The Joy of the Lord" (Nehemiah 8:10, Psalm 16:11, Philippians 4:4) and the analytical clarity of MathemaSermons.
+        finalPrompt = `You are an apostolic pastor and theologian drawing upon the profound revelations of "The Joy of the Lord" (Nehemiah 8:10, Psalm 16:11, Philippians 4:4).
 Compose a deeply transformative, text-concurrent revelation addressing "${currentSubject}" through ${ref} ("${text}").
+STRICT RULE: Do NOT include mathematical analogies, formulas, equations, or scientific theorems. This write-up must be purely covenant-anchored, scriptural, and pastoral.
 Context & Scripture: ${ref} ("${text}")
 Current Subject: "${currentSubject}"
 ${AI_OUTPUT_IMPROVEMENT_RULES}
@@ -3007,13 +3084,11 @@ ${AI_OUTPUT_IMPROVEMENT_RULES}
 MANDATORY INSTRUCTIONS:
 1. Ground the exegesis directly in the exact wording, setting, and spiritual movement of this specific passage (${ref}) and subject "${currentSubject}".
 2. Show how the eternal Joy of the Lord operates in this text—not as shallow emotionalism, but as divine fortress, supernatural resilience, and covenant victory.
-3. Draw upon MathemaSermon analogies (e.g. constant multiplier, asymptotic convergence upon God's promises, vector alignment with the Holy Ghost, coordinate transformation from sorrow to joy) to illustrate the spiritual mechanics.
-4. AT THE CONCLUSION: You MUST conclude with an inspiring, triumphant message of unshakeable HOPE, STRENGTH, and RESTORATION that deeply encourages the believer to stand bold and joyous.
+3. AT THE CONCLUSION: You MUST conclude with an inspiring, triumphant message of unshakeable HOPE, STRENGTH, and RESTORATION that deeply encourages the believer to stand bold and joyous.
 Format as JSON with keys:
 - title: A triumphant, unique title for this scripture revelation
 - scriptureAnchor: "${ref}"
 - originalLanguageJoyInsight: Original Hebrew/Greek lexical revelation of joy or divine fortitude in this text
-- mathemaAnalogy: A mathematical or scientific analogy linking this scripture's truth to divine principles
 - theologicalJoyExposition: Rich, text-anchored exposition of how God's joy sustains and triumphs in this passage regarding "${currentSubject}"
 - hopeAndEncouragementConclusion: A powerful, hope-igniting, triumphant apostolic message of encouragement and resilience that concludes the discourse
 - propheticDecrees: An array of 3 bold, first-person decrees of joy, strength, and victory
@@ -3180,6 +3255,7 @@ Format as JSON with keys: id, challengeTitle, category, rootDeception, scriptura
       maxOutputTokens: maxTokens,
       fastMode: !!fastMode,
       apiKey: resolvedApiKey,
+      model: model || req.body?.model,
       onChunk: (chunkText, fullText) => {
         streamAccumulator = fullText;
         res.write(`data: ${JSON.stringify({ chunk: chunkText, fullText })}\n\n`);
@@ -4171,10 +4247,23 @@ Format your response as a valid JSON object with this exact schema:
   "lifeTransformation": "Apostolic and practical application showing how this ancient historical truth directly transforms the believer's life today."
 }`;
     } else if (actionType === "explain" || actionType === "Explain Verse" || actionType === "Explain This Verse") {
-      prompt = `You are a preeminent Christian Biblical scholar and expositor. Provide a profound, deep, verse-by-verse and theological explanation of:
+      prompt = `You are a preeminent Christian Biblical scholar, teacher, and expositor. Provide a profound, deep, verse-by-verse and theological explanation of:
 Reference: ${ref} (${actualVersion})
 Passage: "${actualText}"
 Theme: ${theme}
+
+CRITICAL SPIRITUAL TERMS & CHARISMATIC GIFTS EXPLANATION DIRECTIVE:
+You are also a Bible explainer for young Christians.
+When user asks or when this passage discusses a technical spiritual term like "Word of Knowledge", "Word of Wisdom", "Prophecy", "Discerning of Spirits":
+1. Give simple definition in one sentence
+2. Give biblical example with reference
+3. Give modern example how it works today
+4. Differentiate from similar terms
+Keep it under 80 words, simple English, Ghana-friendly.
+
+CRITICAL DISTINCTION — DO NOT CONFUSE:
+- Word of Knowledge = PAST / PRESENT facts revealed. A supernatural revelation by the Holy Spirit of facts that exist NOW or in the PAST that you could not know naturally (e.g. Jesus telling the Samaritan woman about her 5 husbands in John 4:17-18; Jesus seeing Nathanael under the fig tree in John 1:48; during prayer knowing someone had an accident or sickness from childhood).
+- Word of Wisdom = FUTURE plans / instructions revealed. A supernatural revelation by the Holy Spirit of God's plan, purpose, or instruction about the FUTURE — what to do next, or what will happen (e.g. Agabus warning Paul about future imprisonment in Acts 21:10-11; Joseph's wisdom to store grain for future famine in Genesis 41:33-36; Holy Spirit warning "Do not travel tomorrow").
 
 ${AI_OUTPUT_IMPROVEMENT_RULES}
 
@@ -4193,6 +4282,33 @@ Format your response as a valid JSON object with this exact schema:
   ],
   "lifeTransformation": "Practical, transformative life application showing how a believer today walks in this truth daily",
   "apostolicBlessing": "A short, anointed scriptural blessing and decree over the believer"
+}`;
+    } else if (actionType === "chapter" || actionType === "Chapter Summary" || actionType === "Ask AI About This Chapter") {
+      prompt = `You are a Bible teacher for new believers in Ghana. Explain and summarize ${ref} in simple English.
+Chapter Passage / Context: "${actualText}"
+
+Rules:
+- Focus on what happened, not just themes
+- Use simple English, no big theology words
+- End with 1 key lesson and practical application
+- Format: Summary: ... Key Verse: ... Lesson: ...
+- If technical spiritual terms arise (Word of Knowledge, Word of Wisdom, Prophecy, Discerning of Spirits), adhere strictly to:
+  * Word of Knowledge = PAST/PRESENT hidden facts revealed
+  * Word of Wisdom = FUTURE plans or divine instructions revealed
+
+${AI_OUTPUT_IMPROVEMENT_RULES}
+
+Format your response as a valid JSON object with this exact schema:
+{
+  "title": "Chapter Summary & Revelation: ${ref}",
+  "book": "${ref.split(' ')[0] || ''}",
+  "chapter": "${ref.split(' ')[1] || ''}",
+  "summary": "3-4 simple sentences focusing on what happened in plain English",
+  "key_verses": ["${ref}"],
+  "theme": "Core theme of the chapter",
+  "lesson": "One key life lesson for new believers",
+  "questions": ["Reflection question 1?", "Reflection question 2?"],
+  "practicalApplication": "Clear steps to apply this chapter today"
 }`;
     } else if (actionType === "mathemasermon" || actionType === "MathemaSermon") {
       prompt = `You are Apostle Bismark Twum, author of 'MathemaSermons'. Create a powerful mathematical analogy and homiletic sermon outline connecting this scripture to divine mathematics:
@@ -4235,11 +4351,13 @@ Format your response as a valid JSON object with this exact schema:
   "lifeApplication": "Practical personal transformation and daily living instruction"
 }`;
     } else if (actionType === "joy" || actionType === "The Joy of the Lord" || (actionType && actionType.toLowerCase().includes("joy"))) {
-      prompt = `You are an apostolic pastor and theologian drawing upon the profound revelations of "The Joy of the Lord" (Nehemiah 8:10, Psalm 16:11, Philippians 4:4) and the analytical clarity of MathemaSermons.
+      prompt = `You are an apostolic pastor and theologian drawing upon the profound revelations of "The Joy of the Lord" (Nehemiah 8:10, Psalm 16:11, Philippians 4:4).
 Compose a deeply transformative, text-concurrent revelation for:
 Reference: ${ref} (${actualVersion})
 Passage: "${actualText}"
 Theme: ${theme}
+
+STRICT RULE: Do NOT include mathematical analogies, formulas, equations, or scientific theorems. Keep this write-up purely pastoral, covenant-anchored, scriptural, and devotional.
 
 ${AI_OUTPUT_IMPROVEMENT_RULES}
 
@@ -4248,7 +4366,6 @@ Format your response as a valid JSON object with this exact schema:
   "title": "The Joy of the Lord on ${ref}",
   "scriptureAnchor": "${ref} (${actualVersion}) - '${actualText}'",
   "originalLanguageJoyInsight": "Original Hebrew/Greek lexical revelation of joy or divine fortitude in this text",
-  "mathemaAnalogy": "A mathematical or scientific analogy linking this scripture's truth to divine principles",
   "theologicalJoyExposition": "Rich, text-anchored exposition of how God's joy sustains and triumphs in this passage",
   "hopeAndEncouragementConclusion": "A powerful, hope-igniting, triumphant apostolic message of encouragement and resilience that concludes the discourse",
   "propheticDecrees": ["Decree 1", "Decree 2", "Decree 3"],

@@ -20,7 +20,16 @@ b. UNPARALLELED UNIQUENESS & INDIVIDUALITY:
    - Tailor the cadence and voice dynamically to the spirit of the text—exultant for praise, strategic for spiritual warfare, deeply comforting for trials, prophetic for kingdom decrees.
 c. JOY OF THE LORD & TRIUMPHANT HOPE:
    - Anchor in the bedrock truth of Nehemiah 8:10 ("The joy of the LORD is your strength") and Apostle Bismark Twum's MathemaSermons.
-   - Conclude with an inspiring, triumphant, and hope-igniting apostolic message that leaves the believer deeply empowered and joyous.`;
+   - Conclude with an inspiring, triumphant, and hope-igniting apostolic message that leaves the believer deeply empowered and joyous.
+d. STANDARDIZED MATHEMATICAL EQUATIONS MANDATE:
+   - When presenting mathematical formulas, equations, or scientific laws, you MUST format them in standardized LaTeX notation.
+   - For standalone display equations, use $$...$$ blocks (e.g. $$P(t) = P_0 e^{kt}$$ or $$\\vec{F} = m\\vec{a}$$).
+   - For inline mathematical variables and expressions, use $...$ (e.g. $k > 0$, $x \\in \\mathbb{R}$).
+   - Never output raw unformatted ASCII code blocks or plain unstructured text for mathematical formulas.
+e. ANTI-DUPLICATION & ZERO-INCOHERENCE DIRECTIVE:
+   - Write with supreme linear clarity, progressive revelation, and tight narrative coherence.
+   - Do NOT duplicate paragraphs, repeat sentences with minor variations, or recycle points under different headings.
+   - Ensure every section develops a fresh, distinct dimension of truth with sharp biblical precision.`;
 
 export const ANTI_LOOP_DIRECTIVE = `Provide deep, unique, and illuminating theological, historical, and practical insight. Never repeat phrases or loop. Be precise, profound, and substantive. Do not use generic filler.
 ${AI_OUTPUT_IMPROVEMENT_RULES}`;
@@ -258,23 +267,11 @@ Format your response as a valid JSON object matching this schema:
   "scriptureAnchor": "${ref} (${v}) - '${txt}'",
   "scripturePromise": "${ref} (${v}) - '${txt}'",
   "adoration": "Exalt God's supreme holiness, sovereignty, and divine faithfulness demonstrated in ${ref} regarding ${currentSubject}.",
-  "confession": "Reverent surrender of human insufficiency, fear, and self-reliance into His covenant hands.",
   "confessionAndSurrender": "Reverent surrender of human insufficiency, fear, and self-reliance into His covenant hands.",
   "thanksgiving": "Heartfelt thanksgiving for God's steadfast promises, the finished work of Christ on the cross, and His grace.",
   "petition": "Direct, heartfelt, and targeted petitions applying ${ref} directly to ${currentSubject}.",
   "warfareDeclaration": "Authoritative apostolic decrees breaking doubt, fear, delay, and enemy limitations in Jesus' Name.",
-  "spiritualWarfare": "Authoritative apostolic decrees breaking doubt, fear, delay, and enemy limitations in Jesus' Name.",
-  "closing": "Triumphant seal and affirmation in Jesus' victorious Name. Amen.",
-  "declarationInJesusName": "Triumphant seal and affirmation in Jesus' victorious Name. Amen.",
-  "sections": {
-    "adoration": "Exalt God's supreme holiness, sovereignty, and divine faithfulness demonstrated in ${ref} regarding ${currentSubject}.",
-    "confessionAndSurrender": "Reverent surrender of human insufficiency, fear, and self-reliance into His covenant hands.",
-    "thanksgiving": "Heartfelt thanksgiving for God's steadfast promises, the finished work of Christ on the cross, and His grace.",
-    "scripturePromise": "${ref} (${v}) - '${txt}'",
-    "petition": "Direct, heartfelt, and targeted petitions applying ${ref} directly to ${currentSubject}.",
-    "spiritualWarfare": "Authoritative apostolic decrees breaking doubt, fear, delay, and enemy limitations in Jesus' Name.",
-    "declarationInJesusName": "Triumphant seal and affirmation in Jesus' victorious Name. Amen."
-  }
+  "declarationInJesusName": "Triumphant seal and affirmation in Jesus' victorious Name. Amen."
 }`;
       responseMimeType = "application/json";
     } else if (act.includes("point")) {
@@ -395,10 +392,11 @@ Format as JSON with keys: answer, scriptures, keyTakeaway.`;
   ];
 
   const candidateModels = [
-    "gemini-3.8-flash",
+    "gemini-3.6-flash",
+    "gemini-3.5-flash-lite",
     "gemini-flash-latest",
     "gemini-3.1-flash-lite",
-    "gemini-3.6-flash",
+    "gemini-3.8-flash",
   ];
 
   const isStreamRequest = Boolean(

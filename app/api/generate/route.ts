@@ -17,8 +17,25 @@ b. UNPARALLELED UNIQUENESS & INDIVIDUALITY:
    - Open immediately with an arresting biblical insight, vivid historical reality, or linguistic revelation.
    - Tailor the cadence and voice dynamically to the spirit of the text—exultant for praise, strategic for spiritual warfare, deeply comforting for trials, prophetic for kingdom decrees.
 c. JOY OF THE LORD & TRIUMPHANT HOPE:
-   - Anchor in the bedrock truth of Nehemiah 8:10 ("The joy of the LORD is your strength") and Apostle Bismark Twum's MathemaSermons.
-   - Conclude with an inspiring, triumphant, and hope-igniting apostolic message that leaves the believer deeply empowered and joyous.`;
+   - Anchor in the bedrock truth of Nehemiah 8:10 ("The joy of the LORD is your strength").
+   - Conclude with an inspiring, triumphant, and hope-igniting apostolic message that leaves the believer deeply empowered and joyous.
+d. STRICT BOUNDARY ON MATHEMATICAL ANALOGIES & FORMULAS:
+   - MATHEMATICAL ANALOGIES, FORMULAS, EQUATIONS, AND CALCULUS/GEOMETRIC CONCEPTS MUST ONLY APPEAR IN "MATHEMASERMON" AND "APOSTLEMATH" WRITE-UPS.
+   - You are STRICTLY FORBIDDEN from using mathematical analogies, equations, formulas, or geometry/calculus metaphors in any other places, including:
+     • Create Devotion
+     • Create Prayer
+     • Prayer Points
+     • Explain Verse / Expository Analysis
+     • Historical Context & Cultural Setting
+     • The Joy of the Lord
+     • Rhema Word & Daily Inspiration
+   - Keep Devotions, Prayers, Prayer Points, Verse Explanations, Historical Context, and The Joy of the Lord purely pastoral, scriptural, spiritual, and theological.
+e. STANDARDIZED MATHEMATICAL EQUATIONS MANDATE (MathemaSermons & ApostleMath ONLY):
+   - When presenting mathematical formulas in MathemaSermons or ApostleMath, you MUST format them in standardized LaTeX notation ($$...$$ for display, $...$ for inline).
+f. ANTI-DUPLICATION & ZERO-INCOHERENCE DIRECTIVE:
+   - Write with supreme linear clarity, progressive revelation, and tight narrative coherence.
+   - Do NOT duplicate paragraphs, repeat sentences with minor variations, or recycle points under different headings.
+   - Ensure every section develops a fresh, distinct dimension of truth with sharp biblical precision.`;
 
 export const ANTI_LOOP_DIRECTIVE = `Provide deep, unique, and illuminating theological, historical, and practical insight. Never repeat phrases or loop. Be precise, profound, and substantive. Do not use generic filler.
 ${AI_OUTPUT_IMPROVEMENT_RULES}`;
@@ -154,6 +171,16 @@ Format your response as a valid JSON object matching this schema:
         responseMimeType = "application/json";
       } else if (act.includes("explain") || act.includes("exposition")) {
         userPrompt = `You are a preeminent Christian Biblical scholar and expositor. Provide a profound, deep verse-by-verse and theological explanation of ${ref} ("${txt}") in conjunction with "${currentSubject}".
+
+STRICT RULE: Do NOT use mathematical analogies, formulas, equations, or calculus/geometry terms in verse explanations. Keep the exposition purely scriptural and pastoral.
+
+CRITICAL SPIRITUAL TERMS & CHARISMATIC GIFTS EXPLANATION DIRECTIVE:
+When explaining this verse, if it touches on spiritual gifts or technical terms (e.g., Word of Wisdom, Word of Knowledge, Prophecy, Discerning of Spirits):
+1. Give simple definition in one sentence
+2. Give biblical example with reference (e.g., Word of Knowledge: Jesus and Samaritan woman in John 4:17-18; Word of Wisdom: Agabus in Acts 21:10-11)
+3. Give modern example of how it works in church / daily life today
+4. Differentiate from similar terms (Word of Knowledge = past/present facts; Word of Wisdom = future plans/instructions)
+
 ${AI_OUTPUT_IMPROVEMENT_RULES}
 
 Format your response as a valid JSON object matching this schema:
@@ -162,12 +189,21 @@ Format your response as a valid JSON object matching this schema:
   "scriptureAnchor": "${ref} (${v}) - '${txt}'",
   "historicalContext": "Authoritative historical and cultural setting of this passage: author, era, and original audience.",
   "originalLanguageInsight": "Deep original Hebrew or Greek root terms, grammatical nuances, and lexical definitions.",
+  "expositoryBreakdown": "Clause-by-clause detailed exegetical breakdown of the text.",
   "doctrinalMeaning": "The central theological doctrine and eternal covenant truth revealed in this verse.",
+  "spiritualTermEnrichment": {
+    "term": "Specific spiritual term or gift if mentioned or relevant (e.g. Word of Wisdom, Word of Knowledge, Prophecy, Discerning of Spirits, or None)",
+    "simpleDefinition": "Simple 1-sentence definition for young believers",
+    "biblicalExample": "Concrete biblical example with Scripture reference",
+    "modernExample": "How it operates in church or daily life today",
+    "criticalDifference": "Crucial distinction clarifying and differentiating it from similar gifts (e.g. Word of Knowledge = past/present facts, Word of Wisdom = future plans or divine instructions)"
+  },
   "crossReferences": [
     { "reference": "Book Chapter:Verse", "connection": "How this cross-reference illuminates the verse" },
     { "reference": "Book Chapter:Verse", "connection": "How this cross-reference illuminates the verse" }
   ],
-  "lifeTransformation": "Practical life transformation showing how the believer walks in this truth daily."
+  "lifeTransformation": "Practical life transformation showing how the believer walks in this truth daily.",
+  "apostolicBlessing": "A short, anointed scriptural blessing over the believer"
 }`;
         responseMimeType = "application/json";
       } else if (act.includes("math")) {
@@ -253,10 +289,11 @@ Format as JSON with keys: answer, scriptures, keyTakeaway.`;
     const genAI = new GoogleGenerativeAI(apiKey);
     // Dynamic model aliases with automatic fallback handling to prevent 503/404 breaking changes
     const candidateModels = [
-      "gemini-3.8-flash",
+      "gemini-3.6-flash",
+      "gemini-3.5-flash-lite",
       "gemini-flash-latest",
       "gemini-3.1-flash-lite",
-      "gemini-3.6-flash",
+      "gemini-3.8-flash",
     ];
     let result: any = null;
     let modelUsed = candidateModels[0];

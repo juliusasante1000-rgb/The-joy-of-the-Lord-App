@@ -38,13 +38,14 @@ import {
   Mic,
   Zap,
   User,
-  Languages
+  Languages,
+  Shuffle
 } from "lucide-react";
 import { TimeScheduleState, DailyScripture, Devotion, DevotionEdition, CreatorProfile, SpiritualPlace } from "../types";
 import { downloadDevotionDocument, printDevotionOnePageDocument } from "../utils/devotionDocumentExporter";
 import { DevotionPictureModal } from "./DevotionPictureModal";
 import { PERSONAL_QUOTES } from "../data/quotesData";
-import { ScheduledVerse, getPreviousVersesHistory } from "../data/dailyVerseData";
+import { ScheduledVerse, getPreviousVersesHistory, getRandomDailyVerse, setShuffledDailyVerse, clearShuffledDailyVerse } from "../data/dailyVerseData";
 import { NavTab } from "./BottomNav";
 import { AppLogo } from "./AppLogo";
 import { CreatorCard } from "./CreatorCard";
@@ -113,6 +114,26 @@ export const HomeTab: React.FC<HomeTabProps> = ({
   const [activeDisplayVerse, setActiveDisplayVerse] = useState<ScheduledVerse>(scheduledVerse);
   const [selectedDailyVerseVersion, setSelectedDailyVerseVersion] = useState<string>("KJV");
   const [isLoadingDailyVerseVersion, setIsLoadingDailyVerseVersion] = useState(false);
+  const [isRandomizedVerse, setIsRandomizedVerse] = useState(false);
+
+  const handleRandomizeVerse = () => {
+    const nextRandom = getRandomDailyVerse(activeDisplayVerse.reference);
+    setShuffledDailyVerse(nextRandom);
+    setActiveDisplayVerse(nextRandom);
+    setSelectedDailyVerseVersion(nextRandom.version || "KJV");
+    setIsRandomizedVerse(true);
+    setAiActionResult(null);
+    setAiActionData(null);
+  };
+
+  const handleResetToScheduledVerse = () => {
+    clearShuffledDailyVerse();
+    setActiveDisplayVerse(scheduledVerse);
+    setSelectedDailyVerseVersion(scheduledVerse.version || "KJV");
+    setIsRandomizedVerse(false);
+    setAiActionResult(null);
+    setAiActionData(null);
+  };
 
   // Switch Daily Scripture version to authentic translation (NIV, NKJV, ESV, NLT, AMP, KJV)
   const handleSelectDailyVerseVersion = async (ver: string) => {
@@ -120,7 +141,7 @@ export const HomeTab: React.FC<HomeTabProps> = ({
     if (ver === "KJV") {
       setActiveDisplayVerse((prev) => ({
         ...prev,
-        text: scheduledVerse.text,
+        text: activeDisplayVerse.text,
         version: "KJV"
       }));
       return;
@@ -290,9 +311,10 @@ export const HomeTab: React.FC<HomeTabProps> = ({
                 : (fullText || "")
             );
           } else if (action === "MathemaSermon" || action === "mathemasermon") {
+            const formulaBlock = inner.formula ? `\n\n$$\n${inner.formula}\n$$\n` : "";
             setAiActionResult(
               inner.mathematicalConcept || inner.homileticApplication
-                ? `### MATHEMATICAL CONCEPT & ANALOGY\n**Principle:** ${inner.mathematicalConcept || ""}\n\n**Formula:** \`${inner.formula || ""}\`\n\n${inner.mathematicalAnalogy || ""}\n\n### HOMILETIC APPLICATION\n${inner.homileticApplication || ""}\n\n### CONCLUSION & ALTAR CALL PRAYER\n${inner.altarCallPrayer || ""}`
+                ? `### MATHEMATICAL CONCEPT & FORMULA\n**Principle:** ${inner.mathematicalConcept || ""}${formulaBlock}\n\n${inner.mathematicalAnalogy || ""}\n\n### HOMILETIC APPLICATION\n${inner.homileticApplication || ""}\n\n### CONCLUSION & ALTAR CALL PRAYER\n${inner.altarCallPrayer || ""}`
                 : (fullText || "")
             );
           } else {
@@ -409,9 +431,30 @@ export const HomeTab: React.FC<HomeTabProps> = ({
             </span>
           </div>
 
-          <div className="flex items-center gap-1.5 text-[11px] font-mono text-emerald-300 bg-white/10 px-2.5 py-1 rounded-full border border-white/10">
-            <Clock className="w-3.5 h-3.5" />
-            <span>Automatic Midnight Rollover (12:00 AM)</span>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={handleRandomizeVerse}
+              className="flex items-center gap-1.5 text-xs font-bold text-amber-200 bg-amber-500/20 hover:bg-amber-500/30 border border-amber-400/30 px-3 py-1 rounded-full transition-all cursor-pointer shadow-xs active:scale-95"
+              title="Shuffle a new randomized verse across the Bible"
+            >
+              <Shuffle className="w-3.5 h-3.5 text-amber-300" />
+              <span>Randomize Verse</span>
+            </button>
+
+            {isRandomizedVerse && (
+              <button
+                onClick={handleResetToScheduledVerse}
+                className="text-[11px] text-slate-300 hover:text-white underline underline-offset-2 transition-colors cursor-pointer"
+                title="Reset to today's scheduled calendar verse"
+              >
+                Reset to Today
+              </button>
+            )}
+
+            <div className="hidden sm:flex items-center gap-1.5 text-[11px] font-mono text-emerald-300 bg-white/10 px-2.5 py-1 rounded-full border border-white/10">
+              <Clock className="w-3.5 h-3.5" />
+              <span>Automatic Midnight Rollover (12:00 AM)</span>
+            </div>
           </div>
         </div>
 

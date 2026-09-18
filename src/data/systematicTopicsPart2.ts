@@ -516,11 +516,16 @@ export const SYSTEMATIC_TOPICS_PART2: SystematicTopicItem[] = [
     division: "Systematic Theology",
     anchorScriptures: [
       { reference: "1 Corinthians 12:8", text: "For to one is given by the Spirit the word of wisdom." },
-      { reference: "James 1:5", text: "If any of you lack wisdom, let him ask of God, that giveth to all men liberally." }
+      { reference: "Acts 21:10-11", text: "There came down from Judaea a certain prophet, named Agabus. And when he was come unto us, he took Paul's girdle, and bound his own hands and feet, and said, Thus saith the Holy Ghost, So shall the Jews at Jerusalem bind the man that owneth this girdle..." },
+      { reference: "Genesis 41:33-36", text: "Now therefore let Pharaoh look out a man discreet and wise, and set him over the land of Egypt... that food shall be for store to the land against the seven years of famine..." }
     ],
-    theologicalSummary: "A supernatural revelation of God's mind, divine purpose, and practical plan for a specific situation.",
-    keyInsights: ["Supernatural insight into divine solutions", "Guides during crises and major decisions", "Unlocks heavenly strategies on earth"],
-    practicalApplication: "Seek God for words of wisdom when facing complex situations in life and ministry."
+    theologicalSummary: "A supernatural revelation by the Holy Spirit of God's plan, purpose, or instruction about the FUTURE. What to do next, or what will happen.",
+    keyInsights: [
+      "Reveals God's FUTURE plans, events, or divine instructions",
+      "Tells you what WILL happen or what to DO about it (e.g., 'Don't travel tomorrow')",
+      "Differentiated from Word of Knowledge: Word of Wisdom speaks to the future, while Word of Knowledge reveals past/present facts"
+    ],
+    practicalApplication: "Trust the Holy Spirit when He gives you divine instructions or warnings for upcoming seasons and future decisions."
   },
   {
     id: "sys-138-word-of-knowledge",
@@ -530,11 +535,16 @@ export const SYSTEMATIC_TOPICS_PART2: SystematicTopicItem[] = [
     division: "Systematic Theology",
     anchorScriptures: [
       { reference: "1 Corinthians 12:8", text: "To another the word of knowledge by the same Spirit." },
-      { reference: "John 4:17-18", text: "Jesus said unto her, Thou hast well said, I have no husband: For thou hast had five husbands." }
+      { reference: "John 4:17-18", text: "Jesus said unto her, Thou hast well said, I have no husband: For thou hast had five husbands; and he whom thou now hast is not thy husband." },
+      { reference: "John 1:48", text: "Nathanael saith unto him, Whence knowest thou me? Jesus answered and said unto him, Before that Philip called thee, when thou wast under the fig tree, I saw thee." }
     ],
-    theologicalSummary: "A supernatural revelation of facts, secrets, or past/present situations known only to God.",
-    keyInsights: ["Supernatural disclosure of hidden facts", "Reveals hearts and accelerates evangelism", "Modeled by Jesus with the Samaritan woman"],
-    practicalApplication: "Listen for the Spirit's whispered knowledge to minister accurately to people's hidden needs."
+    theologicalSummary: "A supernatural revelation by the Holy Spirit of facts that exist NOW or in the PAST that you could not know naturally. Past or present hidden facts.",
+    keyInsights: [
+      "Supernatural disclosure of PAST or PRESENT secret facts unknown naturally",
+      "Modeled by Jesus revealing the Samaritan woman's past (John 4) and Nathanael under the fig tree (John 1)",
+      "Differentiated from Word of Wisdom: Word of Knowledge reveals what happened or is happening secretly right now"
+    ],
+    practicalApplication: "When Holy Spirit reveals a past trauma or present hidden illness in someone's life, minister Christ's love and healing with humility."
   },
   {
     id: "sys-139-gift-of-faith",
