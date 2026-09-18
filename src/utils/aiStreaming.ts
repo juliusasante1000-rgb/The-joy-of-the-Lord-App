@@ -5,6 +5,46 @@
  */
 
 import { deduplicateSentences } from "../services/aiService";
+import {
+  selectAppropriateReservoirDevotion,
+  saveDevotionToPermanentReservoir,
+  formatReservoirDevotionForDisplay,
+  getGracefulReservoirUnavailableMessage,
+  normalizeOutlet,
+  extractReservoirKey,
+  selectUniversalReservoirItem,
+  saveContentToUniversalReservoir,
+  formatUniversalReservoirItemForDisplay,
+  getGracefulUniversalReservoirMessage,
+  ReservoirOutlet,
+  UniversalReservoirItem
+} from "../data/permanentContentReservoir";
+
+export function isDevotionRequest(actionType?: string): boolean {
+  if (!actionType) return true;
+  const lower = actionType.toLowerCase();
+  return lower.includes("devotion") || lower === "daily_devotion" || lower === "create devotion";
+}
+
+/**
+ * Resolves the canonical outlet and indexing key from StreamAiOptions
+ */
+export function resolveOutletAndKey(options: StreamAiOptions): { outlet: ReservoirOutlet; key: string } {
+  const outlet = normalizeOutlet(options.actionType, options.endpoint, options.category);
+  const key = extractReservoirKey({
+    scriptureReference: options.scriptureReference,
+    biblicalReference: options.biblicalReference,
+    placeName: options.placeName,
+    mathematicalConcept: options.mathematicalConcept,
+    topic: options.topic,
+    subject: options.subject,
+    question: options.question,
+    need: options.need,
+    category: options.category,
+    prompt: options.prompt
+  });
+  return { outlet, key };
+}
 
 /**
  * Universal safe JSON parser that cleans markdown fences, repairs unescaped backslashes,
@@ -239,7 +279,7 @@ export function isQuotaExceededResponse(status: number, message: string = ""): b
  */
 export async function streamAiContent<T = any>(
   options: StreamAiOptions
-): Promise<{ success: boolean; text: string; data?: T; isCached?: boolean; error?: string; isQuota?: boolean }> {
+): Promise<{ success: boolean; text: string; data?: T; isCached?: boolean; error?: string; isQuota?: boolean; isReservoir?: boolean; reservoirLabel?: string }> {
   const cacheKey = getAiCacheKey(options);
 
   // 1. Check Client Cache First
@@ -475,8 +515,40 @@ export async function streamAiContent<T = any>(
 
       clearTimeout(timeoutId);
 
-      // On 429 Quota Exhausted: STOP IMMEDIATELY. No fallbacks!
+      // On 429 Quota Exhausted: Check Permanent Content Reservoir for stored content across ALL outlets
       if (isQuotaError) {
+        const { outlet, key } = resolveOutletAndKey(options);
+        if (key) {
+          const stored = selectUniversalReservoirItem(outlet, key);
+          if (stored) {
+            console.log(`[CLIENT UNIVERSAL RESERVOIR] 🏛️ Serving stored ${stored.label} for ${key} in outlet ${outlet}`);
+            const formatted = stored.item.formattedText || formatUniversalReservoirItemForDisplay(stored.item);
+            const dataToSend = stored.item.data || stored.item;
+            options.onProgress?.(100);
+            options.onChunk?.(formatted, formatted, dataToSend);
+            options.onComplete?.(formatted, dataToSend, false);
+            return {
+              success: true,
+              text: formatted,
+              data: dataToSend as T,
+              isQuota: false,
+              isCached: false,
+              isReservoir: true,
+              reservoirLabel: stored.label
+            };
+          } else {
+            const gracefulMsg = getGracefulUniversalReservoirMessage(outlet, key);
+            options.onError?.(gracefulMsg);
+            return {
+              success: false,
+              text: "",
+              error: gracefulMsg,
+              isQuota: true,
+              isCached: false
+            };
+          }
+        }
+
         options.onError?.(USER_FRIENDLY_QUOTA_MESSAGE);
         return {
           success: false,
@@ -496,6 +568,12 @@ export async function streamAiContent<T = any>(
         }
 
         saveAiResultToCache(cacheKey, accumulatedText, parsedData, isFast);
+
+        // When AI available -> auto-save fresh generation to Permanent Content Reservoir across ALL outlets!
+        const { outlet, key } = resolveOutletAndKey(options);
+        if (key && (parsedData || accumulatedText)) {
+          saveContentToUniversalReservoir(outlet, key, parsedData || accumulatedText, accumulatedText);
+        }
 
         if (options.storageKey && (parsedData || accumulatedText)) {
           try {
@@ -527,6 +605,37 @@ export async function streamAiContent<T = any>(
         });
 
         if (fallbackRes.status === 429) {
+          const { outlet, key } = resolveOutletAndKey(options);
+          if (key) {
+            const stored = selectUniversalReservoirItem(outlet, key);
+            if (stored) {
+              console.log(`[CLIENT UNIVERSAL RESERVOIR FALLBACK] 🏛️ Serving stored ${stored.label} for ${key} in outlet ${outlet}`);
+              const formatted = stored.item.formattedText || formatUniversalReservoirItemForDisplay(stored.item);
+              const dataToSend = stored.item.data || stored.item;
+              options.onProgress?.(100);
+              options.onChunk?.(formatted, formatted, dataToSend);
+              options.onComplete?.(formatted, dataToSend, false);
+              return {
+                success: true,
+                text: formatted,
+                data: dataToSend as T,
+                isQuota: false,
+                isCached: false,
+                isReservoir: true,
+                reservoirLabel: stored.label
+              };
+            } else {
+              const gracefulMsg = getGracefulUniversalReservoirMessage(outlet, key);
+              options.onError?.(gracefulMsg);
+              return {
+                success: false,
+                text: "",
+                error: gracefulMsg,
+                isQuota: true,
+                isCached: false
+              };
+            }
+          }
           options.onError?.(USER_FRIENDLY_QUOTA_MESSAGE);
           return {
             success: false,
@@ -552,11 +661,20 @@ export async function streamAiContent<T = any>(
             options.onChunk?.(finalText, finalText, finalData);
             options.onComplete?.(finalText, finalData, false);
             saveAiResultToCache(cacheKey, finalText, finalData, isFast);
+
+            // Auto-save fresh generation to Permanent Content Reservoir across ALL outlets!
+            const { outlet, key } = resolveOutletAndKey(options);
+            if (key && (finalData || finalText)) {
+              saveContentToUniversalReservoir(outlet, key, finalData || finalText, finalText);
+            }
+
             return {
               success: true,
               text: finalText,
               data: finalData as T,
-              isCached: false
+              isCached: false,
+              isReservoir: !!resData?.isPermanentReservoir,
+              reservoirLabel: resData?.reservoirLabel
             };
           }
         } else {
@@ -594,6 +712,39 @@ export async function streamAiContent<T = any>(
       clearTimeout(timeoutId);
       console.error("[AI STREAMING ERROR HANDLER]", err);
       const isQuota = isQuotaExceededResponse(0, err?.message);
+      if (isQuota) {
+        const { outlet, key } = resolveOutletAndKey(options);
+        if (key) {
+          const stored = selectUniversalReservoirItem(outlet, key);
+          if (stored) {
+            console.log(`[CLIENT UNIVERSAL RESERVOIR ERROR CATCH] 🏛️ Serving stored ${stored.label} for ${key} in outlet ${outlet}`);
+            const formatted = stored.item.formattedText || formatUniversalReservoirItemForDisplay(stored.item);
+            const dataToSend = stored.item.data || stored.item;
+            options.onProgress?.(100);
+            options.onChunk?.(formatted, formatted, dataToSend);
+            options.onComplete?.(formatted, dataToSend, false);
+            return {
+              success: true,
+              text: formatted,
+              data: dataToSend as T,
+              isQuota: false,
+              isCached: false,
+              isReservoir: true,
+              reservoirLabel: stored.label
+            };
+          } else {
+            const gracefulMsg = getGracefulUniversalReservoirMessage(outlet, key);
+            options.onError?.(gracefulMsg);
+            return {
+              success: false,
+              text: "",
+              error: gracefulMsg,
+              isQuota: true,
+              isCached: false
+            };
+          }
+        }
+      }
       const failureMsg = isQuota
         ? USER_FRIENDLY_QUOTA_MESSAGE
         : (err?.message || lastServerErrorMessage || "AI generation could not be completed right now. Please try again.");

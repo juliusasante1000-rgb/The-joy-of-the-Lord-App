@@ -6,6 +6,52 @@ import crypto from "crypto";
 import { GoogleGenAI } from "@google/genai";
 import dotenv from "dotenv";
 import { getOfflineContentForRequest } from "./server_offline_content";
+import {
+  selectServerReservoirDevotion,
+  saveDevotionToServerReservoir,
+  getServerReservoirDevotions,
+  getAllServerReservoirScriptures,
+  formatServerReservoirDevotion,
+  getGracefulServerReservoirMessage,
+  normalizeServerOutlet,
+  selectServerUniversalReservoirItem,
+  saveContentToServerUniversalReservoir,
+  getServerUniversalReservoirItems,
+  getGracefulServerUniversalMessage,
+  ServerReservoirOutlet,
+  ServerUniversalItem
+} from "./server_permanent_reservoir";
+
+/**
+ * Resolves canonical outlet and indexing key for server-side reservoir
+ */
+function resolveServerReservoirOutletAndKey(
+  body: any,
+  endpointName?: string
+): { outlet: ServerReservoirOutlet; key: string } {
+  const act = body?.actionType || body?.type || "";
+  const ep = endpointName || "";
+  const cat = body?.category || "";
+  const outlet = normalizeServerOutlet(act, ep, cat);
+
+  const rawKey =
+    body?.scriptureReference ||
+    body?.reference ||
+    body?.biblicalReference ||
+    body?.placeName ||
+    body?.place ||
+    body?.mathematicalConcept ||
+    body?.concept ||
+    body?.topic ||
+    body?.subject ||
+    body?.question ||
+    body?.need ||
+    body?.prompt ||
+    "";
+
+  return { outlet, key: String(rawKey).trim() };
+}
+
 
 dotenv.config();
 
@@ -660,21 +706,21 @@ function deduplicateSentences(text: string): string {
 }
 
 // Dedicated System Prompts for Specific Biblical, Mathematical, and Pastoral Personas
-export const SYSTEM_PROMPT_PRAYER = `You are an apostolic prayer general and seasoned intercessor. Compose high-impact, deeply scriptural, targeted prayers saturated with biblical promises, reverent adoration, wholehearted surrender, precise petitions, and authoritative spiritual warfare decrees in the mighty Name of Jesus Christ. Ground every petition in exact Scripture citations. Conclude triumphantly in the matchless Name of Jesus Christ, our Lord and King. Avoid generic repetitive phrases. ${ANTI_LOOP_DIRECTIVE}`;
+export const SYSTEM_PROMPT_PRAYER = `You are an apostolic prayer general and seasoned intercessor. Compose high-impact, deeply scriptural, targeted prayers saturated with biblical promises, reverent adoration, wholehearted surrender, precise petitions, and authoritative spiritual warfare decrees in the mighty Name of Jesus Christ. Ground every petition in exact Scripture citations. Conclude triumphantly in the matchless Name of Jesus Christ, our Lord and King. Avoid generic repetitive phrases. STRICT RULE: Do NOT include mathematical analogies, formulas, equations, or scientific theorems. Keep this write-up purely pastoral, covenant-anchored, scriptural, and devotional. ${ANTI_LOOP_DIRECTIVE}`;
 
-export const SYSTEM_PROMPT_DEVOTION = `You are an apostolic Christian devotion author. Compose deeply substantive, original daily devotions that uncover hidden scriptural gems, cross-reference covenantal truths, provide real-world spiritual fortitude, and empower the believer with authentic faith decrees and practical life steps. Unpack original Hebrew and Greek concepts with theological accuracy. Avoid generic Christian clichés. ${ANTI_LOOP_DIRECTIVE}`;
+export const SYSTEM_PROMPT_DEVOTION = `You are an apostolic Christian devotion author. Compose deeply substantive, original daily devotions that uncover hidden scriptural gems, cross-reference covenantal truths, provide real-world spiritual fortitude, and empower the believer with authentic faith decrees and practical life steps. Unpack original Hebrew and Greek concepts with theological accuracy. Avoid generic Christian clichés. STRICT RULE: Do NOT include mathematical analogies, formulas, equations, or scientific theorems. Keep this write-up purely pastoral, covenant-anchored, scriptural, and devotional. Mathematical analogies must ONLY appear in MathemaSermons and ApostleMath. ${ANTI_LOOP_DIRECTIVE}`;
 
-export const SYSTEM_PROMPT_RHEMA = `You are a seasoned prophetic minister and apostolic expositor. Deliver an urgent, spirit-breathed, and biblically anchored Rhema Now-Word for the believer's current season. Anchor declarations directly in specific Scripture, unpack the Hebrew/Greek prophetic terminology, and conclude with an authoritative prophetic decree and covenant declaration that ignites faith, joy, and spiritual breakthrough. ${ANTI_LOOP_DIRECTIVE}`;
+export const SYSTEM_PROMPT_RHEMA = `You are a seasoned prophetic minister and apostolic expositor. Deliver an urgent, spirit-breathed, and biblically anchored Rhema Now-Word for the believer's current season. Anchor declarations directly in specific Scripture, unpack the Hebrew/Greek prophetic terminology, and conclude with an authoritative prophetic decree and covenant declaration that ignites faith, joy, and spiritual breakthrough. STRICT RULE: Do NOT include mathematical analogies, formulas, equations, or scientific theorems. Keep this write-up purely pastoral, covenant-anchored, scriptural, and devotional. ${ANTI_LOOP_DIRECTIVE}`;
 
-export const SYSTEM_PROMPT_JOY_OF_THE_LORD = `You are a theologian and inspirational pastor specializing in 'The Joy of the Lord' as covenant strength (Nehemiah 8:10). Provide profound biblical wisdom, overcoming strategies for afflictions, trials, anxiety, and spiritual warfare, and reveal how supernatural joy acts as an unshakeable fortress and spiritual offensive weapon in Christ Jesus. Conclude with an inspiring, triumphant apostolic encouragement. ${ANTI_LOOP_DIRECTIVE}`;
+export const SYSTEM_PROMPT_JOY_OF_THE_LORD = `You are a theologian and inspirational pastor specializing in 'The Joy of the Lord' as covenant strength (Nehemiah 8:10). Provide profound biblical wisdom, overcoming strategies for afflictions, trials, anxiety, and spiritual warfare, and reveal how supernatural joy acts as an unshakeable fortress and spiritual offensive weapon in Christ Jesus. Conclude with an inspiring, triumphant apostolic encouragement. STRICT RULE: Do NOT include mathematical analogies, formulas, equations, or scientific theorems. Keep this write-up purely pastoral, covenant-anchored, scriptural, and devotional. ${ANTI_LOOP_DIRECTIVE}`;
 
 export const SYSTEM_PROMPT_APOSTLEMATH = `You are an expert mathematician and Christian scholar who unveils the divine architecture of mathematics (ApostleMath). Unpack the exact mathematical theorems, algebraic structures, calculus, topology, and number theory with rigor (using LaTeX notation $$...$$ for display and $...$ for inline), and demonstrate how mathematical laws reflect the immutable nature, sovereignty, and covenant fidelity of God. ${ANTI_LOOP_DIRECTIVE}`;
 
 export const SYSTEM_PROMPT_MATHEMASERMON = `You are the master creator of MathemaSermons—homiletic masterpieces that uniquely synthesize rigorous mathematical, scientific, and theological principles. Every sermon must feature a distinct mathematical concept, exact formula/equation in LaTeX ($$...$$), clear conceptual analogy, deep scriptural exposition, life transformation steps, and an altar call prayer of faith and surrender. ${ANTI_LOOP_DIRECTIVE}`;
 
-export const SYSTEM_PROMPT_DOCTRINE = `You are a senior orthodox Christian theologian, church historian, and biblical scholar. Deliver rich, multifaceted, and deeply grounded theological analysis. Provide exact Scripture citations across both Old and New Testaments, explain original Hebrew/Greek root words and grammatical nuances, ground answers in historic Christian orthodoxy (Apostolic, Nicene, Chalcedonian creeds), refute shallow misconceptions with gentle wisdom, and outline transformative personal application. ${ANTI_LOOP_DIRECTIVE}`;
+export const SYSTEM_PROMPT_DOCTRINE = `You are a senior orthodox Christian theologian, church historian, and biblical scholar. Deliver rich, multifaceted, and deeply grounded theological analysis. Provide exact Scripture citations across both Old and New Testaments, explain original Hebrew/Greek root words and grammatical nuances, ground answers in historic Christian orthodoxy (Apostolic, Nicene, Chalcedonian creeds), refute shallow misconceptions with gentle wisdom, and outline transformative personal application. STRICT RULE: Do NOT include mathematical analogies, formulas, equations, or scientific theorems. Keep this write-up purely pastoral, covenant-anchored, scriptural, and devotional. ${ANTI_LOOP_DIRECTIVE}`;
 
-export const SYSTEM_PROMPT_BIBLE_HISTORIAN = `You are a master biblical historian, archaeologist, and exegete. Deliver deep, unique historical accounts anchored in Scripture. Cite exact books, chapters, and verses, the Hebrew/Greek geographical names, historical chronology, covenantal backdrop, key figures, archaeological findings, and divine outcomes. Provide rich historical depth without superficial motivational clichés. Address exactly what occurred with scholarly precision and reverent orthodoxy. ${ANTI_LOOP_DIRECTIVE}`;
+export const SYSTEM_PROMPT_BIBLE_HISTORIAN = `You are a master biblical historian, archaeologist, and exegete. Deliver deep, unique historical accounts anchored in Scripture. Cite exact books, chapters, and verses, the Hebrew/Greek geographical names, historical chronology, covenantal backdrop, key figures, archaeological findings, and divine outcomes. Provide rich historical depth without superficial motivational clichés. Address exactly what occurred with scholarly precision and reverent orthodoxy. STRICT RULE: Do NOT include mathematical analogies, formulas, equations, or scientific theorems. Keep this write-up purely historical, scriptural, and theological. ${ANTI_LOOP_DIRECTIVE}`;
 
 export const SYSTEM_PROMPT_MATH_TUTOR = SYSTEM_PROMPT_APOSTLEMATH;
 
@@ -2776,6 +2822,12 @@ Format as JSON with keys:
 
       let parsedJson = safeJsonParse(result.text);
 
+      // When AI available -> auto-save fresh generation across ALL outlets to Permanent Reservoir
+      const { outlet: resOutlet, key: resKey } = resolveServerReservoirOutletAndKey(req.body, "generate");
+      if (resKey && (parsedJson || result.text)) {
+        saveContentToServerUniversalReservoir(resOutlet, resKey, parsedJson || result.text, result.text);
+      }
+
       console.log(`[AI SUCCESS] Model ${result.modelUsed} in ${result.durationMs}ms`);
       return res.json({
         success: true,
@@ -2787,6 +2839,35 @@ Format as JSON with keys:
     }
 
     if (!result || !("text" in result) || !(result as any).text) {
+      // Permanent Content Reservoir: Check if a stored item exists across ALL outlets
+      const { outlet: resOutlet, key: resKey } = resolveServerReservoirOutletAndKey(req.body, "generate");
+      if (resKey) {
+        const stored = selectServerUniversalReservoirItem(resOutlet, resKey);
+        if (stored) {
+          console.log(`[SERVER UNIVERSAL RESERVOIR] 🏛️ Serving stored ${stored.label} for ${resKey} in outlet ${resOutlet}`);
+          const formatted = stored.item.formattedText || (stored.item.data ? JSON.stringify(stored.item.data) : "");
+          return res.json({
+            success: true,
+            text: formatted,
+            data: stored.item.data || stored.item,
+            response: formatted,
+            modelUsed: "permanent-content-reservoir",
+            isPermanentReservoir: true,
+            reservoirLabel: stored.label,
+            totalStored: stored.totalStored
+          });
+        } else if ((result as any)?.isQuota) {
+          const gracefulMsg = getGracefulServerUniversalMessage(resOutlet, resKey);
+          return res.status(429).json({
+            success: false,
+            error: "RESERVOIR_TEMPORARILY_UNAVAILABLE",
+            message: gracefulMsg,
+            isQuota: true,
+            isGracefulNotice: true
+          });
+        }
+      }
+
       // If quota exceeded or cascade exhausted, seamlessly provide scripture-grounded offline content
       if ((result as any)?.isQuota) {
         console.warn("[AI] Quota reached, serving canonical scripture-grounded fallback");
@@ -2828,6 +2909,32 @@ Format as JSON with keys:
 
 app.post("/api/generate", handleUnifiedAiGenerate);
 app.post("/.netlify/functions/generate", handleUnifiedAiGenerate);
+
+// ==========================================
+// Permanent Content Reservoir Endpoints
+// ==========================================
+app.get("/api/reservoir/devotions", (req, res) => {
+  const reference = (req.query?.reference || req.query?.ref || "") as string;
+  if (reference) {
+    const list = getServerReservoirDevotions(reference);
+    return res.json({ success: true, reference, devotions: list, count: list.length });
+  }
+  const catalog = getAllServerReservoirScriptures();
+  return res.json({ success: true, scriptures: catalog, totalScriptures: catalog.length });
+});
+
+app.post("/api/reservoir/devotions", (req, res) => {
+  try {
+    const { reference, devotion } = req.body || {};
+    if (!reference || !devotion) {
+      return res.status(400).json({ success: false, error: "Missing reference or devotion payload" });
+    }
+    const saved = saveDevotionToServerReservoir(reference, devotion);
+    return res.json({ success: true, devotion: saved });
+  } catch (err: any) {
+    return res.status(500).json({ success: false, error: err?.message || "Failed to save devotion" });
+  }
+});
 
 // Real-time AI Streaming Endpoint (Server-Sent Events)
 app.post("/api/generate-stream", async (req, res) => {
@@ -3289,6 +3396,13 @@ Format as JSON with keys: id, challengeTitle, category, rootDeception, scriptura
           parsedJson.prayer = { ...parsedJson };
         }
       }
+
+      // When AI available -> auto-save fresh generation across ALL outlets to Permanent Reservoir
+      const { outlet: strOutlet1, key: strKey1 } = resolveServerReservoirOutletAndKey(req.body, "generate-stream");
+      if (strKey1 && (parsedJson || result.text)) {
+        saveContentToServerUniversalReservoir(strOutlet1, strKey1, parsedJson || result.text, result.text);
+      }
+
       res.write(`data: ${JSON.stringify({ done: true, fullText: result.text, data: parsedJson })}\n\n`);
     } else if (streamAccumulator && streamAccumulator.trim().length > 0) {
       const fallbackRef = req.body?.scriptureReference || req.body?.reference || "Philippians 4:6-7";
@@ -3311,8 +3425,46 @@ Format as JSON with keys: id, challengeTitle, category, rootDeception, scriptura
           parsedJson.prayer = { ...parsedJson };
         }
       }
+
+      // When AI available -> auto-save fresh generation across ALL outlets to Permanent Reservoir
+      const { outlet: strOutlet2, key: strKey2 } = resolveServerReservoirOutletAndKey(req.body, "generate-stream");
+      if (strKey2 && (parsedJson || streamAccumulator)) {
+        saveContentToServerUniversalReservoir(strOutlet2, strKey2, parsedJson || streamAccumulator, streamAccumulator);
+      }
+
       res.write(`data: ${JSON.stringify({ done: true, fullText: streamAccumulator, data: parsedJson })}\n\n`);
     } else {
+      // Check Permanent Content Reservoir for stored content across ALL outlets
+      const { outlet: strOutlet, key: strKey } = resolveServerReservoirOutletAndKey(req.body, "generate-stream");
+      if (strKey) {
+        const stored = selectServerUniversalReservoirItem(strOutlet, strKey);
+        if (stored) {
+          console.log(`[SERVER UNIVERSAL RESERVOIR STREAM] 🏛️ Serving stored ${stored.label} for ${strKey} in outlet ${strOutlet}`);
+          const formatted = stored.item.formattedText || (stored.item.data ? JSON.stringify(stored.item.data) : "");
+          res.write(`data: ${JSON.stringify({
+            chunk: formatted,
+            fullText: formatted,
+            done: true,
+            data: stored.item.data || stored.item,
+            isPermanentReservoir: true,
+            reservoirLabel: stored.label,
+            totalStored: stored.totalStored
+          })}\n\n`);
+          res.write("data: [DONE]\n\n");
+          return res.end();
+        } else if ((result as any)?.isQuota) {
+          const gracefulMsg = getGracefulServerUniversalMessage(strOutlet, strKey);
+          res.write(`data: ${JSON.stringify({
+            error: "RESERVOIR_TEMPORARILY_UNAVAILABLE",
+            message: gracefulMsg,
+            isQuota: true,
+            isGracefulNotice: true
+          })}\n\n`);
+          res.write("data: [DONE]\n\n");
+          return res.end();
+        }
+      }
+
       // Check if this was a quota exhaustion: deliver rich canonical fallback
       if ((result as any)?.isQuota) {
         console.warn("[STREAM] Quota exceeded, streaming canonical scripture-grounded offline content");
@@ -3352,7 +3504,46 @@ Format as JSON with keys: id, challengeTitle, category, rootDeception, scriptura
     console.error("[STREAM ROUTE ERROR]", streamErr);
     const isQuota = isQuotaExceededError(streamErr);
     if (isQuota) {
-      console.warn("[STREAM ERROR] Quota exceeded in catch, returning canonical fallback");
+      console.warn("[STREAM ERROR] Quota exceeded in catch, checking Permanent Reservoir");
+      const { outlet: strOutletCatch, key: strKeyCatch } = resolveServerReservoirOutletAndKey(req.body, "generate-stream");
+      if (strKeyCatch) {
+        const stored = selectServerUniversalReservoirItem(strOutletCatch, strKeyCatch);
+        if (stored) {
+          console.log(`[SERVER UNIVERSAL RESERVOIR CATCH] 🏛️ Serving stored ${stored.label} for ${strKeyCatch} in outlet ${strOutletCatch}`);
+          const formatted = stored.item.formattedText || (stored.item.data ? JSON.stringify(stored.item.data) : "");
+          res.write(`data: ${JSON.stringify({
+            chunk: formatted,
+            fullText: formatted,
+            done: true,
+            data: stored.item.data || stored.item,
+            isPermanentReservoir: true,
+            reservoirLabel: stored.label,
+            totalStored: stored.totalStored
+          })}\n\n`);
+          res.write("data: [DONE]\n\n");
+          return res.end();
+        } else {
+          const gracefulMsg = getGracefulServerUniversalMessage(strOutletCatch, strKeyCatch);
+          res.write(`data: ${JSON.stringify({
+            error: "RESERVOIR_TEMPORARILY_UNAVAILABLE",
+            message: gracefulMsg,
+            isQuota: true,
+            isGracefulNotice: true
+          })}\n\n`);
+          res.write("data: [DONE]\n\n");
+          return res.end();
+        }
+      }
+          res.write(`data: ${JSON.stringify({
+            error: "RESERVOIR_TEMPORARILY_UNAVAILABLE",
+            message: gracefulMsg,
+            isQuota: true,
+            isGracefulNotice: true
+          })}\n\n`);
+          res.write("data: [DONE]\n\n");
+          return res.end();
+        }
+      }
       const offlineData = getOfflineContentForRequest(req.body?.actionType || req.body?.category || "general", req.body || {});
       const offlineText = typeof offlineData === "string" ? offlineData : JSON.stringify(offlineData);
       res.write(`data: ${JSON.stringify({

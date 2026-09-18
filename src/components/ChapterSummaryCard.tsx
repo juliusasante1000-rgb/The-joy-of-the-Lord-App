@@ -52,7 +52,9 @@ export const ChapterSummaryCard: React.FC<ChapterSummaryCardProps> = ({
 
   useEffect(() => {
     setSummaryData(getChapterSummary(book, chapter, chapterVerses));
-  }, [book, chapter, chapterVerses]);
+    setSelectedQuestion(null);
+    setCopied(false);
+  }, [book, chapter]);
 
   const handleCopy = () => {
     const textToCopy = `📝 Chapter Summary: ${book} ${chapter}\n\n${summaryData.summary}\n\nKey Verse: ${summaryData.key_verses.join(", ")}\nTheme: ${summaryData.theme}\nKey Lesson: ${summaryData.lesson}`;
