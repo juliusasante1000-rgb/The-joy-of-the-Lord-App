@@ -23,6 +23,8 @@
  *    - Comprehensive console logging of request, response, and duration
  */
 
+import { sanitizeNonMathResponse } from "../utils/mathSanitizer";
+
 export interface AiGenerationOptions {
   prompt: string;
   systemInstruction?: string;
@@ -132,7 +134,19 @@ Rules for Uniqueness, Scripture Concurrence, and Hopeful Encouragement:
 a. CONCURRENCE WITH SCRIPTURE: Anchor your output intimately in the SPECIFIC scripture, verse vocabulary, historical context, and exact theme provided. Draw out the unique metaphors, Hebrew/Greek roots, and spiritual dynamics native to this exact text. Never produce generic Christian filler or interchangeable advice.
 b. FRESHNESS & VARIETY: Make every generation distinctly unique. Radically vary your opening hook, sentence cadence, and structure. Never open with clichéd expressions like "In our Christian walk", "As Christians", "In our daily walk", "In this passage", or "Today we examine". Open directly with an arresting biblical insight, historical moment, or linguistic revelation.
 c. RICH HOMILETIC DEPTH: Tailor your voice to match the character of the scripture—exultant for praise, reverent for holiness, strategic for warfare, pastoral for affliction. Ensure every point is fresh, concrete, and deeply impactful.
-d. JOY OF THE LORD & CONCLUDING HOPE: Whenever illuminating the text—and especially in "The Joy of the Lord" and "MathemaSermon" outputs—draw from the bedrock truth of Nehemiah 8:10 ("The joy of the LORD is your strength") and the analytical, kingdom-modeling clarity of MathemaSermons. At the conclusion of your message, you MUST conclude with an inspiring, triumphant, and hope-igniting apostolic encouragement that lifts the believer into confident expectation, joy, and divine resilience.`;
+d. JOY OF THE LORD & CONCLUDING HOPE: Anchor firmly in the bedrock truth of Nehemiah 8:10 ("The joy of the LORD is your strength"). At the conclusion of your message, you MUST conclude with an inspiring, triumphant, and hope-igniting apostolic encouragement that lifts the believer into confident expectation, joy, and divine resilience.
+e. STRICT BOUNDARY ON MATHEMATICAL ANALOGIES & FORMULAS:
+   - MATHEMATICAL ANALOGIES, FORMULAS, EQUATIONS ($...$ or $$...$$), FORCE VECTORS, AND CALCULUS/SCIENTIFIC CONCEPTS ARE STRICTLY AND EXCLUSIVELY RESERVED FOR "MATHEMASERMON" AND "APOSTLEMATH".
+   - YOU ARE ABSOLUTELY AND STRICTLY FORBIDDEN from including mathematical analogies, equations, formulas, or vector models in ANY OTHER place, including:
+     • Explain This Verse / Expository Analysis
+     • Historical Context & Cultural Setting
+     • Create Devotion / Daily Scripture / Devotions
+     • Create Prayer / Guided Prayers / Warfare Prayers
+     • Prayer Points / 5 High-Impact Prayer Points
+     • The Joy of the Lord
+     • Rhema Word & Prophetic Inspirations
+     • Systematic Theology & Doctrines
+   - Keep all of these write-ups 100% pastoral, covenant-anchored, scriptural, and devotional.`;
 
 /**
  * Master Anti-Loop System Prompt
@@ -205,10 +219,14 @@ export async function generateAiContent<T = any>(
         saveToLocalStorage(options.storageKey, cleanedText);
       }
 
+      const sanitizedText = sanitizeNonMathResponse(cleanedText, options.category, options.actionType);
+      const parsedData = tryParseJson(sanitizedText);
+      const sanitizedData = parsedData ? sanitizeNonMathResponse(parsedData, options.category, options.actionType) : null;
+
       return {
         success: true,
-        text: cleanedText,
-        data: tryParseJson(cleanedText) as T,
+        text: sanitizedText,
+        data: (sanitizedData || parsedData) as T,
         modelUsed: serverData.modelUsed || targetModel,
         durationMs
       };

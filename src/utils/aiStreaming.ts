@@ -5,6 +5,7 @@
  */
 
 import { deduplicateSentences } from "../services/aiService";
+import { sanitizeNonMathResponse } from "./mathSanitizer";
 import {
   selectAppropriateReservoirDevotion,
   saveDevotionToPermanentReservoir,
@@ -563,8 +564,12 @@ export async function streamAiContent<T = any>(
       if (sseSuccess && (accumulatedText || parsedData)) {
         options.onProgress?.(100);
         accumulatedText = deduplicateSentences(accumulatedText);
+        accumulatedText = sanitizeNonMathResponse(accumulatedText, options.category, options.actionType);
         if (!parsedData) {
           parsedData = safeJsonParse(accumulatedText);
+        }
+        if (parsedData) {
+          parsedData = sanitizeNonMathResponse(parsedData, options.category, options.actionType);
         }
 
         saveAiResultToCache(cacheKey, accumulatedText, parsedData, isFast);

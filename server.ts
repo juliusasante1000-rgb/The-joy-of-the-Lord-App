@@ -22,6 +22,11 @@ import {
   ServerReservoirOutlet,
   ServerUniversalItem
 } from "./server_permanent_reservoir";
+import {
+  sanitizeNonMathResponse,
+  cleanMathFromNonMathContent,
+  isMathAllowedCategory
+} from "./src/utils/mathSanitizer";
 
 /**
  * Resolves canonical outlet and indexing key for server-side reservoir
@@ -737,7 +742,7 @@ export function getSystemPromptForCategory(category?: string, actionType?: strin
   if (combined.includes("devotion") || combined.includes("sanctuary")) return SYSTEM_PROMPT_DEVOTION;
   if (combined.includes("rhema") || combined.includes("prophetic") || combined.includes("now-word")) return SYSTEM_PROMPT_RHEMA;
   if (combined.includes("joy") || combined.includes("challenge") || combined.includes("overcoming")) return SYSTEM_PROMPT_JOY_OF_THE_LORD;
-  if (combined.includes("mathemasermon") || combined.includes("sermon")) return SYSTEM_PROMPT_MATHEMASERMON;
+  if (combined.includes("mathemasermon")) return SYSTEM_PROMPT_MATHEMASERMON;
   if (combined.includes("apostlemath") || combined.includes("math") || combined.includes("calculus") || combined.includes("geometry") || combined.includes("physics")) return SYSTEM_PROMPT_APOSTLEMATH;
   if (combined.includes("doctrine") || combined.includes("theolog") || combined.includes("creed")) return SYSTEM_PROMPT_DOCTRINE;
   if (combined.includes("history") || combined.includes("place") || combined.includes("archaeology")) return SYSTEM_PROMPT_BIBLE_HISTORIAN;
@@ -3028,9 +3033,8 @@ app.post("/api/generate-stream", async (req, res) => {
     } = req.body || {};
 
     let finalPrompt = prompt || "";
-    let finalSystem = systemInstruction
-      ? `${systemInstruction}\n${AI_OUTPUT_IMPROVEMENT_RULES}`
-      : `You are an apostolic Christian theologian and pastoral guide.\n${AI_OUTPUT_IMPROVEMENT_RULES}`;
+    const effectiveSystem = systemInstruction || getSystemPromptForCategory(category, actionType);
+    let finalSystem = `${effectiveSystem}\n${AI_OUTPUT_IMPROVEMENT_RULES}`;
     let responseMimeType: string | undefined = undefined;
 
     const act = (actionType || "").toLowerCase();
