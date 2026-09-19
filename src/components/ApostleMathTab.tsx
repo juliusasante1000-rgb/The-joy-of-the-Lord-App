@@ -183,7 +183,7 @@ export const ApostleMathTab: React.FC<ApostleMathTabProps> = ({
   };
 
   const handleCopyText = async (lesson: ApostleMathLesson) => {
-    const text = `📐 ${lesson.title.toUpperCase()} (ApostleMath)\n${lesson.subtitle}\n\nMathematical Formula:\n${lesson.mathFormula || ""}\n\nKey Scripture: "${lesson.keyScripture.text}" — ${lesson.keyScripture.reference}\n\n🌟 MATHEMASERMON:\n${lesson.mathemaSermon}\n\n🙏 PRAYER:\n${lesson.prayer}\n\n— The Joy of the Lord | Mathematics & Christian Wisdom by Apostle Bismark Twum`;
+    const text = `📐 ${lesson.title.toUpperCase()} (ApostleMath)\n${lesson.subtitle}\n\nMathematical Formula:\n${lesson.mathFormula || ""}\n\nKey Scripture: "${lesson.keyScripture.text}" — ${lesson.keyScripture.reference}\n\n🌟 MATHEMASERMON:\n${lesson.mathemaSermon}\n\n🙏 PRAYER:\n${lesson.prayer}\n\n— The Joy of the Lord | Mathematics & Christian Wisdom by Brother Bismark Twum`;
     try {
       await navigator.clipboard.writeText(text);
       setCopiedId(lesson.id);

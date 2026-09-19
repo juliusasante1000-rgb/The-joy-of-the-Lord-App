@@ -18,6 +18,7 @@ import {
   saveContentToServerUniversalReservoir,
   getServerUniversalReservoirItems,
   getGracefulServerUniversalMessage,
+  getAllServerUniversalReservoirCatalog,
   ServerReservoirOutlet,
   ServerUniversalItem
 } from "./server_permanent_reservoir";
@@ -31,7 +32,7 @@ function resolveServerReservoirOutletAndKey(
 ): { outlet: ServerReservoirOutlet; key: string } {
   const act = body?.actionType || body?.type || "";
   const ep = endpointName || "";
-  const cat = body?.category || "";
+  const cat = body?.category || body?.seasonCategory || "";
   const outlet = normalizeServerOutlet(act, ep, cat);
 
   const rawKey =
@@ -41,11 +42,14 @@ function resolveServerReservoirOutletAndKey(
     body?.placeName ||
     body?.place ||
     body?.mathematicalConcept ||
+    body?.mathBranch ||
     body?.concept ||
     body?.topic ||
     body?.subject ||
     body?.question ||
+    body?.specificChallenge ||
     body?.need ||
+    body?.focusNeed ||
     body?.prompt ||
     "";
 
@@ -578,7 +582,7 @@ export function formatGeminiErrorMessage(err: any): string {
  * 2. High Variation & Uniqueness: Never repeat structural patterns, outlines, or opening clichés across outputs. Start each generation with fresh, distinct phrasing (e.g. an arresting historical fact, a linguistic discovery, a vivid narrative setting, or a piercing spiritual contrast).
  * 3. Never open with clichéd expressions like "In our Christian walk", "As Christians", "In our daily walk", "In this passage", or "Today we explore".
  * 4. Distinct Voice: Tailor the tone dynamically to the text—prophetic for Isaiah, liturgical for Psalms, forensic for Romans, intimate for John, wisdom-focused for Proverbs.
- * 5. Joy of the Lord & Hopeful Conclusion: Draw from existing messages on "The Joy of the Lord" (Nehemiah 8:10, Psalm 16:11) and Apostle Bismark Twum's MathemaSermons. The conclusion MUST ALWAYS inspire triumphant hope, courage, spiritual vitality, and supernatural encouragement.
+ * 5. Joy of the Lord & Hopeful Conclusion: Draw from existing messages on "The Joy of the Lord" (Nehemiah 8:10, Psalm 16:11) and Brother Bismark Twum's MathemaSermons. The conclusion MUST ALWAYS inspire triumphant hope, courage, spiritual vitality, and supernatural encouragement.
  */
 export const AI_OUTPUT_IMPROVEMENT_RULES = `
 CRITICAL SCRIPTURAL CONCURRENCE & SUBJECT INTEGRATION MANDATE:
@@ -2740,7 +2744,7 @@ Format as JSON with keys:
 - closingPrayer: A reverent, faith-filled prayer releasing the joy of the Lord into the believer's spirit`;
         responseMimeType = "application/json";
       } else if (act.includes("math")) {
-        finalPrompt = `You are Apostle Bismark Twum, Christian educator and creator of MathemaSermons. Formulate a rich MathemaSermon homiletic lesson connecting: ${ref} ("${text}") with an authentic mathematical or physical concept and LaTeX formula.
+        finalPrompt = `You are Brother Bismark Twum, Christian educator and creator of MathemaSermons. Formulate a rich MathemaSermon homiletic lesson connecting: ${ref} ("${text}") with an authentic mathematical or physical concept and LaTeX formula.
 Context & Scripture: ${ref} ("${text}")
 ${AI_OUTPUT_IMPROVEMENT_RULES}
 
@@ -2933,6 +2937,40 @@ app.post("/api/reservoir/devotions", (req, res) => {
     return res.json({ success: true, devotion: saved });
   } catch (err: any) {
     return res.status(500).json({ success: false, error: err?.message || "Failed to save devotion" });
+  }
+});
+
+// Universal Permanent Content Reservoir Endpoints (All Outlets)
+app.get("/api/reservoir/content", (req, res) => {
+  const outlet = (req.query?.outlet || "") as ServerReservoirOutlet;
+  const reference = (req.query?.reference || req.query?.ref || req.query?.key || "") as string;
+
+  if (outlet && reference) {
+    const items = getServerUniversalReservoirItems(outlet, reference);
+    return res.json({ success: true, outlet, reference, items, count: items.length });
+  }
+
+  const catalog = getAllServerUniversalReservoirCatalog();
+  const filtered = outlet ? catalog.filter((x) => x.outlet === outlet) : catalog;
+  return res.json({ success: true, catalog: filtered, totalEntries: filtered.length });
+});
+
+app.post("/api/reservoir/content", (req, res) => {
+  try {
+    const { outlet, reference, key, item, data, rawText } = req.body || {};
+    const targetOutlet = (outlet || "devotion") as ServerReservoirOutlet;
+    const targetKey = (reference || key || item?.reference || "").trim();
+
+    if (!targetKey) {
+      return res.status(400).json({ success: false, error: "Missing reference or key for reservoir item" });
+    }
+
+    const payload = data || item?.data || item;
+    const text = rawText || item?.formattedText || "";
+    const saved = saveContentToServerUniversalReservoir(targetOutlet, targetKey, payload, text);
+    return res.json({ success: true, item: saved });
+  } catch (err: any) {
+    return res.status(500).json({ success: false, error: err?.message || "Failed to save universal reservoir item" });
   }
 });
 
@@ -3202,7 +3240,7 @@ Format as JSON with keys:
 - closingPrayer: A reverent, faith-filled prayer releasing the joy of the Lord into the believer's spirit`;
         responseMimeType = "application/json";
       } else if (act.includes("math")) {
-        finalPrompt = `You are Apostle Bismark Twum, Christian educator and creator of MathemaSermons. Formulate a rich MathemaSermon homiletic lesson connecting: ${ref} ("${text}") with an authentic mathematical or physical concept and LaTeX formula, addressing the subject "${currentSubject}".
+        finalPrompt = `You are Brother Bismark Twum, Christian educator and creator of MathemaSermons. Formulate a rich MathemaSermon homiletic lesson connecting: ${ref} ("${text}") with an authentic mathematical or physical concept and LaTeX formula, addressing the subject "${currentSubject}".
 Context & Scripture: ${ref} ("${text}")
 Current Subject: "${currentSubject}"
 ${AI_OUTPUT_IMPROVEMENT_RULES}
@@ -3299,7 +3337,7 @@ Format as JSON with keys: id, title, seasonCategory, propheticDeclaration, nowWo
           mVersion = liveV.version;
         }
       }
-      finalPrompt = `Generate a profound ApostleMath lesson by Apostle Bismark Twum.
+      finalPrompt = `Generate a profound ApostleMath lesson by Brother Bismark Twum.
 Math Branch: ${mb}
 Spiritual Concept: ${sc}
 Scripture Anchor: ${mRef} (${mVersion})
@@ -3524,16 +3562,6 @@ Format as JSON with keys: id, challengeTitle, category, rootDeception, scriptura
           return res.end();
         } else {
           const gracefulMsg = getGracefulServerUniversalMessage(strOutletCatch, strKeyCatch);
-          res.write(`data: ${JSON.stringify({
-            error: "RESERVOIR_TEMPORARILY_UNAVAILABLE",
-            message: gracefulMsg,
-            isQuota: true,
-            isGracefulNotice: true
-          })}\n\n`);
-          res.write("data: [DONE]\n\n");
-          return res.end();
-        }
-      }
           res.write(`data: ${JSON.stringify({
             error: "RESERVOIR_TEMPORARILY_UNAVAILABLE",
             message: gracefulMsg,
@@ -4177,6 +4205,8 @@ app.post("/api/scriptural-place-history", async (req, res) => {
       return res.status(400).json({ error: "placeName is required" });
     }
 
+    const storedHistory = selectServerUniversalReservoirItem("historical_context", placeName || biblicalReference || "");
+
     console.log(`[SCRIPTURAL PLACE HISTORY] Generating factual biblical record for "${placeName}" (${biblicalReference || "N/A"})`);
 
     const prompt = `Scriptural Place: ${placeName}
@@ -4208,11 +4238,27 @@ Format your response as a valid JSON object:
     if (result && result.text) {
       const parsed = safeJsonParse(result.text);
       if (parsed && parsed.historicalAccount) {
+        saveContentToServerUniversalReservoir("historical_context", placeName, parsed, parsed.historicalAccount);
         return res.json({
           success: true,
           ...parsed,
         });
       }
+    }
+
+    // Serve from permanent reservoir if available
+    if (storedHistory) {
+      return res.json({
+        success: true,
+        isPermanentReservoir: true,
+        reservoirLabel: storedHistory.label,
+        totalStored: storedHistory.totalStored,
+        place: placeName,
+        historicalAccount: storedHistory.item.data?.historicalAccount || storedHistory.item.passageText || storedHistory.item.formattedText,
+        biblicalReference: storedHistory.item.keyScripture || biblicalReference || "Holy Bible",
+        keyFigures: storedHistory.item.data?.keyFigures || ["Biblical Witnesses"],
+        historicalOutcome: storedHistory.item.data?.historicalOutcome || "God fulfilled His sovereign purpose."
+      });
     }
 
     // Factual fallback based on the specific place
@@ -4244,6 +4290,21 @@ Format your response as a valid JSON object:
     });
   } catch (error: any) {
     console.error("Error in /api/scriptural-place-history:", error);
+    const { placeName, biblicalReference } = req.body || {};
+    const storedHistory = selectServerUniversalReservoirItem("historical_context", placeName || biblicalReference || "");
+    if (storedHistory) {
+      return res.json({
+        success: true,
+        isPermanentReservoir: true,
+        reservoirLabel: storedHistory.label,
+        totalStored: storedHistory.totalStored,
+        place: placeName,
+        historicalAccount: storedHistory.item.data?.historicalAccount || storedHistory.item.passageText || storedHistory.item.formattedText,
+        biblicalReference: storedHistory.item.keyScripture || biblicalReference || "Holy Bible",
+        keyFigures: storedHistory.item.data?.keyFigures || ["Biblical Witnesses"],
+        historicalOutcome: storedHistory.item.data?.historicalOutcome || "God fulfilled His sovereign purpose."
+      });
+    }
     res.status(500).json({ error: "Failed to generate scriptural place history", details: error?.message });
   }
 });
@@ -4258,6 +4319,8 @@ app.post("/api/ask-doctrine", async (req, res) => {
     if (!question) {
       return res.status(400).json({ error: "Question is required" });
     }
+
+    const storedDoctrine = selectServerUniversalReservoirItem("doctrine", question || category || reference || "");
 
     const prompt = `Topic Category: ${category || "Christian Theology & Orthodoxy"}
 User Question: ${question}
@@ -4276,10 +4339,23 @@ Deliver an in-depth, rigorous, and deeply inspiring theological exposition with 
     });
 
     if (result && result.text) {
+      saveContentToServerUniversalReservoir("doctrine", question || category || reference || "", { answer: result.text }, result.text);
       return res.json({
         answer: result.text,
         timestamp: new Date().toISOString(),
         modelUsed: result.modelUsed,
+      });
+    }
+
+    // Serve from permanent reservoir if available
+    if (storedDoctrine) {
+      return res.json({
+        answer: storedDoctrine.item.formattedText || storedDoctrine.item.data?.answer || storedDoctrine.item.passageText,
+        isPermanentReservoir: true,
+        reservoirLabel: storedDoctrine.label,
+        totalStored: storedDoctrine.totalStored,
+        timestamp: new Date().toISOString(),
+        modelUsed: "Permanent Reservoir (" + storedDoctrine.label + ")",
       });
     }
 
@@ -4291,6 +4367,18 @@ Deliver an in-depth, rigorous, and deeply inspiring theological exposition with 
     });
   } catch (error: any) {
     console.error("Error in /api/ask-doctrine:", error);
+    const { question, category, reference } = req.body || {};
+    const storedDoctrine = selectServerUniversalReservoirItem("doctrine", question || category || reference || "");
+    if (storedDoctrine) {
+      return res.json({
+        answer: storedDoctrine.item.formattedText || storedDoctrine.item.data?.answer || storedDoctrine.item.passageText,
+        isPermanentReservoir: true,
+        reservoirLabel: storedDoctrine.label,
+        totalStored: storedDoctrine.totalStored,
+        timestamp: new Date().toISOString(),
+        modelUsed: "Permanent Reservoir (" + storedDoctrine.label + ")",
+      });
+    }
     res.status(500).json({
       error: "Failed to generate doctrinal response",
       details: error?.message || "Unknown error",
@@ -4308,6 +4396,9 @@ app.post("/api/generate-verse-action", async (req, res) => {
     const { actionType, scriptureReference, scriptureText, scriptureTheme, version } = req.body;
     const ref = scriptureReference || "Philippians 4:13";
     const requestedVersion = String(version || "KJV").toUpperCase();
+
+    const { outlet: vaOutlet, key: vaKey } = resolveServerReservoirOutletAndKey(req.body, "generate-verse-action");
+    const storedVerseAction = selectServerUniversalReservoirItem(vaOutlet, vaKey || ref);
 
     // Authentically fetch the verse if not already provided or if a specific translation requested
     let actualText = scriptureText || "";
@@ -4475,14 +4566,15 @@ Format your response as a valid JSON object with this exact schema:
   "apostolicBlessing": "A short, anointed scriptural blessing and decree over the believer"
 }`;
     } else if (actionType === "chapter" || actionType === "Chapter Summary" || actionType === "Ask AI About This Chapter") {
-      prompt = `You are a Bible teacher for new believers in Ghana. Explain and summarize ${ref} in simple English.
+      prompt = `You are a Bible teacher for new believers in Ghana writing a chapter summary for ${ref}.
 Chapter Passage / Context: "${actualText}"
 
-Rules:
-- Focus on what happened, not just themes
-- Use simple English, no big theology words
-- End with 1 key lesson and practical application
-- Format: Summary: ... Key Verse: ... Lesson: ...
+STRICT CHAPTER SUMMARY RULES:
+- NEVER write generic messages like "This chapter continues the sacred biblical account of God's redemptive work. It records historical actions..."
+- MANDATORY RULE: You must mention at least 2 specific events, names, or parables that actually happen in THAT chapter (e.g. for Matthew 20: Parable of Workers in the Vineyard, Jesus predicts His death third time, Request of mother of James and John, Healing of two blind men near Jericho).
+- If you do not know the specific events, names, or parables for this chapter, respond with "Summary not available offline - Brother Bismark Twum" — do not invent generic talk!
+- Focus on what happened in plain English, no big theology words.
+- Sign off the summary with "- Brother Bismark Twum" at the end of the summary text.
 - If technical spiritual terms arise (Word of Knowledge, Word of Wisdom, Prophecy, Discerning of Spirits), adhere strictly to:
   * Word of Knowledge = PAST/PRESENT hidden facts revealed
   * Word of Wisdom = FUTURE plans or divine instructions revealed
@@ -4491,10 +4583,10 @@ ${AI_OUTPUT_IMPROVEMENT_RULES}
 
 Format your response as a valid JSON object with this exact schema:
 {
-  "title": "Chapter Summary & Revelation: ${ref}",
+  "title": "Chapter Summary: ${ref}",
   "book": "${ref.split(' ')[0] || ''}",
   "chapter": "${ref.split(' ')[1] || ''}",
-  "summary": "3-4 simple sentences focusing on what happened in plain English",
+  "summary": "3-4 concise sentences detailing at least 2 specific events, names, or parables from this chapter in plain English, signed off with - Brother Bismark Twum",
   "key_verses": ["${ref}"],
   "theme": "Core theme of the chapter",
   "lesson": "One key life lesson for new believers",
@@ -4502,7 +4594,7 @@ Format your response as a valid JSON object with this exact schema:
   "practicalApplication": "Clear steps to apply this chapter today"
 }`;
     } else if (actionType === "mathemasermon" || actionType === "MathemaSermon") {
-      prompt = `You are Apostle Bismark Twum, author of 'MathemaSermons'. Create a powerful mathematical analogy and homiletic sermon outline connecting this scripture to divine mathematics:
+      prompt = `You are Brother Bismark Twum, author of 'MathemaSermons'. Create a powerful mathematical analogy and homiletic sermon outline connecting this scripture to divine mathematics:
 Reference: ${ref} (${actualVersion})
 Passage: "${actualText}"
 Theme: ${theme}
@@ -4613,6 +4705,7 @@ Format your response as a valid JSON object matching this schema:
     if (result && result.text) {
       const parsed = safeJsonParse(result.text);
       if (parsed) {
+        saveContentToServerUniversalReservoir(vaOutlet, vaKey || ref, parsed, result.text);
         return res.json({
           success: true,
           actionType,
@@ -4630,6 +4723,27 @@ Format your response as a valid JSON object matching this schema:
       }
     }
 
+    // Serve from permanent reservoir if available
+    if (storedVerseAction) {
+      return res.json({
+        success: true,
+        isPermanentReservoir: true,
+        reservoirLabel: storedVerseAction.label,
+        totalStored: storedVerseAction.totalStored,
+        actionType,
+        version: actualVersion,
+        requestedVersion,
+        disclaimer,
+        scriptureReference: ref,
+        scriptureText: actualText,
+        timestamp: Date.now(),
+        data: storedVerseAction.item.data || storedVerseAction.item,
+        devotion: storedVerseAction.item.data?.devotion || storedVerseAction.item.data || storedVerseAction.item,
+        prayer: storedVerseAction.item.data?.prayer || storedVerseAction.item.data || storedVerseAction.item,
+        ...(storedVerseAction.item.data || {})
+      });
+    }
+
     return res.status(503).json({
       success: false,
       error: "AI_GENERATION_FAILED",
@@ -4637,6 +4751,28 @@ Format your response as a valid JSON object matching this schema:
     });
   } catch (error: any) {
     console.error("Error in /api/generate-verse-action:", error);
+    try {
+      const { actionType, scriptureReference, version } = req.body || {};
+      const ref = scriptureReference || "Philippians 4:13";
+      const { outlet: vaOutlet, key: vaKey } = resolveServerReservoirOutletAndKey(req.body, "generate-verse-action");
+      const storedVerseAction = selectServerUniversalReservoirItem(vaOutlet, vaKey || ref);
+      if (storedVerseAction) {
+        return res.json({
+          success: true,
+          isPermanentReservoir: true,
+          reservoirLabel: storedVerseAction.label,
+          totalStored: storedVerseAction.totalStored,
+          actionType,
+          version: String(version || "KJV").toUpperCase(),
+          scriptureReference: ref,
+          timestamp: Date.now(),
+          data: storedVerseAction.item.data || storedVerseAction.item,
+          devotion: storedVerseAction.item.data?.devotion || storedVerseAction.item.data || storedVerseAction.item,
+          prayer: storedVerseAction.item.data?.prayer || storedVerseAction.item.data || storedVerseAction.item,
+          ...(storedVerseAction.item.data || {})
+        });
+      }
+    } catch (_) {}
     res.status(500).json({ error: "Failed to generate verse action" });
   }
 });
@@ -4649,6 +4785,7 @@ app.post("/api/strongs-word-study", async (req, res) => {
   try {
     const { strongsNumber, word, transliteration, scriptureRef, englishGloss } = req.body;
     const cleanId = (strongsNumber || "").trim().toUpperCase();
+    const storedStrongs = selectServerUniversalReservoirItem("historical_context", cleanId || word || "");
     const isOT = cleanId.startsWith("H") || (!cleanId.startsWith("G") && scriptureRef && !scriptureRef.toLowerCase().includes("matthew"));
     const lang = isOT ? "Biblical Hebrew (OSHB / MorphHB)" : "Koine Greek (Berean / NA28)";
     const dict = isOT ? "Brown-Driver-Briggs (BDB) and Strong's Hebrew Concordance" : "Thayer's Greek Lexicon and Strong's Greek Concordance";
@@ -4699,11 +4836,22 @@ Format your response as a valid JSON object matching this exact 3-layer schema:
     if (result && result.text) {
       const parsed = safeJsonParse(result.text);
       if (parsed && (parsed.layer1 || parsed.layer2 || parsed.layer3)) {
+        if (cleanId) {
+          saveContentToServerUniversalReservoir("historical_context", cleanId, parsed, result.text);
+        }
         return res.json({
           success: true,
           data: parsed
         });
       }
+    }
+
+    if (storedStrongs && storedStrongs.item.data) {
+      return res.json({
+        success: true,
+        isPermanentReservoir: true,
+        data: storedStrongs.item.data
+      });
     }
 
     // Fallback if model parsing fails
@@ -4755,6 +4903,8 @@ app.post("/api/generate-devotion", async (req, res) => {
     let actualText = scriptureText || "";
     let actualVersion = requestedVersion;
 
+    const storedDevotion = selectServerUniversalReservoirItem("devotion", actualRef || effectiveTopic);
+
     if (actualRef) {
       const live = await fetchAuthenticVerse(actualRef, requestedVersion);
       if (live.verseText) {
@@ -4796,12 +4946,25 @@ Format your response as a valid JSON object matching this schema:
     if (result && result.text) {
       const parsed = safeJsonParse(result.text);
       if (parsed) {
+        saveContentToServerUniversalReservoir("devotion", actualRef || effectiveTopic, parsed, result.text);
+        saveDevotionToServerReservoir(actualRef, parsed);
         return res.json({
           success: true,
           devotion: parsed,
           ...parsed
         });
       }
+    }
+
+    if (storedDevotion) {
+      return res.json({
+        success: true,
+        isPermanentReservoir: true,
+        reservoirLabel: storedDevotion.label,
+        totalStored: storedDevotion.totalStored,
+        devotion: storedDevotion.item.data?.devotion || storedDevotion.item.data || storedDevotion.item,
+        ...(storedDevotion.item.data?.devotion || storedDevotion.item.data || {})
+      });
     }
 
     return res.status(503).json({
@@ -4811,6 +4974,21 @@ Format your response as a valid JSON object matching this schema:
     });
   } catch (error: any) {
     console.error("Error in /api/generate-devotion:", error);
+    try {
+      const { topic, scriptureReference } = req.body || {};
+      const actualRef = scriptureReference || topic || "Nehemiah 8:10";
+      const storedDevotion = selectServerUniversalReservoirItem("devotion", actualRef);
+      if (storedDevotion) {
+        return res.json({
+          success: true,
+          isPermanentReservoir: true,
+          reservoirLabel: storedDevotion.label,
+          totalStored: storedDevotion.totalStored,
+          devotion: storedDevotion.item.data?.devotion || storedDevotion.item.data || storedDevotion.item,
+          ...(storedDevotion.item.data?.devotion || storedDevotion.item.data || {})
+        });
+      }
+    } catch (_) {}
     res.status(500).json({ error: "Failed to generate devotion" });
   }
 });
@@ -4829,6 +5007,8 @@ app.post("/api/generate-prayer", async (req, res) => {
     let anchorRef = scriptureReference || scripture || "Philippians 4:6-7";
     let anchorText = scriptureText || "";
     let actualVersion = requestedVersion;
+
+    const storedPrayer = selectServerUniversalReservoirItem("prayer", anchorRef || effectiveTheme || effectiveNeed);
 
     if (anchorRef) {
       const live = await fetchAuthenticVerse(anchorRef, requestedVersion);
@@ -4904,12 +5084,24 @@ Format as a valid JSON object matching:
             declarationInJesusName: parsed.declarationInJesusName || parsed.closing || "In Jesus' mighty Name, Amen."
           };
         }
+        saveContentToServerUniversalReservoir("prayer", anchorRef || effectiveTheme || effectiveNeed, parsed, result.text);
         return res.json({
           success: true,
           prayer: parsed,
           ...parsed
         });
       }
+    }
+
+    if (storedPrayer) {
+      return res.json({
+        success: true,
+        isPermanentReservoir: true,
+        reservoirLabel: storedPrayer.label,
+        totalStored: storedPrayer.totalStored,
+        prayer: storedPrayer.item.data?.prayer || storedPrayer.item.data || storedPrayer.item,
+        ...(storedPrayer.item.data?.prayer || storedPrayer.item.data || {})
+      });
     }
 
     return res.status(503).json({
@@ -4919,6 +5111,21 @@ Format as a valid JSON object matching:
     });
   } catch (error: any) {
     console.error("Error in /api/generate-prayer:", error);
+    try {
+      const { scriptureReference, scripture, theme, need } = req.body || {};
+      const anchorRef = scriptureReference || scripture || theme || need || "Philippians 4:6-7";
+      const storedPrayer = selectServerUniversalReservoirItem("prayer", anchorRef);
+      if (storedPrayer) {
+        return res.json({
+          success: true,
+          isPermanentReservoir: true,
+          reservoirLabel: storedPrayer.label,
+          totalStored: storedPrayer.totalStored,
+          prayer: storedPrayer.item.data?.prayer || storedPrayer.item.data || storedPrayer.item,
+          ...(storedPrayer.item.data?.prayer || storedPrayer.item.data || {})
+        });
+      }
+    } catch (_) {}
     res.status(500).json({ error: "Failed to generate prayer" });
   }
 });
@@ -5073,6 +5280,9 @@ app.post("/api/generate-mathemasermon", async (req, res) => {
     let actualText = scriptureText || "";
     let actualVersion = requestedVersion;
 
+    const { outlet: msOutlet, key: msKey } = resolveServerReservoirOutletAndKey(req.body, "generate-mathemasermon");
+    const storedMS = selectServerUniversalReservoirItem(msOutlet, msKey || actualRef);
+
     if (actualRef) {
       const live = await fetchAuthenticVerse(actualRef, requestedVersion);
       if (live.verseText) {
@@ -5082,7 +5292,7 @@ app.post("/api/generate-mathemasermon", async (req, res) => {
     }
     if (!actualText) actualText = "Behold, the days come, saith the LORD, that the plowman shall overtake the reaper...";
 
-    const prompt = `You are Apostle Bismark Twum, author and preacher of 'MathemaSermons'. Generate a powerful, homiletically sound sermon manuscript uniting higher mathematics and biblical theology.
+    const prompt = `You are Brother Bismark Twum, author and preacher of 'MathemaSermons'. Generate a powerful, homiletically sound sermon manuscript uniting higher mathematics and biblical theology.
 Topic: ${topic || "The Quantum Jump of Faith"}
 Mathematical Concept: ${mathematicalConcept || "Differential Calculus & Rate of Change"}
 Sermon Series: ${series || "exponential-grace"}
@@ -5145,8 +5355,18 @@ Format your response as a valid JSON object matching this schema:
     if (result && result.text) {
       const parsed = safeJsonParse(result.text);
       if (parsed) {
+        saveContentToServerUniversalReservoir(msOutlet, msKey || actualRef, parsed, result.text);
         return res.json(parsed);
       }
+    }
+
+    if (storedMS) {
+      return res.json({
+        isPermanentReservoir: true,
+        reservoirLabel: storedMS.label,
+        totalStored: storedMS.totalStored,
+        ...(storedMS.item.data || storedMS.item)
+      });
     }
 
     return res.status(503).json({
@@ -5156,6 +5376,18 @@ Format your response as a valid JSON object matching this schema:
     });
   } catch (error: any) {
     console.error("Error in /api/generate-mathemasermon:", error);
+    try {
+      const { outlet: msOutlet, key: msKey } = resolveServerReservoirOutletAndKey(req.body || {}, "generate-mathemasermon");
+      const storedMS = selectServerUniversalReservoirItem(msOutlet, msKey || "");
+      if (storedMS) {
+        return res.json({
+          isPermanentReservoir: true,
+          reservoirLabel: storedMS.label,
+          totalStored: storedMS.totalStored,
+          ...(storedMS.item.data || storedMS.item)
+        });
+      }
+    } catch (_) {}
     res.status(500).json({ error: "Failed to generate MathemaSermon" });
   }
 });
@@ -5172,6 +5404,9 @@ app.post("/api/generate-rhema", async (req, res) => {
     let actualRef = scriptureReference || "Revelation 3:8";
     let actualText = scriptureText || "";
     let actualVersion = requestedVersion;
+
+    const { outlet: rhOutlet, key: rhKey } = resolveServerReservoirOutletAndKey(req.body, "generate-rhema");
+    const storedRhema = selectServerUniversalReservoirItem(rhOutlet, rhKey || actualRef);
 
     if (actualRef) {
       const live = await fetchAuthenticVerse(actualRef, requestedVersion);
@@ -5219,8 +5454,18 @@ Format as JSON matching:
     if (result && result.text) {
       const parsed = safeJsonParse(result.text);
       if (parsed) {
+        saveContentToServerUniversalReservoir(rhOutlet, rhKey || actualRef, parsed, result.text);
         return res.json(parsed);
       }
+    }
+
+    if (storedRhema) {
+      return res.json({
+        isPermanentReservoir: true,
+        reservoirLabel: storedRhema.label,
+        totalStored: storedRhema.totalStored,
+        ...(storedRhema.item.data || storedRhema.item)
+      });
     }
 
     return res.status(503).json({
@@ -5230,6 +5475,18 @@ Format as JSON matching:
     });
   } catch (error: any) {
     console.error("Error in /api/generate-rhema:", error);
+    try {
+      const { outlet: rhOutlet, key: rhKey } = resolveServerReservoirOutletAndKey(req.body || {}, "generate-rhema");
+      const storedRhema = selectServerUniversalReservoirItem(rhOutlet, rhKey || "");
+      if (storedRhema) {
+        return res.json({
+          isPermanentReservoir: true,
+          reservoirLabel: storedRhema.label,
+          totalStored: storedRhema.totalStored,
+          ...(storedRhema.item.data || storedRhema.item)
+        });
+      }
+    } catch (_) {}
     res.status(500).json({ error: "Failed to generate Rhema Word" });
   }
 });
@@ -5247,6 +5504,9 @@ app.post("/api/generate-apostlemath", async (req, res) => {
     let actualText = scriptureText || "";
     let actualVersion = requestedVersion;
 
+    const { outlet: amOutlet, key: amKey } = resolveServerReservoirOutletAndKey(req.body, "generate-apostlemath");
+    const storedAM = selectServerUniversalReservoirItem(amOutlet, amKey || actualRef);
+
     if (actualRef) {
       const live = await fetchAuthenticVerse(actualRef, requestedVersion);
       if (live.verseText) {
@@ -5256,7 +5516,7 @@ app.post("/api/generate-apostlemath", async (req, res) => {
     }
     if (!actualText) actualText = "Trust in the LORD with all thine heart; and lean not unto thine own understanding...";
 
-    const prompt = `Generate a profound ApostleMath lesson by Apostle Bismark Twum.
+    const prompt = `Generate a profound ApostleMath lesson by Brother Bismark Twum.
 Math Branch: ${mathBranch || "Trigonometry & Vectors"}
 Spiritual Concept: ${spiritualConcept || "Directional Alignment and Holy Spirit Bearing"}
 Scripture Anchor: ${actualRef} (${actualVersion})
@@ -5298,8 +5558,18 @@ Format as JSON matching:
     if (result && result.text) {
       const parsed = safeJsonParse(result.text);
       if (parsed) {
+        saveContentToServerUniversalReservoir(amOutlet, amKey || actualRef, parsed, result.text);
         return res.json(parsed);
       }
+    }
+
+    if (storedAM) {
+      return res.json({
+        isPermanentReservoir: true,
+        reservoirLabel: storedAM.label,
+        totalStored: storedAM.totalStored,
+        ...(storedAM.item.data || storedAM.item)
+      });
     }
 
     return res.status(503).json({
@@ -5309,6 +5579,18 @@ Format as JSON matching:
     });
   } catch (error: any) {
     console.error("Error in /api/generate-apostlemath:", error);
+    try {
+      const { outlet: amOutlet, key: amKey } = resolveServerReservoirOutletAndKey(req.body || {}, "generate-apostlemath");
+      const storedAM = selectServerUniversalReservoirItem(amOutlet, amKey || "");
+      if (storedAM) {
+        return res.json({
+          isPermanentReservoir: true,
+          reservoirLabel: storedAM.label,
+          totalStored: storedAM.totalStored,
+          ...(storedAM.item.data || storedAM.item)
+        });
+      }
+    } catch (_) {}
     res.status(500).json({ error: "Failed to generate ApostleMath lesson" });
   }
 });
@@ -5325,6 +5607,9 @@ app.post("/api/generate-joy-battle", async (req, res) => {
     let actualRef = scriptureReference || "Nehemiah 8:10";
     let actualText = scriptureText || "";
     let actualVersion = requestedVersion;
+
+    const { outlet: joyOutlet, key: joyKey } = resolveServerReservoirOutletAndKey(req.body, "generate-joy-battle");
+    const storedJoy = selectServerUniversalReservoirItem(joyOutlet, joyKey || actualRef);
 
     if (actualRef) {
       const live = await fetchAuthenticVerse(actualRef, requestedVersion);
@@ -5370,8 +5655,18 @@ Format as JSON matching:
     if (result && result.text) {
       const parsed = safeJsonParse(result.text);
       if (parsed) {
+        saveContentToServerUniversalReservoir(joyOutlet, joyKey || actualRef, parsed, result.text);
         return res.json(parsed);
       }
+    }
+
+    if (storedJoy) {
+      return res.json({
+        isPermanentReservoir: true,
+        reservoirLabel: storedJoy.label,
+        totalStored: storedJoy.totalStored,
+        ...(storedJoy.item.data || storedJoy.item)
+      });
     }
 
     return res.status(503).json({
@@ -5381,6 +5676,18 @@ Format as JSON matching:
     });
   } catch (error: any) {
     console.error("Error in /api/generate-joy-battle:", error);
+    try {
+      const { outlet: joyOutlet, key: joyKey } = resolveServerReservoirOutletAndKey(req.body || {}, "generate-joy-battle");
+      const storedJoy = selectServerUniversalReservoirItem(joyOutlet, joyKey || "");
+      if (storedJoy) {
+        return res.json({
+          isPermanentReservoir: true,
+          reservoirLabel: storedJoy.label,
+          totalStored: storedJoy.totalStored,
+          ...(storedJoy.item.data || storedJoy.item)
+        });
+      }
+    } catch (_) {}
     res.status(500).json({ error: "Failed to generate Joy Battle guide" });
   }
 });

@@ -150,7 +150,7 @@ export const ChapterSummaryCard: React.FC<ChapterSummaryCardProps> = ({
         <div className="p-5 sm:p-6 space-y-4">
           {/* Main Summary Paragraph */}
           <div className="prose dark:prose-invert max-w-none">
-            <p className="text-sm sm:text-base leading-relaxed text-stone-800 dark:text-stone-200 font-serif">
+            <p className="text-sm sm:text-base leading-relaxed text-stone-800 dark:text-stone-200 font-serif whitespace-pre-line">
               {summaryData.summary}
             </p>
           </div>

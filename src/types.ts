@@ -1,3 +1,13 @@
+export interface ChapterSummary {
+  book: string;
+  chapter: number;
+  summary: string;
+  key_verses: string[];
+  theme: string;
+  lesson: string;
+  questions?: string[];
+}
+
 export interface SpiritualPlace {
   id: string;
   name: string;

@@ -161,7 +161,7 @@ Format as JSON with keys: id, title, seasonCategory, propheticDeclaration, nowWo
     const ref = scriptureReference || "Proverbs 3:5-6";
     const txt = scriptureText || "Trust in the LORD with all thine heart...";
 
-    finalPrompt = `Generate a profound ApostleMath lesson by Apostle Bismark Twum.
+    finalPrompt = `Generate a profound ApostleMath lesson by Brother Bismark Twum.
 Math Branch: ${mb}
 Spiritual Concept: ${sc}
 Scripture Anchor: ${ref} (${version})

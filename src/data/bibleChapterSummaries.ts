@@ -8,15 +8,10 @@
  * - Pre-generated and stored once to avoid costly client-side API requests
  */
 
-export interface ChapterSummary {
-  book: string;
-  chapter: number;
-  summary: string;
-  key_verses: string[];
-  theme: string;
-  lesson: string;
-  questions?: string[];
-}
+import { ADDITIONAL_CHAPTER_RESERVOIR } from "./gospelAndEpistleReservoir";
+import { ChapterSummary } from "../types";
+
+export type { ChapterSummary };
 
 /**
  * Pre-generated Canonical Chapter Summaries
@@ -407,9 +402,25 @@ export const PRE_GENERATED_CHAPTER_SUMMARIES: Record<string, ChapterSummary> = {
 };
 
 /**
+ * Ensures all summaries are cleanly signed off with the author's locked name:
+ * "- Brother Bismark Twum"
+ */
+export function ensureSummarySignOff(text: string): string {
+  if (!text) return "Summary not available offline\n\n— Brother Bismark Twum";
+  const trimmed = text.trim();
+  if (trimmed.includes("Brother Bismark Twum") || trimmed.includes("Bismark Twum")) {
+    return trimmed;
+  }
+  return `${trimmed}\n\n— Brother Bismark Twum`;
+}
+
+/**
  * Intelligent helper to get or synthesize a concise, Ghana-friendly chapter summary.
- * If pre-generated summary exists in memory or localStorage, returns it instantly without API cost.
- * If not, builds a structured Ghana-friendly summary on the fly and saves it to localStorage so it is never recomputed.
+ * Strictly adheres to the rule:
+ * - At least 2 specific events, names, or parables that actually happen in THAT chapter.
+ * - If specific events are not available offline, returns "Summary not available offline\n\n— Brother Bismark Twum".
+ * - Never invents generic talk or boilerplate.
+ * - Always signed off with "- Brother Bismark Twum".
  */
 export function getChapterSummary(
   book: string,
@@ -421,15 +432,20 @@ export function getChapterSummary(
   const compactKey = `${cleanBook.replace(/\s+/g, "")}_${chapter}`;
   const underscoredKey = `${cleanBook.replace(/\s+/g, "_")}_${chapter}`;
   
-  // 1. Check in-memory pre-generated catalog
-  if (PRE_GENERATED_CHAPTER_SUMMARIES[key]) {
-    return PRE_GENERATED_CHAPTER_SUMMARIES[key];
-  }
-  if (PRE_GENERATED_CHAPTER_SUMMARIES[compactKey]) {
-    return PRE_GENERATED_CHAPTER_SUMMARIES[compactKey];
-  }
-  if (PRE_GENERATED_CHAPTER_SUMMARIES[underscoredKey]) {
-    return PRE_GENERATED_CHAPTER_SUMMARIES[underscoredKey];
+  // 1. Check in-memory pre-generated catalog and reservoir
+  const candidate =
+    PRE_GENERATED_CHAPTER_SUMMARIES[key] ||
+    PRE_GENERATED_CHAPTER_SUMMARIES[compactKey] ||
+    PRE_GENERATED_CHAPTER_SUMMARIES[underscoredKey] ||
+    ADDITIONAL_CHAPTER_RESERVOIR[key] ||
+    ADDITIONAL_CHAPTER_RESERVOIR[compactKey] ||
+    ADDITIONAL_CHAPTER_RESERVOIR[underscoredKey];
+
+  if (candidate) {
+    return {
+      ...candidate,
+      summary: ensureSummarySignOff(candidate.summary)
+    };
   }
 
   // 2. Check client-side persistent storage with strict cache key: summary_${book}_${chapter}
@@ -440,13 +456,17 @@ export function getChapterSummary(
       const stored = localStorage.getItem(cacheKey) || localStorage.getItem(legacyKey);
       if (stored) {
         const parsed = JSON.parse(stored);
-        // Strict cross-book contamination guard (e.g. Acts 2 Pentecost showing in 2 Timothy)
+        // Strict cross-book contamination and generic filler guard
         const isCorrupted =
           !parsed ||
           !parsed.summary ||
           !parsed.lesson ||
           (parsed.book && parsed.book.toLowerCase() !== cleanBook.toLowerCase()) ||
           (parsed.chapter && Number(parsed.chapter) !== Number(chapter)) ||
+          typeof parsed.summary !== "string" ||
+          parsed.summary.includes("sacred biblical account") ||
+          parsed.summary.includes("continues the sacred biblical account") ||
+          parsed.summary.includes("events of God's covenant people across") ||
           (cleanBook !== "Acts" && typeof parsed.summary === "string" && (
             parsed.summary.toLowerCase().includes("pentecost") ||
             parsed.summary.includes("across 47 verses")
@@ -456,7 +476,10 @@ export function getChapterSummary(
           localStorage.removeItem(cacheKey);
           localStorage.removeItem(legacyKey);
         } else {
-          return parsed;
+          return {
+            ...parsed,
+            summary: ensureSummarySignOff(parsed.summary)
+          };
         }
       }
     } catch {
@@ -464,67 +487,22 @@ export function getChapterSummary(
     }
   }
 
-  // 3. Deterministic Ghana-friendly synthesis based on chapter content
-  let summaryText = "";
-  let keyVerses: string[] = [];
-  let themeText = `${cleanBook} Chapter ${chapter} Overview`;
-  let lessonText = `Walk faithfully with God today, trusting that His Word in ${cleanBook} ${chapter} will guide your steps.`;
-
-  // Verify verses are not stale cross-book verses (e.g. Acts 2 verses passed to 2 Timothy)
-  const isStaleVerses = Boolean(
-    chapterVerses &&
-    chapterVerses.length > 0 &&
-    cleanBook !== "Acts" &&
-    (
-      (chapterVerses[0]?.text || "").toLowerCase().includes("pentecost") ||
-      (chapterVerses.length === 47 && cleanBook === "2 Timothy")
-    )
-  );
-
-  if (chapterVerses && chapterVerses.length > 0 && !isStaleVerses) {
-    const firstVerse = chapterVerses[0]?.text || "";
-    const midVerse = chapterVerses[Math.floor(chapterVerses.length / 2)]?.text || "";
-    const lastVerse = chapterVerses[chapterVerses.length - 1]?.text || "";
-    const vCount = chapterVerses.length;
-
-    // Pick top key verses
-    keyVerses = [
-      `${cleanBook} ${chapter}:1`,
-      `${cleanBook} ${chapter}:${Math.floor(vCount / 2) || 1}`
-    ];
-
-    summaryText = `In ${cleanBook} chapter ${chapter}, Scripture details the events of God's covenant people across ${vCount} verses. The chapter begins with "${firstVerse.slice(0, 110)}..." and unfolds God's work among His people. It reveals how divine truth was spoken and lived out, concluding with "${lastVerse.slice(0, 100)}...". God's sovereignty and guidance are actively demonstrated throughout these verses.`;
-    themeText = `${cleanBook} Chapter ${chapter} Biblical Narrative`;
-    lessonText = `God remains faithful to His covenant promises in every generation, directing all who put their trust in Him.`;
-  } else {
-    keyVerses = [`${cleanBook} ${chapter}:1`];
-    summaryText = `${cleanBook} chapter ${chapter} continues the sacred biblical account of God's redemptive work. It records the historical actions, words, and instructions given to His people. Through these events, God demonstrates His righteous authority and care for those who seek Him.`;
-    lessonText = `Trust the Lord with all your heart, for His Word in ${cleanBook} ${chapter} brings wisdom and light to your path.`;
-  }
-
-  const generatedSummary: ChapterSummary = {
+  // 3. Fallback: Offline Specific Events Rule
+  // If specific chapter events are not in the reservoir, do NOT invent generic talk!
+  const offlineSummary: ChapterSummary = {
     book: cleanBook,
     chapter,
-    summary: summaryText,
-    key_verses: keyVerses,
-    theme: themeText,
-    lesson: lessonText,
+    summary: "Summary not available offline\n\n— Brother Bismark Twum",
+    key_verses: [`${cleanBook} ${chapter}:1`],
+    theme: `${cleanBook} Chapter ${chapter}`,
+    lesson: `Meditate upon the Word of God in ${cleanBook} ${chapter}, walking in faithfulness and prayer.`,
     questions: [
-      `What is the main action God takes in ${cleanBook} chapter ${chapter}?`,
-      `How can you apply the lesson of ${cleanBook} ${chapter} to your life this week?`
+      `What key truth does God speak to you in ${cleanBook} chapter ${chapter}?`,
+      `How can you apply ${cleanBook} ${chapter} to your life today?`
     ]
   };
 
-  // Cache it into localStorage under summary_${book}_${chapter}
-  if (typeof window !== "undefined" && window.localStorage) {
-    try {
-      localStorage.setItem(`summary_${cleanBook}_${chapter}`, JSON.stringify(generatedSummary));
-    } catch {
-      // storage quota or private mode
-    }
-  }
-
-  return generatedSummary;
+  return offlineSummary;
 }
 
 /**
@@ -533,10 +511,14 @@ export function getChapterSummary(
 export function savePreGeneratedChapterSummary(summary: ChapterSummary): void {
   const cleanBook = (summary.book || "").trim();
   const key = `${cleanBook}_${summary.chapter}`;
-  PRE_GENERATED_CHAPTER_SUMMARIES[key] = summary;
+  const signedSummary: ChapterSummary = {
+    ...summary,
+    summary: ensureSummarySignOff(summary.summary)
+  };
+  PRE_GENERATED_CHAPTER_SUMMARIES[key] = signedSummary;
   if (typeof window !== "undefined" && window.localStorage) {
     try {
-      localStorage.setItem(`summary_${cleanBook}_${summary.chapter}`, JSON.stringify(summary));
+      localStorage.setItem(`summary_${cleanBook}_${summary.chapter}`, JSON.stringify(signedSummary));
     } catch {
       // storage quota or private mode
     }

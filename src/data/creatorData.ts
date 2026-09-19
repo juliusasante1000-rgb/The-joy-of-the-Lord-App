@@ -8,15 +8,15 @@ export const AUTHORIZED_FOUNDER_EMAILS = [
 ];
 
 export const DEFAULT_CREATOR_PROFILE: CreatorProfile = {
-  name: "Bismark Twum",
-  honorific: "Bismark Twum",
-  professionalTitle: "Mathematics Educator | Researcher | Writer | Christian",
+  name: "Brother Bismark Twum",
+  honorific: "Brother Bismark Twum",
+  professionalTitle: "Mathematics Educator | Researcher | Writer | Member of the Body of Christ",
   roleBadges: [
     "Mathematics Educator",
     "Researcher",
     "Writer",
     "Curriculum Developer",
-    "Mentor & Inspirer"
+    "Active Member of the Body of Christ"
   ],
   tagline: "Empowering Minds. Transforming Education. Building Tomorrow.",
   location: "Ghana",
@@ -27,7 +27,7 @@ export const DEFAULT_CREATOR_PROFILE: CreatorProfile = {
   welcomeMessage:
     "Welcome to this Christian platform. My desire is that this resource will help people grow in their relationship with God, deepen their understanding of Scripture, strengthen their prayer lives, and encourage them in their Christian walk. May the joy of the Lord be your unending strength every day.",
   biography:
-    "Bismark Twum is a dedicated Ghanaian Mathematics Educator, Researcher, Author, and Christian leader based in Ghana. Committed to holistic intellectual and spiritual development, Bismark combines academic rigor with a deep devotion to God's Word.\n\nThrough years of classroom leadership, curriculum development, and educational research, he has mentored and inspired students, educators, and believers to strive for excellence, live purposefully, and ground their lives in the unchanging truths of the Holy Scriptures.",
+    "Bismark Twum is a dedicated Ghanaian Mathematics Educator, Researcher, Author, and an active member of the body of Christ based in Ghana. Committed to holistic intellectual and spiritual development, Bismark combines academic rigor with a deep devotion to God's Word.\n\nThrough years of classroom leadership, curriculum development, and educational research, he has mentored and inspired students, educators, and believers to strive for excellence, live purposefully, and ground their lives in the unchanging truths of the Holy Scriptures.",
   vision:
     "To harness modern digital technology and rich Christian pedagogical tools to make Scripture, spiritual devotions, prayer frameworks, and sound theological literature universally accessible to every believer across the globe, empowering them to live disciplined, impact-driven lives anchored in Christ.",
   whyCreated:

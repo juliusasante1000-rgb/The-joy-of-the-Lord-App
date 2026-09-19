@@ -57,6 +57,42 @@ const MemoAboutCreatorTab = React.memo(AboutCreatorTab);
 const MemoQuotesTab = React.memo(QuotesTab);
 const MemoDoctrinesTab = React.memo(DoctrinesTab);
 
+/**
+ * High-performance TabPane container:
+ * Completely prevents re-rendering inactive tabs when navigating between other tabs,
+ * guaranteeing instant 60fps, zero-delay tab switching.
+ */
+interface TabPaneProps {
+  isActive: boolean;
+  isVisited: boolean;
+  children: React.ReactNode;
+}
+
+const TabPane = React.memo(
+  function TabPane({ isActive, isVisited, children }: TabPaneProps) {
+    if (!isVisited) return null;
+    return (
+      <div
+        className={isActive ? "block" : "hidden"}
+        style={{ display: isActive ? "block" : "none" }}
+      >
+        {children}
+      </div>
+    );
+  },
+  (prevProps, nextProps) => {
+    // If it was inactive and remains inactive, and isVisited didn't change: DO NOT RE-RENDER
+    if (!prevProps.isActive && !nextProps.isActive && prevProps.isVisited === nextProps.isVisited) {
+      return true;
+    }
+    // If active status changed or it is currently active: re-render
+    if (prevProps.isActive !== nextProps.isActive) {
+      return false;
+    }
+    return false;
+  }
+);
+
 export function App() {
   const [activeTab, setActiveTab] = useState<TabType>("home");
   // Keep only visited tabs in DOM; starts with "home" for instant initial responsiveness
@@ -81,16 +117,6 @@ export function App() {
     // Non-blocking, instant viewport repositioning
     window.scrollTo({ top: 0, behavior: "instant" as any });
   }, []);
-
-  // Sync visitedTabs on activeTab updates
-  useEffect(() => {
-    setVisitedTabs((prev) => {
-      if (prev.has(activeTab)) return prev;
-      const next = new Set(prev);
-      next.add(activeTab);
-      return next;
-    });
-  }, [activeTab]);
 
   // PWA Cross-Platform Installation & Network Engine
   const {
@@ -353,32 +379,31 @@ export function App() {
     setTargetBibleChapter(chapter);
     setTargetBibleVerse(verse);
     if (version) setTargetBibleVersion(version);
-    setActiveTab("bible");
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    handleNavigateTab("bible");
   };
 
   const handleSelectBookmark = (bookmark: BookmarkItem) => {
     setIsBookmarksOpen(false);
     if (bookmark.type === "scripture" || bookmark.type === "devotion") {
-      setActiveTab("home");
+      handleNavigateTab("home");
     } else if (bookmark.type === "quote") {
-      setActiveTab("quotes");
+      handleNavigateTab("quotes");
     } else if (bookmark.type === "book") {
-      setActiveTab("library");
+      handleNavigateTab("library");
     } else if (bookmark.type === "bible") {
-      setActiveTab("bible");
+      handleNavigateTab("bible");
     } else if (bookmark.type === "doctrine") {
-      setActiveTab("doctrines");
+      handleNavigateTab("doctrines");
     } else if (bookmark.type === "prayer") {
-      setActiveTab("prayer");
+      handleNavigateTab("prayer");
     } else if (bookmark.type === "rhema") {
-      setActiveTab("rhema");
+      handleNavigateTab("rhema");
     } else if (bookmark.type === "sermon") {
-      setActiveTab("mathema_sermons");
+      handleNavigateTab("mathema_sermons");
     } else if (bookmark.type === "joy_overcoming") {
-      setActiveTab("joy_overcoming");
+      handleNavigateTab("joy_overcoming");
     } else if (bookmark.type === "hymn") {
-      setActiveTab("hymnals");
+      handleNavigateTab("hymnals");
     }
   };
 
@@ -418,211 +443,200 @@ export function App() {
 
         {/* Main Content Area - Instant Zero-Latency Tab Display */}
         <main className="flex-1 max-w-5xl w-full mx-auto px-3 sm:px-6 pt-4 sm:pt-6">
-          {visitedTabs.has("home") && (
-            <div className={activeTab === "home" ? "block" : "hidden"}>
-              <MemoHomeTab
-                scheduleState={scheduleState}
-                dailyScripture={activeDailyScripture}
-                scheduledVerse={activeScheduledVerse}
-                devotion={activeDevotion}
-                onOpenDevotion={(dev) => setSelectedDevotionModal(dev)}
-                onSelectEditionPreview={setPreviewEdition}
-                isBookmarked={isBookmarked}
-                onToggleBookmark={toggleBookmark}
-                onShareItem={handleOpenShare}
-                isSpeaking={isSpeaking}
-                onToggleSpeak={speakText}
-                completedDevotions={completedDevotions}
-                onCompleteDevotion={completeDevotion}
-                onNavigateTab={handleNavigateTab}
-                onNavigateToBibleChapter={handleNavigateToBibleChapter}
-                profile={creatorProfile}
-                onOpenAbout={() => handleNavigateTab("creator")}
-                onOpenQuotePictureModal={(item) => setSelectedQuoteForPicture(item)}
-              />
-            </div>
-          )}
+          <TabPane isActive={activeTab === "home"} isVisited={visitedTabs.has("home")}>
+            <MemoHomeTab
+              scheduleState={scheduleState}
+              dailyScripture={activeDailyScripture}
+              scheduledVerse={activeScheduledVerse}
+              devotion={activeDevotion}
+              onOpenDevotion={(dev) => setSelectedDevotionModal(dev)}
+              onSelectEditionPreview={setPreviewEdition}
+              isBookmarked={isBookmarked}
+              onToggleBookmark={toggleBookmark}
+              onShareItem={handleOpenShare}
+              isSpeaking={isSpeaking}
+              onToggleSpeak={speakText}
+              completedDevotions={completedDevotions}
+              onCompleteDevotion={completeDevotion}
+              onNavigateTab={handleNavigateTab}
+              onNavigateToBibleChapter={handleNavigateToBibleChapter}
+              profile={creatorProfile}
+              onOpenAbout={() => handleNavigateTab("creator")}
+              onOpenQuotePictureModal={(item) => setSelectedQuoteForPicture(item)}
+            />
+          </TabPane>
 
-          {visitedTabs.has("bible") && (
-            <div className={activeTab === "bible" ? "block" : "hidden"}>
-              <MemoBibleTab
-                isBookmarked={isBookmarked}
-                onToggleBookmark={toggleBookmark}
-                onShareItem={handleOpenShare}
-                isSpeaking={isSpeaking}
-                onToggleSpeak={speakText}
-                targetBookName={targetBibleBook}
-                targetChapter={targetBibleChapter}
-                targetVerse={targetBibleVerse}
-                targetVersion={targetBibleVersion}
-                onExploreMathemaSermon={() => handleNavigateTab("mathema_sermons")}
-                onExploreApostleMath={() => handleNavigateTab("apostle_math")}
-                creatorProfile={creatorProfile}
-              />
-            </div>
-          )}
+          <TabPane isActive={activeTab === "bible"} isVisited={visitedTabs.has("bible")}>
+            <MemoBibleTab
+              isBookmarked={isBookmarked}
+              onToggleBookmark={toggleBookmark}
+              onShareItem={handleOpenShare}
+              isSpeaking={isSpeaking}
+              onToggleSpeak={speakText}
+              targetBookName={targetBibleBook}
+              targetChapter={targetBibleChapter}
+              targetVerse={targetBibleVerse}
+              targetVersion={targetBibleVersion}
+              onExploreMathemaSermon={() => handleNavigateTab("mathema_sermons")}
+              onExploreApostleMath={() => handleNavigateTab("apostle_math")}
+              creatorProfile={creatorProfile}
+            />
+          </TabPane>
 
-          {(visitedTabs.has("spiritual_places") || visitedTabs.has("places")) && (
-            <div className={(activeTab === "spiritual_places" || activeTab === "places") ? "block" : "hidden"}>
-              <MemoSpiritualPlacesTab
-                onNavigateToBibleChapter={handleNavigateToBibleChapter}
-                onOpenDevotion={(dev) => setSelectedDevotionModal(dev)}
-                onNavigateTab={handleNavigateTab}
-                isBookmarked={isBookmarked}
-                onToggleBookmark={toggleBookmark}
-                onShareItem={handleOpenShare}
-                isSpeaking={isSpeaking}
-                onToggleSpeak={speakText}
-              />
-            </div>
-          )}
+          <TabPane
+            isActive={activeTab === "spiritual_places" || activeTab === "places"}
+            isVisited={visitedTabs.has("spiritual_places") || visitedTabs.has("places")}
+          >
+            <MemoSpiritualPlacesTab
+              onNavigateToBibleChapter={handleNavigateToBibleChapter}
+              onOpenDevotion={(dev) => setSelectedDevotionModal(dev)}
+              onNavigateTab={handleNavigateTab}
+              isBookmarked={isBookmarked}
+              onToggleBookmark={toggleBookmark}
+              onShareItem={handleOpenShare}
+              isSpeaking={isSpeaking}
+              onToggleSpeak={speakText}
+            />
+          </TabPane>
 
-          {(visitedTabs.has("apostle_math") || visitedTabs.has("math")) && (
-            <div className={(activeTab === "apostle_math" || activeTab === "math") ? "block" : "hidden"}>
-              <MemoApostleMathTab
-                isBookmarked={isBookmarked}
-                onToggleBookmark={toggleBookmark}
-                onShareItem={handleOpenShare}
-                isSpeaking={isSpeaking}
-                onToggleSpeak={speakText}
-                onNavigateToBible={(book, ch, v) => handleNavigateToBibleChapter(book, ch, v)}
-              />
-            </div>
-          )}
+          <TabPane
+            isActive={activeTab === "apostle_math" || activeTab === "math"}
+            isVisited={visitedTabs.has("apostle_math") || visitedTabs.has("math")}
+          >
+            <MemoApostleMathTab
+              isBookmarked={isBookmarked}
+              onToggleBookmark={toggleBookmark}
+              onShareItem={handleOpenShare}
+              isSpeaking={isSpeaking}
+              onToggleSpeak={speakText}
+              onNavigateToBible={(book, ch, v) => handleNavigateToBibleChapter(book, ch, v)}
+            />
+          </TabPane>
 
-          {visitedTabs.has("mathema_sermons") && (
-            <div className={activeTab === "mathema_sermons" ? "block" : "hidden"}>
-              <MemoMathemaSermonsTab
-                isBookmarked={isBookmarked}
-                onToggleBookmark={toggleBookmark}
-                onShareItem={handleOpenShare}
-                isSpeaking={isSpeaking}
-                onToggleSpeak={speakText}
-                onNavigateToBible={(book, ch, v) => handleNavigateToBibleChapter(book, ch, v)}
-                onExploreApostleMath={() => handleNavigateTab("apostle_math")}
-              />
-            </div>
-          )}
+          <TabPane isActive={activeTab === "mathema_sermons"} isVisited={visitedTabs.has("mathema_sermons")}>
+            <MemoMathemaSermonsTab
+              isBookmarked={isBookmarked}
+              onToggleBookmark={toggleBookmark}
+              onShareItem={handleOpenShare}
+              isSpeaking={isSpeaking}
+              onToggleSpeak={speakText}
+              onNavigateToBible={(book, ch, v) => handleNavigateToBibleChapter(book, ch, v)}
+              onExploreApostleMath={() => handleNavigateTab("apostle_math")}
+            />
+          </TabPane>
 
-          {visitedTabs.has("rhema") && (
-            <div className={activeTab === "rhema" ? "block" : "hidden"}>
-              <MemoRhemaTab
-                isBookmarked={isBookmarked}
-                onToggleBookmark={toggleBookmark}
-                onShareItem={handleOpenShare}
-                isSpeaking={isSpeaking}
-                onToggleSpeak={speakText}
-                onNavigateToBible={(book, ch, v) => handleNavigateToBibleChapter(book, ch, v)}
-                onOpenDevotion={(dev) => setSelectedDevotionModal(dev)}
-                onNavigateTab={handleNavigateTab}
-              />
-            </div>
-          )}
+          <TabPane isActive={activeTab === "rhema"} isVisited={visitedTabs.has("rhema")}>
+            <MemoRhemaTab
+              isBookmarked={isBookmarked}
+              onToggleBookmark={toggleBookmark}
+              onShareItem={handleOpenShare}
+              isSpeaking={isSpeaking}
+              onToggleSpeak={speakText}
+              onNavigateToBible={(book, ch, v) => handleNavigateToBibleChapter(book, ch, v)}
+              onOpenDevotion={(dev) => setSelectedDevotionModal(dev)}
+              onNavigateTab={handleNavigateTab}
+            />
+          </TabPane>
 
-          {visitedTabs.has("joy_overcoming") && (
-            <div className={activeTab === "joy_overcoming" ? "block" : "hidden"}>
-              <MemoJoyOvercomingTab
-                isBookmarked={isBookmarked}
-                onToggleBookmark={toggleBookmark}
-                onShareItem={handleOpenShare}
-                isSpeaking={isSpeaking}
-                onToggleSpeak={speakText}
-                onNavigateToBible={(book, ch, v) => handleNavigateToBibleChapter(book, ch, v)}
-                onOpenDevotion={(dev) => setSelectedDevotionModal(dev)}
-                onNavigateTab={handleNavigateTab}
-              />
-            </div>
-          )}
+          <TabPane isActive={activeTab === "joy_overcoming"} isVisited={visitedTabs.has("joy_overcoming")}>
+            <MemoJoyOvercomingTab
+              isBookmarked={isBookmarked}
+              onToggleBookmark={toggleBookmark}
+              onShareItem={handleOpenShare}
+              isSpeaking={isSpeaking}
+              onToggleSpeak={speakText}
+              onNavigateToBible={(book, ch, v) => handleNavigateToBibleChapter(book, ch, v)}
+              onOpenDevotion={(dev) => setSelectedDevotionModal(dev)}
+              onNavigateTab={handleNavigateTab}
+            />
+          </TabPane>
 
-          {visitedTabs.has("hymnals") && (
-            <div className={activeTab === "hymnals" ? "block" : "hidden"}>
-              <MemoHymnalsTab
-                isBookmarked={isBookmarked}
-                onToggleBookmark={toggleBookmark}
-                onShareItem={handleOpenShare}
-                isSpeaking={isSpeaking}
-                onToggleSpeak={speakText}
-                onNavigateToBible={(book, ch, v) => handleNavigateToBibleChapter(book, ch, v)}
-              />
-            </div>
-          )}
+          <TabPane isActive={activeTab === "hymnals"} isVisited={visitedTabs.has("hymnals")}>
+            <MemoHymnalsTab
+              isBookmarked={isBookmarked}
+              onToggleBookmark={toggleBookmark}
+              onShareItem={handleOpenShare}
+              isSpeaking={isSpeaking}
+              onToggleSpeak={speakText}
+              onNavigateToBible={(book, ch, v) => handleNavigateToBibleChapter(book, ch, v)}
+            />
+          </TabPane>
 
-          {(visitedTabs.has("library") || visitedTabs.has("books")) && (
-            <div className={(activeTab === "library" || activeTab === "books") ? "block" : "hidden"}>
-              <MemoBooksTab
-                isBookmarked={isBookmarked}
-                onToggleBookmark={toggleBookmark}
-                onShareItem={handleOpenShare}
-                isSpeaking={isSpeaking}
-                onToggleSpeak={speakText}
-                isAdmin={!!adminSession}
-              />
-            </div>
-          )}
+          <TabPane
+            isActive={activeTab === "library" || activeTab === "books"}
+            isVisited={visitedTabs.has("library") || visitedTabs.has("books")}
+          >
+            <MemoBooksTab
+              isBookmarked={isBookmarked}
+              onToggleBookmark={toggleBookmark}
+              onShareItem={handleOpenShare}
+              isSpeaking={isSpeaking}
+              onToggleSpeak={speakText}
+              isAdmin={!!adminSession}
+            />
+          </TabPane>
 
-          {(visitedTabs.has("prayer") || visitedTabs.has("prayers")) && (
-            <div className={(activeTab === "prayer" || activeTab === "prayers") ? "block" : "hidden"}>
-              <MemoPrayersTab
-                activeEdition={activeEdition}
-                journal={journal}
-                onAddJournalEntry={addJournalEntry}
-                onMarkAnswered={markPrayerAnswered}
-                onDeleteJournalEntry={deleteJournalEntry}
-                isBookmarked={isBookmarked}
-                onToggleBookmark={toggleBookmark}
-                onShareItem={handleOpenShare}
-                isSpeaking={isSpeaking}
-                onToggleSpeak={speakText}
-              />
-            </div>
-          )}
+          <TabPane
+            isActive={activeTab === "prayer" || activeTab === "prayers"}
+            isVisited={visitedTabs.has("prayer") || visitedTabs.has("prayers")}
+          >
+            <MemoPrayersTab
+              activeEdition={activeEdition}
+              journal={journal}
+              onAddJournalEntry={addJournalEntry}
+              onMarkAnswered={markPrayerAnswered}
+              onDeleteJournalEntry={deleteJournalEntry}
+              isBookmarked={isBookmarked}
+              onToggleBookmark={toggleBookmark}
+              onShareItem={handleOpenShare}
+              isSpeaking={isSpeaking}
+              onToggleSpeak={speakText}
+            />
+          </TabPane>
 
-          {(visitedTabs.has("creator") || visitedTabs.has("about")) && (
-            <div className={(activeTab === "creator" || activeTab === "about") ? "block" : "hidden"}>
-              <MemoAboutCreatorTab
-                profile={creatorProfile}
-                founderSession={adminSession ? {
-                  isAuthenticated: true,
-                  founderEmail: adminSession.email,
-                  founderName: adminSession.creatorName,
-                  token: adminSession.token,
-                  loginTimestamp: Date.now()
-                } : null}
-                onOpenEditModal={handleOpenEditRequest}
-                onOpenFounderLogin={handleOpenEditRequest}
-                onFounderLogout={handleAdminLogout}
-                onNavigateTab={handleNavigateTab}
-                onNavigateToBible={handleNavigateToBibleChapter}
-                onShareItem={handleOpenShare}
-                onToggleSpeak={speakText}
-                isSpeaking={isSpeaking}
-              />
-            </div>
-          )}
+          <TabPane
+            isActive={activeTab === "creator" || activeTab === "about"}
+            isVisited={visitedTabs.has("creator") || visitedTabs.has("about")}
+          >
+            <MemoAboutCreatorTab
+              profile={creatorProfile}
+              founderSession={adminSession ? {
+                isAuthenticated: true,
+                founderEmail: adminSession.email,
+                founderName: adminSession.creatorName,
+                token: adminSession.token,
+                loginTimestamp: Date.now()
+              } : null}
+              onOpenEditModal={handleOpenEditRequest}
+              onOpenFounderLogin={handleOpenEditRequest}
+              onFounderLogout={handleAdminLogout}
+              onNavigateTab={handleNavigateTab}
+              onNavigateToBible={handleNavigateToBibleChapter}
+              onShareItem={handleOpenShare}
+              onToggleSpeak={speakText}
+              isSpeaking={isSpeaking}
+            />
+          </TabPane>
 
-          {visitedTabs.has("quotes") && (
-            <div className={activeTab === "quotes" ? "block" : "hidden"}>
-              <MemoQuotesTab
-                isBookmarked={isBookmarked}
-                onToggleBookmark={toggleBookmark}
-                onShareItem={handleOpenShare}
-                onToggleSpeak={speakText}
-                onOpenQuotePictureModal={(item) => setSelectedQuoteForPicture(item)}
-              />
-            </div>
-          )}
+          <TabPane isActive={activeTab === "quotes"} isVisited={visitedTabs.has("quotes")}>
+            <MemoQuotesTab
+              isBookmarked={isBookmarked}
+              onToggleBookmark={toggleBookmark}
+              onShareItem={handleOpenShare}
+              onToggleSpeak={speakText}
+              onOpenQuotePictureModal={(item) => setSelectedQuoteForPicture(item)}
+            />
+          </TabPane>
 
-          {visitedTabs.has("doctrines") && (
-            <div className={activeTab === "doctrines" ? "block" : "hidden"}>
-              <MemoDoctrinesTab
-                isBookmarked={isBookmarked}
-                onToggleBookmark={toggleBookmark}
-                onShareItem={handleOpenShare}
-                onToggleSpeak={speakText}
-                creatorProfile={creatorProfile}
-              />
-            </div>
-          )}
+          <TabPane isActive={activeTab === "doctrines"} isVisited={visitedTabs.has("doctrines")}>
+            <MemoDoctrinesTab
+              isBookmarked={isBookmarked}
+              onToggleBookmark={toggleBookmark}
+              onShareItem={handleOpenShare}
+              onToggleSpeak={speakText}
+              creatorProfile={creatorProfile}
+            />
+          </TabPane>
         </main>
 
         {/* Global Professional Footer */}

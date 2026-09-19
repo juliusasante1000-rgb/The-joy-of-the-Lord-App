@@ -8,6 +8,16 @@
 
 import fs from "fs";
 import path from "path";
+import {
+  PRE_SEEDED_PRAYERS,
+  PRE_SEEDED_PRAYER_POINTS,
+  PRE_SEEDED_EXPOSITIONS,
+  PRE_SEEDED_JOY_REVELATIONS,
+  PRE_SEEDED_RHEMA,
+  PRE_SEEDED_MATHEMASERMONS,
+  PRE_SEEDED_HISTORY,
+  PRE_SEEDED_DOCTRINES
+} from "./src/data/universalReservoirData";
 
 export interface ServerReservoirDevotion {
   id: string;
@@ -631,6 +641,33 @@ function loadServerUniversalReservoir(): Record<string, ServerUniversalItem[]> {
     }));
   }
 
+  // Pre-seed universal items across all outlets (prayers, prayer points, expositions, joy revelations, rhema, mathemasermons, history, doctrines)
+  const preSeededCollections: Record<string, any>[] = [
+    PRE_SEEDED_PRAYERS,
+    PRE_SEEDED_PRAYER_POINTS,
+    PRE_SEEDED_EXPOSITIONS,
+    PRE_SEEDED_JOY_REVELATIONS,
+    PRE_SEEDED_RHEMA,
+    PRE_SEEDED_MATHEMASERMONS,
+    PRE_SEEDED_HISTORY,
+    PRE_SEEDED_DOCTRINES
+  ];
+
+  for (const collection of preSeededCollections) {
+    for (const [refKey, list] of Object.entries(collection)) {
+      for (const item of (list as any[])) {
+        const normK = normalizeServerScriptureRef(refKey) || refKey.trim().toLowerCase();
+        const outletKey = `${item.outlet}::${normK}`;
+        if (!result[outletKey]) {
+          result[outletKey] = [];
+        }
+        if (!result[outletKey].some((x) => x.id === item.id)) {
+          result[outletKey].push(item);
+        }
+      }
+    }
+  }
+
   // Load from disk if file exists
   try {
     if (fs.existsSync(UNIVERSAL_RESERVOIR_FILE_PATH)) {
@@ -809,3 +846,38 @@ export function getGracefulServerReservoirMessage(reference: string): string {
     `Isaiah 40:31 (Devotions A–D), Philippians 4:6-7 (Devotions A–D), and Nehemiah 8:10 (Devotions A–D).`
   );
 }
+
+export function getAllServerUniversalReservoirCatalog(): {
+  outlet: ServerReservoirOutlet;
+  reference: string;
+  count: number;
+  sampleTitle: string;
+  labels: string[];
+}[] {
+  const catalog = loadServerUniversalReservoir();
+  const entries: {
+    outlet: ServerReservoirOutlet;
+    reference: string;
+    count: number;
+    sampleTitle: string;
+    labels: string[];
+  }[] = [];
+
+  for (const [key, list] of Object.entries(catalog)) {
+    const parts = key.split("::");
+    const outlet = (parts[0] || "devotion") as ServerReservoirOutlet;
+    const reference = parts[1] || "";
+    if (list && list.length > 0) {
+      entries.push({
+        outlet,
+        reference: list[0]?.reference || reference,
+        count: list.length,
+        sampleTitle: list[0]?.title || reference,
+        labels: list.map((x) => x.label)
+      });
+    }
+  }
+
+  return entries;
+}
+

@@ -219,12 +219,13 @@ export async function getChapterVerses(
   const bookNum = BOOK_ORDER_INDEX[bookName] || BOOK_ORDER_INDEX[bookName.replace(/s$/, "")] || 1;
   const isKjv = version === "KJV";
 
-  // For non-KJV versions, prioritize authentic translation APIs
-  if (!isKjv) {
-    // 1. Try local server translation API with generous timeout
+  // For non-KJV versions, prioritize authentic translation APIs only when online
+  const isOnline = typeof navigator === "undefined" || navigator.onLine !== false;
+  if (!isKjv && isOnline) {
+    // 1. Try local server translation API with fast timeout
     try {
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 8000);
+      const timeoutId = setTimeout(() => controller.abort(), 2500);
       const res = await fetch(
         `/api/bible/chapter?version=${encodeURIComponent(version)}&book=${encodeURIComponent(bookName)}&chapter=${chapter}`,
         {
@@ -257,7 +258,7 @@ export async function getChapterVerses(
     try {
       const bollsCode = VERSION_TO_BOLLS[version] || version;
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 8000);
+      const timeoutId = setTimeout(() => controller.abort(), 2500);
       const bollsRes = await fetch(`https://bolls.life/get-chapter/${bollsCode}/${bookNum}/${chapter}/`, {
         headers: { "Accept": "application/json", "User-Agent": "ChristianScriptureEngine/1.0" },
         signal: controller.signal
@@ -285,7 +286,7 @@ export async function getChapterVerses(
     // 3. Try bible-api.com for public domain / modern translations supported there
     try {
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 5000);
+      const timeoutId = setTimeout(() => controller.abort(), 2500);
       const bibleApiRes = await fetch(
         `https://bible-api.com/${encodeURIComponent(bookName)}%20${chapter}?translation=${encodeURIComponent(version.toLowerCase())}`,
         { signal: controller.signal }
