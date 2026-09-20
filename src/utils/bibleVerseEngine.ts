@@ -2,7 +2,7 @@ import { BibleBook, BibleVerse, BibleVersionCode } from "../types";
 import { BIBLE_BOOKS_CATALOG } from "../data/bibleData";
 import { getTranslatedVerseText } from "../data/bibleTranslationsData";
 import { getRegisteredFullChapter, CANONICAL_BIBLE_STRUCTURE } from "../data/fullBibleChaptersData";
-import { getOfflineBook, saveOfflineBook } from "./offlineBibleManager";
+import { getOfflineBook, saveOfflineBook, getOfflineChapterVerses, saveOfflineChapterVerses } from "./offlineBibleManager";
 
 // Local in-memory and persistent cache for loaded chapters
 const chapterCache: Record<string, BibleVerse[]> = {};
@@ -13,12 +13,6 @@ try {
   const savedCache = localStorage.getItem("joy_offline_bible_cache_v4");
   if (savedCache) {
     const parsed = JSON.parse(savedCache);
-    // Purge any non-KJV keys that might have been mistakenly cached with KJV text
-    for (const key of Object.keys(parsed)) {
-      if (!key.endsWith("-kjv")) {
-        delete parsed[key];
-      }
-    }
     Object.assign(chapterCache, parsed);
   }
 } catch {
@@ -216,6 +210,19 @@ export async function getChapterVerses(
     return chapterCache[cacheKey];
   }
 
+  // Check persistent IndexedDB offline chapter cache before hitting network
+  if (typeof window !== "undefined") {
+    try {
+      const offlineVerses = await getOfflineChapterVerses(bookName, chapter, version);
+      if (offlineVerses && offlineVerses.length > 0) {
+        chapterCache[cacheKey] = offlineVerses;
+        return offlineVerses;
+      }
+    } catch {
+      // Continue
+    }
+  }
+
   const bookNum = BOOK_ORDER_INDEX[bookName] || BOOK_ORDER_INDEX[bookName.replace(/s$/, "")] || 1;
   const isKjv = version === "KJV";
 
@@ -247,6 +254,7 @@ export async function getChapterVerses(
           validateBibleVerses(verses, bookName, chapter);
           chapterCache[cacheKey] = verses;
           persistCache();
+          saveOfflineChapterVerses(bookName, chapter, version, verses);
           return verses;
         }
       }
@@ -277,6 +285,7 @@ export async function getChapterVerses(
             validateBibleVerses(formatted, bookName, chapter);
             chapterCache[cacheKey] = formatted;
             persistCache();
+            saveOfflineChapterVerses(bookName, chapter, version, formatted);
             return formatted;
           }
         }

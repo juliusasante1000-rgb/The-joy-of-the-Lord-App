@@ -863,7 +863,7 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({
                         type="text"
                         value={profileForm.honorific || ""}
                         onChange={(e) => setProfileForm({ ...profileForm, honorific: e.target.value })}
-                        placeholder="e.g. Brother Bismark Twum / Author"
+                        placeholder="e.g. Bismark Twum / Author"
                         className="w-full px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 text-xs text-white"
                       />
                     </div>

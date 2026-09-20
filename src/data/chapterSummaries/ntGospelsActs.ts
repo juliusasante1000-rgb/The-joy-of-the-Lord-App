@@ -1,1875 +1,1858 @@
-import { ChapterSummary } from "../bibleChapterSummaries";
+import { ChapterSummary } from "../../types";
 
+/**
+ * Authentic, Chapter-Specific Summaries for NT_GOSPELS_ACTS_SUMMARIES
+ * Every chapter is uniquely crafted with specific names, events, themes, and lessons.
+ * Signed off with "— Bismark Twum".
+ */
 export const NT_GOSPELS_ACTS_SUMMARIES: Record<string, ChapterSummary> = {
   "Matthew_1": {
     "book": "Matthew",
     "chapter": 1,
-    "summary": "Matthew records the family tree of Jesus Christ, tracing His royal lineage from Abraham through King David down to Joseph. When Mary was pledged to be married to Joseph, she was found to be with child through the Holy Spirit before they came together. An angel of the Lord appeared to Joseph in a dream, telling him not to fear taking Mary as his wife because the child was conceived by the Holy Spirit. The angel declared that His name would be called Jesus because He will save His people from their sins, fulfilling Isaiah's prophecy of Immanuel, God with us.\n\n— Brother Bismark Twum",
+    "theme": "The Genealogy and Birth of Jesus Christ",
+    "summary": "Abraham's royal lineage traces down through David to Joseph, establishing Jesus' legal right to the throne of Israel. An angel reassures a distressed Joseph in a dream, explaining that Mary's miraculous pregnancy is of the Holy Spirit. Joseph obediently takes Mary as his wife and names the newborn child Jesus, fulfilling ancient prophetic promises of Immanuel.\n\n— Bismark Twum",
+    "lesson": "God frequently works outside our conventional expectations, requiring our quiet trust and obedience when our personal plans are completely disrupted.",
     "key_verses": [
       "Matthew 1:21",
       "Matthew 1:23"
     ],
-    "theme": "The Genealogy and Birth of Jesus",
-    "lesson": "Jesus is the fulfillment of all God's promises, born to save you from sin and walk with you as Immanuel.",
     "questions": [
-      "Why did the angel tell Joseph to name the baby Jesus?",
-      "What does the prophetic title 'Immanuel' mean?"
+      "How does Joseph's quiet obedience in the face of public scandal serve as an example of faith for believers today?",
+      "What is the significance of the name 'Immanuel' (God with us) in the context of Jesus' genealogy and mission?"
     ]
   },
   "Matthew_2": {
     "book": "Matthew",
     "chapter": 2,
-    "summary": "Wise men from the East follow a star to Jerusalem seeking the newborn King of the Jews, alarming King Herod. Guided by Micah's prophecy, the Magi find young Jesus in Bethlehem, worship Him, and present gifts of gold, frankincense, and myrrh. Warned in a dream of Herod's murderous plot, Joseph flees by night with Mary and the child into Egypt. After Herod massacres the infants in Bethlehem and later dies, an angel directs Joseph to return and settle safely in Nazareth.\n\n— Brother Bismark Twum",
+    "theme": "The Magi, the Escape to Egypt, and the Massacre of the Innocents",
+    "summary": "Magi from the East follow a guiding star to worship the infant king, presenting him with symbolic gifts of gold, frankincense, and myrrh. Warned in a dream, Joseph flees with Mary and Jesus to Egypt just as the paranoid King Herod orders the slaughter of all male toddlers in Bethlehem. Following Herod's death, the holy family returns from exile and settles quietly in the town of Nazareth.\n\n— Bismark Twum",
+    "lesson": "Worldly powers often rage against the reign of God, yet divine providence sovereignly protects His purposes despite intense human hostility.",
     "key_verses": [
       "Matthew 2:2",
-      "Matthew 2:11",
-      "Matthew 2:14"
+      "Matthew 2:15"
     ],
-    "theme": "The Visit of the Magi and Flight to Egypt",
-    "lesson": "God protects His divine plans from earthly hostility and directs our steps in obedience.",
     "questions": [
-      "What three precious gifts did the wise men offer to Jesus?",
-      "Why did Joseph flee with his family into Egypt?"
+      "Why do you think the religious leaders in Jerusalem knew the prophecy about Bethlehem yet failed to investigate the birth of the Messiah themselves?",
+      "In what ways does the flight to Egypt and subsequent return mirror the broader historical journey of the nation of Israel?"
     ]
   },
   "Matthew_3": {
     "book": "Matthew",
     "chapter": 3,
-    "summary": "John the Baptist preaches in the Judean wilderness, calling people to repent and baptizing them in the Jordan River while wearing camel's hair clothing. John boldly confronts the Pharisees and Sadducees, warning them to bear fruits worthy of repentance and declaring that One mightier than him is coming to baptize with the Holy Spirit and fire. Jesus travels from Galilee to the Jordan to be baptized by John to fulfill all righteousness. As Jesus comes up from the water, the heavens open, the Spirit of God descends like a dove, and the Father's voice proclaims, 'This is My beloved Son, in whom I am well pleased.'\n\n— Brother Bismark Twum",
+    "theme": "John the Baptist and the Baptism of Jesus",
+    "summary": "John the Baptist preaches a rigorous message of repentance in the Judean wilderness, wearing camel's hair and urging crowds to produce fruit worthy of turning from sin. Jesus arrives from Galilee to the Jordan River, insisting that John baptize him to fulfill all righteousness. As Jesus emerges from the water, the heavens open, the Spirit descends like a dove, and a heavenly voice declares Him the beloved Son.\n\n— Bismark Twum",
+    "lesson": "True repentance is never merely an internal emotional state, but produces a visible, transformative lifestyle aligned with God's righteousness.",
     "key_verses": [
       "Matthew 3:2",
-      "Matthew 3:11",
-      "Matthew 3:16-17"
+      "Matthew 3:17"
     ],
-    "theme": "The Ministry of John the Baptist and Baptism of Jesus",
-    "lesson": "True repentance produces holy living, and Jesus models perfect obedience to the Father.",
     "questions": [
-      "What clothing did John the Baptist wear in the wilderness?",
-      "What happened visibly and audibly when Jesus was baptized?"
+      "Why did Jesus, who was entirely sinless, insist that John baptize Him?",
+      "What does the descending of the Holy Spirit like a dove reveal about the nature of Jesus' coming ministry?"
     ]
   },
   "Matthew_4": {
     "book": "Matthew",
     "chapter": 4,
-    "summary": "The Holy Spirit leads Jesus into the wilderness, where He fasts for forty days and forty nights and defeats three direct temptations of Satan by quoting Scripture ('It is written'). After angels minister to Jesus, He hears of John's imprisonment and departs to Capernaum in Galilee, preaching 'Repent, for the kingdom of heaven is at hand.' Walking by the Sea of Galilee, Jesus calls Peter, Andrew, James, and John from their fishing nets to become 'fishers of men.' Jesus ministers throughout Galilee, teaching in synagogues, preaching the gospel of the kingdom, and healing every sickness and disease.\n\n— Brother Bismark Twum",
+    "theme": "The Temptation of Jesus and the Beginning of His Galilean Ministry",
+    "summary": "The Holy Spirit leads a fasting Jesus into the desert, where Satan subjects Him to intense physical and spiritual temptations regarding hunger, testing God, and worldly power. Jesus decisively deflects every deceptive assault by speaking the precise truth of Deuteronomy. After hearing of John's arrest, Jesus relocates to Capernaum, calling fishermen Peter, Andrew, James, and John to leave their nets and follow Him as fishers of men.\n\n— Bismark Twum",
+    "lesson": "Scripture is our ultimate defensive weapon against spiritual deception, and victory comes through standing firmly on the written Word of God.",
     "key_verses": [
       "Matthew 4:4",
-      "Matthew 4:17",
       "Matthew 4:19"
     ],
-    "theme": "Temptation in the Wilderness and Call of the First Disciples",
-    "lesson": "We overcome spiritual warfare using the Word of God and must follow Jesus immediately when He calls.",
     "questions": [
-      "What weapon did Jesus use against every temptation of Satan?",
-      "Who were the four fishermen Jesus called to follow Him by the Sea of Galilee?"
+      "How does Jesus' method of responding to Satan's temptations instruct us in our own battles against spiritual warfare?",
+      "What motivated the first disciples to immediately drop their nets and follow Jesus upon a single invitation?"
     ]
   },
   "Matthew_5": {
     "book": "Matthew",
     "chapter": 5,
-    "summary": "Jesus climbed a mountainside and opened His Sermon on the Mount with the Beatitudes, blessing the poor in spirit, the pure in heart, the meek, and peacemakers. He declared that His followers are the salt of the earth and the light of the world whose good works glorify their Father in heaven. Jesus explained that He came not to abolish the Law but to fulfill it, raising the standard of righteousness beyond external religious rules. He taught that anger in the heart is like murder, lustful looks are like adultery, and commanded believers to love even their enemies.\n\n— Brother Bismark Twum",
+    "theme": "The Sermon on the Mount: The Beatitudes and Kingdom Ethics",
+    "summary": "Jesus sits on a mountain surrounded by His disciples and delivers a revolutionary sermon redefining blessedness through spiritual poverty, meekness, and purity of heart. He challenges conventional morality by declaring that true righteousness looks deeper than external actions to examine internal anger, lust, and honesty. Concluding this section, He commands His followers to love their active enemies and pursue the perfect character of their heavenly Father.\n\n— Bismark Twum",
+    "lesson": "God's standard of holiness transforms the inner motives of the heart rather than merely regulating external human behavior.",
     "key_verses": [
-      "Matthew 5:14",
       "Matthew 5:16",
-      "Matthew 5:44"
+      "Matthew 5:48"
     ],
-    "theme": "The Sermon on the Mount & Kingdom Living",
-    "lesson": "True Christian discipleship begins inside the heart, shining bright kindness and love even to those who oppose you.",
     "questions": [
-      "What did Jesus compare His followers to in this chapter?",
-      "How did Jesus say we should treat our enemies?"
+      "Which of the Beatitudes challenges your current lifestyle or perspective the most, and why?",
+      "How does Jesus elevate the Old Testament commandments regarding murder and adultery to matters of the heart?"
     ]
   },
   "Matthew_6": {
     "book": "Matthew",
     "chapter": 6,
-    "summary": "Jesus cautions against practicing righteousness before men to be seen by them, teaching secret giving, private prayer, and genuine fasting without outward display. He provides the model Lord's Prayer ('Our Father which art in heaven...'), teaching believers how to worship, seek God's kingdom, ask for daily bread, and forgive others. Jesus warns against hoarding earthly treasures where moth and rust destroy, declaring that no one can serve two masters: God and money. He commands His disciples not to worry about food, drink, or clothing, pointing to the birds of the air and the lilies of the field, and instructing them to 'seek first the kingdom of God and His righteousness.'\n\n— Brother Bismark Twum",
+    "theme": "True Spirituality: Giving, Prayer, Fasting, and Anxious Care",
+    "summary": "Jesus warns His listeners against performing righteous acts like giving to the needy, praying, and fasting to win human applause rather than pleasing the Father. He teaches the disciples how to pray sincerely using the Lord's Prayer as a foundational model of worship and daily dependence. Concluding the teaching, He urges believers to forsake paralyzing anxiety about material wealth, challenging them to seek God's kingdom and righteousness first.\n\n— Bismark Twum",
+    "lesson": "Authentic worship thrives in the secret place with God, free from the exhausting pressure of seeking human recognition or material security.",
     "key_verses": [
-      "Matthew 6:9-13",
-      "Matthew 6:24",
+      "Matthew 6:9",
       "Matthew 6:33"
     ],
-    "theme": "Authentic Devotion, The Lord's Prayer, and Freedom from Worry",
-    "lesson": "When you prioritize God's kingdom and trust His provision, anxiety is replaced with divine peace.",
     "questions": [
-      "What model prayer did Jesus give to His disciples?",
-      "What did Jesus say about serving two masters?"
+      "In what subtle ways do religious routines become performative rather than relational in modern Christian practice?",
+      "How does shifting our focus from material anxiety to God's kingdom change our daily priorities?"
     ]
   },
   "Matthew_7": {
     "book": "Matthew",
     "chapter": 7,
-    "summary": "Jesus warns against hypocritical judgment, using the parable of the speck in a brother's eye compared to the beam in one's own eye. He invites believers to persistent prayer with the promise: 'Ask, and it shall be given you; seek, and ye shall find; knock, and it shall be opened unto you.' Jesus gives the Golden Rule to do to others what you would have them do to you, and describes the narrow gate that leads to life versus the broad way to destruction. He warns against false prophets who come in sheep's clothing but are ravenous wolves, concluding with the parable of the two builders: the wise man who built on the rock and the foolish man on the sand.\n\n— Brother Bismark Twum",
+    "theme": "The Narrow Way and True Discipleship",
+    "summary": "Jesus concludes the Sermon on the Mount by warning against hypocritical judgment and encouraging persistence in prayer through the Golden Rule. He contrasts the broad gate leading to destruction with the narrow gate of life, urging listeners to recognize false prophets by their fruit. The discourse ends with the parable of the two builders, illustrating the absolute necessity of obeying His words.\n\n— Bismark Twum",
+    "lesson": "True faith is demonstrated not merely by religious professions, but by a lifestyle of active obedience to the teachings of Christ.",
     "key_verses": [
-      "Matthew 7:7-8",
-      "Matthew 7:12",
-      "Matthew 7:24-25"
+      "Matthew 7:7",
+      "Matthew 7:13-14",
+      "Matthew 7:24"
     ],
-    "theme": "True Discernment, Persistent Prayer, and Building on the Rock",
-    "lesson": "Hearing Jesus' words is not enough; true spiritual safety comes from actively obeying them.",
     "questions": [
-      "What happens to the house built on the sand when the storm strikes?",
-      "How did Jesus say we can recognize false prophets?"
+      "How do you evaluate whether the fruit in your own life aligns with the teachings of Jesus?",
+      "In what practical ways can you build your life on the rock of obedience rather than shifting cultural sand?"
     ]
   },
   "Matthew_8": {
     "book": "Matthew",
     "chapter": 8,
-    "summary": "Coming down from the mountain, Jesus touches and cleanses a leper, then marvels at the great faith of a Roman centurion whose paralyzed servant is healed from a distance. In Capernaum, Jesus enters Peter's house and heals Peter's mother-in-law of a severe fever, after which she immediately rises and serves them. When a furious storm threatens their boat on the Sea of Galilee, Jesus rebukes the winds and sea, creating complete calm and causing the disciples to marvel. Arriving in the region of the Gadarenes, Jesus casts legions of demons out of two violent men into a herd of swine that rushes down the cliff into the sea.\n\n— Brother Bismark Twum",
+    "theme": "Authority Over Disease, Nature, and Demons",
+    "summary": "Descending the mountain, Jesus instantly cleanses a desperate leper and marvels at the astonishing faith of a Roman centurion asking for his servant's healing. He heals Peter's mother-in-law and numerous other afflicted people before calming a terrifying storm on the Sea of Galilee with a single command. The journey concludes in the region of the Gadarenes, where He casts a legion of demons into a herd of pigs and heals a paralytic in Capernaum.\n\n— Bismark Twum",
+    "lesson": "No sickness, spiritual darkness, or chaotic circumstance is beyond the absolute authority and compassionate care of Jesus.",
     "key_verses": [
+      "Matthew 8:3",
       "Matthew 8:10",
-      "Matthew 8:26-27"
+      "Matthew 8:26"
     ],
-    "theme": "Authority Over Sickness, Nature, and Demons",
-    "lesson": "Jesus possesses complete authority over disease, storms, and darkness when we come in faith.",
     "questions": [
-      "What made Jesus marvel at the Roman centurion?",
-      "How did Jesus calm the violent storm on the Sea of Galilee?"
+      "When facing life's sudden storms, what prevents you from trusting Christ's presence and peace?",
+      "How does the centurion's understanding of authority challenge the way you approach Jesus in prayer?"
     ]
   },
   "Matthew_9": {
     "book": "Matthew",
     "chapter": 9,
-    "summary": "Jesus forgives the sins of a paralyzed man lowered before Him and heals him to prove His divine authority on earth to forgive sins. Passing by the tax booth, Jesus calls Matthew the tax collector to follow Him, dining with tax collectors and sinners to the dismay of the Pharisees. A woman suffering twelve years with an issue of blood touches the hem of Jesus' garment and is instantly healed, while Jesus raises the twelve-year-old daughter of Jairus from death. Jesus restores sight to two blind men who cry out for mercy, delivers a mute demon-possessed man, and urges His disciples to pray for laborers because the harvest is plenteous.\n\n— Brother Bismark Twum",
+    "theme": "Forgiveness, Compassion, and the Harvest",
+    "summary": "Jesus forgives and heals a paralyzed man lowered through a roof, then calls Matthew the tax collector from his booth, sparking criticism from the Pharisees for dining with sinners. He explains the purpose of fasting for a bridegroom's attendants, heals a bleeding woman, and restores a ruler's dead daughter to life. The chapter culminates with Jesus healing two blind men, casting out a mute demon, and moving with profound compassion for the harassed crowds.\n\n— Bismark Twum",
+    "lesson": "Jesus continually prioritizes mercy and relationship over rigid religious ritual, calling ordinary and broken people into His redemptive mission.",
     "key_verses": [
-      "Matthew 9:6",
+      "Matthew 9:12-13",
       "Matthew 9:22",
       "Matthew 9:37-38"
     ],
-    "theme": "Compassion, Forgiveness, and Miraculous Healing",
-    "lesson": "Faith in Jesus touches His heart, unlocks physical and spiritual healing, and commissions us for the harvest.",
     "questions": [
-      "What profession was Matthew engaged in when Jesus called him?",
-      "How did the woman who had suffered for twelve years receive her healing?"
+      "In what ways might religious tradition cause you to overlook the marginalized or broken around you?",
+      "How does the desperate faith of the bleeding woman inspire your own approach to seeking healing from Jesus?"
     ]
   },
   "Matthew_10": {
     "book": "Matthew",
     "chapter": 10,
-    "summary": "Jesus summons His twelve apostles—giving them authority to cast out impure spirits and heal every disease—and sends them to the lost sheep of Israel. He commands them to proclaim that the kingdom of heaven is near, healing the sick, raising the dead, and cleansing lepers freely. Jesus instructs them to be 'wise as serpents and harmless as doves,' warning them of impending persecution, arrests before governors, and familial betrayal for His sake. He comforts them that the hairs of their head are all numbered by the Father, commanding them not to fear those who can only kill the body, but to take up their cross and follow Him.\n\n— Brother Bismark Twum",
+    "theme": "Commissioning and Cost of the Twelve Apostles",
+    "summary": "Jesus summons His twelve disciples, grants them authority to cast out unclean spirits and heal every disease, and explicitly names them before sending them out. He instructs them to preach that the kingdom of heaven is near while traveling light and relying on the hospitality of others. Anticipating fierce persecution, betrayal by family members, and public hatred, He urges them to fear God alone and acknowledge Him before men.\n\n— Bismark Twum",
+    "lesson": "Proclaiming the gospel requires courageous dependence on God, acknowledging that following Christ may cost worldly peace but secures eternal reward.",
     "key_verses": [
-      "Matthew 10:8",
-      "Matthew 10:16",
-      "Matthew 10:30-31"
+      "Matthew 10:7-8",
+      "Matthew 10:28",
+      "Matthew 10:38"
     ],
-    "theme": "The Commission and Cost of Discipleship",
-    "lesson": "Believers are commissioned with divine authority and protected by the Father even amidst hardship.",
     "questions": [
-      "What animals did Jesus compare His disciples to when sending them out?",
-      "Why did Jesus tell His disciples not to fear earthly persecutors?"
+      "How do you process the reality of relational conflict and opposition that Jesus promises will accompany true discipleship?",
+      "What does it practically mean for you to take up your cross daily in your modern context?"
     ]
   },
   "Matthew_11": {
     "book": "Matthew",
     "chapter": 11,
-    "theme": "Matthew Chapter 11: Jesus as the promised Messiah",
-    "summary": "In Matthew 11, the narrative records how Jesus addresses His people concerning jesus as the promised messiah, king of the jews, teacher of the kingdom, and great commission. The chapter opens with the declaration that it came to pass, when jesus had made an end of commanding his twelve disciples, he departed thence to teach and to preac, setting the course for divine instruction and action across 30 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that my yoke is easy, and my burden is light., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Follow King Jesus, seeking first His kingdom and righteousness in all things. Take time to meditate on Matthew 11 and allow God's Word to transform your daily conduct.",
+    "theme": "Doubt, Judgment, and Rest for the Weary",
+    "summary": "John the Baptist sends messengers from prison to ask if Jesus is truly the Coming One, prompting Jesus to point to His miraculous works and pronounce a blessing on those who do not stumble over Him. Jesus rebukes the unrepentant towns of Chorazin, Bethsaida, and Capernaum for ignoring His mighty deeds. He concludes by thanking the Father for hiding these truths from the wise and offering profound spiritual rest to all who are weary and burdened.\n\n— Bismark Twum",
+    "lesson": "True spiritual rest is found not in human striving or religious performance, but in humbly coming to Jesus and learning from His gentle heart.",
     "key_verses": [
-      "Matthew 11:1",
-      "Matthew 11:10",
-      "Matthew 11:30"
+      "Matthew 11:4-6",
+      "Matthew 11:25",
+      "Matthew 11:28-30"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Matthew chapter 11?",
-      "How does the message of Matthew 11 challenge or encourage your walk of faith today?"
+      "How does Jesus respond to John's moment of doubt, and what does this teach us about bringing our own doubts to Him?",
+      "What heavy burdens are you currently carrying that you need to exchange for Christ's easy yoke?"
     ]
   },
   "Matthew_12": {
     "book": "Matthew",
     "chapter": 12,
-    "theme": "Matthew Chapter 12: Jesus as the promised Messiah",
-    "summary": "In Matthew 12, the narrative records how Jesus addresses His people concerning jesus as the promised messiah, king of the jews, teacher of the kingdom, and great commission. The chapter opens with the declaration that at that time jesus went on the sabbath day through the corn, setting the course for divine instruction and action across 50 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that whosoever shall do the will of my father which is in heaven, the same is my brother, and sister, and mother., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Follow King Jesus, seeking first His kingdom and righteousness in all things. Take time to meditate on Matthew 12 and allow God's Word to transform your daily conduct.",
+    "theme": "Lord of the Sabbath and the Unpardonable Sin",
+    "summary": "Disciples pluck grain on the Sabbath, drawing Pharisaic condemnation which Jesus counters by healing a man with a withered hand in the synagogue on the same day. Following widespread healings, the Pharisees accuse Him of casting out demons by Beelzebul, prompting His stern warning regarding blasphemy against the Holy Spirit. When religious leaders demand a miraculous sign, Jesus points instead to the sign of Jonah, redefining true spiritual family as those who do the will of His Father.\n\n— Bismark Twum",
+    "lesson": "Jesus is Lord over all religious institutions and traditions, demanding a wholehearted allegiance that rejects spiritual blindness and embraces His kingdom work.",
     "key_verses": [
-      "Matthew 12:1",
-      "Matthew 12:10",
+      "Matthew 12:8",
+      "Matthew 12:30",
       "Matthew 12:50"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Matthew chapter 12?",
-      "How does the message of Matthew 12 challenge or encourage your walk of faith today?"
+      "Are there rules or traditions in your life that overshadow the call to extend mercy and love to others?",
+      "How does Jesus define family in this chapter, and what does it mean to be counted among His brothers and sisters?"
     ]
   },
   "Matthew_13": {
     "book": "Matthew",
     "chapter": 13,
-    "summary": "Jesus sits by the seaside and teaches the crowds in parables, beginning with the Parable of the Sower whose seed fell on path, rocky, thorny, and good ground. He explains the deeper meaning of the sower and the soils privately to His disciples, showing how the condition of the heart receives the Word of the Kingdom. Jesus shares the Parables of the Wheat and the Tares, the tiny Mustard Seed growing into a large tree, and the Leaven permeating three measures of flour. He further describes the kingdom as a Hidden Treasure found in a field, a Pearl of Great Price, and a Net cast into the sea gathering fish of every kind, before visiting His hometown of Nazareth where He performs few miracles due to their unbelief.\n\n— Brother Bismark Twum",
+    "theme": "Parables of the Kingdom of Heaven",
+    "summary": "Jesus sits by the Sea of Galilee and teaches large crowds using agricultural parables such as the Sower, the Weeds, and the Mustard Seed. He explains to His disciples that these stories reveal the hidden mysteries of the kingdom of God to believers while veiling truth from the stubborn-hearted. Later, He travels to His hometown of Nazareth, where He is rejected by the local townspeople due to their persistent unbelief.\n\n— Bismark Twum",
+    "lesson": "Cultivate a receptive heart that eagerly receives God's word so that it takes deep root and produces lasting spiritual fruit.",
     "key_verses": [
-      "Matthew 13:23",
-      "Matthew 13:44",
-      "Matthew 13:45-46"
+      "Matthew 13:3",
+      "Matthew 13:11",
+      "Matthew 13:44"
     ],
-    "theme": "The Parables of the Kingdom of Heaven",
-    "lesson": "The Kingdom of God is of supreme worth, and a receptive, obedient heart produces abundant fruit.",
     "questions": [
-      "What are the four different types of soil in the Parable of the Sower?",
-      "Why did Jesus do few miracles in His hometown of Nazareth?"
+      "Which of the soil types described in the parable of the Sower best represents the current condition of your heart?",
+      "Why did Jesus use parables to teach the crowds, and how does understanding spiritual mysteries affect your daily walk?"
     ]
   },
   "Matthew_14": {
     "book": "Matthew",
     "chapter": 14,
-    "summary": "King Herod Antipas executes John the Baptist by beheading him in prison after Herodias's daughter dances at his birthday banquet. Hearing this sad news, Jesus withdraws to a desolate place, but crowds follow Him; moved with deep compassion, He heals their sick. In the evening, Jesus miraculously feeds 5,000 men besides women and children using only five loaves of bread and two fish, gathering twelve baskets of leftovers. Later that night, Jesus walks across the stormy sea toward His disciples in the boat; Peter steps out onto the water in faith, begins to sink when looking at the wind, and is rescued by Jesus before the wind ceases.\n\n— Brother Bismark Twum",
+    "theme": "Feeding the Five Thousand and Walking on Water",
+    "summary": "King Herod executes John the Baptist in prison out of a foolish and reckless oath made during a birthday banquet. Upon hearing the news, Jesus withdraws to a solitary place, but large crowds follow Him, prompting Him to miraculously feed five thousand men with only five loaves and two fish. Afterward, He sends His disciples across the sea in a boat, walks across the stormy water to them at night, and rescues a sinking Peter.\n\n— Bismark Twum",
+    "lesson": "Jesus possesses absolute authority over both physical scarcity and natural elements, proving He is fully capable of sustaining and rescuing us in our deepest storms.",
     "key_verses": [
-      "Matthew 14:19-20",
-      "Matthew 14:29-31"
+      "Matthew 14:19",
+      "Matthew 14:27",
+      "Matthew 14:33"
     ],
-    "theme": "Miraculous Provision and Walking on Water",
-    "lesson": "Keep your eyes firmly fixed on Jesus above the storms, and trust His boundless power to provide.",
     "questions": [
-      "How many loaves and fish did Jesus use to feed the five thousand?",
-      "What happened when Peter took his eyes off Jesus while walking on the water?"
+      "What can we learn from the disciples' initial lack of faith when facing the large crowd and the stormy sea?",
+      "In what areas of your life do you need to step out of the boat and keep your eyes fixed firmly on Jesus?"
     ]
   },
   "Matthew_15": {
     "book": "Matthew",
     "chapter": 15,
-    "theme": "Matthew Chapter 15: Jesus as the promised Messiah",
-    "summary": "In Matthew 15, the narrative records how Jesus addresses His people concerning jesus as the promised messiah, king of the jews, teacher of the kingdom, and great commission. The chapter opens with the declaration that came to jesus scribes and pharisees, which were of jerusalem, saying,, setting the course for divine instruction and action across 39 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that he sent away the multitude, and took ship, and came into the coasts of magdala., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Follow King Jesus, seeking first His kingdom and righteousness in all things. Take time to meditate on Matthew 15 and allow God's Word to transform your daily conduct.",
+    "theme": "The Tradition of the Elders and Faith of a Canaanite Woman",
+    "summary": "Pharisees and scribes travel from Jerusalem to confront Jesus because His disciples eat with unwashed hands, violating human religious traditions. Jesus rebukes the religious leaders for setting aside God's commandments to uphold their own rules, explaining that true spiritual defilement originates from a corrupt heart. He then withdraws to the region of Tyre and Sidon, where He commends the persistent faith of a Canaanite woman and heals her demon-possessed daughter before feeding four thousand people.\n\n— Bismark Twum",
+    "lesson": "God cares infinitely more about the genuine condition of the heart and inner obedience than external religious rituals and human-made traditions.",
     "key_verses": [
-      "Matthew 15:1",
-      "Matthew 15:10",
-      "Matthew 15:39"
+      "Matthew 15:8",
+      "Matthew 15:18",
+      "Matthew 15:28"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Matthew chapter 15?",
-      "How does the message of Matthew 15 challenge or encourage your walk of faith today?"
+      "How can modern believers guard against replacing genuine heart devotion to God with empty religious routines?",
+      "What does the persistent faith of the Canaanite woman teach us about approaching God in prayer during times of seeming silence?"
     ]
   },
   "Matthew_16": {
     "book": "Matthew",
     "chapter": 16,
-    "theme": "Matthew Chapter 16: Jesus as the promised Messiah",
-    "summary": "In Matthew 16, the narrative records how Jesus addresses His people concerning jesus as the promised messiah, king of the jews, teacher of the kingdom, and great commission. The chapter opens with the declaration that the pharisees also with the sadducees came, and tempting desired him that he would shew them a sign from heaven., setting the course for divine instruction and action across 28 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that verily i say unto you, there be some standing here, which shall not taste of death, till they see the son of m, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Follow King Jesus, seeking first His kingdom and righteousness in all things. Take time to meditate on Matthew 16 and allow God's Word to transform your daily conduct.",
+    "theme": "Peter's Confession and the First Prediction of the Passion",
+    "summary": "Religious leaders demand a miraculous sign from heaven, but Jesus denounces their spiritual blindness and warns His disciples against the deceptive teaching of the Pharisees. Near Caesarea Philippi, Simon Peter boldly declares that Jesus is the Christ, the Son of the living God, earning a profound blessing. Immediately following this high point, Jesus plainly predicts His impending suffering, death, and resurrection, sharply rebuking Peter when he protests.\n\n— Bismark Twum",
+    "lesson": "True discipleship requires acknowledging Jesus as Lord while willingly embracing self-denial and cross-bearing for His sake.",
     "key_verses": [
-      "Matthew 16:1",
-      "Matthew 16:10",
-      "Matthew 16:28"
+      "Matthew 16:16",
+      "Matthew 16:18",
+      "Matthew 16:24"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Matthew chapter 16?",
-      "How does the message of Matthew 16 challenge or encourage your walk of faith today?"
+      "What does it mean for you personally to declare Jesus as the Christ in a culture that rejects Him?",
+      "In what practical ways can you deny yourself and take up your cross daily to follow Jesus?"
     ]
   },
   "Matthew_17": {
     "book": "Matthew",
     "chapter": 17,
-    "theme": "Matthew Chapter 17: Jesus as the promised Messiah",
-    "summary": "In Matthew 17, the narrative records how Jesus addresses His people concerning jesus as the promised messiah, king of the jews, teacher of the kingdom, and great commission. The chapter opens with the declaration that after six days jesus taketh peter, james, and john his brother, and bringeth them up into an high mountain apart,, setting the course for divine instruction and action across 27 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that notwithstanding, lest we should offend them, go thou to the sea, and cast an hook, and take up the fish that f, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Follow King Jesus, seeking first His kingdom and righteousness in all things. Take time to meditate on Matthew 17 and allow God's Word to transform your daily conduct.",
+    "theme": "The Transfiguration and Healing of a Boy",
+    "summary": "Jesus takes Peter, James, and John up a high mountain, where He is dazzlingly transfigured before them, appearing alongside Moses and Elijah as a bright cloud overshadows them and the Father speaks. Descending the mountain, Jesus finds His disciples unable to cast a demon out of an epileptic boy, prompting Him to heal the child and rebuke their lack of faith. Later, while in Galilee, Jesus predicts His death a second time and miraculously provides temple tax money from a fish's mouth.\n\n— Bismark Twum",
+    "lesson": "Mountaintop spiritual experiences are designed to strengthen our faith for the challenging spiritual battles we face in everyday life.",
     "key_verses": [
-      "Matthew 17:1",
-      "Matthew 17:10",
-      "Matthew 17:27"
+      "Matthew 17:5",
+      "Matthew 17:20",
+      "Matthew 17:22"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Matthew chapter 17?",
-      "How does the message of Matthew 17 challenge or encourage your walk of faith today?"
+      "Why do you think God the Father commanded the disciples to specifically listen to Jesus during the Transfiguration?",
+      "How does Jesus' teaching on mustard-seed faith encourage you when facing seemingly insurmountable obstacles?"
     ]
   },
   "Matthew_18": {
     "book": "Matthew",
     "chapter": 18,
-    "summary": "Jesus calls a little child into the midst of His disciples to teach that true greatness in the kingdom requires childlike humility. He gives severe warnings against causing any little one who believes in Him to stumble, stressing the radical excision of sin. Jesus shares the Parable of the Lost Sheep, celebrating the shepherd who leaves ninety-nine on the mountains to rescue one wanderer. He provides a four-step framework for church reconciliation when a brother sins, promises that where two or three gather in His name He is present, and delivers the Parable of the Unforgiving Servant who was forgiven a massive debt yet refused mercy to a fellow servant.\n\n— Brother Bismark Twum",
+    "theme": "The Greatest in the Kingdom and Parable of the Unforgiving Servant",
+    "summary": "The disciples ask Jesus who is the greatest in the kingdom of heaven, and He places a little child among them to illustrate the necessity of humble childlike trust. He teaches extensively about dealing with sin in the community, church discipline, and the boundless importance of church members forgiving one another. To emphasize this, He tells the parable of a king who cancels an enormous debt for a servant who then refuses to show mercy to a fellow servant.\n\n— Bismark Twum",
+    "lesson": "Having received radical, unmerited forgiveness from God, believers are morally obligated to extend unlimited forgiveness to others.",
     "key_verses": [
       "Matthew 18:3",
       "Matthew 18:20",
-      "Matthew 18:35"
+      "Matthew 18:22"
     ],
-    "theme": "Childlike Humility, Restoration, and Limitless Forgiveness",
-    "lesson": "Because God has forgiven our insurmountable debt of sin, we must extend genuine forgiveness to others.",
     "questions": [
-      "How many times did Jesus tell Peter to forgive a brother who sins against him?",
-      "What did the king do to the unforgiving servant in the parable?"
+      "What does adopting a childlike attitude look like in the context of ambition and status within the church?",
+      "Who in your life do you currently need to forgive from the heart, mirroring the vast forgiveness you received from Christ?"
     ]
   },
   "Matthew_19": {
     "book": "Matthew",
     "chapter": 19,
-    "theme": "Matthew Chapter 19: Jesus as the promised Messiah",
-    "summary": "In Matthew 19, the narrative records how Jesus addresses His people concerning jesus as the promised messiah, king of the jews, teacher of the kingdom, and great commission. The chapter opens with the declaration that it came to pass, that when jesus had finished these sayings, he departed from galilee, and came into the coasts of judae, setting the course for divine instruction and action across 30 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that but many that are first shall be last, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Follow King Jesus, seeking first His kingdom and righteousness in all things. Take time to meditate on Matthew 19 and allow God's Word to transform your daily conduct.",
+    "theme": "Teachings on Marriage, Divorce, and Eternal Life",
+    "summary": "Jesus departs Galilee and travels to Judea, where Pharisees test Him regarding the lawfulness of divorce. He upholds the divine institution of marriage while blessing little children who are brought to Him by His disciples. A wealthy young ruler approaches Him asking what good deed is required for eternal life, but goes away sorrowful upon being told to sell his possessions. Jesus uses this encounter to warn about the spiritual danger of wealth and promises immense rewards for those who sacrifice for His kingdom.\n\n— Bismark Twum",
+    "lesson": "True discipleship requires an unreserved surrender of our earthly securities and heart's affections to Christ, recognizing that eternal life cannot be earned through merit.",
     "key_verses": [
-      "Matthew 19:1",
-      "Matthew 19:10",
-      "Matthew 19:30"
+      "Matthew 19:6",
+      "Matthew 19:14",
+      "Matthew 19:24"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Matthew chapter 19?",
-      "How does the message of Matthew 19 challenge or encourage your walk of faith today?"
+      "What hindered the rich young ruler from fully following Jesus, and how might similar obstacles manifest in modern life?",
+      "How does Jesus' view of marriage and divorce challenge prevailing cultural norms of both the ancient world and today?"
     ]
   },
   "Matthew_20": {
     "book": "Matthew",
     "chapter": 20,
-    "summary": "In Matthew 20, Jesus teaches the Parable of the Workers in the Vineyard, where laborers hired early in the morning received the same one-denarius wage as those hired at the eleventh hour, illustrating that the last shall be first. As Jesus goes up to Jerusalem, He takes the twelve disciples aside and predicts His betrayal, death on the cross, and resurrection on the third day for the third time. The mother of James and John (sons of Zebedee) requests that her two sons sit at Jesus' right and left hands in His kingdom, leading Jesus to teach that true greatness comes through servanthood, just as the Son of Man came to give His life a ransom for many. As Jesus departs Jericho with a large crowd, He is moved with compassion and heals two blind men who cried out to Him as the Son of David.\n\n— Brother Bismark Twum",
+    "theme": "The Laborers in the Vineyard and the Request of James and John",
+    "summary": "Jesus tells the parable of the workers in the vineyard, illustrating that God's grace distributes rewards according to His sovereign generosity rather than human reckoning. As they draw near to Jerusalem, He explicitly predicts His upcoming betrayal, crucifixion, and resurrection for the third time. The mother of James and John asks for positions of honor for her sons in His kingdom, prompting Jesus to redefine true greatness through servant leadership. Nearing Jericho, Jesus restores the sight of two blind men who persistently cry out for mercy.\n\n— Bismark Twum",
+    "lesson": "In God's kingdom, greatness is measured not by authority or status, but by humble service modeled after the sacrificial life of Christ.",
     "key_verses": [
       "Matthew 20:16",
       "Matthew 20:28",
       "Matthew 20:34"
     ],
-    "theme": "Kingdom Grace, Servanthood, and Healing Faith",
-    "lesson": "Greatness in God's Kingdom is measured by humble service, and God's sovereign grace rewards all who come to Him.",
     "questions": [
-      "Why did the workers hired early in the morning murmur against the landowner?",
-      "How did Jesus explain the difference between worldly rulers and leadership in His Kingdom?"
+      "How does the parable of the workers in the vineyard challenge our natural human instincts regarding fairness and reward?",
+      "In what practical ways can you pursue servant leadership in your family, workplace, or church community this week?"
     ]
   },
   "Matthew_21": {
     "book": "Matthew",
     "chapter": 21,
-    "summary": "Jesus enters Jerusalem riding on a donkey and a colt while crowds spread garments and palm branches, shouting 'Hosanna to the Son of David! Blessed is He who comes in the name of the Lord!' Jesus enters the temple courts, drives out the money changers and merchants, and declares, 'My house shall be called a house of prayer, but you have made it a den of thieves.' The next morning, Jesus curses a barren fig tree having leaves but no fruit, which withers immediately as a lesson on faith and prayer. In the temple, chief priests question His authority, and Jesus responds with the Parable of the Two Sons and the Parable of the Wicked Tenants who murdered the vineyard owner's son.\n\n— Brother Bismark Twum",
+    "theme": "The Triumphal Entry and Cleansing of the Temple",
+    "summary": "Jesus enters Jerusalem riding on a donkey, fulfilling prophetic Scripture as the crowds shout Hosanna and welcome Him as the coming King. He proceeds to the temple courts, drives out the money changers and merchants, and heals the blind and lame who come to Him. The following morning, He causes a fruitless fig tree to wither as a visual lesson on faith and spiritual barrenness, subsequently confronting the religious authorities' lack of genuine authority. He delivers the parables of the two sons and the wicked tenants, exposing the impending rejection of Israel's corrupt leaders.\n\n— Bismark Twum",
+    "lesson": "God desires genuine spiritual fruitfulness and sincere worship rather than mere religious outward show.",
     "key_verses": [
       "Matthew 21:9",
       "Matthew 21:13",
       "Matthew 21:22"
     ],
-    "theme": "The Triumphal Entry, Cleansing the Temple, and Authority Challenged",
-    "lesson": "True worship produces genuine spiritual fruit, and prayer offered in faith moves mountains.",
     "questions": [
-      "What did the crowds shout as Jesus entered Jerusalem?",
-      "Why did Jesus drive out the merchants from the temple?"
+      "What does the cleansing of the temple reveal about Jesus' zeal for the house of God and His attitude toward religious exploitation?",
+      "How does the withered fig tree serve as a warning regarding spiritual productivity in the life of a believer?"
     ]
   },
   "Matthew_22": {
     "book": "Matthew",
     "chapter": 22,
-    "theme": "Matthew Chapter 22: Jesus as the promised Messiah",
-    "summary": "In Matthew 22, the narrative records how Jesus addresses His people concerning jesus as the promised messiah, king of the jews, teacher of the kingdom, and great commission. The chapter opens with the declaration that jesus answered and spake unto them again by parables, and said,, setting the course for divine instruction and action across 46 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that no man was able to answer him a word, neither durst any man from that day forth ask him any more questions., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Follow King Jesus, seeking first His kingdom and righteousness in all things. Take time to meditate on Matthew 22 and allow God's Word to transform your daily conduct.",
+    "theme": "Parables of the Wedding Banquet and Confrontations with Authorities",
+    "summary": "Jesus teaches the parable of the wedding feast, illustrating how the invited guests rejected the king's summons while outsiders were gathered in from the highways. Religious leaders attempt to trap Him with politically charged questions regarding Roman taxation, the resurrection of the dead, and the greatest commandment in the law. Jesus successfully silences their trickery with profound wisdom and then turns the tables by asking them whose son the Messiah is, leaving them utterly unable to answer. He leaves the religious elite without excuse as they fail to recognize the identity of the Lord.\n\n— Bismark Twum",
+    "lesson": "We must carefully examine our hearts to ensure we respond to God's gracious invitation to His kingdom with genuine repentance and clothed in His righteousness.",
     "key_verses": [
-      "Matthew 22:1",
-      "Matthew 22:10",
-      "Matthew 22:46"
+      "Matthew 22:14",
+      "Matthew 22:37-38",
+      "Matthew 22:42"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Matthew chapter 22?",
-      "How does the message of Matthew 22 challenge or encourage your walk of faith today?"
+      "What is the significance of the wedding garment mentioned in the parable, and what does it symbolize for believers?",
+      "How does Jesus summarize the entirety of the Old Testament law in His response to the Pharisee's question?"
     ]
   },
   "Matthew_23": {
     "book": "Matthew",
     "chapter": 23,
-    "theme": "Matthew Chapter 23: Jesus as the promised Messiah",
-    "summary": "In Matthew 23, the narrative records how Jesus addresses His people concerning jesus as the promised messiah, king of the jews, teacher of the kingdom, and great commission. The chapter opens with the declaration that spake jesus to the multitude, and to his disciples,, setting the course for divine instruction and action across 39 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that i say unto you, ye shall not see me henceforth, till ye shall say, blessed is he that cometh in the name of th, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Follow King Jesus, seeking first His kingdom and righteousness in all things. Take time to meditate on Matthew 23 and allow God's Word to transform your daily conduct.",
+    "theme": "Denunciation of the Scribes and Pharisees",
+    "summary": "Jesus publicly warns the crowds and His disciples against the hypocritical behavior of the scribes and Pharisees who sit in Moses' seat. He pronounces a series of seven devastating woes upon the religious leaders, exposing their spiritual blindness, love of public applause, and neglect of justice, mercy, and faithfulness. He compares them to whitewashed tombs that look beautiful on the outside but are full of dead men's bones within. The discourse concludes with a poignant lament over Jerusalem, expressing deep grief over the city's persistent rejection of God's prophets.\n\n— Bismark Twum",
+    "lesson": "True godliness focuses on inward integrity and heartfelt compassion rather than external religious performance designed for human praise.",
     "key_verses": [
-      "Matthew 23:1",
-      "Matthew 23:10",
-      "Matthew 23:39"
+      "Matthew 23:11-12",
+      "Matthew 23:25-26",
+      "Matthew 23:37"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Matthew chapter 23?",
-      "How does the message of Matthew 23 challenge or encourage your walk of faith today?"
+      "Which of the specific behaviors condemned in the 'woes' against the Pharisees is most subtle and dangerous to guard against today?",
+      "How does Jesus' lament over Jerusalem reflect the heart and character of God toward rebellious people?"
     ]
   },
   "Matthew_24": {
     "book": "Matthew",
     "chapter": 24,
-    "theme": "Matthew Chapter 24: Jesus as the promised Messiah",
-    "summary": "In Matthew 24, the narrative records how Jesus addresses His people concerning jesus as the promised messiah, king of the jews, teacher of the kingdom, and great commission. The chapter opens with the declaration that jesus went out, and departed from the temple: and his disciples came to him for to shew him the buildings of the temple., setting the course for divine instruction and action across 51 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that shall cut him asunder, and appoint him his portion with the hypocrites: there shall be weeping and gnashing of, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Follow King Jesus, seeking first His kingdom and righteousness in all things. Take time to meditate on Matthew 24 and allow God's Word to transform your daily conduct.",
+    "theme": "The Olivet Discourse on the End Times",
+    "summary": "Leaving the temple, Jesus tells His disciples that its magnificent buildings will be completely dismantled stone by stone. Later, sitting on the Mount of Olives, the disciples privately ask Him about the sign of His coming and the end of the age. Jesus details the birth pains of tribulation, false messiahs, wars, and the ultimate destruction of Jerusalem, while pointing toward His dramatic future return in power and glory. He urges constant spiritual alertness through the parable of the fig tree and commands His followers to live in readiness since the exact hour of His return remains unknown.\n\n— Bismark Twum",
+    "lesson": "Believers must remain spiritually watchful and faithful in daily obedience, anticipating the certain return of Jesus Christ.",
     "key_verses": [
-      "Matthew 24:1",
-      "Matthew 24:10",
-      "Matthew 24:51"
+      "Matthew 24:13",
+      "Matthew 24:35",
+      "Matthew 24:42"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Matthew chapter 24?",
-      "How does the message of Matthew 24 challenge or encourage your walk of faith today?"
+      "What does it mean to live in a state of spiritual readiness for Christ's return without falling into paralyzing fear or speculation?",
+      "How can Christians maintain hope and steadfastness amidst the global trials and tribulations Jesus prophesied?"
     ]
   },
   "Matthew_25": {
     "book": "Matthew",
     "chapter": 25,
-    "summary": "Jesus tells the Parable of the Ten Virgins awaiting the bridegroom; five wise virgins brought extra oil for their lamps, while five foolish virgins had no oil and were locked outside when the bridegroom arrived at midnight. He then shares the Parable of the Talents, where a master entrusts five, two, and one talent to his servants according to their abilities, rewarding the faithful stewards who multiplied their master's money while casting the lazy servant into outer darkness. Jesus concludes with the Sheep and the Goats judgment, where the King separates nations based on how they treated the hungry, thirsty, stranger, naked, sick, and imprisoned: 'As you did it to one of the least of these my brothers, you did it to me.'\n\n— Brother Bismark Twum",
+    "theme": "The Parables of Readiness and the Final Judgment",
+    "summary": "Ten bridesmaids wait with oil lamps for the bridegroom, with five proving foolishly unprepared while five remain ready with extra supplies. A master distributes talents to his servants, rewarding those who invest faithfully and rebuking the one who buries his portion out of fear. The King sits upon His glorious throne to separate the nations, blessing those who fed the hungry and clothed the naked as serving Christ Himself, while sending away those who neglected the vulnerable.\n\n— Bismark Twum",
+    "lesson": "Believers must actively and faithfully serve God while anticipating Christ's return, demonstrating genuine faith through tangible acts of compassion to those in need.",
     "key_verses": [
       "Matthew 25:13",
-      "Matthew 25:21",
       "Matthew 25:40"
     ],
-    "theme": "Spiritual Readiness, Faithful Stewardship, and the Final Judgment",
-    "lesson": "Live in active spiritual readiness and faithfully steward God's gifts by serving those in need.",
     "questions": [
-      "What distinguished the wise virgins from the foolish virgins?",
-      "What did the faithful servants do with the talents entrusted to them?"
+      "In what practical ways are you cultivating spiritual readiness while waiting for Christ's return?",
+      "How does seeing Jesus in 'the least of these' change your approach to daily acts of service?"
     ]
   },
   "Matthew_26": {
     "book": "Matthew",
     "chapter": 26,
-    "summary": "While Jesus is at Bethany in the house of Simon the leper, a woman pours very costly alabaster ointment on His head, which Jesus commends as preparation for His burial. Judas Iscariot goes to the chief priests and agrees to betray Jesus for thirty pieces of silver. Jesus celebrates the Passover with His disciples, institutes the Lord's Supper using bread and wine as His body and blood of the new covenant, and predicts Peter's threefold denial. Jesus endures intense anguish in the Garden of Gethsemane praying 'Not as I will, but as You will,' is betrayed by Judas with a kiss, is arrested, and is condemned before Caiaphas the high priest while Peter denies Him three times and weeps bitterly.\n\n— Brother Bismark Twum",
+    "theme": "The Betrayal, Last Supper, and Arrest of Jesus",
+    "summary": "An anonymous woman pours expensive perfume over Jesus' head in Bethany, prompting His commendation while Judas Iscariot secretly negotiates with the chief priests to betray Him. Jesus institutes the Lord's Supper with His disciples in the upper room before predicting Peter's upcoming denial in the Garden of Gethsemane. Following intense agony in prayer, Jesus is arrested after Judas identifies Him with a kiss, then stands trial before the Sanhedrin where Peter disowns Him three times.\n\n— Bismark Twum",
+    "lesson": "Human loyalty often fails under pressure, yet Jesus willingly embraces suffering and betrayal to fulfill God's redemptive plan for humanity.",
     "key_verses": [
-      "Matthew 26:26-28",
       "Matthew 26:39",
       "Matthew 26:75"
     ],
-    "theme": "The Last Supper, Gethsemane, and the Arrest of Jesus",
-    "lesson": "Jesus willingly drank the cup of suffering in total surrender to the Father to redeem humanity.",
     "questions": [
-      "For how many pieces of silver did Judas Iscariot betray Jesus?",
-      "What prayer did Jesus repeat three times in the Garden of Gethsemane?"
+      "When have you experienced moments of spiritual sleepiness or fear, similar to the disciples in Gethsemane?",
+      "How does the quiet surrender of Jesus in prayer inspire your own approach to difficult trials?"
     ]
   },
   "Matthew_27": {
     "book": "Matthew",
     "chapter": 27,
-    "summary": "Judas feels remorse, returns the thirty pieces of silver to the temple, and hangs himself in despair. Jesus stands before Pontius Pilate the Roman governor, remaining silent before false accusers while the incited crowd demands the release of Barabbas and the crucifixion of Jesus. Roman soldiers mock Jesus with a crown of thorns and purple robe, force Simon of Cyrene to carry His cross, and crucify Him at Golgotha between two thieves. Jesus cries out 'Eli, Eli, lema sabachthani' and yields up His spirit, whereupon the temple veil is torn in two from top to bottom, the earth shakes, and Joseph of Arimathea buries Jesus' body in a new tomb sealed by Roman guards.\n\n— Brother Bismark Twum",
+    "theme": "The Crucifixion and Burial of Jesus",
+    "summary": "Overcome with remorse, Judas returns the thirty pieces of silver to the temple leaders before hanging himself. Pontius Pilate questions Jesus and ultimately releases Barabbas to the crowd, sentencing Jesus to be flogged and crucified at Golgotha. After enduring hours of mockery, darkness, and suffering, Jesus breathes His last, tearing the temple veil in two and prompting a Roman centurion to declare Him the Son of God. Joseph of Arimathea claims the body and places it in his own new tomb, which the chief priests secure with a sealed stone and a guard.\n\n— Bismark Twum",
+    "lesson": "The substitutionary death of Christ on the cross is the ultimate display of God's justice and love, removing the barrier between humanity and God.",
     "key_verses": [
-      "Matthew 27:26",
       "Matthew 27:46",
-      "Matthew 27:51-54"
+      "Matthew 27:54"
     ],
-    "theme": "The Trial, Crucifixion, and Burial of Jesus",
-    "lesson": "Christ died on the cross as the sacrificial Lamb, opening direct access to God for all mankind.",
     "questions": [
-      "Who was compelled to carry the cross of Jesus to Golgotha?",
-      "What dramatic supernatural event happened in the temple when Jesus died?"
+      "What thoughts arise in your mind as you contemplate the physical and spiritual agony Jesus endured on the cross?",
+      "Why is the tearing of the temple veil at the moment of Jesus' death so significant for believers today?"
     ]
   },
   "Matthew_28": {
     "book": "Matthew",
     "chapter": 28,
-    "summary": "On the first day of the week, Mary Magdalene and the other Mary went to the tomb, where an earthquake occurred and an angel rolled back the stone. The angel told the fearful women that Jesus was not there because He had risen from the dead just as He promised. As the women ran to tell the disciples, the risen Jesus met them on the road and said, 'Greetings! Do not be afraid.' Jesus then met the eleven disciples on a mountain in Galilee and gave them the Great Commission, declaring that all authority in heaven and on earth was His and promising to be with them always.\n\n— Brother Bismark Twum",
+    "theme": "The Resurrection and the Great Commission",
+    "summary": "Mary Magdalene and the other Mary visit the tomb at dawn, where an angel rolls away the stone and announces that Jesus has risen from the dead. The resurrected Jesus appears to the women on the road, instructing them to tell His disciples to meet Him in Galilee. Meanwhile, the chief priests bribe the guards to spread a false rumor that the disciples stole the body while the guards slept. Jesus meets the eleven disciples on a mountain, declaring His universal authority and commanding them to make disciples of all nations.\n\n— Bismark Twum",
+    "lesson": "The resurrection of Jesus transforms despair into triumphant hope, empowering believers to boldly share the gospel with the entire world.",
     "key_verses": [
       "Matthew 28:6",
-      "Matthew 28:18-20"
+      "Matthew 28:19"
     ],
-    "theme": "Resurrection & The Great Commission",
-    "lesson": "Jesus conquered death and holds all authority, commissioning every believer to spread the Gospel with His abiding presence.",
     "questions": [
-      "What did the angel tell the women at the empty tomb?",
-      "What final promise did Jesus give His disciples in the Great Commission?"
+      "How does the physical resurrection of Jesus anchor and empower your daily Christian hope?",
+      "In what specific ways are you participating in the mission of the Great Commission in your local community?"
     ]
   },
   "Mark_1": {
     "book": "Mark",
     "chapter": 1,
-    "theme": "Mark Chapter 1: Jesus as the obedient Servant",
-    "summary": "In Mark 1, the narrative records how Jesus addresses His people concerning jesus as the obedient servant, powerful son of god, healer, and ransom for many. The chapter opens with the declaration that the beginning of the gospel of jesus christ, the son of god, setting the course for divine instruction and action across 45 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that but he went out, and began to publish it much, and to blaze abroad the matter, insomuch that jesus could no mo, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "For even the Son of Man did not come to be served, but to serve, and to give His life a ransom for many. Take time to meditate on Mark 1 and allow God's Word to transform your daily conduct.",
+    "theme": "The Dawn of Ministry",
+    "summary": "John the Baptist preaches a baptism of repentance in the wilderness before baptizing Jesus, who immediately faces temptation in the desert by Satan. Jesus then calls His first disciples—Simon, Andrew, James, and John—by the Sea of Galilee and launches His public ministry by casting out an unclean spirit and healing many in Capernaum. A leper is cleansed, initiating a wave of public acclaim that forces Jesus to withdraw briefly to solitary places for prayer.\n\n— Bismark Twum",
+    "lesson": "Believers must prioritize regular quiet communion with God to receive spiritual renewal and direction, even amidst the demands of active service.",
     "key_verses": [
-      "Mark 1:1",
-      "Mark 1:10",
-      "Mark 1:45"
+      "Mark 1:11",
+      "Mark 1:15",
+      "Mark 1:35"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Mark chapter 1?",
-      "How does the message of Mark 1 challenge or encourage your walk of faith today?"
+      "How does Jesus' withdrawal to solitary places for prayer challenge your own daily routine?",
+      "In what ways does the immediate response of the disciples to Jesus' call inspire your obedience today?"
     ]
   },
   "Mark_2": {
     "book": "Mark",
     "chapter": 2,
-    "theme": "Mark Chapter 2: Jesus as the obedient Servant",
-    "summary": "In Mark 2, the narrative records how Jesus addresses His people concerning jesus as the obedient servant, powerful son of god, healer, and ransom for many. The chapter opens with the declaration that again he entered into capernaum after some days, setting the course for divine instruction and action across 28 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that the son of man is lord also of the sabbath., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "For even the Son of Man did not come to be served, but to serve, and to give His life a ransom for many. Take time to meditate on Mark 2 and allow God's Word to transform your daily conduct.",
+    "theme": "Authority to Forgive and Heal",
+    "summary": "Determined friends lower a paralyzed man through a roof to reach Jesus, who shocks the religious leaders by forgiving the man's sins before physically healing him. Levi the tax collector leaves his booth to follow Jesus and hosts a controversial banquet that prompts Jesus to explain that He came to call sinners, not the righteous. Arguments over fasting and Sabbath observance escalate as Jesus declares Himself Lord of the Sabbath while healing a man with a withered hand.\n\n— Bismark Twum",
+    "lesson": "True fellowship with Christ transcends religious legalism and compels us to embrace outcasts with the radical grace of the Gospel.",
     "key_verses": [
-      "Mark 2:1",
-      "Mark 2:10",
-      "Mark 2:28"
+      "Mark 2:5",
+      "Mark 2:17",
+      "Mark 2:27"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Mark chapter 2?",
-      "How does the message of Mark 2 challenge or encourage your walk of faith today?"
+      "What obstacles do you need to overcome to bring friends to Jesus like the men who lowered the paralytic?",
+      "How can you guard against modern forms of religious legalism in your own walk of faith?"
     ]
   },
   "Mark_3": {
     "book": "Mark",
     "chapter": 3,
-    "theme": "Mark Chapter 3: Jesus as the obedient Servant",
-    "summary": "In Mark 3, the narrative records how Jesus addresses His people concerning jesus as the obedient servant, powerful son of god, healer, and ransom for many. The chapter opens with the declaration that he entered again into the synagogue, setting the course for divine instruction and action across 35 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that whosoever shall do the will of god, the same is my brother, and my sister, and mother., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "For even the Son of Man did not come to be served, but to serve, and to give His life a ransom for many. Take time to meditate on Mark 3 and allow God's Word to transform your daily conduct.",
+    "theme": "The Expanding Circle and Rising Opposition",
+    "summary": "Jesus heals a man with a withered hand in the synagogue on the Sabbath, provoking the Pharisees and Herodians to plot His destruction. Multitudes follow Jesus to the Sea of Galilee, prompting Him to appoint twelve apostles to preach and cast out demons. When His biological family arrives to restrain Him, claiming He is out of His mind, Jesus redefines His true family as those who do the will of God.\n\n— Bismark Twum",
+    "lesson": "Alignment with the family of God requires radical loyalty that supersedes even biological and cultural ties.",
     "key_verses": [
-      "Mark 3:1",
-      "Mark 3:10",
+      "Mark 3:14-15",
+      "Mark 3:25",
       "Mark 3:35"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Mark chapter 3?",
-      "How does the message of Mark 3 challenge or encourage your walk of faith today?"
+      "In what ways does doing the will of God redefine your primary loyalties and relationships?",
+      "How do you respond when cultural or familial pressure opposes your commitment to Christ?"
     ]
   },
   "Mark_4": {
     "book": "Mark",
     "chapter": 4,
-    "theme": "Mark Chapter 4: Jesus as the obedient Servant",
-    "summary": "In Mark 4, the narrative records how the Lord addresses His people concerning jesus as the obedient servant, powerful son of god, healer, and ransom for many. The chapter opens with the declaration that he began again to teach by the sea side: and there was gathered unto him a great multitude, so that he entered into a sh, setting the course for divine instruction and action across 41 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that they feared exceedingly, and said one to another, what manner of man is this, that even the wind and the sea o, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "For even the Son of Man did not come to be served, but to serve, and to give His life a ransom for many. Take time to meditate on Mark 4 and allow God's Word to transform your daily conduct.",
+    "theme": "The Parables of the Kingdom",
+    "summary": "Jesus teaches large crowds from a boat using the parable of the sower, later explaining the mystery of the kingdom and the necessity of fertile soil to His disciples in private. Additional parables illustrate the hidden, steady growth of the kingdom and the surprisingly vast potential of a tiny mustard seed. As evening falls, Jesus calms a furious storm on the Sea of Galilee with a single command, leaving the terrified disciples marveling at His absolute authority over nature.\n\n— Bismark Twum",
+    "lesson": "Faith conquers fear in life's fiercest storms because the Creator of the universe dwells within the vessel of our lives.",
     "key_verses": [
-      "Mark 4:1",
-      "Mark 4:10",
-      "Mark 4:41"
+      "Mark 4:20",
+      "Mark 4:39",
+      "Mark 4:40"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Mark chapter 4?",
-      "How does the message of Mark 4 challenge or encourage your walk of faith today?"
+      "What kind of soil best characterizes your heart's current receptivity to God's Word?",
+      "When facing life's literal or metaphorical storms, how do you practically exercise faith instead of fear?"
     ]
   },
   "Mark_5": {
     "book": "Mark",
     "chapter": 5,
-    "theme": "Mark Chapter 5: Jesus as the obedient Servant",
-    "summary": "In Mark 5, the narrative records how Jesus addresses His people concerning jesus as the obedient servant, powerful son of god, healer, and ransom for many. The chapter opens with the declaration that they came over unto the other side of the sea, into the country of the gadarenes., setting the course for divine instruction and action across 43 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that he charged them straitly that no man should know it, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "For even the Son of Man did not come to be served, but to serve, and to give His life a ransom for many. Take time to meditate on Mark 5 and allow God's Word to transform your daily conduct.",
+    "theme": "Power over Legion, Disease, and Death",
+    "summary": "Stepping ashore in the region of the Gerasenes, Jesus casts a legion of demons into a herd of swine, transforming a violent man into a sane evangelist. Returning across the sea, Jesus is intercepted by Jairus, whose daughter is dying, but is delayed by a woman suffering from chronic bleeding who is healed simply by touching His cloak. Upon arriving at Jairus's house, Jesus takes the dead girl by the hand and restores her to life, strictly commanding amazement to be tempered by discretion.\n\n— Bismark Twum",
+    "lesson": "No human condition—whether spiritual torment, chronic suffering, or physical death—is beyond the restorative power of Jesus.",
     "key_verses": [
-      "Mark 5:1",
-      "Mark 5:10",
-      "Mark 5:43"
+      "Mark 5:19",
+      "Mark 5:34",
+      "Mark 5:36"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Mark chapter 5?",
-      "How does the message of Mark 5 challenge or encourage your walk of faith today?"
+      "How does the persistent faith of the bleeding woman encourage you to approach Jesus in your own desperation?",
+      "In what areas of your life do you need to replace fear with persistent belief in Christ's power?"
     ]
   },
   "Mark_6": {
     "book": "Mark",
     "chapter": 6,
-    "theme": "Mark Chapter 6: Jesus as the obedient Servant",
-    "summary": "In Mark 6, the narrative records how Jesus addresses His people concerning jesus as the obedient servant, powerful son of god, healer, and ransom for many. The chapter opens with the declaration that he went out from thence, and came into his own country, setting the course for divine instruction and action across 56 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that whithersoever he entered, into villages, or cities, or country, they laid the sick in the streets, and besough, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "For even the Son of Man did not come to be served, but to serve, and to give His life a ransom for many. Take time to meditate on Mark 6 and allow God's Word to transform your daily conduct.",
+    "theme": "Mission, Martyrdom, and Miracles",
+    "summary": "Jesus faces rejection in His hometown of Nazareth and sends the twelve apostles out two by two with authority to preach repentance and heal the sick. A flashback recounts how King Herod executed John the Baptist out of fear and regret after an impulsive oath made to Herodias's daughter. After the apostles return to report on their ministry, Jesus feeds a multitude of five thousand with five loaves and two fish, walks across the stormy sea to terrified disciples, and heals the sick in Gennesaret.\n\n— Bismark Twum",
+    "lesson": "God delights in using ordinary, inadequate resources—like a small lunch—to accomplish miraculous and abundant provision for many.",
     "key_verses": [
-      "Mark 6:1",
-      "Mark 6:10",
-      "Mark 6:56"
+      "Mark 6:31",
+      "Mark 6:37",
+      "Mark 6:50"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Mark chapter 6?",
-      "How does the message of Mark 6 challenge or encourage your walk of faith today?"
+      "What does the feeding of the 5,000 teach you about offering your meager resources to God for multiplication?",
+      "How do you handle rejection or opposition when sharing the Gospel, keeping Jesus' example in Nazareth in mind?"
     ]
   },
   "Mark_7": {
     "book": "Mark",
     "chapter": 7,
-    "theme": "Mark Chapter 7: Jesus as the obedient Servant",
-    "summary": "In Mark 7, the narrative records how Jesus addresses His people concerning jesus as the obedient servant, powerful son of god, healer, and ransom for many. The chapter opens with the declaration that came together unto him the pharisees, and certain of the scribes, which came from jerusalem., setting the course for divine instruction and action across 37 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that were beyond measure astonished, saying, he hath done all things well: he maketh both the deaf to hear, and the, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "For even the Son of Man did not come to be served, but to serve, and to give His life a ransom for many. Take time to meditate on Mark 7 and allow God's Word to transform your daily conduct.",
+    "theme": "Traditions of Men vs. the Word of God",
+    "summary": "Pharisees and scribes criticize Jesus' disciples for eating with unwashed hands, prompting Jesus to rebuke their hypocrisy for elevating human tradition above God's commandments. He then withdraws to the region of Tyre and Sidon, where He commends the great faith of a Syrophoenician woman and heals her demon-possessed daughter. Returning to the Decapolis, Jesus heals a deaf and mute man by putting His fingers in the man's ears and touching his tongue with saliva while sighing.\n\n— Bismark Twum",
+    "lesson": "True spiritual defilement comes from the heart and corrupt desires within a person, rather than external rituals or the food that enters the body.",
     "key_verses": [
-      "Mark 7:1",
-      "Mark 7:10",
-      "Mark 7:37"
+      "Mark 7:6",
+      "Mark 7:8",
+      "Mark 7:15"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Mark chapter 7?",
-      "How does the message of Mark 7 challenge or encourage your walk of faith today?"
+      "How do modern religious traditions sometimes overshadow the genuine commands of God in our daily lives?",
+      "What does the persistent faith of the Syrophoenician woman teach us about approaching Jesus with our deepest needs?"
     ]
   },
   "Mark_8": {
     "book": "Mark",
     "chapter": 8,
-    "theme": "Mark Chapter 8: Jesus as the obedient Servant",
-    "summary": "In Mark 8, the narrative records how Jesus addresses His people concerning jesus as the obedient servant, powerful son of god, healer, and ransom for many. The chapter opens with the declaration that in those days the multitude being very great, and having nothing to eat, jesus called his disciples unto him, and saith , setting the course for divine instruction and action across 38 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that whosoever therefore shall be ashamed of me and of my words in this adulterous and sinful generation, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "For even the Son of Man did not come to be served, but to serve, and to give His life a ransom for many. Take time to meditate on Mark 8 and allow God's Word to transform your daily conduct.",
+    "theme": "The Bread of Heaven and the Path of the Cross",
+    "summary": "Moved with compassion for a hungry crowd of four thousand, Jesus multiplies seven loaves and a few small fish to feed everyone with leftovers remaining. The Pharisees demand a sign from heaven, but Jesus sighs deeply in His spirit and refuses to give them one, warning His disciples against the yeast of the Pharisees and Herod. After Peter makes his profound confession that Jesus is the Christ, Jesus predicts His suffering and death for the first time and rebukes Peter for setting his mind on human things.\n\n— Bismark Twum",
+    "lesson": "Following Jesus requires denying oneself, taking up the cross daily, and losing one's life for the sake of the Gospel to truly save it.",
     "key_verses": [
-      "Mark 8:1",
-      "Mark 8:10",
-      "Mark 8:38"
+      "Mark 8:29",
+      "Mark 8:31",
+      "Mark 8:34"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Mark chapter 8?",
-      "How does the message of Mark 8 challenge or encourage your walk of faith today?"
+      "Why did the disciples struggle to understand Jesus' warnings even after witnessing miraculous feedings?",
+      "What does it practically look like to take up your cross and follow Jesus in today's culture?"
     ]
   },
   "Mark_9": {
     "book": "Mark",
     "chapter": 9,
-    "theme": "Mark Chapter 9: Jesus as the obedient Servant",
-    "summary": "In Mark 9, the narrative records how Jesus addresses His people concerning jesus as the obedient servant, powerful son of god, healer, and ransom for many. The chapter opens with the declaration that he said unto them, verily i say unto you, that there be some of them that stand here, which shall not taste of death, ti, setting the course for divine instruction and action across 50 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that salt is good: but if the salt have lost his saltness, wherewith will ye season it? have salt in yourselves, an, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "For even the Son of Man did not come to be served, but to serve, and to give His life a ransom for many. Take time to meditate on Mark 9 and allow God's Word to transform your daily conduct.",
+    "theme": "The Transfiguration and the Call to Servant Leadership",
+    "summary": "Jesus takes Peter, James, and John up a high mountain, where He is transfigured in dazzling white glory alongside Moses and Elijah before a voice from a cloud declares Him the beloved Son. Coming down from the mountain, Jesus casts a deaf and mute spirit out of a boy after the disciples failed, explaining that this kind comes out only through prayer. He then privately predicts His death and resurrection a second time and rebukes the disciples for arguing over who was the greatest among themselves.\n\n— Bismark Twum",
+    "lesson": "Greatness in the kingdom of God is measured not by status or power, but by humble service to the least and the last.",
     "key_verses": [
-      "Mark 9:1",
-      "Mark 9:10",
-      "Mark 9:50"
+      "Mark 9:7",
+      "Mark 9:23",
+      "Mark 9:35"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Mark chapter 9?",
-      "How does the message of Mark 9 challenge or encourage your walk of faith today?"
+      "How should mountain-top spiritual experiences prepare us for the messy realities of daily ministry and suffering?",
+      "What did Jesus mean when He said that whoever wants to be first must be servant of all?"
     ]
   },
   "Mark_10": {
     "book": "Mark",
     "chapter": 10,
-    "theme": "Mark Chapter 10: Jesus as the obedient Servant",
-    "summary": "In Mark 10, the narrative records how Jesus addresses His people concerning jesus as the obedient servant, powerful son of god, healer, and ransom for many. The chapter opens with the declaration that he arose from thence, and cometh into the coasts of judaea by the farther side of jordan: and the people resort unto him, setting the course for divine instruction and action across 52 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that jesus said unto him, go thy way, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "For even the Son of Man did not come to be served, but to serve, and to give His life a ransom for many. Take time to meditate on Mark 10 and allow God's Word to transform your daily conduct.",
+    "theme": "Marriage, Wealth, and the Suffering Servant",
+    "summary": "Farther along His journey, Jesus teaches about the sacred permanence of marriage and divorce, and subsequently welcomes little children into His arms, warning that the kingdom of God belongs to those who receive it like a child. A wealthy ruler approaches Him asking how to inherit eternal life, but goes away sorrowful because he refuses to sell his possessions and give to the poor. Jesus then predicts His passion for a third time, heals blind Bartimaeus near Jericho, and declares that the Son of Man came to give His life as a ransom for many.\n\n— Bismark Twum",
+    "lesson": "Wealth can easily become a spiritual barrier to trusting God, requiring complete surrender of our earthly securities to follow Christ.",
     "key_verses": [
-      "Mark 10:1",
-      "Mark 10:10",
-      "Mark 10:52"
+      "Mark 10:14",
+      "Mark 10:25",
+      "Mark 10:45"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Mark chapter 10?",
-      "How does the message of Mark 10 challenge or encourage your walk of faith today?"
+      "Why is it so difficult for wealthy individuals to fully rely on the kingdom of God?",
+      "How does Bartimaeus' persistent cry for mercy model the attitude we should have when seeking Jesus?"
     ]
   },
   "Mark_11": {
     "book": "Mark",
     "chapter": 11,
-    "theme": "Mark Chapter 11: Jesus as the obedient Servant",
-    "summary": "In Mark 11, the narrative records how Jesus addresses His people concerning jesus as the obedient servant, powerful son of god, healer, and ransom for many. The chapter opens with the declaration that when they came nigh to jerusalem, unto bethphage and bethany, at the mount of olives, he sendeth forth two of his discip, setting the course for divine instruction and action across 33 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that they answered and said unto jesus, we cannot tell. and jesus answering saith unto them, neither do i tell you , leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "For even the Son of Man did not come to be served, but to serve, and to give His life a ransom for many. Take time to meditate on Mark 11 and allow God's Word to transform your daily conduct.",
+    "theme": "Triumphal Entry, Cleansing the Temple, and Fruitful Faith",
+    "summary": "Jesus enters Jerusalem riding on a colt amidst crowds shouting Hosanna and laying down palm branches and garments. The next morning, He finds a fig tree bearing only leaves and curses it, before entering the temple courts to drive out the money changers and merchants, declaring the temple should be a house of prayer for all nations. When the disciples return the following day and see the fig tree withered from the roots up, Jesus teaches them about the power of faith and forgiving prayer.\n\n— Bismark Twum",
+    "lesson": "God expects genuine spiritual fruit in the lives of His followers rather than a mere outward appearance of religious devotion.",
     "key_verses": [
-      "Mark 11:1",
-      "Mark 11:10",
-      "Mark 11:33"
+      "Mark 11:17",
+      "Mark 11:23",
+      "Mark 11:25"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Mark chapter 11?",
-      "How does the message of Mark 11 challenge or encourage your walk of faith today?"
+      "What message did Jesus convey to the religious leaders by dramatically cleansing the temple?",
+      "How do faith and forgiveness intersect when we bring our requests to God in prayer?"
     ]
   },
   "Mark_12": {
     "book": "Mark",
     "chapter": 12,
-    "theme": "Mark Chapter 12: Jesus as the obedient Servant",
-    "summary": "In Mark 12, the narrative records how Jesus addresses His people concerning jesus as the obedient servant, powerful son of god, healer, and ransom for many. The chapter opens with the declaration that he began to speak unto them by parables. a certain man planted a vineyard, and set an hedge about it, and digged a place, setting the course for divine instruction and action across 44 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that all they did cast in of their abundance, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "For even the Son of Man did not come to be served, but to serve, and to give His life a ransom for many. Take time to meditate on Mark 12 and allow God's Word to transform your daily conduct.",
+    "theme": "Divine Authority, Taxes, and the Greatest Commandment",
+    "summary": "Jesus tells the parable of the wicked tenants to expose the chief priests, scribes, and elders who reject God's messengers and ultimately His Son. Religious opponents attempt to trap Him with political and theological questions about paying taxes to Caesar, marriage in the resurrection, and the greatest commandment, to which Jesus responds with profound wisdom. He then warns the crowds to beware of the prideful scribes, and commends a poor widow who demonstrates supreme generosity by giving her last two small copper coins into the treasury.\n\n— Bismark Twum",
+    "lesson": "Wholehearted devotion to God requires loving Him with all our heart, soul, mind, and strength, and loving our neighbor as ourselves.",
     "key_verses": [
-      "Mark 12:1",
-      "Mark 12:10",
-      "Mark 12:44"
+      "Mark 12:30",
+      "Mark 12:31",
+      "Mark 12:43"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Mark chapter 12?",
-      "How does the message of Mark 12 challenge or encourage your walk of faith today?"
+      "How does the widow's offering challenge our modern understanding of generosity and stewardship?",
+      "In what ways can we balance our civic responsibilities to earthly governments with our ultimate allegiance to God?"
     ]
   },
   "Mark_13": {
     "book": "Mark",
     "chapter": 13,
-    "theme": "Mark Chapter 13: Jesus as the obedient Servant",
-    "summary": "In Mark 13, the narrative records how Jesus addresses His people concerning jesus as the obedient servant, powerful son of god, healer, and ransom for many. The chapter opens with the declaration that as he went out of the temple, one of his disciples saith unto him, master, see what manner of stones and what buildings , setting the course for divine instruction and action across 37 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that what i say unto you i say unto all, watch., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "For even the Son of Man did not come to be served, but to serve, and to give His life a ransom for many. Take time to meditate on Mark 13 and allow God's Word to transform your daily conduct.",
+    "theme": "The Olivet Discourse and Signs of the End",
+    "summary": "Jesus sits on the Mount of Olives opposite the temple and foretells its complete destruction to His astonished disciples. He warns them about future religious deception, global turmoil, severe persecution, and the ultimate abomination of desolation. Exhorting them to remain constantly vigilant, He declares that no one knows the exact day or hour of the Son of Man's return except the Father.\n\n— Bismark Twum",
+    "lesson": "Believers must remain spiritually awake and steadfast through earthly trials, living each day in readiness for Christ's promised return.",
     "key_verses": [
-      "Mark 13:1",
-      "Mark 13:10",
+      "Mark 13:2",
+      "Mark 13:32-33",
       "Mark 13:37"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Mark chapter 13?",
-      "How does the message of Mark 13 challenge or encourage your walk of faith today?"
+      "How does the certainty of Christ's return motivate you to live differently today?",
+      "In what ways can Christians remain spiritually vigilant without falling into fear or anxious speculation?"
     ]
   },
   "Mark_14": {
     "book": "Mark",
     "chapter": 14,
-    "theme": "Mark Chapter 14: Jesus as the obedient Servant",
-    "summary": "In Mark 14, the narrative records how Jesus addresses His people concerning jesus as the obedient servant, powerful son of god, healer, and ransom for many. The chapter opens with the declaration that after two days was the feast of the passover, and of unleavened bread: and the chief priests and the scribes sought how , setting the course for divine instruction and action across 72 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that the second time the cock crew. and peter called to mind the word that jesus said unto him, before the cock cro, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "For even the Son of Man did not come to be served, but to serve, and to give His life a ransom for many. Take time to meditate on Mark 14 and allow God's Word to transform your daily conduct.",
+    "theme": "Anointing, Betrayal, and Arrest",
+    "summary": "An anonymous woman anoints Jesus' head with expensive perfume in Bethany, prompting Jesus to declare her act will be remembered worldwide. Jesus shares the Last Supper with His disciples, instituting the Eucharist, before praying in intense agony at Gethsemane while the disciples sleep. Judas Iscariot betrays Jesus with a kiss, leading to His arrest, abandonment by the disciples, and Peter's bitter denial in the courtyard.\n\n— Bismark Twum",
+    "lesson": "True devotion honors Christ sacrificially, while human weakness reminds us of our constant need for God's sustaining grace.",
     "key_verses": [
-      "Mark 14:1",
-      "Mark 14:10",
-      "Mark 14:72"
+      "Mark 14:8-9",
+      "Mark 14:36",
+      "Mark 14:71-72"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Mark chapter 14?",
-      "How does the message of Mark 14 challenge or encourage your walk of faith today?"
+      "What does the woman's costly offering teach us about our own priorities in worship?",
+      "How do the failures of the disciples in Gethsemane mirror our own struggles with spiritual weariness?"
     ]
   },
   "Mark_15": {
     "book": "Mark",
     "chapter": 15,
-    "theme": "Mark Chapter 15: Jesus as the obedient Servant",
-    "summary": "In Mark 15, the narrative records how Jesus addresses His people concerning jesus as the obedient servant, powerful son of god, healer, and ransom for many. The chapter opens with the declaration that straightway in the morning the chief priests held a consultation with the elders and scribes and the whole council, and , setting the course for divine instruction and action across 47 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that mary magdalene and mary the mother of joses beheld where he was laid., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "For even the Son of Man did not come to be served, but to serve, and to give His life a ransom for many. Take time to meditate on Mark 15 and allow God's Word to transform your daily conduct.",
+    "theme": "Trial, Crucifixion, and Burial",
+    "summary": "The chief priests hand Jesus over to Pontius Pilate, who ultimately yields to the crowd's violent demands to release Barabbas and crucify Jesus. Roman soldiers mock Jesus, clothe Him in purple, and lead Him to Golgotha, where He is crucified between two criminals amid public derision. After crying out in agony and yielding His spirit, the temple curtain tears in two, and Joseph of Arimathea bravely secures Jesus' body in a rock-hewn tomb.\n\n— Bismark Twum",
+    "lesson": "The substitutionary death of Christ demonstrates the extreme cost of sin and opens direct access to God for all humanity.",
     "key_verses": [
-      "Mark 15:1",
-      "Mark 15:10",
-      "Mark 15:47"
+      "Mark 15:15",
+      "Mark 15:37-39",
+      "Mark 15:43"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Mark chapter 15?",
-      "How does the message of Mark 15 challenge or encourage your walk of faith today?"
+      "What is the significance of the temple curtain tearing from top to bottom at the moment of Jesus' death?",
+      "How does the Roman centurion's confession challenge our understanding of who Jesus truly is?"
     ]
   },
   "Mark_16": {
     "book": "Mark",
     "chapter": 16,
-    "theme": "Mark Chapter 16: Jesus as the obedient Servant",
-    "summary": "In Mark 16, the narrative records how Jesus addresses His people concerning jesus as the obedient servant, powerful son of god, healer, and ransom for many. The chapter opens with the declaration that when the sabbath was past, mary magdalene, and mary the mother of james, and salome, had bought sweet spices, that they , setting the course for divine instruction and action across 20 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that they went forth, and preached every where, the lord working with them, and confirming the word with signs foll, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "For even the Son of Man did not come to be served, but to serve, and to give His life a ransom for many. Take time to meditate on Mark 16 and allow God's Word to transform your daily conduct.",
+    "theme": "The Resurrection and the Great Commission",
+    "summary": "Mary Magdalene, Mary the mother of James, and Salome bring spices to the tomb early on Sunday morning only to find the stone rolled away. A young man dressed in white announces that Jesus of Nazareth has risen and instructs them to tell the disciples that He is going ahead to Galilee. After Jesus appears briefly to Mary Magdalene and two other followers who are met with initial disbelief, He commissions the eleven to preach the gospel to the whole creation before ascending into heaven.\n\n— Bismark Twum",
+    "lesson": "The resurrection changes everything, transforming grief into victorious hope and empowering believers to share the good news with the world.",
     "key_verses": [
-      "Mark 16:1",
-      "Mark 16:8",
-      "Mark 16:20"
+      "Mark 16:6",
+      "Mark 16:15",
+      "Mark 16:19"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Mark chapter 16?",
-      "How does the message of Mark 16 challenge or encourage your walk of faith today?"
+      "Why is the empty tomb foundational to the Christian faith and our daily hope?",
+      "How does the Great Commission apply to your immediate sphere of influence today?"
     ]
   },
   "Luke_1": {
     "book": "Luke",
     "chapter": 1,
-    "theme": "Luke Chapter 1: Jesus as the Savior of the lost",
-    "summary": "In Luke 1, the narrative records how David addresses His people concerning jesus as the savior of the lost, compassionate son of man, prayer, and holy spirit power. The chapter opens with the declaration that forasmuch as many have taken in hand to set forth in order a declaration of those things which are most surely believed , setting the course for divine instruction and action across 80 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that the child grew, and waxed strong in spirit, and was in the deserts till the day of his shewing unto israel., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The Son of Man came to seek and to save that which was lost. Take time to meditate on Luke 1 and allow God's Word to transform your daily conduct.",
+    "theme": "Divinely Announced Births of John the Baptist and Jesus",
+    "summary": "Zechariah receives a miraculous angelic promise that his barren wife Elizabeth will bear John, who prepares the way for the Lord. Mary is subsequently visited by the angel Gabriel and learns she will conceive the Savior of the world by the Holy Spirit. Elizabeth and Mary share a joyful reunion where John leaps in the womb and Mary bursts forth in her prophetic song of praise, the Magnificat. Zechariah's tongue is finally loosened at John's birth, prompting him to prophesy about the dawning of God's redemptive light.\n\n— Bismark Twum",
+    "lesson": "God's promises often defy natural limitations, requiring quiet trust and obedient surrender even when circumstances seem impossible.",
     "key_verses": [
-      "Luke 1:1",
-      "Luke 1:10",
-      "Luke 1:80"
+      "Luke 1:31",
+      "Luke 1:46-47",
+      "Luke 1:78-79"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Luke chapter 1?",
-      "How does the message of Luke 1 challenge or encourage your walk of faith today?"
+      "How does Mary’s response of surrender challenge your own willingness to accept unexpected disruptions from God?",
+      "In what ways does Zechariah's temporary silence serve as a reminder of the power and reliability of God's spoken word?"
     ]
   },
   "Luke_2": {
     "book": "Luke",
     "chapter": 2,
-    "theme": "Luke Chapter 2: Jesus as the Savior of the lost",
-    "summary": "In Luke 2, the narrative records how Jesus addresses His people concerning jesus as the savior of the lost, compassionate son of man, prayer, and holy spirit power. The chapter opens with the declaration that it came to pass in those days, that there went out a decree from caesar augustus, that all the world should be taxed., setting the course for divine instruction and action across 52 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that jesus increased in wisdom and stature, and in favour with god and man., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The Son of Man came to seek and to save that which was lost. Take time to meditate on Luke 2 and allow God's Word to transform your daily conduct.",
+    "theme": "The Birth, Infancy, and Boyhood of Jesus",
+    "summary": "Caesar Augustus's census forces Joseph and Mary to travel to Bethlehem, where Jesus is born in humble surroundings and announced by angels to terrified shepherds. Mary and Joseph present the infant Jesus at the Jerusalem temple, where righteous Simeon and the prophetess Anna recognize Him as the long-awaited redemption of Israel. Twelve-year-old Jesus later remains behind at the temple during the Passover feast, astonishing the religious teachers with His deep understanding of His Father's house. Jesus returns to Nazareth with His parents, growing steadily in wisdom, stature, and favor with God and man.\n\n— Bismark Twum",
+    "lesson": "True spiritual greatness often hides in humble, ordinary places, yet it ultimately demands total devotion to God's divine agenda.",
     "key_verses": [
-      "Luke 2:1",
-      "Luke 2:10",
+      "Luke 2:10-11",
+      "Luke 2:29-32",
       "Luke 2:52"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Luke chapter 2?",
-      "How does the message of Luke 2 challenge or encourage your walk of faith today?"
+      "Why is the contrast between the political power of Caesar and the humble birth of Jesus significant for understanding God's kingdom?",
+      "What does Jesus' behavior at age twelve teach young believers about prioritizing spiritual identity over earthly expectations?"
     ]
   },
   "Luke_3": {
     "book": "Luke",
     "chapter": 3,
-    "theme": "Luke Chapter 3: Jesus as the Savior of the lost",
-    "summary": "In Luke 3, the narrative records how Jesus addresses His people concerning jesus as the savior of the lost, compassionate son of man, prayer, and holy spirit power. The chapter opens with the declaration that in the fifteenth year of the reign of tiberius caesar, pontius pilate being governor of judaea, and herod being tetrarch, setting the course for divine instruction and action across 38 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that which was the son of enos, which was the son of seth, which was the son of adam, which was the son of god., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The Son of Man came to seek and to save that which was lost. Take time to meditate on Luke 3 and allow God's Word to transform your daily conduct.",
+    "theme": "The Ministry of John the Baptist and the Baptism of Jesus",
+    "summary": "John the Baptist thunders a fierce message of repentance along the Jordan River, urging crowds, tax collectors, and soldiers to demonstrate genuine fruit in their daily lives. John explicitly points away from himself, declaring the coming of one mightier who will baptize with the Holy Spirit and fire. Jesus presents Himself to be baptized by John, and as He prays, the heavens open and the Holy Spirit descends in bodily form like a dove while a voice from heaven affirms His beloved Sonship. Luke traces the genealogy of Jesus all the way back to Adam, legally establishing His lineage through David.\n\n— Bismark Twum",
+    "lesson": "True repentance is never merely emotional; it requires tangible, righteous changes in how we treat others and steward our resources.",
     "key_verses": [
-      "Luke 3:1",
-      "Luke 3:10",
-      "Luke 3:38"
+      "Luke 3:8",
+      "Luke 3:16",
+      "Luke 3:22"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Luke chapter 3?",
-      "How does the message of Luke 3 challenge or encourage your walk of faith today?"
+      "How do John the Baptist's specific instructions to tax collectors and soldiers translate to ethical behavior in modern workplaces?",
+      "What is the significance of the Father's public affirmation of Jesus at His baptism before He ever performs a single miracle?"
     ]
   },
   "Luke_4": {
     "book": "Luke",
     "chapter": 4,
-    "theme": "Luke Chapter 4: Jesus as the Savior of the lost",
-    "summary": "In Luke 4, the narrative records how Jesus addresses His people concerning jesus as the savior of the lost, compassionate son of man, prayer, and holy spirit power. The chapter opens with the declaration that jesus being full of the holy ghost returned from jordan, and was led by the spirit into the wilderness,, setting the course for divine instruction and action across 44 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that he preached in the synagogues of galilee., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The Son of Man came to seek and to save that which was lost. Take time to meditate on Luke 4 and allow God's Word to transform your daily conduct.",
+    "theme": "The Temptation and Inauguration of Jesus' Ministry",
+    "summary": "Led by the Spirit, Jesus spends forty grueling days in the wilderness fasting and triumphing over the direct temptations of the devil by wielding Scripture. Jesus returns to Galilee in the power of the Spirit and visits His hometown synagogue in Nazareth, where He reads Isaiah's prophecy and declares its fulfillment in Himself. The angry townspeople reject His message and attempt to throw Him off a cliff, but Jesus miraculously slips through the hostile crowd. He travels to Capernaum, where He casts out a demonic spirit, heals Simon's mother-in-law, and heals multitudes before slipping away to preach throughout the synagogues of Galilee.\n\n— Bismark Twum",
+    "lesson": "Equipping oneself with the truth of God's Word is the ultimate defense against the subtle deceptions and pressures of spiritual testing.",
     "key_verses": [
-      "Luke 4:1",
-      "Luke 4:10",
-      "Luke 4:44"
+      "Luke 4:4",
+      "Luke 4:18-19",
+      "Luke 4:43"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Luke chapter 4?",
-      "How does the message of Luke 4 challenge or encourage your walk of faith today?"
+      "In what ways does Jesus' use of Scripture during temptation model how believers should fight spiritual battles today?",
+      "Why do you think the people of Nazareth reacted with such violent rejection to Jesus' hometown sermon?"
     ]
   },
   "Luke_5": {
     "book": "Luke",
     "chapter": 5,
-    "theme": "Luke Chapter 5: Jesus as the Savior of the lost",
-    "summary": "In Luke 5, the narrative records how Jesus addresses His people concerning jesus as the savior of the lost, compassionate son of man, prayer, and holy spirit power. The chapter opens with the declaration that it came to pass, that, as the people pressed upon him to hear the word of god, he stood by the lake of gennesaret,, setting the course for divine instruction and action across 39 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that no man also having drunk old wine straightway desireth new: for he saith, the old is better., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The Son of Man came to seek and to save that which was lost. Take time to meditate on Luke 5 and allow God's Word to transform your daily conduct.",
+    "theme": "Calling the First Disciples and Early Miracles of Healing",
+    "summary": "Jesus preaches from Simon Peter's boat on the lake of Gennesaret and rewards the exhausted fisherman's obedience with a miraculous, net-breaking catch of fish. Jesus cleanses a desperate leper with a touch and later lowers a paralyzed man through a roof tile-by-tile to forgive his sins and restore his physical mobility. He calls Levi the tax collector from his customs booth, sparking immediate criticism from the Pharisees for eating with sinners and tax collectors. Jesus defends His ministry using the metaphor of a physician and explains why fasting is inappropriate while the bridegroom is present, followed by parables about new wine in old wineskins.\n\n— Bismark Twum",
+    "lesson": "Encountering the holiness of Christ always exposes our unworthiness, yet He graciously invites us into a life of transformative purpose.",
     "key_verses": [
-      "Luke 5:1",
-      "Luke 5:10",
-      "Luke 5:39"
+      "Luke 5:10-11",
+      "Luke 5:24",
+      "Luke 5:31-32"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Luke chapter 5?",
-      "How does the message of Luke 5 challenge or encourage your walk of faith today?"
+      "How does Peter's reaction to the miraculous catch of fish reflect a proper understanding of human sinfulness in the presence of divine holiness?",
+      "What warning does Jesus' teaching on wineskins give to churches and believers regarding traditions versus new movements of the Holy Spirit?"
     ]
   },
   "Luke_6": {
     "book": "Luke",
     "chapter": 6,
-    "theme": "Luke Chapter 6: Jesus as the Savior of the lost",
-    "summary": "In Luke 6, the narrative records how Jesus addresses His people concerning jesus as the savior of the lost, compassionate son of man, prayer, and holy spirit power. The chapter opens with the declaration that it came to pass on the second sabbath after the first, that he went through the corn fields, setting the course for divine instruction and action across 49 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that but he that heareth, and doeth not, is like a man that without a foundation built an house upon the earth, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The Son of Man came to seek and to save that which was lost. Take time to meditate on Luke 6 and allow God's Word to transform your daily conduct.",
+    "theme": "The Lord of the Sabbath and the Sermon on the Plain",
+    "summary": "Jesus sparks fierce controversy with the Pharisees by plucking grain on the Sabbath and healing a man with a withered hand in the synagogue. After spending an entire night in prayer on a mountain, Jesus appoints twelve of His disciples as apostles and addresses a vast crowd on a level place. He delivers the Sermon on the Plain, pronouncing blessings on the poor and hungry and severe woes on the rich and complacent. Jesus commands radical love for enemies, warns against hypocritical judgment, and illustrates the necessity of building one's life on the bedrock of obedience to His teachings.\n\n— Bismark Twum",
+    "lesson": "Kingdom living completely subverts worldly standards, demanding radical mercy, relentless forgiveness, and a heart anchored in obedience to Christ.",
     "key_verses": [
-      "Luke 6:1",
-      "Luke 6:10",
-      "Luke 6:49"
+      "Luke 6:27-28",
+      "Luke 6:37",
+      "Luke 6:47-48"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Luke chapter 6?",
-      "How does the message of Luke 6 challenge or encourage your walk of faith today?"
+      "How does Jesus redefine religious piety in the Sabbath healing stories, and how does that challenge religious legalism today?",
+      "What is the practical difference between superficial hearing of Jesus' words and building a life on the rock of obedience?"
     ]
   },
   "Luke_7": {
     "book": "Luke",
     "chapter": 7,
-    "theme": "Luke Chapter 7: Jesus as the Savior of the lost",
-    "summary": "In Luke 7, the narrative records how Jesus addresses His people concerning jesus as the savior of the lost, compassionate son of man, prayer, and holy spirit power. The chapter opens with the declaration that when he had ended all his sayings in the audience of the people, he entered into capernaum., setting the course for divine instruction and action across 50 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that he said to the woman, thy faith hath saved thee, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The Son of Man came to seek and to save that which was lost. Take time to meditate on Luke 7 and allow God's Word to transform your daily conduct.",
+    "theme": "Faith and Forgiveness",
+    "summary": "A Roman centurion demonstrates astonishing faith by asking Jesus to heal his servant from afar, moving Jesus to marvel. Shortly after, Jesus compassionately raises a widow's only son from the dead during a funeral procession in Nain. Later, while dining at a Pharisee's house, a weeping sinful woman washes Jesus' feet with her tears and hair, prompting Jesus to explain that those who are forgiven much love much.\n\n— Bismark Twum",
+    "lesson": "True gratitude for God's boundless forgiveness naturally produces a life of deep, devoted love and humility toward Christ.",
     "key_verses": [
-      "Luke 7:1",
-      "Luke 7:10",
-      "Luke 7:50"
+      "Luke 7:9",
+      "Luke 7:22",
+      "Luke 7:47"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Luke chapter 7?",
-      "How does the message of Luke 7 challenge or encourage your walk of faith today?"
+      "How does the centurion's understanding of authority contrast with the religious leaders of his day?",
+      "In what ways does the woman's demonstration of love at the dinner table challenge your own expressions of gratitude to God?"
     ]
   },
   "Luke_8": {
     "book": "Luke",
     "chapter": 8,
-    "theme": "Luke Chapter 8: Jesus as the Savior of the lost",
-    "summary": "In Luke 8, the narrative records how Jesus addresses His people concerning jesus as the savior of the lost, compassionate son of man, prayer, and holy spirit power. The chapter opens with the declaration that it came to pass afterward, that he went throughout every city and village, preaching and shewing the glad tidings of the, setting the course for divine instruction and action across 56 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that her parents were astonished: but he charged them that they should tell no man what was done., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The Son of Man came to seek and to save that which was lost. Take time to meditate on Luke 8 and allow God's Word to transform your daily conduct.",
+    "theme": "Parables and Power",
+    "summary": "Jesus travels from town to town accompanied by the twelve disciples and several dedicated women who financially support His ministry. He teaches the crowds using the Parable of the Sower, explaining the various ways people receive the word of God. Demonstrating absolute authority over the physical and spiritual realms, He calms a violent storm on the Sea of Galilee, casts a legion of demons out of a Gerasene man, heals a bleeding woman, and raises Jairus's daughter from death.\n\n— Bismark Twum",
+    "lesson": "A heart receptive to God's word bears lasting fruit, securely anchored in the absolute power and authority of Jesus over every storm and trial.",
     "key_verses": [
-      "Luke 8:1",
-      "Luke 8:10",
-      "Luke 8:56"
+      "Luke 8:15",
+      "Luke 8:25",
+      "Luke 8:50"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Luke chapter 8?",
-      "How does the message of Luke 8 challenge or encourage your walk of faith today?"
+      "Which of the four soils described in the Parable of the Sower best represents the current condition of your spiritual life?",
+      "How should witnessing Jesus' authority over nature, demons, disease, and death impact your fears in daily life?"
     ]
   },
   "Luke_9": {
     "book": "Luke",
     "chapter": 9,
-    "theme": "Luke Chapter 9: Jesus as the Savior of the lost",
-    "summary": "In Luke 9, the narrative records how Jesus addresses His people concerning jesus as the savior of the lost, compassionate son of man, prayer, and holy spirit power. The chapter opens with the declaration that he called his twelve disciples together, and gave them power and authority over all devils, and to cure diseases., setting the course for divine instruction and action across 62 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that jesus said unto him, no man, having put his hand to the plough, and looking back, is fit for the kingdom of go, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The Son of Man came to seek and to save that which was lost. Take time to meditate on Luke 9 and allow God's Word to transform your daily conduct.",
+    "theme": "Identity and Sacrifice",
+    "summary": "Jesus empowers the twelve disciples with authority to drive out demons and heal diseases before sending them out to proclaim the kingdom of God. He miraculously feeds five thousand men with only five loaves and two fish, shortly before Peter boldly confesses Jesus as the Messiah. Jesus is transfigured on a mountain in the presence of Moses, Elijah, Peter, James, and John, where the heavenly voice affirms His identity. He then resolutely sets His face toward Jerusalem, teaching potential followers about the high personal cost of true discipleship.\n\n— Bismark Twum",
+    "lesson": "Following Jesus requires total surrender, daily self-denial, and an unwavering commitment to His mission above earthly comfort.",
     "key_verses": [
-      "Luke 9:1",
-      "Luke 9:10",
-      "Luke 9:62"
+      "Luke 9:20",
+      "Luke 9:23",
+      "Luke 9:35"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Luke chapter 9?",
-      "How does the message of Luke 9 challenge or encourage your walk of faith today?"
+      "What does Peter's confession of Jesus as the Christ mean for your daily submission to His leadership?",
+      "Why does Jesus emphasize that discipleship involves taking up a cross daily, and what does that look like practically?"
     ]
   },
   "Luke_10": {
     "book": "Luke",
     "chapter": 10,
-    "theme": "Luke Chapter 10: Jesus as the Savior of the lost",
-    "summary": "In Luke 10, the narrative records how Jesus addresses His people concerning jesus as the savior of the lost, compassionate son of man, prayer, and holy spirit power. The chapter opens with the declaration that after these things the lord appointed other seventy also, and sent them two and two before his face into every city and , setting the course for divine instruction and action across 42 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that but one thing is needful: and mary hath chosen that good part, which shall not be taken away from her., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The Son of Man came to seek and to save that which was lost. Take time to meditate on Luke 10 and allow God's Word to transform your daily conduct.",
+    "theme": "Mission and Devotion",
+    "summary": "Jesus appoints seventy-two followers and sends them out in pairs to prepare towns for His arrival, instructing them to rely entirely on God's provision. Upon their joyful return after witnessing demons submit in Jesus' name, Jesus rejoices in the Spirit and tells the famous parable of the Good Samaritan to a lawyer testing Him. Later, visiting the home of Martha and Mary, Jesus gently rebukes bustling anxiety, praising Mary for choosing the better portion by sitting attentively at His feet.\n\n— Bismark Twum",
+    "lesson": "Active ministry and compassionate service must always flow from a posture of quiet communion and attentive listening at the feet of Jesus.",
     "key_verses": [
-      "Luke 10:1",
-      "Luke 10:10",
+      "Luke 10:20",
+      "Luke 10:27",
       "Luke 10:42"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Luke chapter 10?",
-      "How does the message of Luke 10 challenge or encourage your walk of faith today?"
+      "How does the Parable of the Good Samaritan redefine who your neighbor is and how you ought to treat them?",
+      "In the busyness of your daily routines, how do you balance the active service of Martha with the devoted listening of Mary?"
     ]
   },
   "Luke_11": {
     "book": "Luke",
     "chapter": 11,
-    "theme": "Luke Chapter 11: Jesus as the Savior of the lost",
-    "summary": "In Luke 11, the narrative records how Solomon addresses His people concerning jesus as the savior of the lost, compassionate son of man, prayer, and holy spirit power. The chapter opens with the declaration that it came to pass, that, as he was praying in a certain place, when he ceased, one of his disciples said unto him, lord, t, setting the course for divine instruction and action across 54 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that laying wait for him, and seeking to catch something out of his mouth, that they might accuse him., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The Son of Man came to seek and to save that which was lost. Take time to meditate on Luke 11 and allow God's Word to transform your daily conduct.",
+    "theme": "Prayer and Truth",
+    "summary": "At the request of His disciples, Jesus teaches them the Lord's Prayer and illustrates the persistence and boldness required in prayer through a parable about a persistent neighbor. He rebukes hostile critics who accuse Him of casting out demons by the power of Beelzebub, warning them about the dangerous spiritual vacuum of an empty heart. After a Pharisee invites Him to dinner, Jesus pronounces a series of fierce woes against the hypocrisy and legalism of the Pharisees and religious experts.\n\n— Bismark Twum",
+    "lesson": "Persistent, trusting prayer aligns us with God's good gifts, while genuine righteousness demands inward sincerity rather than hollow external religious rituals.",
     "key_verses": [
-      "Luke 11:1",
-      "Luke 11:10",
-      "Luke 11:54"
+      "Luke 11:9",
+      "Luke 11:28",
+      "Luke 11:42"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Luke chapter 11?",
-      "How does the message of Luke 11 challenge or encourage your walk of faith today?"
+      "How does Jesus' teaching on persistence in prayer encourage you to bring your ongoing requests to God with boldness?",
+      "In what subtle ways might legalism or hypocrisy creep into your own spiritual life, mirroring the faults of the Pharisees?"
     ]
   },
   "Luke_12": {
     "book": "Luke",
     "chapter": 12,
-    "theme": "Luke Chapter 12: Jesus as the Savior of the lost",
-    "summary": "In Luke 12, the narrative records how Peter addresses His people concerning jesus as the savior of the lost, compassionate son of man, prayer, and holy spirit power. The chapter opens with the declaration that in the mean time, when there were gathered together an innumerable multitude of people, insomuch that they trode one upo, setting the course for divine instruction and action across 59 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that i tell thee, thou shalt not depart thence, till thou hast paid the very last mite., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The Son of Man came to seek and to save that which was lost. Take time to meditate on Luke 12 and allow God's Word to transform your daily conduct.",
+    "theme": "Fearlessness and Trust",
+    "summary": "Amidst a crowd of thousands trampling over one another, Jesus warns His disciples against the hypocrisy of the Pharisees and urges them to fear God alone rather than human oppressors. He tells the Parable of the Rich Fool to warn against greed, immediately following it with profound encouragement to trust completely in God's daily provision instead of worrying about material needs. He urges the disciples to remain dressed for action and watchful, knowing that the Son of Man will return at an unexpected hour.\n\n— Bismark Twum",
+    "lesson": "Freedom from anxiety and greed is found in recognizing our immense value to our Heavenly Father and eagerly awaiting His kingdom.",
     "key_verses": [
-      "Luke 12:1",
-      "Luke 12:10",
-      "Luke 12:59"
+      "Luke 12:7",
+      "Luke 12:25",
+      "Luke 12:34"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Luke chapter 12?",
-      "How does the message of Luke 12 challenge or encourage your walk of faith today?"
+      "What practical steps can you take to exchange anxious thoughts about material provision for a daily trust in God's care?",
+      "How does keeping an eternal perspective on the return of Christ change the way you manage your financial resources and time?"
     ]
   },
   "Luke_13": {
     "book": "Luke",
     "chapter": 13,
-    "theme": "Luke Chapter 13: Jesus as the Savior of the lost",
-    "summary": "In Luke 13, the narrative records how Jesus addresses His people concerning jesus as the savior of the lost, compassionate son of man, prayer, and holy spirit power. The chapter opens with the declaration that there were present at that season some that told him of the galilaeans, whose blood pilate had mingled with their sacrif, setting the course for divine instruction and action across 35 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that behold, your house is left unto you desolate: and verily i say unto you, ye shall not see me, until the time c, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The Son of Man came to seek and to save that which was lost. Take time to meditate on Luke 13 and allow God's Word to transform your daily conduct.",
+    "theme": "Repentance, the Barren Fig Tree, and the Narrow Door",
+    "summary": "Jesus uses local tragedies to warn the crowd that all people must repent to avoid perishing, illustrating this with a parable about a barren fig tree granted one more year to produce fruit. On a Sabbath in the synagogue, He heals a woman crippled for eighteen years, rebuking the indignant ruler of the synagogue for his hypocrisy. He then compares the growth of the kingdom of God to a mustard seed and yeast, before lamenting over Jerusalem's rejection of His prophetic calling.\n\n— Bismark Twum",
+    "lesson": "God extends patience and mercy, granting time for repentance, but His grace should never be presumed upon indefinitely.",
     "key_verses": [
-      "Luke 13:1",
-      "Luke 13:10",
-      "Luke 13:35"
+      "Luke 13:3",
+      "Luke 13:10-11",
+      "Luke 13:34"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Luke chapter 13?",
-      "How does the message of Luke 13 challenge or encourage your walk of faith today?"
+      "How does Jesus' reaction to the crippled woman challenge rigid religious traditions that neglect human suffering?",
+      "In what ways does the parable of the barren fig tree encourage active spiritual growth while warning against complacency?"
     ]
   },
   "Luke_14": {
     "book": "Luke",
     "chapter": 14,
-    "theme": "Luke Chapter 14: Jesus as the Savior of the lost",
-    "summary": "In Luke 14, the narrative records how Jesus addresses His people concerning jesus as the savior of the lost, compassionate son of man, prayer, and holy spirit power. The chapter opens with the declaration that it came to pass, as he went into the house of one of the chief pharisees to eat bread on the sabbath day, that they watc, setting the course for divine instruction and action across 35 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that it is neither fit for the land, nor yet for the dunghill, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The Son of Man came to seek and to save that which was lost. Take time to meditate on Luke 14 and allow God's Word to transform your daily conduct.",
+    "theme": "The Banqueting Table and the Cost of Discipleship",
+    "summary": "Dining at the home of a prominent Pharisee on the Sabbath, Jesus heals a man with dropsy and challenges the guests by teaching about true humility and hosting the marginalized instead of social peers. He shares the parable of the great banquet to expose how worldly excuses cause people to forfeit God's invitation. Later, as large crowds travel with Him, He turns and demands that true disciples must count the severe cost of forsaking all else to follow Him.\n\n— Bismark Twum",
+    "lesson": "True kingdom inclusion prioritizes the lowly, and authentic discipleship requires an absolute, uncompromised commitment to Christ above all earthly ties.",
     "key_verses": [
-      "Luke 14:1",
-      "Luke 14:10",
-      "Luke 14:35"
+      "Luke 14:11",
+      "Luke 14:23",
+      "Luke 14:33"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Luke chapter 14?",
-      "How does the message of Luke 14 challenge or encourage your walk of faith today?"
+      "What does Jesus' instruction to invite the poor and disabled reveal about the nature of God's kingdom community?",
+      "Why does Jesus insist that potential followers explicitly 'count the cost' before committing to be His disciples?"
     ]
   },
   "Luke_15": {
     "book": "Luke",
     "chapter": 15,
-    "theme": "Luke Chapter 15: Jesus as the Savior of the lost",
-    "summary": "In Luke 15, the narrative records how the Lord addresses His people concerning jesus as the savior of the lost, compassionate son of man, prayer, and holy spirit power. The chapter opens with the declaration that drew near unto him all the publicans and sinners for to hear him., setting the course for divine instruction and action across 32 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that it was meet that we should make merry, and be glad: for this thy brother was dead, and is alive again, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The Son of Man came to seek and to save that which was lost. Take time to meditate on Luke 15 and allow God's Word to transform your daily conduct.",
+    "theme": "The Lost Sheep, the Lost Coin, and the Prodigal Son",
+    "summary": "Tax collectors and sinners gather around Jesus, prompting the Pharisees and scribes to grumble that He welcomes outcasts. In response, Jesus delivers three masterclass parables detailing God's relentless pursuit of the lost: a shepherd who leaves ninety-nine sheep to find one, a woman who sweeps her house for a lost coin, and a father who joyfully embraces his rebellious younger son and rebukes his self-righteous older son. Each narrative culminates in heavenly rejoicing over a single sinner who repents.\n\n— Bismark Twum",
+    "lesson": "God's heart overflows with extravagant, forgiving love and intense joy when a lost sinner turns back to Him.",
     "key_verses": [
-      "Luke 15:1",
+      "Luke 15:7",
       "Luke 15:10",
-      "Luke 15:32"
+      "Luke 15:24"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Luke chapter 15?",
-      "How does the message of Luke 15 challenge or encourage your walk of faith today?"
+      "How do the attitudes of the Pharisees mirror the posture of the older brother in the final parable?",
+      "What do these three parables collectively teach about the initiative God takes in seeking out the lost?"
     ]
   },
   "Luke_16": {
     "book": "Luke",
     "chapter": 16,
-    "theme": "Luke Chapter 16: Jesus as the Savior of the lost",
-    "summary": "In Luke 16, the narrative records how Moses addresses His people concerning jesus as the savior of the lost, compassionate son of man, prayer, and holy spirit power. The chapter opens with the declaration that he said also unto his disciples, there was a certain rich man, which had a steward, setting the course for divine instruction and action across 31 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that he said unto him, if they hear not moses and the prophets, neither will they be persuaded, though one rose fro, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The Son of Man came to seek and to save that which was lost. Take time to meditate on Luke 16 and allow God's Word to transform your daily conduct.",
+    "theme": "The Shrewd Manager and the Rich Man and Lazarus",
+    "summary": "Jesus tells the parable of the dishonest manager who uses his master's wealth to secure his future, commending his shrewdness while warning that disciples cannot serve both God and money. When the money-loving Pharisees scoff at this, Jesus exposes their self-justification before men. He then presents the haunting story of the rich man who ignores the suffering beggar Lazarus at his gate, only to suffer torment in the afterlife while Lazarus is comforted in Abraham's bosom.\n\n— Bismark Twum",
+    "lesson": "Material wealth is a temporary stewardship that must be leveraged for eternal purposes, and present indifference toward the needy carries eternal consequences.",
     "key_verses": [
-      "Luke 16:1",
-      "Luke 16:10",
+      "Luke 16:13",
+      "Luke 16:15",
       "Luke 16:31"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Luke chapter 16?",
-      "How does the message of Luke 16 challenge or encourage your walk of faith today?"
+      "In what practical ways can believers use worldly wealth to make eternal friends, as Jesus suggests?",
+      "Why does Abraham tell the rich man that his brothers will not be convinced even if someone rises from the dead?"
     ]
   },
   "Luke_17": {
     "book": "Luke",
     "chapter": 17,
-    "theme": "Luke Chapter 17: Jesus as the Savior of the lost",
-    "summary": "In Luke 17, the narrative records how Jesus addresses His people concerning jesus as the savior of the lost, compassionate son of man, prayer, and holy spirit power. The chapter opens with the declaration that said he unto the disciples, it is impossible but that offences will come: but woe unto him, through whom they come!, setting the course for divine instruction and action across 37 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that they answered and said unto him, where, lord? and he said unto them, wheresoever the body is, thither will the, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The Son of Man came to seek and to save that which was lost. Take time to meditate on Luke 17 and allow God's Word to transform your daily conduct.",
+    "theme": "Temptations, Faith, Ten Lepers, and the Coming Kingdom",
+    "summary": "Jesus warns His disciples against causing others to stumble and stresses the necessity of unlimited, forgiving grace and mustard-seed faith. As He journeys toward Jerusalem, ten lepers cry out for mercy, and all are healed, but only a despised Samaritan returns to fall at Jesus' feet and give thanks. Responding to the Pharisees' inquiry about when the kingdom of God will come, Jesus explains that it is already in their midst, yet warns of the sudden, unmistakable disruption of His future return.\n\n— Bismark Twum",
+    "lesson": "A true encounter with God's mercy naturally produces deep gratitude, radical forgiveness, and constant readiness for Christ's return.",
     "key_verses": [
-      "Luke 17:1",
-      "Luke 17:10",
-      "Luke 17:37"
+      "Luke 17:4",
+      "Luke 17:15-16",
+      "Luke 17:21"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Luke chapter 17?",
-      "How does the message of Luke 17 challenge or encourage your walk of faith today?"
+      "What does the story of the ten lepers reveal about the difference between physical blessing and life-transforming faith?",
+      "How should the unpredictable nature of the coming of the Son of Man shape how believers live today?"
     ]
   },
   "Luke_18": {
     "book": "Luke",
     "chapter": 18,
-    "theme": "Luke Chapter 18: Jesus as the Savior of the lost",
-    "summary": "In Luke 18, the narrative records how Jesus addresses His people concerning jesus as the savior of the lost, compassionate son of man, prayer, and holy spirit power. The chapter opens with the declaration that he spake a parable unto them to this end, that men ought always to pray, and not to faint, setting the course for divine instruction and action across 43 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that immediately he received his sight, and followed him, glorifying god: and all the people, when they saw it, gav, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The Son of Man came to seek and to save that which was lost. Take time to meditate on Luke 18 and allow God's Word to transform your daily conduct.",
+    "theme": "Persistent Prayer, the Rich Ruler, and Blind Bartimaeus",
+    "summary": "Jesus tells the parable of the persistent widow and the unrighteous judge to teach that believers should always pray and never give up. He contrasts the self-righteous prayer of a Pharisee with the humble plea of a tax collector, noting that the latter goes home justified. After welcoming children and explaining that the kingdom belongs to such as these, Jesus tells a wealthy ruler to sell all his possessions, grieves over the trap of riches, and finally heals a blind beggar named Bartimaeus outside Jericho.\n\n— Bismark Twum",
+    "lesson": "Approaching God requires humble dependence, persistent prayer, and a willingness to surrender anything that hinders absolute trust in Him.",
     "key_verses": [
       "Luke 18:1",
-      "Luke 18:10",
-      "Luke 18:43"
+      "Luke 18:14",
+      "Luke 18:27"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Luke chapter 18?",
-      "How does the message of Luke 18 challenge or encourage your walk of faith today?"
+      "Why does the persistent widow parable encourage ongoing prayer even when answers seem delayed?",
+      "What prevented the rich ruler from entering the kingdom, and how does this contrast with the response of blind Bartimaeus?"
     ]
   },
   "Luke_19": {
     "book": "Luke",
     "chapter": 19,
-    "theme": "Luke Chapter 19: Jesus as the Savior of the lost",
-    "summary": "In Luke 19, the narrative records how Jesus addresses His people concerning jesus as the savior of the lost, compassionate son of man, prayer, and holy spirit power. The chapter opens with the declaration that jesus entered and passed through jericho., setting the course for divine instruction and action across 48 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that could not find what they might do: for all the people were very attentive to hear him., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The Son of Man came to seek and to save that which was lost. Take time to meditate on Luke 19 and allow God's Word to transform your daily conduct.",
+    "theme": "Salvation in Jericho and the Triumphal Entry",
+    "summary": "Jesus transforms the life of the wealthy tax collector Zacchaeus, who responds to divine grace by vowing restitution to the wronged. Afterward, Jesus rides into Jerusalem on a colt amidst jubilant crowds shouting Hosanna, yet weeps over the city because of its impending destruction. He cleanses the temple of greedy merchants and teaches daily within its courts while religious authorities desperately seek a way to destroy him.\n\n— Bismark Twum",
+    "lesson": "True repentance produces immediate tangible fruit, transforming selfish greed into radical generosity toward others.",
     "key_verses": [
-      "Luke 19:1",
-      "Luke 19:10",
-      "Luke 19:48"
+      "Luke 19:9-10",
+      "Luke 19:41-42"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Luke chapter 19?",
-      "How does the message of Luke 19 challenge or encourage your walk of faith today?"
+      "How does Zacchaeus's response to encountering Jesus contrast with the rich ruler's response in an earlier chapter?",
+      "Why does Jesus weep over Jerusalem even as the crowds celebrate His arrival?"
     ]
   },
   "Luke_20": {
     "book": "Luke",
     "chapter": 20,
-    "theme": "Luke Chapter 20: Jesus as the Savior of the lost",
-    "summary": "In Luke 20, the narrative records how Jesus addresses His people concerning jesus as the savior of the lost, compassionate son of man, prayer, and holy spirit power. The chapter opens with the declaration that it came to pass, that on one of those days, as he taught the people in the temple, and preached the gospel, the chief pr, setting the course for divine instruction and action across 47 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that which devour widows’ houses, and for a shew make long prayers: the same shall receive greater damnation., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The Son of Man came to seek and to save that which was lost. Take time to meditate on Luke 20 and allow God's Word to transform your daily conduct.",
+    "theme": "Authority Challenged and Parables of Judgment",
+    "summary": "Chief priests and scribes confront Jesus regarding the source of His authority, leading Him to counter with a question about John's baptism. Jesus then tells the parable of the wicked tenants, exposing the stubborn rebellion of Israel's religious leaders against God's messengers. He skillfully deflects a trap regarding Roman taxes and silences the Sadducees regarding the resurrection by affirming the eternal God of the living.\n\n— Bismark Twum",
+    "lesson": "Rejecting God's appointed authority ultimately leads to spiritual ruin, but Christ remains the chief cornerstone of salvation.",
     "key_verses": [
-      "Luke 20:1",
-      "Luke 20:10",
-      "Luke 20:47"
+      "Luke 20:17-18",
+      "Luke 20:25"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Luke chapter 20?",
-      "How does the message of Luke 20 challenge or encourage your walk of faith today?"
+      "What methods do the religious leaders use to trap Jesus, and how does His wisdom disarm them?",
+      "What does the parable of the wicked tenants teach about God's patience and ultimate judgment?"
     ]
   },
   "Luke_21": {
     "book": "Luke",
     "chapter": 21,
-    "theme": "Luke Chapter 21: Jesus as the Savior of the lost",
-    "summary": "In Luke 21, the narrative records how the Lord addresses His people concerning jesus as the savior of the lost, compassionate son of man, prayer, and holy spirit power. The chapter opens with the declaration that he looked up, and saw the rich men casting their gifts into the treasury., setting the course for divine instruction and action across 38 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that all the people came early in the morning to him in the temple, for to hear him., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The Son of Man came to seek and to save that which was lost. Take time to meditate on Luke 21 and allow God's Word to transform your daily conduct.",
+    "theme": "The Widow's Offering and the Olivet Discourse",
+    "summary": "Jesus watches a poor widow drop two small copper coins into the treasury box, praising her sacrifice as greater than all the large gifts of the wealthy. He then delivers the Olivet Discourse, warning His disciples about false messiahs, wars, natural disasters, and intense persecution. He predicts the destruction of Jerusalem and speaks of the dramatic future return of the Son of Man with power and great glory.\n\n— Bismark Twum",
+    "lesson": "God measures our devotion not by the outward magnitude of our offering, but by the depth of our sacrifice and trust.",
     "key_verses": [
-      "Luke 21:1",
-      "Luke 21:10",
-      "Luke 21:38"
+      "Luke 21:3-4",
+      "Luke 21:36"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Luke chapter 21?",
-      "How does the message of Luke 21 challenge or encourage your walk of faith today?"
+      "How does Jesus's evaluation of the widow's offering redefine our understanding of generosity?",
+      "What practical attitude does Jesus command His followers to maintain while awaiting trials and His eventual return?"
     ]
   },
   "Luke_22": {
     "book": "Luke",
     "chapter": 22,
-    "theme": "Luke Chapter 22: Jesus as the Savior of the lost",
-    "summary": "In Luke 22, the narrative records how Jesus addresses His people concerning jesus as the savior of the lost, compassionate son of man, prayer, and holy spirit power. The chapter opens with the declaration that the feast of unleavened bread drew nigh, which is called the passover., setting the course for divine instruction and action across 71 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that they said, what need we any further witness? for we ourselves have heard of his own mouth., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The Son of Man came to seek and to save that which was lost. Take time to meditate on Luke 22 and allow God's Word to transform your daily conduct.",
+    "theme": "The Last Supper, Betrayal, and Arrest",
+    "summary": "Judas Iscariot conspires with the chief priests to betray Jesus for money, setting the stage for the Passover meal. During the Last Supper, Jesus institutes the Lord's Supper, washes feet, predicts Peter's denial, and agonizes in prayer on the Mount of Olives while sweating drops of blood. Armed guards sent by the religious leaders arrest Jesus after Judas identifies Him with a kiss, and Peter subsequently denies knowing Him three times before dawn.\n\n— Bismark Twum",
+    "lesson": "Human failure and betrayal cannot thwart God's sovereign plan of redemption, though humbling repentance is always required for restoration.",
     "key_verses": [
-      "Luke 22:1",
-      "Luke 22:10",
-      "Luke 22:71"
+      "Luke 22:19-20",
+      "Luke 22:42"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Luke chapter 22?",
-      "How does the message of Luke 22 challenge or encourage your walk of faith today?"
+      "What is the significance of Jesus instituting the New Covenant during the Passover meal?",
+      "What can we learn from Jesus's prayer in Gethsemane regarding how to handle deep emotional and spiritual anguish?"
     ]
   },
   "Luke_23": {
     "book": "Luke",
     "chapter": 23,
-    "theme": "Luke Chapter 23: Jesus as the Savior of the lost",
-    "summary": "In Luke 23, the narrative records how Jesus addresses His people concerning jesus as the savior of the lost, compassionate son of man, prayer, and holy spirit power. The chapter opens with the declaration that the whole multitude of them arose, and led him unto pilate., setting the course for divine instruction and action across 56 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that they returned, and prepared spices and ointments, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The Son of Man came to seek and to save that which was lost. Take time to meditate on Luke 23 and allow God's Word to transform your daily conduct.",
+    "theme": "Crucifixion and Burial of Jesus",
+    "summary": "The religious council brings Jesus before Pontius Pilate and King Herod, both of whom find Him innocent yet yield to the bloodthirsty mob demanding crucifixion. Roman soldiers lead Jesus to Calvary, where He is crucified alongside two criminals while praying for His executioners. After crying out with a loud voice and giving up His spirit, a centurion praises God, and Joseph of Nazareth respectfully places Jesus's lifeless body in a newly cut rock tomb.\n\n— Bismark Twum",
+    "lesson": "The substitutionary death of Christ demonstrates the supreme depth of God's love and mercy toward undeserving sinners.",
     "key_verses": [
-      "Luke 23:1",
-      "Luke 23:10",
-      "Luke 23:56"
+      "Luke 23:34",
+      "Luke 23:46"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Luke chapter 23?",
-      "How does the message of Luke 23 challenge or encourage your walk of faith today?"
+      "What do the contrasting reactions of the two criminals crucified alongside Jesus reveal about human responses to grace?",
+      "Why is the testimony of the Roman centurion at the foot of the cross so powerful?"
     ]
   },
   "Luke_24": {
     "book": "Luke",
     "chapter": 24,
-    "theme": "Luke Chapter 24: Jesus as the Savior of the lost",
-    "summary": "In Luke 24, the narrative records how Jesus addresses His people concerning jesus as the savior of the lost, compassionate son of man, prayer, and holy spirit power. The chapter opens with the declaration that upon the first day of the week, very early in the morning, they came unto the sepulchre, bringing the spices which they , setting the course for divine instruction and action across 53 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that were continually in the temple, praising and blessing god. amen., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The Son of Man came to seek and to save that which was lost. Take time to meditate on Luke 24 and allow God's Word to transform your daily conduct.",
+    "theme": "The Resurrection and Ascension",
+    "summary": "Women visiting the tomb on the first day of the week discover the stone rolled away and receive an announcement from angels that Jesus has risen. Jesus appears incognito to two disciples walking to Emmaus, opening their minds to the Scriptures before revealing Himself in the breaking of bread. He then appears to the gathered disciples in Jerusalem, eats broiled fish to prove His physical resurrection, and blesses them just before ascending into heaven.\n\n— Bismark Twum",
+    "lesson": "The bodily resurrection of Jesus Christ transforms despair into eternal hope and empowers believers to be witnesses to the world.",
     "key_verses": [
-      "Luke 24:1",
-      "Luke 24:10",
-      "Luke 24:53"
+      "Luke 24:6-7",
+      "Luke 24:45-47"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Luke chapter 24?",
-      "How does the message of Luke 24 challenge or encourage your walk of faith today?"
+      "Why was it necessary for Jesus to explain the Old Testament scriptures to the disciples on the road to Emmaus?",
+      "How does the reality of the resurrection change the daily lives and witness of modern Christians?"
     ]
   },
   "John_1": {
     "book": "John",
     "chapter": 1,
-    "summary": "John opens by declaring that in the beginning was the Word, the Word was with God, and the Word was fully God. The Word became flesh and dwelt among us as Jesus Christ, bringing grace and truth to all humanity. John the Baptist bore witness that he was not the Messiah, but the voice crying in the wilderness pointing everyone to the Lamb of God who takes away the sin of the world. Jesus called His first disciples, including Andrew, Peter, Philip, and Nathanael, demonstrating supernatural knowledge by seeing Nathanael under the fig tree.\n\n— Brother Bismark Twum",
+    "theme": "The Word Made Flesh and the Lamb of God",
+    "summary": "The eternal Word of God takes on human flesh and dwells among humanity, revealing divine grace and truth. John the Baptist publicly identifies Jesus as the Lamb of God who takes away the sin of the world, prompting his own disciples to follow Him. Jesus subsequently calls Philip and Nathanael, promising that they will see heaven open and angels ascending and descending upon the Son of Man.\n\n— Bismark Twum",
+    "lesson": "Believers are called to intentionally point others to Christ in their daily lives, just as John the Baptist directed his own followers toward the Savior.",
     "key_verses": [
-      "John 1:1",
       "John 1:14",
       "John 1:29",
-      "John 1:48"
+      "John 1:51"
     ],
-    "theme": "The Word Became Flesh & The First Disciples",
-    "lesson": "Jesus is the eternal God who knows everything about you and invites you to follow Him personally.",
     "questions": [
-      "What title did John the Baptist use when he saw Jesus approaching?",
-      "What supernatural fact did Jesus reveal to Nathanael?"
+      "How does John's description of Jesus as the eternal Word shape your understanding of His authority?",
+      "In what practical ways can you introduce friends or family to Jesus like Andrew and Philip did?"
     ]
   },
   "John_2": {
     "book": "John",
     "chapter": 2,
-    "theme": "John Chapter 2: Jesus as the eternal Word",
-    "summary": "In John 2, the narrative records how Jesus addresses His people concerning jesus as the eternal word, the son of god, the seven 'i am' declarations, and eternal life. The chapter opens with the declaration that the third day there was a marriage in cana of galilee, setting the course for divine instruction and action across 25 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that needed not that any should testify of man: for he knew what was in man., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Believe that Jesus is the Christ, the Son of God, and believing have life in His name. Take time to meditate on John 2 and allow God's Word to transform your daily conduct.",
+    "theme": "Signs in Cana and Cleansing the Temple",
+    "summary": "Jesus performs His first public sign at a wedding in Cana by miraculously turning large pots of water into choice wine. Traveling to Jerusalem for the Passover, He drives out merchants and money changers from the temple courts, declaring His body to be the ultimate temple that will be raised after three days. Many people in Jerusalem believe in His name when they witness the miraculous signs He performs during the feast.\n\n— Bismark Twum",
+    "lesson": "Jesus cleanses what has been defiled to restore true worship, reminding believers that their lives are temples meant to honor God.",
     "key_verses": [
-      "John 2:1",
-      "John 2:10",
-      "John 2:25"
+      "John 2:11",
+      "John 2:19",
+      "John 2:21"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in John chapter 2?",
-      "How does the message of John 2 challenge or encourage your walk of faith today?"
+      "What does the transformation of water into wine reveal about the abundant joy Jesus brings?",
+      "How does Jesus' zeal for the temple challenge the way you approach corporate worship and personal devotion?"
     ]
   },
   "John_3": {
     "book": "John",
     "chapter": 3,
-    "summary": "Nicodemus, a prominent Pharisee and Jewish ruler, visited Jesus at night to ask about His miraculous signs. Jesus told him that no one can see or enter the Kingdom of God unless they are born again of water and the Spirit. Jesus compared the Holy Spirit's movement to the wind and explained that just as Moses lifted up the bronze serpent in the wilderness, the Son of Man must be lifted up on the cross. Jesus announced that God loved the world so deeply that He gave His one and only Son so whoever believes in Him will not perish but have eternal life.\n\n— Brother Bismark Twum",
+    "theme": "New Birth and the Savior of the World",
+    "summary": "A Jewish ruler named Nicodemus visits Jesus by night, prompting a profound teaching on the necessity of being born again of water and the Spirit. John the Baptist joyfully diminishes in status, testifying that Christ must increase while emphasizing that eternal life belongs to all who believe in the Son. Jesus explains to Nicodemus that God sent His Son out of immense love for the world, not to condemn it, but to save it.\n\n— Bismark Twum",
+    "lesson": "Spiritual transformation cannot be achieved through human effort or religious heritage, but requires a sovereign work of the Holy Spirit.",
     "key_verses": [
       "John 3:3",
-      "John 3:5",
       "John 3:16",
       "John 3:30"
     ],
-    "theme": "You Must Be Born Again & God's Love",
-    "lesson": "Religious education cannot save you; you must receive spiritual rebirth through faith in Jesus Christ.",
     "questions": [
-      "What did Jesus tell Nicodemus is necessary to enter God's Kingdom?",
-      "Why did God send His Son into the world according to verse 16?"
+      "What does it mean practically for your daily life to be 'born from above'?",
+      "How does John 3:16 shape your perspective on God's posture toward a broken world?"
     ]
   },
   "John_4": {
     "book": "John",
     "chapter": 4,
-    "summary": "Jesus traveled through Samaria and sat down weary by Jacob's well at noon, asking a Samaritan woman for a drink of water. Jesus offered her living water that springs up into eternal life, and then revealed supernatural Word of Knowledge about her secret past and present: she had had five husbands and the man she was currently with was not her husband. Astonished, the woman recognized Him as a prophet and Jesus revealed to her that true worshippers worship the Father in spirit and truth, declaring openly that He is the Messiah. The woman ran back to her village proclaiming what Jesus told her, leading many Samaritans to believe.\n\n— Brother Bismark Twum",
+    "theme": "Living Water and the Royal Official's Son",
+    "summary": "Jesus engages a Samaritan woman at a well in Sychar, offering her living water and revealing her hidden past, which leads many townspeople to believe in Him. After spending two days teaching the Samaritans, Jesus travels to Galilee where a royal official desperately begs Him to heal his dying son. Jesus heals the boy from a distance simply by speaking a word, prompting the official and his entire household to believe.\n\n— Bismark Twum",
+    "lesson": "No social barrier or moral failure disqualifies anyone from receiving the transformative grace and living water offered by Jesus.",
     "key_verses": [
       "John 4:14",
-      "John 4:17-18",
       "John 4:24",
-      "John 4:26"
+      "John 4:50"
     ],
-    "theme": "The Woman at the Well & True Worship",
-    "lesson": "Jesus knows all your secret past and present struggles, yet He offers you living water and turns your story into a testimony.",
     "questions": [
-      "What secret facts about the woman's life did Jesus reveal by the Word of Knowledge?",
-      "In what two ways does God require true worshippers to worship Him?"
+      "In what ways does Jesus' conversation with the Samaritan woman model effective, compassionate evangelism?",
+      "How does the royal official's persistent faith challenge you when facing impossible circumstances?"
     ]
   },
   "John_5": {
     "book": "John",
     "chapter": 5,
-    "theme": "John Chapter 5: Jesus as the eternal Word",
-    "summary": "In John 5, the narrative records how Jesus addresses His people concerning jesus as the eternal word, the son of god, the seven 'i am' declarations, and eternal life. The chapter opens with the declaration that after this there was a feast of the jews, setting the course for divine instruction and action across 47 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that but if ye believe not his writings, how shall ye believe my words?, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Believe that Jesus is the Christ, the Son of God, and believing have life in His name. Take time to meditate on John 5 and allow God's Word to transform your daily conduct.",
+    "theme": "Healing at Bethesda and the Authority of the Son",
+    "summary": "Jesus heals a paralyzed man who has lain by the pool of Bethesda for thirty-eight years, instructing him to pick up his mat and walk on the Sabbath. Jewish leaders persecute Jesus for breaking Sabbath regulations and making Himself equal with God, leading to His extensive defense of His divine authority. Jesus declares that He only does what He sees the Father doing and that the Scriptures ultimately testify about Him.\n\n— Bismark Twum",
+    "lesson": "True obedience to God centers on compassion, redemption, and honoring the divine authority of His Son above rigid legalism.",
     "key_verses": [
-      "John 5:1",
-      "John 5:10",
-      "John 5:47"
+      "John 5:8",
+      "John 5:24",
+      "John 5:39"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in John chapter 5?",
-      "How does the message of John 5 challenge or encourage your walk of faith today?"
+      "Why did the religious leaders miss the miracle of healing because of their strict adherence to rules?",
+      "How does Jesus describe the transition from spiritual death to life for those who hear and believe His word?"
     ]
   },
   "John_6": {
     "book": "John",
     "chapter": 6,
-    "theme": "John Chapter 6: Jesus as the eternal Word",
-    "summary": "In John 6, the narrative records how Jesus addresses His people concerning jesus as the eternal word, the son of god, the seven 'i am' declarations, and eternal life. The chapter opens with the declaration that after these things jesus went over the sea of galilee, which is the sea of tiberias., setting the course for divine instruction and action across 71 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that he spake of judas iscariot the son of simon: for he it was that should betray him, being one of the twelve., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Believe that Jesus is the Christ, the Son of God, and believing have life in His name. Take time to meditate on John 6 and allow God's Word to transform your daily conduct.",
+    "theme": "The Bread of Life and Words of Eternal Life",
+    "summary": "Jesus feeds a massive crowd of five thousand people with five barley loaves and two fish, later walking across the stormy Sea of Galilee to reach His disciples. When the crowd tracks Him down to Capernaum, Jesus declares Himself to be the Bread of Life, teaching that His flesh and blood are true food and drink. Many disciples struggle with this difficult teaching and turn away, but Peter affirms on behalf of the twelve that Jesus alone has the words of eternal life.\n\n— Bismark Twum",
+    "lesson": "Satisfying the deepest hungers of the human soul requires feeding daily on Christ, the true spiritual sustenance sent from heaven.",
     "key_verses": [
-      "John 6:1",
-      "John 6:10",
-      "John 6:71"
+      "John 6:35",
+      "John 6:63",
+      "John 6:68"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in John chapter 6?",
-      "How does the message of John 6 challenge or encourage your walk of faith today?"
+      "How does the feeding of the five thousand point beyond physical provision to spiritual reality?",
+      "What keeps you anchored to Jesus when His teachings or circumstances in life become difficult to understand?"
     ]
   },
   "John_7": {
     "book": "John",
     "chapter": 7,
-    "theme": "John Chapter 7: Jesus as the eternal Word",
-    "summary": "In John 7, the narrative records how Jesus addresses His people concerning jesus as the eternal word, the son of god, the seven 'i am' declarations, and eternal life. The chapter opens with the declaration that after these things jesus walked in galilee: for he would not walk in jewry, because the jews sought to kill him., setting the course for divine instruction and action across 53 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that every man went unto his own house., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Believe that Jesus is the Christ, the Son of God, and believing have life in His name. Take time to meditate on John 7 and allow God's Word to transform your daily conduct.",
+    "theme": "Jesus at the Feast of Tabernacles",
+    "summary": "Jesus travels secretly to Jerusalem for the Feast of Tabernacles, where His identity sparks intense debate among the crowds and religious leaders. Standing in the temple courts on the final day, He proclaims Himself as the source of living water, prompting the temple guards to return empty-handed because of His powerful speech. Nicodemus quietly defends Jesus before the Sanhedrin, highlighting the growing division and confusion regarding where the Prophet is truly from.\n\n— Bismark Twum",
+    "lesson": "Believers must boldly share the truth of Christ even in the face of public division, trusting that God's timing and the power of the Holy Spirit will accomplish His purposes.",
     "key_verses": [
-      "John 7:1",
-      "John 7:10",
-      "John 7:53"
+      "John 7:16",
+      "John 7:37-38"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in John chapter 7?",
-      "How does the message of John 7 challenge or encourage your walk of faith today?"
+      "Why was the crowd so deeply divided regarding the identity of Jesus, and how do people today exhibit similar divisions?",
+      "What does Jesus' invitation to come and drink from the living water mean for a thirsty soul in daily life?"
     ]
   },
   "John_8": {
     "book": "John",
     "chapter": 8,
-    "theme": "John Chapter 8: Jesus as the eternal Word",
-    "summary": "In John 8, the narrative records how Jesus addresses His people concerning jesus as the eternal word, the son of god, the seven 'i am' declarations, and eternal life. The chapter opens with the declaration that jesus went unto the mount of olives., setting the course for divine instruction and action across 59 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that took they up stones to cast at him: but jesus hid himself, and went out of the temple, going through the midst, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Believe that Jesus is the Christ, the Son of God, and believing have life in His name. Take time to meditate on John 8 and allow God's Word to transform your daily conduct.",
+    "theme": "The Light of the World and Freedom from Sin",
+    "summary": "Religious leaders bring a woman caught in adultery before Jesus to test Him, but He disarms them with the challenge that he who is without sin should cast the first stone. Later, Jesus declares Himself the Light of the World and promises true spiritual freedom to those who abide in His word. The confrontation escalates sharply when Jesus asserts His eternal preexistence by declaring 'Before Abraham was, I am,' causing the furious crowd to pick up stones to kill Him.\n\n— Bismark Twum",
+    "lesson": "Jesus offers complete forgiveness and transformation, turning us away from condemnation and into the glorious light of spiritual freedom.",
     "key_verses": [
-      "John 8:1",
-      "John 8:10",
-      "John 8:59"
+      "John 8:12",
+      "John 8:31-32",
+      "John 8:58"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in John chapter 8?",
-      "How does the message of John 8 challenge or encourage your walk of faith today?"
+      "How does Jesus' handling of the woman caught in adultery balance absolute holiness with profound mercy?",
+      "What does it truly mean to be a slave to sin versus being set free by the Son?"
     ]
   },
   "John_9": {
     "book": "John",
     "chapter": 9,
-    "theme": "John Chapter 9: Jesus as the eternal Word",
-    "summary": "In John 9, the narrative records how Jesus addresses His people concerning jesus as the eternal word, the son of god, the seven 'i am' declarations, and eternal life. The chapter opens with the declaration that as jesus passed by, he saw a man which was blind from his birth., setting the course for divine instruction and action across 41 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that jesus said unto them, if ye were blind, ye should have no sin: but now ye say, we see, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Believe that Jesus is the Christ, the Son of God, and believing have life in His name. Take time to meditate on John 9 and allow God's Word to transform your daily conduct.",
+    "theme": "Healing of the Man Born Blind",
+    "summary": "Jesus encounters a man blind from birth, spits on the ground to make mud, and tells him to wash in the pool of Siloam, resulting in the miraculous restoration of the man's sight. This healing sparks a fierce interrogation by the Pharisees, who pressure the formerly blind man and ultimately cast him out of the synagogue for refusing to condemn Jesus as a sinner. Jesus later finds the outcast man, reveals His identity as the Son of Man, and receives his worship.\n\n— Bismark Twum",
+    "lesson": "Physical and spiritual blindness are often exposed when confronted with the truth of Jesus, and faithful witnesses must stand firm despite social rejection.",
     "key_verses": [
-      "John 9:1",
-      "John 9:10",
-      "John 9:41"
+      "John 9:5",
+      "John 9:25",
+      "John 9:35-37"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in John chapter 9?",
-      "How does the message of John 9 challenge or encourage your walk of faith today?"
+      "In what ways did the religious leaders' spiritual blindness prevent them from rejoicing in a miraculous healing?",
+      "How does the testimony of the healed man ('One thing I know: though I was blind, now I see') serve as a model for personal evangelism?"
     ]
   },
   "John_10": {
     "book": "John",
     "chapter": 10,
-    "theme": "John Chapter 10: Jesus as the eternal Word",
-    "summary": "In John 10, the narrative records how Jesus addresses His people concerning jesus as the eternal word, the son of god, the seven 'i am' declarations, and eternal life. The chapter opens with the declaration that verily, verily, i say unto you, he that entereth not by the door into the sheepfold, but climbeth up some other way, the, setting the course for divine instruction and action across 42 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that many believed on him there., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Believe that Jesus is the Christ, the Son of God, and believing have life in His name. Take time to meditate on John 10 and allow God's Word to transform your daily conduct.",
+    "theme": "The Good Shepherd and His Sheep",
+    "summary": "Jesus uses the vivid metaphor of a shepherd and his sheep to explain that He is the legitimate gate and the Good Shepherd who willingly lays down His life for the flock. During the Feast of Dedication, hostile Jews demand a plain answer about His messianic identity, prompting Jesus to declare that He and the Father are one. When threats of stoning and arrest intensify, Jesus escapes across the Jordan, where many people believe in Him because of John's earlier testimony.\n\n— Bismark Twum",
+    "lesson": "Christians find ultimate security and peace in recognizing the voice of the Good Shepherd who protects and guides them through every danger.",
     "key_verses": [
-      "John 10:1",
-      "John 10:10",
-      "John 10:42"
+      "John 10:11",
+      "John 10:27-28",
+      "John 10:30"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in John chapter 10?",
-      "How does the message of John 10 challenge or encourage your walk of faith today?"
+      "What does it mean practically for a believer to know the voice of the Good Shepherd and follow Him away from false teachers?",
+      "How does Jesus' assertion that 'I and the Father are one' establish His divine nature?"
     ]
   },
   "John_11": {
     "book": "John",
     "chapter": 11,
-    "theme": "John Chapter 11: Jesus as the eternal Word",
-    "summary": "In John 11, the narrative records how Jesus addresses His people concerning jesus as the eternal word, the son of god, the seven 'i am' declarations, and eternal life. The chapter opens with the declaration that a certain man was sick, named lazarus, of bethany, the town of mary and her sister martha., setting the course for divine instruction and action across 57 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that both the chief priests and the pharisees had given a commandment, that, if any man knew where he were, he shou, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Believe that Jesus is the Christ, the Son of God, and believing have life in His name. Take time to meditate on John 11 and allow God's Word to transform your daily conduct.",
+    "theme": "The Resurrection of Lazarus",
+    "summary": "Jesus delays His journey to Bethany upon hearing that His dear friend Lazarus is gravely ill, ultimately arriving after Lazarus has been dead for four days. Weeping with grief-stricken Martha and Mary, Jesus commands that the stone be rolled away from the tomb and calls Lazarus out with a loud voice, restoring him to life. This astonishing miracle causes many Jews to believe in Jesus, but it also drives the high priest Caiaphas and the council to begin plotting His death.\n\n— Bismark Twum",
+    "lesson": "Jesus is the resurrection and the life, demonstrating absolute power over death and offering eternal hope to all who grieve.",
     "key_verses": [
-      "John 11:1",
-      "John 11:10",
-      "John 11:57"
+      "John 11:25-26",
+      "John 11:35",
+      "John 11:43-44"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in John chapter 11?",
-      "How does the message of John 11 challenge or encourage your walk of faith today?"
+      "How does Jesus' reaction at the tomb of Lazarus reveal both His genuine humanity and His divine compassion?",
+      "In what ways does the resurrection of Lazarus foreshadow the ultimate victory of Christ's own resurrection?"
     ]
   },
   "John_12": {
     "book": "John",
     "chapter": 12,
-    "theme": "John Chapter 12: Jesus as the eternal Word",
-    "summary": "In John 12, the narrative records how Jesus addresses His people concerning jesus as the eternal word, the son of god, the seven 'i am' declarations, and eternal life. The chapter opens with the declaration that jesus six days before the passover came to bethany, where lazarus was, which had been dead, whom he raised from the dead, setting the course for divine instruction and action across 50 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that i know that his commandment is life everlasting: whatsoever i speak therefore, even as the father said unto me, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Believe that Jesus is the Christ, the Son of God, and believing have life in His name. Take time to meditate on John 12 and allow God's Word to transform your daily conduct.",
+    "theme": "The Anointing at Bethany and the Triumphal Entry",
+    "summary": "Mary of Bethany deeply honors Jesus by anointing His feet with expensive perfume just days before He rides into Jerusalem on a donkey amid cheering crowds waving palm branches. Seeking to fulfill His mission, Jesus speaks of His impending death like a grain of wheat falling into the earth, drawing all people to Himself. The public ministry of Jesus concludes as He laments the unbelief of the crowd, emphasizing that His words ultimately judge those who reject the light.\n\n— Bismark Twum",
+    "lesson": "True devotion to Christ involves costly surrender and a willingness to embrace His cross rather than seeking the fleeting praise of this world.",
     "key_verses": [
-      "John 12:1",
-      "John 12:10",
-      "John 12:50"
+      "John 12:3",
+      "John 12:24",
+      "John 12:32"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in John chapter 12?",
-      "How does the message of John 12 challenge or encourage your walk of faith today?"
+      "What can we learn from Mary's act of pouring expensive perfume on Jesus regarding extravagant worship and sacrifice?",
+      "Why did Jesus use the metaphor of a grain of wheat dying to explain the ultimate purpose of His life and ministry?"
     ]
   },
   "John_13": {
     "book": "John",
     "chapter": 13,
-    "theme": "John Chapter 13: Jesus as the eternal Word",
-    "summary": "In John 13, the narrative records how Jesus addresses His people concerning jesus as the eternal word, the son of god, the seven 'i am' declarations, and eternal life. The chapter opens with the declaration that before the feast of the passover, when jesus knew that his hour was come that he should depart out of this world unto th, setting the course for divine instruction and action across 38 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that jesus answered him, wilt thou lay down thy life for my sake? verily, verily, i say unto thee, the cock shall n, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Believe that Jesus is the Christ, the Son of God, and believing have life in His name. Take time to meditate on John 13 and allow God's Word to transform your daily conduct.",
+    "theme": "The Washing of Feet and the New Commandment",
+    "summary": "Jesus humbles Himself during the Last Supper by washing His disciples' feet, demonstrating the ultimate example of servant leadership. He identifies Judas as His betrayer, prompting Judas to depart into the night. Following this, Jesus gives His disciples a new command to love one another just as He has loved them. He also predicts that Peter will deny Him three times before the rooster crows.\n\n— Bismark Twum",
+    "lesson": "True Christian discipleship is defined not by status or authority, but by active, humble service and sacrificial love toward one another.",
     "key_verses": [
-      "John 13:1",
-      "John 13:10",
-      "John 13:38"
+      "John 13:14-15",
+      "John 13:34-35"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in John chapter 13?",
-      "How does the message of John 13 challenge or encourage your walk of faith today?"
+      "In what practical ways can you adopt the posture of a foot-washer in your current relationships and workplace?",
+      "How does the new commandment to love one another serve as a witness to the watching world?"
     ]
   },
   "John_14": {
     "book": "John",
     "chapter": 14,
-    "theme": "John Chapter 14: Jesus as the eternal Word",
-    "summary": "In John 14, the narrative records how Jesus addresses His people concerning jesus as the eternal word, the son of god, the seven 'i am' declarations, and eternal life. The chapter opens with the declaration that let not your heart be troubled: ye believe in god, believe also in me., setting the course for divine instruction and action across 31 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that but that the world may know that i love the father, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Believe that Jesus is the Christ, the Son of God, and believing have life in His name. Take time to meditate on John 14 and allow God's Word to transform your daily conduct.",
+    "theme": "The Way, the Truth, and the Life",
+    "summary": "Jesus comforts His troubled disciples by assuring them of their eternal home in His Father's house and declaring Himself as the exclusive way, truth, and life. In response to Philip's request, Jesus explains His distinct oneness and unity with the Father. He promises to send the Holy Spirit, the Counselor, to dwell with and guide them. He concludes by offering His supernatural peace to calm their anxious hearts.\n\n— Bismark Twum",
+    "lesson": "Believers must anchor their hearts in Jesus, trusting His promised presence and the indwelling power of the Holy Spirit rather than yielding to fear.",
     "key_verses": [
-      "John 14:1",
-      "John 14:10",
-      "John 14:31"
+      "John 14:1-3",
+      "John 14:6",
+      "John 14:26-27"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in John chapter 14?",
-      "How does the message of John 14 challenge or encourage your walk of faith today?"
+      "What does it mean for Jesus to be the exclusive 'way, the truth, and the life' in a pluralistic culture?",
+      "How does the promise of the Holy Spirit as your Counselor change how you face daily anxiety or uncertainty?"
     ]
   },
   "John_15": {
     "book": "John",
     "chapter": 15,
-    "theme": "John Chapter 15: Jesus as the eternal Word",
-    "summary": "In John 15, the narrative records how the Lord addresses His people concerning jesus as the eternal word, the son of god, the seven 'i am' declarations, and eternal life. The chapter opens with the declaration that i am the true vine, and my father is the husbandman., setting the course for divine instruction and action across 27 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that ye also shall bear witness, because ye have been with me from the beginning., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Believe that Jesus is the Christ, the Son of God, and believing have life in His name. Take time to meditate on John 15 and allow God's Word to transform your daily conduct.",
+    "theme": "The Vine and the Branches",
+    "summary": "Jesus uses the vivid agricultural metaphor of a grapevine to explain that He is the true vine and His Father is the vinedresser. He commands His disciples to abide in Him continually, warning that apart from Him they can accomplish nothing of eternal value. He prepares them for inevitable hatred and persecution from the world because of His name. Furthermore, He reiterates that the Holy Spirit will bear witness alongside them.\n\n— Bismark Twum",
+    "lesson": "Spiritual fruitfulness and endurance in the faith flow entirely from a daily, dependent relationship of abiding in Christ.",
     "key_verses": [
-      "John 15:1",
-      "John 15:10",
-      "John 15:27"
+      "John 15:4-5",
+      "John 15:12-13"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in John chapter 15?",
-      "How does the message of John 15 challenge or encourage your walk of faith today?"
+      "What practical habits or distractions pull you away from abiding closely in the Vine?",
+      "How should the reality of the world's hostility shape your expectations regarding your Christian walk?"
     ]
   },
   "John_16": {
     "book": "John",
     "chapter": 16,
-    "theme": "John Chapter 16: Jesus as the eternal Word",
-    "summary": "In John 16, the narrative records how Jesus addresses His people concerning jesus as the eternal word, the son of god, the seven 'i am' declarations, and eternal life. The chapter opens with the declaration that these things have i spoken unto you, that ye should not be offended., setting the course for divine instruction and action across 33 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that these things i have spoken unto you, that in me ye might have peace. in the world ye shall have tribulation: b, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Believe that Jesus is the Christ, the Son of God, and believing have life in His name. Take time to meditate on John 16 and allow God's Word to transform your daily conduct.",
+    "theme": "The Work of the Holy Spirit and Overcoming the World",
+    "summary": "Jesus warns His disciples about upcoming expulsion from synagogues and martyrdom so they will not stumble when trials arrive. He explains that His physical departure is necessary for the Helper to come and convict the world concerning sin, righteousness, and judgment. He transitions their sorrow into impending joy, comparing their trial to a woman's birth pains. He concludes by declaring that while they will face tribulation in the world, He has already conquered it.\n\n— Bismark Twum",
+    "lesson": "Believers can face intense tribulation with courage and supernatural joy because Christ has already secured ultimate victory over the world.",
     "key_verses": [
-      "John 16:1",
-      "John 16:10",
+      "John 16:13",
       "John 16:33"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in John chapter 16?",
-      "How does the message of John 16 challenge or encourage your walk of faith today?"
+      "In what specific ways does the Holy Spirit convict the world today regarding sin, righteousness, and judgment?",
+      "How does knowing Jesus has 'conquered the world' affect your perspective on current personal or global hardships?"
     ]
   },
   "John_17": {
     "book": "John",
     "chapter": 17,
-    "theme": "John Chapter 17: Jesus as the eternal Word",
-    "summary": "In John 17, the narrative records how Jesus addresses His people concerning jesus as the eternal word, the son of god, the seven 'i am' declarations, and eternal life. The chapter opens with the declaration that these words spake jesus, and lifted up his eyes to heaven, and said, father, the hour is come, setting the course for divine instruction and action across 26 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that i have declared unto them thy name, and will declare it: that the love wherewith thou hast loved me may be in , leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Believe that Jesus is the Christ, the Son of God, and believing have life in His name. Take time to meditate on John 17 and allow God's Word to transform your daily conduct.",
+    "theme": "The High Priestly Prayer",
+    "summary": "Jesus lifts His eyes to heaven and prays first for His own glorification and the completion of His earthly mission. He then intercedes intensely for the protection, sanctification, and spiritual unity of His immediate disciples. Finally, He expands His prayer to include all future believers who will ever trust in Him through their message. He asks that they may ultimately dwell with Him and behold His glory.\n\n— Bismark Twum",
+    "lesson": "Unity among believers is not merely a preference but a powerful, Jesus-prayed reality meant to display God's love to a watching world.",
     "key_verses": [
-      "John 17:1",
-      "John 17:10",
-      "John 17:26"
+      "John 17:3",
+      "John 17:20-21",
+      "John 17:24"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in John chapter 17?",
-      "How does the message of John 17 challenge or encourage your walk of faith today?"
+      "What does it mean practically to be 'in the world but not of the world,' as Jesus prayed for His disciples?",
+      "How does understanding that Jesus specifically prayed for you in this chapter impact your prayer life and identity?"
     ]
   },
   "John_18": {
     "book": "John",
     "chapter": 18,
-    "theme": "John Chapter 18: Jesus as the eternal Word",
-    "summary": "In John 18, the narrative records how Jesus addresses His people concerning jesus as the eternal word, the son of god, the seven 'i am' declarations, and eternal life. The chapter opens with the declaration that when jesus had spoken these words, he went forth with his disciples over the brook cedron, where was a garden, into the , setting the course for divine instruction and action across 40 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that cried they all again, saying, not this man, but barabbas. now barabbas was a robber., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Believe that Jesus is the Christ, the Son of God, and believing have life in His name. Take time to meditate on John 18 and allow God's Word to transform your daily conduct.",
+    "theme": "The Betrayal, Arrest, and Trials of Jesus",
+    "summary": "Jesus leads His disciples across the Kidron Valley to a garden, where Judas arrives with a Roman cohort and temple guards to betray Him with a kiss. Jesus willingly identifies Himself, causing the soldiers to draw back and fall to the ground, before surrendering Himself and protecting His disciples. Peter denies knowing Jesus twice during the chaotic preliminary examinations before the high priests Annas and Caiaphas. Afterward, Jesus is brought before the Roman governor Pontius Pilate, where He declares that His kingdom is not of this world.\n\n— Bismark Twum",
+    "lesson": "Jesus sovereignly orchestrated every detail of His suffering and arrest, displaying majestic composure and enduring injustice for our redemption.",
     "key_verses": [
-      "John 18:1",
-      "John 18:10",
-      "John 18:40"
+      "John 18:6",
+      "John 18:36-37"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in John chapter 18?",
-      "How does the message of John 18 challenge or encourage your walk of faith today?"
+      "How does Jesus' calm authority during His arrest contrast with Peter's impulsive violence with the sword?",
+      "What does Jesus' statement to Pilate that His 'kingdom is not of this world' teach about the nature of Christian influence?"
     ]
   },
   "John_19": {
     "book": "John",
     "chapter": 19,
-    "theme": "John Chapter 19: Jesus as the eternal Word",
-    "summary": "In John 19, the narrative records how Jesus addresses His people concerning jesus as the eternal word, the son of god, the seven 'i am' declarations, and eternal life. The chapter opens with the declaration that pilate therefore took jesus, and scourged him., setting the course for divine instruction and action across 42 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that there laid they jesus therefore because of the jews’ preparation day, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Believe that Jesus is the Christ, the Son of God, and believing have life in His name. Take time to meditate on John 19 and allow God's Word to transform your daily conduct.",
+    "theme": "The Crucifixion and Burial of Jesus",
+    "summary": "Roman soldiers mock Jesus, crown Him with thorns, and lead Him away to Golgotha where He is crucified between two criminals. From the cross, Jesus entrusts the care of His mother Mary to the beloved disciple John before declaring 'It is finished' and yielding His spirit. Joseph of Arimathea and Nicodemus then boldly claim Jesus' body, wrapping it in spices and placing it in a new tomb.\n\n— Bismark Twum",
+    "lesson": "Believers are reminded of the immense cost of redemption through Christ's substitutionary suffering and should respond with deep gratitude and surrendered devotion.",
     "key_verses": [
-      "John 19:1",
-      "John 19:10",
-      "John 19:42"
+      "John 19:16",
+      "John 19:30",
+      "John 19:34"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in John chapter 19?",
-      "How does the message of John 19 challenge or encourage your walk of faith today?"
+      "How does Jesus' care for His mother Mary while enduring excruciating pain on the cross challenge the way we prioritize relationships during our own suffering?",
+      "What is the significance of the phrase 'It is finished,' and how does it impact your understanding of salvation by grace alone?"
     ]
   },
   "John_20": {
     "book": "John",
     "chapter": 20,
-    "theme": "John Chapter 20: Jesus as the eternal Word",
-    "summary": "In John 20, the narrative records how Jesus addresses His people concerning jesus as the eternal word, the son of god, the seven 'i am' declarations, and eternal life. The chapter opens with the declaration that the first day of the week cometh mary magdalene early, when it was yet dark, unto the sepulchre, and seeth the stone tak, setting the course for divine instruction and action across 31 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that but these are written, that ye might believe that jesus is the christ, the son of god, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Believe that Jesus is the Christ, the Son of God, and believing have life in His name. Take time to meditate on John 20 and allow God's Word to transform your daily conduct.",
+    "theme": "The Resurrection and Appearances of Jesus",
+    "summary": "Mary Magdalene discovers the stone rolled away from the tomb on Sunday morning and alerts Peter and John, who inspect the empty burial cloths. Jesus personally appears to a weeping Mary, commissioning her to tell the disciples about His ascension. Later, Jesus appears to the locked room of fearful disciples, bestowing His peace and the Holy Spirit, and a week later invites the doubting Thomas to touch His wounds, prompting Thomas to declare Him Lord and God.\n\n— Bismark Twum",
+    "lesson": "The bodily resurrection of Jesus transforms human despair into living hope and validates His absolute lordship over death and sin.",
     "key_verses": [
-      "John 20:1",
-      "John 20:10",
-      "John 20:31"
+      "John 20:16",
+      "John 20:21",
+      "John 20:28-29"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in John chapter 20?",
-      "How does the message of John 20 challenge or encourage your walk of faith today?"
+      "In what ways does Jesus' gentle response to Thomas's doubt encourage you to bring your own skepticism and struggles to Him?",
+      "How does being sent by Jesus as the Father sent Him change your daily perspective on your vocation and interactions with others?"
     ]
   },
   "John_21": {
     "book": "John",
     "chapter": 21,
-    "theme": "John Chapter 21: Jesus as the eternal Word",
-    "summary": "In John 21, the narrative records how Jesus addresses His people concerning jesus as the eternal word, the son of god, the seven 'i am' declarations, and eternal life. The chapter opens with the declaration that after these things jesus shewed himself again to the disciples at the sea of tiberias, setting the course for divine instruction and action across 25 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that there are also many other things which jesus did, the which, if they should be written every one, i suppose th, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Believe that Jesus is the Christ, the Son of God, and believing have life in His name. Take time to meditate on John 21 and allow God's Word to transform your daily conduct.",
+    "theme": "Jesus Restores Peter and Appears by the Sea",
+    "summary": "Jesus appears to seven disciples fishing on the Sea of Galilee, performing a miraculous catch of fish that echoes their initial calling. Sharing a breakfast of bread and fish on the shore, Jesus questions Simon Peter three times, reversing his triple denial by commissioning him to feed His sheep. Jesus concludes by rebuking Peter's curiosity about John's future, urging them both to follow Him faithfully regardless of the cost.\n\n— Bismark Twum",
+    "lesson": "Past failures do not disqualify a believer from serving Christ, as His restorative grace offers complete forgiveness and a renewed call to ministry.",
     "key_verses": [
-      "John 21:1",
-      "John 21:10",
-      "John 21:25"
+      "John 21:6",
+      "John 21:17",
+      "John 21:19"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in John chapter 21?",
-      "How does the message of John 21 challenge or encourage your walk of faith today?"
+      "Why do you think Jesus asked Peter if He loved Him three times, and how does this restoration apply to areas where you feel you have failed God?",
+      "How does Jesus' command to 'follow me' challenge you to let go of comparisons with the spiritual journeys of other believers?"
     ]
   },
   "Acts_1": {
     "book": "Acts",
     "chapter": 1,
-    "summary": "Before ascending into heaven, the resurrected Jesus spent forty days teaching His disciples about the Kingdom of God. He commanded them not to leave Jerusalem but to wait for the Holy Spirit, promising they would receive supernatural power to be His witnesses across the earth. As the disciples watched, Jesus was taken up into the clouds, and two angels promised He would return in the very same way. The believers returned to the upper room in Jerusalem, united constantly in prayer, and cast lots to choose Matthias to replace Judas Iscariot as the twelfth apostle.\n\n— Brother Bismark Twum",
+    "theme": "The Ascension and the Choice of Matthias",
+    "summary": "Resurrected Jesus instructs His disciples in Jerusalem to await the promised Holy Spirit before ascending into heaven in a cloud while two angels look on. The remaining apostles gather in an upper room with Mary and Jesus' brothers for continuous prayer. Peter addresses the gathering regarding the betrayal of Judas Iscariot and leads the process to replace him. Through prayer and casting lots, Matthias is officially selected to complete the circle of the twelve apostles.\n\n— Bismark Twum",
+    "lesson": "Believers must anchor periods of transition and uncertainty in persistent prayer and reliance on God's word rather than hasty human initiative.",
     "key_verses": [
       "Acts 1:8",
       "Acts 1:11",
-      "Acts 1:14"
+      "Acts 1:24"
     ],
-    "theme": "The Holy Spirit Promised & The Ascension",
-    "lesson": "You cannot do God's work with human strength alone; wait on the Holy Spirit for power to live for Christ.",
     "questions": [
-      "What did Jesus promise the disciples would happen when the Holy Spirit came upon them?",
-      "Who was chosen to replace Judas as an apostle?"
+      "How does the disciples' immediate response of prayer after the Ascension model the way believers should handle major life transitions?",
+      "In what practical ways can modern Christians wait for God's timing while actively preparing for His work, much like the apostles in Jerusalem?"
     ]
   },
   "Acts_2": {
     "book": "Acts",
     "chapter": 2,
-    "summary": "On the Day of Pentecost, 120 disciples were praying together when suddenly a sound like a violent rushing wind filled the house and tongues of fire rested on each of them. All of them were filled with the Holy Spirit and began speaking in other tongues as the Spirit enabled them, causing the international crowds in Jerusalem to marvel in their own languages. Peter stood up with boldness and preached that this fulfilled Joel's prophecy and proved Jesus was crucified and resurrected as Lord and Christ. When the people were cut to the heart and asked what to do, Peter told them to repent and be baptized; about three thousand souls were saved that day.\n\n— Brother Bismark Twum",
+    "theme": "The Coming of the Holy Spirit and the Birth of the Church",
+    "summary": "The Holy Spirit descends upon the believers gathered on the Day of Pentecost with the sound of a violent wind and tongues of fire, enabling them to declare the gospel in various native languages. Peter stands before the astonished crowd, boldly proclaiming Jesus as Lord and Messiah through Old Testament prophecy, cutting deeply to the hearts of his listeners. Three thousand people repent, are baptized, and devote themselves to the apostles' teaching, fellowship, breaking of bread, and prayer. This vibrant community shares their possessions generously and enjoys the favor of all the people as God adds to their numbers daily.\n\n— Bismark Twum",
+    "lesson": "The Holy Spirit empowers ordinary believers to boldly proclaim the gospel and fosters a deeply communal, generous church life.",
     "key_verses": [
       "Acts 2:4",
-      "Acts 2:38-39",
+      "Acts 2:38",
       "Acts 2:42"
     ],
-    "theme": "The Outpouring of the Holy Spirit",
-    "lesson": "When the Holy Spirit fills your life, fear is replaced with boldness to speak the truth and win souls.",
     "questions": [
-      "What two physical signs accompanied the coming of the Holy Spirit on Pentecost?",
-      "How many people repented and were baptized after Peter's sermon?"
+      "What specific elements of the early church's daily life, as described in verses 42-47, are most lacking in modern Western Christianity?",
+      "How does Peter's transition from fearful denial in the Gospels to bold proclamation at Pentecost demonstrate the transformative power of the Holy Spirit?"
     ]
   },
   "Acts_3": {
     "book": "Acts",
     "chapter": 3,
-    "summary": "Peter and John go up to the temple at the hour of prayer and encounter a man lame from birth begging at the Beautiful Gate. Peter tells him, 'Silver and gold have I none; but such as I have give I thee: In the name of Jesus Christ of Nazareth rise up and walk,' taking him by the right hand and pulling him up. Instantly the man's feet and ankles receive strength, and he leaps, walks, and praises God into the temple courts, drawing an amazed crowd. Peter uses this miracle to preach at Solomon's Colonnade, calling the people to repent and turn to God so their sins may be wiped out and times of refreshing may come from the presence of the Lord.\n\n— Brother Bismark Twum",
+    "theme": "Healing at the Beautiful Gate and Peter's Second Sermon",
+    "summary": "Peter and John encounter a man who has been lame from birth begging at the temple gate called Beautiful, and Peter heals him in the name of Jesus Christ of Nazareth. The astonished crowd rushes into Solomon's Portico, where Peter seizes the teaching moment to point away from himself and toward the glorified servant Jesus, whom they had recently crucified. He urges the listeners to repent and turn back to God so that times of refreshing may come from the presence of the Lord. Their public witness is abruptly halted when temple authorities and sadducees arrest Peter and John and put them in custody overnight.\n\n— Bismark Twum",
+    "lesson": "Every trial or everyday encounter is an opportunity to direct people away from human capability and toward the healing power of Jesus Christ.",
     "key_verses": [
       "Acts 3:6",
-      "Acts 3:8",
-      "Acts 3:19"
+      "Acts 3:19",
+      "Acts 3:26"
     ],
-    "theme": "Healing of the Lame Man and Peter's Temple Sermon",
-    "lesson": "There is unmatched power in the Name of Jesus to heal broken bodies and revive repentant hearts.",
     "questions": [
-      "What did the lame man ask Peter and John for at the Beautiful Gate?",
-      "What did Peter say to the crowd about where the power for the healing came from?"
+      "Why was it significant that Peter and John directed the healed man's attention to Jesus rather than seeking personal praise or financial gain?",
+      "How does Peter's message to the crowd balance the conviction of sin with the hopeful promise of spiritual restoration?"
     ]
   },
   "Acts_4": {
     "book": "Acts",
     "chapter": 4,
-    "summary": "The priests, the captain of the temple guard, and the Sadducees arrest Peter and John because they preach the resurrection of the dead through Jesus, though the number of believers grows to 5,000 men. Brought before the Sanhedrin, Peter is filled with the Holy Spirit and proclaims, 'Neither is there salvation in any other: for there is none other name under heaven given among men, whereby we must be saved.' Astonished by the boldness of uneducated fishermen, the leaders order them to speak no more in Jesus' name, but Peter and John declare they must obey God rather than men. Returning to the believers, they pray for boldness, the place shakes, and the community shares all possessions with one heart and soul.\n\n— Brother Bismark Twum",
+    "theme": "Courage Before the Sanhedrin and Community Sharing",
+    "summary": "Peter and John stand fearfully questioned before the high priest and the Sanhedrin, yet boldly proclaim that salvation is found in no one other than Jesus. The Jewish council commands the apostles to never speak or teach in the name of Jesus, but Peter and John refuse to obey human orders over divine mandates. Upon their release, the believers gather to lift their voices in a powerful prayer for boldness, which God answers by shaking the meeting place and filling them afresh with the Holy Spirit. The burgeoning community displays radical unity by selling their property and laying the proceeds at the apostles' feet for distribution to anyone in need, exemplified by Joseph called Barnabas.\n\n— Bismark Twum",
+    "lesson": "True fellowship with God produces both holy boldness to witness in the face of opposition and radical generosity toward the needy.",
     "key_verses": [
       "Acts 4:12",
-      "Acts 4:19-20",
+      "Acts 4:19",
       "Acts 4:31"
     ],
-    "theme": "Boldness Under Persecution and Supernatural Unity",
-    "lesson": "Courage in the face of intimidation comes from the Holy Spirit and standing on the Name of Jesus.",
     "questions": [
-      "What famous verse about salvation did Peter proclaim before the Jewish rulers?",
-      "What supernatural physical event occurred when the believers prayed together?"
+      "In what modern contexts do Christians face pressures similar to the apostles' command to stay silent about Jesus?",
+      "How does the believers' prayer in this chapter focus on God's sovereignty rather than demanding the removal of their persecution?"
     ]
   },
   "Acts_5": {
     "book": "Acts",
     "chapter": 5,
-    "theme": "Acts Chapter 5: The Holy Spirit empowered church",
-    "summary": "In Acts 5, the narrative records how Jesus addresses His people concerning the holy spirit empowered church, apostolic witness, miracles, and gospel expansion. The chapter opens with the declaration that but a certain man named ananias, with sapphira his wife, sold a possession,, setting the course for divine instruction and action across 42 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that daily in the temple, and in every house, they ceased not to teach and preach jesus christ., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "You shall receive power when the Holy Spirit comes upon you to be bold witnesses for Christ. Take time to meditate on Acts 5 and allow God's Word to transform your daily conduct.",
+    "theme": "Ananias and Sapphira, Prison Deliverance, and Gamaliel's Counsel",
+    "summary": "Ananias and Sapphira conspire to deceive the apostolic community by pretending to give the full price of a sold property while secretly keeping back a portion, resulting in their immediate, divine judgment of death. Miraculous signs multiply through the hands of the apostles, drawing vast crowds from surrounding towns until an angel of the Lord rescues the imprisoned apostles from jail at night. Brought before the Sanhedrin once more, Peter famously declares that God must be obeyed rather than human authorities, sparking furious rage among the council members. The respected Pharisee Gamaliel intervenes with wise counsel, persuading the leaders to release the apostles after having them beaten, and the disciples leave rejoicing that they were counted worthy of suffering.\n\n— Bismark Twum",
+    "lesson": "God values absolute integrity and honesty within His church, and His purposes cannot be thwarted by human opposition or governmental decree.",
     "key_verses": [
-      "Acts 5:1",
-      "Acts 5:10",
-      "Acts 5:42"
+      "Acts 5:3",
+      "Acts 5:29",
+      "Acts 5:41"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Acts chapter 5?",
-      "How does the message of Acts 5 challenge or encourage your walk of faith today?"
+      "What does the severe judgment of Ananias and Sapphira reveal about God's holiness regarding truthfulness and hypocrisy in the early church?",
+      "How can believers today develop the same perspective as the apostles, who rejoiced that they were counted worthy of suffering for the name of Jesus?"
     ]
   },
   "Acts_6": {
     "book": "Acts",
     "chapter": 6,
-    "theme": "Acts Chapter 6: The Holy Spirit empowered church",
-    "summary": "In Acts 6, the narrative records how Jesus addresses His people concerning the holy spirit empowered church, apostolic witness, miracles, and gospel expansion. The chapter opens with the declaration that in those days, when the number of the disciples was multiplied, there arose a murmuring of the grecians against the hebr, setting the course for divine instruction and action across 15 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that all that sat in the council, looking stedfastly on him, saw his face as it had been the face of an angel., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "You shall receive power when the Holy Spirit comes upon you to be bold witnesses for Christ. Take time to meditate on Acts 6 and allow God's Word to transform your daily conduct.",
+    "theme": "Choosing the First Deacons and the Arrest of Stephen",
+    "summary": "As the number of disciples grows, Hellenist Jews complain that their widows are being overlooked in the daily food distribution, prompting the twelve apostles to delegate this administrative task. The congregation chooses seven men of good standing, full of the Spirit and wisdom—including Stephen and Philip—whom the apostles ordain by prayer and the laying on of hands. Stephen performs great wonders and powerful signs among the people, leading hostile opponents from the Freedmen synagogue to falsely accuse him of blasphemy against Moses and God. The chapter culminates with Stephen standing trial before the Sanhedrin, his face miraculously glowing like the face of an angel as he prepares to speak.\n\n— Bismark Twum",
+    "lesson": "Effective ministry requires the delegation of administrative burdens so that leaders can focus on prayer and the word, and every believer can use their gifts to serve.",
     "key_verses": [
-      "Acts 6:1",
-      "Acts 6:6",
+      "Acts 6:3",
+      "Acts 6:4",
       "Acts 6:15"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Acts chapter 6?",
-      "How does the message of Acts 6 challenge or encourage your walk of faith today?"
+      "What qualities did the early church look for when selecting the first deacons, and how do those criteria apply to church leadership today?",
+      "Why did the opposition resort to false accusations and manipulation of the crowd when they could not withstand Stephen's Spirit-given wisdom?"
     ]
   },
   "Acts_7": {
     "book": "Acts",
     "chapter": 7,
-    "theme": "Acts Chapter 7: The Holy Spirit empowered church",
-    "summary": "In Acts 7, the narrative records how Jesus addresses His people concerning the holy spirit empowered church, apostolic witness, miracles, and gospel expansion. The chapter opens with the declaration that said the high priest, are these things so?, setting the course for divine instruction and action across 60 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that he kneeled down, and cried with a loud voice, lord, lay not this sin to their charge. and when he had said thi, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "You shall receive power when the Holy Spirit comes upon you to be bold witnesses for Christ. Take time to meditate on Acts 7 and allow God's Word to transform your daily conduct.",
+    "theme": "The Stoning of Stephen",
+    "summary": "Stephen delivers a sweeping historical defense before the Sanhedrin, recounting Israel's persistent rebellion against God from Abraham to the prophets. Enraged by his bold rebuke, the religious leaders drag him outside the city walls and stone him to death. As he is executed, Stephen gazes into heaven, forgives his murderers, and commends his spirit to the Lord while a young man named Saul watches approvingly.\n\n— Bismark Twum",
+    "lesson": "Believers can face intense persecution and even death with steadfast faith and radical forgiveness, trusting God's ultimate justice and presence.",
     "key_verses": [
-      "Acts 7:1",
-      "Acts 7:10",
+      "Acts 7:59",
       "Acts 7:60"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Acts chapter 7?",
-      "How does the message of Acts 7 challenge or encourage your walk of faith today?"
+      "How does Stephen's speech connect Israel's past rejection of prophets to their rejection of Jesus?",
+      "In what ways does Stephen's martyrdom mirror the crucifixion of Jesus?"
     ]
   },
   "Acts_8": {
     "book": "Acts",
     "chapter": 8,
-    "theme": "Acts Chapter 8: The Holy Spirit empowered church",
-    "summary": "In Acts 8, the narrative records how Jesus addresses His people concerning the holy spirit empowered church, apostolic witness, miracles, and gospel expansion. The chapter opens with the declaration that saul was consenting unto his death. and at that time there was a great persecution against the church which was at jerus, setting the course for divine instruction and action across 40 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that but philip was found at azotus: and passing through he preached in all the cities, till he came to caesarea., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "You shall receive power when the Holy Spirit comes upon you to be bold witnesses for Christ. Take time to meditate on Acts 8 and allow God's Word to transform your daily conduct.",
+    "theme": "Persecution Scatters the Church and the Gospel Spreads to Samaria",
+    "summary": "Brutal persecution breaks out under Saul, scattering believers throughout Judea and Samaria where they preach the word. Philip brings great joy to Samaria with miraculous signs, leading many to Christ, including Simon the sorcerer whose faith proves superficial when he tries to buy the Holy Spirit. Prompted by an angel, Philip then travels to the Gaza road and leads an Ethiopian eunuch to faith and water baptism.\n\n— Bismark Twum",
+    "lesson": "God sovereignly uses unexpected trials to advance His kingdom and directs His servants to reach individuals from diverse cultures.",
     "key_verses": [
-      "Acts 8:1",
-      "Acts 8:10",
-      "Acts 8:40"
+      "Acts 8:4",
+      "Acts 8:36",
+      "Acts 8:37"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Acts chapter 8?",
-      "How does the message of Acts 8 challenge or encourage your walk of faith today?"
+      "Why was Simon the sorcerer's understanding of the Holy Spirit fundamentally flawed?",
+      "What does the encounter on the road to Gaza teach about readiness to share the gospel with seekers?"
     ]
   },
   "Acts_9": {
     "book": "Acts",
     "chapter": 9,
-    "theme": "Acts Chapter 9: The Holy Spirit empowered church",
-    "summary": "In Acts 9, the narrative records how Jesus addresses His people concerning the holy spirit empowered church, apostolic witness, miracles, and gospel expansion. The chapter opens with the declaration that saul, yet breathing out threatenings and slaughter against the disciples of the lord, went unto the high priest,, setting the course for divine instruction and action across 43 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that it came to pass, that he tarried many days in joppa with one simon a tanner., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "You shall receive power when the Holy Spirit comes upon you to be bold witnesses for Christ. Take time to meditate on Acts 9 and allow God's Word to transform your daily conduct.",
+    "theme": "The Conversion of Saul and Ministry of Peter",
+    "summary": "Blinded by a blinding heavenly light and a direct voice from Jesus on the road to Damascus, Saul's murderous crusade against the church is dramatically halted. Ananias reluctantly obeys God to restore Saul's sight, transforming the fierce persecutor into a bold proclaimer of Christ. Meanwhile, Peter travels to Lydda and Joppa, miraculously healing a paralyzed man named Aeneas and raising Dorcas from the dead.\n\n— Bismark Twum",
+    "lesson": "No person is beyond the reach of God's transforming grace, and surrendered lives are powerfully used to bring healing and faith to others.",
     "key_verses": [
-      "Acts 9:1",
-      "Acts 9:10",
-      "Acts 9:43"
+      "Acts 9:4",
+      "Acts 9:5",
+      "Acts 9:15"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Acts chapter 9?",
-      "How does the message of Acts 9 challenge or encourage your walk of faith today?"
+      "How did Ananias model radical obedience despite his understandable fears about Saul?",
+      "What significance does Saul's sudden transition from persecutor to preached possess for Christian apologetics?"
     ]
   },
   "Acts_10": {
     "book": "Acts",
     "chapter": 10,
-    "theme": "Acts Chapter 10: The Holy Spirit empowered church",
-    "summary": "In Acts 10, the narrative records how Jesus addresses His people concerning the holy spirit empowered church, apostolic witness, miracles, and gospel expansion. The chapter opens with the declaration that there was a certain man in caesarea called cornelius, a centurion of the band called the italian band,, setting the course for divine instruction and action across 48 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that he commanded them to be baptized in the name of the lord. then prayed they him to tarry certain days., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "You shall receive power when the Holy Spirit comes upon you to be bold witnesses for Christ. Take time to meditate on Acts 10 and allow God's Word to transform your daily conduct.",
+    "theme": "Peter and Cornelius",
+    "summary": "A Roman centurion named Cornelius receives a divine vision instructing him to send for Peter from Joppa. While waiting for messengers, Peter receives a puzzling vision of a sheet filled with unclean animals, teaching him that God has cleansed all people. Peter travels to Caesarea, preaches the gospel to Cornelius's household, and witnesses the Holy Spirit fall upon the Gentiles just as He did on the Jews.\n\n— Bismark Twum",
+    "lesson": "The gospel crosses all cultural and ethnic barriers because God shows no partiality toward any group of people.",
     "key_verses": [
-      "Acts 10:1",
-      "Acts 10:10",
-      "Acts 10:48"
+      "Acts 10:34",
+      "Acts 10:35",
+      "Acts 10:44"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Acts chapter 10?",
-      "How does the message of Acts 10 challenge or encourage your walk of faith today?"
+      "How did God use visions to systematically dismantle Peter's long-held cultural and religious prejudices?",
+      "What was the theological significance of the Holy Spirit falling on the Gentiles before they were baptized?"
     ]
   },
   "Acts_11": {
     "book": "Acts",
     "chapter": 11,
-    "theme": "Acts Chapter 11: The Holy Spirit empowered church",
-    "summary": "In Acts 11, the narrative records how Jesus addresses His people concerning the holy spirit empowered church, apostolic witness, miracles, and gospel expansion. The chapter opens with the declaration that the apostles and brethren that were in judaea heard that the gentiles had also received the word of god., setting the course for divine instruction and action across 30 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that which also they did, and sent it to the elders by the hands of barnabas and saul., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "You shall receive power when the Holy Spirit comes upon you to be bold witnesses for Christ. Take time to meditate on Acts 11 and allow God's Word to transform your daily conduct.",
+    "theme": "The Gospel Reaches Antioch and Gentiles",
+    "summary": "Peter defends his ministry among the uncircumcised Gentiles before the critical believers in Jerusalem, convincing them that God has granted repentance to all nations. Believers scattered by persecution travel as far as Phoenicia and Cyprus, eventually arriving in Antioch where they boldly preach to Greeks with massive success. Barnabas and Saul disciple this vibrant new community, where followers of Jesus are first called Christians.\n\n— Bismark Twum",
+    "lesson": "The church must remain flexible to the leading of the Holy Spirit, even when God moves in ways that challenge traditional religious practices.",
     "key_verses": [
-      "Acts 11:1",
-      "Acts 11:10",
-      "Acts 11:30"
+      "Acts 11:18",
+      "Acts 11:21",
+      "Acts 11:26"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Acts chapter 11?",
-      "How does the message of Acts 11 challenge or encourage your walk of faith today?"
+      "Why was the designation 'Christian' coined in Antioch, and what does it imply about the believers' lifestyle?",
+      "How did Barnabas demonstrate spiritual maturity when he was sent to investigate the Antioch revival?"
     ]
   },
   "Acts_12": {
     "book": "Acts",
     "chapter": 12,
-    "theme": "Acts Chapter 12: The Holy Spirit empowered church",
-    "summary": "In Acts 12, the narrative records how Peter addresses His people concerning the holy spirit empowered church, apostolic witness, miracles, and gospel expansion. The chapter opens with the declaration that about that time herod the king stretched forth his hands to vex certain of the church., setting the course for divine instruction and action across 25 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that barnabas and saul returned from jerusalem, when they had fulfilled their ministry, and took with them john, wh, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "You shall receive power when the Holy Spirit comes upon you to be bold witnesses for Christ. Take time to meditate on Acts 12 and allow God's Word to transform your daily conduct.",
+    "theme": "Herod's Persecution and Peter's Miraculous Deliverance",
+    "summary": "King Herod Agrippa executes James the brother of John and imprisons Peter with heavy guard during the Feast of Unleavened Bread. The church fervently prays for Peter, prompting an angel to wake him in his cell, shatter his chains, and lead him past guards out to freedom. After realizing his miraculous escape, Peter reports to the praying believers before Herod is suddenly struck down by an angel of the Lord for accepting divine worship.\n\n— Bismark Twum",
+    "lesson": "Earnest, persistent prayer unleashes God's power to overcome seemingly impossible circumstances, while human arrogance ultimately faces divine judgment.",
     "key_verses": [
-      "Acts 12:1",
-      "Acts 12:10",
-      "Acts 12:25"
+      "Acts 12:5",
+      "Acts 12:7",
+      "Acts 12:24"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Acts chapter 12?",
-      "How does the message of Acts 12 challenge or encourage your walk of faith today?"
+      "Why do you think the church prayed so fervently for Peter after James had already been executed?",
+      "What contrast does the text draw between the fate of King Herod and the rapid spread of God's word?"
     ]
   },
   "Acts_13": {
     "book": "Acts",
     "chapter": 13,
-    "theme": "Acts Chapter 13: The Holy Spirit empowered church",
-    "summary": "In Acts 13, the narrative records how Jesus addresses His people concerning the holy spirit empowered church, apostolic witness, miracles, and gospel expansion. The chapter opens with the declaration that there were in the church that was at antioch certain prophets and teachers, setting the course for divine instruction and action across 52 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that the disciples were filled with joy, and with the holy ghost., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "You shall receive power when the Holy Spirit comes upon you to be bold witnesses for Christ. Take time to meditate on Acts 13 and allow God's Word to transform your daily conduct.",
+    "theme": "The First Missionary Journey and the Mission to the Gentiles",
+    "summary": "The Holy Spirit sets apart Barnabas and Saul at Antioch, sending them off to Cyprus where they confront the sorcerer Elymas and witness the conversion of proconsul Sergius Paulus. Moving on to Pisidian Antioch, Paul preaches a powerful historical sermon in the synagogue detailing Jesus' resurrection. When Jewish leaders reject the message and incite persecution, Paul and Barnabas boldly announce they are turning their focus to the Gentiles.\n\n— Bismark Twum",
+    "lesson": "God's redemptive plan extends to all nations, and opposition from religious authorities should not deter believers from preaching the gospel to those who are receptive.",
     "key_verses": [
-      "Acts 13:1",
-      "Acts 13:10",
-      "Acts 13:52"
+      "Acts 13:2",
+      "Acts 13:38-39",
+      "Acts 13:47"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Acts chapter 13?",
-      "How does the message of Acts 13 challenge or encourage your walk of faith today?"
+      "How did the Holy Spirit's guidance direct the church in Antioch to launch their first missionary endeavor, and how can believers discern similar promptings today?",
+      "Why was Paul's turning to the Gentiles such a pivotal turning point in early church history?"
     ]
   },
   "Acts_14": {
     "book": "Acts",
     "chapter": 14,
-    "theme": "Acts Chapter 14: The Holy Spirit empowered church",
-    "summary": "In Acts 14, the narrative records how Paul addresses His people concerning the holy spirit empowered church, apostolic witness, miracles, and gospel expansion. The chapter opens with the declaration that it came to pass in iconium, that they went both together into the synagogue of the jews, and so spake, that a great mult, setting the course for divine instruction and action across 28 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that there they abode long time with the disciples., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "You shall receive power when the Holy Spirit comes upon you to be bold witnesses for Christ. Take time to meditate on Acts 14 and allow God's Word to transform your daily conduct.",
+    "theme": "Persecution in Iconium and Lystra and the Return to Antioch",
+    "summary": "Paul and Barnabas perform miraculous signs in Iconium, dividing the city between believers and hostile opponents before fleeing to Lystra. After healing a lifelong cripple, the local Lycaonian crowd mistakenly worships the apostles as Hermes and Zeus, whom Paul and angry Jews later stone and drag outside the city, leaving him for dead. Miraculously surviving, Paul continues preaching, appoints elders in every newly planted church, and returns safely to Syrian Antioch to report on God's work.\n\n— Bismark Twum",
+    "lesson": "Fulfilling God's calling often involves enduring severe hardships and misunderstandings, yet divine strength sustains believers through every trial.",
     "key_verses": [
-      "Acts 14:1",
-      "Acts 14:10",
-      "Acts 14:28"
+      "Acts 14:19-20",
+      "Acts 14:21-22",
+      "Acts 14:27"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Acts chapter 14?",
-      "How does the message of Acts 14 challenge or encourage your walk of faith today?"
+      "What can we learn from Paul and Barnabas's immediate reaction to being idolized as gods in Lystra?",
+      "How does the establishment of local elders in every church reflect the importance of structured leadership and discipleship?"
     ]
   },
   "Acts_15": {
     "book": "Acts",
     "chapter": 15,
-    "theme": "Acts Chapter 15: The Holy Spirit empowered church",
-    "summary": "In Acts 15, the narrative records how Jesus addresses His people concerning the holy spirit empowered church, apostolic witness, miracles, and gospel expansion. The chapter opens with the declaration that certain men which came down from judaea taught the brethren, and said, except ye be circumcised after the manner of mose, setting the course for divine instruction and action across 41 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that he went through syria and cilicia, confirming the churches., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "You shall receive power when the Holy Spirit comes upon you to be bold witnesses for Christ. Take time to meditate on Acts 15 and allow God's Word to transform your daily conduct.",
+    "theme": "The Jerusalem Council and the Separation of Paul and Barnabas",
+    "summary": "Judean believers arrive in Antioch demanding that Gentile converts undergo circumcision to be saved, sparking a fierce theological debate resolved by a landmark council in Jerusalem. Peter, Paul, Barnabas, and James address the assembly, ultimately deciding not to burden Gentile believers with the Mosaic law beyond a few essential moral and dietary restrictions. Shortly after delivering this liberating decree to Antioch, Paul and Barnabas experience a sharp disagreement over John Mark, leading them to part ways and embark on separate missionary paths.\n\n— Bismark Twum",
+    "lesson": "Unity within the body of Christ is maintained by holding fast to salvation by grace alone while exhibiting grace and wisdom in secondary cultural practices.",
     "key_verses": [
-      "Acts 15:1",
-      "Acts 15:10",
-      "Acts 15:41"
+      "Acts 15:8-9",
+      "Acts 15:19-20",
+      "Acts 15:39"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Acts chapter 15?",
-      "How does the message of Acts 15 challenge or encourage your walk of faith today?"
+      "How did the early church model healthy conflict resolution during the theological crisis at the Jerusalem Council?",
+      "What does the sharp disagreement between Paul and Barnabas over John Mark teach us about human flaws and God's ability to use multiple ministry partnerships?"
     ]
   },
   "Acts_16": {
     "book": "Acts",
     "chapter": 16,
-    "theme": "Acts Chapter 16: The Holy Spirit empowered church",
-    "summary": "In Acts 16, the narrative records how Jesus addresses His people concerning the holy spirit empowered church, apostolic witness, miracles, and gospel expansion. The chapter opens with the declaration that came he to derbe and lystra: and, behold, a certain disciple was there, named timotheus, the son of a certain woman, whi, setting the course for divine instruction and action across 40 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that they went out of the prison, and entered into the house of lydia: and when they had seen the brethren, they co, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "You shall receive power when the Holy Spirit comes upon you to be bold witnesses for Christ. Take time to meditate on Acts 16 and allow God's Word to transform your daily conduct.",
+    "theme": "The Macedonian Call, Conversion of Lydia, and Philippian Jailer",
+    "summary": "Paul invites Timothy to join his team and receives a nocturnal vision directing him to Macedonia, bringing the gospel to Europe. In Philippi, Lydia and her household respond to the message and host the missionaries, followed by Paul casting a demon out of a fortune-telling slave girl. Arrested, beaten, and locked in stocks, Paul and and Silas sing hymns at midnight until a miraculous earthquake shakes the prison, leading the terrified jailer and his entire family to embrace faith and baptism.\n\n— Bismark Twum",
+    "lesson": "Praising God in the darkest moments of suffering can become a powerful testimony that draws unbelievers to salvation.",
     "key_verses": [
-      "Acts 16:1",
-      "Acts 16:10",
-      "Acts 16:40"
+      "Acts 16:9-10",
+      "Acts 16:25-26",
+      "Acts 16:31"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Acts chapter 16?",
-      "How does the message of Acts 16 challenge or encourage your walk of faith today?"
+      "How does the diverse background of Paul's early European converts (Lydia, the slave girl, the jailer) demonstrate the universal appeal of the gospel?",
+      "In what ways did Paul and Silas leverage their Roman citizenship responsibly without compromising their witness?"
     ]
   },
   "Acts_17": {
     "book": "Acts",
     "chapter": 17,
-    "theme": "Acts Chapter 17: The Holy Spirit empowered church",
-    "summary": "In Acts 17, the narrative records how Jesus addresses His people concerning the holy spirit empowered church, apostolic witness, miracles, and gospel expansion. The chapter opens with the declaration that when they had passed through amphipolis and apollonia, they came to thessalonica, where was a synagogue of the jews:, setting the course for divine instruction and action across 34 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that howbeit certain men clave unto him, and believed: among the which was dionysius the areopagite, and a woman na, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "You shall receive power when the Holy Spirit comes upon you to be bold witnesses for Christ. Take time to meditate on Acts 17 and allow God's Word to transform your daily conduct.",
+    "theme": "Reasoning in Thessalonica, Berea, and the Areopagus in Athens",
+    "summary": "In Thessalonica, Paul reasons in the synagogue from the scriptures, prompting a jealous riot that forces believers to smuggle him and Silas away by night. The more noble-minded Bereans eagerly examine the scriptures daily to verify Paul's teaching, though agitators from Thessalonica soon pursue him to Athens. Distressed by the city's idols, Paul engages Epicurean and Stoic philosophers at the Areopagus, proclaiming the Creator God and the resurrection of Jesus to an intellectual audience.\n\n— Bismark Twum",
+    "lesson": "Effective apologetics requires engaging culture thoughtfully while faithfully proclaiming the truth of repentance and the resurrection.",
     "key_verses": [
-      "Acts 17:1",
-      "Acts 17:10",
-      "Acts 17:34"
+      "Acts 17:11",
+      "Acts 17:22-23",
+      "Acts 17:30-31"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Acts chapter 17?",
-      "How does the message of Acts 17 challenge or encourage your walk of faith today?"
+      "What made the Berean approach to scripture exemplary for modern Christians?",
+      "How did Paul adapt his evangelistic approach when speaking to pagan philosophers in Athens compared to how he spoke to synagogue audiences?"
     ]
   },
   "Acts_18": {
     "book": "Acts",
     "chapter": 18,
-    "theme": "Acts Chapter 18: The Holy Spirit empowered church",
-    "summary": "In Acts 18, the narrative records how Jesus addresses His people concerning the holy spirit empowered church, apostolic witness, miracles, and gospel expansion. The chapter opens with the declaration that after these things paul departed from athens, and came to corinth, setting the course for divine instruction and action across 28 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that he mightily convinced the jews, and that publickly, shewing by the scriptures that jesus was christ., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "You shall receive power when the Holy Spirit comes upon you to be bold witnesses for Christ. Take time to meditate on Acts 18 and allow God's Word to transform your daily conduct.",
+    "theme": "Ministry in Corinth, Aquila and Priscilla, and Apollos",
+    "summary": "Arriving in Corinth, Paul meets the tentmakers Aquila and Priscilla, working alongside them while reasoning every Sabbath in the synagogue. After facing heavy Jewish opposition, Paul turns his ministry next door to the house of Titius Justus, finding great encouragement through a night vision from the Lord promising protection. Later, after sailing to Ephesus and briefly visiting Antioch, Paul begins his third missionary journey while the eloquent scholar Apollos is thoroughly instructed in the Christian faith by Aquila and Priscilla.\n\n— Bismark Twum",
+    "lesson": "Ordinary vocational work can serve as a vital platform for ministry, and collaborative mentorship helps equip gifted teachers for greater service.",
     "key_verses": [
-      "Acts 18:1",
-      "Acts 18:10",
-      "Acts 18:28"
+      "Acts 18:9-10",
+      "Acts 18:24-26"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Acts chapter 18?",
-      "How does the message of Acts 18 challenge or encourage your walk of faith today?"
+      "How did Aquila and Priscilla model effective Christian hospitality, tentmaking, and doctrinal mentorship?",
+      "Why was the Lord's reassurance in the night vision crucial for Paul during his challenging ministry in Corinth?"
     ]
   },
   "Acts_19": {
     "book": "Acts",
     "chapter": 19,
-    "theme": "Acts Chapter 19: The Holy Spirit empowered church",
-    "summary": "In Acts 19, the narrative records how Jesus addresses His people concerning the holy spirit empowered church, apostolic witness, miracles, and gospel expansion. The chapter opens with the declaration that it came to pass, that, while apollos was at corinth, paul having passed through the upper coasts came to ephesus: and fi, setting the course for divine instruction and action across 41 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that when he had thus spoken, he dismissed the assembly., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "You shall receive power when the Holy Spirit comes upon you to be bold witnesses for Christ. Take time to meditate on Acts 19 and allow God's Word to transform your daily conduct.",
+    "theme": "The Riot in Ephesus and Triumph of the Word",
+    "summary": "Paul arrives in Ephesus where he baptizes twelve disciples of John in the Holy Spirit and ministers with extraordinary miracles, including the healing of the sick through handkerchiefs. Seven sons of Sceva attempt to cast out demons in Jesus' name but are overpowered by an evil spirit, prompting a massive public confession and burning of magical books. Demetrius the silversmith incites a violent two-hour riot in the grand theater to protect the trade of Artemis idols. Town officials finally quiet the crowd, allowing Paul to encourage the believers and depart for Macedonia.\n\n— Bismark Twum",
+    "lesson": "True repentance requires a complete break from past sins and idols, prioritizing allegiance to Christ over personal profit or cultural comfort.",
     "key_verses": [
-      "Acts 19:1",
-      "Acts 19:10",
-      "Acts 19:41"
+      "Acts 19:11-12",
+      "Acts 19:18-20",
+      "Acts 19:35-37"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Acts chapter 19?",
-      "How does the message of Acts 19 challenge or encourage your walk of faith today?"
+      "How did the believers in Ephesus demonstrate the sincerity of their repentance with their expensive magical books?",
+      "In what ways do modern cultural values create a similar tension with the Gospel as Demetrius's idol business faced?"
     ]
   },
   "Acts_20": {
     "book": "Acts",
     "chapter": 20,
-    "theme": "Acts Chapter 20: The Holy Spirit empowered church",
-    "summary": "In Acts 20, the narrative records how Jesus addresses His people concerning the holy spirit empowered church, apostolic witness, miracles, and gospel expansion. The chapter opens with the declaration that after the uproar was ceased, paul called unto him the disciples, and embraced them, and departed for to go into macedoni, setting the course for divine instruction and action across 38 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that sorrowing most of all for the words which he spake, that they should see his face no more. and they accompanie, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "You shall receive power when the Holy Spirit comes upon you to be bold witnesses for Christ. Take time to meditate on Acts 20 and allow God's Word to transform your daily conduct.",
+    "theme": "Farewell to the Ephesian Elders at Miletus",
+    "summary": "Paul travels through Macedonia and Greece, strengthening the churches before arriving in Troas where he preaches until midnight and miraculously raises the fallen youth Eutychus from the dead. Sailing past Ephesus, Paul stops at Miletus and summons the Ephesian church elders for an emotional farewell address. He recounts his faithful, tearful ministry among them, warns them against fierce wolves rising from within, and commits them to God's grace. Kneeling on the beach, they pray together and sorrowfully bid him goodbye, knowing they will see his face no more.\n\n— Bismark Twum",
+    "lesson": "Spiritual leaders are called to shepherd God's flock with humility, endurance, and sacrificial devotion, guarding the church against false teachings.",
     "key_verses": [
-      "Acts 20:1",
-      "Acts 20:10",
-      "Acts 20:38"
+      "Acts 20:9-10",
+      "Acts 20:24",
+      "Acts 20:35"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Acts chapter 20?",
-      "How does the message of Acts 20 challenge or encourage your walk of faith today?"
+      "What can modern church leaders learn from Paul's parting counsel regarding the protection of the flock?",
+      "Why is Paul's quote 'It is more blessed to give than to receive' a vital principle for everyday Christian living?"
     ]
   },
   "Acts_21": {
     "book": "Acts",
     "chapter": 21,
-    "summary": "Paul sailed toward Jerusalem despite brothers along the way urging him not to go because of the Holy Spirit's warning of coming affliction. In Caesarea, the prophet Agabus took Paul's belt, tied his own hands and feet, and operated in the Word of Wisdom, declaring that the Jewish leaders in Jerusalem would bind the owner of this belt and hand him over to the Gentiles. Paul responded that he was ready not only to be bound but even to die in Jerusalem for the Name of the Lord Jesus. When Paul arrived in Jerusalem, a riot broke out in the temple, and Roman soldiers arrested him, saving him from being killed by the mob.\n\n— Brother Bismark Twum",
+    "theme": "The Journey to Jerusalem and Paul's Arrest",
+    "summary": "Paul ignores prophetic warnings from disciples in Tyre and Agabus in Caesarea, who use a belt to physically demonstrate the imprisonment awaiting him in Jerusalem. Upon arrival, James and the Jerusalem elders warmly receive Paul but advise him to sponsor four men taking a Nazirite vow to appease Jewish believers zealous for the law. While Paul is purifying himself in the temple, Asian Jews spot him, falsely accuse him of bringing Gentiles into the holy place, and incite a citywide riot to kill him. Roman soldiers and the tribune Claudius Lysias rescue Paul from the beating and arrest him, permitting him to speak to the mob from the barracks stairs.\n\n— Bismark Twum",
+    "lesson": "Obedience to God's calling often involves stepping directly into suffering and hardship, trusting Him with the ultimate outcome.",
     "key_verses": [
-      "Acts 21:10-11",
-      "Acts 21:13",
-      "Acts 21:30-33"
+      "Acts 21:13-14",
+      "Acts 21:23-24",
+      "Acts 21:33"
     ],
-    "theme": "Paul's Journey to Jerusalem & Agabus' Word of Wisdom",
-    "lesson": "God reveals the future through the Word of Wisdom to prepare you, but divine conviction empowers you to stand firm.",
     "questions": [
-      "What prophetic demonstration did Agabus perform with Paul's belt?",
-      "What was Paul's bold response when believers begged him not to go to Jerusalem?"
+      "How does Paul's resolve to face imprisonment in Jerusalem reflect his commitment to Jesus Christ?",
+      "In what ways did Paul balance cultural accommodation with uncompromising loyalty to the Gospel among the Jewish believers?"
     ]
   },
   "Acts_22": {
     "book": "Acts",
     "chapter": 22,
-    "theme": "Acts Chapter 22: The Holy Spirit empowered church",
-    "summary": "In Acts 22, the narrative records how Jesus addresses His people concerning the holy spirit empowered church, apostolic witness, miracles, and gospel expansion. The chapter opens with the declaration that men, brethren, and fathers, hear ye my defence which i make now unto you., setting the course for divine instruction and action across 30 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that on the morrow, because he would have known the certainty wherefore he was accused of the jews, he loosed him f, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "You shall receive power when the Holy Spirit comes upon you to be bold witnesses for Christ. Take time to meditate on Acts 22 and allow God's Word to transform your daily conduct.",
+    "theme": "Paul's Defense to the Crowd and Roman Citizenship",
+    "summary": "Standing on the barracks stairs, Paul raises his hand and addresses the quieted Jerusalem crowd in Aramaic, recounting his zealous Pharisaic background, dramatic road to Damascus conversion, and Ananias's ministry to him. He describes a vision in the temple where Jesus explicitly commissioned him to take the Gospel far away to the Gentiles. The crowd listens until he mentions his mission to the Gentiles, at which point they erupt in fury, throwing off their cloaks and shouting for his execution. The Roman commander orders Paul brought inside for scourging, but Paul halts the torture by revealing his Roman citizenship.\n\n— Bismark Twum",
+    "lesson": "Sharing personal testimony is a powerful, undeniable tool for witness, even when met with fierce opposition.",
     "key_verses": [
-      "Acts 22:1",
-      "Acts 22:10",
-      "Acts 22:30"
+      "Acts 22:14-15",
+      "Acts 22:21",
+      "Acts 22:25"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Acts chapter 22?",
-      "How does the message of Acts 22 challenge or encourage your walk of faith today?"
+      "Why did the mention of the Gentiles trigger such violent outrage from the Jewish audience?",
+      "How did Paul effectively utilize his legal rights as a Roman citizen to protect himself and further his mission?"
     ]
   },
   "Acts_23": {
     "book": "Acts",
     "chapter": 23,
-    "theme": "Acts Chapter 23: The Holy Spirit empowered church",
-    "summary": "In Acts 23, the narrative records how Paul addresses His people concerning the holy spirit empowered church, apostolic witness, miracles, and gospel expansion. The chapter opens with the declaration that paul, earnestly beholding the council, said, men and brethren, i have lived in all good conscience before god until this, setting the course for divine instruction and action across 35 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that i will hear thee, said he, when thine accusers are also come. and he commanded him to be kept in herod’s judgm, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "You shall receive power when the Holy Spirit comes upon you to be bold witnesses for Christ. Take time to meditate on Acts 23 and allow God's Word to transform your daily conduct.",
+    "theme": "The Plot Against Paul and Transfer to Caesarea",
+    "summary": "Paul looks directly at the Sanhedrin and declares he has lived with a clear conscience before God, prompting the high priest Ananias to order him struck on the mouth. Sensing the tension between the Pharisees and Sadducees regarding the resurrection, Paul cleverly divides the council by identifying as a Pharisee standing trial for his hope in the resurrection. That night, the Lord appears to Paul, encouraging him that he must testify in Rome just as he did in Jerusalem. When over forty Jews take a secret vow to neither eat nor drink until they kill Paul, his nephew uncovers the plot and alerts the Roman commander, who safely escorts Paul under heavy armed guard to Governor Felix in Caesarea.\n\n— Bismark Twum",
+    "lesson": "God frequently uses ordinary means, such as family ties and secular authorities, to orchestrate deliverance for His faithful servants.",
     "key_verses": [
-      "Acts 23:1",
-      "Acts 23:10",
-      "Acts 23:35"
+      "Acts 23:11",
+      "Acts 23:12-13",
+      "Acts 23:23-24"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Acts chapter 23?",
-      "How does the message of Acts 23 challenge or encourage your walk of faith today?"
+      "How does Jesus' night appearance to Paul provide comfort during seasons of intense opposition?",
+      "In what ways does God work behind the scenes through human agency, like Paul's nephew, to accomplish His purposes?"
     ]
   },
   "Acts_24": {
     "book": "Acts",
     "chapter": 24,
-    "theme": "Acts Chapter 24: The Holy Spirit empowered church",
-    "summary": "In Acts 24, the narrative records how Paul addresses His people concerning the holy spirit empowered church, apostolic witness, miracles, and gospel expansion. The chapter opens with the declaration that after five days ananias the high priest descended with the elders, and with a certain orator named tertullus, who inform, setting the course for divine instruction and action across 27 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that but after two years porcius festus came into felix’ room: and felix, willing to shew the jews a pleasure, left, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "You shall receive power when the Holy Spirit comes upon you to be bold witnesses for Christ. Take time to meditate on Acts 24 and allow God's Word to transform your daily conduct.",
+    "theme": "Paul's Trial Before Governor Felix in Caesarea",
+    "summary": "Five days later, the high priest Ananias and elders arrive in Caesarea with a professional orator named Tertullus, who formally accuses Paul before Governor Felix of being a public troublemaker and ringleader of the Nazarene sect. Paul mounts a composed defense, firmly denying the charges of desecrating the temple or inciting riots, and explains that he worships God according to the Way and hopes in the resurrection of the dead. Felix, well acquainted with the Christian way, adjourns the trial and frequently summons Paul over the next two years to converse about faith in Christ, though Felix ultimately leaves Paul imprisoned to appease the Jews when Porcius Festus succeeds him.\n\n— Bismark Twum",
+    "lesson": "Proclaiming the truth with integrity should always be prioritized over currying favor with corrupt worldly authorities.",
     "key_verses": [
-      "Acts 24:1",
-      "Acts 24:10",
+      "Acts 24:14-16",
+      "Acts 24:24-25",
       "Acts 24:27"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Acts chapter 24?",
-      "How does the message of Acts 24 challenge or encourage your walk of faith today?"
+      "Why did Felix continually invite Paul to speak with him, yet repeatedly fail to repent?",
+      "How did Paul maintain his moral integrity and bold witness while standing trial before a corrupt governor?"
     ]
   },
   "Acts_25": {
     "book": "Acts",
     "chapter": 25,
-    "theme": "Acts Chapter 25: The Holy Spirit empowered church",
-    "summary": "In Acts 25, the narrative records how Jesus addresses His people concerning the holy spirit empowered church, apostolic witness, miracles, and gospel expansion. The chapter opens with the declaration that when festus was come into the province, after three days he ascended from caesarea to jerusalem., setting the course for divine instruction and action across 27 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that it seemeth to me unreasonable to send a prisoner, and not withal to signify the crimes laid against him., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "You shall receive power when the Holy Spirit comes upon you to be bold witnesses for Christ. Take time to meditate on Acts 25 and allow God's Word to transform your daily conduct.",
+    "theme": "Trial Before Festus and Appeal to Caesar",
+    "summary": "Governor Festus arrives in Caesarea and quickly faces renewed accusations against Paul from the Jewish leadership. Refusing to transfer Paul to Jerusalem for an ambush, Festus hears the case and prompts Paul to make his formal defense. Exercising his rights as a Roman citizen, Paul appeals his case directly to Caesar Augustus. Shortly after, King Agrippa and Bernice arrive to visit Festus, setting the stage for Paul's next major testimony.\n\n— Bismark Twum",
+    "lesson": "Believers can utilize worldly systems and legal protections wisely to further the mission of the gospel while maintaining a clear conscience before God.",
     "key_verses": [
-      "Acts 25:1",
-      "Acts 25:10",
-      "Acts 25:27"
+      "Acts 25:8",
+      "Acts 25:11",
+      "Acts 25:19"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Acts chapter 25?",
-      "How does the message of Acts 25 challenge or encourage your walk of faith today?"
+      "Why did Paul choose to appeal to Caesar rather than face trial in Jerusalem, and what did this decision reveal about God's sovereignty over earthly authorities?",
+      "How does Festus's dilemma with Agrippa illustrate the challenge of understanding spiritual matters through a purely political lens?"
     ]
   },
   "Acts_26": {
     "book": "Acts",
     "chapter": 26,
-    "theme": "Acts Chapter 26: The Holy Spirit empowered church",
-    "summary": "In Acts 26, the narrative records how Jesus addresses His people concerning the holy spirit empowered church, apostolic witness, miracles, and gospel expansion. The chapter opens with the declaration that agrippa said unto paul, thou art permitted to speak for thyself. then paul stretched forth the hand, and answered for hi, setting the course for divine instruction and action across 32 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that said agrippa unto festus, this man might have been set at liberty, if he had not appealed unto caesar., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "You shall receive power when the Holy Spirit comes upon you to be bold witnesses for Christ. Take time to meditate on Acts 26 and allow God's Word to transform your daily conduct.",
+    "theme": "Paul's Defense Before Agrippa",
+    "summary": "Standing before King Agrippa, Festus, and military commanders, Paul delivers a passionate defense detailing his strict Pharisaic background and former persecution of the church. He recounts his dramatic Damascus road encounter with the resurrected Christ, who commissioned him to turn the Gentiles from darkness to light. When Festus interrupts by claiming Paul is insane, Paul calmly appeals to Agrippa's knowledge of the prophets. Agrippa admits that Paul has done nothing worthy of death and notes that Paul could have been set free had he not appealed to Caesar.\n\n— Bismark Twum",
+    "lesson": "Boldly sharing one's personal testimony of transformation through Christ is a powerful and effective form of witness, regardless of how skeptics react.",
     "key_verses": [
-      "Acts 26:1",
-      "Acts 26:10",
-      "Acts 26:32"
+      "Acts 26:18",
+      "Acts 26:28",
+      "Acts 26:29"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Acts chapter 26?",
-      "How does the message of Acts 26 challenge or encourage your walk of faith today?"
+      "In what ways does Paul's testimony before Agrippa serve as a model for sharing our own faith with people in positions of power or skepticism?",
+      "What was the significance of Agrippa's famous response, 'Do you think that in such a short time you can persuade me to be a Christian?'"
     ]
   },
   "Acts_27": {
     "book": "Acts",
     "chapter": 27,
-    "theme": "Acts Chapter 27: The Holy Spirit empowered church",
-    "summary": "In Acts 27, the narrative records how Paul addresses His people concerning the holy spirit empowered church, apostolic witness, miracles, and gospel expansion. The chapter opens with the declaration that when it was determined that we should sail into italy, they delivered paul and certain other prisoners unto one named ju, setting the course for divine instruction and action across 44 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that the rest, some on boards, and some on broken pieces of the ship. and so it came to pass, that they escaped all, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "You shall receive power when the Holy Spirit comes upon you to be bold witnesses for Christ. Take time to meditate on Acts 27 and allow God's Word to transform your daily conduct.",
+    "theme": "The Stormy Voyage and Shipwreck at Malta",
+    "summary": "Paul and other prisoners set sail for Rome under the guard of a centurion named Julius, running into severe contrary winds along the Mediterranean. Ignoring Paul's prophetic warning to stay anchored, the crew presses on and encounters a violent hurricane-force wind called the northeaster. After days of terror with no sun or stars visible, Paul reassures the crew of an angel's promise that all lives will be spared despite the impending shipwreck. The ship runs aground off the coast of Malta, and every single person safely reaches land, fulfilling Paul's exact words.\n\n— Bismark Twum",
+    "lesson": "God's purposes cannot be thwarted by any storm, and faithful believers can bring supernatural peace and leadership into chaotic crises.",
     "key_verses": [
-      "Acts 27:1",
-      "Acts 27:10",
-      "Acts 27:44"
+      "Acts 27:22",
+      "Acts 27:23",
+      "Acts 27:24"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Acts chapter 27?",
-      "How does the message of Acts 27 challenge or encourage your walk of faith today?"
+      "How did Paul transition from being a prisoner in chains to the de facto leader of the ship during the crisis?",
+      "In what ways does the stormy voyage mirror the trials and uncertainties believers face in their own spiritual journeys?"
     ]
   },
   "Acts_28": {
     "book": "Acts",
     "chapter": 28,
-    "theme": "Acts Chapter 28: The Holy Spirit empowered church",
-    "summary": "In Acts 28, the narrative records how Jesus addresses His people concerning the holy spirit empowered church, apostolic witness, miracles, and gospel expansion. The chapter opens with the declaration that when they were escaped, then they knew that the island was called melita., setting the course for divine instruction and action across 31 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that preaching the kingdom of god, and teaching those things which concern the lord jesus christ, with all confiden, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "You shall receive power when the Holy Spirit comes upon you to be bold witnesses for Christ. Take time to meditate on Acts 28 and allow God's Word to transform your daily conduct.",
+    "theme": "Arrival in Rome and Ministry Under House Arrest",
+    "summary": "The shipwrecked survivors are warmly welcomed by the hospitable natives of Malta, where Paul miraculously survives a venomous viper bite and heals the island's chief official's father. After three months, the travelers board another ship and finally arrive in Italy, greeted by believers along the road to Rome. Upon reaching the imperial city, Paul is permitted to live by himself under guard with a soldier keeping watch. He spends his final recorded days proclaiming the kingdom of God and teaching about Jesus from morning till evening to all who visit him.\n\n— Bismark Twum",
+    "lesson": "No physical imprisonment, barrier, or circumstance can ever bind the Word of God or halt the advance of His kingdom.",
     "key_verses": [
-      "Acts 28:1",
-      "Acts 28:10",
+      "Acts 28:6",
+      "Acts 28:23",
       "Acts 28:31"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Acts chapter 28?",
-      "How does the message of Acts 28 challenge or encourage your walk of faith today?"
+      "What does the conclusion of Acts—leaving Paul under house arrest rather than detailing his martyrdom—teach us about the ongoing nature of God's mission?",
+      "How did Paul maintain such remarkable productivity and joy while under house arrest in Rome?"
     ]
   }
 };

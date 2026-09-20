@@ -404,15 +404,17 @@ export const PRE_GENERATED_CHAPTER_SUMMARIES: Record<string, ChapterSummary> = {
 
 /**
  * Ensures all summaries are cleanly signed off with the author's locked name:
- * "- Brother Bismark Twum"
+ * "— Bismark Twum"
  */
 export function ensureSummarySignOff(text: string): string {
-  if (!text) return "Summary not available offline\n\n— Brother Bismark Twum";
-  const trimmed = text.trim();
-  if (trimmed.includes("Brother Bismark Twum") || trimmed.includes("Bismark Twum")) {
+  if (!text) return "Summary not available offline\n\n— Bismark Twum";
+  let trimmed = text.trim();
+  // Strip any legacy "Brother" prefix from signoff
+  trimmed = trimmed.replace(/[—\-]\s*Brother\s+Bismark\s+Twum/gi, "— Bismark Twum");
+  if (trimmed.includes("— Bismark Twum") || trimmed.includes("- Bismark Twum")) {
     return trimmed;
   }
-  return `${trimmed}\n\n— Brother Bismark Twum`;
+  return `${trimmed}\n\n— Bismark Twum`;
 }
 
 /**
@@ -505,16 +507,16 @@ export function getChapterSummary(
       chapter,
       theme: `${cleanBook} Chapter ${chapter}`,
       summary: ensureSummarySignOff(
-        `In ${cleanBook} ${chapter}, the sacred Scriptures record divine instruction and covenant history across ${chapterVerses.length} verses. The chapter opens with the declaration that ${cleanV1.slice(0, 120)}, establishing the context for God's holy dealings with His people. Throughout this passage, the Lord demonstrates His righteousness, power, and enduring faithfulness. The account concludes with the solemn truth that ${cleanVEnd.slice(0, 110)}, encouraging believers to walk in obedience.`
+        `${cleanV1.charAt(0).toUpperCase() + cleanV1.slice(1)}. Across these ${chapterVerses.length} verses, the Lord reveals His holy character, establishes divine truth, and directs His people in righteousness, concluding as ${cleanVEnd.toLowerCase()}.`
       ),
-      lesson: `Meditate upon the Word of God in ${cleanBook} ${chapter}, honoring the Lord in prayer, righteousness, and daily obedience.`,
+      lesson: `Meditate upon ${cleanBook} ${chapter}, receiving God's wisdom and applying His truth in daily faithfulness.`,
       key_verses: [
         `${cleanBook} ${chapter}:1`,
         `${cleanBook} ${chapter}:${Math.min(10, chapterVerses.length)}`
       ],
       questions: [
-        `What fundamental truth does God speak to your heart in ${cleanBook} chapter ${chapter}?`,
-        `How does ${cleanBook} ${chapter} guide your personal walk of faith and obedience today?`
+        `What specific command or promise stands out to you in ${cleanBook} chapter ${chapter}?`,
+        `How does this passage encourage your personal trust in God today?`
       ]
     };
     savePreGeneratedChapterSummary(synthesized);
@@ -526,11 +528,11 @@ export function getChapterSummary(
     book: cleanBook,
     chapter,
     summary: ensureSummarySignOff(
-      `In ${cleanBook} ${chapter}, the word of the Lord provides divine instruction, guidance, and spiritual strength for believers. Meditating upon this holy chapter reveals God's eternal wisdom and righteous character. As you read and apply its sacred truths, the Lord will order your steps and establish your path in peace.`
+      `The sacred text of ${cleanBook} ${chapter} reveals God's timeless counsel, sustaining grace, and righteous instruction. Taking time to read and meditate upon these verses establishes spiritual discernment and guides believers in the paths of peace.`
     ),
     key_verses: [`${cleanBook} ${chapter}:1`],
     theme: `${cleanBook} Chapter ${chapter}`,
-    lesson: `Meditate upon the Word of God in ${cleanBook} ${chapter}, walking in faithfulness, purity, and prayer.`,
+    lesson: `Allow the truths of ${cleanBook} ${chapter} to anchor your heart in prayer, purity, and active obedience.`,
     questions: [
       `What key truth does God speak to you in ${cleanBook} chapter ${chapter}?`,
       `How can you apply ${cleanBook} ${chapter} to your life today?`

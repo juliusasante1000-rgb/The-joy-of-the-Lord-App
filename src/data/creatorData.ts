@@ -8,8 +8,8 @@ export const AUTHORIZED_FOUNDER_EMAILS = [
 ];
 
 export const DEFAULT_CREATOR_PROFILE: CreatorProfile = {
-  name: "Brother Bismark Twum",
-  honorific: "Brother Bismark Twum",
+  name: "Bismark Twum",
+  honorific: "Bismark Twum",
   professionalTitle: "Mathematics Educator | Researcher | Writer | Member of the Body of Christ",
   roleBadges: [
     "Mathematics Educator",

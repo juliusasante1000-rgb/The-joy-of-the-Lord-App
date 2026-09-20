@@ -47,7 +47,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange, on
     { id: "library" as TabType, label: "Christian Library", sublabel: "Books & Classics", icon: Library },
     { id: "quotes" as TabType, label: "Daily Quotes", sublabel: "Spiritual Wisdom", icon: Sparkles },
     { id: "doctrines" as TabType, label: "Doctrinal Pillars", sublabel: "Apostolic Truth", icon: Layers },
-    { id: "creator" as TabType, label: "About Creator", sublabel: "Brother Bismark Twum", icon: User },
+    { id: "creator" as TabType, label: "About Creator", sublabel: "Bismark Twum", icon: User },
   ];
 
   const isPrimaryActive = primaryTabs.some((t) => {

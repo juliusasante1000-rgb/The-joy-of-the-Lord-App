@@ -464,13 +464,11 @@ const SERVER_IN_FLIGHT_GENERATIONS = new Map<string, Promise<any>>();
 
 // Modern Gemini 3 production models (with automatic fallback cascade)
 const GEMINI_MODELS_CASCADE = [
+  "gemini-flash-lite-latest",
+  "gemini-flash-latest",
   "gemini-3.5-flash-lite",
   "gemini-3.5-flash",
-  "gemini-flash-lite-latest",
-  "gemini-3.1-flash-lite",
   "gemini-3.6-flash",
-  "gemini-3.8-flash",
-  "gemini-flash-latest",
 ];
 
 // Production & Vercel Diagnostic Endpoint: Check environment and Gemini API key status without exposing secrets
@@ -587,7 +585,7 @@ export function formatGeminiErrorMessage(err: any): string {
  * 2. High Variation & Uniqueness: Never repeat structural patterns, outlines, or opening clichés across outputs. Start each generation with fresh, distinct phrasing (e.g. an arresting historical fact, a linguistic discovery, a vivid narrative setting, or a piercing spiritual contrast).
  * 3. Never open with clichéd expressions like "In our Christian walk", "As Christians", "In our daily walk", "In this passage", or "Today we explore".
  * 4. Distinct Voice: Tailor the tone dynamically to the text—prophetic for Isaiah, liturgical for Psalms, forensic for Romans, intimate for John, wisdom-focused for Proverbs.
- * 5. Joy of the Lord & Hopeful Conclusion: Draw from existing messages on "The Joy of the Lord" (Nehemiah 8:10, Psalm 16:11) and Brother Bismark Twum's MathemaSermons. The conclusion MUST ALWAYS inspire triumphant hope, courage, spiritual vitality, and supernatural encouragement.
+ * 5. Joy of the Lord & Hopeful Conclusion: Draw from existing messages on "The Joy of the Lord" (Nehemiah 8:10, Psalm 16:11) and Bismark Twum's MathemaSermons. The conclusion MUST ALWAYS inspire triumphant hope, courage, spiritual vitality, and supernatural encouragement.
  */
 export const AI_OUTPUT_IMPROVEMENT_RULES = `
 CRITICAL SCRIPTURAL CONCURRENCE & SUBJECT INTEGRATION MANDATE:
@@ -2748,7 +2746,7 @@ Format as JSON with keys:
 - closingPrayer: A reverent, faith-filled prayer releasing the joy of the Lord into the believer's spirit`;
         responseMimeType = "application/json";
       } else if (act.includes("math")) {
-        finalPrompt = `You are Brother Bismark Twum, Christian educator and creator of MathemaSermons. Formulate a rich MathemaSermon homiletic lesson connecting: ${ref} ("${text}") with an authentic mathematical or physical concept and LaTeX formula.
+        finalPrompt = `You are Bismark Twum, Christian educator and creator of MathemaSermons. Formulate a rich MathemaSermon homiletic lesson connecting: ${ref} ("${text}") with an authentic mathematical or physical concept and LaTeX formula.
 Context & Scripture: ${ref} ("${text}")
 ${AI_OUTPUT_IMPROVEMENT_RULES}
 
@@ -3250,7 +3248,7 @@ Format as JSON with keys:
 - closingPrayer: A reverent, faith-filled prayer releasing the joy of the Lord into the believer's spirit`;
         responseMimeType = "application/json";
       } else if (act.includes("math")) {
-        finalPrompt = `You are Brother Bismark Twum, Christian educator and creator of MathemaSermons. Formulate a rich MathemaSermon homiletic lesson connecting: ${ref} ("${text}") with an authentic mathematical or physical concept and LaTeX formula, addressing the subject "${currentSubject}".
+        finalPrompt = `You are Bismark Twum, Christian educator and creator of MathemaSermons. Formulate a rich MathemaSermon homiletic lesson connecting: ${ref} ("${text}") with an authentic mathematical or physical concept and LaTeX formula, addressing the subject "${currentSubject}".
 Context & Scripture: ${ref} ("${text}")
 Current Subject: "${currentSubject}"
 ${AI_OUTPUT_IMPROVEMENT_RULES}
@@ -3347,7 +3345,7 @@ Format as JSON with keys: id, title, seasonCategory, propheticDeclaration, nowWo
           mVersion = liveV.version;
         }
       }
-      finalPrompt = `Generate a profound ApostleMath lesson by Brother Bismark Twum.
+      finalPrompt = `Generate a profound ApostleMath lesson by Bismark Twum.
 Math Branch: ${mb}
 Spiritual Concept: ${sc}
 Scripture Anchor: ${mRef} (${mVersion})
@@ -4590,9 +4588,9 @@ Chapter Passage / Context: "${actualText}"
 STRICT CHAPTER SUMMARY RULES:
 - NEVER write generic messages like "This chapter continues the sacred biblical account of God's redemptive work. It records historical actions..."
 - MANDATORY RULE: You must mention at least 2 specific events, names, or parables that actually happen in THAT chapter (e.g. for Matthew 20: Parable of Workers in the Vineyard, Jesus predicts His death third time, Request of mother of James and John, Healing of two blind men near Jericho).
-- If you do not know the specific events, names, or parables for this chapter, respond with "Summary not available offline - Brother Bismark Twum" — do not invent generic talk!
+- If you do not know the specific events, names, or parables for this chapter, respond with "Summary not available offline - Bismark Twum" — do not invent generic talk!
 - Focus on what happened in plain English, no big theology words.
-- Sign off the summary with "- Brother Bismark Twum" at the end of the summary text.
+- Sign off the summary with "- Bismark Twum" at the end of the summary text.
 - If technical spiritual terms arise (Word of Knowledge, Word of Wisdom, Prophecy, Discerning of Spirits), adhere strictly to:
   * Word of Knowledge = PAST/PRESENT hidden facts revealed
   * Word of Wisdom = FUTURE plans or divine instructions revealed
@@ -4604,7 +4602,7 @@ Format your response as a valid JSON object with this exact schema:
   "title": "Chapter Summary: ${ref}",
   "book": "${ref.split(' ')[0] || ''}",
   "chapter": "${ref.split(' ')[1] || ''}",
-  "summary": "3-4 concise sentences detailing at least 2 specific events, names, or parables from this chapter in plain English, signed off with - Brother Bismark Twum",
+  "summary": "3-4 concise sentences detailing at least 2 specific events, names, or parables from this chapter in plain English, signed off with - Bismark Twum",
   "key_verses": ["${ref}"],
   "theme": "Core theme of the chapter",
   "lesson": "One key life lesson for new believers",
@@ -4612,7 +4610,7 @@ Format your response as a valid JSON object with this exact schema:
   "practicalApplication": "Clear steps to apply this chapter today"
 }`;
     } else if (actionType === "mathemasermon" || actionType === "MathemaSermon") {
-      prompt = `You are Brother Bismark Twum, author of 'MathemaSermons'. Create a powerful mathematical analogy and homiletic sermon outline connecting this scripture to divine mathematics:
+      prompt = `You are Bismark Twum, author of 'MathemaSermons'. Create a powerful mathematical analogy and homiletic sermon outline connecting this scripture to divine mathematics:
 Reference: ${ref} (${actualVersion})
 Passage: "${actualText}"
 Theme: ${theme}
@@ -5310,7 +5308,7 @@ app.post("/api/generate-mathemasermon", async (req, res) => {
     }
     if (!actualText) actualText = "Behold, the days come, saith the LORD, that the plowman shall overtake the reaper...";
 
-    const prompt = `You are Brother Bismark Twum, author and preacher of 'MathemaSermons'. Generate a powerful, homiletically sound sermon manuscript uniting higher mathematics and biblical theology.
+    const prompt = `You are Bismark Twum, author and preacher of 'MathemaSermons'. Generate a powerful, homiletically sound sermon manuscript uniting higher mathematics and biblical theology.
 Topic: ${topic || "The Quantum Jump of Faith"}
 Mathematical Concept: ${mathematicalConcept || "Differential Calculus & Rate of Change"}
 Sermon Series: ${series || "exponential-grace"}
@@ -5534,7 +5532,7 @@ app.post("/api/generate-apostlemath", async (req, res) => {
     }
     if (!actualText) actualText = "Trust in the LORD with all thine heart; and lean not unto thine own understanding...";
 
-    const prompt = `Generate a profound ApostleMath lesson by Brother Bismark Twum.
+    const prompt = `Generate a profound ApostleMath lesson by Bismark Twum.
 Math Branch: ${mathBranch || "Trigonometry & Vectors"}
 Spiritual Concept: ${spiritualConcept || "Directional Alignment and Holy Spirit Bearing"}
 Scripture Anchor: ${actualRef} (${actualVersion})

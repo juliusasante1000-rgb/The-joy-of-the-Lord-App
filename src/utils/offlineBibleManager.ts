@@ -5,10 +5,12 @@
  */
 
 import { BIBLE_BOOKS_CATALOG } from "../data/bibleData";
+import { BibleVerse } from "../types";
 
 const DB_NAME = "JoyOfTheLord_Bible_DB";
-const DB_VERSION = 1;
+const DB_VERSION = 2;
 const STORE_NAME = "bible_books";
+const CHAPTER_STORE_NAME = "bible_version_chapters";
 
 let dbInstance: IDBDatabase | null = null;
 let isPreloading = false;
@@ -33,6 +35,9 @@ export function openBibleDB(): Promise<IDBDatabase> {
       if (!db.objectStoreNames.contains(STORE_NAME)) {
         db.createObjectStore(STORE_NAME, { keyPath: "bookKey" });
       }
+      if (!db.objectStoreNames.contains(CHAPTER_STORE_NAME)) {
+        db.createObjectStore(CHAPTER_STORE_NAME, { keyPath: "chapterKey" });
+      }
     };
 
     request.onsuccess = (event: any) => {
@@ -46,8 +51,89 @@ export function openBibleDB(): Promise<IDBDatabase> {
   });
 }
 
-function normalizeKey(bookName: string): string {
+export function normalizeKey(bookName: string): string {
   return bookName.trim().toLowerCase().replace(/[^a-z0-9]/g, "");
+}
+
+export function normalizeChapterKey(bookName: string, chapter: number, version: string): string {
+  return `${normalizeKey(bookName)}_${chapter}_${version.trim().toLowerCase()}`;
+}
+
+/**
+ * Save a single chapter's verses for any translation into local IndexedDB
+ */
+export async function saveOfflineChapterVerses(
+  bookName: string,
+  chapter: number,
+  version: string,
+  verses: BibleVerse[]
+): Promise<void> {
+  if (!verses || verses.length === 0) return;
+  try {
+    const db = await openBibleDB();
+    return new Promise((resolve, reject) => {
+      const transaction = db.transaction(CHAPTER_STORE_NAME, "readwrite");
+      const store = transaction.objectStore(CHAPTER_STORE_NAME);
+      const chapterKey = normalizeChapterKey(bookName, chapter, version);
+
+      const putRequest = store.put({
+        chapterKey,
+        bookName,
+        chapter,
+        version: version.toUpperCase(),
+        verses,
+        savedAt: Date.now()
+      });
+
+      putRequest.onsuccess = () => resolve();
+      putRequest.onerror = (e: any) => reject(e.target.error);
+    });
+  } catch (err) {
+    console.warn(`[OfflineBibleManager] Error saving offline chapter ${bookName} ${chapter} (${version}):`, err);
+  }
+}
+
+/**
+ * Retrieve a single chapter's verses for any translation from local IndexedDB
+ */
+export async function getOfflineChapterVerses(
+  bookName: string,
+  chapter: number,
+  version: string
+): Promise<BibleVerse[] | null> {
+  try {
+    const db = await openBibleDB();
+    return new Promise((resolve) => {
+      const transaction = db.transaction(CHAPTER_STORE_NAME, "readonly");
+      const store = transaction.objectStore(CHAPTER_STORE_NAME);
+      const chapterKey = normalizeChapterKey(bookName, chapter, version);
+      const request = store.get(chapterKey);
+
+      request.onsuccess = () => {
+        if (request.result && Array.isArray(request.result.verses) && request.result.verses.length > 0) {
+          resolve(request.result.verses);
+        } else {
+          resolve(null);
+        }
+      };
+
+      request.onerror = () => resolve(null);
+    });
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Check if a specific chapter of a translation is already cached offline
+ */
+export async function isChapterCachedOffline(
+  bookName: string,
+  chapter: number,
+  version: string
+): Promise<boolean> {
+  const verses = await getOfflineChapterVerses(bookName, chapter, version);
+  return verses !== null && verses.length > 0;
 }
 
 /**
@@ -276,5 +362,80 @@ export function initBackgroundOfflineBible() {
     (window as any).requestIdleCallback(startBackgroundCaching, { timeout: 3000 });
   } else {
     setTimeout(startBackgroundCaching, 2500);
+  }
+}
+
+/**
+ * Prefetch all chapters of a specific book in any requested translation
+ * and save them into local IndexedDB for complete offline availability.
+ */
+export async function prefetchBookForOffline(
+  bookName: string,
+  totalChapters: number,
+  version: string,
+  onProgress?: (completed: number, total: number) => void
+): Promise<{ success: boolean; cached: number; total: number }> {
+  let completed = 0;
+  for (let ch = 1; ch <= totalChapters; ch++) {
+    try {
+      // Check if already cached
+      const isCached = await isChapterCachedOffline(bookName, ch, version);
+      if (isCached) {
+        completed++;
+        if (onProgress) onProgress(completed, totalChapters);
+        continue;
+      }
+
+      // Fetch from API
+      const res = await fetch(
+        `/api/bible/chapter?version=${encodeURIComponent(version)}&book=${encodeURIComponent(bookName)}&chapter=${ch}`
+      );
+      if (res.ok) {
+        const data = await res.json();
+        if (data && Array.isArray(data.verses) && data.verses.length > 0) {
+          const verses: BibleVerse[] = data.verses.map((v: any) => ({
+            verse: Number(v.verse),
+            text: String(v.text || "").replace(/<[^>]+>/g, "").trim(),
+            isRedLetter: false
+          }));
+          await saveOfflineChapterVerses(bookName, ch, version, verses);
+        }
+      }
+    } catch {
+      // Continue to next chapter
+    }
+    completed++;
+    if (onProgress) onProgress(completed, totalChapters);
+    await new Promise((r) => setTimeout(r, 80));
+  }
+
+  return { success: true, cached: completed, total: totalChapters };
+}
+
+/**
+ * Get count of cached chapters for each translation
+ */
+export async function getOfflineVersionStats(): Promise<Record<string, number>> {
+  try {
+    const db = await openBibleDB();
+    return new Promise((resolve) => {
+      const transaction = db.transaction(CHAPTER_STORE_NAME, "readonly");
+      const store = transaction.objectStore(CHAPTER_STORE_NAME);
+      const request = store.getAll();
+
+      request.onsuccess = () => {
+        const records = request.result || [];
+        const stats: Record<string, number> = {};
+        for (const r of records) {
+          const ver = r.version || "UNKNOWN";
+          stats[ver] = (stats[ver] || 0) + 1;
+        }
+        resolve(stats);
+      };
+
+      request.onerror = () => resolve({});
+    });
+  } catch {
+    return {};
   }
 }
