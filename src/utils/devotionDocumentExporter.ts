@@ -7,6 +7,7 @@ import { SYSTEMATIC_TOPICS_500_CATALOG } from "../data/systematicTopicsFullCatal
 import { getCommentaryForVerse } from "../data/bibleCommentaryData";
 import katex from "katex";
 import { standardizeMathString } from "../components/MathView";
+import { cleanMathFromNonMathContent, isMathAllowedCategory } from "./mathSanitizer";
 
 /**
  * Intelligent KaTeX renderer for printable & downloadable Devotional documents.
@@ -211,11 +212,12 @@ export function generateDevotionDocumentHTML(devotion: Devotion, creatorProfile?
   });
   const photoSrc = (profile.photoUrl && profile.photoUrl.trim() && profile.photoUrl !== "/bis.png") ? profile.photoUrl : "/icon.svg";
 
+  const isMathItem = isMathAllowedCategory(devotion.category, (devotion as any).actionType);
   const titleText = devotion.title || "";
   const scriptText = devotion.passageText || devotion.keyScripture || "";
-  const refText = devotion.reflection || "";
-  const prayerText = devotion.guidedPrayer || "";
-  const actionText = devotion.actionStep || devotion.practicalApplication || "";
+  const refText = isMathItem ? (devotion.reflection || "") : cleanMathFromNonMathContent(devotion.reflection || "");
+  const prayerText = isMathItem ? (devotion.guidedPrayer || "") : cleanMathFromNonMathContent(devotion.guidedPrayer || "");
+  const actionText = isMathItem ? (devotion.actionStep || devotion.practicalApplication || "") : cleanMathFromNonMathContent(devotion.actionStep || devotion.practicalApplication || "");
   const totalLength = titleText.length + scriptText.length + refText.length + prayerText.length + actionText.length;
 
   let baseFontSize = "13.5px";

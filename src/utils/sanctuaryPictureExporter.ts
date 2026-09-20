@@ -1,6 +1,7 @@
 import { CreatorProfile, SystematicTopicItem } from "../types";
 import { loadCreatorProfile } from "../data/creatorData";
 import { BibleVerseExportItem } from "./devotionDocumentExporter";
+import { cleanMathFromNonMathContent } from "./mathSanitizer";
 
 // Helper to wrap text cleanly on an HTML5 canvas
 function wrapText(
@@ -288,7 +289,7 @@ export async function downloadBibleVersePicture(
 
   if (hasNotes) {
     let noteTitle = "EXEGESIS & SPIRITUAL REVELATION";
-    let noteBody = verseItem.reflection || "";
+    let noteBody = cleanMathFromNonMathContent(verseItem.reflection || "");
 
     if (ws && ws.originalWord) {
       noteTitle = `HEBREW / GREEK WORD STUDY: ${ws.originalWord} (${ws.strongsNumber || ""})`;

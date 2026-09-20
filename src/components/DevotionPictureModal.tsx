@@ -18,6 +18,7 @@ import {
 import { Devotion, CreatorProfile } from "../types";
 import { loadCreatorProfile } from "../data/creatorData";
 import { standardizeMathString } from "./MathView";
+import { cleanMathFromNonMathContent, isMathAllowedCategory } from "../utils/mathSanitizer";
 
 interface DevotionPictureModalProps {
   devotion: Devotion | null;
@@ -454,9 +455,15 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
       ? devotion.keyScripture
       : devotion.subtitle || "Holy Scripture";
 
-    const hasIntro = Boolean(devotion.introMessage && devotion.introMessage.trim());
-    const hasPrayer = Boolean(devotion.guidedPrayer);
-    const hasAction = Boolean(devotion.actionStep || devotion.practicalApplication);
+    const isMath = isMathAllowedCategory(devotion.category, (devotion as any).actionType);
+    const cleanedReflection = isMath ? devotion.reflection : cleanMathFromNonMathContent(devotion.reflection);
+    const cleanedIntro = isMath ? (devotion.introMessage || "") : cleanMathFromNonMathContent(devotion.introMessage || "");
+    const cleanedAction = isMath ? (devotion.actionStep || devotion.practicalApplication || "") : cleanMathFromNonMathContent(devotion.actionStep || devotion.practicalApplication || "");
+    const cleanedPrayer = isMath ? (devotion.guidedPrayer || "") : cleanMathFromNonMathContent(devotion.guidedPrayer || "");
+
+    const hasIntro = Boolean(cleanedIntro && cleanedIntro.trim());
+    const hasPrayer = Boolean(cleanedPrayer && cleanedPrayer.trim());
+    const hasAction = Boolean(cleanedAction && cleanedAction.trim());
 
     // Footer Height reservation & Single-Page Strict Constraint
     const footerHeight = Math.round(255 * baseScale);
@@ -465,10 +472,10 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
     const availableVerticalSpace = maxContentY - currentY;
 
     // Content length calculation
-    const introContent = formatMathForCanvasDisplay((devotion.introMessage || "").trim());
-    const fullReflectText = formatMathForCanvasDisplay(devotion.reflection.replace(/\n\n/g, " ").trim());
-    const actionContent = formatMathForCanvasDisplay((devotion.actionStep || devotion.practicalApplication || "").trim());
-    const prayerContent = formatMathForCanvasDisplay((devotion.guidedPrayer || "").trim());
+    const introContent = formatMathForCanvasDisplay(cleanedIntro.trim());
+    const fullReflectText = formatMathForCanvasDisplay(cleanedReflection.replace(/\n\n/g, " ").trim());
+    const actionContent = formatMathForCanvasDisplay(cleanedAction.trim());
+    const prayerContent = formatMathForCanvasDisplay(cleanedPrayer.trim());
 
     const totalCharCount =
       scriptureText.length +
@@ -535,7 +542,7 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
     let prayerLineH = Math.round(prayerFontSize * 1.46);
     const expoParaGap = Math.round(10 * baseScale);
 
-    const rawExpoParas = devotion.reflection.split(/\n\n+/).filter(Boolean);
+    const rawExpoParas = cleanedReflection.split(/\n\n+/).filter(Boolean);
 
     for (let testScale = textScale; testScale >= 0.44; testScale -= 0.03) {
       scripFontSize = Math.round(baseScripFont * testScale);

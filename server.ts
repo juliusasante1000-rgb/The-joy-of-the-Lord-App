@@ -2700,9 +2700,8 @@ const handleUnifiedAiGenerate = async (req: any, res: any) => {
     } = req.body || {};
 
     let finalPrompt = prompt || "";
-    let finalSystem = systemInstruction
-      ? `${systemInstruction}\n${AI_OUTPUT_IMPROVEMENT_RULES}`
-      : `You are an apostolic Christian theologian and pastoral guide.\n${AI_OUTPUT_IMPROVEMENT_RULES}`;
+    const effectiveSystem = systemInstruction || getSystemPromptForCategory(category, actionType);
+    let finalSystem = `${effectiveSystem}\n${AI_OUTPUT_IMPROVEMENT_RULES}`;
     let responseMimeType: string | undefined = undefined;
 
     if (actionType || scriptureReference) {
@@ -2829,20 +2828,24 @@ Format as JSON with keys:
         timestamp: Date.now()
       });
 
-      let parsedJson = safeJsonParse(result.text);
+      const sanitizedText = sanitizeNonMathResponse(result.text, category, actionType);
+      let parsedJson = safeJsonParse(sanitizedText);
+      if (parsedJson) {
+        parsedJson = sanitizeNonMathResponse(parsedJson, category, actionType);
+      }
 
       // When AI available -> auto-save fresh generation across ALL outlets to Permanent Reservoir
       const { outlet: resOutlet, key: resKey } = resolveServerReservoirOutletAndKey(req.body, "generate");
-      if (resKey && (parsedJson || result.text)) {
-        saveContentToServerUniversalReservoir(resOutlet, resKey, parsedJson || result.text, result.text);
+      if (resKey && (parsedJson || sanitizedText)) {
+        saveContentToServerUniversalReservoir(resOutlet, resKey, parsedJson || sanitizedText, sanitizedText);
       }
 
       console.log(`[AI SUCCESS] Model ${result.modelUsed} in ${result.durationMs}ms`);
       return res.json({
         success: true,
-        text: result.text,
-        data: parsedJson || { text: result.text, reflection: result.text },
-        response: result.text,
+        text: sanitizedText,
+        data: parsedJson || { text: sanitizedText, reflection: sanitizedText },
+        response: sanitizedText,
         modelUsed: result.modelUsed,
       });
     }
@@ -2854,11 +2857,14 @@ Format as JSON with keys:
         const stored = selectServerUniversalReservoirItem(resOutlet, resKey);
         if (stored) {
           console.log(`[SERVER UNIVERSAL RESERVOIR] 🏛️ Serving stored ${stored.label} for ${resKey} in outlet ${resOutlet}`);
-          const formatted = stored.item.formattedText || (stored.item.data ? JSON.stringify(stored.item.data) : "");
+          const rawFormatted = stored.item.formattedText || (stored.item.data ? JSON.stringify(stored.item.data) : "");
+          const formatted = sanitizeNonMathResponse(rawFormatted, category, actionType);
+          const rawData = stored.item.data || stored.item;
+          const sanitizedData = sanitizeNonMathResponse(rawData, category, actionType);
           return res.json({
             success: true,
             text: formatted,
-            data: stored.item.data || stored.item,
+            data: sanitizedData,
             response: formatted,
             modelUsed: "permanent-content-reservoir",
             isPermanentReservoir: true,
@@ -3439,13 +3445,16 @@ Format as JSON with keys: id, challengeTitle, category, rootDeception, scriptura
         }
       }
 
+      const sanitizedResultText = sanitizeNonMathResponse(result.text, category, actionType);
+      const sanitizedResultJson = parsedJson ? sanitizeNonMathResponse(parsedJson, category, actionType) : parsedJson;
+
       // When AI available -> auto-save fresh generation across ALL outlets to Permanent Reservoir
       const { outlet: strOutlet1, key: strKey1 } = resolveServerReservoirOutletAndKey(req.body, "generate-stream");
-      if (strKey1 && (parsedJson || result.text)) {
-        saveContentToServerUniversalReservoir(strOutlet1, strKey1, parsedJson || result.text, result.text);
+      if (strKey1 && (sanitizedResultJson || sanitizedResultText)) {
+        saveContentToServerUniversalReservoir(strOutlet1, strKey1, sanitizedResultJson || sanitizedResultText, sanitizedResultText);
       }
 
-      res.write(`data: ${JSON.stringify({ done: true, fullText: result.text, data: parsedJson })}\n\n`);
+      res.write(`data: ${JSON.stringify({ done: true, fullText: sanitizedResultText, data: sanitizedResultJson })}\n\n`);
     } else if (streamAccumulator && streamAccumulator.trim().length > 0) {
       const fallbackRef = req.body?.scriptureReference || req.body?.reference || "Philippians 4:6-7";
       const fallbackSubject = req.body?.need || req.body?.subject || req.body?.topic || req.body?.scriptureTheme || "Divine Guidance & Strength";
@@ -3468,13 +3477,16 @@ Format as JSON with keys: id, challengeTitle, category, rootDeception, scriptura
         }
       }
 
+      const sanitizedAccumText = sanitizeNonMathResponse(streamAccumulator, category, actionType);
+      const sanitizedAccumJson = parsedJson ? sanitizeNonMathResponse(parsedJson, category, actionType) : parsedJson;
+
       // When AI available -> auto-save fresh generation across ALL outlets to Permanent Reservoir
       const { outlet: strOutlet2, key: strKey2 } = resolveServerReservoirOutletAndKey(req.body, "generate-stream");
-      if (strKey2 && (parsedJson || streamAccumulator)) {
-        saveContentToServerUniversalReservoir(strOutlet2, strKey2, parsedJson || streamAccumulator, streamAccumulator);
+      if (strKey2 && (sanitizedAccumJson || sanitizedAccumText)) {
+        saveContentToServerUniversalReservoir(strOutlet2, strKey2, sanitizedAccumJson || sanitizedAccumText, sanitizedAccumText);
       }
 
-      res.write(`data: ${JSON.stringify({ done: true, fullText: streamAccumulator, data: parsedJson })}\n\n`);
+      res.write(`data: ${JSON.stringify({ done: true, fullText: sanitizedAccumText, data: sanitizedAccumJson })}\n\n`);
     } else {
       // Check Permanent Content Reservoir for stored content across ALL outlets
       const { outlet: strOutlet, key: strKey } = resolveServerReservoirOutletAndKey(req.body, "generate-stream");
@@ -3482,12 +3494,14 @@ Format as JSON with keys: id, challengeTitle, category, rootDeception, scriptura
         const stored = selectServerUniversalReservoirItem(strOutlet, strKey);
         if (stored) {
           console.log(`[SERVER UNIVERSAL RESERVOIR STREAM] 🏛️ Serving stored ${stored.label} for ${strKey} in outlet ${strOutlet}`);
-          const formatted = stored.item.formattedText || (stored.item.data ? JSON.stringify(stored.item.data) : "");
+          const rawFormatted = stored.item.formattedText || (stored.item.data ? JSON.stringify(stored.item.data) : "");
+          const formatted = sanitizeNonMathResponse(rawFormatted, category, actionType);
+          const sanitizedStoredData = sanitizeNonMathResponse(stored.item.data || stored.item, category, actionType);
           res.write(`data: ${JSON.stringify({
             chunk: formatted,
             fullText: formatted,
             done: true,
-            data: stored.item.data || stored.item,
+            data: sanitizedStoredData,
             isPermanentReservoir: true,
             reservoirLabel: stored.label,
             totalStored: stored.totalStored

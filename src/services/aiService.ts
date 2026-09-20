@@ -35,6 +35,7 @@ export interface AiGenerationOptions {
   responseMimeType?: string;
   storageKey?: string;
   actionType?: string;
+  category?: string;
 }
 
 export interface AiServiceResult<T = any> {

@@ -20,6 +20,7 @@ import { CreatorProfile } from "../types";
 import { loadCreatorProfile } from "../data/creatorData";
 import { printQuoteOnePageDocument, downloadQuoteDocument } from "../utils/devotionDocumentExporter";
 import { AppLogo } from "./AppLogo";
+import { cleanMathFromNonMathContent, isMathAllowedCategory } from "../utils/mathSanitizer";
 
 export interface QuotePictureItem {
   quote: string;
@@ -303,9 +304,12 @@ export const QuotePictureModal: React.FC<QuotePictureModalProps> = ({
     const innerTextW = cardW - Math.round(100 * baseScale);
 
     // Calculate content dynamic sizing
-    const quoteText = item.quote.trim();
-    const hasPrinciple = Boolean(item.principle);
-    const hasReflection = Boolean(item.reflection);
+    const isMath = isMathAllowedCategory(item.category);
+    const quoteText = isMath ? item.quote.trim() : cleanMathFromNonMathContent(item.quote.trim());
+    const principleText = isMath ? (item.principle || "") : cleanMathFromNonMathContent(item.principle || "");
+    const reflectText = isMath ? (item.reflection || "") : cleanMathFromNonMathContent(item.reflection || "");
+    const hasPrinciple = Boolean(principleText && principleText.trim());
+    const hasReflection = Boolean(reflectText && reflectText.trim());
     const hasReference = Boolean(item.reference);
 
     // Determine author attribution in the middle quote card
@@ -363,11 +367,11 @@ export const QuotePictureModal: React.FC<QuotePictureModalProps> = ({
 
     let principleLineH = Math.round(principleFontSize * 1.42);
     ctx.font = `bold ${principleFontSize}px 'Plus Jakarta Sans', sans-serif`;
-    let principleLines = hasPrinciple ? wrapText(ctx, item.principle!, innerTextW) : [];
+    let principleLines = hasPrinciple ? wrapText(ctx, principleText, innerTextW) : [];
 
     let reflectLineH = Math.round(reflectFontSize * 1.45);
     ctx.font = `500 ${reflectFontSize}px 'Georgia', serif`;
-    let reflectLines = hasReflection ? wrapText(ctx, item.reflection!, innerTextW) : [];
+    let reflectLines = hasReflection ? wrapText(ctx, reflectText, innerTextW) : [];
 
     // Calculate Box Heights
     let quoteBoxNaturalH =
