@@ -88,7 +88,7 @@ Return a JSON array of ${chapters.length} objects with this schema:
             ? item.key_verses
             : [`${book} ${item.chapter}:1`],
           questions: Array.isArray(item.questions) && item.questions.length >= 2
-            ? item.questions.slice(0, 2)
+            ? item.questions.slice(0, 2).map((q: any) => typeof q === "string" ? q : (q?.question || String(q)))
             : [
                 `What major event or spiritual instruction stands out to you in ${book} ${item.chapter}?`,
                 `How can you apply the spiritual lesson of this chapter to your daily walk with Christ?`

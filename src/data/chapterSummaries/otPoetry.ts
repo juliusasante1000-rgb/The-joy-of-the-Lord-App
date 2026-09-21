@@ -1897,1938 +1897,1946 @@ export const OT_POETRY_SUMMARIES: Record<string, ChapterSummary> = {
   "Psalms_79": {
     "book": "Psalms",
     "chapter": 79,
-    "theme": "Psalms Chapter 79: Worship",
-    "summary": "In Psalms 79, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that o god, the heathen are come into thine inheritance, setting the course for divine instruction and action across 13 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that so we thy people and sheep of thy pasture will give thee thanks for ever: we will shew forth thy praise to all, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 79 and allow God's Word to transform your daily conduct.",
+    "theme": "Lament over the Destruction of Jerusalem",
+    "summary": "Foreign nations invade Jerusalem, defile the holy temple, and leave the corpses of God's servants unburied as food for scavenging beasts. The psalmist cries out in deep anguish against the heavy reproach of their neighbors and pleads for divine mercy rather than righteous wrath. He begs God to pour out His indignation on the pagan kingdoms that refuse to call upon His name instead of punishing His chosen heritage. Ultimately, the community vows to give perpetual thanks and praise to the Shepherd of Israel if He grants deliverance.\n\n— Bismark Twum",
+    "lesson": "In times of overwhelming devastation and undeserved suffering, believers can honestly pour out their grief to God while anchoring their hope in His ultimate justice and mercy.",
     "key_verses": [
       "Psalms 79:1",
-      "Psalms 79:5",
+      "Psalms 79:9",
       "Psalms 79:13"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 79?",
-      "How does the message of Psalms 79 challenge or encourage your walk of faith today?"
+      "How does the psalmist balance his plea for judgment against his enemies with a desperate cry for personal mercy?",
+      "In what ways can a community maintain worship and praise when facing severe external threats?"
     ]
   },
   "Psalms_80": {
     "book": "Psalms",
     "chapter": 80,
-    "theme": "Psalms Chapter 80: Worship",
-    "summary": "In Psalms 80, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that give ear, o shepherd of israel, thou that leadest joseph like a flock, setting the course for divine instruction and action across 19 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that turn us again, o lord god of hosts, cause thy face to shine, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 80 and allow God's Word to transform your daily conduct.",
+    "theme": "Prayer for Israel's Restoration",
+    "summary": "Asaph invokes the Shepherd of Israel, who sits enthroned between the cherubim, to shine forth and save His people from surrounding strife. The nation is depicted as a once-thriving vine uprooted from Egypt and planted in the Promised Land, but now its protective walls are broken down and wild boars ravage its fruit. The desperate plea repeatedly echoes for God to turn His face toward them, restore their fortunes, and revive their spiritual vitality. Through this poetic imagery, the people recognize that salvation comes exclusively from the divine favor of the Lord of Hosts.\n\n— Bismark Twum",
+    "lesson": "Spiritual revival and restoration require God to actively turn our hearts back to Himself, recognizing that we cannot sustain our own spiritual life without His sustaining grace.",
     "key_verses": [
-      "Psalms 80:1",
-      "Psalms 80:7",
+      "Psalms 80:3",
+      "Psalms 80:8",
       "Psalms 80:19"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 80?",
-      "How does the message of Psalms 80 challenge or encourage your walk of faith today?"
+      "What is the significance of God being addressed specifically as the Shepherd of Israel leading Joseph like a flock?",
+      "How does the recurring refrain in this psalm serve as both an acknowledgment of past failure and a plea for future grace?"
     ]
   },
   "Psalms_81": {
     "book": "Psalms",
     "chapter": 81,
-    "theme": "Psalms Chapter 81: Worship",
-    "summary": "In Psalms 81, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that sing aloud unto god our strength: make a joyful noise unto the god of jacob., setting the course for divine instruction and action across 16 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that he should have fed them also with the finest of the wheat: and with honey out of the rock should i have satisf, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 81 and allow God's Word to transform your daily conduct.",
+    "theme": "A Call to Obedience and Festival Praise",
+    "summary": "The congregation is summoned to burst into joyful songs of praise accompanied by tambourines, harps, and the blowing of the ram's horn at the new moon. God reminds the assembly of how He delivered their ancestors from Egyptian bondage, speaking to them out of the thunder cloud at Meribah. The Lord expresses profound grief because His people stubbornly refused to listen to His voice and preferred to walk in the stubbornness of their own hearts. He passionately urges them to obey His commands, promising to feed them with the finest wheat and honey from the rock if they simply turn to Him.\n\n— Bismark Twum",
+    "lesson": "True worship must be accompanied by wholehearted obedience, as stubborn resistance to God's voice ultimately deprives us of the abundant blessings He desires to give.",
     "key_verses": [
       "Psalms 81:1",
-      "Psalms 81:6",
-      "Psalms 81:16"
+      "Psalms 81:10",
+      "Psalms 81:13"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 81?",
-      "How does the message of Psalms 81 challenge or encourage your walk of faith today?"
+      "Why does God connect the remembrance of the Exodus so closely with the immediate call to present obedience?",
+      "What does the phrase 'open your mouth wide, and I will fill it' reveal about God's posture toward human spiritual hunger?"
     ]
   },
   "Psalms_82": {
     "book": "Psalms",
     "chapter": 82,
-    "theme": "Psalms Chapter 82: Worship",
-    "summary": "In Psalms 82, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that god standeth in the congregation of the mighty, setting the course for divine instruction and action across 8 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that arise, o god, judge the earth: for thou shalt inherit all nations., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 82 and allow God's Word to transform your daily conduct.",
+    "theme": "A Judgment on Unrighteous Rulers",
+    "summary": "God takes His stand in the divine assembly to pronounce judgment among earthly rulers and judges who have shown partiality to the wicked. The Lord commands them to defend the cause of the weak, the fatherless, the afflicted, and the destitute instead of upholding injustice. Because these corrupt leaders neither know nor understand anything, walking in perpetual darkness, the foundations of the earth are dangerously shaken. The psalm concludes with a bold appeal for God to arise and judge the earth Himself, since all the nations ultimately belong to Him.\n\n— Bismark Twum",
+    "lesson": "God holds earthly authorities and leaders strictly accountable for how they treat the vulnerable, demanding justice and equity for the marginalized.",
     "key_verses": [
       "Psalms 82:1",
+      "Psalms 82:3",
       "Psalms 82:8"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 82?",
-      "How does the message of Psalms 82 challenge or encourage your walk of faith today?"
+      "What responsibilities are placed upon leaders and judges according to this divine critique?",
+      "How does the realization that God will ultimately judge all nations provide comfort to those suffering under corrupt systems?"
     ]
   },
   "Psalms_83": {
     "book": "Psalms",
     "chapter": 83,
-    "theme": "Psalms Chapter 83: Worship",
-    "summary": "In Psalms 83, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that keep not thou silence, o god: hold not thy peace, and be not still, o god., setting the course for divine instruction and action across 18 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that that men may know that thou, whose name alone is jehovah, art the most high over all the earth., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 83 and allow God's Word to transform your daily conduct.",
+    "theme": "An Appeal Against a Confedercy of Enemies",
+    "summary": "A massive coalition of neighboring nations, including Edom, Moab, Ammon, Amalek, and Philistia, forms a deliberate conspiracy to wipe out the name of Israel forever. The psalmist urgently cries out to God, asking why He remains silent while His enemies tumultuously plot against His hidden ones. He prays that God will deal with these aggressors just as He dealt with Midian, Sisera, and Jabin at the brook of Kishon. The ultimate goal of this fervent prayer is that these hostile nations may finally recognize that the Lord alone is the Most High over all the earth.\n\n— Bismark Twum",
+    "lesson": "When facing coordinated opposition, believers can bring their fears to God with the confidence that His ultimate glory and sovereignty will prevail over human hostility.",
     "key_verses": [
       "Psalms 83:1",
-      "Psalms 83:7",
+      "Psalms 83:4",
       "Psalms 83:18"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 83?",
-      "How does the message of Psalms 83 challenge or encourage your walk of faith today?"
+      "What is the underlying motivation behind the enemies' alliance against Israel, and how do people today display similar hostility toward God's purposes?",
+      "Why does the psalmist ultimately pray for the defeat of Israel's enemies—is it purely for national survival or something greater?"
     ]
   },
   "Psalms_84": {
     "book": "Psalms",
     "chapter": 84,
-    "theme": "Psalms Chapter 84: Worship",
-    "summary": "In Psalms 84, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that how amiable are thy tabernacles, o lord of hosts!, setting the course for divine instruction and action across 12 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that o lord of hosts, blessed is the man that trusteth in thee., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 84 and allow God's Word to transform your daily conduct.",
+    "theme": "Longing for the Courts of the Lord",
+    "summary": "The worshiper expresses an intense, soul-consuming longing to dwell in the courts of the Lord, envying even the sparrows and swallows that find a home near the altar. Blessed are those who dwell in God's house and whose strength is in Him, finding a way through the dry valley of Baca and turning it into a place of springs. A single day spent in God's courts is declared better than a thousand anywhere else, prompting the speaker to prefer being a doorkeeper in God's house over living in the tents of wickedness. The psalm closes with the confident declaration that the Lord God is a sun and shield, bestowing favor and honor on those who walk with integrity.\n\n— Bismark Twum",
+    "lesson": "Cultivating a deep, passionate desire for God's presence brings true contentment and strength, far surpassing any temporary pleasures found in worldly pursuits.",
     "key_verses": [
       "Psalms 84:1",
-      "Psalms 84:4",
-      "Psalms 84:12"
+      "Psalms 84:10",
+      "Psalms 84:11"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 84?",
-      "How does the message of Psalms 84 challenge or encourage your walk of faith today?"
+      "How does the imagery of the valley of Baca describe the spiritual journey of believers facing trials?",
+      "What does it mean practically to view God as both a 'sun and shield' in daily life?"
     ]
   },
   "Psalms_85": {
     "book": "Psalms",
     "chapter": 85,
-    "theme": "Psalms Chapter 85: Worship",
-    "summary": "In Psalms 85, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that lord, thou hast been favourable unto thy land: thou hast brought back the captivity of jacob., setting the course for divine instruction and action across 13 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that righteousness shall go before him, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 85 and allow God's Word to transform your daily conduct.",
+    "theme": "Prayer for Restoration and Divine Favor",
+    "summary": "The psalmist recalls God's past forgiveness and mercy toward Jacob, pleading for a renewed outpouring of salvation and the cessation of divine anger. God responds with a promise of peace, steadfast love, and faithfulness, assuring His people that righteousness and truth will meet. This divine restoration results in the land yielding its harvest while righteousness goes before the Lord to make a way.\n\n— Bismark Twum",
+    "lesson": "True revival requires returning to God with wholehearted repentance, trusting that His steadfast love and mercy always precede genuine spiritual restoration.",
     "key_verses": [
-      "Psalms 85:1",
-      "Psalms 85:5",
-      "Psalms 85:13"
+      "Psalms 85:6",
+      "Psalms 85:10",
+      "Psalms 85:12"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 85?",
-      "How does the message of Psalms 85 challenge or encourage your walk of faith today?"
+      "How do righteousness and peace embrace in your understanding of the gospel?",
+      "What past mercies of God can you recall to encourage your current prayer for renewal?"
     ]
   },
   "Psalms_86": {
     "book": "Psalms",
     "chapter": 86,
-    "theme": "Psalms Chapter 86: Worship",
-    "summary": "In Psalms 86, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that bow down thine ear, o lord, hear me: for i am poor and needy., setting the course for divine instruction and action across 17 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that shew me a token for good, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 86 and allow God's Word to transform your daily conduct.",
+    "theme": "A Prayer of the Afflicted and Confident Servant",
+    "summary": "David pours out his soul to God, acknowledging his own need and declaring that the Lord is good, forgiving, and abounding in steadfast love to all who call upon Him. He asks for a unified heart to fear God's name and requests a sign of favor so that his enemies may see and be put to shame. The prayer culminates in praise for God's incomparable greatness among the nations and His marvelous help in times of trouble.\n\n— Bismark Twum",
+    "lesson": "In moments of distress, approaching God with humble dependence and a focused heart anchors the believer in His unfailing compassion and supreme power.",
     "key_verses": [
-      "Psalms 86:1",
-      "Psalms 86:6",
-      "Psalms 86:17"
+      "Psalms 86:5",
+      "Psalms 86:11",
+      "Psalms 86:15"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 86?",
-      "How does the message of Psalms 86 challenge or encourage your walk of faith today?"
+      "What does it mean practically to have an undivided heart devoted to fearing God's name?",
+      "How does remembering God's abundant grace change your perspective during personal trials?"
     ]
   },
   "Psalms_87": {
     "book": "Psalms",
     "chapter": 87,
-    "theme": "Psalms Chapter 87: Worship",
-    "summary": "In Psalms 87, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that his foundation is in the holy mountains., setting the course for divine instruction and action across 7 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that as well the singers as the players on instruments shall be there: all my springs are in thee., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 87 and allow God's Word to transform your daily conduct.",
+    "theme": "The Glory of Zion, City of God",
+    "summary": "The Lord establishes His foundation on the holy mountains, loving the gates of Zion more than all the dwellings of Jacob. Glorious things are spoken of the city of God, where even hostile nations like Rahab, Babylon, Philistia, and Tyre are recorded as being born there spiritually. Singers and dancers alike proclaim that all their fresh springs of life are found exclusively in God's holy dwelling place.\n\n— Bismark Twum",
+    "lesson": "God's ultimate dwelling place unites believers from every background and nation, finding their true spiritual heritage and life source in Him.",
     "key_verses": [
-      "Psalms 87:1",
+      "Psalms 87:2",
+      "Psalms 87:5",
       "Psalms 87:7"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 87?",
-      "How does the message of Psalms 87 challenge or encourage your walk of faith today?"
+      "How does this psalm prefigure the New Testament vision of the universal church gathered from every nation?",
+      "In what ways are your spiritual 'fresh springs' found in God rather than worldly sources?"
     ]
   },
   "Psalms_88": {
     "book": "Psalms",
     "chapter": 88,
-    "theme": "Psalms Chapter 88: Worship",
-    "summary": "In Psalms 88, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that o lord god of my salvation, i have cried day and night before thee:, setting the course for divine instruction and action across 18 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that lover and friend hast thou put far from me, and mine acquaintance into darkness., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 88 and allow God's Word to transform your daily conduct.",
+    "theme": "A Cry of Despair in the Shadow of Death",
+    "summary": "Heman the Ezrahite cries out day and night, overwhelmed by evils, soul-troubles, and relentless suffering that brings him to the brink of the grave. He questions God regarding why His wrath weighs heavily upon him and why faithful companions and friends have been removed into darkness. The psalm concludes in profound gloom, with the afflicted worshiper noting that darkness has become his only familiar companion.\n\n— Bismark Twum",
+    "lesson": "Even in seasons of profound depression, intense suffering, and spiritual isolation, bringing raw and unfiltered sorrow directly to God remains an act of faith.",
     "key_verses": [
       "Psalms 88:1",
-      "Psalms 88:7",
+      "Psalms 88:13",
       "Psalms 88:18"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 88?",
-      "How does the message of Psalms 88 challenge or encourage your walk of faith today?"
+      "Why is it spiritually significant that the darkest psalm in the Bible is still addressed directly to God as a prayer?",
+      "How should the church pastor and care for believers who resonate with deep, unyielding despair?"
     ]
   },
   "Psalms_89": {
     "book": "Psalms",
     "chapter": 89,
-    "theme": "Psalms Chapter 89: Worship",
-    "summary": "In Psalms 89, the narrative records how David addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that i will sing of the mercies of the lord for ever: with my mouth will i make known thy faithfulness to all generations., setting the course for divine instruction and action across 52 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that blessed be the lord for evermore. amen, and amen., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 89 and allow God's Word to transform your daily conduct.",
+    "theme": "The Covenant with David and Lament over Its Apparent Failure",
+    "summary": "Ethan the Ezrahite sings of the steadfast love of the Lord, recounting the divine covenant established with David and the promise of an enduring royal throne. However, the tone shifts dramatically as the psalmist laments that the current king's crown has been profaned, his defenses breached, and his enemies allowed to triumph. The song closes with an urgent plea for God to remember His reproach, asking how long the anointed one will be hidden before breaking into final praise.\n\n— Bismark Twum",
+    "lesson": "Believers can hold fast to God's eternal promises even when earthly circumstances appear to completely contradict His covenant faithfulness.",
     "key_verses": [
       "Psalms 89:1",
-      "Psalms 89:10",
+      "Psalms 89:34",
       "Psalms 89:52"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 89?",
-      "How does the message of Psalms 89 challenge or encourage your walk of faith today?"
+      "How do you reconcile apparent unanswered promises in your life with the unchanging character of God's covenant love?",
+      "In what ways does the ultimate fulfillment of the Davidic covenant appear in Jesus Christ?"
     ]
   },
   "Psalms_90": {
     "book": "Psalms",
     "chapter": 90,
-    "theme": "Psalms Chapter 90: Worship",
-    "summary": "In Psalms 90, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that lord, thou hast been our dwelling place in all generations., setting the course for divine instruction and action across 17 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that let the beauty of the lord our god be upon us: and establish thou the work of our hands upon us, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 90 and allow God's Word to transform your daily conduct.",
+    "theme": "The Eternity of God and the Fragility of Man",
+    "summary": "Moses contrasts the eternal existence of God—who is refuge from everlasting to everlasting—with the fleeting, fragile nature of mortal human life. He acknowledges that human sin is exposed under the light of God's countenance, causing years to pass away under the burden of divine wrath. The prayer concludes with a plea for wisdom to number our days and for God to establish the work of our hands.\n\n— Bismark Twum",
+    "lesson": "Recognizing the brevity of human life and the holiness of God drives us to seek His enduring grace, mercy, and wisdom daily.",
     "key_verses": [
-      "Psalms 90:1",
-      "Psalms 90:6",
-      "Psalms 90:17"
+      "Psalms 89:2",
+      "Psalms 89:12",
+      "Psalms 89:17"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 90?",
-      "How does the message of Psalms 90 challenge or encourage your walk of faith today?"
+      "What does it mean practically to 'number our days' in a way that gains a heart of wisdom?",
+      "How does knowing that God is our eternal dwelling place comfort you against the reality of aging and death?"
     ]
   },
   "Psalms_91": {
     "book": "Psalms",
     "chapter": 91,
-    "summary": "The psalmist reveals that whoever dwells in the secret place of the Most High will rest securely under the shadow of the Almighty. God delivers the believer from hidden traps, deadly plagues, terror by night, and arrows that fly by day. Though a thousand fall at your side and ten thousand at your right hand, harm will not come near you because God commands His angels to guard you in all your ways. God promises that when you call upon Him, He will answer you, be with you in trouble, rescue you, and satisfy you with long life.\n\n— Brother Bismark Twum",
+    "theme": "The Security of the Dwelling Place of the Most High",
+    "summary": "The psalmist proclaims profound divine protection for those who make the Lord their ultimate refuge against unseen terrors and deadly plagues. Angels are commanded to guard the faithful closely, bearing them up so they do not dash their feet against stones. God directly speaks a promise of deliverance, honoring those who hold fast to His name with long life and salvation.\n\n— Bismark Twum",
+    "lesson": "Believers can navigate times of widespread fear and crisis with steady confidence, knowing that God is an active shield and personal fortress.",
     "key_verses": [
-      "Psalms 91:1-2",
-      "Psalms 91:11-12",
-      "Psalms 91:15-16"
+      "Psalm 91:1",
+      "Psalm 91:4",
+      "Psalm 91:11"
     ],
-    "theme": "Divine Protection and Covenant Security",
-    "lesson": "Stay close to God in daily prayer and secret fellowship, and His angels will shield you from every hidden attack.",
     "questions": [
-      "Where must a believer dwell to abide under the shadow of the Almighty?",
-      "What does God command His angels to do for you?"
+      "In what practical ways can you choose to make the Lord your dwelling place during a personal crisis?",
+      "How does the promise of angelic protection in verse 11 change the way you view daily hazards and anxieties?"
     ]
   },
   "Psalms_92": {
     "book": "Psalms",
     "chapter": 92,
-    "theme": "Psalms Chapter 92: Worship",
-    "summary": "In Psalms 92, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that it is a good thing to give thanks unto the lord, and to sing praises unto thy name, o most high:, setting the course for divine instruction and action across 15 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that to shew that the lord is upright: he is my rock, and there is no unrighteousness in him., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 92 and allow God's Word to transform your daily conduct.",
+    "theme": "A Song for the Sabbath Day of Praise",
+    "summary": "The worshiper declares that it is good to give thanks to the Lord and sing praises to His name every single morning and night. Wicked people may temporarily sprout like grass, but they are ultimately doomed to destruction forever while the righteous flourish like majestic palm trees. Those planted in the house of the Lord continue to bear vibrant fruit and proclaim that the Rock is upright even in old age.\n\n— Bismark Twum",
+    "lesson": "Consistent, joyful worship fuels spiritual resilience, ensuring that believers remain fruitful and steadfast even when surrounded by the temporary prosperity of the wicked.",
     "key_verses": [
-      "Psalms 92:1",
-      "Psalms 92:6",
-      "Psalms 92:15"
+      "Psalm 92:1",
+      "Psalm 92:12",
+      "Psalm 92:14"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 92?",
-      "How does the message of Psalms 92 challenge or encourage your walk of faith today?"
+      "What does it mean to be 'planted in the house of the Lord,' and how does that affect spiritual longevity?",
+      "How does recognizing the ultimate fate of the wicked help you maintain joy during difficult seasons?"
     ]
   },
   "Psalms_93": {
     "book": "Psalms",
     "chapter": 93,
-    "theme": "Psalms Chapter 93: Worship",
-    "summary": "In Psalms 93, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that the lord reigneth, he is clothed with majesty, setting the course for divine instruction and action across 5 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that thy testimonies are very sure: holiness becometh thine house, o lord, for ever., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 93 and allow God's Word to transform your daily conduct.",
+    "theme": "The Majesty and Reign of the Eternal King",
+    "summary": "The Lord reigns in supreme majesty, robed in strength and establishing the earth so securely that it cannot be moved. Although the raging floods and pounding ocean waves lift up their voice, God is mightier than the thundering crashes of the great waters. His royal decrees are utterly trustworthy, and absolute holiness characterizes His house forever.\n\n— Bismark Twum",
+    "lesson": "No matter how chaotic or threatening cultural or natural storms appear, God's sovereign throne remains unshakable and supreme over all creation.",
     "key_verses": [
-      "Psalms 93:1",
-      "Psalms 93:5"
+      "Psalm 93:1",
+      "Psalm 93:4",
+      "Psalm 93:5"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 93?",
-      "How does the message of Psalms 93 challenge or encourage your walk of faith today?"
+      "What modern 'floods' or overwhelming circumstances threaten to shake your stability, and how does God's sovereignty address them?",
+      "Why is holiness emphasized as a fitting characteristic for God's house in light of His ultimate power?"
     ]
   },
   "Psalms_94": {
     "book": "Psalms",
     "chapter": 94,
-    "theme": "Psalms Chapter 94: Worship",
-    "summary": "In Psalms 94, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that o lord god, to whom vengeance belongeth, setting the course for divine instruction and action across 23 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that he shall bring upon them their own iniquity, and shall cut them off in their own wickedness, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 94 and allow God's Word to transform your daily conduct.",
+    "theme": "Vengeance Belongs to God, the Judge of the Earth",
+    "summary": "The psalmist cries out to the Lord, the God of vengeance, pleading for Him to shine forth and repay the arrogant oppressors who crush widows, orphans, and foreigners. These wicked rulers falsely claim that God does not see or notice their unjust deeds, foolishly believing they can escape accountability. Yet the Lord disciplines His people, grants relief from troubled days, and remains a secure stronghold for the righteous.\n\n— Bismark Twum",
+    "lesson": "Believers can release personal bitterness and trust God's ultimate justice, knowing the Creator of the ear and eye sees every injustice and will not abandon His people.",
     "key_verses": [
-      "Psalms 94:1",
-      "Psalms 94:9",
-      "Psalms 94:23"
+      "Psalm 94:1",
+      "Psalm 94:9",
+      "Psalm 94:14"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 94?",
-      "How does the message of Psalms 94 challenge or encourage your walk of faith today?"
+      "How does the rhetorical question 'He who planted the ear, does He not hear?' comfort you when dealing with unanswered injustices?",
+      "In what ways has God used discipline or comfort to sustain your soul during troubled times?"
     ]
   },
   "Psalms_95": {
     "book": "Psalms",
     "chapter": 95,
-    "theme": "Psalms Chapter 95: Worship",
-    "summary": "In Psalms 95, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that o come, let us sing unto the lord: let us make a joyful noise to the rock of our salvation., setting the course for divine instruction and action across 11 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that unto whom i sware in my wrath that they should not enter into my rest., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 95 and allow God's Word to transform your daily conduct.",
+    "theme": "A Call to Worship and Warning Against Hardness of Heart",
+    "summary": "The congregation is enthusiastically summoned to sing joyfully to the Rock of their salvation, bowing down in worship before the Maker of the sea and the dry land. This joyful invitation abruptly shifts into a solemn divine warning recalling the rebellion of the Israelites at Meribah and Massah in the wilderness. God declares with an oath that the generation whose hearts went astray would never enter His promised rest.\n\n— Bismark Twum",
+    "lesson": "A lifestyle of heartfelt worship must be guarded against spiritual apathy and rebellion, ensuring that our hearts remain soft and responsive to God's voice today.",
     "key_verses": [
-      "Psalms 95:1",
-      "Psalms 95:4",
-      "Psalms 95:11"
+      "Psalm 95:1",
+      "Psalm 95:6",
+      "Psalm 95:8"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 95?",
-      "How does the message of Psalms 95 challenge or encourage your walk of faith today?"
+      "What are the dangers of hardening your heart when God speaks to you through His Word or circumstances?",
+      "How does active, physical posture in worship (like bowing down) shape your inner attitude toward God?"
     ]
   },
   "Psalms_96": {
     "book": "Psalms",
     "chapter": 96,
-    "theme": "Psalms Chapter 96: Worship",
-    "summary": "In Psalms 96, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that o sing unto the lord a new song: sing unto the lord, all the earth., setting the course for divine instruction and action across 13 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that before the lord: for he cometh, for he cometh to judge the earth: he shall judge the world with righteousness,, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 96 and allow God's Word to transform your daily conduct.",
+    "theme": "A New Song of Praise to the Coming Judge",
+    "summary": "All the earth is commanded to sing a new song to the Lord, declaring His salvation day after day among the nations and recounting His glorious deeds. The peoples are urged to bring offerings into His courts and worship Him in the splendor of holiness while trembling before His majesty. Creation itself—the heavens, the earth, the sea, and the fields—rejoices because the Lord is coming to judge the world with righteousness and truth.\n\n— Bismark Twum",
+    "lesson": "Christians are commissioned to declare God's glory globally, living in joyful anticipation of Christ's righteous return to judge and govern the earth.",
     "key_verses": [
-      "Psalms 96:1",
-      "Psalms 96:5",
-      "Psalms 96:13"
+      "Psalm 96:1",
+      "Psalm 96:9",
+      "Psalm 96:13"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 96?",
-      "How does the message of Psalms 96 challenge or encourage your walk of faith today?"
+      "How can you practically 'sing a new song' to the Lord in your daily devotional life?",
+      "Why does the prospect of God's judgment cause the physical creation to rejoice rather than fear?"
     ]
   },
   "Psalms_97": {
     "book": "Psalms",
     "chapter": 97,
-    "theme": "Psalms Chapter 97: Worship",
-    "summary": "In Psalms 97, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that the lord reigneth, setting the course for divine instruction and action across 12 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that rejoice in the lord, ye righteous, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 97 and allow God's Word to transform your daily conduct.",
+    "theme": "The Lord's Righteous Reign and Joyful Worship",
+    "summary": "The Lord establishes His sovereign rule over the earth, causing clouds and thick darkness to surround His throne while fire goes before Him to consume His adversaries. Hills melt like wax before the face of the Master of all the earth, and the heavens declare His righteousness for all peoples to witness. Righteous believers rejoice in the light of His presence, while worshippers of idols are put to shame as they bow before the true God.\n\n— Bismark Twum",
+    "lesson": "Believers can find deep joy in turbulent times by trusting that God's ultimate justice and sovereign authority are unshakeable.",
     "key_verses": [
       "Psalms 97:1",
-      "Psalms 97:4",
+      "Psalms 97:11",
       "Psalms 97:12"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 97?",
-      "How does the message of Psalms 97 challenge or encourage your walk of faith today?"
+      "How does the imagery of fire and melting hills shape your understanding of God's majesty and holiness?",
+      "In what practical ways can light be sown for the righteous in your current season of life?"
     ]
   },
   "Psalms_98": {
     "book": "Psalms",
     "chapter": 98,
-    "theme": "Psalms Chapter 98: Worship",
-    "summary": "In Psalms 98, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that o sing unto the lord a new song, setting the course for divine instruction and action across 9 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that before the lord, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 98 and allow God's Word to transform your daily conduct.",
+    "theme": "A New Song of Victory and Universal Praise",
+    "summary": "The psalmist urges the congregation to sing a new song to the Lord because His right hand and holy arm have worked marvelous victories for His people. Salvation and righteousness are revealed in the sight of the nations as God remembers His steadfast love and faithfulness toward the house of Israel. Oceans thunder, rivers clap their hands in unison, and the hills sing for joy before the Lord who comes to judge the earth with equity.\n\n— Bismark Twum",
+    "lesson": "Praise should continually erupt from a heart that recognizes God's ongoing acts of salvation and faithfulness in the world.",
     "key_verses": [
       "Psalms 98:1",
+      "Psalms 98:4",
       "Psalms 98:9"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 98?",
-      "How does the message of Psalms 98 challenge or encourage your walk of faith today?"
+      "What does it mean to sing a 'new song' to the Lord in the context of daily worship?",
+      "How do creation's praises, such as roaring seas and clapping rivers, inspire your own expressions of worship?"
     ]
   },
   "Psalms_99": {
     "book": "Psalms",
     "chapter": 99,
-    "theme": "Psalms Chapter 99: Worship",
-    "summary": "In Psalms 99, the narrative records how Moses addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that the lord reigneth, setting the course for divine instruction and action across 9 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that exalt the lord our god, and worship at his holy hill, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 99 and allow God's Word to transform your daily conduct.",
+    "theme": "Holy is the Lord, the King Enthroned on High",
+    "summary": "The Lord reigns as King, sitting enthroned between the cherubim while the earth trembles and shakes at His awesome presence. Moses, Aaron, and Samuel call upon the name of the Lord from within the pillar of cloud, and He answers them according to their faithful pleas. God proves Himself to be a forgiving yet avenging God who disciplined His people for their misdeeds, demanding that His congregation exalt Him at His holy mountain.\n\n— Bismark Twum",
+    "lesson": "Approaching God requires a profound reverence for His absolute holiness, balanced by the assurance of His merciful responsiveness.",
     "key_verses": [
       "Psalms 99:1",
+      "Psalms 99:5",
       "Psalms 99:9"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 99?",
-      "How does the message of Psalms 99 challenge or encourage your walk of faith today?"
+      "How does the historical mention of Moses, Aaron, and Samuel encourage your prayer life?",
+      "What does it mean practically to exalt the Lord our God and worship at His footstool?"
     ]
   },
   "Psalms_100": {
     "book": "Psalms",
     "chapter": 100,
-    "theme": "Psalms Chapter 100: Worship",
-    "summary": "In Psalms 100, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that make a joyful noise unto the lord, all ye lands., setting the course for divine instruction and action across 5 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that the lord is good, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 100 and allow God's Word to transform your daily conduct.",
+    "theme": "A Psalm of Joyful Thanksgiving and Praise",
+    "summary": "All lands are summoned to make a joyful noise to the Lord and serve Him with gladness as they enter His gates with singing. Worshippers acknowledge that the Lord is God, recognizing that He made us and that we belong to Him as His people and the sheep of His pasture. The congregation enters His courts with thanksgiving and praise, proclaiming that the Lord is eternally good and His steadfast love endures through all generations.\n\n— Bismark Twum",
+    "lesson": "Joyful gratitude is the proper posture for entering God's presence and acknowledging His ownership over our lives.",
     "key_verses": [
       "Psalms 100:1",
+      "Psalms 100:3",
       "Psalms 100:5"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 100?",
-      "How does the message of Psalms 100 challenge or encourage your walk of faith today?"
+      "How does viewing yourself as a sheep of God's pasture affect your daily sense of security?",
+      "In what specific ways can you cultivate a lifestyle of entering God's gates with thanksgiving?"
     ]
   },
   "Psalms_101": {
     "book": "Psalms",
     "chapter": 101,
-    "theme": "Psalms Chapter 101: Worship",
-    "summary": "In Psalms 101, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that i will sing of mercy and judgment: unto thee, o lord, will i sing., setting the course for divine instruction and action across 8 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that i will early destroy all the wicked of the land, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 101 and allow God's Word to transform your daily conduct.",
+    "theme": "A King's Pledge of Integrity and Righteous Rule",
+    "summary": "King David sings of steadfast love and justice, pledging to walk with integrity within the walls of his own house. He resolves to set no worthless thing before his eyes, hating the work of those who fall away and refusing to let a perverse heart cling to him. Slanderers, arrogant boasters, and deceitful workers are banished from his presence, while faithful citizens in the land receive honor and support.\n\n— Bismark Twum",
+    "lesson": "True spiritual leadership begins with personal accountability and a firm commitment to eradicate sin from one's private and public life.",
     "key_verses": [
       "Psalms 101:1",
-      "Psalms 101:8"
+      "Psalms 101:3",
+      "Psalms 101:7"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 101?",
-      "How does the message of Psalms 101 challenge or encourage your walk of faith today?"
+      "What does it look like in modern life to set no 'worthless thing' before your eyes?",
+      "How does David's commitment to personal integrity challenge the way you manage your private sphere?"
     ]
   },
   "Psalms_102": {
     "book": "Psalms",
     "chapter": 102,
-    "theme": "Psalms Chapter 102: Worship",
-    "summary": "In Psalms 102, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that hear my prayer, o lord, and let my cry come unto thee., setting the course for divine instruction and action across 28 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that the children of thy servants shall continue, and their seed shall be established before thee., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 102 and allow God's Word to transform your daily conduct.",
+    "theme": "A Afflicted Sufferer's Prayer and God's Eternal Immutability",
+    "summary": "An afflicted believer pours out a desperate lament before the Lord, groaning in deep distress with bones burning like embers and skin clinging to flesh. The sufferer feels like a lonely bird on a housetop, forgotten by friends while enemies hurl insults throughout the day. God looks down from His holy sanctuary to hear the groaning of the prisoners, assuring that future generations will praise Him even though the heavens and earth eventually perish.\n\n— Bismark Twum",
+    "lesson": "Even in moments of profound isolation and physical weakness, believers can cast their burdens upon an unchanging God who hears the cry of the destitute.",
     "key_verses": [
       "Psalms 102:1",
-      "Psalms 102:10",
-      "Psalms 102:28"
+      "Psalms 102:12",
+      "Psalms 102:27"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 102?",
-      "How does the message of Psalms 102 challenge or encourage your walk of faith today?"
+      "How does the contrast between human frailty and God's eternal nature bring comfort during times of suffering?",
+      "In what ways does this psalm model how to bring honest grief and pain to God in prayer?"
     ]
   },
   "Psalms_103": {
     "book": "Psalms",
     "chapter": 103,
-    "theme": "Psalms Chapter 103: Worship",
-    "summary": "In Psalms 103, the narrative records how Moses addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that bless the lord, o my soul: and all that is within me, bless his holy name., setting the course for divine instruction and action across 22 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that bless the lord, all his works in all places of his dominion: bless the lord, o my soul., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 103 and allow God's Word to transform your daily conduct.",
+    "theme": "Blessing the Lord for His Merciful Redemption",
+    "summary": "David calls upon his innermost being to bless the Lord, remembering all His spiritual and physical benefits. The psalmist reflects on God's abundant compassion, noting that He removes human transgressions as far as the east is from the west. Creation and the heavenly hosts are ultimately summoned to join in universal praise of the sovereign Creator.\n\n— Bismark Twum",
+    "lesson": "Believers should actively and intentionally recall God's daily forgiveness and steadfast love, letting gratitude for His mercy fuel a life of continuous praise.",
     "key_verses": [
-      "Psalms 103:1",
-      "Psalms 103:8",
-      "Psalms 103:22"
+      "Psalm 103:2",
+      "Psalm 103:11",
+      "Psalm 103:19"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 103?",
-      "How does the message of Psalms 103 challenge or encourage your walk of faith today?"
+      "In what specific ways does David contrast human frailty with the eternal steadfastness of God's mercy in this chapter?",
+      "How can you cultivate the habit of intentionally 'blessing the Lord' for His specific benefits in your daily routine?"
     ]
   },
   "Psalms_104": {
     "book": "Psalms",
     "chapter": 104,
-    "theme": "Psalms Chapter 104: Worship",
-    "summary": "In Psalms 104, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that bless the lord, o my soul. o lord my god, thou art very great, setting the course for divine instruction and action across 35 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that let the sinners be consumed out of the earth, and let the wicked be no more. bless thou the lord, o my soul. p, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 104 and allow God's Word to transform your daily conduct.",
+    "theme": "Praise to the Creator and Sustainer of the Universe",
+    "summary": "The psalmist marvels at the majesty of God displayed through the intricate design of the natural world, from the stretching of the heavens to the establishment of the earth on its foundations. Water is provided for wild animals, trees are grown to house birds, and the sun and moon dictate the rhythms of day and night. God rejoices in His works, sustaining every living creature through His active providence.\n\n— Bismark Twum",
+    "lesson": "Creation declares the glory and ongoing care of God, teaching believers to recognize His hand in the natural world and trust Him as the ultimate sustainer of life.",
     "key_verses": [
-      "Psalms 104:1",
-      "Psalms 104:10",
-      "Psalms 104:35"
+      "Psalm 104:1",
+      "Psalm 104:24",
+      "Psalm 104:33"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 104?",
-      "How does the message of Psalms 104 challenge or encourage your walk of faith today?"
+      "What does this psalm reveal about God's relationship with the physical environment and the animals He created?",
+      "How does viewing the world as God's carefully maintained household change your perspective on environmental stewardship?"
     ]
   },
   "Psalms_105": {
     "book": "Psalms",
     "chapter": 105,
-    "theme": "Psalms Chapter 105: Worship",
-    "summary": "In Psalms 105, the narrative records how Moses addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that o give thanks unto the lord, setting the course for divine instruction and action across 45 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that that they might observe his statutes, and keep his laws. praise ye the lord., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 105 and allow God's Word to transform your daily conduct.",
+    "theme": "God's Faithful Covenant with Israel in History",
+    "summary": "The singer recounts God's wondrous deeds and miraculous interventions on behalf of the patriarchs Abraham, Isaac, and Jacob. Joseph is sold into Egypt by divine orchestration to preserve life during a severe famine, after which Moses and Aaron are sent to lead the Israelites out of bondage through mighty plagues. God brings His people out with silver and gold, leading them into the Promised Land so they might keep His statutes.\n\n— Bismark Twum",
+    "lesson": "Remembering God's historical faithfulness builds resilient faith, assuring believers that He keeps His covenant promises across generations.",
     "key_verses": [
-      "Psalms 105:1",
-      "Psalms 105:10",
-      "Psalms 105:45"
+      "Psalm 105:2",
+      "Psalm 105:8",
+      "Psalm 105:43"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 105?",
-      "How does the message of Psalms 105 challenge or encourage your walk of faith today?"
+      "How does the recounting of Joseph's trials and exaltation illustrate God's sovereignty over difficult human circumstances?",
+      "Why is it spiritually vital for God's people to regularly rehearse the historical acts of redemption in their worship?"
     ]
   },
   "Psalms_106": {
     "book": "Psalms",
     "chapter": 106,
-    "theme": "Psalms Chapter 106: Worship",
-    "summary": "In Psalms 106, the narrative records how Moses addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that praise ye the lord. o give thanks unto the lord, setting the course for divine instruction and action across 48 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that blessed be the lord god of israel from everlasting to everlasting: and let all the people say, amen. praise ye, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 106 and allow God's Word to transform your daily conduct.",
+    "theme": "Israel's Rebellion and God's Unfailing Mercy",
+    "summary": "The congregation confesses the repeated sins and rebellions of their ancestors, beginning at the Red Sea and continuing through the wilderness wanderings and the settlement in Canaan. The people quickly forget God's works, grumble in the desert, worship idols, and defile themselves with foreign nations, provoking divine wrath. Yet, despite their continuous apostasy, God hears their cry, remembers His covenant, and has compassion on them.\n\n— Bismark Twum",
+    "lesson": "Human unfaithfulness is met by God's enduring covenant loyalty, calling believers to repent of rebellion and rely wholly on His mercy.",
     "key_verses": [
-      "Psalms 106:1",
-      "Psalms 106:10",
-      "Psalms 106:48"
+      "Psalm 106:1",
+      "Psalm 106:7",
+      "Psalm 106:44"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 106?",
-      "How does the message of Psalms 106 challenge or encourage your walk of faith today?"
+      "What recurring pattern of spiritual amnesia do the Israelites exhibit throughout their wilderness journey in this chapter?",
+      "How does the historical confession of corporate sin help align a believer's heart with God's righteousness and grace?"
     ]
   },
   "Psalms_107": {
     "book": "Psalms",
     "chapter": 107,
-    "theme": "Psalms Chapter 107: Worship",
-    "summary": "In Psalms 107, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that o give thanks unto the lord, for he is good: for his mercy endureth for ever., setting the course for divine instruction and action across 43 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that whoso is wise, and will observe these things, even they shall understand the lovingkindness of the lord., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 107 and allow God's Word to transform your daily conduct.",
+    "theme": "Deliverance of the Redeemed from Every Trouble",
+    "summary": "The redeemed are summoned to give thanks to the Lord because His steadfast love endures forever, illustrated through four distinct vignettes of rescue. Wanderers in desert wastes, prisoners in dark chains, fools suffering from sickness due to rebellion, and sailors caught in terrifying sea storms all cry out to God in their distress. God hears their desperate pleas, shatters their bonds, calms the tempests, and leads them to safe havens.\n\n— Bismark Twum",
+    "lesson": "No matter the source of human distress—whether self-inflicted or circumstantial—crying out to God in faith brings His powerful and timely rescue.",
     "key_verses": [
-      "Psalms 107:1",
-      "Psalms 107:10",
-      "Psalms 107:43"
+      "Psalm 107:1",
+      "Psalm 107:20",
+      "Psalm 107:43"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 107?",
-      "How does the message of Psalms 107 challenge or encourage your walk of faith today?"
+      "Which of the four scenarios of distress in this chapter best resonates with a personal season of trial you have experienced?",
+      "What does the repeated refrain 'Let them thank the Lord for his steadfast love' teach about the posture of a delivered heart?"
     ]
   },
   "Psalms_108": {
     "book": "Psalms",
     "chapter": 108,
-    "theme": "Psalms Chapter 108: Worship",
-    "summary": "In Psalms 108, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that o god, my heart is fixed, setting the course for divine instruction and action across 13 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that through god we shall do valiantly: for he it is that shall tread down our enemies., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 108 and allow God's Word to transform your daily conduct.",
+    "theme": "Steadfast Confidence and Victory in God",
+    "summary": "David declares his heart steadfast and ready to awaken the dawn with music and praise among the nations. He calls upon God to manifest His glory above the heavens and deliver His beloved people through His right hand. Affirming that God has spoken in His holiness, David claims dominion over neighboring territories and asks for divine help against adversaries, acknowledging that human help is utterly worthless.\n\n— Bismark Twum",
+    "lesson": "True courage and victory come from anchoring one's confidence entirely in God's promises rather than in human strength.",
     "key_verses": [
-      "Psalms 108:1",
-      "Psalms 108:5",
-      "Psalms 108:13"
+      "Psalm 108:1",
+      "Psalm 108:5",
+      "Psalm 108:13"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 108?",
-      "How does the message of Psalms 108 challenge or encourage your walk of faith today?"
+      "How does David transition from a posture of worshipful praise in the morning to bold requests for military victory?",
+      "Why is acknowledging the vanity of human help a crucial prerequisite for experiencing God's deliverance?"
     ]
   },
   "Psalms_109": {
     "book": "Psalms",
     "chapter": 109,
-    "theme": "Psalms Chapter 109: Worship",
-    "summary": "In Psalms 109, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that hold not thy peace, o god of my praise, setting the course for divine instruction and action across 31 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that he shall stand at the right hand of the poor, to save him from those that condemn his soul., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 109 and allow God's Word to transform your daily conduct.",
+    "theme": "A Plea for Vindication Against Treacherous Accusers",
+    "summary": "David pours out his anguish to God against malicious enemies who repay his love with slander and hatred. He petitions the Lord for divine justice, calling for the downfall of the wicked betrayer whose deceit has brought utter devastation. Despite facing relentless mockery and false accusations, the psalmist remains confident in God's steadfast love and intervention on behalf of the needy.\n\n— Bismark Twum",
+    "lesson": "Believers can honestly bring their deepest hurts and desires for justice to God, trusting Him to vindicate the innocent while extending grace.",
     "key_verses": [
-      "Psalms 109:1",
-      "Psalms 109:10",
-      "Psalms 109:31"
+      "Psalm 109:4",
+      "Psalm 109:21",
+      "Psalm 109:31"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 109?",
-      "How does the message of Psalms 109 challenge or encourage your walk of faith today?"
+      "How does David handle the pain of betrayal in this psalm, and what does it teach about bringing grievances to God?",
+      "In what ways does the transition from lament to praise in the final verses encourage believers facing unjust opposition?"
     ]
   },
   "Psalms_110": {
     "book": "Psalms",
     "chapter": 110,
-    "theme": "Psalms Chapter 110: Worship",
-    "summary": "In Psalms 110, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that the lord said unto my lord, sit thou at my right hand, until i make thine enemies thy footstool., setting the course for divine instruction and action across 7 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that he shall drink of the brook in the way: therefore shall he lift up the head., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 110 and allow God's Word to transform your daily conduct.",
+    "theme": "The Coronation and Eternal Priesthood of the Messiah",
+    "summary": "The Lord addresses David's Lord, exalting Him to a position of supreme authority at His right hand until His enemies are made His footstool. God declares that this royal ruler will extend His mighty scepter from Zion to rule in the midst of foes. Furthermore, an immutable oath establishes this King forever as a priest in the order of Melchizedek, destined to execute judgment among the nations.\n\n— Bismark Twum",
+    "lesson": "Jesus Christ reigns with absolute authority and serves as our eternal High Priest, interceding for us while subduing all powers of darkness.",
     "key_verses": [
-      "Psalms 110:1",
-      "Psalms 110:7"
+      "Psalm 110:1",
+      "Psalm 110:4"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 110?",
-      "How does the message of Psalms 110 challenge or encourage your walk of faith today?"
+      "How do Jesus and the New Testament writers use Psalm 110 to explain the identity and authority of the Messiah?",
+      "What is the significance of the combination of kingship and priesthood in the person of the Messiah?"
     ]
   },
   "Psalms_111": {
     "book": "Psalms",
     "chapter": 111,
-    "theme": "Psalms Chapter 111: Worship",
-    "summary": "In Psalms 111, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that praise ye the lord. i will praise the lord with my whole heart, in the assembly of the upright, and in the congregation., setting the course for divine instruction and action across 10 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that the fear of the lord is the beginning of wisdom: a good understanding have all they that do his commandments: , leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 111 and allow God's Word to transform your daily conduct.",
+    "theme": "Praise for God's Great Works and Faithful Covenant",
+    "summary": "The psalmist declares wholehearted praise to the Lord within the assembly of the upright, celebrating the majestic and righteous works of God. Every deed performed by the Creator is characterized by splendor, truth, and enduring faithfulness. God has provided redemption for His people, establishing His covenant forever and demanding reverent awe from all who seek Him.\n\n— Bismark Twum",
+    "lesson": "Remembering and studying God's mighty acts in history strengthens our reverence for Him and fuels a lifestyle of continuous gratitude.",
     "key_verses": [
-      "Psalms 111:1",
-      "Psalms 111:4",
-      "Psalms 111:10"
+      "Psalm 111:2",
+      "Psalm 111:7",
+      "Psalm 111:10"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 111?",
-      "How does the message of Psalms 111 challenge or encourage your walk of faith today?"
+      "How does pondering the specific works of God deepen our understanding of His character?",
+      "In what practical ways is the 'fear of the Lord' the beginning of wisdom in daily Christian living?"
     ]
   },
   "Psalms_112": {
     "book": "Psalms",
     "chapter": 112,
-    "theme": "Psalms Chapter 112: Worship",
-    "summary": "In Psalms 112, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that praise ye the lord. blessed is the man that feareth the lord, that delighteth greatly in his commandments., setting the course for divine instruction and action across 10 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that the wicked shall see it, and be grieved, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 112 and allow God's Word to transform your daily conduct.",
+    "theme": "The Blessedness and Security of the Righteous",
+    "summary": "Happiness belongs to the individual who fears the Lord and delights greatly in His commandments, leaving a legacy of blessing for their descendants. Wealth and riches fill the household of the righteous, and their integrity shines like a light in the darkness to guide the upright. Generous, compassionate, and just in all their dealings, they will never be shaken and remain unafraid of bad news.\n\n— Bismark Twum",
+    "lesson": "A life anchored in obedience to God produces steadfast courage, enduring stability, and a generous spirit that blesses the community.",
     "key_verses": [
-      "Psalms 112:1",
-      "Psalms 112:4",
-      "Psalms 112:10"
+      "Psalm 112:1",
+      "Psalm 112:4",
+      "Psalm 112:7"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 112?",
-      "How does the message of Psalms 112 challenge or encourage your walk of faith today?"
+      "What distinguishes the security of the righteous person from the misplaced securities offered by the world?",
+      "How does a life of generosity and compassion reflect the very nature of God?"
     ]
   },
   "Psalms_113": {
     "book": "Psalms",
     "chapter": 113,
-    "theme": "Psalms Chapter 113: Worship",
-    "summary": "In Psalms 113, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that praise ye the lord. praise, o ye servants of the lord, praise the name of the lord., setting the course for divine instruction and action across 9 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that he maketh the barren woman to keep house, and to be a joyful mother of children. praise ye the lord., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 113 and allow God's Word to transform your daily conduct.",
+    "theme": "Exaltation of God's Transcendent Glory and Compassion",
+    "summary": "Servants of the Lord are summoned to praise the divine name continuously from sunrise to sunset across all nations. High above the heavens, the Creator stoops down from His lofty throne to look upon the earth in unmatched majesty. In His profound humility, He lifts the poor out of the dust and seats the barren woman as a joyful mother in a home.\n\n— Bismark Twum",
+    "lesson": "God's supreme majesty is uniquely displayed in His tender, radical care for the lowly, marginalized, and forgotten members of society.",
     "key_verses": [
-      "Psalms 113:1",
-      "Psalms 113:9"
+      "Psalm 113:3",
+      "Psalm 113:5",
+      "Psalm 113:7"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 113?",
-      "How does the message of Psalms 113 challenge or encourage your walk of faith today?"
+      "How does the paradox of God's transcendent height and His condescending care shape our view of prayer?",
+      "In what ways can believers emulate God's heart for the poor and lowly in their immediate communities?"
     ]
   },
   "Psalms_114": {
     "book": "Psalms",
     "chapter": 114,
-    "theme": "Psalms Chapter 114: Worship",
-    "summary": "In Psalms 114, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that when israel went out of egypt, the house of jacob from a people of strange language, setting the course for divine instruction and action across 8 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that which turned the rock into a standing water, the flint into a fountain of waters., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 114 and allow God's Word to transform your daily conduct.",
+    "theme": "Creation Trembles at the Exodus of Israel",
+    "summary": "When the house of Israel departed from Egypt amidst a people of strange speech, Judah became God's sanctuary and Israel His dominion. The Red Sea witnessed this mighty deliverance and fled in terror, while the Jordan River turned backward in awe. The mountains skipped like rams and the hills leaped like lambs before the presence of the God of Jacob, who turned solid rock into springing pools of water.\n\n— Bismark Twum",
+    "lesson": "Physical nature itself responds in awe to God's redeeming power, assuring believers that every obstacle must yield to His liberating presence.",
     "key_verses": [
-      "Psalms 114:1",
-      "Psalms 114:8"
+      "Psalm 114:1",
+      "Psalm 114:7",
+      "Psalm 114:8"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 114?",
-      "How does the message of Psalms 114 challenge or encourage your walk of faith today?"
+      "Why is the Exodus event frequently recalled throughout Scripture as the ultimate baseline for God's saving power?",
+      "How should remembering God's historic power over nature and nations comfort believers facing impossible obstacles today?"
     ]
   },
   "Psalms_115": {
     "book": "Psalms",
     "chapter": 115,
-    "theme": "Psalms Chapter 115: Worship",
-    "summary": "In Psalms 115, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that not unto us, o lord, not unto us, but unto thy name give glory, for thy mercy, and for thy truth’s sake., setting the course for divine instruction and action across 18 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that but we will bless the lord from this time forth and for evermore. praise the lord., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 115 and allow God's Word to transform your daily conduct.",
+    "theme": "The Glory of the Living God Versus Idol Worship",
+    "summary": "The psalmist urges Israel to trust exclusively in the Lord rather than in lifeless idols crafted by human hands. Heathen nations mock the unseen God, but believers declare that the Lord reigns in heaven and does whatever pleases Him. Priests and worshippers are exhorted to place their confidence in the Creator, who blesses those who fear Him, both great and small. Ultimately, the dead cannot praise the Lord, so the living community resolves to bless His name from this time forth and forevermore.\n\n— Bismark Twum",
+    "lesson": "Believers must actively reject the empty idols of modern culture—such as wealth, status, and self-reliance—and place their absolute trust in the living God.",
     "key_verses": [
       "Psalms 115:1",
-      "Psalms 115:7",
-      "Psalms 115:18"
+      "Psalms 115:4",
+      "Psalms 115:11"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 115?",
-      "How does the message of Psalms 115 challenge or encourage your walk of faith today?"
+      "How does the psalmist contrast the nature of the Lord with the nature of man-made idols?",
+      "In what practical ways might a modern believer accidentally trust in 'idols of silver and gold'?"
     ]
   },
   "Psalms_116": {
     "book": "Psalms",
     "chapter": 116,
-    "theme": "Psalms Chapter 116: Worship",
-    "summary": "In Psalms 116, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that i love the lord, because he hath heard my voice and my supplications., setting the course for divine instruction and action across 19 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that in the courts of the lord’s house, in the midst of thee, o jerusalem. praise ye the lord., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 116 and allow God's Word to transform your daily conduct.",
+    "theme": "A Personal Thanksgiving for Deliverance from Death",
+    "summary": "An anonymous worshipper pours out deep affection for the Lord because He inclined His ear and rescued him from the very cords of death and the anguish of the grave. Remembering how God preserved his life when he was brought low, the psalmist asks how he can possibly repay the Lord for all His abundant benefits. He vows to lift up the cup of salvation, fulfill his public vows in the presence of all God's people, and offer a sacrifice of thanksgiving. Precious in the sight of the Lord is the death of His faithful servants.\n\n— Bismark Twum",
+    "lesson": "Experiencing God's deliverance in moments of profound crisis should compel believers to offer lives of devoted service and heartfelt public praise.",
     "key_verses": [
       "Psalms 116:1",
-      "Psalms 116:7",
-      "Psalms 116:19"
+      "Psalms 116:12",
+      "Psalms 116:15"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 116?",
-      "How does the message of Psalms 116 challenge or encourage your walk of faith today?"
+      "What specific emotional and physical distress did the psalmist experience before God intervened?",
+      "What does it mean practically to 'lift up the cup of salvation' and fulfill vows to the Lord today?"
     ]
   },
   "Psalms_117": {
     "book": "Psalms",
     "chapter": 117,
-    "theme": "Psalms Chapter 117: Worship",
-    "summary": "In Psalms 117, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that o praise the lord, all ye nations: praise him, all ye people., setting the course for divine instruction and action across 2 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that his merciful kindness is great toward us: and the truth of the lord endureth for ever. praise ye the lord., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 117 and allow God's Word to transform your daily conduct.",
+    "theme": "The Universal Call to Praise",
+    "summary": "All nations and peoples are commanded to praise the Lord because His unfailing love toward humanity is exceptionally great. The entire earth is reminded that the Lord's faithfulness endures forever, transcending ethnic and geographical boundaries. This briefest chapter in the entire Bible serves as a universal doxology, uniting all mankind in joyous acknowledgment of God's steadfast character. The call echoes far beyond Israel, anticipating the inclusion of the Gentiles in God's redemptive plan.\n\n— Bismark Twum",
+    "lesson": "God's enduring faithfulness and mercy are meant to be proclaimed to every nation, compelling all believers to share the good news universally.",
     "key_verses": [
-      "Psalms 117:1"
+      "Psalms 117:1",
+      "Psalms 117:2"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 117?",
-      "How does the message of Psalms 117 challenge or encourage your walk of faith today?"
+      "Why is this shortest chapter of the Bible significant for bridging the Old and New Testaments regarding the Gentiles?",
+      "How can believers personally join in the call to 'praise the Lord' across cultural and national divides?"
     ]
   },
   "Psalms_118": {
     "book": "Psalms",
     "chapter": 118,
-    "theme": "Psalms Chapter 118: Worship",
-    "summary": "In Psalms 118, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that o give thanks unto the lord, setting the course for divine instruction and action across 29 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that o give thanks unto the lord, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 118 and allow God's Word to transform your daily conduct.",
+    "theme": "The Victorious Cornerstone and Celebration of God's Mercy",
+    "summary": "Worshippers process to the temple gates, giving thanks to the Lord because His steadfast love endures forever amidst overwhelming hostility. Surrounded by enemies like bees, the psalmist trusted in the Lord and was rescued, realizing that human strength is inferior to divine refuge. The stone that the builders rejected has remarkably become the chief cornerstone, eliciting profound marvel from the congregation. The procession culminates in joyous shouts of Hosanna and the raising of festive branches toward the horns of the altar.\n\n— Bismark Twum",
+    "lesson": "Even when rejected or surrounded by insurmountable opposition, believers can take courage knowing Christ is the triumphant cornerstone who secures ultimate victory.",
     "key_verses": [
       "Psalms 118:1",
-      "Psalms 118:10",
-      "Psalms 118:29"
+      "Psalms 118:22",
+      "Psalms 118:24"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 118?",
-      "How does the message of Psalms 118 challenge or encourage your walk of faith today?"
+      "How do the New Testament writers apply the imagery of the 'rejected stone' to Jesus Christ?",
+      "How does remembering that 'this is the day the Lord has made' change your perspective on daily hardships?"
     ]
   },
   "Psalms_119": {
     "book": "Psalms",
     "chapter": 119,
-    "theme": "Psalms Chapter 119: Worship",
-    "summary": "In Psalms 119, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that blessed are the undefiled in the way, who walk in the law of the lord., setting the course for divine instruction and action across 176 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that i have gone astray like a lost sheep, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 119 and allow God's Word to transform your daily conduct.",
+    "theme": "The Supremacy, Delight, and Guidance of God's Word",
+    "summary": "The anonymous writer embarks on an exhaustive, acrostic masterpiece celebrating the perfection, purity, and power of God's law across twenty-two distinct stanzas. Throughout the verses, the psalmist repeatedly pleads for divine understanding, confesses his deep love for the commandments, and testifies that scripture keeps him from sin. Amidst persecution from the arrogant and the pressures of daily life, the word remains a lamp to his feet and a light to his path. He vows to praise God seven times a day and declares great peace for those who love the divine law.\n\n— Bismark Twum",
+    "lesson": "Deep spiritual maturity and victory over sin require a daily, affectionate immersion in and obedience to the Holy Scriptures.",
     "key_verses": [
-      "Psalms 119:1",
-      "Psalms 119:10",
-      "Psalms 119:176"
+      "Psalms 119:9",
+      "Psalms 119:105",
+      "Psalms 119:165"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 119?",
-      "How does the message of Psalms 119 challenge or encourage your walk of faith today?"
+      "What methods does the psalmist use to hide God's word in his heart, and how can you apply them?",
+      "How does the psalmist maintain his devotion to God's law even when facing unjust mockery and affliction?"
     ]
   },
   "Psalms_120": {
     "book": "Psalms",
     "chapter": 120,
-    "theme": "Psalms Chapter 120: Worship",
-    "summary": "In Psalms 120, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that in my distress i cried unto the lord, and he heard me., setting the course for divine instruction and action across 7 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that i am for peace: but when i speak, they are for war., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 120 and allow God's Word to transform your daily conduct.",
+    "theme": "A Cry from the Wilderness of Deceitful Tongues",
+    "summary": "A weary pilgrim begins the Songs of Ascent by crying out to the Lord in deep distress because he is forced to live among deceitful neighbors. Dwelling among the hostile and war-mongering inhabitants of Meshech and Kedar feels like exile in a spiritual desert far from home. The psalmist laments that he has lived too long among those who passionately hate peace and rely on slanderous speech. This urgent plea for deliverance marks the departure from worldly strife toward the holy sanctuary of God.\n\n— Bismark Twum",
+    "lesson": "Believers living in a hostile and deceitful world must continually look to God for rescue from the harmful words of ungodly influences.",
     "key_verses": [
       "Psalms 120:1",
+      "Psalms 120:2",
       "Psalms 120:7"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 120?",
-      "How does the message of Psalms 120 challenge or encourage your walk of faith today?"
+      "Why is this chapter designated as the very first 'Song of Ascent' sung by pilgrims traveling to Jerusalem?",
+      "How should a Christian respond when surrounded by slanderous and peace-hating environments?"
     ]
   },
   "Psalms_121": {
     "book": "Psalms",
     "chapter": 121,
-    "theme": "Psalms Chapter 121: Worship",
-    "summary": "In Psalms 121, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that i will lift up mine eyes unto the hills, from whence cometh my help., setting the course for divine instruction and action across 8 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that the lord shall preserve thy going out and thy coming in from this time forth, and even for evermore., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 121 and allow God's Word to transform your daily conduct.",
+    "theme": "The Lord Our Protector",
+    "summary": "A weary traveler gazes toward the hills, asking where his ultimate help will originate. He immediately realizes his rescue comes exclusively from the Maker of heaven and earth rather than earthly elevations. The Guardian of Israel neither slumbers nor sleeps, shielding His people from every peril by day and night.\n\n— Bismark Twum",
+    "lesson": "Believers must look past earthly resources and trust the vigilant God who continuously guards their lives.",
     "key_verses": [
-      "Psalms 121:1",
-      "Psalms 121:8"
+      "Psalms 121:1-2",
+      "Psalms 121:7-8"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 121?",
-      "How does the message of Psalms 121 challenge or encourage your walk of faith today?"
+      "Where do you instinctively look for help when facing overwhelming difficulties?",
+      "How does the knowledge that God 'neither slumbers nor sleeps' comfort your daily anxieties?"
     ]
   },
   "Psalms_122": {
     "book": "Psalms",
     "chapter": 122,
-    "theme": "Psalms Chapter 122: Worship",
-    "summary": "In Psalms 122, the narrative records how David addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that i was glad when they said unto me, let us go into the house of the lord., setting the course for divine instruction and action across 9 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that because of the house of the lord our god i will seek thy good., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 122 and allow God's Word to transform your daily conduct.",
+    "theme": "Joy in the House of the Lord",
+    "summary": "Pilgrims express overwhelming gladness upon hearing the invitation to journey toward the physical house of God in Jerusalem. They stand within the city gates, admiring the unified city where the tribes of Israel assemble to praise the name of the Lord. The worshipers invoke divine peace upon Jerusalem, praying for the enduring prosperity of all who love her.\n\n— Bismark Twum",
+    "lesson": "Corporate worship and fellowship with God's people should bring profound joy and inspire prayers for the church.",
     "key_verses": [
       "Psalms 122:1",
-      "Psalms 122:9"
+      "Psalms 122:6"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 122?",
-      "How does the message of Psalms 122 challenge or encourage your walk of faith today?"
+      "What is your attitude when preparing to gather with other believers for worship?",
+      "In what practical ways can you seek the peace and well-being of your local church community?"
     ]
   },
   "Psalms_123": {
     "book": "Psalms",
     "chapter": 123,
-    "theme": "Psalms Chapter 123: Worship",
-    "summary": "In Psalms 123, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that unto thee lift i up mine eyes, o thou that dwellest in the heavens., setting the course for divine instruction and action across 4 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that our soul is exceedingly filled with the scorning of those that are at ease, and with the contempt of the proud, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 123 and allow God's Word to transform your daily conduct.",
+    "theme": "Eyes Fixed on Mercy",
+    "summary": "A humble worshiper lifts expectant eyes toward the sovereign God enthroned in the heavens. Just as servants attentively watch their master's hand for direction, the faithful look to the Lord for mercy. They plead for grace because they have endured excessive contempt and ridicule from arrogant outsiders.\n\n— Bismark Twum",
+    "lesson": "In times of mockery and distress, believers should humbly and persistently petition God for His merciful intervention.",
     "key_verses": [
-      "Psalms 123:1",
-      "Psalms 123:4"
+      "Psalms 123:1-2",
+      "Psalms 123:3"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 123?",
-      "How does the message of Psalms 123 challenge or encourage your walk of faith today?"
+      "What does the imagery of servants watching their master's hand teach about dependence on God?",
+      "How do you maintain focus on God when facing scorn or misunderstanding from others?"
     ]
   },
   "Psalms_124": {
     "book": "Psalms",
     "chapter": 124,
-    "theme": "Psalms Chapter 124: Worship",
-    "summary": "In Psalms 124, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that if it had not been the lord who was on our side, now may israel say, setting the course for divine instruction and action across 8 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that our help is in the name of the lord, who made heaven and earth., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 124 and allow God's Word to transform your daily conduct.",
+    "theme": "Our Help in the Name of the Lord",
+    "summary": "Israel reflects on historical and present crises, acknowledging that enemies would have swallowed them alive had the Lord not intervened. Raging floods and overwhelming waters nearly swept them away, threatening total destruction. Their rescue is entirely attributed to the Creator whose name serves as their impenetrable defense.\n\n— Bismark Twum",
+    "lesson": "Recognizing past deliverance strengthens faith to trust God during sudden and overwhelming trials.",
     "key_verses": [
-      "Psalms 124:1",
+      "Psalms 124:1-3",
       "Psalms 124:8"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 124?",
-      "How does the message of Psalms 124 challenge or encourage your walk of faith today?"
+      "Can you identify a specific time when God prevented a crisis from overwhelming you?",
+      "How does remembering past victories change your response to current pressures?"
     ]
   },
   "Psalms_125": {
     "book": "Psalms",
     "chapter": 125,
-    "theme": "Psalms Chapter 125: Worship",
-    "summary": "In Psalms 125, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that they that trust in the lord shall be as mount zion, which cannot be removed, but abideth for ever., setting the course for divine instruction and action across 5 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that as for such as turn aside unto their crooked ways, the lord shall lead them forth with the workers of iniquity, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 125 and allow God's Word to transform your daily conduct.",
+    "theme": "The Security of the Trusting",
+    "summary": "Those who place their confidence in the Lord are compared to Mount Zion, which remains immovable and enduring forever. God surrounds His people just as the mountains encircle Jerusalem, shielding them from the wicked. While the righteous walk in integrity, God will lead evildoers away alongside workers of iniquity.\n\n— Bismark Twum",
+    "lesson": "God permanently surrounds and secures those who maintain steadfast faith and moral integrity.",
     "key_verses": [
-      "Psalms 125:1",
-      "Psalms 125:5"
+      "Psalms 125:1-2",
+      "Psalms 125:4"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 125?",
-      "How does the message of Psalms 125 challenge or encourage your walk of faith today?"
+      "What does it mean practically for your life to be anchored like Mount Zion?",
+      "Why is maintaining personal integrity vital even when surrounded by deceptive influences?"
     ]
   },
   "Psalms_126": {
     "book": "Psalms",
     "chapter": 126,
-    "theme": "Psalms Chapter 126: Worship",
-    "summary": "In Psalms 126, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that when the lord turned again the captivity of zion, we were like them that dream., setting the course for divine instruction and action across 6 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that he that goeth forth and weepeth, bearing precious seed, shall doubtless come again with rejoicing, bringing hi, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 126 and allow God's Word to transform your daily conduct.",
+    "theme": "From Tears to Triumph",
+    "summary": "Exiles experience profound astonishment and joy when the Lord restores their fortunes, feeling as though they are dreaming. Neighboring nations acknowledge the great things God has accomplished for His people, filling their mouths with laughter and shouts of joy. Those who sow seeds with weeping will ultimately harvest sheaves of grain with joyful shouts.\n\n— Bismark Twum",
+    "lesson": "Seasons of deep sorrow and patient endurance often precede miraculous harvests of divine joy.",
     "key_verses": [
-      "Psalms 126:1",
-      "Psalms 126:6"
+      "Psalms 126:2-3",
+      "Psalms 126:5-6"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 126?",
-      "How does the message of Psalms 126 challenge or encourage your walk of faith today?"
+      "How can difficult seasons of waiting or grief prepare you for future spiritual fruitfulness?",
+      "In what area of your life do you currently need to trust God for a joyful harvest?"
     ]
   },
   "Psalms_127": {
     "book": "Psalms",
     "chapter": 127,
-    "theme": "Psalms Chapter 127: Worship",
-    "summary": "In Psalms 127, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that except the lord build the house, they labour in vain that build it: except the lord keep the city, the watchman waketh b, setting the course for divine instruction and action across 5 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that happy is the man that hath his quiver full of them: they shall not be ashamed, but they shall speak with the e, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 127 and allow God's Word to transform your daily conduct.",
+    "theme": "The Futility of Human Labor Without God",
+    "summary": "Solomon asserts that human efforts to build houses, guard cities, and acquire wealth are completely useless unless the Lord is the foundation of the work. Anxiety and endless toil cannot replace the peaceful rest that God grants to those He loves. Children are presented as a heritage and reward from the Lord, functioning as powerful defenders like arrows in the hand of a warrior. Ultimately, the man whose quiver is full of these divine blessings is securely defended and will not be put to shame.\n\n— Bismark Twum",
+    "lesson": "True security and lasting success in family and labor come from depending on God's provision rather than frantic, self-reliant anxiety.",
     "key_verses": [
       "Psalms 127:1",
-      "Psalms 127:5"
+      "Psalms 127:3",
+      "Psalms 127:4"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 127?",
-      "How does the message of Psalms 127 challenge or encourage your walk of faith today?"
+      "How does recognizing God as the ultimate builder change the way you approach your daily work and responsibilities?",
+      "In what ways can families practically invite God to be the foundation of their home?"
     ]
   },
   "Psalms_128": {
     "book": "Psalms",
     "chapter": 128,
-    "theme": "Psalms Chapter 128: Worship",
-    "summary": "In Psalms 128, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that blessed is every one that feareth the lord, setting the course for divine instruction and action across 6 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that yea, thou shalt see thy children’s children, and peace upon israel., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 128 and allow God's Word to transform your daily conduct.",
+    "theme": "Blessings of the God-Fearing Home",
+    "summary": "The psalmist pronounces rich blessings over everyone who fears the Lord and walks in His obedient ways. Hard work will yield tangible rewards, bringing personal happiness and prosperity to the individual and their household. The faithful man's wife will be like a fruitful vine within his house, and his children like olive plants gathered around his table. From Zion, the Lord will extend lifelong prosperity, allowing the believer to see their grandchildren and witness peace in Jerusalem.\n\n— Bismark Twum",
+    "lesson": "A lifestyle of reverent obedience to God lays the groundwork for generational blessing, relational harmony, and domestic peace.",
     "key_verses": [
       "Psalms 128:1",
+      "Psalms 128:3",
       "Psalms 128:6"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 128?",
-      "How does the message of Psalms 128 challenge or encourage your walk of faith today?"
+      "What does it practically look like to fear the Lord and walk in His ways within a modern family setting?",
+      "How does the imagery of olive plants and a fruitful vine describe a flourishing family life?"
     ]
   },
   "Psalms_129": {
     "book": "Psalms",
     "chapter": 129,
-    "theme": "Psalms Chapter 129: Worship",
-    "summary": "In Psalms 129, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that many a time have they afflicted me from my youth, may israel now say:, setting the course for divine instruction and action across 8 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that neither do they which go by say, the blessing of the lord be upon you: we bless you in the name of the lord., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 129 and allow God's Word to transform your daily conduct.",
+    "theme": "Perseverance Through Persecution and Divine Deliverance",
+    "summary": "Israel reflects on a history marked by intense oppression and frequent attacks from enemies since the days of their youth. Although wicked tormentors plowed deep furrows across the backs of God's people, the righteous Lord has repeatedly severed the cords used by the wicked to bind them. Those who hate Zion will ultimately be put to shame, withering away like grass on a rooftop that never yields a harvest. Passersby will withhold the traditional blessing, refusing to invoke the Lord's name upon such defeated enemies.\n\n— Bismark Twum",
+    "lesson": "Believers can endure present opposition with resilient hope, knowing that God is a righteous judge who ultimately frustrates the plans of the wicked.",
     "key_verses": [
       "Psalms 129:1",
-      "Psalms 129:8"
+      "Psalms 129:4",
+      "Psalms 129:6"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 129?",
-      "How does the message of Psalms 129 challenge or encourage your walk of faith today?"
+      "How does remembering God's past deliverance sustain the church during times of cultural hostility?",
+      "Why is the imagery of grass on housetops an effective metaphor for the fate of those who oppose God?"
     ]
   },
   "Psalms_130": {
     "book": "Psalms",
     "chapter": 130,
-    "theme": "Psalms Chapter 130: Worship",
-    "summary": "In Psalms 130, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that out of the depths have i cried unto thee, o lord., setting the course for divine instruction and action across 8 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that he shall redeem israel from all his iniquities., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 130 and allow God's Word to transform your daily conduct.",
+    "theme": "Waiting Patiently for Redemption",
+    "summary": "Crying out from the depths of despair and personal sin, the worshiper begs God to hear his urgent plea for mercy. He acknowledges that if the Lord kept a strict record of iniquities, no human being could possibly stand in His presence. True forgiveness resides with God alone, inspiring deep reverence and awe rather than careless rebellion. The psalmist waits for the Lord with greater longing than watchmen scanning the darkness for the morning light, urging all of Israel to put their complete hope in God's steadfast love and abundant redemption.\n\n— Bismark Twum",
+    "lesson": "Deep personal awareness of our sin should lead us not to despair, but to eagerly seek the boundless mercy and redemption found only in God.",
     "key_verses": [
-      "Psalms 130:1",
-      "Psalms 130:8"
+      "Psalms 130:3",
+      "Psalms 130:4",
+      "Psalms 130:7"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 130?",
-      "How does the message of Psalms 130 challenge or encourage your walk of faith today?"
+      "What does it mean to wait for the Lord with the eagerness of a watchman waiting for the morning?",
+      "How does the certainty of God's forgiveness cultivate a lifestyle of reverent awe rather than sinfulness?"
     ]
   },
   "Psalms_131": {
     "book": "Psalms",
     "chapter": 131,
-    "theme": "Psalms Chapter 131: Worship",
-    "summary": "In Psalms 131, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that lord, my heart is not haughty, nor mine eyes lofty: neither do i exercise myself in great matters, or in things too high, setting the course for divine instruction and action across 3 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that let israel hope in the lord from henceforth and for ever., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 131 and allow God's Word to transform your daily conduct.",
+    "theme": "Childlike Trust and Quiet Humility",
+    "summary": "David disavows any arrogant pride, lofty ambitions, or involvement in matters too profound or marvelous for him to comprehend. Instead, he actively quiets his soul, calming his restless thoughts and anxious desires just like a weaned infant resting contentedly in its mother's arms. Having found complete peace in the presence of God, he urges all of Israel to place their unwavering hope in the Lord from this time forth and forevermore.\n\n— Bismark Twum",
+    "lesson": "Spiritual maturity is marked by abandoning pride and resting quietly in God's care with the simple trust of a child.",
     "key_verses": [
       "Psalms 131:1",
+      "Psalms 131:2",
       "Psalms 131:3"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 131?",
-      "How does the message of Psalms 131 challenge or encourage your walk of faith today?"
+      "What are some practical ways to quiet your soul from pride and overwhelming anxiety in a fast-paced world?",
+      "How does the metaphor of a weaned child describe a mature yet humble relationship with God?"
     ]
   },
   "Psalms_132": {
     "book": "Psalms",
     "chapter": 132,
-    "theme": "Psalms Chapter 132: Worship",
-    "summary": "In Psalms 132, the narrative records how David addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that lord, remember david, and all his afflictions:, setting the course for divine instruction and action across 18 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that his enemies will i clothe with shame: but upon himself shall his crown flourish., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 132 and allow God's Word to transform your daily conduct.",
+    "theme": "God's Eternal Covenant with David and Zion",
+    "summary": "The congregation recalls David's intense emotional vow and relentless effort to find a proper dwelling place for the Mighty God of Jacob. They implore the Lord to arise and enter His resting place alongside the ark of His strength, clothing His priests with righteousness and causing His faithful people to shout for joy. God responds by confirming His sworn oath to David, promising to place one of his descendants on his throne and forever dwell in Zion as His chosen home. Within this sanctuary, God pledges to abundantly bless provisions, clothe priests with salvation, and make the horn of David flourish as a shining lamp for His anointed king.\n\n— Bismark Twum",
+    "lesson": "God faithfulness to His covenant promises assures us that He deeply values His dwelling place among His people and honors those who seek Him.",
     "key_verses": [
-      "Psalms 132:1",
-      "Psalms 132:7",
-      "Psalms 132:18"
+      "Psalms 132:5",
+      "Psalms 132:11",
+      "Psalms 132:13"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 132?",
-      "How does the message of Psalms 132 challenge or encourage your walk of faith today?"
+      "Why is it significant that David prioritized preparing a dwelling place for God before establishing his own palace?",
+      "How are God's covenant promises to David ultimately fulfilled in Jesus Christ?"
     ]
   },
   "Psalms_133": {
     "book": "Psalms",
     "chapter": 133,
-    "theme": "Psalms Chapter 133: Worship",
-    "summary": "In Psalms 133, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that behold, how good and how pleasant it is for brethren to dwell together in unity!, setting the course for divine instruction and action across 3 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that as the dew of hermon, and as the dew that descended upon the mountains of zion: for there the lord commanded t, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 133 and allow God's Word to transform your daily conduct.",
+    "theme": "The Blessing of Unity Among Brethren",
+    "summary": "David celebrates the rare beauty and profound harmony of God's people dwelling together in unity. He compares this communal fellowship to the costly, fragrant oil poured upon Aaron's head that flowed down to his garments. Furthermore, it is likened to the refreshing dew of Mount Hermon descending upon the hills of Zion where the Lord commands eternal life.\n\n— Bismark Twum",
+    "lesson": "True spiritual unity among believers creates an atmosphere of divine blessing and life that is both attractive to the world and pleasing to God.",
     "key_verses": [
       "Psalms 133:1",
       "Psalms 133:3"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 133?",
-      "How does the message of Psalms 133 challenge or encourage your walk of faith today?"
+      "How does the metaphor of anointing oil illustrate the impact of unity in a community of believers?",
+      "In what practical ways can you actively foster peace and harmony in your local church?"
     ]
   },
   "Psalms_134": {
     "book": "Psalms",
     "chapter": 134,
-    "theme": "Psalms Chapter 134: Worship",
-    "summary": "In Psalms 134, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that behold, bless ye the lord, all ye servants of the lord, which by night stand in the house of the lord., setting the course for divine instruction and action across 3 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that the lord that made heaven and earth bless thee out of zion., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 134 and allow God's Word to transform your daily conduct.",
+    "theme": "A Call to Nightly Praise",
+    "summary": "The psalmist calls upon the servants of the Lord who stand in the house of the God by night to lift up their hands in holiness and bless Him. The Levites and priests on night watch are urged to praise the Creator rather than remaining idle. In response, the worshipper pronounces a powerful blessing upon the servants from Zion, invoking the maker of heaven and earth.\n\n— Bismark Twum",
+    "lesson": "Unceasing worship and devotion to God are required of His people, even in the quiet or difficult night seasons of life.",
     "key_verses": [
       "Psalms 134:1",
-      "Psalms 134:3"
+      "Psalms 134:2"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 134?",
-      "How does the message of Psalms 134 challenge or encourage your walk of faith today?"
+      "What does it mean to lift up your hands in the sanctuary during times of darkness or testing?",
+      "How can you cultivate a lifestyle of continuous praise even when you feel spiritually weary?"
     ]
   },
   "Psalms_135": {
     "book": "Psalms",
     "chapter": 135,
-    "theme": "Psalms Chapter 135: Worship",
-    "summary": "In Psalms 135, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that praise ye the lord. praise ye the name of the lord, setting the course for divine instruction and action across 21 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that blessed be the lord out of zion, which dwelleth at jerusalem. praise ye the lord., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 135 and allow God's Word to transform your daily conduct.",
+    "theme": "Praise to the Sovereign Creator and Deliverer",
+    "summary": "The congregation is summoned to praise the name of the Lord, recounting His gracious selection of Jacob and His supremacy over all earthly gods. God's mighty acts are displayed through His control of weather patterns, His devastating plagues upon Egypt, and His military victory over the kings of Canaan. Ultimately, idols of silver and gold are exposed as lifeless works of human hands, contrasting sharply with the living God whose name endures forever.\n\n— Bismark Twum",
+    "lesson": "Recognizing God's absolute sovereignty over nature and history destroys the temptation to trust in modern idols.",
     "key_verses": [
-      "Psalms 135:1",
-      "Psalms 135:8",
-      "Psalms 135:21"
+      "Psalms 135:3",
+      "Psalms 135:15"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 135?",
-      "How does the message of Psalms 135 challenge or encourage your walk of faith today?"
+      "Why does the psalmist contrast the living God with powerless idols crafted by human hands?",
+      "How should remembering God's historical acts of deliverance shape your trust in Him today?"
     ]
   },
   "Psalms_136": {
     "book": "Psalms",
     "chapter": 136,
-    "theme": "Psalms Chapter 136: Worship",
-    "summary": "In Psalms 136, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that o give thanks unto the lord, setting the course for divine instruction and action across 26 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that o give thanks unto the god of heaven: for his mercy endureth for ever., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 136 and allow God's Word to transform your daily conduct.",
+    "theme": "The Great Hallel of God's Enduring Mercy",
+    "summary": "Worshippers offer continuous thanksgiving to the Lord of lords, with every single verse echoing the powerful refrain that His mercy endures forever. The hymn recounts the foundational acts of creation, the miraculous rescue of Israel through the Red Sea, and the guided journey through the vast wilderness. It concludes by celebrating the conquest of formidable kings and God's gracious provision of the promised land to His humble servants.\n\n— Bismark Twum",
+    "lesson": "God's steadfast love and mercy are not temporary emotions but eternal realities that sustain His people through every historical and personal trial.",
     "key_verses": [
       "Psalms 136:1",
-      "Psalms 136:10",
       "Psalms 136:26"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 136?",
-      "How does the message of Psalms 136 challenge or encourage your walk of faith today?"
+      "What is the spiritual significance of repeating the refrain 'His mercy endures forever' through every stanza?",
+      "In what specific ways has God's enduring mercy sustained you through your own wilderness seasons?"
     ]
   },
   "Psalms_137": {
     "book": "Psalms",
     "chapter": 137,
-    "theme": "Psalms Chapter 137: Worship",
-    "summary": "In Psalms 137, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that by the rivers of babylon, there we sat down, yea, we wept, when we remembered zion., setting the course for divine instruction and action across 9 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that happy shall he be, that taketh and dasheth thy little ones against the stones., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 137 and allow God's Word to transform your daily conduct.",
+    "theme": "Lament by the Rivers of Babylon",
+    "summary": "Exiles sit by the foreign rivers of Babylon, weeping bitterly as they remember Zion and hang their silent lyres upon the weeping willows. Mocking captors demand songs of joy, prompting the distraught Hebrews to declare that they will never sing the Lord's songs in a foreign land and invoke swift judgment upon Edom and Babylon for their cruelty. The psalm concludes with a raw, agonizing cry against the brutal oppressors who destroyed Jerusalem.\n\n— Bismark Twum",
+    "lesson": "God understands the deep pain of grief and displacement, welcoming our honest, raw lament without hiding our brokenness.",
     "key_verses": [
       "Psalms 137:1",
-      "Psalms 137:9"
+      "Psalms 137:4"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 137?",
-      "How does the message of Psalms 137 challenge or encourage your walk of faith today?"
+      "How does this psalm teach believers to process deep sorrow and the trauma of displacement?",
+      "Why is it spiritually dangerous to forget Jerusalem, or our spiritual heritage, in times of comfort?"
     ]
   },
   "Psalms_138": {
     "book": "Psalms",
     "chapter": 138,
-    "theme": "Psalms Chapter 138: Worship",
-    "summary": "In Psalms 138, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that i will praise thee with my whole heart: before the gods will i sing praise unto thee., setting the course for divine instruction and action across 8 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that the lord will perfect that which concerneth me: thy mercy, o lord, endureth for ever: forsake not the works of, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 138 and allow God's Word to transform your daily conduct.",
+    "theme": "A Psalm of Thanksgiving for Answered Prayer",
+    "summary": "David praises the Lord with his whole heart before the heavenly beings, magnifying God's unfailing love and faithfulness above all things. He testifies that when he cried out in distress, the Lord answered him and made him bold with strength in his soul. Furthermore, David expresses confidence that even though the Lord is high, He looks upon the lowly and will fulfill His ultimate purpose for every believer.\n\n— Bismark Twum",
+    "lesson": "Confidence in God's faithfulness produces bold praise, knowing that He hears the humble and completes the work He started in us.",
     "key_verses": [
-      "Psalms 138:1",
+      "Psalms 138:3",
       "Psalms 138:8"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 138?",
-      "How does the message of Psalms 138 challenge or encourage your walk of faith today?"
+      "How does remembering past answers to prayer instill courage for present trials?",
+      "What does it mean for God to fulfill His purpose for you, and how does that bring peace to your daily life?"
     ]
   },
   "Psalms_139": {
     "book": "Psalms",
     "chapter": 139,
-    "theme": "Psalms Chapter 139: Worship",
-    "summary": "In Psalms 139, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that o lord, thou hast searched me, and known me., setting the course for divine instruction and action across 24 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that see if there be any wicked way in me, and lead me in the way everlasting., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 139 and allow God's Word to transform your daily conduct.",
+    "theme": "The Omnipresence and Omniscience of God",
+    "summary": "David marvels at God's intimate knowledge of human life, acknowledging that the Lord searches and knows every thought, word, and movement before they happen. He meditates on the inescapable presence of the Spirit, who hems him in behind and before, whether ascending to heaven or descending to the depths. The psalmist praises God as the Creator who skillfully wove him together in his mother's womb, marveling at the intricate design of human anatomy. He concludes by asking God to search his heart and lead him in the way everlasting.\n\n— Bismark Twum",
+    "lesson": "Believers can find profound comfort and accountability in knowing that God intimately understands their entire existence and is present in every circumstance.",
     "key_verses": [
-      "Psalms 139:1",
-      "Psalms 139:9",
-      "Psalms 139:24"
+      "Psalms 139:13",
+      "Psalms 139:23"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 139?",
-      "How does the message of Psalms 139 challenge or encourage your walk of faith today?"
+      "How does the truth of God's intimate knowledge of you change how you approach prayer and daily living?",
+      "In what ways can you invite God to search your heart for hidden sin or anxiety today?"
     ]
   },
   "Psalms_140": {
     "book": "Psalms",
     "chapter": 140,
-    "theme": "Psalms Chapter 140: Worship",
-    "summary": "In Psalms 140, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that deliver me, o lord, from the evil man: preserve me from the violent man, setting the course for divine instruction and action across 13 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that surely the righteous shall give thanks unto thy name: the upright shall dwell in thy presence., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 140 and allow God's Word to transform your daily conduct.",
+    "theme": "Prayer for Deliverance from Violent Men",
+    "summary": "David cries out to the Lord for rescue from wicked, violent individuals who plot evil in their hearts and stir up wars continually. He describes their malicious nature, comparing their tongues to the venom of vipers and noting the hidden traps they set along his path. Expressing absolute trust in God as his strength and saving shield, David petitions the Lord to frustrate the wicked plans of his adversaries. He remains confident that the righteous will ultimately praise God's name and dwell in His presence.\n\n— Bismark Twum",
+    "lesson": "When surrounded by deceitful opposition, believers should anchor their trust in God as their ultimate defender and protector.",
     "key_verses": [
-      "Psalms 140:1",
-      "Psalms 140:5",
-      "Psalms 140:13"
+      "Psalms 140:4",
+      "Psalms 140:7"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 140?",
-      "How does the message of Psalms 140 challenge or encourage your walk of faith today?"
+      "How should a Christian balance praying for justice against enemies with the call to love and forgive them?",
+      "In what specific ways has God proven to be your shield in times of personal conflict or hardship?"
     ]
   },
   "Psalms_141": {
     "book": "Psalms",
     "chapter": 141,
-    "theme": "Psalms Chapter 141: Worship",
-    "summary": "In Psalms 141, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that lord, i cry unto thee: make haste unto me, setting the course for divine instruction and action across 10 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that let the wicked fall into their own nets, whilst that i withal escape., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 141 and allow God's Word to transform your daily conduct.",
+    "theme": "A Prayer for Guarded Speech and Righteous Integrity",
+    "summary": "David petitions God to hear his urgent cry, asking that his evening prayer ascend like incense and the lifting of his hands be like the evening sacrifice. He asks the Lord to set a guard over his mouth and keep watch over the door of his lips to prevent him from speaking or participating in evil. Welcoming the constructive rebuke of righteous friends rather than the deceitful luxuries of the wicked, he keeps his eyes fixed firmly on God. He confesses that his eyes are on the Lord for refuge, pleading to be kept safe from the snares laid by evildoers.\n\n— Bismark Twum",
+    "lesson": "Maintaining spiritual integrity requires intentional discipline over our speech and a daily dependence on God to keep us from falling into temptation.",
     "key_verses": [
-      "Psalms 141:1",
-      "Psalms 141:4",
-      "Psalms 141:10"
+      "Psalms 141:3",
+      "Psalms 141:5"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 141?",
-      "How does the message of Psalms 141 challenge or encourage your walk of faith today?"
+      "Why is controlling the tongue such a vital discipline for maintaining a clean conscience before God?",
+      "How do you personally respond when a fellow believer offers you loving, yet painful, correction?"
     ]
   },
   "Psalms_142": {
     "book": "Psalms",
     "chapter": 142,
-    "theme": "Psalms Chapter 142: Worship",
-    "summary": "In Psalms 142, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that i cried unto the lord with my voice, setting the course for divine instruction and action across 7 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that bring my soul out of prison, that i may praise thy name: the righteous shall compass me about, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 142 and allow God's Word to transform your daily conduct.",
+    "theme": "A Cry for Help from a Cave",
+    "summary": "David pours out his loud complaint and trouble to the Lord while hiding in a cave, feeling completely abandoned by friends and trapped by enemies. As his spirit grows faint within him, he acknowledges that God knows the exact path he is walking and where the hidden traps have been set. He looks to his right and sees no one who cares for his soul, prompting him to cry out that God alone is his refuge and his portion in the land of the living. He asks the Lord to bring him out of prison so that he may give thanks and be surrounded by the righteous.\n\n— Bismark Twum",
+    "lesson": "Even in the darkest seasons of isolation and distress, believers can turn transparently to God as their only true refuge.",
     "key_verses": [
-      "Psalms 142:1",
-      "Psalms 142:7"
+      "Psalms 142:3",
+      "Psalms 142:5"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 142?",
-      "How does the message of Psalms 142 challenge or encourage your walk of faith today?"
+      "What can we learn from David's transparency in bringing his feelings of loneliness and despair directly to God?",
+      "How does viewing God as your 'portion' change your perspective when earthly support systems fail?"
     ]
   },
   "Psalms_143": {
     "book": "Psalms",
     "chapter": 143,
-    "theme": "Psalms Chapter 143: Worship",
-    "summary": "In Psalms 143, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that hear my prayer, o lord, give ear to my supplications: in thy faithfulness answer me, and in thy righteousness., setting the course for divine instruction and action across 12 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that of thy mercy cut off mine enemies, and destroy all them that afflict my soul: for i am thy servant., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 143 and allow God's Word to transform your daily conduct.",
+    "theme": "A Plea for Mercy and Guidance in Distress",
+    "summary": "David begs the Lord to listen to his plea, pleading not to enter into judgment with him because no living person is righteous before God. He describes how his enemy has pursued him, crushing his life to the ground and making him dwell in darkness like those long dead. Overwhelmed and dismayed, he stretches out his hands to God like a thirsty land, longing for the quickening of the Spirit. He asks to experience God's unfailing love in the morning, to be taught the way he should go, and to be led by the Good Spirit on level ground.\n\n— Bismark Twum",
+    "lesson": "When facing overwhelming defeat and guilt, believers must appeal to God's steadfast love and mercy rather than their own merits.",
     "key_verses": [
-      "Psalms 143:1",
-      "Psalms 143:4",
-      "Psalms 143:12"
+      "Psalms 143:8",
+      "Psalms 143:10"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 143?",
-      "How does the message of Psalms 143 challenge or encourage your walk of faith today?"
+      "Why is it spiritually dangerous to rely on our own righteousness rather than God's mercy when we stumble?",
+      "How does beginning your day with a focused request for God's guidance shape your daily decisions?"
     ]
   },
   "Psalms_144": {
     "book": "Psalms",
     "chapter": 144,
-    "theme": "Psalms Chapter 144: Worship",
-    "summary": "In Psalms 144, the narrative records how David addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that blessed be the lord my strength, which teacheth my hands to war, and my fingers to fight:, setting the course for divine instruction and action across 15 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that happy is that people, that is in such a case: yea, happy is that people, whose god is the lord., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 144 and allow God's Word to transform your daily conduct.",
+    "theme": "Praise for Victory and Prayer for National Prosperity",
+    "summary": "David blesses the Lord, who is his rock, his fortress, and his warrior trainer, teaching his hands for war and his fingers for battle. He marvels at human insignificance that God would take notice of mere mortals, yet the Lord reaches down from on high to rescue him from raging floods and the hands of foreigners. He sings a new song to God, celebrating the deliverance given to kings and the defeat of enemies. The psalm closes with a picture of a flourishing society where sons grow up like plants, daughters are like carved pillars, storehouses are full, and happy are the people whose God is the Lord.\n\n— Bismark Twum",
+    "lesson": "Recognizing God as the source of all strength and stability leads a community to true blessing and security.",
     "key_verses": [
       "Psalms 144:1",
-      "Psalms 144:6",
       "Psalms 144:15"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 144?",
-      "How does the message of Psalms 144 challenge or encourage your walk of faith today?"
+      "In what ways does God train and prepare believers for the spiritual battles they face today?",
+      "What are the characteristics of a society that truly acknowledges the Lord as its God, as described in this chapter?"
     ]
   },
   "Psalms_145": {
     "book": "Psalms",
     "chapter": 145,
-    "theme": "Psalms Chapter 145: Worship",
-    "summary": "In Psalms 145, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that i will extol thee, my god, o king, setting the course for divine instruction and action across 21 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that my mouth shall speak the praise of the lord: and let all flesh bless his holy name for ever and ever., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 145 and allow God's Word to transform your daily conduct.",
+    "theme": "David's Praise for God's Greatness and Goodness",
+    "summary": "King David exalts the Lord as an eternal King, vowing to daily praise His majestic acts and wondrous works. Generations declare the mighty deeds of God, meditating on His glorious splendor and awe-inspiring power. The Lord upholds the fallen, satisfies every living thing with favor, and watches over all who call upon Him in truth.\n\n— Bismark Twum",
+    "lesson": "Believers should deliberately cultivate a daily lifestyle of praise, anchoring their gratitude in God's unfailing compassion and trustworthy character.",
     "key_verses": [
-      "Psalms 145:1",
+      "Psalms 145:3",
       "Psalms 145:8",
-      "Psalms 145:21"
+      "Psalms 145:18"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 145?",
-      "How does the message of Psalms 145 challenge or encourage your walk of faith today?"
+      "How does David's commitment to daily praise challenge your own routine of prayer and worship?",
+      "In what specific ways have you experienced God's sustaining grace when facing difficult seasons?"
     ]
   },
   "Psalms_146": {
     "book": "Psalms",
     "chapter": 146,
-    "theme": "Psalms Chapter 146: Worship",
-    "summary": "In Psalms 146, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that praise ye the lord. praise the lord, o my soul., setting the course for divine instruction and action across 10 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that the lord shall reign for ever, even thy god, o zion, unto all generations. praise ye the lord., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 146 and allow God's Word to transform your daily conduct.",
+    "theme": "Trust in the Creator, Not Mortal Princes",
+    "summary": "The psalmist urges believers not to put their trust in mortal leaders or human power, which vanishes when life ends. True blessedness belongs to those whose help comes from the God of Jacob, the Maker of heaven, earth, and sea. This sovereign Lord executes justice for the oppressed, feeds the hungry, frees prisoners, and sustains the vulnerable.\n\n— Bismark Twum",
+    "lesson": "Christians must place their ultimate security in God's unchanging faithfulness rather than shifting political systems or human promises.",
     "key_verses": [
-      "Psalms 146:1",
-      "Psalms 146:4",
-      "Psalms 146:10"
+      "Psalms 146:3",
+      "Psalms 146:5",
+      "Psalms 146:7"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 146?",
-      "How does the message of Psalms 146 challenge or encourage your walk of faith today?"
+      "Where do you find yourself most tempted to rely on human security instead of God?",
+      "How does knowing God cares for the oppressed, blind, and stranger shape the mission of the modern church?"
     ]
   },
   "Psalms_147": {
     "book": "Psalms",
     "chapter": 147,
-    "theme": "Psalms Chapter 147: Worship",
-    "summary": "In Psalms 147, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that praise ye the lord: for it is good to sing praises unto our god, setting the course for divine instruction and action across 20 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that he hath not dealt so with any nation: and as for his judgments, they have not known them. praise ye the lord., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 147 and allow God's Word to transform your daily conduct.",
+    "theme": "Praise for God's Care for Jerusalem and Creation",
+    "summary": "The Lord gathers the outcasts of Israel, heals the brokenhearted, and binds up their painful wounds. He determines the exact number of the stars and calls each one by name, while lifting up the humble and casting the wicked to the ground. God delights in those who fear Him and put their hope in His steadfast love.\n\n— Bismark Twum",
+    "lesson": "God's immense power displayed in the cosmos is intimately matched by His gentle care for the hurting and brokenhearted.",
     "key_verses": [
-      "Psalms 147:1",
-      "Psalms 147:8",
-      "Psalms 147:20"
+      "Psalms 147:3",
+      "Psalms 147:4",
+      "Psalms 147:11"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 147?",
-      "How does the message of Psalms 147 challenge or encourage your walk of faith today?"
+      "What encouragement do you draw from the connection between God numbering the stars and healing the brokenhearted?",
+      "How does God's control over nature and weather influence your perspective on earthly uncertainty?"
     ]
   },
   "Psalms_148": {
     "book": "Psalms",
     "chapter": 148,
-    "theme": "Psalms Chapter 148: Worship",
-    "summary": "In Psalms 148, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that praise ye the lord. praise ye the lord from the heavens: praise him in the heights., setting the course for divine instruction and action across 14 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that he also exalteth the horn of his people, the praise of all his saints, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 148 and allow God's Word to transform your daily conduct.",
+    "theme": "Universal Praise of the Creator by All Creation",
+    "summary": "Celestial bodies, cosmic forces, and the physical earth are commanded to praise the name of the Lord because His command created them. Kings, judges, young men, and children join the universal chorus, exalting a name that is above all earth and heaven. God has raised up a horn for His faithful people, drawing the children of Israel close to Him.\n\n— Bismark Twum",
+    "lesson": "All creation was purposefully designed to worship God, and believers should lead this chorus of praise with joyful reverence.",
     "key_verses": [
       "Psalms 148:1",
       "Psalms 148:5",
-      "Psalms 148:14"
+      "Psalms 148:13"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 148?",
-      "How does the message of Psalms 148 challenge or encourage your walk of faith today?"
+      "How can observing the natural world actively prompt you to offer spontaneous praise to God?",
+      "In what ways does joining the universal chorus of praise realign your daily priorities?"
     ]
   },
   "Psalms_149": {
     "book": "Psalms",
     "chapter": 149,
-    "theme": "Psalms Chapter 149: Worship",
-    "summary": "In Psalms 149, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that praise ye the lord. sing unto the lord a new song, and his praise in the congregation of saints., setting the course for divine instruction and action across 9 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that to execute upon them the judgment written: this honour have all his saints. praise ye the lord., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 149 and allow God's Word to transform your daily conduct.",
+    "theme": "A New Song of Praise and Victory for the Faithful",
+    "summary": "The congregation sings a new song of praise in the assembly of the faithful, rejoicing in their Maker and King. The Lord takes pleasure in His people, adorning the humble with victory and salvation. Believers shout aloud for joy upon their beds, brandishing the praise of God in their mouths and executing the judgment written against their adversaries.\n\n— Bismark Twum",
+    "lesson": "God delights in His people and equips them with spiritual victory, turning times of quiet reflection into triumphant joy.",
     "key_verses": [
       "Psalms 149:1",
-      "Psalms 149:9"
+      "Psalms 149:4",
+      "Psalms 149:6"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 149?",
-      "How does the message of Psalms 149 challenge or encourage your walk of faith today?"
+      "What does it mean for a believer to find joy even in the quiet hours upon their bed?",
+      "How should New Testament believers understand the militant language of praise and victory in this psalm?"
     ]
   },
   "Psalms_150": {
     "book": "Psalms",
     "chapter": 150,
-    "theme": "Psalms Chapter 150: Worship",
-    "summary": "In Psalms 150, the narrative records how the Lord addresses His people concerning worship, prayer, praise, lament, messianic hope, and meditation on god's word. The chapter opens with the declaration that praise ye the lord. praise god in his sanctuary: praise him in the firmament of his power., setting the course for divine instruction and action across 6 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that let every thing that hath breath praise the lord. praise ye the lord., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "In every season of joy or sorrow, pour out your heart before God who is our eternal refuge. Take time to meditate on Psalms 150 and allow God's Word to transform your daily conduct.",
+    "theme": "The Grand Hallelujah Finale of All Creation",
+    "summary": "The final psalm summons every living breath to praise the Lord in His sanctuary and mighty firmament. Worshippers lift their voices using a magnificent orchestra of instruments, including trumpets, harps, timbrels, strings, flutes, and resounding cymbals. Everything that has breath unites in one triumphant crescendo to praise Yahweh forever.\n\n— Bismark Twum",
+    "lesson": "Praise is the ultimate and eternal climax of the human experience, meant to consume every breath we take.",
     "key_verses": [
       "Psalms 150:1",
+      "Psalms 150:2",
       "Psalms 150:6"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Psalms chapter 150?",
-      "How does the message of Psalms 150 challenge or encourage your walk of faith today?"
+      "Why is 'breath' specifically chosen as the final qualifying condition for offering praise to God?",
+      "How can you incorporate a spirit of unrestrained, joyful worship into your everyday life?"
     ]
   },
   "Proverbs_1": {
     "book": "Proverbs",
     "chapter": 1,
-    "theme": "Proverbs Chapter 1: The fear of the Lord",
-    "summary": "In Proverbs 1, the narrative records how David addresses His people concerning the fear of the lord, practical godliness, wisdom, righteousness, and integrity. The chapter opens with the declaration that the proverbs of solomon the son of david, king of israel, setting the course for divine instruction and action across 33 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that but whoso hearkeneth unto me shall dwell safely, and shall be quiet from fear of evil., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The fear of the Lord is the beginning of wisdom; trust in the Lord with all your heart. Take time to meditate on Proverbs 1 and allow God's Word to transform your daily conduct.",
+    "theme": "The Call of Wisdom and the Avoidance of Evil Men",
+    "summary": "King Solomon establishes the purpose of the proverbs to impart wisdom, justice, and prudence to the simple and the youth. Wisdom openly cries out in the streets and public squares, condemning those who mock her instruction, while violent men lie in wait to shed their own blood. God warns that calamity will strike those who reject His reproof and refuse the fear of the Lord.\n\n— Bismark Twum",
+    "lesson": "Believers must actively listen to God's wise counsel and steadfastly reject the enticing shortcuts of ungodly peers who lead toward destruction.",
     "key_verses": [
-      "Proverbs 1:1",
+      "Proverbs 1:7",
       "Proverbs 1:10",
-      "Proverbs 1:33"
+      "Proverbs 1:23"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Proverbs chapter 1?",
-      "How does the message of Proverbs 1 challenge or encourage your walk of faith today?"
+      "In what public spaces or practical ways does wisdom call out to modern believers today?",
+      "Why is the fear of the Lord specifically described as the beginning of knowledge?"
     ]
   },
   "Proverbs_2": {
     "book": "Proverbs",
     "chapter": 2,
-    "theme": "Proverbs Chapter 2: The fear of the Lord",
-    "summary": "In Proverbs 2, the narrative records how the Lord addresses His people concerning the fear of the lord, practical godliness, wisdom, righteousness, and integrity. The chapter opens with the declaration that my son, if thou wilt receive my words, and hide my commandments with thee, setting the course for divine instruction and action across 22 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that but the wicked shall be cut off from the earth, and the transgressors shall be rooted out of it., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The fear of the Lord is the beginning of wisdom; trust in the Lord with all your heart. Take time to meditate on Proverbs 2 and allow God's Word to transform your daily conduct.",
+    "theme": "The Protection and Reward of Divine Wisdom",
+    "summary": "Solomon urges his son to receive his words and treasure God's commands by searching for discernment as if hunting for hidden silver. The Lord grants true wisdom, acting as a shield for those who walk in integrity and guarding the paths of His saints. This divine wisdom delivers the seeker from the paths of the wicked and from the seductive words of the immoral woman.\n\n— Bismark Twum",
+    "lesson": "Diligent pursuit of God's word yields moral protection, divine guidance, and the capacity to discern right from wrong in a deceptive world.",
     "key_verses": [
-      "Proverbs 2:1",
-      "Proverbs 2:8",
-      "Proverbs 2:22"
+      "Proverbs 2:3-5",
+      "Proverbs 2:10-11",
+      "Proverbs 2:20-21"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Proverbs chapter 2?",
-      "How does the message of Proverbs 2 challenge or encourage your walk of faith today?"
+      "What practical habits reflect the 'searching for hidden treasure' mindset when studying the Bible?",
+      "How does divine wisdom specifically rescue a person from moral compromise?"
     ]
   },
   "Proverbs_3": {
     "book": "Proverbs",
     "chapter": 3,
-    "theme": "Proverbs Chapter 3: The fear of the Lord",
-    "summary": "In Proverbs 3, the narrative records how the Lord addresses His people concerning the fear of the lord, practical godliness, wisdom, righteousness, and integrity. The chapter opens with the declaration that my son, forget not my law, setting the course for divine instruction and action across 35 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that the wise shall inherit glory: but shame shall be the promotion of fools., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The fear of the Lord is the beginning of wisdom; trust in the Lord with all your heart. Take time to meditate on Proverbs 3 and allow God's Word to transform your daily conduct.",
+    "theme": "Trusting God with Wealth, Discipline, and Relations",
+    "summary": "The teacher instructs the student to keep God's commands close to the heart, promising long life and peace in return. Believers are commanded to trust the Lord with all their heart rather than leaning on their own understanding, and to honor God with the firstfruits of their wealth. Solomon reminds his listener that the Lord disciplines the one He loves, just as a father delights in his son, urging acts of kindness and truth toward neighbors.\n\n— Bismark Twum",
+    "lesson": "True security comes from surrendering complete financial and personal trust to God, accepting His loving discipline, and maintaining integrity with others.",
     "key_verses": [
-      "Proverbs 3:1",
-      "Proverbs 3:10",
-      "Proverbs 3:35"
+      "Proverbs 3:5-6",
+      "Proverbs 3:11-12",
+      "Proverbs 3:27"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Proverbs chapter 3?",
-      "How does the message of Proverbs 3 challenge or encourage your walk of faith today?"
+      "What does it practically look like to not lean on your own understanding in a major life decision?",
+      "How should experiencing God's discipline alter a Christian's perspective on hardship?"
     ]
   },
   "Proverbs_4": {
     "book": "Proverbs",
     "chapter": 4,
-    "theme": "Proverbs Chapter 4: The fear of the Lord",
-    "summary": "In Proverbs 4, the narrative records how the Lord addresses His people concerning the fear of the lord, practical godliness, wisdom, righteousness, and integrity. The chapter opens with the declaration that hear, ye children, the instruction of a father, and attend to know understanding., setting the course for divine instruction and action across 27 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that turn not to the right hand nor to the left: remove thy foot from evil., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The fear of the Lord is the beginning of wisdom; trust in the Lord with all your heart. Take time to meditate on Proverbs 4 and allow God's Word to transform your daily conduct.",
+    "theme": "The Path of the Upright Versus the Path of the Wicked",
+    "summary": "Solomon recalls receiving tender instruction from his father David, emphasizing that getting wisdom is paramount above all possessions. The path of the righteous is compared to the first light of dawn that shines ever brighter until the full day, while the way of the wicked is shrouded in deep darkness. The student is sternly warned to guard the heart vigilantly, keeping the feet from evil and the gaze fixed straight ahead.\n\n— Bismark Twum",
+    "lesson": "Believers must intentionally guard their hearts and minds, because the inner life dictates the outward direction of their entire spiritual journey.",
     "key_verses": [
-      "Proverbs 4:1",
-      "Proverbs 4:10",
-      "Proverbs 4:27"
+      "Proverbs 4:7",
+      "Proverbs 4:18",
+      "Proverbs 4:23"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Proverbs chapter 4?",
-      "How does the message of Proverbs 4 challenge or encourage your walk of faith today?"
+      "What specific practices help a believer vigilantly 'guard their heart' on a daily basis?",
+      "Why does Solomon describe the path of the righteous as an ever-brightening light?"
     ]
   },
   "Proverbs_5": {
     "book": "Proverbs",
     "chapter": 5,
-    "theme": "Proverbs Chapter 5: The fear of the Lord",
-    "summary": "In Proverbs 5, the narrative records how the Lord addresses His people concerning the fear of the lord, practical godliness, wisdom, righteousness, and integrity. The chapter opens with the declaration that my son, attend unto my wisdom, and bow thine ear to my understanding:, setting the course for divine instruction and action across 23 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that he shall die without instruction, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The fear of the Lord is the beginning of wisdom; trust in the Lord with all your heart. Take time to meditate on Proverbs 5 and allow God's Word to transform your daily conduct.",
+    "theme": "Warning Against Adultery and the Value of Marital Fidelity",
+    "summary": "Solomon warns his son to pay close attention to his discretion so that his lips may preserve knowledge, contrasting the alluring, honey-dripping words of the adulteress with her bitter, sharp-edged end. The seductress leads straight to death and the grave, her steps wandering aimlessly while she traps the unwary. The father commands the young man to drink water from his own cistern, rejoicing exclusively in the wife of his youth and remaining satisfied only with her love.\n\n— Bismark Twum",
+    "lesson": "Fidelity within marriage protects a believer from devastating regret, public disgrace, and the spiritual destruction caused by sexual immorality.",
     "key_verses": [
-      "Proverbs 5:1",
-      "Proverbs 5:9",
-      "Proverbs 5:23"
+      "Proverbs 5:3-4",
+      "Proverbs 5:15",
+      "Proverbs 5:21"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Proverbs chapter 5?",
-      "How does the message of Proverbs 5 challenge or encourage your walk of faith today?"
+      "How do the initial allure and the final consequences of temptation differ in this chapter?",
+      "What does celebrating the 'wife of your youth' look like in a lifelong marriage?"
     ]
   },
   "Proverbs_6": {
     "book": "Proverbs",
     "chapter": 6,
-    "theme": "Proverbs Chapter 6: The fear of the Lord",
-    "summary": "In Proverbs 6, the narrative records how the Lord addresses His people concerning the fear of the lord, practical godliness, wisdom, righteousness, and integrity. The chapter opens with the declaration that my son, if thou be surety for thy friend, if thou hast stricken thy hand with a stranger,, setting the course for divine instruction and action across 35 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that he will not regard any ransom, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The fear of the Lord is the beginning of wisdom; trust in the Lord with all your heart. Take time to meditate on Proverbs 6 and allow God's Word to transform your daily conduct.",
+    "theme": "Sureties, Laziness, Wickedness, and Moral Purity",
+    "summary": "Solomon warns against foolishly putting up security for a neighbor's debt, urging the entangled debtor to humble themselves and beg for release before it is too late. The lazy sluggard is told to consider the industrious ant, which stores up food without needing a commander. The text highlights six things the Lord hates—culminating in a person who stirs up conflict among brothers—before concluding with a prolonged warning against adultery that burns the soul and ruins reputations.\n\n— Bismark Twum",
+    "lesson": "Believers must exercise financial prudence, diligent labor, and personal integrity, steering completely clear of laziness, dishonesty, and sexual sin.",
     "key_verses": [
-      "Proverbs 6:1",
-      "Proverbs 6:10",
-      "Proverbs 6:35"
+      "Proverbs 6:6",
+      "Proverbs 6:16-19",
+      "Proverbs 6:23"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Proverbs chapter 6?",
-      "How does the message of Proverbs 6 challenge or encourage your walk of faith today?"
+      "What character traits can modern Christians learn from the ant's preparation in verse 6?",
+      "Why does God place such specific emphasis on those who sow discord among brethren?"
     ]
   },
   "Proverbs_7": {
     "book": "Proverbs",
     "chapter": 7,
-    "theme": "Proverbs Chapter 7: The fear of the Lord",
-    "summary": "In Proverbs 7, the narrative records how the Lord addresses His people concerning the fear of the lord, practical godliness, wisdom, righteousness, and integrity. The chapter opens with the declaration that my son, keep my words, and lay up my commandments with thee., setting the course for divine instruction and action across 27 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that her house is the way to hell, going down to the chambers of death., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The fear of the Lord is the beginning of wisdom; trust in the Lord with all your heart. Take time to meditate on Proverbs 7 and allow God's Word to transform your daily conduct.",
+    "theme": "The Trap of the Immoral Woman",
+    "summary": "A father warns his son to guard wisdom as his dearest treasure to escape the ruin of seductive deception. He watches a naive young man walk straight into the path of a brazen, alluring adulteress who uses flattery and religious pretense to lure him into her home. Like an ox going to the slaughter, the foolish youth yields to her smooth words, completely unaware that her house is a pathway to the grave. Believers are urged to stay far away from such destructive temptations because they destroy lives eternally.\n\n— Bismark Twum",
+    "lesson": "Moral purity requires active vigilance, recognizing that sin often disguises itself with attractive and seemingly harmless invitations.",
     "key_verses": [
-      "Proverbs 7:1",
-      "Proverbs 7:10",
-      "Proverbs 7:27"
+      "Proverbs 7:4",
+      "Proverbs 7:21-22"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Proverbs chapter 7?",
-      "How does the message of Proverbs 7 challenge or encourage your walk of faith today?"
+      "What specific tactics does the seductress use to manipulate the young man in this chapter?",
+      "How can you practically guard your heart and mind against deceptive temptations in daily life?"
     ]
   },
   "Proverbs_8": {
     "book": "Proverbs",
     "chapter": 8,
-    "theme": "Proverbs Chapter 8: The fear of the Lord",
-    "summary": "In Proverbs 8, the narrative records how the Lord addresses His people concerning the fear of the lord, practical godliness, wisdom, righteousness, and integrity. The chapter opens with the declaration that doth not wisdom cry? and understanding put forth her voice?, setting the course for divine instruction and action across 36 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that but he that sinneth against me wrongeth his own soul: all they that hate me love death., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The fear of the Lord is the beginning of wisdom; trust in the Lord with all your heart. Take time to meditate on Proverbs 8 and allow God's Word to transform your daily conduct.",
+    "theme": "The Excellence and Call of Wisdom",
+    "summary": "Personified Wisdom stands at the busiest city gates and hilltops, passionately crying out for all people to abandon foolishness and embrace understanding. She declares that her words are noble, entirely truthful, and far more valuable than silver, gold, or jewels. Furthermore, she reveals her divine origin, testifying that she was present and rejoicing beside the Creator before the earth was even formed. Ultimately, she promises eternal life and the favor of God to those who diligently seek her out.\n\n— Bismark Twum",
+    "lesson": "God's wisdom is the supreme guide for human life, offering genuine fulfillment and righteousness that worldly wealth can never match.",
     "key_verses": [
-      "Proverbs 8:1",
-      "Proverbs 8:10",
-      "Proverbs 8:36"
+      "Proverbs 8:1-3",
+      "Proverbs 8:11",
+      "Proverbs 8:35-36"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Proverbs chapter 8?",
-      "How does the message of Proverbs 8 challenge or encourage your walk of faith today?"
+      "In what ways does Wisdom make herself accessible to everyday people in this chapter?",
+      "Why is treating God's wisdom as more valuable than wealth such a difficult mindset to maintain?"
     ]
   },
   "Proverbs_9": {
     "book": "Proverbs",
     "chapter": 9,
-    "theme": "Proverbs Chapter 9: The fear of the Lord",
-    "summary": "In Proverbs 9, the narrative records how the Lord addresses His people concerning the fear of the lord, practical godliness, wisdom, righteousness, and integrity. The chapter opens with the declaration that wisdom hath builded her house, she hath hewn out her seven pillars:, setting the course for divine instruction and action across 18 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that but he knoweth not that the dead are there, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The fear of the Lord is the beginning of wisdom; trust in the Lord with all your heart. Take time to meditate on Proverbs 9 and allow God's Word to transform your daily conduct.",
+    "theme": "The Two Banquets: Wisdom and Folly",
+    "summary": "Lady Wisdom builds her majestic house with seven pillars, slaughters her beasts, mixes her wine, and sends out her maidservants to invite the simple to her life-giving feast. In stark contrast, Madame Folly is loud, seductive, and completely ignorant, sitting at her door to entice passersby who are heading straight down their own destructive paths. Both women offer contrasting feasts, forcing every traveler to choose between the path of eternal life and the depths of hell. The chapter concludes by contrasting how scoffers and wise men respond to correction.\n\n— Bismark Twum",
+    "lesson": "Every person must choose daily between the feast of divine instruction that leads to life and the cheap thrills of foolishness that lead to destruction.",
     "key_verses": [
-      "Proverbs 9:1",
-      "Proverbs 9:7",
-      "Proverbs 9:18"
+      "Proverbs 9:1-2",
+      "Proverbs 9:10",
+      "Proverbs 9:13-14"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Proverbs chapter 9?",
-      "How does the message of Proverbs 9 challenge or encourage your walk of faith today?"
+      "How are the invitations of Wisdom and Folly fundamentally different in their approach and outcome?",
+      "How does your personal response to correction reveal whether you are walking in wisdom or folly?"
     ]
   },
   "Proverbs_10": {
     "book": "Proverbs",
     "chapter": 10,
-    "theme": "Proverbs Chapter 10: The fear of the Lord",
-    "summary": "In Proverbs 10, the narrative records how Solomon addresses His people concerning the fear of the lord, practical godliness, wisdom, righteousness, and integrity. The chapter opens with the declaration that the proverbs of solomon. a wise son maketh a glad father: but a foolish son is the heaviness of his mother., setting the course for divine instruction and action across 32 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that the lips of the righteous know what is acceptable: but the mouth of the wicked speaketh frowardness., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The fear of the Lord is the beginning of wisdom; trust in the Lord with all your heart. Take time to meditate on Proverbs 10 and allow God's Word to transform your daily conduct.",
+    "theme": "Contrasts Between the Righteous and the Wicked",
+    "summary": "Solomon begins his extensive collection of pithy proverbs by contrasting the daily outcomes of righteous and wicked behavior. Wise sons bring joy to their parents, while foolish children cause deep grief and sorrow. Hard work and honest speech lead to blessing and security, whereas laziness and deceit result in poverty and ruin. The speech of the righteous becomes a fountain of life, while the mouth of the wicked conceals violence and brings immediate ruin.\n\n— Bismark Twum",
+    "lesson": "Our daily words, work ethics, and moral choices carry natural and spiritual consequences that deeply affect our communities.",
     "key_verses": [
-      "Proverbs 10:1",
-      "Proverbs 10:10",
-      "Proverbs 10:32"
+      "Proverbs 10:4",
+      "Proverbs 10:19",
+      "Proverbs 10:22"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Proverbs chapter 10?",
-      "How does the message of Proverbs 10 challenge or encourage your walk of faith today?"
+      "How does this chapter emphasize the power and impact of human speech?",
+      "In what ways does diligence practically protect a person from hardship according to these proverbs?"
     ]
   },
   "Proverbs_11": {
     "book": "Proverbs",
     "chapter": 11,
-    "theme": "Proverbs Chapter 11: The fear of the Lord",
-    "summary": "In Proverbs 11, the narrative records how the Lord addresses His people concerning the fear of the lord, practical godliness, wisdom, righteousness, and integrity. The chapter opens with the declaration that a false balance is abomination to the lord: but a just weight is his delight., setting the course for divine instruction and action across 31 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that behold, the righteous shall be recompensed in the earth: much more the wicked and the sinner., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The fear of the Lord is the beginning of wisdom; trust in the Lord with all your heart. Take time to meditate on Proverbs 11 and allow God's Word to transform your daily conduct.",
+    "theme": "Integrity, Generosity, and Honest Scales",
+    "summary": "The text emphasizes that dishonest business practices are an abomination to the Lord, but honest weights bring Him delight. When pride arrives, disgrace quickly follows, but true wisdom resides exclusively with the humble. Generous givers experience supernatural increase, while hoarders ultimately face poverty and lack. Ultimately, riches are utterly worthless on the day of divine wrath, but righteousness delivers a person safely from death.\n\n— Bismark Twum",
+    "lesson": "God cares deeply about our personal integrity in business, relationships, and humility, measuring true wealth by spiritual righteousness rather than material accumulation.",
     "key_verses": [
       "Proverbs 11:1",
-      "Proverbs 11:10",
-      "Proverbs 11:31"
+      "Proverbs 11:24",
+      "Proverbs 11:30"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Proverbs chapter 11?",
-      "How does the message of Proverbs 11 challenge or encourage your walk of faith today?"
+      "Why is financial generosity paradoxically tied to personal increase in this chapter?",
+      "How does maintaining personal integrity in hidden matters protect your reputation and future?"
     ]
   },
   "Proverbs_12": {
     "book": "Proverbs",
     "chapter": 12,
-    "theme": "Proverbs Chapter 12: The fear of the Lord",
-    "summary": "In Proverbs 12, the narrative records how the Lord addresses His people concerning the fear of the lord, practical godliness, wisdom, righteousness, and integrity. The chapter opens with the declaration that whoso loveth instruction loveth knowledge: but he that hateth reproof is brutish., setting the course for divine instruction and action across 28 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that in the way of righteousness is life: and in the pathway thereof there is no death., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The fear of the Lord is the beginning of wisdom; trust in the Lord with all your heart. Take time to meditate on Proverbs 12 and allow God's Word to transform your daily conduct.",
+    "theme": "The Power of Words and Honest Labor",
+    "summary": "Those who love discipline love knowledge, but anyone who stubbornly hates correction remains utterly stupid before God. A truly noble wife proves to be her husband's crown, while a shameful partner acts like destructive rot in his bones. Reckless words pierce like sharp sword thrusts, but the soothing tongue of the wise brings healing and restoration. The wicked are overthrown and vanish completely, but the house of the righteous stands firm through every trial.\n\n— Bismark Twum",
+    "lesson": "Disciplined speech and diligent labor build an enduring, stable life, whereas careless words and pride lead to ruin.",
     "key_verses": [
       "Proverbs 12:1",
-      "Proverbs 12:10",
-      "Proverbs 12:28"
+      "Proverbs 12:18",
+      "Proverbs 12:22"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Proverbs chapter 12?",
-      "How does the message of Proverbs 12 challenge or encourage your walk of faith today?"
+      "How can you use your words to bring healing rather than hurt in your relationships today?",
+      "What is the connection between accepting discipline and growing in wisdom?"
     ]
   },
   "Proverbs_13": {
     "book": "Proverbs",
     "chapter": 13,
-    "theme": "Proverbs Chapter 13: The fear of the Lord",
-    "summary": "In Proverbs 13, the narrative records how the Lord addresses His people concerning the fear of the lord, practical godliness, wisdom, righteousness, and integrity. The chapter opens with the declaration that a wise son heareth his father’s instruction: but a scorner heareth not rebuke., setting the course for divine instruction and action across 25 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that the righteous eateth to the satisfying of his soul: but the belly of the wicked shall want., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The fear of the Lord is the beginning of wisdom; trust in the Lord with all your heart. Take time to meditate on Proverbs 13 and allow God's Word to transform your daily conduct.",
+    "theme": "The Rewards of Diligence and Wise Association",
+    "summary": "Wise children embrace correction while mockers feed on violence and deceit. Hard work builds steady wealth through honest labor, whereas ill-gotten gains quickly fade away. Walking with the wise brings genuine growth, but keeping company with fools inevitably leads to ruin.\n\n— Bismark Twum",
+    "lesson": "True prosperity and safety come from heeding instruction, working diligently, and intentionally surrounding oneself with wise companions rather than deceitful mockers.",
     "key_verses": [
-      "Proverbs 13:1",
-      "Proverbs 13:10",
-      "Proverbs 13:25"
+      "Proverbs 13:3",
+      "Proverbs 13:20"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Proverbs chapter 13?",
-      "How does the message of Proverbs 13 challenge or encourage your walk of faith today?"
+      "How does guarding your speech protect your soul from unexpected trouble?",
+      "Who are the primary influences in your life, and are they leading you toward wisdom or destruction?"
     ]
   },
   "Proverbs_14": {
     "book": "Proverbs",
     "chapter": 14,
-    "theme": "Proverbs Chapter 14: The fear of the Lord",
-    "summary": "In Proverbs 14, the narrative records how the Lord addresses His people concerning the fear of the lord, practical godliness, wisdom, righteousness, and integrity. The chapter opens with the declaration that every wise woman buildeth her house: but the foolish plucketh it down with her hands., setting the course for divine instruction and action across 35 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that the king’s favour is toward a wise servant: but his wrath is against him that causeth shame., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The fear of the Lord is the beginning of wisdom; trust in the Lord with all your heart. Take time to meditate on Proverbs 14 and allow God's Word to transform your daily conduct.",
+    "theme": "The Contrast of Upright and Foolish Communities",
+    "summary": "Prudent women actively build up their households while foolish ones tear them down with their own hands. Honest witnesses tell the truth to save lives, but deceitful witnesses pour out lies that destroy others. Righteous living exalts a nation, yet sin remains a disgraceful reproach to any people.\n\n— Bismark Twum",
+    "lesson": "Building a stable family and community requires intentional alignment with God's righteousness, truthfulness in speech, and deep reverence for the Lord.",
     "key_verses": [
       "Proverbs 14:1",
-      "Proverbs 14:10",
-      "Proverbs 14:35"
+      "Proverbs 14:12",
+      "Proverbs 14:34"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Proverbs chapter 14?",
-      "How does the message of Proverbs 14 challenge or encourage your walk of faith today?"
+      "In what practical ways can your daily actions build up your immediate household rather than tear it down?",
+      "Why do paths that seem completely right to human reasoning ultimately lead to death?"
     ]
   },
   "Proverbs_15": {
     "book": "Proverbs",
     "chapter": 15,
-    "theme": "Proverbs Chapter 15: The fear of the Lord",
-    "summary": "In Proverbs 15, the narrative records how the Lord addresses His people concerning the fear of the lord, practical godliness, wisdom, righteousness, and integrity. The chapter opens with the declaration that a soft answer turneth away wrath: but grievous words stir up anger., setting the course for divine instruction and action across 33 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that the fear of the lord is the instruction of wisdom, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The fear of the Lord is the beginning of wisdom; trust in the Lord with all your heart. Take time to meditate on Proverbs 15 and allow God's Word to transform your daily conduct.",
+    "theme": "The Power of Words and Reverent Living",
+    "summary": "Gentle answers turn away fierce anger, but harsh words stir up fresh strife and bitterness. The eyes of the Lord monitor every place, observing both the evil and the good deeds of humanity. A cheerful heart brings physical and spiritual health, while a crushed spirit drains a person's strength.\n\n— Bismark Twum",
+    "lesson": "Believers must harness the power of their speech, choosing gentle and honest words that reflect a heart submitted to the all-seeing Lord.",
     "key_verses": [
       "Proverbs 15:1",
-      "Proverbs 15:10",
-      "Proverbs 15:33"
+      "Proverbs 15:3",
+      "Proverbs 15:13"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Proverbs chapter 15?",
-      "How does the message of Proverbs 15 challenge or encourage your walk of faith today?"
+      "How does remembering that God's eyes are everywhere affect your private choices and thoughts?",
+      "When faced with provocation, how can you practice giving a gentle answer instead of a harsh one?"
     ]
   },
   "Proverbs_16": {
     "book": "Proverbs",
     "chapter": 16,
-    "theme": "Proverbs Chapter 16: The fear of the Lord",
-    "summary": "In Proverbs 16, the narrative records how the Lord addresses His people concerning the fear of the lord, practical godliness, wisdom, righteousness, and integrity. The chapter opens with the declaration that the preparations of the heart in man, and the answer of the tongue, is from the lord., setting the course for divine instruction and action across 33 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that the lot is cast into the lap, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The fear of the Lord is the beginning of wisdom; trust in the Lord with all your heart. Take time to meditate on Proverbs 16 and allow God's Word to transform your daily conduct.",
+    "theme": "Divine Sovereignty and Human Plans",
+    "summary": "Humans may make elaborate plans in their hearts, but the final answer of the tongue comes directly from the Lord. People commit their works to God so that their underlying plans will successfully succeed. Pride goes immediately before destruction, and a haughty spirit marches straight toward a fall.\n\n— Bismark Twum",
+    "lesson": "Believers must humbly surrender their personal ambitions and plans to God's sovereign direction, recognizing that pride brings certain ruin.",
     "key_verses": [
-      "Proverbs 16:1",
-      "Proverbs 16:10",
-      "Proverbs 16:33"
+      "Proverbs 16:3",
+      "Proverbs 16:9",
+      "Proverbs 16:18"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Proverbs chapter 16?",
-      "How does the message of Proverbs 16 challenge or encourage your walk of faith today?"
+      "What does it truly mean to commit your daily works to the Lord in practical terms?",
+      "How can you identify and root out subtle pockets of pride in your own heart before they lead to a fall?"
     ]
   },
   "Proverbs_17": {
     "book": "Proverbs",
     "chapter": 17,
-    "theme": "Proverbs Chapter 17: The fear of the Lord",
-    "summary": "In Proverbs 17, the narrative records how the Lord addresses His people concerning the fear of the lord, practical godliness, wisdom, righteousness, and integrity. The chapter opens with the declaration that better is a dry morsel, and quietness therewith, than an house full of sacrifices with strife., setting the course for divine instruction and action across 28 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that even a fool, when he holdeth his peace, is counted wise: and he that shutteth his lips is esteemed a man of un, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The fear of the Lord is the beginning of wisdom; trust in the Lord with all your heart. Take time to meditate on Proverbs 17 and allow God's Word to transform your daily conduct.",
+    "theme": "Integrity, Friendship, and Controlling the Tongue",
+    "summary": "A quiet crust of dry bread eaten in peace surpasses a luxurious house filled with continuous feasting and fighting. Refining pots test silver and furnaces test gold, but the Lord evaluates human hearts. True friends demonstrate unwavering love at all times, standing by as brothers born for times of adversity.\n\n— Bismark Twum",
+    "lesson": "God values integrity of the heart and faithful friendship far above material wealth or superficial religious sacrifices.",
     "key_verses": [
-      "Proverbs 17:1",
-      "Proverbs 17:10",
-      "Proverbs 17:28"
+      "Proverbs 17:3",
+      "Proverbs 17:17",
+      "Proverbs 17:22"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Proverbs chapter 17?",
-      "How does the message of Proverbs 17 challenge or encourage your walk of faith today?"
+      "Why is a peaceful, simple life better than a wealthy life plagued by constant conflict?",
+      "How can you be the kind of loyal friend who offers steadfast support during another person's adversity?"
     ]
   },
   "Proverbs_18": {
     "book": "Proverbs",
     "chapter": 18,
-    "theme": "Proverbs Chapter 18: The fear of the Lord",
-    "summary": "In Proverbs 18, the narrative records how the Lord addresses His people concerning the fear of the lord, practical godliness, wisdom, righteousness, and integrity. The chapter opens with the declaration that through desire a man, having separated himself, seeketh and intermeddleth with all wisdom., setting the course for divine instruction and action across 24 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that a man that hath friends must shew himself friendly: and there is a friend that sticketh closer than a brother., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The fear of the Lord is the beginning of wisdom; trust in the Lord with all your heart. Take time to meditate on Proverbs 18 and allow God's Word to transform your daily conduct.",
+    "theme": "The Danger of Isolation and the Strength of the Righteous",
+    "summary": "Isolated individuals selfishly pursue their own desires and angrily rage against all sound judgment. The powerful name of the Lord serves as a strong fortress where the righteous run for immediate safety. Words possess the immense power of both life and death, and those who love talking must eat the fruit of their speech.\n\n— Bismark Twum",
+    "lesson": "Believers must avoid selfish isolation, taking refuge in God's mighty name and using their words to bring life rather than destruction.",
     "key_verses": [
-      "Proverbs 18:1",
-      "Proverbs 18:9",
+      "Proverbs 18:10",
+      "Proverbs 18:21",
       "Proverbs 18:24"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Proverbs chapter 18?",
-      "How does the message of Proverbs 18 challenge or encourage your walk of faith today?"
+      "In what practical ways is the name of the Lord a strong tower for you in times of crisis?",
+      "How does the reality that words carry the power of life and death change how you speak to others today?"
     ]
   },
   "Proverbs_19": {
     "book": "Proverbs",
     "chapter": 19,
-    "theme": "Proverbs Chapter 19: The fear of the Lord",
-    "summary": "In Proverbs 19, the narrative records how the Lord addresses His people concerning the fear of the lord, practical godliness, wisdom, righteousness, and integrity. The chapter opens with the declaration that better is the poor that walketh in his integrity, than he that is perverse in his lips, and is a fool., setting the course for divine instruction and action across 29 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that judgments are prepared for scorners, and stripes for the back of fools., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The fear of the Lord is the beginning of wisdom; trust in the Lord with all your heart. Take time to meditate on Proverbs 19 and allow God's Word to transform your daily conduct.",
+    "theme": "Integrity, Wealth, and Human Planning",
+    "summary": "Better is the poor who walks in integrity than a rich person with twisted lips. Human plans often fail and lead to frustration, but the purpose of the Lord ultimately prevails. Wisdom, patience, and kindness to the needy honor God and secure a stable future.\n\n— Bismark Twum",
+    "lesson": "True dignity is found in moral uprightness and fear of the Lord rather than in material wealth or social status.",
     "key_verses": [
       "Proverbs 19:1",
-      "Proverbs 19:10",
-      "Proverbs 19:29"
+      "Proverbs 19:21",
+      "Proverbs 19:17"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Proverbs chapter 19?",
-      "How does the message of Proverbs 19 challenge or encourage your walk of faith today?"
+      "How does prioritizing integrity over wealth change daily decision-making?",
+      "In what areas of your life are you currently relying on your own plans rather than seeking God's purpose?"
     ]
   },
   "Proverbs_20": {
     "book": "Proverbs",
     "chapter": 20,
-    "theme": "Proverbs Chapter 20: The fear of the Lord",
-    "summary": "In Proverbs 20, the narrative records how the Lord addresses His people concerning the fear of the lord, practical godliness, wisdom, righteousness, and integrity. The chapter opens with the declaration that wine is a mocker, strong drink is raging: and whosoever is deceived thereby is not wise., setting the course for divine instruction and action across 30 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that the blueness of a wound cleanseth away evil: so do stripes the inward parts of the belly., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The fear of the Lord is the beginning of wisdom; trust in the Lord with all your heart. Take time to meditate on Proverbs 20 and allow God's Word to transform your daily conduct.",
+    "theme": "Honesty, Conscience, and Wise Leadership",
+    "summary": "Wine is a mocker and strong drink is a brawler, leading many wise individuals astray. A king sitting on the throne of judgment sifts out all evil with his eyes. The human spirit is the lamp of the Lord, searching through every innermost part of our being.\n\n— Bismark Twum",
+    "lesson": "God values absolute honesty in business and personal dealings, calling believers to practice self-control and discernment.",
     "key_verses": [
       "Proverbs 20:1",
-      "Proverbs 20:10",
-      "Proverbs 20:30"
+      "Proverbs 20:11",
+      "Proverbs 20:27"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Proverbs chapter 20?",
-      "How does the message of Proverbs 20 challenge or encourage your walk of faith today?"
+      "Why is deception in business dealings specifically condemned as detestable to God?",
+      "How does acknowledging that God searches your innermost parts affect your private thoughts and habits?"
     ]
   },
   "Proverbs_21": {
     "book": "Proverbs",
     "chapter": 21,
-    "theme": "Proverbs Chapter 21: The fear of the Lord",
-    "summary": "In Proverbs 21, the narrative records how the Lord addresses His people concerning the fear of the lord, practical godliness, wisdom, righteousness, and integrity. The chapter opens with the declaration that the king’s heart is in the hand of the lord, as the rivers of water: he turneth it whithersoever he will., setting the course for divine instruction and action across 31 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that the horse is prepared against the day of battle: but safety is of the lord., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The fear of the Lord is the beginning of wisdom; trust in the Lord with all your heart. Take time to meditate on Proverbs 21 and allow God's Word to transform your daily conduct.",
+    "theme": "Divine Sovereignty and the Pursuit of Justice",
+    "summary": "The king's heart is like a stream of water in the hand of the Lord, directed wherever He pleases. Righteousness and justice are more acceptable to the Lord than costly sacrifices. A quarrelsome spouse and greedy shortcuts lead only to ruin, while diligent planning brings abundance.\n\n— Bismark Twum",
+    "lesson": "God holds ultimate authority over all rulers and human motivations, demanding justice and mercy over empty religious rituals.",
     "key_verses": [
       "Proverbs 21:1",
-      "Proverbs 21:10",
+      "Proverbs 21:3",
       "Proverbs 21:31"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Proverbs chapter 21?",
-      "How does the message of Proverbs 21 challenge or encourage your walk of faith today?"
+      "How does the truth that God directs the heart of leaders bring comfort during turbulent political times?",
+      "In what ways might we be tempted to substitute religious activity for true justice and mercy?"
     ]
   },
   "Proverbs_22": {
     "book": "Proverbs",
     "chapter": 22,
-    "theme": "Proverbs Chapter 22: The fear of the Lord",
-    "summary": "In Proverbs 22, the narrative records how the Lord addresses His people concerning the fear of the lord, practical godliness, wisdom, righteousness, and integrity. The chapter opens with the declaration that a good name is rather to be chosen than great riches, and loving favour rather than silver and gold., setting the course for divine instruction and action across 29 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that seest thou a man diligent in his business? he shall stand before kings, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The fear of the Lord is the beginning of wisdom; trust in the Lord with all your heart. Take time to meditate on Proverbs 22 and allow God's Word to transform your daily conduct.",
+    "theme": "Reputation, Childhood Training, and Generosity",
+    "summary": "A good name is to be chosen rather than great riches, and favor is better than silver and gold. Parents are instructed to train up a child in the way they should go so they will not depart from it. The generous person will be blessed because they share their food with the poor.\n\n— Bismark Twum",
+    "lesson": "Investing in a godly reputation, proper upbringing of youth, and radical generosity yields eternal rewards.",
     "key_verses": [
       "Proverbs 22:1",
-      "Proverbs 22:10",
-      "Proverbs 22:29"
+      "Proverbs 22:6",
+      "Proverbs 22:9"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Proverbs chapter 22?",
-      "How does the message of Proverbs 22 challenge or encourage your walk of faith today?"
+      "What practical steps can be taken to guard and cultivate a good reputation in a cynical culture?",
+      "How does early moral and spiritual training shape the trajectory of a person's adult life?"
     ]
   },
   "Proverbs_23": {
     "book": "Proverbs",
     "chapter": 23,
-    "theme": "Proverbs Chapter 23: The fear of the Lord",
-    "summary": "In Proverbs 23, the narrative records how the Lord addresses His people concerning the fear of the lord, practical godliness, wisdom, righteousness, and integrity. The chapter opens with the declaration that when thou sittest to eat with a ruler, consider diligently what is before thee:, setting the course for divine instruction and action across 35 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that they have stricken me, shalt thou say, and i was not sick, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The fear of the Lord is the beginning of wisdom; trust in the Lord with all your heart. Take time to meditate on Proverbs 23 and allow God's Word to transform your daily conduct.",
+    "theme": "Moderation, Self-Control, and Guarding the Heart",
+    "summary": "Sitting down to dine with a ruler requires careful observation of who is before you, restraining your appetite. Greed for rich food is deceptive, so do not wear yourself out to get rich. Drunkenness and gluttony drag people into poverty and dull their senses to wisdom.\n\n— Bismark Twum",
+    "lesson": "Believers must exercise extreme self-control regarding physical appetites, alcohol, and the relentless pursuit of wealth.",
     "key_verses": [
-      "Proverbs 23:1",
-      "Proverbs 23:10",
-      "Proverbs 23:35"
+      "Proverbs 23:4",
+      "Proverbs 23:17",
+      "Proverbs 23:29-30"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Proverbs chapter 23?",
-      "How does the message of Proverbs 23 challenge or encourage your walk of faith today?"
+      "What are some modern equivalents of 'wearing yourself out to get rich'?",
+      "How does envy of sinners undermine a believer's daily spiritual vitality?"
     ]
   },
   "Proverbs_24": {
     "book": "Proverbs",
     "chapter": 24,
-    "theme": "Proverbs Chapter 24: The fear of the Lord",
-    "summary": "In Proverbs 24, the narrative records how the Lord addresses His people concerning the fear of the lord, practical godliness, wisdom, righteousness, and integrity. The chapter opens with the declaration that be not thou envious against evil men, neither desire to be with them., setting the course for divine instruction and action across 34 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that so shall thy poverty come as one that travelleth, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The fear of the Lord is the beginning of wisdom; trust in the Lord with all your heart. Take time to meditate on Proverbs 24 and allow God's Word to transform your daily conduct.",
+    "theme": "Wisdom, Resilience, and Avoiding Vengeance",
+    "summary": "Through wisdom a house is built, and by understanding it is established. Do not envy wicked men or desire to be with them, because their hearts plot violence. A righteous person may fall seven times, yet they rise again, whereas disaster overwhelms the wicked.\n\n— Bismark Twum",
+    "lesson": "True strength comes from wisdom and resilience, trusting God with justice rather than harboring bitterness or seeking personal revenge.",
     "key_verses": [
-      "Proverbs 24:1",
-      "Proverbs 24:10",
-      "Proverbs 24:34"
+      "Proverbs 24:3",
+      "Proverbs 24:16",
+      "Proverbs 24:29"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Proverbs chapter 24?",
-      "How does the message of Proverbs 24 challenge or encourage your walk of faith today?"
+      "What is the difference between falling into trouble and staying down, according to verse 16?",
+      "Why is harboring revenge specifically prohibited, and how does faith empower us to leave justice to God?"
     ]
   },
   "Proverbs_25": {
     "book": "Proverbs",
     "chapter": 25,
-    "theme": "Proverbs Chapter 25: The fear of the Lord",
-    "summary": "In Proverbs 25, the narrative records how Solomon addresses His people concerning the fear of the lord, practical godliness, wisdom, righteousness, and integrity. The chapter opens with the declaration that these are also proverbs of solomon, which the men of hezekiah king of judah copied out., setting the course for divine instruction and action across 28 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that he that hath no rule over his own spirit is like a city that is broken down, and without walls., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The fear of the Lord is the beginning of wisdom; trust in the Lord with all your heart. Take time to meditate on Proverbs 25 and allow God's Word to transform your daily conduct.",
+    "theme": "Wisdom in Leadership and Relations",
+    "summary": "King Hezekiah's scribes compile additional proverbs focusing on proper conduct in the presence of rulers and the value of discretion. Everyday scenarios illustrate the danger of overstaying one's welcome, the pain of deceptive witnesses, and the healing power of a gentle answer. A cooling draft of water to a thirsty soul is likened to good news from a distant land.\n\n— Bismark Twum",
+    "lesson": "True humility and measured self-control preserve our relationships and honor authority, mirroring the patience God shows toward us.",
     "key_verses": [
       "Proverbs 25:1",
-      "Proverbs 25:10",
-      "Proverbs 25:28"
+      "Proverbs 25:11",
+      "Proverbs 25:21"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Proverbs chapter 25?",
-      "How does the message of Proverbs 25 challenge or encourage your walk of faith today?"
+      "How does practicing restraint in social settings protect your reputation and relationships?",
+      "What does it mean practically to feed your enemy and heap burning coals on his head?"
     ]
   },
   "Proverbs_26": {
     "book": "Proverbs",
     "chapter": 26,
-    "theme": "Proverbs Chapter 26: The fear of the Lord",
-    "summary": "In Proverbs 26, the narrative records how the Lord addresses His people concerning the fear of the lord, practical godliness, wisdom, righteousness, and integrity. The chapter opens with the declaration that as snow in summer, and as rain in harvest, so honour is not seemly for a fool., setting the course for divine instruction and action across 28 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that a lying tongue hateth those that are afflicted by it, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The fear of the Lord is the beginning of wisdom; trust in the Lord with all your heart. Take time to meditate on Proverbs 26 and allow God's Word to transform your daily conduct.",
+    "theme": "Folly, Laziness, and Strife",
+    "summary": "Sharp character sketches expose the destructive patterns of fools, sluggards, and gossipers. A lazy man remains trapped in bed like a door on its hinges, while the fool repeatedly returns to his stupidity just as a dog returns to its vomit. Gossips fuel division, and deceitful schemers eventually fall into the very traps they set for others.\n\n— Bismark Twum",
+    "lesson": "Believers must reject intellectual laziness and malicious speech, cultivating discernment to avoid the contagious destruction of foolish behavior.",
     "key_verses": [
-      "Proverbs 26:1",
-      "Proverbs 26:10",
-      "Proverbs 26:28"
+      "Proverbs 26:4",
+      "Proverbs 26:14",
+      "Proverbs 26:20"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Proverbs chapter 26?",
-      "How does the message of Proverbs 26 challenge or encourage your walk of faith today?"
+      "In what ways does spiritual complacency mirror the behavior of the sluggard described in this chapter?",
+      "How can you identify and stop gossip before it destroys community unity?"
     ]
   },
   "Proverbs_27": {
     "book": "Proverbs",
     "chapter": 27,
-    "theme": "Proverbs Chapter 27: The fear of the Lord",
-    "summary": "In Proverbs 27, the narrative records how the Lord addresses His people concerning the fear of the lord, practical godliness, wisdom, righteousness, and integrity. The chapter opens with the declaration that boast not thyself of to morrow, setting the course for divine instruction and action across 27 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that thou shalt have goats’ milk enough for thy food, for the food of thy household, and for the maintenance for th, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The fear of the Lord is the beginning of wisdom; trust in the Lord with all your heart. Take time to meditate on Proverbs 27 and allow God's Word to transform your daily conduct.",
+    "theme": "Friendship, Preparedness, and Prudence",
+    "summary": "Practical insights address the uncertainties of tomorrow, warning against boasting about the future because no one knows what a day brings. Faithful wounds from a devoted friend are contrasted with the deceitful kisses of an enemy. Constant care for flocks and property underscores the broader virtue of diligence and personal preparedness.\n\n— Bismark Twum",
+    "lesson": "We must value honest, corrective counsel from trusted friends and maintain daily diligence rather than presuming upon tomorrow.",
     "key_verses": [
       "Proverbs 27:1",
-      "Proverbs 27:10",
-      "Proverbs 27:27"
+      "Proverbs 27:6",
+      "Proverbs 27:17"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Proverbs chapter 27?",
-      "How does the message of Proverbs 27 challenge or encourage your walk of faith today?"
+      "How do you distinguish between constructive rebuke from a friend and unnecessary criticism?",
+      "In light of the uncertainty of tomorrow, how should you prioritize your daily responsibilities?"
     ]
   },
   "Proverbs_28": {
     "book": "Proverbs",
     "chapter": 28,
-    "theme": "Proverbs Chapter 28: The fear of the Lord",
-    "summary": "In Proverbs 28, the narrative records how the Lord addresses His people concerning the fear of the lord, practical godliness, wisdom, righteousness, and integrity. The chapter opens with the declaration that the wicked flee when no man pursueth: but the righteous are bold as a lion., setting the course for divine instruction and action across 28 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that when the wicked rise, men hide themselves: but when they perish, the righteous increase., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The fear of the Lord is the beginning of wisdom; trust in the Lord with all your heart. Take time to meditate on Proverbs 28 and allow God's Word to transform your daily conduct.",
+    "theme": "Justice, Integrity, and Conscience",
+    "summary": "The contrast between the righteous boldness of the upright and the paranoid fear of the wicked drives this collection. Corrupt rulers exploit the poor like roaring lions, while leaders who hate unjust gain lengthen their days. Confessing and forsaking sin brings divine mercy, whereas hardening one's heart leads straight to ruin.\n\n— Bismark Twum",
+    "lesson": "A clear conscience rooted in moral integrity grants spiritual boldness, while unrepentant greed invites societal and personal collapse.",
     "key_verses": [
       "Proverbs 28:1",
-      "Proverbs 28:10",
-      "Proverbs 28:28"
+      "Proverbs 28:13",
+      "Proverbs 28:20"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Proverbs chapter 28?",
-      "How does the message of Proverbs 28 challenge or encourage your walk of faith today?"
+      "Why does a guilty conscience cause the wicked to flee when no one is pursuing them?",
+      "How does honest confession of sin unlock God's mercy in your daily walk?"
     ]
   },
   "Proverbs_29": {
     "book": "Proverbs",
     "chapter": 29,
-    "theme": "Proverbs Chapter 29: The fear of the Lord",
-    "summary": "In Proverbs 29, the narrative records how the Lord addresses His people concerning the fear of the lord, practical godliness, wisdom, righteousness, and integrity. The chapter opens with the declaration that he, that being often reproved hardeneth his neck, shall suddenly be destroyed, and that without remedy., setting the course for divine instruction and action across 27 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that an unjust man is an abomination to the just: and he that is upright in the way is abomination to the wicked., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The fear of the Lord is the beginning of wisdom; trust in the Lord with all your heart. Take time to meditate on Proverbs 29 and allow God's Word to transform your daily conduct.",
+    "theme": "Authority, Correction, and Vision",
+    "summary": "Societal stability is tied directly to righteous leadership and the proper discipline of the young. When the righteous thrive, the people rejoice, but tyranny causes public groaning and despair. Stubborn individuals who refuse correction after repeated rebukes are suddenly broken without remedy, while those who trust in the Lord find permanent safety.\n\n— Bismark Twum",
+    "lesson": "Godly leadership and humble acceptance of discipline foster a thriving, peaceful community.",
     "key_verses": [
-      "Proverbs 29:1",
-      "Proverbs 29:10",
-      "Proverbs 29:27"
+      "Proverbs 29:2",
+      "Proverbs 29:18",
+      "Proverbs 29:25"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Proverbs chapter 29?",
-      "How does the message of Proverbs 29 challenge or encourage your walk of faith today?"
+      "What does it mean for a people to perish when there is no prophetic vision or divine revelation?",
+      "How does the fear of man act as a snare, and how does trusting God break that trap?"
     ]
   },
   "Proverbs_30": {
     "book": "Proverbs",
     "chapter": 30,
-    "theme": "Proverbs Chapter 30: The fear of the Lord",
-    "summary": "In Proverbs 30, the narrative records how the Lord addresses His people concerning the fear of the lord, practical godliness, wisdom, righteousness, and integrity. The chapter opens with the declaration that the words of agur the son of jakeh, even the prophecy: the man spake unto ithiel, even unto ithiel and ucal,, setting the course for divine instruction and action across 33 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that surely the churning of milk bringeth forth butter, and the wringing of the nose bringeth forth blood: so the f, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The fear of the Lord is the beginning of wisdom; trust in the Lord with all your heart. Take time to meditate on Proverbs 30 and allow God's Word to transform your daily conduct.",
+    "theme": "Agur's Humility and Wonders of Creation",
+    "summary": "Agur son of Jakeh confesses his profound ignorance before God, praying to be kept from the dangerous extremes of poverty and riches. He marvels at four magnificent things too wonderful to fully understand: the path of an eagle, a serpent, a ship, and the love of a man for a maiden. Four small yet exceptionally wise creatures—ants, rock badgers, locusts, and lizards—demonstrate how preparation and cooperation triumph over weakness.\n\n— Bismark Twum",
+    "lesson": "True wisdom begins with humble acknowledgment of human limitation and awe for the intricate design of God's creation.",
     "key_verses": [
-      "Proverbs 30:1",
-      "Proverbs 30:10",
-      "Proverbs 30:33"
+      "Proverbs 30:5",
+      "Proverbs 30:8",
+      "Proverbs 30:24"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Proverbs chapter 30?",
-      "How does the message of Proverbs 30 challenge or encourage your walk of faith today?"
+      "Why is Agur's prayer asking God for neither poverty nor riches considered a balanced spiritual objective?",
+      "What spiritual lesson can you learn from the smallness and preparedness of the four creatures mentioned in this chapter?"
     ]
   },
   "Proverbs_31": {
     "book": "Proverbs",
     "chapter": 31,
-    "theme": "Proverbs Chapter 31: The fear of the Lord",
-    "summary": "In Proverbs 31, the narrative records how the Lord addresses His people concerning the fear of the lord, practical godliness, wisdom, righteousness, and integrity. The chapter opens with the declaration that the words of king lemuel, the prophecy that his mother taught him., setting the course for divine instruction and action across 31 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that give her of the fruit of her hands, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "The fear of the Lord is the beginning of wisdom; trust in the Lord with all your heart. Take time to meditate on Proverbs 31 and allow God's Word to transform your daily conduct.",
+    "theme": "The Words of King Lemuel and the Virtuous Woman",
+    "summary": "King Lemuel records the moral teachings taught to him by his mother, warning against the perils of strong drink and urging kings to defend the rights of the poor and oppressed. The second half of the text provides an extensive acrostic portrait of an exemplary wife whose industriousness, wisdom, and charity bring honor to her household. She manages her estate with skill, provides for her family with boundless energy, and earns the deep praise of her husband and children. Ultimately, her reverence for the Lord is celebrated as the true source of her lasting beauty and dignity.\n\n— Bismark Twum",
+    "lesson": "True character and wisdom are demonstrated through daily faithfulness, diligent stewardship, and a life centered on honoring God rather than relying on fleeting outward appearances.",
     "key_verses": [
-      "Proverbs 31:1",
       "Proverbs 31:10",
-      "Proverbs 31:31"
+      "Proverbs 31:25",
+      "Proverbs 31:30"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Proverbs chapter 31?",
-      "How does the message of Proverbs 31 challenge or encourage your walk of faith today?"
+      "How does the depiction of the virtuous woman redefine cultural standards of success and strength?",
+      "In what practical ways can believers embody the call to speak up for the vulnerable and marginalized in daily life?"
     ]
   },
   "Ecclesiastes_1": {
     "book": "Ecclesiastes",
     "chapter": 1,
-    "theme": "Ecclesiastes Chapter 1: The vanity of earthly pursuits under the sun",
-    "summary": "In Ecclesiastes 1, the narrative records how David addresses His people concerning the vanity of earthly pursuits under the sun, eternity, and the chief end of man. The chapter opens with the declaration that the words of the preacher, the son of david, king in jerusalem., setting the course for divine instruction and action across 18 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that in much wisdom is much grief: and he that increaseth knowledge increaseth sorrow., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Fear God and keep His commandments, for this is the whole duty of mankind. Take time to meditate on Ecclesiastes 1 and allow God's Word to transform your daily conduct.",
+    "theme": "The Futility of Earthly Pursuits",
+    "summary": "King Solomon, identifying himself as the Preacher in Jerusalem, surveys the relentless cycles of nature and human history, declaring that everything under the sun is utterly meaningless. He observes that generations come and go while the sun, wind, and rivers repeat their eternal routines without achieving any ultimate permanence. Applying his great wisdom to study human endeavor, he concludes that acquiring knowledge and worldly accomplishments is merely chasing after the wind.\n\n— Bismark Twum",
+    "lesson": "Lasting fulfillment cannot be found in human wisdom, academic achievements, or secular pursuits, as these things ultimately pass away.",
     "key_verses": [
-      "Ecclesiastes 1:1",
-      "Ecclesiastes 1:7",
+      "Ecclesiastes 1:2",
+      "Ecclesiastes 1:9",
       "Ecclesiastes 1:18"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Ecclesiastes chapter 1?",
-      "How does the message of Ecclesiastes 1 challenge or encourage your walk of faith today?"
+      "Why does Solomon compare human striving to chasing after the wind?",
+      "In what areas of your life are you currently seeking fulfillment outside of God?"
     ]
   },
   "Ecclesiastes_2": {
     "book": "Ecclesiastes",
     "chapter": 2,
-    "theme": "Ecclesiastes Chapter 2: The vanity of earthly pursuits under the sun",
-    "summary": "In Ecclesiastes 2, the narrative records how the Lord addresses His people concerning the vanity of earthly pursuits under the sun, eternity, and the chief end of man. The chapter opens with the declaration that i said in mine heart, go to now, i will prove thee with mirth, therefore enjoy pleasure: and, behold, this also is vanit, setting the course for divine instruction and action across 26 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that god giveth to a man that is good in his sight wisdom, and knowledge, and joy: but to the sinner he giveth trav, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Fear God and keep His commandments, for this is the whole duty of mankind. Take time to meditate on Ecclesiastes 2 and allow God's Word to transform your daily conduct.",
+    "theme": "The Emptiness of Pleasure and Toil",
+    "summary": "Solomon launches an exhaustive personal experiment with luxury, testing his soul with wine, massive architectural building projects, sprawling vineyards, gardens, wealth, and musical entertainers. He denies himself no earthly pleasure, yet upon reflection, he realizes that hedonism and unchecked materialism are entirely hollow and yield no lasting profit. Furthermore, he despises his hard labor because he must leave the accumulated fruits of his toil to someone who did not work for it.\n\n— Bismark Twum",
+    "lesson": "True joy is a gift from God rather than the direct product of self-indulgent pleasure or obsessive work.",
     "key_verses": [
       "Ecclesiastes 2:1",
-      "Ecclesiastes 2:10",
-      "Ecclesiastes 2:26"
+      "Ecclesiastes 2:11",
+      "Ecclesiastes 2:24"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Ecclesiastes chapter 2?",
-      "How does the message of Ecclesiastes 2 challenge or encourage your walk of faith today?"
+      "How did Solomon's pursuit of pleasure differ from experiencing joy as a gift from God?",
+      "What does it mean to view your daily work as a gift from God rather than the source of your identity?"
     ]
   },
   "Ecclesiastes_3": {
     "book": "Ecclesiastes",
     "chapter": 3,
-    "theme": "Ecclesiastes Chapter 3: The vanity of earthly pursuits under the sun",
-    "summary": "In Ecclesiastes 3, the narrative records how the Lord addresses His people concerning the vanity of earthly pursuits under the sun, eternity, and the chief end of man. The chapter opens with the declaration that to every thing there is a season, and a time to every purpose under the heaven:, setting the course for divine instruction and action across 22 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that wherefore i perceive that there is nothing better, than that a man should rejoice in his own works, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Fear God and keep His commandments, for this is the whole duty of mankind. Take time to meditate on Ecclesiastes 3 and allow God's Word to transform your daily conduct.",
+    "theme": "A Time for Everything",
+    "summary": "Solomon introduces a famous poem outlining a divine schedule of contrasting seasons for every human activity, from birth and death to weeping and laughing, war and peace. He explains that God has planted eternity in the human heart, yet mortals cannot fully comprehend the grand sweep of what God has done from beginning to end. Recognizing that human beings share the same physical fate as animals in death, he advises people to enjoy their work and do good while they live.\n\n— Bismark Twum",
+    "lesson": "Believers must trust God's sovereign timing in every season of life, accepting that we cannot control or fully understand His grand design.",
     "key_verses": [
       "Ecclesiastes 3:1",
-      "Ecclesiastes 3:8",
-      "Ecclesiastes 3:22"
+      "Ecclesiastes 3:11",
+      "Ecclesiastes 3:14"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Ecclesiastes chapter 3?",
-      "How does the message of Ecclesiastes 3 challenge or encourage your walk of faith today?"
+      "Which specific season described in the poem are you currently experiencing, and how are you responding to it?",
+      "How does the concept of God putting 'eternity in the human heart' change your perspective on temporary earthly struggles?"
     ]
   },
   "Ecclesiastes_4": {
     "book": "Ecclesiastes",
     "chapter": 4,
-    "theme": "Ecclesiastes Chapter 4: The vanity of earthly pursuits under the sun",
-    "summary": "In Ecclesiastes 4, the narrative records how the Lord addresses His people concerning the vanity of earthly pursuits under the sun, eternity, and the chief end of man. The chapter opens with the declaration that so i returned, and considered all the oppressions that are done under the sun: and behold the tears of such as were oppr, setting the course for divine instruction and action across 16 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that there is no end of all the people, even of all that have been before them: they also that come after shall not, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Fear God and keep His commandments, for this is the whole duty of mankind. Take time to meditate on Ecclesiastes 4 and allow God's Word to transform your daily conduct.",
+    "theme": "Oppression, Envy, and Companionship",
+    "summary": "The Preacher turns his attention to the widespread oppression occurring under the sun, observing the tearful faces of the oppressed who have no comforter, and he pronounces the dead more fortunate than the living. He analyzes how much human labor and ambition are driven by envy of one's neighbor rather than genuine need. To counter the misery of isolation, he highlights the practical benefits of companionship, noting that two people are much better than one because they can help each other up when they fall.\n\n— Bismark Twum",
+    "lesson": "God designed human beings for genuine community and mutual support rather than isolated ambition and cutthroat competition.",
     "key_verses": [
       "Ecclesiastes 4:1",
-      "Ecclesiastes 4:6",
-      "Ecclesiastes 4:16"
+      "Ecclesiastes 4:9",
+      "Ecclesiastes 4:12"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Ecclesiastes chapter 4?",
-      "How does the message of Ecclesiastes 4 challenge or encourage your walk of faith today?"
+      "In what ways does envy fuel unhealthy competition in modern society?",
+      "How can you actively cultivate deeper Christian fellowship to avoid spiritual and emotional isolation?"
     ]
   },
   "Ecclesiastes_5": {
     "book": "Ecclesiastes",
     "chapter": 5,
-    "theme": "Ecclesiastes Chapter 5: The vanity of earthly pursuits under the sun",
-    "summary": "In Ecclesiastes 5, the narrative records how the Lord addresses His people concerning the vanity of earthly pursuits under the sun, eternity, and the chief end of man. The chapter opens with the declaration that keep thy foot when thou goest to the house of god, and be more ready to hear, than to give the sacrifice of fools: for t, setting the course for divine instruction and action across 20 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that he shall not much remember the days of his life, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Fear God and keep His commandments, for this is the whole duty of mankind. Take time to meditate on Ecclesiastes 5 and allow God's Word to transform your daily conduct.",
+    "theme": "Reverence Before God and the Vanity of Wealth",
+    "summary": "Solomon warns worshippers to guard their steps and listen carefully when entering the house of God, advising them to speak little and fulfill any vows they make to the Almighty. He observes economic injustices and bureaucratic corruption in the province, noting that greedy officials hoard wealth that ultimately brings them no real satisfaction or restful sleep. Ultimately, he concludes that accepting one's lot in life and enjoying the fruit of one's labor is a gracious gift from God.\n\n— Bismark Twum",
+    "lesson": "Approaching God with solemn reverence and maintaining contentment with what He provides brings true spiritual stability.",
     "key_verses": [
-      "Ecclesiastes 5:1",
-      "Ecclesiastes 5:8",
-      "Ecclesiastes 5:20"
+      "Ecclesiastes 5:2",
+      "Ecclesiastes 5:10",
+      "Ecclesiastes 5:19"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Ecclesiastes chapter 5?",
-      "How does the message of Ecclesiastes 5 challenge or encourage your walk of faith today?"
+      "What does it mean in practical terms to 'let your words be few' when praying or making commitments to God?",
+      "Why is the accumulation of wealth often described as a trap that fails to satisfy?"
     ]
   },
   "Ecclesiastes_6": {
     "book": "Ecclesiastes",
     "chapter": 6,
-    "theme": "Ecclesiastes Chapter 6: The vanity of earthly pursuits under the sun",
-    "summary": "In Ecclesiastes 6, the narrative records how the Lord addresses His people concerning the vanity of earthly pursuits under the sun, eternity, and the chief end of man. The chapter opens with the declaration that there is an evil which i have seen under the sun, and it is common among men:, setting the course for divine instruction and action across 12 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that who knoweth what is good for man in this life, all the days of his vain life which he spendeth as a shadow? fo, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Fear God and keep His commandments, for this is the whole duty of mankind. Take time to meditate on Ecclesiastes 6 and allow God's Word to transform your daily conduct.",
+    "theme": "The Inability to Enjoy Wealth",
+    "summary": "The Preacher identifies a common, tragic evil under the sun: God gives a man abundant wealth, honor, and riches so that he lacks nothing his soul desires, yet God does not enable him to enjoy them, and a stranger ends up consuming them instead. He reflects that a stillborn child is better off than a greedy person who lives a long life filled with frustration, darkness, and an insatiable appetite. He asks the rhetorical question of what is truly good for a person during their brief, fleeting shadow of a life, since no one can tell what will happen after they are gone.\n\n— Bismark Twum",
+    "lesson": "True abundance is not measured by the accumulation of possessions, but by God granting the capacity to enjoy His provisions.",
     "key_verses": [
-      "Ecclesiastes 6:1",
-      "Ecclesiastes 6:4",
-      "Ecclesiastes 6:12"
+      "Ecclesiastes 6:2",
+      "Ecclesiastes 6:7",
+      "Ecclesiastes 6:9"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Ecclesiastes chapter 6?",
-      "How does the message of Ecclesiastes 6 challenge or encourage your walk of faith today?"
+      "How is it possible for someone to possess great material wealth yet lack the ability to enjoy it?",
+      "What is the danger of constantly desiring more rather than being content with what is right in front of you?"
     ]
   },
   "Ecclesiastes_7": {
     "book": "Ecclesiastes",
     "chapter": 7,
-    "theme": "Ecclesiastes Chapter 7: The vanity of earthly pursuits under the sun",
-    "summary": "In Ecclesiastes 7, the narrative records how the Lord addresses His people concerning the vanity of earthly pursuits under the sun, eternity, and the chief end of man. The chapter opens with the declaration that a good name is better than precious ointment, setting the course for divine instruction and action across 29 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that lo, this only have i found, that god hath made man upright, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Fear God and keep His commandments, for this is the whole duty of mankind. Take time to meditate on Ecclesiastes 7 and allow God's Word to transform your daily conduct.",
+    "theme": "The Value of Wisdom and Restraint",
+    "summary": "The Preacher contrasts the fleeting joy of foolish laughter with the sobering, corrective value of sorrow and rebuke. He counsels patience and moderation over hastiness, warning against pride and the trap of dwelling too much on the past. Through careful observations on human nature, he concludes that true wisdom preserves the life of the one who possesses it.\n\n— Bismark Twum",
+    "lesson": "Embrace life's sobering trials and biblical wisdom rather than chasing superficial pleasures, trusting God's overarching sovereignty in both adversity and prosperity.",
     "key_verses": [
-      "Ecclesiastes 7:1",
-      "Ecclesiastes 7:10",
-      "Ecclesiastes 7:29"
+      "Ecclesiastes 7:3",
+      "Ecclesiastes 7:8",
+      "Ecclesiastes 7:14"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Ecclesiastes chapter 7?",
-      "How does the message of Ecclesiastes 7 challenge or encourage your walk of faith today?"
+      "How does the Preacher argue that sorrow can ultimately be more beneficial to the soul than laughter?",
+      "In what ways does human pride interfere with receiving constructive rebuke or enduring difficult seasons patiently?"
     ]
   },
   "Ecclesiastes_8": {
     "book": "Ecclesiastes",
     "chapter": 8,
-    "theme": "Ecclesiastes Chapter 8: The vanity of earthly pursuits under the sun",
-    "summary": "In Ecclesiastes 8, the narrative records how the Lord addresses His people concerning the vanity of earthly pursuits under the sun, eternity, and the chief end of man. The chapter opens with the declaration that who is as the wise man? and who knoweth the interpretation of a thing? a man’s wisdom maketh his face to shine, and the , setting the course for divine instruction and action across 17 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that i beheld all the work of god, that a man cannot find out the work that is done under the sun: because though a, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Fear God and keep His commandments, for this is the whole duty of mankind. Take time to meditate on Ecclesiastes 8 and allow God's Word to transform your daily conduct.",
+    "theme": "Authority, Justice, and the Enigma of Providence",
+    "summary": "Wise citizens navigate earthly governance by respecting proper authority and obeying kingly commands while recognizing the limits of human power. The Preacher observes the frustrating reality that wicked people often prosper while the righteous suffer, defying immediate earthly justice. Despite this moral confusion, he urges people to enjoy the basic gifts of food, work, and life given by God while accepting that humanity cannot fully comprehend divine works.\n\n— Bismark Twum",
+    "lesson": "Even when earthly justice fails and life feels perplexing, believers must fear God and find contentment in the daily portions He provides.",
     "key_verses": [
-      "Ecclesiastes 8:1",
-      "Ecclesiastes 8:6",
-      "Ecclesiastes 8:17"
+      "Ecclesiastes 8:4",
+      "Ecclesiastes 8:11",
+      "Ecclesiastes 8:15"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Ecclesiastes chapter 8?",
-      "How does the message of Ecclesiastes 8 challenge or encourage your walk of faith today?"
+      "How should a believer balance the mandate to respect governing authorities with the observation of injustice in leadership?",
+      "Why is the delay of immediate judgment on evil acts often a temptation for people to commit more wrong?"
     ]
   },
   "Ecclesiastes_9": {
     "book": "Ecclesiastes",
     "chapter": 9,
-    "theme": "Ecclesiastes Chapter 9: The vanity of earthly pursuits under the sun",
-    "summary": "In Ecclesiastes 9, the narrative records how the Lord addresses His people concerning the vanity of earthly pursuits under the sun, eternity, and the chief end of man. The chapter opens with the declaration that all this i considered in my heart even to declare all this, that the righteous, and the wise, and their works, are in th, setting the course for divine instruction and action across 18 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that wisdom is better than weapons of war: but one sinner destroyeth much good., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Fear God and keep His commandments, for this is the whole duty of mankind. Take time to meditate on Ecclesiastes 9 and allow God's Word to transform your daily conduct.",
+    "theme": "The Common Destiny of All and the Gift of Present Life",
+    "summary": "Death ultimately comes to all people indiscriminately, whether righteous or wicked, wise or foolish, stripping away earthly distinctions. Because living dogs are better than dead lions and the living at least know they will die, the Preacher urges passionate engagement with daily existence. He advocates for eating bread with joy, loving one's spouse, and working diligently because human strength is outmatched by unforeseen time and chance.\n\n— Bismark Twum",
+    "lesson": "Recognize the certainty of death to live purposefully, joyfully, and energetically in the present moment that God has granted.",
     "key_verses": [
-      "Ecclesiastes 9:1",
-      "Ecclesiastes 9:7",
-      "Ecclesiastes 9:18"
+      "Ecclesiastes 9:5",
+      "Ecclesiastes 9:10",
+      "Ecclesiastes 9:11"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Ecclesiastes chapter 9?",
-      "How does the message of Ecclesiastes 9 challenge or encourage your walk of faith today?"
+      "What does the Preacher mean by asserting that the living know they will die, while the dead know nothing?",
+      "How does the realization of life's unpredictability change the way you approach your daily work and relationships?"
     ]
   },
   "Ecclesiastes_10": {
     "book": "Ecclesiastes",
     "chapter": 10,
-    "theme": "Ecclesiastes Chapter 10: The vanity of earthly pursuits under the sun",
-    "summary": "In Ecclesiastes 10, the narrative records how the Lord addresses His people concerning the vanity of earthly pursuits under the sun, eternity, and the chief end of man. The chapter opens with the declaration that dead flies cause the ointment of the apothecary to send forth a stinking savour: so doth a little folly him that is in r, setting the course for divine instruction and action across 20 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that curse not the king, no not in thy thought, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Fear God and keep His commandments, for this is the whole duty of mankind. Take time to meditate on Ecclesiastes 10 and allow God's Word to transform your daily conduct.",
+    "theme": "The Danger of Folly and the Call for Prudence",
+    "summary": "A single act of foolishness can ruin a reputation of wisdom and honor, just as a dead fly spoils a whole flask of perfume. The Preacher contrasts the cautious, productive mind of the wise person with the careless, self-exposing speech of the fool. He offers practical warnings about political instability, careless speech, and laziness, advising caution even in private thoughts.\n\n— Bismark Twum",
+    "lesson": "Guard your speech, actions, and daily diligence carefully, knowing that small foolish mistakes can cause disproportionate damage.",
     "key_verses": [
       "Ecclesiastes 10:1",
-      "Ecclesiastes 10:8",
-      "Ecclesiastes 10:20"
+      "Ecclesiastes 10:12",
+      "Ecclesiastes 10:18"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Ecclesiastes chapter 10?",
-      "How does the message of Ecclesiastes 10 challenge or encourage your walk of faith today?"
+      "How does the metaphor of the dead fly in perfume illustrate the destructive nature of foolishness?",
+      "In what specific areas of life do you need to exercise greater caution regarding your words and habits?"
     ]
   },
   "Ecclesiastes_11": {
     "book": "Ecclesiastes",
     "chapter": 11,
-    "theme": "Ecclesiastes Chapter 11: The vanity of earthly pursuits under the sun",
-    "summary": "In Ecclesiastes 11, the narrative records how the Lord addresses His people concerning the vanity of earthly pursuits under the sun, eternity, and the chief end of man. The chapter opens with the declaration that cast thy bread upon the waters: for thou shalt find it after many days., setting the course for divine instruction and action across 10 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that remove sorrow from thy heart, and put away evil from thy flesh: for childhood and youth are vanity., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Fear God and keep His commandments, for this is the whole duty of mankind. Take time to meditate on Ecclesiastes 11 and allow God's Word to transform your daily conduct.",
+    "theme": "Generosity, Enterprise, and Youthful Vigor",
+    "summary": "The Preacher encourages generous risk-taking and charity, comparing it to casting bread upon the waters or investing in multiple ventures without knowing what disaster might come. He reminds the reader of the mystery behind how life and breath form within a child in the womb. Consequently, he urges young people to enjoy their youth with wholesome vigor while keeping in mind that God will hold them accountable for their choices.\n\n— Bismark Twum",
+    "lesson": "Invest your resources and energy generously and adventurously, remembering both human mortality and divine accountability.",
     "key_verses": [
       "Ecclesiastes 11:1",
       "Ecclesiastes 11:4",
-      "Ecclesiastes 11:10"
+      "Ecclesiastes 11:9"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Ecclesiastes chapter 11?",
-      "How does the message of Ecclesiastes 11 challenge or encourage your walk of faith today?"
+      "What does it mean practically to 'cast your bread upon the waters' in terms of generosity and faith?",
+      "How can a young person balance joyful enthusiasm with the mindful awareness of future accountability before God?"
     ]
   },
   "Ecclesiastes_12": {
     "book": "Ecclesiastes",
     "chapter": 12,
-    "theme": "Ecclesiastes Chapter 12: The vanity of earthly pursuits under the sun",
-    "summary": "In Ecclesiastes 12, the narrative records how the Lord addresses His people concerning the vanity of earthly pursuits under the sun, eternity, and the chief end of man. The chapter opens with the declaration that remember now thy creator in the days of thy youth, while the evil days come not, nor the years draw nigh, when thou shal, setting the course for divine instruction and action across 14 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that god shall bring every work into judgment, with every secret thing, whether it be good, or whether it be evil., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Fear God and keep His commandments, for this is the whole duty of mankind. Take time to meditate on Ecclesiastes 12 and allow God's Word to transform your daily conduct.",
+    "theme": "Remembering the Creator Before the Days of Trouble",
+    "summary": "The Preacher vividly describes the physical decline of old age using poetic metaphors of failing senses, trembling limbs, and approaching death. He urges the youth to remember their Creator eagerly before the silver cord is snapped and the breath returns to God. Finally, the frame narrative concludes by summarizing the book's entire message: fear God and keep His commandments, because every hidden deed will be brought to judgment.\n\n— Bismark Twum",
+    "lesson": "Dedicate your youth and entire life to reverent obedience to God before physical decline and final judgment arrive.",
     "key_verses": [
       "Ecclesiastes 12:1",
-      "Ecclesiastes 12:5",
-      "Ecclesiastes 12:14"
+      "Ecclesiastes 12:7",
+      "Ecclesiastes 12:13"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Ecclesiastes chapter 12?",
-      "How does the message of Ecclesiastes 12 challenge or encourage your walk of faith today?"
+      "What imagery in the poetic description of aging stands out to you most, and why?",
+      "How does the final conclusion to fear God and keep His commandments tie together all the previous observations in Ecclesiastes?"
     ]
   },
   "Song of Solomon_1": {
     "book": "Song of Solomon",
     "chapter": 1,
-    "theme": "Song of Solomon Chapter 1: Pure marital love",
-    "summary": "In Song of Solomon 1, the narrative records how Solomon addresses His people concerning pure marital love, devotion, mutual delight, and the beauty of covenant romance. The chapter opens with the declaration that the song of songs, which is solomon’s., setting the course for divine instruction and action across 17 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that the beams of our house are cedar, and our rafters of fir., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Godly love is strong as death, holy, and a reflection of Christ's devotion to His bride. Take time to meditate on Song of Solomon 1 and allow God's Word to transform your daily conduct.",
+    "theme": "Longing for the Beloved's Embrace",
+    "summary": "The Shunamite woman expresses her deep yearning for physical affection from her shepherd lover, comparing her complexion to the tents of Kedar. She moves among the royal courts, describing her insecurities and her intense devotion to her companion. King Solomon attempts to woo her with gifts of gold and silver, but her heart remains stubbornly fixed on her humble shepherd. The interaction highlights the stark contrast between superficial palace luxury and genuine, heartfelt romantic love.\n\n— Bismark Twum",
+    "lesson": "True love values personal devotion and emotional connection far above material wealth or royal prestige.",
     "key_verses": [
-      "Song of Solomon 1:1",
-      "Song of Solomon 1:6",
-      "Song of Solomon 1:17"
+      "Song of Solomon 1:2",
+      "Song of Solomon 1:7",
+      "Song of Solomon 1:15"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Song of Solomon chapter 1?",
-      "How does the message of Song of Solomon 1 challenge or encourage your walk of faith today?"
+      "Why does the woman compare her appearance to the tents of Kedar, and what does this reveal about her self-perception?",
+      "How does the woman's steadfast loyalty to her shepherd contrast with the allure of King Solomon's court?"
     ]
   },
   "Song of Solomon_2": {
     "book": "Song of Solomon",
     "chapter": 2,
-    "theme": "Song of Solomon Chapter 2: Pure marital love",
-    "summary": "In Song of Solomon 2, the narrative records how the Lord addresses His people concerning pure marital love, devotion, mutual delight, and the beauty of covenant romance. The chapter opens with the declaration that i am the rose of sharon, and the lily of the valleys., setting the course for divine instruction and action across 17 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that until the day break, and the shadows flee away, turn, my beloved, and be thou like a roe or a young hart upon , leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Godly love is strong as death, holy, and a reflection of Christ's devotion to His bride. Take time to meditate on Song of Solomon 2 and allow God's Word to transform your daily conduct.",
+    "theme": "The Rose of Sharon and the Springtime of Love",
+    "summary": "The maiden describes herself as a simple flower of the field while her lover praises her incomparable beauty among women. He invites her to leave her home and come away with him into the blossoming Judean hills as winter gives way to spring. She responds with playful urgency, asking her companions to catch the little foxes that threaten to ruin their budding vineyard. They ultimately rest in the delightful shadow and sweet fruit of their shared romantic commitment.\n\n— Bismark Twum",
+    "lesson": "Believers must proactively protect their relationships and spiritual commitments from minor distractions that threaten to cause major damage.",
     "key_verses": [
       "Song of Solomon 2:1",
-      "Song of Solomon 2:6",
-      "Song of Solomon 2:17"
+      "Song of Solomon 2:10",
+      "Song of Solomon 2:15"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Song of Solomon chapter 2?",
-      "How does the message of Song of Solomon 2 challenge or encourage your walk of faith today?"
+      "What do the 'little foxes' symbolize in the context of maintaining a healthy and thriving relationship?",
+      "How does the imagery of the changing seasons reflect the natural progression of romance and intimacy?"
     ]
   },
   "Song of Solomon_3": {
     "book": "Song of Solomon",
     "chapter": 3,
-    "theme": "Song of Solomon Chapter 3: Pure marital love",
-    "summary": "In Song of Solomon 3, the narrative records how Solomon addresses His people concerning pure marital love, devotion, mutual delight, and the beauty of covenant romance. The chapter opens with the declaration that by night on my bed i sought him whom my soul loveth: i sought him, but i found him not., setting the course for divine instruction and action across 11 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that go forth, o ye daughters of zion, and behold king solomon with the crown wherewith his mother crowned him in t, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Godly love is strong as death, holy, and a reflection of Christ's devotion to His bride. Take time to meditate on Song of Solomon 3 and allow God's Word to transform your daily conduct.",
+    "theme": "The Night Search and the Royal Procession",
+    "summary": "The woman wakes up during the night on her bed, experiencing a distressing dream where she searches the dark city streets for the one her soul loves. She anxiously questions the city watchmen before finally locating her companion and bringing him safely into her mother's house. The scene abruptly shifts to a lavish public procession featuring King Solomon carried on a magnificent litter surrounded by armed guards. The chapter concludes by focusing on the king's ornate wedding canopy built for his bride.\n\n— Bismark Twum",
+    "lesson": "A passionate heart actively pursues intimacy and refuses to rest until it is reunited with its beloved.",
     "key_verses": [
       "Song of Solomon 3:1",
       "Song of Solomon 3:4",
       "Song of Solomon 3:11"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Song of Solomon chapter 3?",
-      "How does the message of Song of Solomon 3 challenge or encourage your walk of faith today?"
+      "What emotional and psychological state is conveyed by the woman's nighttime search through the city?",
+      "How does the sudden transition from a private dream to a public royal procession impact the overall tone of the book?"
     ]
   },
   "Song of Solomon_4": {
     "book": "Song of Solomon",
     "chapter": 4,
-    "theme": "Song of Solomon Chapter 4: Pure marital love",
-    "summary": "In Song of Solomon 4, the narrative records how David addresses His people concerning pure marital love, devotion, mutual delight, and the beauty of covenant romance. The chapter opens with the declaration that behold, thou art fair, my love, setting the course for divine instruction and action across 16 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that awake, o north wind, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Godly love is strong as death, holy, and a reflection of Christ's devotion to His bride. Take time to meditate on Song of Solomon 4 and allow God's Word to transform your daily conduct.",
+    "theme": "Praise of the Bride's Pure Beauty",
+    "summary": "King Solomon showers his bride with elaborate compliments, poetically detailing her physical features from her dove-like eyes to her teeth resembling a shorn flock. He uses rich pastoral metaphors like gardens, fountains, and exotic spices to emphasize her purity, fertility, and unmatched grace. The bride joyfully invites her lover to enter his garden and eat its choice fruits, welcoming his deep involvement in her life. The groom responds by celebrating that his garden is completely locked, sealed, and reserved exclusively for him.\n\n— Bismark Twum",
+    "lesson": "God designed physical intimacy to be celebrated and guarded within the sacred boundaries of exclusive marital commitment.",
     "key_verses": [
       "Song of Solomon 4:1",
-      "Song of Solomon 4:6",
-      "Song of Solomon 4:16"
+      "Song of Solomon 4:7",
+      "Song of Solomon 4:12"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Song of Solomon chapter 4?",
-      "How does the message of Song of Solomon 4 challenge or encourage your walk of faith today?"
+      "Why does the king use extensive nature and agricultural imagery to describe his bride's beauty?",
+      "What is the significance of the locked garden and sealed fountain as metaphors for purity and exclusivity?"
     ]
   },
   "Song of Solomon_5": {
     "book": "Song of Solomon",
     "chapter": 5,
-    "theme": "Song of Solomon Chapter 5: Pure marital love",
-    "summary": "In Song of Solomon 5, the narrative records how the Lord addresses His people concerning pure marital love, devotion, mutual delight, and the beauty of covenant romance. The chapter opens with the declaration that i am come into my garden, my sister, my spouse: i have gathered my myrrh with my spice, setting the course for divine instruction and action across 16 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that his mouth is most sweet: yea, he is altogether lovely. this is my beloved, and this is my friend, o daughters , leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Godly love is strong as death, holy, and a reflection of Christ's devotion to His bride. Take time to meditate on Song of Solomon 5 and allow God's Word to transform your daily conduct.",
+    "theme": "The Closed Door and the Wounded Heart",
+    "summary": "The groom arrives at his bride's door late at night, asking her to let him in while his hair is wet with evening dew. Hesitant and already undressed, the woman delays opening the latch, and by the time she finally checks the threshold, her lover has vanished into the dark. Overwhelmed with grief, she wanders the city streets searching for him again, only this time the watchmen beat and wound her. She turns to the daughters of Jerusalem, pleading with them to tell her beloved that she is sick with love.\n\n— Bismark Twum",
+    "lesson": "Delaying emotional or spiritual responsiveness to someone we cherish can lead to painful separation and regret.",
     "key_verses": [
-      "Song of Solomon 5:1",
+      "Song of Solomon 5:2",
       "Song of Solomon 5:6",
-      "Song of Solomon 5:16"
+      "Song of Solomon 5:8"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Song of Solomon chapter 5?",
-      "How does the message of Song of Solomon 5 challenge or encourage your walk of faith today?"
+      "What caused the bride's hesitation to open the door, and how did her delay affect the relationship?",
+      "How does the experience of the watchmen in this chapter differ from their role in chapter three?"
     ]
   },
   "Song of Solomon_6": {
     "book": "Song of Solomon",
     "chapter": 6,
-    "theme": "Song of Solomon Chapter 6: Pure marital love",
-    "summary": "In Song of Solomon 6, the narrative records how the Lord addresses His people concerning pure marital love, devotion, mutual delight, and the beauty of covenant romance. The chapter opens with the declaration that whither is thy beloved gone, o thou fairest among women? whither is thy beloved turned aside? that we may seek him with , setting the course for divine instruction and action across 13 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that return, return, o shulamite, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Godly love is strong as death, holy, and a reflection of Christ's devotion to His bride. Take time to meditate on Song of Solomon 6 and allow God's Word to transform your daily conduct.",
+    "theme": "Restoration and the Beauty of the Shunamite",
+    "summary": "The daughters of Jerusalem ask the grieving woman where her beloved has gone so they can help her find him. The bride reassures them of her unwavering mutual belonging with her companion, who has descended into his garden to pasture and gather lilies. King Solomon praises her once again, declaring that her beauty surpasses all the queens and concubines in his royal court. The chapter closes as the Shunamite catches the king completely off guard with her graceful dancing among the royal chariots.\n\n— Bismark Twum",
+    "lesson": "True reconciliation restores joy, deepens mutual commitment, and renews confidence in the beauty of the relationship.",
     "key_verses": [
-      "Song of Solomon 6:1",
-      "Song of Solomon 6:5",
-      "Song of Solomon 6:13"
+      "Song of Solomon 6:3",
+      "Song of Solomon 6:4",
+      "Song of Solomon 6:9"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Song of Solomon chapter 6?",
-      "How does the message of Song of Solomon 6 challenge or encourage your walk of faith today?"
+      "How has the relationship healed and evolved by the time the king praises her beauty in this chapter?",
+      "What does the declaration 'I am my beloved's and my beloved is mine' communicate about the nature of true devotion?"
     ]
   },
   "Song of Solomon_7": {
     "book": "Song of Solomon",
     "chapter": 7,
-    "theme": "Song of Solomon Chapter 7: Pure marital love",
-    "summary": "In Song of Solomon 7, the narrative records how the Lord addresses His people concerning pure marital love, devotion, mutual delight, and the beauty of covenant romance. The chapter opens with the declaration that how beautiful are thy feet with shoes, o prince’s daughter! the joints of thy thighs are like jewels, the work of the ha, setting the course for divine instruction and action across 13 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that the mandrakes give a smell, and at our gates are all manner of pleasant fruits, new and old, which i have laid, leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Godly love is strong as death, holy, and a reflection of Christ's devotion to His bride. Take time to meditate on Song of Solomon 7 and allow God's Word to transform your daily conduct.",
+    "theme": "The Beauty of the Beloved and Mutual Desire",
+    "summary": "Observers praise the graceful physical beauty of the Shulamite from her feet to her hair as she dances. The beloved expresses her absolute devotion to her husband, inviting him to leave the bustling city for the renewing quiet of the countryside. She offers him her deepest love, celebrating the profound and secure affection they share together.\n\n— Bismark Twum",
+    "lesson": "God designed marital love to be a place of mutual delight, appreciation, and joyful celebration of one another.",
     "key_verses": [
-      "Song of Solomon 7:1",
-      "Song of Solomon 7:5",
-      "Song of Solomon 7:13"
+      "Song of Solomon 7:6",
+      "Song of Solomon 7:10"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Song of Solomon chapter 7?",
-      "How does the message of Song of Solomon 7 challenge or encourage your walk of faith today?"
+      "How does the detailed praise in this chapter reflect healthy affirmation within marriage?",
+      "In what ways can couples cultivate intentional time away from daily distractions to nurture their relationship?"
     ]
   },
   "Song of Solomon_8": {
     "book": "Song of Solomon",
     "chapter": 8,
-    "theme": "Song of Solomon Chapter 8: Pure marital love",
-    "summary": "In Song of Solomon 8, the narrative records how Solomon addresses His people concerning pure marital love, devotion, mutual delight, and the beauty of covenant romance. The chapter opens with the declaration that o that thou wert as my brother, that sucked the breasts of my mother! when i should find thee without, i would kiss thee, setting the course for divine instruction and action across 14 verses. As the chapter unfolds, key events reveal God's holy character, righteous standards, and unfailing faithfulness toward those who walk in His ways. The passage concludes with the solemn truth that make haste, my beloved, and be thou like to a roe or to a young hart upon the mountains of spices., leaving God's people with an enduring reminder to honor Him.\n\n— Brother Bismark Twum",
-    "lesson": "Godly love is strong as death, holy, and a reflection of Christ's devotion to His bride. Take time to meditate on Song of Solomon 8 and allow God's Word to transform your daily conduct.",
+    "theme": "The Unquenchable Power of Love",
+    "summary": "The Shulamite openly yearns for the public freedom to embrace her beloved like a brother without social shame. She leads him to the intimate setting of her mother's home, declaring that authentic love is as unyielding and fierce as death itself. The book concludes with a final plea for the beloved to hasten away together like a gazelle upon the mountains of spices.\n\n— Bismark Twum",
+    "lesson": "True love is an unquenchable, priceless gift from God that remains steadfast, resilient, and enduring through all circumstances.",
     "key_verses": [
-      "Song of Solomon 8:1",
-      "Song of Solomon 8:5",
+      "Song of Solomon 8:6",
+      "Song of Solomon 8:7",
       "Song of Solomon 8:14"
     ],
     "questions": [
-      "What fundamental truth does God reveal about His character and will in Song of Solomon chapter 8?",
-      "How does the message of Song of Solomon 8 challenge or encourage your walk of faith today?"
+      "What does the comparison of love to fire and the grave teach about the intensity of marital commitment?",
+      "How does the portrayal of romance in this final chapter point toward the steadfast covenant love of God?"
     ]
   }
 };

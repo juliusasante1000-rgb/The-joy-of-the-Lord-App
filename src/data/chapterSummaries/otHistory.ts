@@ -3867,14 +3867,8 @@ export const OT_HISTORY_SUMMARIES: Record<string, ChapterSummary> = {
       "Esther 7:10"
     ],
     "questions": [
-      {
-        "question": "How does Esther's careful timing and courage contrast with Haman's desperate panic in this chapter?",
-        "answer": "Esther demonstrates patience and wisdom by waiting for the opportune moment to reveal her identity and plea, while Haman's arrogance disintegrates into groggy desperation when the king turns against him."
-      },
-      {
-        "question": "In what ways does Haman's execution on his own gallows illustrate the biblical principle of reaping what you sow?",
-        "answer": "Haman crafted a specific instrument of death for an innocent man, only to be consumed by the very trap he set, displaying divine poetic justice."
-      }
+      "How does Esther's careful timing and courage contrast with Haman's desperate panic in this chapter?",
+      "In what ways does Haman's execution on his own gallows illustrate the biblical principle of reaping what you sow?"
     ]
   },
   "Esther_8": {
@@ -3889,14 +3883,8 @@ export const OT_HISTORY_SUMMARIES: Record<string, ChapterSummary> = {
       "Esther 8:16"
     ],
     "questions": [
-      {
-        "question": "Why was a second decree necessary even after Haman's death?",
-        "answer": "Because irrevocable Persian law stated that a signed royal edict could not be rescinded, requiring a counter-decree empowering the Jews to lawfully protect themselves against attackers."
-      },
-      {
-        "question": "How did the emotional landscape of the Jewish people shift across the empire upon the receipt of the new edict?",
-        "answer": "Their sorrow, fasting, and weeping were instantaneously replaced by light, gladness, joy, and honor, prompting many local citizens to convert out of fear of the God of the Jews."
-      }
+      "Why was a second decree necessary even after Haman's death?",
+      "How did the emotional landscape of the Jewish people shift across the empire upon the receipt of the new edict?"
     ]
   },
   "Esther_9": {
@@ -3911,14 +3899,8 @@ export const OT_HISTORY_SUMMARIES: Record<string, ChapterSummary> = {
       "Esther 9:28"
     ],
     "questions": [
-      {
-        "question": "What is the significance of the festival of Purim, and why was it vital to institutionalize it?",
-        "answer": "Purim commemorates the miraculous turning of Haman's plot from destruction to deliverance; institutionalizing it ensured that future generations would never forget God's sovereign preservation."
-      },
-      {
-        "question": "How does the restraint shown by the Jews in Susa (choosing not to plunder the property) reflect integrity?",
-        "answer": "By refusing to take plunder despite having the legal right to do so, they proved that their actions were strictly for self-defense and survival rather than greed."
-      }
+      "What is the significance of the festival of Purim, and why was it vital to institutionalize it?",
+      "How does the restraint shown by the Jews in Susa (choosing not to plunder the property) reflect integrity?"
     ]
   },
   "Esther_10": {
@@ -3932,14 +3914,8 @@ export const OT_HISTORY_SUMMARIES: Record<string, ChapterSummary> = {
       "Esther 10:3"
     ],
     "questions": [
-      {
-        "question": "What qualities made Mordecai an effective and beloved leader among his people according to the final verse?",
-        "answer": "Mordecai remained deeply connected to his people, actively seeking their well-being and speaking peace on behalf of all his kindred rather than abusing his immense political power."
-      },
-      {
-        "question": "Even though God's name is never explicitly mentioned in the book, how does the conclusion of the narrative highlight divine providence?",
-        "answer": "The sudden elevation of an exiled Jew from a lowly gatekeeper to the second-most powerful man in the Persian Empire vividly displays the unseen hand of God directing history."
-      }
+      "What qualities made Mordecai an effective and beloved leader among his people according to the final verse?",
+      "Even though God's name is never explicitly mentioned in the book, how does the conclusion of the narrative highlight divine providence?"
     ]
   }
 };
