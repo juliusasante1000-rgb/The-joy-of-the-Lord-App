@@ -2,15 +2,7 @@ import { HymnItem } from "../types";
 import { ADDITIONAL_50_HYMNALS } from "./additionalHymnals";
 import { ADDITIONAL_HYMNALS_PART_2 } from "./additionalHymnalsPart2";
 import { AUTHENTIC_CLASSIC_HYMNALS_PART_3 } from "./authenticClassicHymnalsPart3";
-import { HYMNAL_500_PART_1 } from "./hymnalCatalog500Part1";
-import { HYMNAL_500_PART_2 } from "./hymnalCatalog500Part2";
-import { HYMNAL_500_PART_3 } from "./hymnalCatalog500Part3";
-import { HYMNAL_500_PART_4 } from "./hymnalCatalog500Part4";
-import { HYMNAL_1000_PART_1 } from "./hymnalCatalog1000Part1";
-import { HYMNAL_1000_PART_2 } from "./hymnalCatalog1000Part2";
-import { HYMNAL_1000_PART_3 } from "./hymnalCatalog1000Part3";
-import { HYMNAL_1000_PART_4 } from "./hymnalCatalog1000Part4";
-import { generate500PopularHymns } from "./hymnalsExpandedCatalog";
+import { AUTHENTIC_CLASSIC_HYMNALS_PART_4 } from "./authenticClassicHymnalsPart4";
 
 export const HYMN_CATEGORIES = [
   "All",
@@ -1073,14 +1065,7 @@ const BASE_HYMNALS_COLLECTION: HymnItem[] = [
   ...ADDITIONAL_50_HYMNALS,
   ...ADDITIONAL_HYMNALS_PART_2,
   ...AUTHENTIC_CLASSIC_HYMNALS_PART_3,
-  ...HYMNAL_500_PART_1,
-  ...HYMNAL_500_PART_2,
-  ...HYMNAL_500_PART_3,
-  ...HYMNAL_500_PART_4,
-  ...HYMNAL_1000_PART_1,
-  ...HYMNAL_1000_PART_2,
-  ...HYMNAL_1000_PART_3,
-  ...HYMNAL_1000_PART_4
+  ...AUTHENTIC_CLASSIC_HYMNALS_PART_4
 ];
 
-export const HYMNALS_COLLECTION: HymnItem[] = generate500PopularHymns(BASE_HYMNALS_COLLECTION);
+export const HYMNALS_COLLECTION: HymnItem[] = BASE_HYMNALS_COLLECTION;

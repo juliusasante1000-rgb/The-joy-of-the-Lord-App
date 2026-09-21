@@ -21,14 +21,10 @@ import {
   Radio,
   FileText,
   Type,
-  Mic2,
-  RefreshCw,
-  Send
+  Mic2
 } from "lucide-react";
 import { HYMNALS_COLLECTION, HYMN_CATEGORIES } from "../data/hymnalsData";
 import { HymnItem } from "../types";
-import { streamAiContent, getIsFastMode, setIsFastMode } from "../utils/aiStreaming";
-import { AiFastLoadingView } from "./AiFastLoadingView";
 
 interface HymnalsTabProps {
   isBookmarked: (targetId: string, type?: string) => boolean;
@@ -99,15 +95,6 @@ export const HymnalsTab: React.FC<HymnalsTabProps> = ({
   const [showAudioSettings, setShowAudioSettings] = useState(false);
   const audioCtxRef = useRef<AudioContext | null>(null);
   const synthTimeoutsRef = useRef<NodeJS.Timeout[]>([]);
-
-  // AI Devotional Hymn Reflection State
-  const [aiTopic, setAiTopic] = useState("");
-  const [aiResult, setAiResult] = useState<string | null>(null);
-  const [aiError, setAiError] = useState<string | null>(null);
-  const [isGeneratingAi, setIsGeneratingAi] = useState(false);
-  const [showAiModal, setShowAiModal] = useState(false);
-  const [streamingAiText, setStreamingAiText] = useState("");
-  const [streamingProgress, setStreamingProgress] = useState(25);
 
   const selectedHymn =
     HYMNALS_COLLECTION.find((h) => h.id === selectedHymnId) || HYMNALS_COLLECTION[0];
@@ -366,59 +353,6 @@ Scripture Anchor: ${selectedHymn.scriptureAnchor.reference}
     setTimeout(() => setCopiedLyrics(false), 2000);
   };
 
-  const handleGenerateAiHymnDevotional = async () => {
-    if (!aiTopic.trim()) return;
-    setIsGeneratingAi(true);
-    setAiResult(null);
-    setStreamingAiText("");
-    setStreamingProgress(25);
-
-    try {
-      const prompt = `You are a reverent Christian hymnologist and pastoral theologian.
-Generate an inspirational, soul-stirring devotional reflection exploring the profound spiritual legacy of traditional Christian hymnals and spiritual songs, specifically connecting to the user's topic: "${aiTopic}".
-Include:
-1. Spiritual Foundation & Biblical Anchor (cite relevant KJV/NKJV scriptures)
-2. Hymnic Heritage & Old Spiritual Analogy (mention how saints and early revivalists found power through songs in the night)
-3. Three Practical Stanzas of Faith (actionable steps for worship in trials)
-4. Pastoral Closing Prayer & Benediction.
-Keep the tone deeply reverent, majestic, and grounded in the Lord Jesus Christ.`;
-
-      setAiError(null);
-      const res = await streamAiContent<any>({
-        actionType: "hymnal_devotion",
-        topic: aiTopic,
-        prompt,
-        fastMode: getIsFastMode(),
-        storageKey: `ai_hymn_devotion_${aiTopic.trim().toLowerCase().slice(0, 40)}`,
-        onProgress: (prog) => {
-          setStreamingProgress(prog);
-        },
-        onChunk: (_chunk, accText) => {
-          setStreamingAiText(accText);
-          setAiResult(accText);
-        },
-        onComplete: (fullText) => {
-          setAiResult(fullText);
-          setIsGeneratingAi(false);
-        },
-        onError: (err) => {
-          console.error("AI generation failed:", err);
-          setAiError(err || "AI generation could not be completed right now. Please try again.");
-          setIsGeneratingAi(false);
-        }
-      });
-
-      if (!res.success && !aiResult) {
-        setAiError(res.error || "AI generation could not be completed right now. Please try again.");
-      }
-    } catch (err: any) {
-      console.error("AI generation failed:", err);
-      setAiError(err?.message || "AI generation could not be completed right now. Please try again.");
-    } finally {
-      setIsGeneratingAi(false);
-    }
-  };
-
   const fontSizeClass = {
     sm: "text-xs leading-relaxed",
     md: "text-sm sm:text-base leading-relaxed",
@@ -442,15 +376,6 @@ Keep the tone deeply reverent, majestic, and grounded in the Lord Jesus Christ.`
             <p className="text-slate-200 text-xs sm:text-sm leading-relaxed">
               Timeless hymns, old African American spirituals, and revival anthems that have anchored the Church across centuries. Complete with stanzas, audio melody chimes, historical origins, and theological insights.
             </p>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-2 shrink-0">
-            <button
-              onClick={() => setShowAiModal(true)}
-              className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#B48C35] to-[#DCC398] text-[#16235A] font-bold text-xs flex items-center gap-2 shadow-md hover:brightness-105 cursor-pointer transition-all"
-            >
-              <Sparkles className="w-4 h-4 text-[#16235A]" /> Hymn Devotional AI
-            </button>
           </div>
         </div>
       </div>
@@ -1075,143 +1000,6 @@ Keep the tone deeply reverent, majestic, and grounded in the Lord Jesus Christ.`
           )}
         </div>
       </div>
-
-      {/* AI Devotional Hymn Reflection Modal */}
-      {showAiModal && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 space-y-5 shadow-2xl border border-slate-200 max-h-[90vh] overflow-y-auto">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-200">
-              <div className="flex items-center gap-2">
-                <div className="p-2 rounded-xl bg-gradient-to-br from-[#B48C35] to-[#DCC398] text-[#16235A]">
-                  <Sparkles className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="font-serif font-bold text-lg text-[#16235A]">
-                    AI Hymn Devotional Companion
-                  </h3>
-                  <p className="text-xs text-slate-500 font-sans">
-                    Discover spiritual reflections on hymns tailored to your current life season.
-                  </p>
-                </div>
-              </div>
-              <button
-                onClick={() => setShowAiModal(false)}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 text-xs font-bold cursor-pointer"
-              >
-                ✕
-              </button>
-            </div>
-
-            <div className="space-y-3">
-              <label className="text-xs font-bold font-mono text-slate-700 uppercase">
-                What spiritual season or need are you seeking songs for?
-              </label>
-              <div className="flex gap-2">
-                <input
-                  type="text"
-                  placeholder="e.g. Overcoming sudden grief, strength in financial trials, midnight deliverance..."
-                  value={aiTopic}
-                  onChange={(e) => setAiTopic(e.target.value)}
-                  onKeyDown={(e) => e.key === "Enter" && handleGenerateAiHymnDevotional()}
-                  className="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#B48C35]/50"
-                />
-                <button
-                  onClick={handleGenerateAiHymnDevotional}
-                  disabled={isGeneratingAi || !aiTopic.trim()}
-                  className="px-5 py-2.5 rounded-xl bg-[#16235A] text-white font-bold text-xs flex items-center gap-2 disabled:opacity-50 hover:bg-[#24357D] cursor-pointer transition-all shadow-md shrink-0"
-                >
-                  {isGeneratingAi ? (
-                    <>
-                      <RefreshCw className="w-4 h-4 animate-spin" /> Composing...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-4 h-4" /> Generate
-                    </>
-                  )}
-                </button>
-              </div>
-
-              {/* Sample Topic Chips */}
-              <div className="flex items-center gap-1.5 flex-wrap pt-1">
-                {["Peace in Storms", "Overcoming Grief", "Salvation & Grace", "Deliverance in Trials"].map(
-                  (sample) => (
-                    <button
-                      key={sample}
-                      onClick={() => setAiTopic(sample)}
-                      className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-[11px] text-slate-700 font-medium cursor-pointer transition-colors"
-                    >
-                      {sample}
-                    </button>
-                  )
-                )}
-              </div>
-            </div>
-
-            {/* AI Error Alert with Retry */}
-            {aiError && !isGeneratingAi && (
-              <div className="p-4 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-700 text-xs flex items-center justify-between gap-3 animate-in fade-in">
-                <div className="space-y-1">
-                  <div className="font-bold font-mono uppercase tracking-wider text-red-800">Generation Notice</div>
-                  <p className="leading-relaxed">{aiError}</p>
-                </div>
-                <div className="flex items-center gap-2 shrink-0">
-                  <button
-                    type="button"
-                    onClick={handleGenerateAiHymnDevotional}
-                    className="px-3 py-1.5 rounded-lg bg-red-600 hover:bg-red-700 text-white font-semibold text-xs transition-colors cursor-pointer"
-                  >
-                    Retry
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setAiError(null)}
-                    className="text-red-500 hover:text-red-800 font-bold px-1.5 py-0.5 cursor-pointer"
-                    title="Dismiss"
-                  >
-                    ✕
-                  </button>
-                </div>
-              </div>
-            )}
-
-            {/* AI Streaming Loading View */}
-            {isGeneratingAi && (
-              <div className="pt-1">
-                <AiFastLoadingView
-                  progress={streamingProgress}
-                  title="Composing Hymnic Devotional Reflection"
-                  actionType="Hymnology Treasury Engine"
-                  streamingText={streamingAiText}
-                  isStreaming={true}
-                  onCancel={() => setIsGeneratingAi(false)}
-                />
-              </div>
-            )}
-
-            {aiResult && !isGeneratingAi && (
-              <div className="p-5 rounded-2xl bg-[#FAF9F6] border border-amber-200/80 space-y-3 animate-in fade-in">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono font-bold uppercase text-[#B48C35] flex items-center gap-1.5">
-                    <Sparkles className="w-4 h-4" /> Devotional Revelation
-                  </span>
-                  <button
-                    onClick={() => {
-                      navigator.clipboard.writeText(aiResult);
-                    }}
-                    className="text-xs text-slate-500 hover:text-slate-800 flex items-center gap-1 cursor-pointer"
-                  >
-                    <Copy className="w-3.5 h-3.5" /> Copy
-                  </button>
-                </div>
-                <div className="text-xs sm:text-sm text-slate-800 leading-relaxed font-serif whitespace-pre-line">
-                  {aiResult}
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
     </div>
   );
 };
