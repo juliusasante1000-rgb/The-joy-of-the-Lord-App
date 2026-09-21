@@ -68,10 +68,10 @@ Return a JSON array of ${chapters.length} objects with this schema:
   }
 ]`;
 
-  for (let attempt = 1; attempt <= 5; attempt++) {
+  for (let attempt = 1; attempt <= 10; attempt++) {
     try {
       const res = await ai.models.generateContent({
-        model: "gemini-flash-lite-latest",
+        model: "gemini-3.5-flash-lite",
         contents: prompt,
         config: { responseMimeType: "application/json" }
       });
@@ -96,13 +96,14 @@ Return a JSON array of ${chapters.length} objects with this schema:
         }));
       }
     } catch (err: any) {
-      if (err?.status === 429 || err?.message?.includes("429") || err?.message?.includes("Quota exceeded")) {
-        console.warn(`[Quota 429] Pacing limit reached. Pausing 22s before retry (attempt ${attempt}/5)...`);
-        await new Promise((r) => setTimeout(r, 22000));
+      const isQuota = err?.status === 429 || /429|quota|exhausted|rate/i.test(err?.message || "");
+      if (isQuota) {
+        console.warn(`[Quota 429] Pacing limit reached. Pausing 25s before retry (attempt ${attempt}/10)...`);
+        await new Promise((r) => setTimeout(r, 25000));
         continue;
       }
-      console.warn(`[Batch Warning] ${book} [${chapters.join(",")}] attempt ${attempt} failed: ${err.message}`);
-      await new Promise((r) => setTimeout(r, 3000 * attempt));
+      console.warn(`[Batch Warning] ${book} [${chapters.join(",")}] attempt ${attempt}/10 failed: ${err.message}`);
+      await new Promise((r) => setTimeout(r, 4000 * attempt));
     }
   }
   throw new Error(`Failed to generate batch for ${book} chapters ${chapters.join(", ")}`);
@@ -160,8 +161,8 @@ export async function processSection(sectionKey: string) {
     chapters.sort((a, b) => a - b);
     console.log(`\nProcessing book: ${book} (${chapters.length} chapters to regenerate)`);
     
-    // Split into batches of up to 9 chapters for maximum detail and optimal rate limit efficiency
-    const batchSize = 9;
+    // Split into batches of up to 6 chapters for maximum detail and optimal rate limit efficiency
+    const batchSize = 6;
     const batches: number[][] = [];
     for (let i = 0; i < chapters.length; i += batchSize) {
       batches.push(chapters.slice(i, i + batchSize));
@@ -175,12 +176,11 @@ export async function processSection(sectionKey: string) {
         const key = `${res.book}_${res.chapter}`;
         dataMap[key] = res;
       }
-      await new Promise((r) => setTimeout(r, 4500));
+      // Save progress immediately after each batch
+      saveSectionFile(filePath, varName, dataMap);
+      console.log(`  ✓ Saved ${book} [${batch.join(",")}] to disk`);
+      await new Promise((r) => setTimeout(r, 5000));
     }
-
-    // Save progress after each book
-    saveSectionFile(filePath, varName, dataMap);
-    console.log(`  ✓ Saved updated ${book} summaries to ${filePath}`);
   }
 
   console.log(`\n✓ Successfully completed section: ${sectionKey}! All chapters now unique.`);
