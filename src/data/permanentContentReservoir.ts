@@ -1161,11 +1161,11 @@ export function getStoredUniversalItems(
   const preSeededMap = getPreSeededCatalog(outlet);
   for (const [key, list] of Object.entries(preSeededMap)) {
     const normEntryKey = normalizeScriptureReference(key) || key.toLowerCase();
-    if (
-      normKey === normEntryKey ||
-      normKey.startsWith(normEntryKey) ||
-      normEntryKey.startsWith(normKey)
-    ) {
+    const isScripture = !!normalizeScriptureReference(rawKey) || !!normalizeScriptureReference(key);
+    const isMatch = outlet === "doctrine"
+      ? normKey === normEntryKey
+      : normKey === normEntryKey || (isScripture && (normKey.startsWith(normEntryKey) || normEntryKey.startsWith(normKey)));
+    if (isMatch) {
       for (const item of list) {
         if (!seenIds.has(item.id)) {
           seenIds.add(item.id);

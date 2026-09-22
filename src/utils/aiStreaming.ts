@@ -21,6 +21,13 @@ import {
   UniversalReservoirItem
 } from "../data/permanentContentReservoir";
 
+export function sanitizeCreatorName(text: string): string {
+  if (!text) return "";
+  return text
+    .replace(/\bApostle\s+Bismark\s+Twum\b/gi, "Bismark Twum")
+    .replace(/\bApostle\s+Bismark\b/gi, "Bismark Twum");
+}
+
 export function isDevotionRequest(actionType?: string): boolean {
   if (!actionType) return true;
   const lower = actionType.toLowerCase();
@@ -204,12 +211,13 @@ export function setIsFastMode(enabled: boolean): void {
 export function getAiCacheKey(options: StreamAiOptions): string {
   const parts = [
     options.actionType || "",
-    options.scriptureReference || "",
+    options.scriptureReference || options.biblicalReference || "",
     options.version || "",
-    options.topic || "",
-    options.need || "",
-    options.category || "",
-    options.mathematicalConcept || "",
+    options.topic || options.spiritualConcept || "",
+    options.need || options.focusNeed || options.specificChallenge || "",
+    options.category || options.seasonCategory || "",
+    options.mathematicalConcept || options.mathBranch || "",
+    options.question || options.subject || options.placeName || "",
     options.prompt || ""
   ];
   return parts.join("::").toLowerCase().trim();
@@ -572,6 +580,7 @@ export async function streamAiContent<T = any>(
           parsedData = sanitizeNonMathResponse(parsedData, options.category, options.actionType);
         }
 
+        accumulatedText = sanitizeCreatorName(accumulatedText);
         saveAiResultToCache(cacheKey, accumulatedText, parsedData, isFast);
 
         // When AI available -> auto-save fresh generation to Permanent Content Reservoir across ALL outlets!
@@ -582,7 +591,10 @@ export async function streamAiContent<T = any>(
 
         if (options.storageKey && (parsedData || accumulatedText)) {
           try {
-            const itemToSave = parsedData || { text: accumulatedText, date: new Date().toISOString() };
+            const rawQuestion = options.question || options.prompt || options.topic || options.subject || "Theological Inquiry";
+            const itemToSave = parsedData && typeof parsedData === "object"
+              ? { ...parsedData, question: parsedData.question || rawQuestion }
+              : { answer: accumulatedText, text: accumulatedText, question: rawQuestion, date: new Date().toISOString() };
             const existing = localStorage.getItem(options.storageKey);
             let hist = existing ? JSON.parse(existing) : [];
             if (!Array.isArray(hist)) hist = [hist];
@@ -659,7 +671,7 @@ export async function streamAiContent<T = any>(
               ? resData.response
               : "";
           const finalData = resData.data || safeJsonParse(textContent);
-          const finalText = deduplicateSentences(textContent || (finalData ? JSON.stringify(finalData) : ""));
+          const finalText = sanitizeCreatorName(deduplicateSentences(textContent || (finalData ? JSON.stringify(finalData) : "")));
 
           if (finalText || finalData) {
             options.onProgress?.(100);

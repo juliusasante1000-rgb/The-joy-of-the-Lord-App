@@ -723,8 +723,15 @@ export function getServerUniversalReservoirItems(
     if (fullKey.startsWith(searchPrefix)) {
       const refPart = fullKey.substring(searchPrefix.length);
       const normPart = normalizeServerScriptureRef(refPart) || refPart.toLowerCase();
-      if (normRef === normPart || normRef.startsWith(normPart) || normPart.startsWith(normRef)) {
-        return list;
+      if (outlet === "doctrine") {
+        if (normRef === normPart) {
+          return list;
+        }
+      } else {
+        const isScripture = !!normalizeServerScriptureRef(reference) || !!normalizeServerScriptureRef(refPart);
+        if (normRef === normPart || (isScripture && (normRef.startsWith(normPart) || normPart.startsWith(normRef)))) {
+          return list;
+        }
       }
     }
   }

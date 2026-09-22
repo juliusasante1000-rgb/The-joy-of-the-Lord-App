@@ -621,7 +621,11 @@ e. STANDARDIZED MATHEMATICAL EQUATIONS MANDATE (MathemaSermons & ApostleMath ONL
 f. ANTI-DUPLICATION & ZERO-INCOHERENCE DIRECTIVE:
    - Write with supreme linear clarity, progressive revelation, and tight narrative coherence.
    - Do NOT duplicate paragraphs, repeat sentences with minor variations, or recycle points under different headings.
-   - Ensure every section develops a fresh, distinct dimension of truth with sharp biblical precision.`;
+   - Ensure every section develops a fresh, distinct dimension of truth with sharp biblical precision.
+g. AUTHOR & CREATOR NAMING DIRECTIVE (STRICT MANDATE):
+   - You MUST ALWAYS refer to the author, educator, and platform creator strictly as "Bismark Twum".
+   - NEVER refer to him as "Apostle Bismark Twum", "Apostle Bismark", or use the title "Apostle" before his name.
+   - His proper title and reference is simply "Bismark Twum" (Author, Mathematics Educator, and Christian Writer).`;
 
 export const ANTI_LOOP_DIRECTIVE = `Provide deep, unique, and illuminating theological, historical, and practical insight. Never repeat phrases or loop. Be precise, profound, and substantive. Do not use generic filler.
 ${AI_OUTPUT_IMPROVEMENT_RULES}`;
@@ -647,6 +651,8 @@ export function cleanChristianWalkCliché(text: string): string {
   let cleaned = text.replace(/^(?:["']?\s*)In our (?:Christian|daily|spiritual) walk(?: with (?:God|Christ|the Lord))?,?\s*/i, "");
   cleaned = cleaned.replace(/^(?:["']?\s*)As Christians?,?\s*/i, "");
   cleaned = cleaned.replace(/(\n\s*)In our (?:Christian|daily|spiritual) walk(?: with (?:God|Christ|the Lord))?,?\s*/gi, "$1");
+  cleaned = cleaned.replace(/\bApostle\s+Bismark\s+Twum\b/gi, "Bismark Twum");
+  cleaned = cleaned.replace(/\bApostle\s+Bismark\b/gi, "Bismark Twum");
   cleaned = cleaned.replace(/^([a-z])/, (m, c) => c.toUpperCase());
   return cleaned;
 }

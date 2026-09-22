@@ -84,6 +84,7 @@ export const HymnalsTab: React.FC<HymnalsTabProps> = ({
   const [fontSize, setFontSize] = useState<"sm" | "md" | "lg" | "xl">("md");
   const [copiedLyrics, setCopiedLyrics] = useState(false);
   const [readerPulse, setReaderPulse] = useState(false);
+  const [visibleListCount, setVisibleListCount] = useState<number>(50);
   const hymnReaderRef = useRef<HTMLDivElement | null>(null);
 
   // Web Audio Synth Melody State
@@ -105,6 +106,12 @@ export const HymnalsTab: React.FC<HymnalsTabProps> = ({
     setSelectedHymnId(id);
     setReaderPulse(true);
     setTimeout(() => setReaderPulse(false), 2000);
+
+    // Ensure item is visible in list if it was outside current visible slice
+    const matchIdx = filteredHymns.findIndex((h) => h.id === id);
+    if (matchIdx >= 0 && matchIdx >= visibleListCount) {
+      setVisibleListCount(matchIdx + 30);
+    }
 
     setTimeout(() => {
       if (hymnReaderRef.current) {
@@ -388,14 +395,20 @@ Scripture Anchor: ${selectedHymn.scriptureAnchor.reference}
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
             <input
               type="text"
-              placeholder="Search 505 hymns by title, author, lyrics snippet, or meter..."
+              placeholder="Search 1,000 hymns by title, author, lyrics snippet, or meter..."
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                setVisibleListCount(50);
+              }}
               className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-xs sm:text-sm text-[#16235A] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#B48C35]/50 transition-all"
             />
             {searchQuery && (
               <button
-                onClick={() => setSearchQuery("")}
+                onClick={() => {
+                  setSearchQuery("");
+                  setVisibleListCount(50);
+                }}
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-mono text-slate-400 hover:text-slate-600"
               >
                 Clear
@@ -445,10 +458,12 @@ Scripture Anchor: ${selectedHymn.scriptureAnchor.reference}
             { num: 2, name: "Amazing Grace" },
             { num: 3, name: "How Great Thou Art" },
             { num: 4, name: "Blessed Assurance" },
-            { num: 100, name: "Great Is Thy Faithfulness" },
-            { num: 120, name: "Rock of Ages" },
-            { num: 200, name: "Crown Him with Many Crowns" },
-            { num: 505, name: "A Mighty Fortress" }
+            { num: 5, name: "It Is Well" },
+            { num: 6, name: "Great Is Thy Faithfulness" },
+            { num: 7, name: "What a Friend We Have in Jesus" },
+            { num: 100, name: "Hymn #100" },
+            { num: 500, name: "Hymn #500" },
+            { num: 1000, name: "Hymn #1000" }
           ].map((qh) => (
             <button
               key={qh.num}
@@ -467,7 +482,10 @@ Scripture Anchor: ${selectedHymn.scriptureAnchor.reference}
             return (
               <button
                 key={cat}
-                onClick={() => setSelectedCategory(cat)}
+                onClick={() => {
+                  setSelectedCategory(cat);
+                  setVisibleListCount(50);
+                }}
                 className={`px-3 py-1.5 rounded-lg text-xs font-medium cursor-pointer transition-all ${
                   isSel
                     ? "bg-[#16235A] text-white shadow-xs font-bold"
@@ -485,7 +503,7 @@ Scripture Anchor: ${selectedHymn.scriptureAnchor.reference}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* Left Column: Hymn Selector List */}
         <div className="lg:col-span-4 space-y-2 max-h-[700px] overflow-y-auto pr-1 scrollbar-thin">
-          {filteredHymns.map((hymn) => {
+          {filteredHymns.slice(0, visibleListCount).map((hymn) => {
             const isSelected = hymn.id === selectedHymn.id;
             return (
               <div
@@ -534,6 +552,17 @@ Scripture Anchor: ${selectedHymn.scriptureAnchor.reference}
             );
           })}
 
+          {filteredHymns.length > visibleListCount && (
+            <div className="pt-2 pb-1">
+              <button
+                onClick={() => setVisibleListCount((prev) => Math.min(filteredHymns.length, prev + 50))}
+                className="w-full py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 font-medium text-xs transition-colors cursor-pointer text-center"
+              >
+                Load More Hymns (Showing {Math.min(visibleListCount, filteredHymns.length)} of {filteredHymns.length})
+              </button>
+            </div>
+          )}
+
           {filteredHymns.length === 0 && (
             <div className="p-8 text-center bg-white rounded-2xl border border-slate-200 text-slate-500">
               <p className="text-sm font-serif">No hymns found matching your query.</p>
@@ -541,6 +570,7 @@ Scripture Anchor: ${selectedHymn.scriptureAnchor.reference}
                 onClick={() => {
                   setSearchQuery("");
                   setSelectedCategory("All");
+                  setVisibleListCount(50);
                 }}
                 className="mt-2 text-xs text-[#2563EB] font-bold underline cursor-pointer"
               >

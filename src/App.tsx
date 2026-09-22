@@ -100,6 +100,19 @@ export function App() {
     () => new Set(["home"])
   );
 
+  // Progressive idle pre-warming: Mount tabs after initial frame so clicking ANY navigation icon is 100% instantaneous
+  useEffect(() => {
+    const allTabKeys = [
+      "home", "bible", "spiritual_places", "places", "apostle_math", "math",
+      "mathema_sermons", "rhema", "joy_overcoming", "hymnals", "library",
+      "books", "prayer", "prayers", "creator", "about", "quotes", "doctrines"
+    ];
+    const timer = setTimeout(() => {
+      setVisitedTabs(new Set(allTabKeys));
+    }, 250);
+    return () => clearTimeout(timer);
+  }, []);
+
   const handleNavigateTab = useCallback((tab: TabType) => {
     // Instant, synchronous tab state switch - zero delay
     setActiveTab(tab);
@@ -114,8 +127,10 @@ export function App() {
       if (tab === "library") next.add("books");
       return next;
     });
-    // Non-blocking, instant viewport repositioning
-    window.scrollTo({ top: 0, behavior: "instant" as any });
+    // Non-blocking, instant viewport repositioning on next animation frame
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" as any });
+    });
   }, []);
 
   // PWA Cross-Platform Installation & Network Engine

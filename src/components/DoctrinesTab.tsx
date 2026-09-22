@@ -27,7 +27,11 @@ import {
   Compass,
   Download,
   Printer,
-  Image as ImageIcon
+  Image as ImageIcon,
+  Copy,
+  Check,
+  Trash2,
+  MessageSquare
 } from "lucide-react";
 import { CHURCH_TENETS, DOCTRINE_CATEGORIES, DOCTRINE_ARTICLES } from "../data/doctrinalData";
 import { SYSTEMATIC_TOPICS_500_CATALOG, ALL_SYSTEMATIC_CATEGORIES } from "../data/systematicTopicsFullCatalog";
@@ -37,6 +41,13 @@ import { streamAiContent, getIsFastMode, setIsFastMode } from "../utils/aiStream
 import { AiFastLoadingView } from "./AiFastLoadingView";
 import { downloadSystematicTopicPicture } from "../utils/sanctuaryPictureExporter";
 import { DevotionPictureModal } from "./DevotionPictureModal";
+
+export interface ScholarExchange {
+  id: string;
+  question: string;
+  answer: string;
+  timestamp: string;
+}
 
 interface DoctrinesTabProps {
   isBookmarked: (targetId: string, type?: string) => boolean;
@@ -94,17 +105,27 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
 
   // AI Q&A Assistant state
   const [aiQuestion, setAiQuestion] = useState("");
+  const [followUpQuestion, setFollowUpQuestion] = useState("");
+  const [currentAskingQuestion, setCurrentAskingQuestion] = useState("");
   const [isAskingAi, setIsAskingAi] = useState(false);
   const [aiAnswer, setAiAnswer] = useState<string | null>(null);
   const [aiError, setAiError] = useState<string | null>(null);
   const [streamingAiText, setStreamingAiText] = useState("");
   const [streamingProgress, setStreamingProgress] = useState(25);
+  const [scholarHistory, setScholarHistory] = useState<ScholarExchange[]>([]);
+  const [copiedTurnId, setCopiedTurnId] = useState<string | null>(null);
 
   useEffect(() => {
     const cached = getCachedAiHistory<{ question: string; answer: string }>("joy_doctrine_ai_history");
-    if (cached && cached.length > 0 && !aiAnswer) {
+    if (cached && cached.length > 0 && scholarHistory.length === 0) {
+      const historyList: ScholarExchange[] = cached.slice(0, 10).map((c, i) => ({
+        id: `cached-${i}-${Date.now()}`,
+        question: c.question || "Theological Inquiry",
+        answer: c.answer,
+        timestamp: "Saved Inquiry"
+      }));
+      setScholarHistory(historyList);
       setAiAnswer(cached[0].answer);
-      setAiQuestion(cached[0].question || "");
     }
   }, []);
 
@@ -235,19 +256,24 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
 
   const handleAskDoctrinalAi = async (e?: React.FormEvent, customPrompt?: string) => {
     if (e) e.preventDefault();
-    const query = customPrompt || aiQuestion;
-    if (!query.trim() || isAskingAi) return;
+    const query = (customPrompt || followUpQuestion || aiQuestion).trim();
+    if (!query || isAskingAi) return;
 
-    setAiAnswer("");
+    setCurrentAskingQuestion(query);
+    setAiQuestion("");
+    setFollowUpQuestion("");
     setIsAskingAi(true);
     setAiError(null);
+    setAiAnswer(null);
     setStreamingAiText("");
     setStreamingProgress(25);
 
     try {
       const res = await streamAiContent<any>({
         actionType: "ask_doctrine",
-        question: query.trim(),
+        question: query,
+        prompt: query,
+        topic: query,
         category: selectedCategory !== "all" ? selectedCategory : "Christian Orthodoxy",
         fastMode: getIsFastMode(),
         storageKey: "joy_doctrine_ai_history",
@@ -260,6 +286,14 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
         onComplete: (fullText, data) => {
           const textToSet = data?.answer || fullText || "Answer received.";
           setAiAnswer(textToSet);
+          const newExchange: ScholarExchange = {
+            id: `turn-${Date.now()}`,
+            question: query,
+            answer: textToSet,
+            timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+          };
+          setScholarHistory((prev) => [...prev, newExchange]);
+          setCurrentAskingQuestion("");
           setIsAskingAi(false);
         },
         onError: (err) => {
@@ -279,6 +313,19 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
     }
   };
 
+  const handleClearScholarHistory = () => {
+    setScholarHistory([]);
+    setAiAnswer(null);
+    setAiError(null);
+    setStreamingAiText("");
+    setCurrentAskingQuestion("");
+    setAiQuestion("");
+    setFollowUpQuestion("");
+    try {
+      localStorage.removeItem("joy_doctrine_ai_history");
+    } catch {}
+  };
+
   return (
     <div className="space-y-6 pb-24 animate-in fade-in duration-200">
       {/* Hero Header */}
@@ -296,7 +343,7 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
                 </span>
               </h2>
               <p className="text-xs sm:text-sm text-[#DCC398] font-serif italic mt-0.5">
-                The 15 Apostolic Doctrinal Pillars, 500 Topics Compendium, 20 Core Tenets & AI Scholar
+                The 13 Apostolic Doctrinal Pillars, 500 Topics Compendium, 11 Core Tenets & AI Scholar
               </p>
             </div>
           </div>
@@ -328,7 +375,7 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
             </div>
             <div>
               <div className="font-serif font-bold text-xs sm:text-sm leading-tight text-white">
-                15 Doctrinal Pillars
+                13 Doctrinal Pillars
               </div>
               <div className={`text-[11px] mt-0.5 leading-tight ${activeViewMode === "pillars" ? "text-white/90" : "text-slate-300"}`}>
                 Apostolic theology & commentary
@@ -392,7 +439,7 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
             </div>
             <div>
               <div className="font-serif font-bold text-xs sm:text-sm leading-tight text-white">
-                20 Church Tenets
+                11 Church Tenets
               </div>
               <div className={`text-[11px] mt-0.5 leading-tight ${activeViewMode === "tenets" ? "text-white/90" : "text-slate-300"}`}>
                 Foundational articles of faith
@@ -439,7 +486,7 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
               activeViewMode === "systematic500"
                 ? "Search across 500 topics (e.g. Righteousness, Altars, Blood Covenant, Trinity, Melchizedek, 666, Tithes)..."
                 : activeViewMode === "pillars"
-                ? "Search 15 Doctrinal Pillars (e.g. Infallibility, Trinity, Justification, Sanctification, Lord's Supper, Divine Healing)..."
+                ? "Search 13 Doctrinal Pillars (e.g. Infallibility, Trinity, Justification, Sanctification, Lord's Supper, Divine Healing)..."
                 : "Search doctrines (e.g. Trinity, Infallibility, Depravity, Virgin Birth, Baptism of Holy Ghost, Tithes, Second Coming)..."
             }
             value={searchQuery}
@@ -549,7 +596,7 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
           </div>
         )}
 
-        {/* Category Pills when in 15 Pillars view: wrapped & visible at first glance */}
+        {/* Category Pills when in 13 Pillars view: wrapped & visible at first glance */}
         {activeViewMode === "pillars" && (
           <div className="flex items-center gap-2 flex-wrap pt-1 border-t border-white/10">
             <button
@@ -560,7 +607,7 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
                   : "bg-white/10 text-slate-200 hover:bg-white/20"
               }`}
             >
-              All 15 Pillars
+              All 13 Pillars
             </button>
             {DOCTRINE_CATEGORIES.map((cat) => (
               <button
@@ -821,12 +868,12 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
         </div>
       )}
 
-      {/* VIEW: CORE TENETS OF FAITH (15) */}
+      {/* VIEW: CORE TENETS OF FAITH (11) */}
       {activeViewMode === "tenets" && (
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-[#0F172A]/80 flex items-center gap-2">
-              <Scroll className="w-4 h-4 text-[#B48C35]" /> Official Articles & 15 Tenets of Faith ({filteredTenets.length})
+              <Scroll className="w-4 h-4 text-[#B48C35]" /> Official Articles & 11 Tenets of Faith ({filteredTenets.length})
             </h3>
             <span className="text-[11px] text-[#64748B] italic">
               De-duplicated, comprehensive orthodox Christian confession
@@ -1031,7 +1078,7 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
         </div>
       )}
 
-      {/* VIEW: 15 SYSTEMATIC DOCTRINAL PILLARS */}
+      {/* VIEW: 13 SYSTEMATIC DOCTRINAL PILLARS */}
       {activeViewMode === "pillars" && (
         <div className="space-y-4">
           <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-[#0F172A]/80 flex items-center gap-2">
@@ -1151,78 +1198,192 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
       )}
 
       {/* VIEW: DEDICATED AI DOCTRINAL ASSISTANT */}
-      {(activeViewMode === "askAi" || aiAnswer) && (
-        <div className="p-6 rounded-lg bg-white border border-[#E5D5BC] shadow-xs space-y-4">
-          <div className="flex items-center justify-between">
+      {(activeViewMode === "askAi" || aiAnswer || scholarHistory.length > 0 || isAskingAi) && (
+        <div className="p-5 sm:p-6 rounded-2xl bg-white border border-[#E5D5BC] shadow-xs space-y-5">
+          {/* Header */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#E5D5BC]">
             <div className="flex items-center gap-2.5">
-              <div className="p-2 rounded bg-[#F1E6D2] text-[#B48C35] border border-[#DCC398]">
-                <Sparkles className="w-4 h-4" />
+              <div className="p-2 rounded-xl bg-[#F1E6D2] text-[#B48C35] border border-[#DCC398]">
+                <Sparkles className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-sm font-bold uppercase tracking-widest text-[#0F172A]">
-                  Ask the Doctrinal & Theological Scholar
+                <h3 className="text-sm font-bold uppercase tracking-widest text-[#0F172A] flex items-center gap-2">
+                  <span>Doctrinal & Theological Scholar</span>
+                  {scholarHistory.length > 0 && (
+                    <span className="px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 text-[10px] font-mono font-bold lowercase">
+                      {scholarHistory.length} {scholarHistory.length === 1 ? "inquiry" : "inquiries"}
+                    </span>
+                  )}
                 </h3>
                 <p className="text-xs text-[#64748B]">
-                  Grounded in Holy Scripture, 500 Systematic Topics, and historic orthodox theology
+                  Interactive theological dialogue grounded in Holy Scripture, 500 Systematic Topics, and orthodox theology
                 </p>
               </div>
             </div>
+
+            {scholarHistory.length > 0 && (
+              <button
+                type="button"
+                onClick={handleClearScholarHistory}
+                className="self-start sm:self-auto px-3 py-1.5 rounded-lg border border-slate-200 hover:border-red-300 hover:bg-red-50 text-slate-500 hover:text-red-700 text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+                title="Clear thread and start fresh"
+              >
+                <Trash2 className="w-3.5 h-3.5" />
+                <span>New Topic / Clear</span>
+              </button>
+            )}
           </div>
 
-          <form onSubmit={handleAskDoctrinalAi} className="flex flex-col sm:flex-row gap-2">
-            <input
-              type="text"
-              placeholder="Ask a theological or doctrinal question (e.g. 'Explain the Blood Covenant', 'What are spiritual altars?', 'Explain the Trinity vs modalism')..."
-              value={aiQuestion}
-              onChange={(e) => setAiQuestion(e.target.value)}
-              className="flex-1 px-3.5 py-2.5 bg-[#FDFBF7] border border-[#E5D5BC] rounded text-xs sm:text-sm text-[#1A2A44] placeholder:text-slate-400 focus:outline-hidden focus:border-[#B48C35]"
-            />
-            <button
-              type="submit"
-              disabled={isAskingAi || !aiQuestion.trim()}
-              className="py-2.5 px-6 rounded bg-[#0F172A] hover:bg-[#B48C35] disabled:opacity-50 text-white font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-1.5 transition-all shrink-0 shadow-xs"
-            >
-              {isAskingAi ? (
-                <>
-                  <RefreshCw className="w-4 h-4 animate-spin" />
-                  <span>Researching...</span>
-                </>
-              ) : (
-                <>
+          {/* If no history yet and not asking: Initial prominent inquiry form */}
+          {scholarHistory.length === 0 && !isAskingAi && (
+            <div className="space-y-3">
+              <form onSubmit={handleAskDoctrinalAi} className="flex flex-col sm:flex-row gap-2">
+                <input
+                  type="text"
+                  placeholder="Ask a theological or doctrinal question (e.g. 'Explain the Blood Covenant', 'What are spiritual altars?', 'Trinity vs modalism')..."
+                  value={aiQuestion}
+                  onChange={(e) => setAiQuestion(e.target.value)}
+                  className="flex-1 px-3.5 py-3 bg-[#FDFBF7] border border-[#E5D5BC] rounded-xl text-xs sm:text-sm text-[#1A2A44] placeholder:text-slate-400 focus:outline-hidden focus:border-[#B48C35] shadow-xs"
+                />
+                <button
+                  type="submit"
+                  disabled={isAskingAi || !aiQuestion.trim()}
+                  className="py-3 px-6 rounded-xl bg-[#0F172A] hover:bg-[#B48C35] disabled:opacity-50 text-white font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-1.5 transition-all shrink-0 shadow-xs cursor-pointer"
+                >
                   <Send className="w-4 h-4 text-[#DCC398]" />
                   <span>Ask Scholar</span>
-                </>
-              )}
-            </button>
-          </form>
+                </button>
+              </form>
 
-          {/* Prompt suggestions */}
-          <div className="flex flex-wrap items-center gap-1.5 text-xs">
-            <span className="text-[#64748B] text-[11px] font-bold uppercase">Quick Topics:</span>
-            {[
-              "Explain the Mystery of the Blood Covenant",
-              "What are spiritual altars and how to break ungodly altars?",
-              "Explain the Trinity and unity of God",
-              "What does the Bible teach about falling from grace?",
-              "What are the 9 gifts of the Holy Spirit?",
-              "Why are tithes and offerings obligatory?"
-            ].map((topic, i) => (
-              <button
-                key={i}
-                onClick={() => {
-                  setAiQuestion(topic);
-                  handleAskDoctrinalAi(undefined, topic);
-                }}
-                className="px-2.5 py-1 rounded bg-[#FDFBF7] text-[#0F172A] hover:bg-[#F1E6D2] border border-[#E5D5BC] text-[11px] transition-colors"
-              >
-                {topic}
-              </button>
-            ))}
-          </div>
+              {/* Prompt suggestions */}
+              <div className="flex flex-wrap items-center gap-1.5 text-xs pt-1">
+                <span className="text-[#64748B] text-[11px] font-bold uppercase">Quick Topics:</span>
+                {[
+                  "Explain the Mystery of the Blood Covenant",
+                  "What are spiritual altars and how to break ungodly altars?",
+                  "Explain the Trinity and unity of God",
+                  "What does the Bible teach about falling from grace?",
+                  "What are the 9 gifts of the Holy Spirit?",
+                  "Why are tithes and offerings obligatory?"
+                ].map((topic, i) => (
+                  <button
+                    key={i}
+                    onClick={() => {
+                      setAiQuestion(topic);
+                      handleAskDoctrinalAi(undefined, topic);
+                    }}
+                    className="px-2.5 py-1 rounded-lg bg-[#FDFBF7] text-[#0F172A] hover:bg-[#F1E6D2] border border-[#E5D5BC] text-[11px] transition-colors cursor-pointer"
+                  >
+                    {topic}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
 
-          {/* AI Streaming Loading View */}
+          {/* Dialogue Conversation Thread */}
+          {scholarHistory.length > 0 && (
+            <div className="space-y-5">
+              {scholarHistory.map((item, idx) => (
+                <div key={item.id || idx} className="space-y-3">
+                  {/* User Question */}
+                  <div className="flex items-start justify-end gap-2.5">
+                    <div className="max-w-[85%] rounded-2xl rounded-tr-xs bg-[#0F172A] text-white p-3.5 sm:p-4 shadow-xs space-y-1">
+                      <div className="flex items-center justify-between gap-3 text-[10px] text-amber-200 font-bold uppercase tracking-widest">
+                        <span className="flex items-center gap-1">
+                          <MessageSquare className="w-3 h-3 text-[#DCC398]" /> Question #{idx + 1}
+                        </span>
+                        <span className="text-slate-400 font-normal">{item.timestamp}</span>
+                      </div>
+                      <p className="text-xs sm:text-sm font-medium leading-relaxed">
+                        {item.question}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Scholar Answer */}
+                  <div className="flex items-start gap-2.5">
+                    <div className="w-full rounded-2xl rounded-tl-xs bg-[#FDFBF7] border-l-4 border-[#B48C35] border border-[#E5D5BC] p-4 sm:p-5 space-y-3 shadow-xs">
+                      <div className="flex items-center justify-between gap-2 border-b border-[#E5D5BC]/60 pb-2">
+                        <span className="text-[11px] font-bold uppercase tracking-widest text-[#B48C35] flex items-center gap-1.5">
+                          <BookOpen className="w-3.5 h-3.5 text-[#B48C35]" /> Doctrinal Exposition & Scriptural Basis
+                        </span>
+                        <div className="flex items-center gap-2">
+                          <button
+                            type="button"
+                            onClick={() => onToggleSpeak(item.answer)}
+                            className="px-2 py-1 rounded hover:bg-[#F1E6D2] text-[#0F172A] text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer"
+                            title="Read Aloud"
+                          >
+                            <Volume2 className="w-3.5 h-3.5 text-[#B48C35]" />
+                            <span className="hidden sm:inline">Listen</span>
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              navigator.clipboard.writeText(`Question: ${item.question}\n\nScholar Response:\n${item.answer}`);
+                              setCopiedTurnId(item.id);
+                              setTimeout(() => setCopiedTurnId(null), 2000);
+                            }}
+                            className="px-2 py-1 rounded hover:bg-[#F1E6D2] text-[#0F172A] text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer"
+                            title="Copy Answer"
+                          >
+                            {copiedTurnId === item.id ? (
+                              <>
+                                <Check className="w-3.5 h-3.5 text-emerald-600" />
+                                <span className="text-emerald-700 hidden sm:inline">Copied</span>
+                              </>
+                            ) : (
+                              <>
+                                <Copy className="w-3.5 h-3.5 text-[#B48C35]" />
+                                <span className="hidden sm:inline">Copy</span>
+                              </>
+                            )}
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() =>
+                              onShareItem(
+                                `Theological Study: ${item.question}`,
+                                item.answer,
+                                "Orthodox Doctrine & Biblical Theology",
+                                "The Joy of the Lord Doctrinal Scholar"
+                              )
+                            }
+                            className="p-1 rounded hover:bg-[#F1E6D2] text-[#0F172A] transition-colors cursor-pointer"
+                            title="Share"
+                          >
+                            <Share2 className="w-3.5 h-3.5 text-[#B48C35]" />
+                          </button>
+                        </div>
+                      </div>
+
+                      <div className="text-xs sm:text-sm leading-relaxed text-[#1A2A44] whitespace-pre-line font-serif">
+                        {item.answer}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Active Streaming In-Progress */}
           {isAskingAi && (
-            <div className="pt-2">
+            <div className="space-y-3 pt-2">
+              {currentAskingQuestion && (
+                <div className="flex items-start justify-end gap-2.5">
+                  <div className="max-w-[85%] rounded-2xl rounded-tr-xs bg-[#0F172A] text-white p-3.5 sm:p-4 shadow-xs space-y-1">
+                    <div className="text-[10px] text-amber-200 font-bold uppercase tracking-widest flex items-center gap-1">
+                      <MessageSquare className="w-3 h-3 text-[#DCC398]" /> Question #{scholarHistory.length + 1}
+                    </div>
+                    <p className="text-xs sm:text-sm font-medium leading-relaxed">
+                      {currentAskingQuestion}
+                    </p>
+                  </div>
+                </div>
+              )}
+
               <AiFastLoadingView
                 progress={streamingProgress}
                 title="Consulting Doctrinal & Theological Scholar"
@@ -1264,22 +1425,54 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
             </div>
           )}
 
-          {/* AI Answer Card */}
-          {aiAnswer && (
-            <div className="p-5 rounded-lg bg-[#FDFBF7] border-l-4 border-[#B48C35] border border-[#E5D5BC] space-y-2.5 animate-in fade-in duration-200">
+          {/* FOLLOW-UP QUESTION FORM (ALWAYS ACTIVE AND ACCESSIBLE) */}
+          {(scholarHistory.length > 0 || aiAnswer) && !isAskingAi && (
+            <div className="pt-3 border-t border-[#E5D5BC] space-y-3">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold uppercase tracking-widest text-[#B48C35] flex items-center gap-1.5">
-                  <BookOpen className="w-3.5 h-3.5 text-[#B48C35]" /> Grounded Biblical & Theological Insight:
+                <span className="text-[11px] font-bold uppercase tracking-widest text-[#0F172A] flex items-center gap-1.5">
+                  <MessageSquare className="w-3.5 h-3.5 text-[#B48C35]" /> Ask a Follow-up Question
                 </span>
-                <button
-                  onClick={() => onToggleSpeak(aiAnswer)}
-                  className="text-xs text-[#0F172A] hover:underline font-bold uppercase tracking-widest flex items-center gap-1"
-                >
-                  <Volume2 className="w-3.5 h-3.5 text-[#B48C35]" /> Read Aloud
-                </button>
+                <span className="text-[11px] text-slate-500">Continue this study seamlessly</span>
               </div>
-              <div className="text-xs sm:text-sm leading-relaxed text-[#1A2A44] whitespace-pre-line font-serif">
-                {aiAnswer}
+
+              <form onSubmit={handleAskDoctrinalAi} className="flex flex-col sm:flex-row gap-2">
+                <input
+                  type="text"
+                  placeholder="Ask a follow-up (e.g. 'Can you provide scriptural cross-references?', 'How do I apply this in prayer?')..."
+                  value={followUpQuestion}
+                  onChange={(e) => setFollowUpQuestion(e.target.value)}
+                  className="flex-1 px-3.5 py-3 bg-[#FDFBF7] border border-[#E5D5BC] rounded-xl text-xs sm:text-sm text-[#1A2A44] placeholder:text-slate-400 focus:outline-hidden focus:border-[#B48C35] shadow-xs"
+                />
+                <button
+                  type="submit"
+                  disabled={isAskingAi || !followUpQuestion.trim()}
+                  className="py-3 px-6 rounded-xl bg-[#0F172A] hover:bg-[#B48C35] disabled:opacity-50 text-white font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-1.5 transition-all shrink-0 shadow-xs cursor-pointer"
+                >
+                  <Send className="w-4 h-4 text-[#DCC398]" />
+                  <span>Send Follow-Up</span>
+                </button>
+              </form>
+
+              {/* Follow-up prompt quick chips */}
+              <div className="flex flex-wrap items-center gap-1.5 text-xs">
+                <span className="text-[#64748B] text-[11px] font-bold uppercase">Follow-up Suggestions:</span>
+                {[
+                  "Provide scriptural cross-references",
+                  "How does this apply practically in daily prayer and warfare?",
+                  "What did the early church fathers teach on this?",
+                  "What are common theological misconceptions or heresies about this?"
+                ].map((sugg, i) => (
+                  <button
+                    key={i}
+                    onClick={() => {
+                      setFollowUpQuestion(sugg);
+                      handleAskDoctrinalAi(undefined, sugg);
+                    }}
+                    className="px-2.5 py-1 rounded-lg bg-[#FDFBF7] text-[#0F172A] hover:bg-[#F1E6D2] border border-[#E5D5BC] text-[11px] transition-colors cursor-pointer"
+                  >
+                    {sugg}
+                  </button>
+                ))}
               </div>
             </div>
           )}

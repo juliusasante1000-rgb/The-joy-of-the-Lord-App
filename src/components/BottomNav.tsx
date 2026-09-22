@@ -69,9 +69,6 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange, on
   const handleSelectTab = (tabId: TabType) => {
     onTabChange(tabId);
     setIsMoreSheetOpen(false);
-    requestAnimationFrame(() => {
-      window.scrollTo({ top: 0, behavior: "instant" as any });
-    });
   };
 
   return (
