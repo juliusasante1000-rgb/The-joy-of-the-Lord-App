@@ -114,6 +114,62 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
   const [streamingProgress, setStreamingProgress] = useState(25);
   const [scholarHistory, setScholarHistory] = useState<ScholarExchange[]>([]);
   const [copiedTurnId, setCopiedTurnId] = useState<string | null>(null);
+  const [scholarTheme, setScholarTheme] = useState<"parchment" | "midnight" | "royal" | "morning">("parchment");
+
+  const scholarThemeConfig = {
+    parchment: {
+      wrapper: "bg-gradient-to-br from-[#FDFBF7] via-[#FAF4EA] to-[#F3E8D4] border-2 border-[#DCC398] text-[#2A1F13] shadow-md",
+      headerBorder: "border-[#DCC398]/60",
+      titleColor: "text-[#0F172A]",
+      subColor: "text-[#64748B]",
+      userBubble: "bg-[#0F172A] text-white",
+      answerCard: "bg-white/95 border border-[#E5D5BC] border-l-4 border-l-[#B48C35] text-[#1A2A44] shadow-xs",
+      answerText: "text-[#1A2A44]",
+      badge: "bg-[#F1E6D2] text-[#B48C35] border border-[#DCC398]",
+      btn: "hover:bg-[#F1E6D2] text-[#0F172A]",
+      icon: "text-[#B48C35]",
+      inputBg: "bg-white border-[#E5D5BC] text-[#1A2A44]"
+    },
+    midnight: {
+      wrapper: "bg-gradient-to-br from-[#0B1120] via-[#16235A] to-[#0A102D] border-2 border-[#B48C35]/50 text-slate-100 shadow-2xl",
+      headerBorder: "border-white/15",
+      titleColor: "text-white",
+      subColor: "text-slate-300",
+      userBubble: "bg-[#B48C35] text-white",
+      answerCard: "bg-[#0F172A]/95 border border-[#B48C35]/40 border-l-4 border-l-[#F59E0B] text-slate-100 shadow-lg",
+      answerText: "text-slate-100",
+      badge: "bg-[#B48C35]/20 text-[#DCC398] border border-[#B48C35]/40",
+      btn: "hover:bg-white/10 text-slate-200",
+      icon: "text-[#F59E0B]",
+      inputBg: "bg-[#0E1726] border-[#B48C35]/40 text-white placeholder:text-slate-400"
+    },
+    royal: {
+      wrapper: "bg-gradient-to-br from-[#1E1B4B] via-[#2E1065] to-[#172554] border-2 border-amber-400/40 text-amber-50 shadow-2xl",
+      headerBorder: "border-amber-400/20",
+      titleColor: "text-amber-100",
+      subColor: "text-purple-200",
+      userBubble: "bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-bold",
+      answerCard: "bg-[#1E1B4B]/95 border border-purple-400/30 border-l-4 border-l-amber-400 text-purple-50 shadow-lg",
+      answerText: "text-purple-50",
+      badge: "bg-amber-400/20 text-amber-300 border border-amber-400/40",
+      btn: "hover:bg-white/10 text-amber-200",
+      icon: "text-amber-400",
+      inputBg: "bg-[#161338] border-purple-400/40 text-amber-100 placeholder:text-purple-300"
+    },
+    morning: {
+      wrapper: "bg-gradient-to-br from-[#FFFBEB] via-[#FEF3C7] to-[#FDE68A]/40 border-2 border-amber-300 text-[#451A03] shadow-md",
+      headerBorder: "border-amber-300/60",
+      titleColor: "text-[#451A03]",
+      subColor: "text-[#78350F]",
+      userBubble: "bg-[#451A03] text-amber-100",
+      answerCard: "bg-white/95 border border-amber-200 border-l-4 border-l-amber-600 text-[#451A03] shadow-xs",
+      answerText: "text-[#451A03]",
+      badge: "bg-amber-100 text-amber-800 border border-amber-300",
+      btn: "hover:bg-amber-100 text-[#451A03]",
+      icon: "text-amber-700",
+      inputBg: "bg-white border-amber-300 text-[#451A03] placeholder:text-amber-600/60"
+    }
+  };
 
   useEffect(() => {
     const cached = getCachedAiHistory<{ question: string; answer: string }>("joy_doctrine_ai_history");
@@ -1199,39 +1255,59 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
 
       {/* VIEW: DEDICATED AI DOCTRINAL ASSISTANT */}
       {(activeViewMode === "askAi" || aiAnswer || scholarHistory.length > 0 || isAskingAi) && (
-        <div className="p-5 sm:p-6 rounded-2xl bg-white border border-[#E5D5BC] shadow-xs space-y-5">
-          {/* Header */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#E5D5BC]">
+        <div className={`p-5 sm:p-6 rounded-2xl transition-all duration-300 space-y-5 ${scholarThemeConfig[scholarTheme].wrapper}`}>
+          {/* Header & Theme Switcher */}
+          <div className={`flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b ${scholarThemeConfig[scholarTheme].headerBorder}`}>
             <div className="flex items-center gap-2.5">
-              <div className="p-2 rounded-xl bg-[#F1E6D2] text-[#B48C35] border border-[#DCC398]">
+              <div className={`p-2 rounded-xl border ${scholarThemeConfig[scholarTheme].badge}`}>
                 <Sparkles className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-sm font-bold uppercase tracking-widest text-[#0F172A] flex items-center gap-2">
+                <h3 className={`text-sm font-bold uppercase tracking-widest flex items-center gap-2 ${scholarThemeConfig[scholarTheme].titleColor}`}>
                   <span>Doctrinal & Theological Scholar</span>
                   {scholarHistory.length > 0 && (
-                    <span className="px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 text-[10px] font-mono font-bold lowercase">
+                    <span className="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-[10px] font-mono font-bold lowercase">
                       {scholarHistory.length} {scholarHistory.length === 1 ? "inquiry" : "inquiries"}
                     </span>
                   )}
                 </h3>
-                <p className="text-xs text-[#64748B]">
+                <p className={`text-xs ${scholarThemeConfig[scholarTheme].subColor}`}>
                   Interactive theological dialogue grounded in Holy Scripture, 500 Systematic Topics, and orthodox theology
                 </p>
               </div>
             </div>
 
-            {scholarHistory.length > 0 && (
-              <button
-                type="button"
-                onClick={handleClearScholarHistory}
-                className="self-start sm:self-auto px-3 py-1.5 rounded-lg border border-slate-200 hover:border-red-300 hover:bg-red-50 text-slate-500 hover:text-red-700 text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
-                title="Clear thread and start fresh"
-              >
-                <Trash2 className="w-3.5 h-3.5" />
-                <span>New Topic / Clear</span>
-              </button>
-            )}
+            <div className="flex items-center gap-2 self-start sm:self-auto flex-wrap">
+              {/* Theme Switcher Bar */}
+              <div className="flex items-center gap-1 bg-black/10 backdrop-blur-xs p-1 rounded-xl border border-black/10">
+                {(["parchment", "midnight", "royal", "morning"] as const).map((t) => (
+                  <button
+                    key={t}
+                    type="button"
+                    onClick={() => setScholarTheme(t)}
+                    className={`px-2 py-1 rounded-lg text-[10px] font-bold uppercase transition-all cursor-pointer ${
+                      scholarTheme === t
+                        ? "bg-[#B48C35] text-white shadow-xs"
+                        : "text-slate-500 hover:text-black dark:text-slate-300"
+                    }`}
+                  >
+                    {t === "parchment" ? "📜 Parchment" : t === "midnight" ? "🌌 Midnight" : t === "royal" ? "👑 Royal" : "☀️ Morning"}
+                  </button>
+                ))}
+              </div>
+
+              {scholarHistory.length > 0 && (
+                <button
+                  type="button"
+                  onClick={handleClearScholarHistory}
+                  className="px-3 py-1.5 rounded-lg border border-slate-300/40 hover:border-red-400 hover:bg-red-500/10 text-slate-500 hover:text-red-500 text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+                  title="Clear thread and start fresh"
+                >
+                  <Trash2 className="w-3.5 h-3.5" />
+                  <span>New Topic</span>
+                </button>
+              )}
+            </div>
           </div>
 
           {/* If no history yet and not asking: Initial prominent inquiry form */}
@@ -1243,7 +1319,7 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
                   placeholder="Ask a theological or doctrinal question (e.g. 'Explain the Blood Covenant', 'What are spiritual altars?', 'Trinity vs modalism')..."
                   value={aiQuestion}
                   onChange={(e) => setAiQuestion(e.target.value)}
-                  className="flex-1 px-3.5 py-3 bg-[#FDFBF7] border border-[#E5D5BC] rounded-xl text-xs sm:text-sm text-[#1A2A44] placeholder:text-slate-400 focus:outline-hidden focus:border-[#B48C35] shadow-xs"
+                  className={`flex-1 px-3.5 py-3 rounded-xl text-xs sm:text-sm border focus:outline-hidden focus:border-[#B48C35] shadow-xs ${scholarThemeConfig[scholarTheme].inputBg}`}
                 />
                 <button
                   type="submit"
@@ -1257,7 +1333,7 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
 
               {/* Prompt suggestions */}
               <div className="flex flex-wrap items-center gap-1.5 text-xs pt-1">
-                <span className="text-[#64748B] text-[11px] font-bold uppercase">Quick Topics:</span>
+                <span className={`text-[11px] font-bold uppercase ${scholarThemeConfig[scholarTheme].subColor}`}>Quick Topics:</span>
                 {[
                   "Explain the Mystery of the Blood Covenant",
                   "What are spiritual altars and how to break ungodly altars?",
@@ -1272,7 +1348,7 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
                       setAiQuestion(topic);
                       handleAskDoctrinalAi(undefined, topic);
                     }}
-                    className="px-2.5 py-1 rounded-lg bg-[#FDFBF7] text-[#0F172A] hover:bg-[#F1E6D2] border border-[#E5D5BC] text-[11px] transition-colors cursor-pointer"
+                    className={`px-2.5 py-1 rounded-lg text-[11px] transition-colors cursor-pointer border ${scholarThemeConfig[scholarTheme].badge} hover:opacity-80`}
                   >
                     {topic}
                   </button>
@@ -1288,12 +1364,12 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
                 <div key={item.id || idx} className="space-y-3">
                   {/* User Question */}
                   <div className="flex items-start justify-end gap-2.5">
-                    <div className="max-w-[85%] rounded-2xl rounded-tr-xs bg-[#0F172A] text-white p-3.5 sm:p-4 shadow-xs space-y-1">
+                    <div className={`max-w-[85%] rounded-2xl rounded-tr-xs p-3.5 sm:p-4 shadow-xs space-y-1 ${scholarThemeConfig[scholarTheme].userBubble}`}>
                       <div className="flex items-center justify-between gap-3 text-[10px] text-amber-200 font-bold uppercase tracking-widest">
                         <span className="flex items-center gap-1">
                           <MessageSquare className="w-3 h-3 text-[#DCC398]" /> Question #{idx + 1}
                         </span>
-                        <span className="text-slate-400 font-normal">{item.timestamp}</span>
+                        <span className="opacity-70 font-normal">{item.timestamp}</span>
                       </div>
                       <p className="text-xs sm:text-sm font-medium leading-relaxed">
                         {item.question}
@@ -1303,8 +1379,8 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
 
                   {/* Scholar Answer */}
                   <div className="flex items-start gap-2.5">
-                    <div className="w-full rounded-2xl rounded-tl-xs bg-[#FDFBF7] border-l-4 border-[#B48C35] border border-[#E5D5BC] p-4 sm:p-5 space-y-3 shadow-xs">
-                      <div className="flex items-center justify-between gap-2 border-b border-[#E5D5BC]/60 pb-2">
+                    <div className={`w-full rounded-2xl rounded-tl-xs p-4 sm:p-5 space-y-3 shadow-xs ${scholarThemeConfig[scholarTheme].answerCard}`}>
+                      <div className={`flex items-center justify-between gap-2 border-b pb-2 ${scholarThemeConfig[scholarTheme].headerBorder}`}>
                         <span className="text-[11px] font-bold uppercase tracking-widest text-[#B48C35] flex items-center gap-1.5">
                           <BookOpen className="w-3.5 h-3.5 text-[#B48C35]" /> Doctrinal Exposition & Scriptural Basis
                         </span>
@@ -1312,10 +1388,10 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
                           <button
                             type="button"
                             onClick={() => onToggleSpeak(item.answer)}
-                            className="px-2 py-1 rounded hover:bg-[#F1E6D2] text-[#0F172A] text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer"
+                            className={`px-2 py-1 rounded text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer ${scholarThemeConfig[scholarTheme].btn}`}
                             title="Read Aloud"
                           >
-                            <Volume2 className="w-3.5 h-3.5 text-[#B48C35]" />
+                            <Volume2 className={`w-3.5 h-3.5 ${scholarThemeConfig[scholarTheme].icon}`} />
                             <span className="hidden sm:inline">Listen</span>
                           </button>
                           <button
@@ -1325,7 +1401,7 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
                               setCopiedTurnId(item.id);
                               setTimeout(() => setCopiedTurnId(null), 2000);
                             }}
-                            className="px-2 py-1 rounded hover:bg-[#F1E6D2] text-[#0F172A] text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer"
+                            className={`px-2 py-1 rounded text-xs font-semibold flex items-center gap-1 transition-colors cursor-pointer ${scholarThemeConfig[scholarTheme].btn}`}
                             title="Copy Answer"
                           >
                             {copiedTurnId === item.id ? (
@@ -1335,7 +1411,7 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
                               </>
                             ) : (
                               <>
-                                <Copy className="w-3.5 h-3.5 text-[#B48C35]" />
+                                <Copy className={`w-3.5 h-3.5 ${scholarThemeConfig[scholarTheme].icon}`} />
                                 <span className="hidden sm:inline">Copy</span>
                               </>
                             )}
@@ -1350,15 +1426,15 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
                                 "The Joy of the Lord Doctrinal Scholar"
                               )
                             }
-                            className="p-1 rounded hover:bg-[#F1E6D2] text-[#0F172A] transition-colors cursor-pointer"
+                            className={`p-1 rounded transition-colors cursor-pointer ${scholarThemeConfig[scholarTheme].btn}`}
                             title="Share"
                           >
-                            <Share2 className="w-3.5 h-3.5 text-[#B48C35]" />
+                            <Share2 className={`w-3.5 h-3.5 ${scholarThemeConfig[scholarTheme].icon}`} />
                           </button>
                         </div>
                       </div>
 
-                      <div className="text-xs sm:text-sm leading-relaxed text-[#1A2A44] whitespace-pre-line font-serif">
+                      <div className={`text-xs sm:text-sm leading-relaxed whitespace-pre-line font-serif ${scholarThemeConfig[scholarTheme].answerText}`}>
                         {item.answer}
                       </div>
                     </div>
@@ -1373,7 +1449,7 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
             <div className="space-y-3 pt-2">
               {currentAskingQuestion && (
                 <div className="flex items-start justify-end gap-2.5">
-                  <div className="max-w-[85%] rounded-2xl rounded-tr-xs bg-[#0F172A] text-white p-3.5 sm:p-4 shadow-xs space-y-1">
+                  <div className={`max-w-[85%] rounded-2xl rounded-tr-xs p-3.5 sm:p-4 shadow-xs space-y-1 ${scholarThemeConfig[scholarTheme].userBubble}`}>
                     <div className="text-[10px] text-amber-200 font-bold uppercase tracking-widest flex items-center gap-1">
                       <MessageSquare className="w-3 h-3 text-[#DCC398]" /> Question #{scholarHistory.length + 1}
                     </div>
@@ -1427,12 +1503,12 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
 
           {/* FOLLOW-UP QUESTION FORM (ALWAYS ACTIVE AND ACCESSIBLE) */}
           {(scholarHistory.length > 0 || aiAnswer) && !isAskingAi && (
-            <div className="pt-3 border-t border-[#E5D5BC] space-y-3">
+            <div className={`pt-3 border-t space-y-3 ${scholarThemeConfig[scholarTheme].headerBorder}`}>
               <div className="flex items-center justify-between">
-                <span className="text-[11px] font-bold uppercase tracking-widest text-[#0F172A] flex items-center gap-1.5">
+                <span className={`text-[11px] font-bold uppercase tracking-widest flex items-center gap-1.5 ${scholarThemeConfig[scholarTheme].titleColor}`}>
                   <MessageSquare className="w-3.5 h-3.5 text-[#B48C35]" /> Ask a Follow-up Question
                 </span>
-                <span className="text-[11px] text-slate-500">Continue this study seamlessly</span>
+                <span className={`text-[11px] ${scholarThemeConfig[scholarTheme].subColor}`}>Continue this study seamlessly</span>
               </div>
 
               <form onSubmit={handleAskDoctrinalAi} className="flex flex-col sm:flex-row gap-2">
@@ -1441,7 +1517,7 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
                   placeholder="Ask a follow-up (e.g. 'Can you provide scriptural cross-references?', 'How do I apply this in prayer?')..."
                   value={followUpQuestion}
                   onChange={(e) => setFollowUpQuestion(e.target.value)}
-                  className="flex-1 px-3.5 py-3 bg-[#FDFBF7] border border-[#E5D5BC] rounded-xl text-xs sm:text-sm text-[#1A2A44] placeholder:text-slate-400 focus:outline-hidden focus:border-[#B48C35] shadow-xs"
+                  className={`flex-1 px-3.5 py-3 rounded-xl text-xs sm:text-sm border focus:outline-hidden focus:border-[#B48C35] shadow-xs ${scholarThemeConfig[scholarTheme].inputBg}`}
                 />
                 <button
                   type="submit"
@@ -1455,7 +1531,7 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
 
               {/* Follow-up prompt quick chips */}
               <div className="flex flex-wrap items-center gap-1.5 text-xs">
-                <span className="text-[#64748B] text-[11px] font-bold uppercase">Follow-up Suggestions:</span>
+                <span className={`text-[11px] font-bold uppercase ${scholarThemeConfig[scholarTheme].subColor}`}>Follow-up Suggestions:</span>
                 {[
                   "Provide scriptural cross-references",
                   "How does this apply practically in daily prayer and warfare?",
@@ -1468,7 +1544,7 @@ export const DoctrinesTab: React.FC<DoctrinesTabProps> = ({
                       setFollowUpQuestion(sugg);
                       handleAskDoctrinalAi(undefined, sugg);
                     }}
-                    className="px-2.5 py-1 rounded-lg bg-[#FDFBF7] text-[#0F172A] hover:bg-[#F1E6D2] border border-[#E5D5BC] text-[11px] transition-colors cursor-pointer"
+                    className={`px-2.5 py-1 rounded-lg text-[11px] transition-colors cursor-pointer border ${scholarThemeConfig[scholarTheme].badge} hover:opacity-80`}
                   >
                     {sugg}
                   </button>

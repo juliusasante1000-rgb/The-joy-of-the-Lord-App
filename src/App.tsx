@@ -81,15 +81,20 @@ const TabPane = React.memo(
     );
   },
   (prevProps, nextProps) => {
-    // If it was inactive and remains inactive, and isVisited didn't change: DO NOT RE-RENDER
+    // If inactive before and inactive now, and visited state didn't change: never re-render
     if (!prevProps.isActive && !nextProps.isActive && prevProps.isVisited === nextProps.isVisited) {
       return true;
     }
-    // If active status changed or it is currently active: re-render
+    // If active state changed: re-render to show/hide
     if (prevProps.isActive !== nextProps.isActive) {
       return false;
     }
-    return false;
+    // If visited state changed: re-render
+    if (prevProps.isVisited !== nextProps.isVisited) {
+      return false;
+    }
+    // If children unchanged: do not re-render
+    return prevProps.children === nextProps.children;
   }
 );
 
@@ -99,19 +104,6 @@ export function App() {
   const [visitedTabs, setVisitedTabs] = useState<Set<string>>(
     () => new Set(["home"])
   );
-
-  // Progressive idle pre-warming: Mount tabs after initial frame so clicking ANY navigation icon is 100% instantaneous
-  useEffect(() => {
-    const allTabKeys = [
-      "home", "bible", "spiritual_places", "places", "apostle_math", "math",
-      "mathema_sermons", "rhema", "joy_overcoming", "hymnals", "library",
-      "books", "prayer", "prayers", "creator", "about", "quotes", "doctrines"
-    ];
-    const timer = setTimeout(() => {
-      setVisitedTabs(new Set(allTabKeys));
-    }, 250);
-    return () => clearTimeout(timer);
-  }, []);
 
   const handleNavigateTab = useCallback((tab: TabType) => {
     // Instant, synchronous tab state switch - zero delay

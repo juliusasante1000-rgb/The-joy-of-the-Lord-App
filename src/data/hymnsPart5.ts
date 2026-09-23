@@ -1,7 +1,7 @@
 import { HymnItem } from "../types";
 
 /**
- * Authentic Christian Hymnals: Collection Part 5 (Hymns #401 to #500)
+ * Authentic Christian Hymnals: Collection Part 5
  * Every hymn contains complete authentic stanzas, historical stories, and theological anchors.
  */
 export const HYMNS_PART_5: HymnItem[] = [
@@ -17,11 +17,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "10.4's",
     "keySignature": "F Major",
     "scriptureAnchor": {
-      "reference": "Psalm 46:1-2",
-      "text": "God is our refuge and strength, a very present help in trouble. Therefore will not we fear.",
-      "book": "Psalms",
-      "chapter": 46,
-      "verse": 1
+      "reference": "Galatians 2:20",
+      "text": "I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me.",
+      "book": "Galatians",
+      "chapter": 2,
+      "verse": 20
     },
     "stanzas": [
       {
@@ -46,8 +46,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Composed during the great revival movements of the eighteenth and nineteenth centuries, this sacred hymn was born out of an intense longing for deeper holiness and unswerving trust in God's promises. Sung by congregations, prayer meetings, and open-air gospel gatherings across the world, its stirring lines continue to point troubled hearts toward the anchor of Christ's cross.",
-    "theologicalInsight": "Anchored in Psalm 46:1-2, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Glory to Thee; Thou Son of God most High\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Galatians 2:20 and 1 Peter 1:18-19, \"Glory to Thee; Thou Son of God most High\" centers upon the finished work of Christ at the cross. It proclaims that true Christian liberty and eternal life flow exclusively from the shed blood of Jesus, which disarms demonic powers, cancels the debt of sin, and ushers the believer into holy resurrection victory.",
+    "devotionalPrayer": "Lord Jesus, as I meditate upon the sacred truth of \"Glory to Thee; Thou Son of God most High\", I turn my eyes to Calvary. Thank You for taking my place, enduring the cross, and securing my eternal redemption. Let the power of Your blood cleanse my conscience and empower me to walk in resurrection life today. Amen.",
     "tags": [
       "Cross & Resurrection",
       "Classic Hymn",
@@ -97,11 +97,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "L.M.",
     "keySignature": "D Major",
     "scriptureAnchor": {
-      "reference": "2 Corinthians 5:17",
-      "text": "Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new.",
-      "book": "2 Corinthians",
-      "chapter": 5,
-      "verse": 17
+      "reference": "Psalm 103:1-4",
+      "text": "Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.",
+      "book": "Psalms",
+      "chapter": 103,
+      "verse": 1
     },
     "stanzas": [
       {
@@ -126,8 +126,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Written by Horatius Bonar and cherished across generations of Christian hymnody, this anthem reflects a pivotal moment of spiritual surrender and adoration. Drawing directly upon the promises of Scripture, it captures the believer's steadfast confidence in the sovereignty, mercy, and lovingkindness of God in every season of life.",
-    "theologicalInsight": "Anchored in 2 Corinthians 5:17, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Go, labour on; spend, and be spent;\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Psalm 103:1-4 and Revelation 19:6, \"Go, labour on; spend, and be spent;\" lifts the soul above earthly burdens into the majestic atmosphere of divine praise. It declares the unmatched greatness, sovereignty, and everlasting lovingkindness of God, summoning every faculty of the believer to worship Him in spirit and in truth.",
+    "devotionalPrayer": "Sovereign God, my heart rejoices in the words of \"Go, labour on; spend, and be spent;\". I worship You as the King of glory and Lord of all creation. Let my speech, thoughts, and deeds be a sweet-smelling savor of praise unto You, exalting Your holy Name before a watching world. Through Christ our Lord, Amen.",
     "tags": [
       "Praise & Adoration",
       "Classic Hymn",
@@ -178,7 +178,7 @@ export const HYMNS_PART_5: HymnItem[] = [
     "keySignature": "Eb Major",
     "scriptureAnchor": {
       "reference": "Colossians 3:16",
-      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs.",
+      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs, singing with grace in your hearts to the Lord.",
       "book": "Colossians",
       "chapter": 3,
       "verse": 16
@@ -206,8 +206,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Written in 1890 by Samuel Trevor Francis, author of 'O the Deep, Deep Love of Jesus'. Francis, a London merchant and street preacher who experienced a profound deliverance from suicide as a young man, composed this reverent prayer to lead congregations into holy adoration of God's sovereign grace.",
-    "theologicalInsight": "Anchored in Colossians 3:16, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Gracious God, we worship Thee\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Colossians 3:16, \"Gracious God, we worship Thee\" stands as a vibrant testimony of apostolic faith. It teaches and admonishes the church in the eternal verities of the Gospel, encouraging the believer to walk worthy of the high calling of God in Christ Jesus with steadfast joy and unwavering obedience.",
+    "devotionalPrayer": "Lord God of our fathers, let the timeless truth expressed in \"Gracious God, we worship Thee\" dwell richly in my heart. Grant me spiritual discernment to recognize Your guidance, humility to serve my fellow believers, and holy zeal to fulfill Your purpose in my generation. Through Jesus Christ our Lord, Amen.",
     "tags": [
       "Grace & Redemption",
       "Classic Hymn",
@@ -257,11 +257,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "7.6.7.6.D.",
     "keySignature": "C Major",
     "scriptureAnchor": {
-      "reference": "1 Peter 1:18-19",
-      "text": "Knowing that ye were not redeemed with corruptible things... but with the precious blood of Christ, as of a lamb without blemish.",
-      "book": "1 Peter",
-      "chapter": 1,
-      "verse": 19
+      "reference": "Psalm 103:1-4",
+      "text": "Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.",
+      "book": "Psalms",
+      "chapter": 103,
+      "verse": 1
     },
     "stanzas": [
       {
@@ -282,8 +282,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Penned by James Montgomery, this treasured hymn was birthed in a season of fervent prayer and contemplation upon the majesty of the Redeemer. Across continents and church traditions, believers have drawn courage and spiritual resolve from its lines when facing adversity, standing firm upon God's unchanging Word.",
-    "theologicalInsight": "Anchored in 1 Peter 1:18-19, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Hail to the Lord's Anointed\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Psalm 103:1-4 and Revelation 19:6, \"Hail to the Lord's Anointed\" lifts the soul above earthly burdens into the majestic atmosphere of divine praise. It declares the unmatched greatness, sovereignty, and everlasting lovingkindness of God, summoning every faculty of the believer to worship Him in spirit and in truth.",
+    "devotionalPrayer": "Sovereign God, my heart rejoices in the words of \"Hail to the Lord's Anointed\". I worship You as the King of glory and Lord of all creation. Let my speech, thoughts, and deeds be a sweet-smelling savor of praise unto You, exalting Your holy Name before a watching world. Through Christ our Lord, Amen.",
     "tags": [
       "Praise & Adoration",
       "Classic Hymn",
@@ -333,11 +333,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "P.M.",
     "keySignature": "Bb Major",
     "scriptureAnchor": {
-      "reference": "Psalm 100:1-3",
-      "text": "Make a joyful noise unto the LORD, all ye lands. Serve the LORD with gladness: come before his presence with singing.",
-      "book": "Psalms",
-      "chapter": 100,
-      "verse": 2
+      "reference": "Philippians 4:6-7",
+      "text": "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God. And the peace of God, which passeth all understanding, shall keep your hearts and minds through Christ Jesus.",
+      "book": "Philippians",
+      "chapter": 4,
+      "verse": 6
     },
     "stanzas": [
       {
@@ -355,8 +355,8 @@ export const HYMNS_PART_5: HymnItem[] = [
     ],
     "chorus": "I am He that liveth, that liveth, and was dead;\nAnd behold, . . I am alive . . for evermore, . .\nBehold, . . I am alive . . for evermore . . .\nI am He that liveth, that liveth. And was dead;\nAnd behold, . . I am alive . . for evermore.",
     "historicalStory": "Composed during the great revival movements of the eighteenth and nineteenth centuries, this sacred hymn was born out of an intense longing for deeper holiness and unswerving trust in God's promises. Sung by congregations, prayer meetings, and open-air gospel gatherings across the world, its stirring lines continue to point troubled hearts toward the anchor of Christ's cross.",
-    "theologicalInsight": "Anchored in Psalm 100:1-3, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"He dies! He dies! The lowly Man of sorrows\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Philippians 4:6-7 and Isaiah 26:3, \"He dies! He dies! The lowly Man of sorrows\" ministers supernatural balm to the troubled heart. It assures the believer that no valley of shadow is walked alone; Christ walks alongside us, bearing our griefs, quieting our anxieties, and guaranteeing that weeping may endure for a night, but joy cometh in the morning.",
+    "devotionalPrayer": "Father of mercies and God of all comfort, let the peace of Christ rule in my heart today as I dwell on \"He dies! He dies! The lowly Man of sorrows\". When storms rage around me, anchor my thoughts upon Your covenant promises and let me rest securely in Your unfailing embrace. Amen.",
     "tags": [
       "Grace & Redemption",
       "Classic Hymn",
@@ -406,11 +406,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "12.11.12.11.",
     "keySignature": "Ab Major",
     "scriptureAnchor": {
-      "reference": "Ephesians 2:8-9",
-      "text": "For by grace are ye saved through faith; and that not of yourselves: it is the gift of God.",
-      "book": "Ephesians",
-      "chapter": 2,
-      "verse": 8
+      "reference": "Colossians 3:16",
+      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs, singing with grace in your hearts to the Lord.",
+      "book": "Colossians",
+      "chapter": 3,
+      "verse": 16
     },
     "stanzas": [
       {
@@ -427,8 +427,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Written by Annie Johnson Flint and cherished across generations of Christian hymnody, this anthem reflects a pivotal moment of spiritual surrender and adoration. Drawing directly upon the promises of Scripture, it captures the believer's steadfast confidence in the sovereignty, mercy, and lovingkindness of God in every season of life.",
-    "theologicalInsight": "Anchored in Ephesians 2:8-9, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"He giveth more grace when the burdens grow greater\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Colossians 3:16, \"He giveth more grace when the burdens grow greater\" stands as a vibrant testimony of apostolic faith. It teaches and admonishes the church in the eternal verities of the Gospel, encouraging the believer to walk worthy of the high calling of God in Christ Jesus with steadfast joy and unwavering obedience.",
+    "devotionalPrayer": "Lord God of our fathers, let the timeless truth expressed in \"He giveth more grace when the burdens grow greater\" dwell richly in my heart. Grant me spiritual discernment to recognize Your guidance, humility to serve my fellow believers, and holy zeal to fulfill Your purpose in my generation. Through Jesus Christ our Lord, Amen.",
     "tags": [
       "Grace & Redemption",
       "Classic Hymn",
@@ -478,11 +478,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.D.",
     "keySignature": "G Major",
     "scriptureAnchor": {
-      "reference": "Psalm 145:3",
-      "text": "Great is the LORD, and greatly to be praised; and his greatness is unsearchable.",
+      "reference": "Psalm 103:1-4",
+      "text": "Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.",
       "book": "Psalms",
-      "chapter": 145,
-      "verse": 3
+      "chapter": 103,
+      "verse": 1
     },
     "stanzas": [
       {
@@ -504,8 +504,8 @@ export const HYMNS_PART_5: HymnItem[] = [
     ],
     "chorus": "Channels only, blessed Master,\nBut with all Thy wondrous power\nFlowing through us, Thou canst use us\nEvery day and every hour.",
     "historicalStory": "Composed in 1900 by Mary E. Maxwell in England and set to music by Ada Rose under the title 'Channels Only'. Written as a prayer of absolute surrender, Maxwell used the image of a simple clay pipe or channel to declare that the believer desires no glory of their own, but only to be an open conduit for God's blessing.",
-    "theologicalInsight": "Anchored in Psalm 145:3, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"How I praise Thee, precious Saviour!\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Psalm 103:1-4 and Revelation 19:6, \"How I praise Thee, precious Saviour!\" lifts the soul above earthly burdens into the majestic atmosphere of divine praise. It declares the unmatched greatness, sovereignty, and everlasting lovingkindness of God, summoning every faculty of the believer to worship Him in spirit and in truth.",
+    "devotionalPrayer": "Sovereign God, my heart rejoices in the words of \"How I praise Thee, precious Saviour!\". I worship You as the King of glory and Lord of all creation. Let my speech, thoughts, and deeds be a sweet-smelling savor of praise unto You, exalting Your holy Name before a watching world. Through Christ our Lord, Amen.",
     "tags": [
       "Praise & Adoration",
       "Classic Hymn",
@@ -555,11 +555,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "11.10's",
     "keySignature": "F Major",
     "scriptureAnchor": {
-      "reference": "Galatians 6:14",
-      "text": "God forbid that I should boast except in the cross of our Lord Jesus Christ, by whom the world has been crucified to me.",
-      "book": "Galatians",
-      "chapter": 6,
-      "verse": 14
+      "reference": "Colossians 3:16",
+      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs, singing with grace in your hearts to the Lord.",
+      "book": "Colossians",
+      "chapter": 3,
+      "verse": 16
     },
     "stanzas": [
       {
@@ -584,8 +584,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Penned by Lucy Ann Bennett, this treasured hymn was birthed in a season of fervent prayer and contemplation upon the majesty of the Redeemer. Across continents and church traditions, believers have drawn courage and spiritual resolve from its lines when facing adversity, standing firm upon God's unchanging Word.",
-    "theologicalInsight": "Anchored in Galatians 6:14, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"I am the Lord's! O joy beyond expression\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Colossians 3:16, \"I am the Lord's! O joy beyond expression\" stands as a vibrant testimony of apostolic faith. It teaches and admonishes the church in the eternal verities of the Gospel, encouraging the believer to walk worthy of the high calling of God in Christ Jesus with steadfast joy and unwavering obedience.",
+    "devotionalPrayer": "Lord God of our fathers, let the timeless truth expressed in \"I am the Lord's! O joy beyond expression\" dwell richly in my heart. Grant me spiritual discernment to recognize Your guidance, humility to serve my fellow believers, and holy zeal to fulfill Your purpose in my generation. Through Jesus Christ our Lord, Amen.",
     "tags": [
       "Grace & Redemption",
       "Classic Hymn",
@@ -635,11 +635,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "7.6.7.6.D.",
     "keySignature": "D Major",
     "scriptureAnchor": {
-      "reference": "Philippians 4:6-7",
-      "text": "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God.",
-      "book": "Philippians",
-      "chapter": 4,
-      "verse": 6
+      "reference": "Proverbs 3:5-6",
+      "text": "Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths.",
+      "book": "Proverbs",
+      "chapter": 3,
+      "verse": 5
     },
     "stanzas": [
       {
@@ -656,8 +656,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Composed during the great revival movements of the eighteenth and nineteenth centuries, this sacred hymn was born out of an intense longing for deeper holiness and unswerving trust in God's promises. Sung by congregations, prayer meetings, and open-air gospel gatherings across the world, its stirring lines continue to point troubled hearts toward the anchor of Christ's cross.",
-    "theologicalInsight": "Anchored in Philippians 4:6-7, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"In heavenly love abiding\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Proverbs 3:5-6 and Hebrews 11:1, \"In heavenly love abiding\" calls the believer to absolute, childlike reliance upon God's unchanging counsel. When circumstances shift and human understanding fails, this hymn reminds us that God's covenant promises are bedrock, and He never abandons those who put their trust in Him.",
+    "devotionalPrayer": "Faithful Shepherd, through the inspiring lines of \"In heavenly love abiding\", teach me to lean wholly upon Your strength. Dispel every lingering fear, anxiety, and doubt. Guide my steps in paths of righteousness for Your Name's sake, and let my faith remain unshaken in every tempest. In Jesus' Name, Amen.",
     "tags": [
       "Faith & Trust",
       "Classic Hymn",
@@ -707,10 +707,10 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "11.11's",
     "keySignature": "Eb Major",
     "scriptureAnchor": {
-      "reference": "Psalm 23:1-3",
-      "text": "The LORD is my shepherd; I shall not want. He maketh me to lie down in green pastures: he leadeth me beside the still waters.",
+      "reference": "Psalm 103:1-4",
+      "text": "Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.",
       "book": "Psalms",
-      "chapter": 23,
+      "chapter": 103,
       "verse": 1
     },
     "stanzas": [
@@ -732,8 +732,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Written by Walter Chalmers Smith and cherished across generations of Christian hymnody, this anthem reflects a pivotal moment of spiritual surrender and adoration. Drawing directly upon the promises of Scripture, it captures the believer's steadfast confidence in the sovereignty, mercy, and lovingkindness of God in every season of life.",
-    "theologicalInsight": "Anchored in Psalm 23:1-3, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Immortal, invisible, God only wise\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Psalm 103:1-4 and Revelation 19:6, \"Immortal, invisible, God only wise\" lifts the soul above earthly burdens into the majestic atmosphere of divine praise. It declares the unmatched greatness, sovereignty, and everlasting lovingkindness of God, summoning every faculty of the believer to worship Him in spirit and in truth.",
+    "devotionalPrayer": "Sovereign God, my heart rejoices in the words of \"Immortal, invisible, God only wise\". I worship You as the King of glory and Lord of all creation. Let my speech, thoughts, and deeds be a sweet-smelling savor of praise unto You, exalting Your holy Name before a watching world. Through Christ our Lord, Amen.",
     "tags": [
       "Praise & Adoration",
       "Classic Hymn",
@@ -783,11 +783,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "6.4.6.4.D.",
     "keySignature": "C Major",
     "scriptureAnchor": {
-      "reference": "Lamentations 3:22-23",
-      "text": "It is of the LORD's mercies that we are not consumed, because his compassions fail not. They are new every morning: great is thy faithfulness.",
-      "book": "Lamentations",
-      "chapter": 3,
-      "verse": 23
+      "reference": "Psalm 103:1-4",
+      "text": "Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.",
+      "book": "Psalms",
+      "chapter": 103,
+      "verse": 1
     },
     "stanzas": [
       {
@@ -812,8 +812,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Written in 1870 by Caroline Maria Noel, an invalid English poet who spent twenty years bedridden with chronic illness. Noel composed this magnificent Ascension Day processional based on Philippians 2:9-11 to help patients and worshippers confess the universal, unbending sovereignty of the Name of Jesus.",
-    "theologicalInsight": "Anchored in Lamentations 3:22-23, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"In the name of Jesus every knee shall bow\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Psalm 103:1-4 and Revelation 19:6, \"In the name of Jesus every knee shall bow\" lifts the soul above earthly burdens into the majestic atmosphere of divine praise. It declares the unmatched greatness, sovereignty, and everlasting lovingkindness of God, summoning every faculty of the believer to worship Him in spirit and in truth.",
+    "devotionalPrayer": "Sovereign God, my heart rejoices in the words of \"In the name of Jesus every knee shall bow\". I worship You as the King of glory and Lord of all creation. Let my speech, thoughts, and deeds be a sweet-smelling savor of praise unto You, exalting Your holy Name before a watching world. Through Christ our Lord, Amen.",
     "tags": [
       "Praise & Adoration",
       "Classic Hymn",
@@ -863,11 +863,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.",
     "keySignature": "Bb Major",
     "scriptureAnchor": {
-      "reference": "Hebrews 12:1-2",
-      "text": "Looking unto Jesus the author and finisher of our faith; who for the joy that was set before him endured the cross.",
-      "book": "Hebrews",
-      "chapter": 12,
-      "verse": 2
+      "reference": "Psalm 103:1-4",
+      "text": "Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.",
+      "book": "Psalms",
+      "chapter": 103,
+      "verse": 1
     },
     "stanzas": [
       {
@@ -892,8 +892,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Penned by Cecil Frances (Humphreys) Alexander, this treasured hymn was birthed in a season of fervent prayer and contemplation upon the majesty of the Redeemer. Across continents and church traditions, believers have drawn courage and spiritual resolve from its lines when facing adversity, standing firm upon God's unchanging Word.",
-    "theologicalInsight": "Anchored in Hebrews 12:1-2, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Jesus calls us! o'er the tumult\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Psalm 103:1-4 and Revelation 19:6, \"Jesus calls us! o'er the tumult\" lifts the soul above earthly burdens into the majestic atmosphere of divine praise. It declares the unmatched greatness, sovereignty, and everlasting lovingkindness of God, summoning every faculty of the believer to worship Him in spirit and in truth.",
+    "devotionalPrayer": "Sovereign God, my heart rejoices in the words of \"Jesus calls us! o'er the tumult\". I worship You as the King of glory and Lord of all creation. Let my speech, thoughts, and deeds be a sweet-smelling savor of praise unto You, exalting Your holy Name before a watching world. Through Christ our Lord, Amen.",
     "tags": [
       "Praise & Adoration",
       "Classic Hymn",
@@ -943,11 +943,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.7.7.",
     "keySignature": "Ab Major",
     "scriptureAnchor": {
-      "reference": "Romans 8:38-39",
-      "text": "For I am persuaded, that neither death, nor life, nor angels, nor principalities... shall be able to separate us from the love of God, which is in Christ Jesus our Lord.",
-      "book": "Romans",
-      "chapter": 8,
-      "verse": 38
+      "reference": "Psalm 103:1-4",
+      "text": "Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.",
+      "book": "Psalms",
+      "chapter": 103,
+      "verse": 1
     },
     "stanzas": [
       {
@@ -972,8 +972,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Composed during the great revival movements of the eighteenth and nineteenth centuries, this sacred hymn was born out of an intense longing for deeper holiness and unswerving trust in God's promises. Sung by congregations, prayer meetings, and open-air gospel gatherings across the world, its stirring lines continue to point troubled hearts toward the anchor of Christ's cross.",
-    "theologicalInsight": "Anchored in Romans 8:38-39, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Jesus, Lord, I need Thy presence\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Psalm 103:1-4 and Revelation 19:6, \"Jesus, Lord, I need Thy presence\" lifts the soul above earthly burdens into the majestic atmosphere of divine praise. It declares the unmatched greatness, sovereignty, and everlasting lovingkindness of God, summoning every faculty of the believer to worship Him in spirit and in truth.",
+    "devotionalPrayer": "Sovereign God, my heart rejoices in the words of \"Jesus, Lord, I need Thy presence\". I worship You as the King of glory and Lord of all creation. Let my speech, thoughts, and deeds be a sweet-smelling savor of praise unto You, exalting Your holy Name before a watching world. Through Christ our Lord, Amen.",
     "tags": [
       "Praise & Adoration",
       "Classic Hymn",
@@ -1023,11 +1023,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.D.",
     "keySignature": "G Major",
     "scriptureAnchor": {
-      "reference": "Isaiah 53:5",
-      "text": "He was wounded for our transgressions, he was bruised for our iniquities: the chastisement of our peace was upon him; and with his stripes we are healed.",
-      "book": "Isaiah",
-      "chapter": 53,
-      "verse": 5
+      "reference": "Colossians 3:16",
+      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs, singing with grace in your hearts to the Lord.",
+      "book": "Colossians",
+      "chapter": 3,
+      "verse": 16
     },
     "stanzas": [
       {
@@ -1049,8 +1049,8 @@ export const HYMNS_PART_5: HymnItem[] = [
     ],
     "chorus": "Jesus, I am resting, resting\nIn the joy of what Thou art;\nI am finding out the greatness\nOf Thy loving heart.",
     "historicalStory": "Written by Jean Sophia Pigott and cherished across generations of Christian hymnody, this anthem reflects a pivotal moment of spiritual surrender and adoration. Drawing directly upon the promises of Scripture, it captures the believer's steadfast confidence in the sovereignty, mercy, and lovingkindness of God in every season of life.",
-    "theologicalInsight": "Anchored in Isaiah 53:5, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Jesus, I am resting, resting\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Colossians 3:16, \"Jesus, I am resting, resting\" stands as a vibrant testimony of apostolic faith. It teaches and admonishes the church in the eternal verities of the Gospel, encouraging the believer to walk worthy of the high calling of God in Christ Jesus with steadfast joy and unwavering obedience.",
+    "devotionalPrayer": "Lord God of our fathers, let the timeless truth expressed in \"Jesus, I am resting, resting\" dwell richly in my heart. Grant me spiritual discernment to recognize Your guidance, humility to serve my fellow believers, and holy zeal to fulfill Your purpose in my generation. Through Jesus Christ our Lord, Amen.",
     "tags": [
       "Grace & Redemption",
       "Classic Hymn",
@@ -1100,11 +1100,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.",
     "keySignature": "F Major",
     "scriptureAnchor": {
-      "reference": "Revelation 5:12",
-      "text": "Worthy is the Lamb that was slain to receive power, and riches, and wisdom, and strength, and honour, and glory, and blessing.",
-      "book": "Revelation",
-      "chapter": 5,
-      "verse": 12
+      "reference": "Galatians 2:20",
+      "text": "I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me.",
+      "book": "Galatians",
+      "chapter": 2,
+      "verse": 20
     },
     "stanzas": [
       {
@@ -1129,8 +1129,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Composed in 1881 by Thomas Henry Reynolds of Bristol, England. Written for local assembly fellowship, Reynolds crafted these peaceful lines to unite the hearts of believers gathered in Christian simplicity around the Lord's table to remember the Savior's dying love.",
-    "theologicalInsight": "Anchored in Revelation 5:12, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Jesus, Lord, we come together\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Galatians 2:20 and 1 Peter 1:18-19, \"Jesus, Lord, we come together\" centers upon the finished work of Christ at the cross. It proclaims that true Christian liberty and eternal life flow exclusively from the shed blood of Jesus, which disarms demonic powers, cancels the debt of sin, and ushers the believer into holy resurrection victory.",
+    "devotionalPrayer": "Lord Jesus, as I meditate upon the sacred truth of \"Jesus, Lord, we come together\", I turn my eyes to Calvary. Thank You for taking my place, enduring the cross, and securing my eternal redemption. Let the power of Your blood cleanse my conscience and empower me to walk in resurrection life today. Amen.",
     "tags": [
       "Cross & Resurrection",
       "Classic Hymn",
@@ -1180,11 +1180,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "11.10's",
     "keySignature": "D Major",
     "scriptureAnchor": {
-      "reference": "Psalm 46:1-2",
-      "text": "God is our refuge and strength, a very present help in trouble. Therefore will not we fear.",
-      "book": "Psalms",
-      "chapter": 46,
-      "verse": 1
+      "reference": "Galatians 2:20",
+      "text": "I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me.",
+      "book": "Galatians",
+      "chapter": 2,
+      "verse": 20
     },
     "stanzas": [
       {
@@ -1205,8 +1205,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Penned by Henry d'Arcy Champney, this treasured hymn was birthed in a season of fervent prayer and contemplation upon the majesty of the Redeemer. Across continents and church traditions, believers have drawn courage and spiritual resolve from its lines when facing adversity, standing firm upon God's unchanging Word.",
-    "theologicalInsight": "Anchored in Psalm 46:1-2, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Jesus, our Lord, with what joy we adore Thee\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Galatians 2:20 and 1 Peter 1:18-19, \"Jesus, our Lord, with what joy we adore Thee\" centers upon the finished work of Christ at the cross. It proclaims that true Christian liberty and eternal life flow exclusively from the shed blood of Jesus, which disarms demonic powers, cancels the debt of sin, and ushers the believer into holy resurrection victory.",
+    "devotionalPrayer": "Lord Jesus, as I meditate upon the sacred truth of \"Jesus, our Lord, with what joy we adore Thee\", I turn my eyes to Calvary. Thank You for taking my place, enduring the cross, and securing my eternal redemption. Let the power of Your blood cleanse my conscience and empower me to walk in resurrection life today. Amen.",
     "tags": [
       "Cross & Resurrection",
       "Classic Hymn",
@@ -1256,11 +1256,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "L.M.",
     "keySignature": "Eb Major",
     "scriptureAnchor": {
-      "reference": "2 Corinthians 5:17",
-      "text": "Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new.",
-      "book": "2 Corinthians",
-      "chapter": 5,
-      "verse": 17
+      "reference": "Psalm 103:1-4",
+      "text": "Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.",
+      "book": "Psalms",
+      "chapter": 103,
+      "verse": 1
     },
     "stanzas": [
       {
@@ -1285,8 +1285,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Isaac Watts (1674–1748), heralded as the 'Father of English Hymnody', broke free from the rigid Psalm-singing restrictions of his day to pen deeply doctrinal, Christ-exalting hymns that transformed public congregational worship across the English-speaking world. Penned in deep communion with the Holy Spirit, this sacred hymn stands as a lasting monument of faith, having ministered grace and reassurance to generations of worshipping believers.",
-    "theologicalInsight": "Anchored in 2 Corinthians 5:17, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Jesus shall reign where'er the sun\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Psalm 103:1-4 and Revelation 19:6, \"Jesus shall reign where'er the sun\" lifts the soul above earthly burdens into the majestic atmosphere of divine praise. It declares the unmatched greatness, sovereignty, and everlasting lovingkindness of God, summoning every faculty of the believer to worship Him in spirit and in truth.",
+    "devotionalPrayer": "Sovereign God, my heart rejoices in the words of \"Jesus shall reign where'er the sun\". I worship You as the King of glory and Lord of all creation. Let my speech, thoughts, and deeds be a sweet-smelling savor of praise unto You, exalting Your holy Name before a watching world. Through Christ our Lord, Amen.",
     "tags": [
       "Praise & Adoration",
       "Classic Hymn",
@@ -1336,11 +1336,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "L.M.",
     "keySignature": "C Major",
     "scriptureAnchor": {
-      "reference": "Colossians 3:16",
-      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs.",
-      "book": "Colossians",
-      "chapter": 3,
-      "verse": 16
+      "reference": "Psalm 103:1-4",
+      "text": "Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.",
+      "book": "Psalms",
+      "chapter": 103,
+      "verse": 1
     },
     "stanzas": [
       {
@@ -1365,8 +1365,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Written by Bernard of Clairvaux tr/ad by Ray Palmer (12 c) and cherished across generations of Christian hymnody, this anthem reflects a pivotal moment of spiritual surrender and adoration. Drawing directly upon the promises of Scripture, it captures the believer's steadfast confidence in the sovereignty, mercy, and lovingkindness of God in every season of life.",
-    "theologicalInsight": "Anchored in Colossians 3:16, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Jesus, Thou joy of loving hearts\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Psalm 103:1-4 and Revelation 19:6, \"Jesus, Thou joy of loving hearts\" lifts the soul above earthly burdens into the majestic atmosphere of divine praise. It declares the unmatched greatness, sovereignty, and everlasting lovingkindness of God, summoning every faculty of the believer to worship Him in spirit and in truth.",
+    "devotionalPrayer": "Sovereign God, my heart rejoices in the words of \"Jesus, Thou joy of loving hearts\". I worship You as the King of glory and Lord of all creation. Let my speech, thoughts, and deeds be a sweet-smelling savor of praise unto You, exalting Your holy Name before a watching world. Through Christ our Lord, Amen.",
     "tags": [
       "Praise & Adoration",
       "Classic Hymn",
@@ -1416,11 +1416,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.8.8.6.",
     "keySignature": "Bb Major",
     "scriptureAnchor": {
-      "reference": "1 Peter 1:18-19",
-      "text": "Knowing that ye were not redeemed with corruptible things... but with the precious blood of Christ, as of a lamb without blemish.",
-      "book": "1 Peter",
-      "chapter": 1,
-      "verse": 19
+      "reference": "Romans 12:1-2",
+      "text": "I beseech you therefore, brethren, by the mercies of God, that ye present your bodies a living sacrifice, holy, acceptable unto God, which is your reasonable service.",
+      "book": "Romans",
+      "chapter": 12,
+      "verse": 1
     },
     "stanzas": [
       {
@@ -1441,8 +1441,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Charlotte Elliott (1789–1871) of Brighton, England, was struck with severe illness at age thirty-two, leaving her a bedridden invalid plagued by depression. When visiting Swiss evangelist César Malan asked if she had peace with God, she confessed that she had doubts and did not know how to come to Christ. Malan gently answered, 'Come to Him just as you are.' Fourteen years later, as her family went to a church bazaar while she was too weak to leave her bed, she remembered Malan's words and penned the six stanzas of 'Just As I Am'—which later became the anthem of Billy Graham's worldwide crusades.",
-    "theologicalInsight": "Anchored in 1 Peter 1:18-19, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Just as I am, Thine own to be\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Romans 12:1-2 and Psalm 63:1, \"Just as I am, Thine own to be\" is an altar call of wholehearted devotion. It summons the believer to lay aside every weight and sin, seeking a consecrated walk with God that reflects His holiness, desires His presence above all gifts, and obeys His commandments with gladness.",
+    "devotionalPrayer": "Heavenly Father, as I pray through the words of \"Just as I am, Thine own to be\", I lay my life afresh upon Your altar. Purify my motives, kindle the fire of Your love within my spirit, and teach me to seek Your face daily in prayer and communion. Not my will, but Thine be done. In Jesus' Name, Amen.",
     "tags": [
       "Prayer & Consecration",
       "Classic Hymn",
@@ -1492,11 +1492,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "7.5.7.5.7.7.",
     "keySignature": "Ab Major",
     "scriptureAnchor": {
-      "reference": "Psalm 100:1-3",
-      "text": "Make a joyful noise unto the LORD, all ye lands. Serve the LORD with gladness: come before his presence with singing.",
+      "reference": "Psalm 103:1-4",
+      "text": "Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.",
       "book": "Psalms",
-      "chapter": 100,
-      "verse": 2
+      "chapter": 103,
+      "verse": 1
     },
     "stanzas": [
       {
@@ -1521,8 +1521,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Penned by Sarah Geraldina Stock, this treasured hymn was birthed in a season of fervent prayer and contemplation upon the majesty of the Redeemer. Across continents and church traditions, believers have drawn courage and spiritual resolve from its lines when facing adversity, standing firm upon God's unchanging Word.",
-    "theologicalInsight": "Anchored in Psalm 100:1-3, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Let the song go round the earth\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Psalm 103:1-4 and Revelation 19:6, \"Let the song go round the earth\" lifts the soul above earthly burdens into the majestic atmosphere of divine praise. It declares the unmatched greatness, sovereignty, and everlasting lovingkindness of God, summoning every faculty of the believer to worship Him in spirit and in truth.",
+    "devotionalPrayer": "Sovereign God, my heart rejoices in the words of \"Let the song go round the earth\". I worship You as the King of glory and Lord of all creation. Let my speech, thoughts, and deeds be a sweet-smelling savor of praise unto You, exalting Your holy Name before a watching world. Through Christ our Lord, Amen.",
     "tags": [
       "Praise & Adoration",
       "Classic Hymn",
@@ -1572,11 +1572,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "6.4.6.4.D.",
     "keySignature": "G Major",
     "scriptureAnchor": {
-      "reference": "Ephesians 2:8-9",
-      "text": "For by grace are ye saved through faith; and that not of yourselves: it is the gift of God.",
-      "book": "Ephesians",
-      "chapter": 2,
-      "verse": 8
+      "reference": "Proverbs 3:5-6",
+      "text": "Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths.",
+      "book": "Proverbs",
+      "chapter": 3,
+      "verse": 5
     },
     "stanzas": [
       {
@@ -1594,8 +1594,8 @@ export const HYMNS_PART_5: HymnItem[] = [
     ],
     "chorus": "Stayed upon Jehovah,\nHearts are fully blest;\nFinding, as He promised,\nPerfect peace and rest,",
     "historicalStory": "Frances Ridley Havergal (1836–1879) was a gifted English musician and devotional writer who consecrated every talent, time, and possession to the Master. She wrote this hymn after experiencing a spiritual breakthrough in which all members of a household where she was staying surrendered to Jesus. Penned in deep communion with the Holy Spirit, this sacred hymn stands as a lasting monument of faith, having ministered grace and reassurance to generations of worshipping believers.",
-    "theologicalInsight": "Anchored in Ephesians 2:8-9, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Like a river, glorious\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Proverbs 3:5-6 and Hebrews 11:1, \"Like a river, glorious\" calls the believer to absolute, childlike reliance upon God's unchanging counsel. When circumstances shift and human understanding fails, this hymn reminds us that God's covenant promises are bedrock, and He never abandons those who put their trust in Him.",
+    "devotionalPrayer": "Faithful Shepherd, through the inspiring lines of \"Like a river, glorious\", teach me to lean wholly upon Your strength. Dispel every lingering fear, anxiety, and doubt. Guide my steps in paths of righteousness for Your Name's sake, and let my faith remain unshaken in every tempest. In Jesus' Name, Amen.",
     "tags": [
       "Faith & Trust",
       "Classic Hymn",
@@ -1645,11 +1645,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.4.7.",
     "keySignature": "F Major",
     "scriptureAnchor": {
-      "reference": "Psalm 145:3",
-      "text": "Great is the LORD, and greatly to be praised; and his greatness is unsearchable.",
+      "reference": "Psalm 103:1-4",
+      "text": "Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.",
       "book": "Psalms",
-      "chapter": 145,
-      "verse": 3
+      "chapter": 103,
+      "verse": 1
     },
     "stanzas": [
       {
@@ -1670,8 +1670,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Charles Wesley (1707–1788) was the chief poet and hymn-writer of the 18th-century Methodist Revival. Over his lifetime he composed more than 6,500 hymns, conveying profound biblical theology through magnificent rhythm and heartfelt adoration of Christ. Penned in deep communion with the Holy Spirit, this sacred hymn stands as a lasting monument of faith, having ministered grace and reassurance to generations of worshipping believers.",
-    "theologicalInsight": "Anchored in Psalm 145:3, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Lo, He comes! With clouds descending\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Psalm 103:1-4 and Revelation 19:6, \"Lo, He comes! With clouds descending\" lifts the soul above earthly burdens into the majestic atmosphere of divine praise. It declares the unmatched greatness, sovereignty, and everlasting lovingkindness of God, summoning every faculty of the believer to worship Him in spirit and in truth.",
+    "devotionalPrayer": "Sovereign God, my heart rejoices in the words of \"Lo, He comes! With clouds descending\". I worship You as the King of glory and Lord of all creation. Let my speech, thoughts, and deeds be a sweet-smelling savor of praise unto You, exalting Your holy Name before a watching world. Through Christ our Lord, Amen.",
     "tags": [
       "Praise & Adoration",
       "Classic Hymn",
@@ -1721,11 +1721,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "C.M.",
     "keySignature": "D Major",
     "scriptureAnchor": {
-      "reference": "Galatians 6:14",
-      "text": "God forbid that I should boast except in the cross of our Lord Jesus Christ, by whom the world has been crucified to me.",
-      "book": "Galatians",
-      "chapter": 6,
-      "verse": 14
+      "reference": "Psalm 103:1-4",
+      "text": "Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.",
+      "book": "Psalms",
+      "chapter": 103,
+      "verse": 1
     },
     "stanzas": [
       {
@@ -1746,8 +1746,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Written in 1875 by Henri-Louis Rossier, a Swiss Reformed physician and biblical expositor of Vevey on Lake Geneva, translated into English by C.A. Wellesley. Rossier meditated deeply on the unfathomable mystery of Christ's love that did not stop short of Gethsemane, the crown of thorns, and the Cross.",
-    "theologicalInsight": "Anchored in Galatians 6:14, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Lord, e'en to death Thy love could go\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Psalm 103:1-4 and Revelation 19:6, \"Lord, e'en to death Thy love could go\" lifts the soul above earthly burdens into the majestic atmosphere of divine praise. It declares the unmatched greatness, sovereignty, and everlasting lovingkindness of God, summoning every faculty of the believer to worship Him in spirit and in truth.",
+    "devotionalPrayer": "Sovereign God, my heart rejoices in the words of \"Lord, e'en to death Thy love could go\". I worship You as the King of glory and Lord of all creation. Let my speech, thoughts, and deeds be a sweet-smelling savor of praise unto You, exalting Your holy Name before a watching world. Through Christ our Lord, Amen.",
     "tags": [
       "Praise & Adoration",
       "Classic Hymn",
@@ -1797,11 +1797,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "L.M.",
     "keySignature": "Eb Major",
     "scriptureAnchor": {
-      "reference": "Philippians 4:6-7",
-      "text": "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God.",
-      "book": "Philippians",
-      "chapter": 4,
-      "verse": 6
+      "reference": "Psalm 103:1-4",
+      "text": "Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.",
+      "book": "Psalms",
+      "chapter": 103,
+      "verse": 1
     },
     "stanzas": [
       {
@@ -1826,8 +1826,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Frances Ridley Havergal (1836–1879) was a gifted English musician and devotional writer who consecrated every talent, time, and possession to the Master. She wrote this hymn after experiencing a spiritual breakthrough in which all members of a household where she was staying surrendered to Jesus. Penned in deep communion with the Holy Spirit, this sacred hymn stands as a lasting monument of faith, having ministered grace and reassurance to generations of worshipping believers.",
-    "theologicalInsight": "Anchored in Philippians 4:6-7, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Lord, speak to me, that I may speak\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Psalm 103:1-4 and Revelation 19:6, \"Lord, speak to me, that I may speak\" lifts the soul above earthly burdens into the majestic atmosphere of divine praise. It declares the unmatched greatness, sovereignty, and everlasting lovingkindness of God, summoning every faculty of the believer to worship Him in spirit and in truth.",
+    "devotionalPrayer": "Sovereign God, my heart rejoices in the words of \"Lord, speak to me, that I may speak\". I worship You as the King of glory and Lord of all creation. Let my speech, thoughts, and deeds be a sweet-smelling savor of praise unto You, exalting Your holy Name before a watching world. Through Christ our Lord, Amen.",
     "tags": [
       "Praise & Adoration",
       "Classic Hymn",
@@ -1877,11 +1877,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "7.8.7.8.8.8.",
     "keySignature": "C Major",
     "scriptureAnchor": {
-      "reference": "Psalm 23:1-3",
-      "text": "The LORD is my shepherd; I shall not want. He maketh me to lie down in green pastures: he leadeth me beside the still waters.",
-      "book": "Psalms",
-      "chapter": 23,
-      "verse": 1
+      "reference": "Proverbs 3:5-6",
+      "text": "Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths.",
+      "book": "Proverbs",
+      "chapter": 3,
+      "verse": 5
     },
     "stanzas": [
       {
@@ -1898,8 +1898,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Composed during the great revival movements of the eighteenth and nineteenth centuries, this sacred hymn was born out of an intense longing for deeper holiness and unswerving trust in God's promises. Sung by congregations, prayer meetings, and open-air gospel gatherings across the world, its stirring lines continue to point troubled hearts toward the anchor of Christ's cross.",
-    "theologicalInsight": "Anchored in Psalm 23:1-3, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Look upon us, blessed Lord\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Proverbs 3:5-6 and Hebrews 11:1, \"Look upon us, blessed Lord\" calls the believer to absolute, childlike reliance upon God's unchanging counsel. When circumstances shift and human understanding fails, this hymn reminds us that God's covenant promises are bedrock, and He never abandons those who put their trust in Him.",
+    "devotionalPrayer": "Faithful Shepherd, through the inspiring lines of \"Look upon us, blessed Lord\", teach me to lean wholly upon Your strength. Dispel every lingering fear, anxiety, and doubt. Guide my steps in paths of righteousness for Your Name's sake, and let my faith remain unshaken in every tempest. In Jesus' Name, Amen.",
     "tags": [
       "Faith & Trust",
       "Classic Hymn",
@@ -1949,11 +1949,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "6.6.6.6.",
     "keySignature": "Bb Major",
     "scriptureAnchor": {
-      "reference": "Lamentations 3:22-23",
-      "text": "It is of the LORD's mercies that we are not consumed, because his compassions fail not. They are new every morning: great is thy faithfulness.",
-      "book": "Lamentations",
+      "reference": "Colossians 3:16",
+      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs, singing with grace in your hearts to the Lord.",
+      "book": "Colossians",
       "chapter": 3,
-      "verse": 23
+      "verse": 16
     },
     "stanzas": [
       {
@@ -1982,8 +1982,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Written by Henry Williams Baker and cherished across generations of Christian hymnody, this anthem reflects a pivotal moment of spiritual surrender and adoration. Drawing directly upon the promises of Scripture, it captures the believer's steadfast confidence in the sovereignty, mercy, and lovingkindness of God in every season of life.",
-    "theologicalInsight": "Anchored in Lamentations 3:22-23, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Lord, Thy word abideth\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Colossians 3:16, \"Lord, Thy word abideth\" stands as a vibrant testimony of apostolic faith. It teaches and admonishes the church in the eternal verities of the Gospel, encouraging the believer to walk worthy of the high calling of God in Christ Jesus with steadfast joy and unwavering obedience.",
+    "devotionalPrayer": "Lord God of our fathers, let the timeless truth expressed in \"Lord, Thy word abideth\" dwell richly in my heart. Grant me spiritual discernment to recognize Your guidance, humility to serve my fellow believers, and holy zeal to fulfill Your purpose in my generation. Through Jesus Christ our Lord, Amen.",
     "tags": [
       "Grace & Redemption",
       "Classic Hymn",
@@ -2033,11 +2033,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.D.",
     "keySignature": "Ab Major",
     "scriptureAnchor": {
-      "reference": "Hebrews 12:1-2",
-      "text": "Looking unto Jesus the author and finisher of our faith; who for the joy that was set before him endured the cross.",
-      "book": "Hebrews",
-      "chapter": 12,
-      "verse": 2
+      "reference": "Colossians 3:16",
+      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs, singing with grace in your hearts to the Lord.",
+      "book": "Colossians",
+      "chapter": 3,
+      "verse": 16
     },
     "stanzas": [
       {
@@ -2054,8 +2054,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Charles Wesley (1707–1788) was the chief poet and hymn-writer of the 18th-century Methodist Revival. Over his lifetime he composed more than 6,500 hymns, conveying profound biblical theology through magnificent rhythm and heartfelt adoration of Christ. Penned in deep communion with the Holy Spirit, this sacred hymn stands as a lasting monument of faith, having ministered grace and reassurance to generations of worshipping believers.",
-    "theologicalInsight": "Anchored in Hebrews 12:1-2, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Love divine, all loves excelling\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Colossians 3:16, \"Love divine, all loves excelling\" stands as a vibrant testimony of apostolic faith. It teaches and admonishes the church in the eternal verities of the Gospel, encouraging the believer to walk worthy of the high calling of God in Christ Jesus with steadfast joy and unwavering obedience.",
+    "devotionalPrayer": "Lord God of our fathers, let the timeless truth expressed in \"Love divine, all loves excelling\" dwell richly in my heart. Grant me spiritual discernment to recognize Your guidance, humility to serve my fellow believers, and holy zeal to fulfill Your purpose in my generation. Through Jesus Christ our Lord, Amen.",
     "tags": [
       "Grace & Redemption",
       "Classic Hymn",
@@ -2105,11 +2105,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "C.M.",
     "keySignature": "G Major",
     "scriptureAnchor": {
-      "reference": "Romans 8:38-39",
-      "text": "For I am persuaded, that neither death, nor life, nor angels, nor principalities... shall be able to separate us from the love of God, which is in Christ Jesus our Lord.",
-      "book": "Romans",
-      "chapter": 8,
-      "verse": 38
+      "reference": "Galatians 2:20",
+      "text": "I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me.",
+      "book": "Galatians",
+      "chapter": 2,
+      "verse": 20
     },
     "stanzas": [
       {
@@ -2134,8 +2134,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Penned by Samuel Stennett, this treasured hymn was birthed in a season of fervent prayer and contemplation upon the majesty of the Redeemer. Across continents and church traditions, believers have drawn courage and spiritual resolve from its lines when facing adversity, standing firm upon God's unchanging Word.",
-    "theologicalInsight": "Anchored in Romans 8:38-39, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Majestic sweetness sits enthroned.\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Galatians 2:20 and 1 Peter 1:18-19, \"Majestic sweetness sits enthroned.\" centers upon the finished work of Christ at the cross. It proclaims that true Christian liberty and eternal life flow exclusively from the shed blood of Jesus, which disarms demonic powers, cancels the debt of sin, and ushers the believer into holy resurrection victory.",
+    "devotionalPrayer": "Lord Jesus, as I meditate upon the sacred truth of \"Majestic sweetness sits enthroned.\", I turn my eyes to Calvary. Thank You for taking my place, enduring the cross, and securing my eternal redemption. Let the power of Your blood cleanse my conscience and empower me to walk in resurrection life today. Amen.",
     "tags": [
       "Cross & Resurrection",
       "Classic Hymn",
@@ -2185,10 +2185,10 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.7.7.",
     "keySignature": "F Major",
     "scriptureAnchor": {
-      "reference": "Isaiah 53:5",
-      "text": "He was wounded for our transgressions, he was bruised for our iniquities: the chastisement of our peace was upon him; and with his stripes we are healed.",
-      "book": "Isaiah",
-      "chapter": 53,
+      "reference": "Proverbs 3:5-6",
+      "text": "Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths.",
+      "book": "Proverbs",
+      "chapter": 3,
       "verse": 5
     },
     "stanzas": [
@@ -2210,8 +2210,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Frances Ridley Havergal (1836–1879) was a gifted English musician and devotional writer who consecrated every talent, time, and possession to the Master. She wrote this hymn after experiencing a spiritual breakthrough in which all members of a household where she was staying surrendered to Jesus. Penned in deep communion with the Holy Spirit, this sacred hymn stands as a lasting monument of faith, having ministered grace and reassurance to generations of worshipping believers.",
-    "theologicalInsight": "Anchored in Isaiah 53:5, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Master, speak! Thy servant heareth\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Proverbs 3:5-6 and Hebrews 11:1, \"Master, speak! Thy servant heareth\" calls the believer to absolute, childlike reliance upon God's unchanging counsel. When circumstances shift and human understanding fails, this hymn reminds us that God's covenant promises are bedrock, and He never abandons those who put their trust in Him.",
+    "devotionalPrayer": "Faithful Shepherd, through the inspiring lines of \"Master, speak! Thy servant heareth\", teach me to lean wholly upon Your strength. Dispel every lingering fear, anxiety, and doubt. Guide my steps in paths of righteousness for Your Name's sake, and let my faith remain unshaken in every tempest. In Jesus' Name, Amen.",
     "tags": [
       "Faith & Trust",
       "Classic Hymn",
@@ -2261,11 +2261,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.5.",
     "keySignature": "D Major",
     "scriptureAnchor": {
-      "reference": "Revelation 5:12",
-      "text": "Worthy is the Lamb that was slain to receive power, and riches, and wisdom, and strength, and honour, and glory, and blessing.",
-      "book": "Revelation",
-      "chapter": 5,
-      "verse": 12
+      "reference": "Psalm 103:1-4",
+      "text": "Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.",
+      "book": "Psalms",
+      "chapter": 103,
+      "verse": 1
     },
     "stanzas": [
       {
@@ -2290,8 +2290,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Written by Kate Barclay Wilkinson and cherished across generations of Christian hymnody, this anthem reflects a pivotal moment of spiritual surrender and adoration. Drawing directly upon the promises of Scripture, it captures the believer's steadfast confidence in the sovereignty, mercy, and lovingkindness of God in every season of life.",
-    "theologicalInsight": "Anchored in Revelation 5:12, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"May the mind of Christ my Saviour\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Psalm 103:1-4 and Revelation 19:6, \"May the mind of Christ my Saviour\" lifts the soul above earthly burdens into the majestic atmosphere of divine praise. It declares the unmatched greatness, sovereignty, and everlasting lovingkindness of God, summoning every faculty of the believer to worship Him in spirit and in truth.",
+    "devotionalPrayer": "Sovereign God, my heart rejoices in the words of \"May the mind of Christ my Saviour\". I worship You as the King of glory and Lord of all creation. Let my speech, thoughts, and deeds be a sweet-smelling savor of praise unto You, exalting Your holy Name before a watching world. Through Christ our Lord, Amen.",
     "tags": [
       "Praise & Adoration",
       "Classic Hymn",
@@ -2341,11 +2341,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "C.M.",
     "keySignature": "Eb Major",
     "scriptureAnchor": {
-      "reference": "Psalm 46:1-2",
-      "text": "God is our refuge and strength, a very present help in trouble. Therefore will not we fear.",
-      "book": "Psalms",
-      "chapter": 46,
-      "verse": 1
+      "reference": "Colossians 3:16",
+      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs, singing with grace in your hearts to the Lord.",
+      "book": "Colossians",
+      "chapter": 3,
+      "verse": 16
     },
     "stanzas": [
       {
@@ -2374,8 +2374,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Penned in 1875 by Fanny J. Crosby and set to music by Hubert P. Main. Crosby, blind from infancy, wrote this serene prayer of reliance based on Psalm 123:1-2, expressing that though earthly vision was denied to her, the eyes of her spirit remained steadily fixed on the faithfulness of God.",
-    "theologicalInsight": "Anchored in Psalm 46:1-2, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Mine eyes are unto Thee, my God\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Colossians 3:16, \"Mine eyes are unto Thee, my God\" stands as a vibrant testimony of apostolic faith. It teaches and admonishes the church in the eternal verities of the Gospel, encouraging the believer to walk worthy of the high calling of God in Christ Jesus with steadfast joy and unwavering obedience.",
+    "devotionalPrayer": "Lord God of our fathers, let the timeless truth expressed in \"Mine eyes are unto Thee, my God\" dwell richly in my heart. Grant me spiritual discernment to recognize Your guidance, humility to serve my fellow believers, and holy zeal to fulfill Your purpose in my generation. Through Jesus Christ our Lord, Amen.",
     "tags": [
       "Grace & Redemption",
       "Classic Hymn",
@@ -2425,11 +2425,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "P.M.",
     "keySignature": "C Major",
     "scriptureAnchor": {
-      "reference": "2 Corinthians 5:17",
-      "text": "Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new.",
-      "book": "2 Corinthians",
-      "chapter": 5,
-      "verse": 17
+      "reference": "Colossians 3:16",
+      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs, singing with grace in your hearts to the Lord.",
+      "book": "Colossians",
+      "chapter": 3,
+      "verse": 16
     },
     "stanzas": [
       {
@@ -2451,8 +2451,8 @@ export const HYMNS_PART_5: HymnItem[] = [
     ],
     "chorus": "More, more about Jesus,\nMore, more about Jesus;\nMore of His saving fullness see,\nMore of His love who died for me.",
     "historicalStory": "Penned by Eliza Edmunds Hewitt, this treasured hymn was birthed in a season of fervent prayer and contemplation upon the majesty of the Redeemer. Across continents and church traditions, believers have drawn courage and spiritual resolve from its lines when facing adversity, standing firm upon God's unchanging Word.",
-    "theologicalInsight": "Anchored in 2 Corinthians 5:17, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"More about Jesus would I know\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Colossians 3:16, \"More about Jesus would I know\" stands as a vibrant testimony of apostolic faith. It teaches and admonishes the church in the eternal verities of the Gospel, encouraging the believer to walk worthy of the high calling of God in Christ Jesus with steadfast joy and unwavering obedience.",
+    "devotionalPrayer": "Lord God of our fathers, let the timeless truth expressed in \"More about Jesus would I know\" dwell richly in my heart. Grant me spiritual discernment to recognize Your guidance, humility to serve my fellow believers, and holy zeal to fulfill Your purpose in my generation. Through Jesus Christ our Lord, Amen.",
     "tags": [
       "Grace & Redemption",
       "Classic Hymn",
@@ -2502,11 +2502,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "L.M.",
     "keySignature": "Bb Major",
     "scriptureAnchor": {
-      "reference": "Colossians 3:16",
-      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs.",
-      "book": "Colossians",
-      "chapter": 3,
-      "verse": 16
+      "reference": "Psalm 103:1-4",
+      "text": "Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.",
+      "book": "Psalms",
+      "chapter": 103,
+      "verse": 1
     },
     "stanzas": [
       {
@@ -2527,8 +2527,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Composed during the great revival movements of the eighteenth and nineteenth centuries, this sacred hymn was born out of an intense longing for deeper holiness and unswerving trust in God's promises. Sung by congregations, prayer meetings, and open-air gospel gatherings across the world, its stirring lines continue to point troubled hearts toward the anchor of Christ's cross.",
-    "theologicalInsight": "Anchored in Colossians 3:16, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"My glorious Victor, Prince divine\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Psalm 103:1-4 and Revelation 19:6, \"My glorious Victor, Prince divine\" lifts the soul above earthly burdens into the majestic atmosphere of divine praise. It declares the unmatched greatness, sovereignty, and everlasting lovingkindness of God, summoning every faculty of the believer to worship Him in spirit and in truth.",
+    "devotionalPrayer": "Sovereign God, my heart rejoices in the words of \"My glorious Victor, Prince divine\". I worship You as the King of glory and Lord of all creation. Let my speech, thoughts, and deeds be a sweet-smelling savor of praise unto You, exalting Your holy Name before a watching world. Through Christ our Lord, Amen.",
     "tags": [
       "Praise & Adoration",
       "Classic Hymn",
@@ -2578,11 +2578,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.8.8.8.8.8.",
     "keySignature": "Ab Major",
     "scriptureAnchor": {
-      "reference": "1 Peter 1:18-19",
-      "text": "Knowing that ye were not redeemed with corruptible things... but with the precious blood of Christ, as of a lamb without blemish.",
-      "book": "1 Peter",
-      "chapter": 1,
-      "verse": 19
+      "reference": "Galatians 2:20",
+      "text": "I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me.",
+      "book": "Galatians",
+      "chapter": 2,
+      "verse": 20
     },
     "stanzas": [
       {
@@ -2603,8 +2603,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Charles Wesley (1707–1788) was the chief poet and hymn-writer of the 18th-century Methodist Revival. Over his lifetime he composed more than 6,500 hymns, conveying profound biblical theology through magnificent rhythm and heartfelt adoration of Christ. Penned in deep communion with the Holy Spirit, this sacred hymn stands as a lasting monument of faith, having ministered grace and reassurance to generations of worshipping believers.",
-    "theologicalInsight": "Anchored in 1 Peter 1:18-19, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"My heart is full of Christ, and longs\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Galatians 2:20 and 1 Peter 1:18-19, \"My heart is full of Christ, and longs\" centers upon the finished work of Christ at the cross. It proclaims that true Christian liberty and eternal life flow exclusively from the shed blood of Jesus, which disarms demonic powers, cancels the debt of sin, and ushers the believer into holy resurrection victory.",
+    "devotionalPrayer": "Lord Jesus, as I meditate upon the sacred truth of \"My heart is full of Christ, and longs\", I turn my eyes to Calvary. Thank You for taking my place, enduring the cross, and securing my eternal redemption. Let the power of Your blood cleanse my conscience and empower me to walk in resurrection life today. Amen.",
     "tags": [
       "Cross & Resurrection",
       "Classic Hymn",
@@ -2654,11 +2654,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "S.M.",
     "keySignature": "G Major",
     "scriptureAnchor": {
-      "reference": "Psalm 100:1-3",
-      "text": "Make a joyful noise unto the LORD, all ye lands. Serve the LORD with gladness: come before his presence with singing.",
-      "book": "Psalms",
-      "chapter": 100,
-      "verse": 2
+      "reference": "Galatians 2:20",
+      "text": "I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me.",
+      "book": "Galatians",
+      "chapter": 2,
+      "verse": 20
     },
     "stanzas": [
       {
@@ -2687,8 +2687,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Written in 1862 by Elizabeth Rundle Charles, author of Chronicles of the Schönberg-Cotta Family. Charles wrote this communion hymn to celebrate the Lord's Supper as a feast of pure grace, where every broken piece of bread proclaims the glad tidings of Christ's completed redemption.",
-    "theologicalInsight": "Anchored in Psalm 100:1-3, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"No gospel like this feast\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Galatians 2:20 and 1 Peter 1:18-19, \"No gospel like this feast\" centers upon the finished work of Christ at the cross. It proclaims that true Christian liberty and eternal life flow exclusively from the shed blood of Jesus, which disarms demonic powers, cancels the debt of sin, and ushers the believer into holy resurrection victory.",
+    "devotionalPrayer": "Lord Jesus, as I meditate upon the sacred truth of \"No gospel like this feast\", I turn my eyes to Calvary. Thank You for taking my place, enduring the cross, and securing my eternal redemption. Let the power of Your blood cleanse my conscience and empower me to walk in resurrection life today. Amen.",
     "tags": [
       "Cross & Resurrection",
       "Classic Hymn",
@@ -2738,11 +2738,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "C.M.",
     "keySignature": "F Major",
     "scriptureAnchor": {
-      "reference": "Ephesians 2:8-9",
-      "text": "For by grace are ye saved through faith; and that not of yourselves: it is the gift of God.",
-      "book": "Ephesians",
-      "chapter": 2,
-      "verse": 8
+      "reference": "Colossians 3:16",
+      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs, singing with grace in your hearts to the Lord.",
+      "book": "Colossians",
+      "chapter": 3,
+      "verse": 16
     },
     "stanzas": [
       {
@@ -2767,8 +2767,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Penned by Philip Doddridge & John Logan & others, this treasured hymn was birthed in a season of fervent prayer and contemplation upon the majesty of the Redeemer. Across continents and church traditions, believers have drawn courage and spiritual resolve from its lines when facing adversity, standing firm upon God's unchanging Word.",
-    "theologicalInsight": "Anchored in Ephesians 2:8-9, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"O God of Bethel! By whose hand\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Colossians 3:16, \"O God of Bethel! By whose hand\" stands as a vibrant testimony of apostolic faith. It teaches and admonishes the church in the eternal verities of the Gospel, encouraging the believer to walk worthy of the high calling of God in Christ Jesus with steadfast joy and unwavering obedience.",
+    "devotionalPrayer": "Lord God of our fathers, let the timeless truth expressed in \"O God of Bethel! By whose hand\" dwell richly in my heart. Grant me spiritual discernment to recognize Your guidance, humility to serve my fellow believers, and holy zeal to fulfill Your purpose in my generation. Through Jesus Christ our Lord, Amen.",
     "tags": [
       "Grace & Redemption",
       "Classic Hymn",
@@ -2818,11 +2818,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "D.S.M.",
     "keySignature": "D Major",
     "scriptureAnchor": {
-      "reference": "Psalm 145:3",
-      "text": "Great is the LORD, and greatly to be praised; and his greatness is unsearchable.",
+      "reference": "Psalm 103:1-4",
+      "text": "Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.",
       "book": "Psalms",
-      "chapter": 145,
-      "verse": 3
+      "chapter": 103,
+      "verse": 1
     },
     "stanzas": [
       {
@@ -2843,8 +2843,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Composed during the great revival movements of the eighteenth and nineteenth centuries, this sacred hymn was born out of an intense longing for deeper holiness and unswerving trust in God's promises. Sung by congregations, prayer meetings, and open-air gospel gatherings across the world, its stirring lines continue to point troubled hearts toward the anchor of Christ's cross.",
-    "theologicalInsight": "Anchored in Psalm 145:3, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"O Christ, Thou Son of God!\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Psalm 103:1-4 and Revelation 19:6, \"O Christ, Thou Son of God!\" lifts the soul above earthly burdens into the majestic atmosphere of divine praise. It declares the unmatched greatness, sovereignty, and everlasting lovingkindness of God, summoning every faculty of the believer to worship Him in spirit and in truth.",
+    "devotionalPrayer": "Sovereign God, my heart rejoices in the words of \"O Christ, Thou Son of God!\". I worship You as the King of glory and Lord of all creation. Let my speech, thoughts, and deeds be a sweet-smelling savor of praise unto You, exalting Your holy Name before a watching world. Through Christ our Lord, Amen.",
     "tags": [
       "Praise & Adoration",
       "Classic Hymn",
@@ -2894,11 +2894,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "C.M.",
     "keySignature": "Eb Major",
     "scriptureAnchor": {
-      "reference": "Galatians 6:14",
-      "text": "God forbid that I should boast except in the cross of our Lord Jesus Christ, by whom the world has been crucified to me.",
-      "book": "Galatians",
-      "chapter": 6,
-      "verse": 14
+      "reference": "Colossians 3:16",
+      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs, singing with grace in your hearts to the Lord.",
+      "book": "Colossians",
+      "chapter": 3,
+      "verse": 16
     },
     "stanzas": [
       {
@@ -2927,8 +2927,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Written by Johann Caspar Lavater tr/ad by Elizabeth Lee Allen Smith and cherished across generations of Christian hymnody, this anthem reflects a pivotal moment of spiritual surrender and adoration. Drawing directly upon the promises of Scripture, it captures the believer's steadfast confidence in the sovereignty, mercy, and lovingkindness of God in every season of life.",
-    "theologicalInsight": "Anchored in Galatians 6:14, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"O Jesus Christ, grow Thou in me\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Colossians 3:16, \"O Jesus Christ, grow Thou in me\" stands as a vibrant testimony of apostolic faith. It teaches and admonishes the church in the eternal verities of the Gospel, encouraging the believer to walk worthy of the high calling of God in Christ Jesus with steadfast joy and unwavering obedience.",
+    "devotionalPrayer": "Lord God of our fathers, let the timeless truth expressed in \"O Jesus Christ, grow Thou in me\" dwell richly in my heart. Grant me spiritual discernment to recognize Your guidance, humility to serve my fellow believers, and holy zeal to fulfill Your purpose in my generation. Through Jesus Christ our Lord, Amen.",
     "tags": [
       "Grace & Redemption",
       "Classic Hymn",
@@ -2978,11 +2978,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "7.6.7.6.D.",
     "keySignature": "C Major",
     "scriptureAnchor": {
-      "reference": "Philippians 4:6-7",
-      "text": "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God.",
-      "book": "Philippians",
-      "chapter": 4,
-      "verse": 6
+      "reference": "Psalm 103:1-4",
+      "text": "Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.",
+      "book": "Psalms",
+      "chapter": 103,
+      "verse": 1
     },
     "stanzas": [
       {
@@ -3003,8 +3003,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Composed in 1868 by John Ernest Bode, rector of Castle Camps in Cambridgeshire, for the confirmation of his two sons and daughter. Bode wrote this earnest prayer of dedication to give his children a lifelong pledge of loyalty to Jesus Christ through youth, adulthood, and old age.",
-    "theologicalInsight": "Anchored in Philippians 4:6-7, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"O Jesus, I have promised\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Psalm 103:1-4 and Revelation 19:6, \"O Jesus, I have promised\" lifts the soul above earthly burdens into the majestic atmosphere of divine praise. It declares the unmatched greatness, sovereignty, and everlasting lovingkindness of God, summoning every faculty of the believer to worship Him in spirit and in truth.",
+    "devotionalPrayer": "Sovereign God, my heart rejoices in the words of \"O Jesus, I have promised\". I worship You as the King of glory and Lord of all creation. Let my speech, thoughts, and deeds be a sweet-smelling savor of praise unto You, exalting Your holy Name before a watching world. Through Christ our Lord, Amen.",
     "tags": [
       "Praise & Adoration",
       "Classic Hymn",
@@ -3054,11 +3054,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.8.8.4.",
     "keySignature": "Bb Major",
     "scriptureAnchor": {
-      "reference": "Psalm 23:1-3",
-      "text": "The LORD is my shepherd; I shall not want. He maketh me to lie down in green pastures: he leadeth me beside the still waters.",
-      "book": "Psalms",
-      "chapter": 23,
-      "verse": 1
+      "reference": "Colossians 3:16",
+      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs, singing with grace in your hearts to the Lord.",
+      "book": "Colossians",
+      "chapter": 3,
+      "verse": 16
     },
     "stanzas": [
       {
@@ -3083,8 +3083,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Penned by Christopher Wordsworth, this treasured hymn was birthed in a season of fervent prayer and contemplation upon the majesty of the Redeemer. Across continents and church traditions, believers have drawn courage and spiritual resolve from its lines when facing adversity, standing firm upon God's unchanging Word.",
-    "theologicalInsight": "Anchored in Psalm 23:1-3, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"O Lord of heaven and earth and sea\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Colossians 3:16, \"O Lord of heaven and earth and sea\" stands as a vibrant testimony of apostolic faith. It teaches and admonishes the church in the eternal verities of the Gospel, encouraging the believer to walk worthy of the high calling of God in Christ Jesus with steadfast joy and unwavering obedience.",
+    "devotionalPrayer": "Lord God of our fathers, let the timeless truth expressed in \"O Lord of heaven and earth and sea\" dwell richly in my heart. Grant me spiritual discernment to recognize Your guidance, humility to serve my fellow believers, and holy zeal to fulfill Your purpose in my generation. Through Jesus Christ our Lord, Amen.",
     "tags": [
       "Grace & Redemption",
       "Classic Hymn",
@@ -3134,11 +3134,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "D.C.M.",
     "keySignature": "Ab Major",
     "scriptureAnchor": {
-      "reference": "Lamentations 3:22-23",
-      "text": "It is of the LORD's mercies that we are not consumed, because his compassions fail not. They are new every morning: great is thy faithfulness.",
-      "book": "Lamentations",
-      "chapter": 3,
-      "verse": 23
+      "reference": "Galatians 2:20",
+      "text": "I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me.",
+      "book": "Galatians",
+      "chapter": 2,
+      "verse": 20
     },
     "stanzas": [
       {
@@ -3159,8 +3159,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Composed during the great revival movements of the eighteenth and nineteenth centuries, this sacred hymn was born out of an intense longing for deeper holiness and unswerving trust in God's promises. Sung by congregations, prayer meetings, and open-air gospel gatherings across the world, its stirring lines continue to point troubled hearts toward the anchor of Christ's cross.",
-    "theologicalInsight": "Anchored in Lamentations 3:22-23, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"O Lord, it is Thyself to meet\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Galatians 2:20 and 1 Peter 1:18-19, \"O Lord, it is Thyself to meet\" centers upon the finished work of Christ at the cross. It proclaims that true Christian liberty and eternal life flow exclusively from the shed blood of Jesus, which disarms demonic powers, cancels the debt of sin, and ushers the believer into holy resurrection victory.",
+    "devotionalPrayer": "Lord Jesus, as I meditate upon the sacred truth of \"O Lord, it is Thyself to meet\", I turn my eyes to Calvary. Thank You for taking my place, enduring the cross, and securing my eternal redemption. Let the power of Your blood cleanse my conscience and empower me to walk in resurrection life today. Amen.",
     "tags": [
       "Cross & Resurrection",
       "Classic Hymn",
@@ -3210,11 +3210,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.8.8.8.6.",
     "keySignature": "G Major",
     "scriptureAnchor": {
-      "reference": "Hebrews 12:1-2",
-      "text": "Looking unto Jesus the author and finisher of our faith; who for the joy that was set before him endured the cross.",
-      "book": "Hebrews",
-      "chapter": 12,
-      "verse": 2
+      "reference": "Galatians 2:20",
+      "text": "I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me.",
+      "book": "Galatians",
+      "chapter": 2,
+      "verse": 20
     },
     "stanzas": [
       {
@@ -3235,8 +3235,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Written by George Matheson and cherished across generations of Christian hymnody, this anthem reflects a pivotal moment of spiritual surrender and adoration. Drawing directly upon the promises of Scripture, it captures the believer's steadfast confidence in the sovereignty, mercy, and lovingkindness of God in every season of life.",
-    "theologicalInsight": "Anchored in Hebrews 12:1-2, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"O love that wilt not let me go\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Galatians 2:20 and 1 Peter 1:18-19, \"O love that wilt not let me go\" centers upon the finished work of Christ at the cross. It proclaims that true Christian liberty and eternal life flow exclusively from the shed blood of Jesus, which disarms demonic powers, cancels the debt of sin, and ushers the believer into holy resurrection victory.",
+    "devotionalPrayer": "Lord Jesus, as I meditate upon the sacred truth of \"O love that wilt not let me go\", I turn my eyes to Calvary. Thank You for taking my place, enduring the cross, and securing my eternal redemption. Let the power of Your blood cleanse my conscience and empower me to walk in resurrection life today. Amen.",
     "tags": [
       "Cross & Resurrection",
       "Classic Hymn",
@@ -3286,11 +3286,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "7.6.7.6.D.",
     "keySignature": "F Major",
     "scriptureAnchor": {
-      "reference": "Romans 8:38-39",
-      "text": "For I am persuaded, that neither death, nor life, nor angels, nor principalities... shall be able to separate us from the love of God, which is in Christ Jesus our Lord.",
-      "book": "Romans",
-      "chapter": 8,
-      "verse": 38
+      "reference": "Psalm 103:1-4",
+      "text": "Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.",
+      "book": "Psalms",
+      "chapter": 103,
+      "verse": 1
     },
     "stanzas": [
       {
@@ -3311,8 +3311,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Written in 1888 by Sarah Geraldina Stock, an English author and devoted educator with the Church Missionary Society. Stock wrote this vibrant summons based on Isaiah 6:8 to inspire missionary volunteers and Sunday school teachers to respond gladly whenever the Master calls them to service.",
-    "theologicalInsight": "Anchored in Romans 8:38-39, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"O Master! when Thou callest\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Psalm 103:1-4 and Revelation 19:6, \"O Master! when Thou callest\" lifts the soul above earthly burdens into the majestic atmosphere of divine praise. It declares the unmatched greatness, sovereignty, and everlasting lovingkindness of God, summoning every faculty of the believer to worship Him in spirit and in truth.",
+    "devotionalPrayer": "Sovereign God, my heart rejoices in the words of \"O Master! when Thou callest\". I worship You as the King of glory and Lord of all creation. Let my speech, thoughts, and deeds be a sweet-smelling savor of praise unto You, exalting Your holy Name before a watching world. Through Christ our Lord, Amen.",
     "tags": [
       "Praise & Adoration",
       "Classic Hymn",
@@ -3362,11 +3362,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.8.7.",
     "keySignature": "D Major",
     "scriptureAnchor": {
-      "reference": "Isaiah 53:5",
-      "text": "He was wounded for our transgressions, he was bruised for our iniquities: the chastisement of our peace was upon him; and with his stripes we are healed.",
-      "book": "Isaiah",
-      "chapter": 53,
-      "verse": 5
+      "reference": "Philippians 4:6-7",
+      "text": "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God. And the peace of God, which passeth all understanding, shall keep your hearts and minds through Christ Jesus.",
+      "book": "Philippians",
+      "chapter": 4,
+      "verse": 6
     },
     "stanzas": [
       {
@@ -3387,8 +3387,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Penned by Theodore Monod, this treasured hymn was birthed in a season of fervent prayer and contemplation upon the majesty of the Redeemer. Across continents and church traditions, believers have drawn courage and spiritual resolve from its lines when facing adversity, standing firm upon God's unchanging Word.",
-    "theologicalInsight": "Anchored in Isaiah 53:5, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"O the bitter shame and sorrow!\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Philippians 4:6-7 and Isaiah 26:3, \"O the bitter shame and sorrow!\" ministers supernatural balm to the troubled heart. It assures the believer that no valley of shadow is walked alone; Christ walks alongside us, bearing our griefs, quieting our anxieties, and guaranteeing that weeping may endure for a night, but joy cometh in the morning.",
+    "devotionalPrayer": "Father of mercies and God of all comfort, let the peace of Christ rule in my heart today as I dwell on \"O the bitter shame and sorrow!\". When storms rage around me, anchor my thoughts upon Your covenant promises and let me rest securely in Your unfailing embrace. Amen.",
     "tags": [
       "Grace & Redemption",
       "Classic Hymn",
@@ -3438,11 +3438,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.D.",
     "keySignature": "Eb Major",
     "scriptureAnchor": {
-      "reference": "Revelation 5:12",
-      "text": "Worthy is the Lamb that was slain to receive power, and riches, and wisdom, and strength, and honour, and glory, and blessing.",
-      "book": "Revelation",
-      "chapter": 5,
-      "verse": 12
+      "reference": "Psalm 103:1-4",
+      "text": "Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.",
+      "book": "Psalms",
+      "chapter": 103,
+      "verse": 1
     },
     "stanzas": [
       {
@@ -3463,8 +3463,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Composed during the great revival movements of the eighteenth and nineteenth centuries, this sacred hymn was born out of an intense longing for deeper holiness and unswerving trust in God's promises. Sung by congregations, prayer meetings, and open-air gospel gatherings across the world, its stirring lines continue to point troubled hearts toward the anchor of Christ's cross.",
-    "theologicalInsight": "Anchored in Revelation 5:12, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"O The deep, deep love of Jesus!\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Psalm 103:1-4 and Revelation 19:6, \"O The deep, deep love of Jesus!\" lifts the soul above earthly burdens into the majestic atmosphere of divine praise. It declares the unmatched greatness, sovereignty, and everlasting lovingkindness of God, summoning every faculty of the believer to worship Him in spirit and in truth.",
+    "devotionalPrayer": "Sovereign God, my heart rejoices in the words of \"O The deep, deep love of Jesus!\". I worship You as the King of glory and Lord of all creation. Let my speech, thoughts, and deeds be a sweet-smelling savor of praise unto You, exalting Your holy Name before a watching world. Through Christ our Lord, Amen.",
     "tags": [
       "Praise & Adoration",
       "Classic Hymn",
@@ -3514,11 +3514,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "C.M.",
     "keySignature": "C Major",
     "scriptureAnchor": {
-      "reference": "Psalm 46:1-2",
-      "text": "God is our refuge and strength, a very present help in trouble. Therefore will not we fear.",
-      "book": "Psalms",
-      "chapter": 46,
-      "verse": 1
+      "reference": "Colossians 3:16",
+      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs, singing with grace in your hearts to the Lord.",
+      "book": "Colossians",
+      "chapter": 3,
+      "verse": 16
     },
     "stanzas": [
       {
@@ -3543,8 +3543,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Written by Author Uncertain: Thomas Sternhold or Francis Rous (Rowe) & William Barton and cherished across generations of Christian hymnody, this anthem reflects a pivotal moment of spiritual surrender and adoration. Drawing directly upon the promises of Scripture, it captures the believer's steadfast confidence in the sovereignty, mercy, and lovingkindness of God in every season of life.",
-    "theologicalInsight": "Anchored in Psalm 46:1-2, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"O Thou, my soul, bless God the Lord;\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Colossians 3:16, \"O Thou, my soul, bless God the Lord;\" stands as a vibrant testimony of apostolic faith. It teaches and admonishes the church in the eternal verities of the Gospel, encouraging the believer to walk worthy of the high calling of God in Christ Jesus with steadfast joy and unwavering obedience.",
+    "devotionalPrayer": "Lord God of our fathers, let the timeless truth expressed in \"O Thou, my soul, bless God the Lord;\" dwell richly in my heart. Grant me spiritual discernment to recognize Your guidance, humility to serve my fellow believers, and holy zeal to fulfill Your purpose in my generation. Through Jesus Christ our Lord, Amen.",
     "tags": [
       "Grace & Redemption",
       "Classic Hymn",
@@ -3594,11 +3594,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "L.M.",
     "keySignature": "Bb Major",
     "scriptureAnchor": {
-      "reference": "2 Corinthians 5:17",
-      "text": "Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new.",
-      "book": "2 Corinthians",
-      "chapter": 5,
-      "verse": 17
+      "reference": "Galatians 2:20",
+      "text": "I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me.",
+      "book": "Galatians",
+      "chapter": 2,
+      "verse": 20
     },
     "stanzas": [
       {
@@ -3623,8 +3623,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Composed in 1839 by Sir Edward Denny of Tralee Castle, Ireland. Meditating on the Upper Room and the institution of the Lord's Supper, Denny drew worshippers into holy contemplation of the wondrous hour when the Son of God submitted Himself to death so that sinners might live eternally.",
-    "theologicalInsight": "Anchored in 2 Corinthians 5:17, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"O wondrous hour, when Jesus, Thou\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Galatians 2:20 and 1 Peter 1:18-19, \"O wondrous hour, when Jesus, Thou\" centers upon the finished work of Christ at the cross. It proclaims that true Christian liberty and eternal life flow exclusively from the shed blood of Jesus, which disarms demonic powers, cancels the debt of sin, and ushers the believer into holy resurrection victory.",
+    "devotionalPrayer": "Lord Jesus, as I meditate upon the sacred truth of \"O wondrous hour, when Jesus, Thou\", I turn my eyes to Calvary. Thank You for taking my place, enduring the cross, and securing my eternal redemption. Let the power of Your blood cleanse my conscience and empower me to walk in resurrection life today. Amen.",
     "tags": [
       "Cross & Resurrection",
       "Classic Hymn",
@@ -3674,11 +3674,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "10.10.11.11.",
     "keySignature": "Ab Major",
     "scriptureAnchor": {
-      "reference": "Colossians 3:16",
-      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs.",
-      "book": "Colossians",
-      "chapter": 3,
-      "verse": 16
+      "reference": "Psalm 103:1-4",
+      "text": "Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.",
+      "book": "Psalms",
+      "chapter": 103,
+      "verse": 1
     },
     "stanzas": [
       {
@@ -3703,8 +3703,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Penned by William Kethe & Robert Grant, this treasured hymn was birthed in a season of fervent prayer and contemplation upon the majesty of the Redeemer. Across continents and church traditions, believers have drawn courage and spiritual resolve from its lines when facing adversity, standing firm upon God's unchanging Word.",
-    "theologicalInsight": "Anchored in Colossians 3:16, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"O worship the King all-glorious above\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Psalm 103:1-4 and Revelation 19:6, \"O worship the King all-glorious above\" lifts the soul above earthly burdens into the majestic atmosphere of divine praise. It declares the unmatched greatness, sovereignty, and everlasting lovingkindness of God, summoning every faculty of the believer to worship Him in spirit and in truth.",
+    "devotionalPrayer": "Sovereign God, my heart rejoices in the words of \"O worship the King all-glorious above\". I worship You as the King of glory and Lord of all creation. Let my speech, thoughts, and deeds be a sweet-smelling savor of praise unto You, exalting Your holy Name before a watching world. Through Christ our Lord, Amen.",
     "tags": [
       "Grace & Redemption",
       "Classic Hymn",
@@ -3754,11 +3754,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "7.6.7.6.D.",
     "keySignature": "G Major",
     "scriptureAnchor": {
-      "reference": "1 Peter 1:18-19",
-      "text": "Knowing that ye were not redeemed with corruptible things... but with the precious blood of Christ, as of a lamb without blemish.",
-      "book": "1 Peter",
-      "chapter": 1,
-      "verse": 19
+      "reference": "Galatians 2:20",
+      "text": "I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me.",
+      "book": "Galatians",
+      "chapter": 2,
+      "verse": 20
     },
     "stanzas": [
       {
@@ -3779,8 +3779,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Composed during the great revival movements of the eighteenth and nineteenth centuries, this sacred hymn was born out of an intense longing for deeper holiness and unswerving trust in God's promises. Sung by congregations, prayer meetings, and open-air gospel gatherings across the world, its stirring lines continue to point troubled hearts toward the anchor of Christ's cross.",
-    "theologicalInsight": "Anchored in 1 Peter 1:18-19, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"On that same night, Lord Jesus\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Galatians 2:20 and 1 Peter 1:18-19, \"On that same night, Lord Jesus\" centers upon the finished work of Christ at the cross. It proclaims that true Christian liberty and eternal life flow exclusively from the shed blood of Jesus, which disarms demonic powers, cancels the debt of sin, and ushers the believer into holy resurrection victory.",
+    "devotionalPrayer": "Lord Jesus, as I meditate upon the sacred truth of \"On that same night, Lord Jesus\", I turn my eyes to Calvary. Thank You for taking my place, enduring the cross, and securing my eternal redemption. Let the power of Your blood cleanse my conscience and empower me to walk in resurrection life today. Amen.",
     "tags": [
       "Cross & Resurrection",
       "Classic Hymn",
@@ -3830,11 +3830,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.6.8.4.",
     "keySignature": "F Major",
     "scriptureAnchor": {
-      "reference": "Psalm 100:1-3",
-      "text": "Make a joyful noise unto the LORD, all ye lands. Serve the LORD with gladness: come before his presence with singing.",
-      "book": "Psalms",
-      "chapter": 100,
-      "verse": 2
+      "reference": "Colossians 3:16",
+      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs, singing with grace in your hearts to the Lord.",
+      "book": "Colossians",
+      "chapter": 3,
+      "verse": 16
     },
     "stanzas": [
       {
@@ -3859,8 +3859,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Written by Harriet Auber and cherished across generations of Christian hymnody, this anthem reflects a pivotal moment of spiritual surrender and adoration. Drawing directly upon the promises of Scripture, it captures the believer's steadfast confidence in the sovereignty, mercy, and lovingkindness of God in every season of life.",
-    "theologicalInsight": "Anchored in Psalm 100:1-3, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Our blest Redeemer, ere He breathed\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Colossians 3:16, \"Our blest Redeemer, ere He breathed\" stands as a vibrant testimony of apostolic faith. It teaches and admonishes the church in the eternal verities of the Gospel, encouraging the believer to walk worthy of the high calling of God in Christ Jesus with steadfast joy and unwavering obedience.",
+    "devotionalPrayer": "Lord God of our fathers, let the timeless truth expressed in \"Our blest Redeemer, ere He breathed\" dwell richly in my heart. Grant me spiritual discernment to recognize Your guidance, humility to serve my fellow believers, and holy zeal to fulfill Your purpose in my generation. Through Jesus Christ our Lord, Amen.",
     "tags": [
       "Grace & Redemption",
       "Classic Hymn",
@@ -3910,11 +3910,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "11.10's",
     "keySignature": "D Major",
     "scriptureAnchor": {
-      "reference": "Ephesians 2:8-9",
-      "text": "For by grace are ye saved through faith; and that not of yourselves: it is the gift of God.",
-      "book": "Ephesians",
+      "reference": "Galatians 2:20",
+      "text": "I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me.",
+      "book": "Galatians",
       "chapter": 2,
-      "verse": 8
+      "verse": 20
     },
     "stanzas": [
       {
@@ -3935,8 +3935,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Penned in 1885 by Fanny J. Crosby and set to music by William J. Kirkpatrick. Drawing upon Job 19:25 ('I know that my Redeemer liveth'), Crosby composed this triumphant Easter anthem to bolster the believer's certainty of bodily resurrection and victory over the grave.",
-    "theologicalInsight": "Anchored in Ephesians 2:8-9, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Our great Redeemer liveth! This assurance\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Galatians 2:20 and 1 Peter 1:18-19, \"Our great Redeemer liveth! This assurance\" centers upon the finished work of Christ at the cross. It proclaims that true Christian liberty and eternal life flow exclusively from the shed blood of Jesus, which disarms demonic powers, cancels the debt of sin, and ushers the believer into holy resurrection victory.",
+    "devotionalPrayer": "Lord Jesus, as I meditate upon the sacred truth of \"Our great Redeemer liveth! This assurance\", I turn my eyes to Calvary. Thank You for taking my place, enduring the cross, and securing my eternal redemption. Let the power of Your blood cleanse my conscience and empower me to walk in resurrection life today. Amen.",
     "tags": [
       "Cross & Resurrection",
       "Classic Hymn",
@@ -3986,11 +3986,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.8.7.",
     "keySignature": "Eb Major",
     "scriptureAnchor": {
-      "reference": "Psalm 145:3",
-      "text": "Great is the LORD, and greatly to be praised; and his greatness is unsearchable.",
+      "reference": "Psalm 103:1-4",
+      "text": "Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.",
       "book": "Psalms",
-      "chapter": 145,
-      "verse": 3
+      "chapter": 103,
+      "verse": 1
     },
     "stanzas": [
       {
@@ -4015,8 +4015,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Penned by Henry Francis Lyte, this treasured hymn was birthed in a season of fervent prayer and contemplation upon the majesty of the Redeemer. Across continents and church traditions, believers have drawn courage and spiritual resolve from its lines when facing adversity, standing firm upon God's unchanging Word.",
-    "theologicalInsight": "Anchored in Psalm 145:3, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Praise, my soul, the King of heaven;\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Psalm 103:1-4 and Revelation 19:6, \"Praise, my soul, the King of heaven;\" lifts the soul above earthly burdens into the majestic atmosphere of divine praise. It declares the unmatched greatness, sovereignty, and everlasting lovingkindness of God, summoning every faculty of the believer to worship Him in spirit and in truth.",
+    "devotionalPrayer": "Sovereign God, my heart rejoices in the words of \"Praise, my soul, the King of heaven;\". I worship You as the King of glory and Lord of all creation. Let my speech, thoughts, and deeds be a sweet-smelling savor of praise unto You, exalting Your holy Name before a watching world. Through Christ our Lord, Amen.",
     "tags": [
       "Grace & Redemption",
       "Classic Hymn",
@@ -4066,11 +4066,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "S.M.",
     "keySignature": "C Major",
     "scriptureAnchor": {
-      "reference": "Galatians 6:14",
-      "text": "God forbid that I should boast except in the cross of our Lord Jesus Christ, by whom the world has been crucified to me.",
-      "book": "Galatians",
-      "chapter": 6,
-      "verse": 14
+      "reference": "Proverbs 3:5-6",
+      "text": "Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths.",
+      "book": "Proverbs",
+      "chapter": 3,
+      "verse": 5
     },
     "stanzas": [
       {
@@ -4099,8 +4099,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Charles Wesley (1707–1788) was the chief poet and hymn-writer of the 18th-century Methodist Revival. Over his lifetime he composed more than 6,500 hymns, conveying profound biblical theology through magnificent rhythm and heartfelt adoration of Christ. Penned in deep communion with the Holy Spirit, this sacred hymn stands as a lasting monument of faith, having ministered grace and reassurance to generations of worshipping believers.",
-    "theologicalInsight": "Anchored in Galatians 6:14, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Put thou thy trust in God\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Proverbs 3:5-6 and Hebrews 11:1, \"Put thou thy trust in God\" calls the believer to absolute, childlike reliance upon God's unchanging counsel. When circumstances shift and human understanding fails, this hymn reminds us that God's covenant promises are bedrock, and He never abandons those who put their trust in Him.",
+    "devotionalPrayer": "Faithful Shepherd, through the inspiring lines of \"Put thou thy trust in God\", teach me to lean wholly upon Your strength. Dispel every lingering fear, anxiety, and doubt. Guide my steps in paths of righteousness for Your Name's sake, and let my faith remain unshaken in every tempest. In Jesus' Name, Amen.",
     "tags": [
       "Grace & Redemption",
       "Classic Hymn",
@@ -4150,11 +4150,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "6.6.6.6.8.8.",
     "keySignature": "Bb Major",
     "scriptureAnchor": {
-      "reference": "Philippians 4:6-7",
-      "text": "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God.",
-      "book": "Philippians",
-      "chapter": 4,
-      "verse": 6
+      "reference": "Psalm 103:1-4",
+      "text": "Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.",
+      "book": "Psalms",
+      "chapter": 103,
+      "verse": 1
     },
     "stanzas": [
       {
@@ -4179,8 +4179,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Charles Wesley (1707–1788) was the chief poet and hymn-writer of the 18th-century Methodist Revival. Over his lifetime he composed more than 6,500 hymns, conveying profound biblical theology through magnificent rhythm and heartfelt adoration of Christ. Penned in deep communion with the Holy Spirit, this sacred hymn stands as a lasting monument of faith, having ministered grace and reassurance to generations of worshipping believers.",
-    "theologicalInsight": "Anchored in Philippians 4:6-7, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Rejoice! The Lord is King;\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Psalm 103:1-4 and Revelation 19:6, \"Rejoice! The Lord is King;\" lifts the soul above earthly burdens into the majestic atmosphere of divine praise. It declares the unmatched greatness, sovereignty, and everlasting lovingkindness of God, summoning every faculty of the believer to worship Him in spirit and in truth.",
+    "devotionalPrayer": "Sovereign God, my heart rejoices in the words of \"Rejoice! The Lord is King;\". I worship You as the King of glory and Lord of all creation. Let my speech, thoughts, and deeds be a sweet-smelling savor of praise unto You, exalting Your holy Name before a watching world. Through Christ our Lord, Amen.",
     "tags": [
       "Praise & Adoration",
       "Classic Hymn",
@@ -4230,10 +4230,10 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "10's",
     "keySignature": "Ab Major",
     "scriptureAnchor": {
-      "reference": "Psalm 23:1-3",
-      "text": "The LORD is my shepherd; I shall not want. He maketh me to lie down in green pastures: he leadeth me beside the still waters.",
+      "reference": "Psalm 103:1-4",
+      "text": "Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.",
       "book": "Psalms",
-      "chapter": 23,
+      "chapter": 103,
       "verse": 1
     },
     "stanzas": [
@@ -4255,8 +4255,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Composed in 1866 by John Ellerton, vicar of Crewe Green in Cheshire, for the annual festival of the Malpas Choral Association. Ellerton wrote this dignified evening hymn to invoke God's parting peace upon the congregation as they prepare to re-enter daily life and labor.",
-    "theologicalInsight": "Anchored in Psalm 23:1-3, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Saviour, again to Thy dear name we raise\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Psalm 103:1-4 and Revelation 19:6, \"Saviour, again to Thy dear name we raise\" lifts the soul above earthly burdens into the majestic atmosphere of divine praise. It declares the unmatched greatness, sovereignty, and everlasting lovingkindness of God, summoning every faculty of the believer to worship Him in spirit and in truth.",
+    "devotionalPrayer": "Sovereign God, my heart rejoices in the words of \"Saviour, again to Thy dear name we raise\". I worship You as the King of glory and Lord of all creation. Let my speech, thoughts, and deeds be a sweet-smelling savor of praise unto You, exalting Your holy Name before a watching world. Through Christ our Lord, Amen.",
     "tags": [
       "Praise & Adoration",
       "Classic Hymn",
@@ -4306,11 +4306,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "6.4.6.4.6.6.6.4.",
     "keySignature": "G Major",
     "scriptureAnchor": {
-      "reference": "Lamentations 3:22-23",
-      "text": "It is of the LORD's mercies that we are not consumed, because his compassions fail not. They are new every morning: great is thy faithfulness.",
-      "book": "Lamentations",
-      "chapter": 3,
-      "verse": 23
+      "reference": "Galatians 2:20",
+      "text": "I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me.",
+      "book": "Galatians",
+      "chapter": 2,
+      "verse": 20
     },
     "stanzas": [
       {
@@ -4331,8 +4331,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Penned by Sylvanus Dryden Phelps, this treasured hymn was birthed in a season of fervent prayer and contemplation upon the majesty of the Redeemer. Across continents and church traditions, believers have drawn courage and spiritual resolve from its lines when facing adversity, standing firm upon God's unchanging Word.",
-    "theologicalInsight": "Anchored in Lamentations 3:22-23, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Saviour, Thy dying love\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Galatians 2:20 and 1 Peter 1:18-19, \"Saviour, Thy dying love\" centers upon the finished work of Christ at the cross. It proclaims that true Christian liberty and eternal life flow exclusively from the shed blood of Jesus, which disarms demonic powers, cancels the debt of sin, and ushers the believer into holy resurrection victory.",
+    "devotionalPrayer": "Lord Jesus, as I meditate upon the sacred truth of \"Saviour, Thy dying love\", I turn my eyes to Calvary. Thank You for taking my place, enduring the cross, and securing my eternal redemption. Let the power of Your blood cleanse my conscience and empower me to walk in resurrection life today. Amen.",
     "tags": [
       "Cross & Resurrection",
       "Classic Hymn",
@@ -4382,11 +4382,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.D.",
     "keySignature": "F Major",
     "scriptureAnchor": {
-      "reference": "Hebrews 12:1-2",
-      "text": "Looking unto Jesus the author and finisher of our faith; who for the joy that was set before him endured the cross.",
-      "book": "Hebrews",
-      "chapter": 12,
-      "verse": 2
+      "reference": "Proverbs 3:5-6",
+      "text": "Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths.",
+      "book": "Proverbs",
+      "chapter": 3,
+      "verse": 5
     },
     "stanzas": [
       {
@@ -4403,8 +4403,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Composed during the great revival movements of the eighteenth and nineteenth centuries, this sacred hymn was born out of an intense longing for deeper holiness and unswerving trust in God's promises. Sung by congregations, prayer meetings, and open-air gospel gatherings across the world, its stirring lines continue to point troubled hearts toward the anchor of Christ's cross.",
-    "theologicalInsight": "Anchored in Hebrews 12:1-2, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Saviour, lead us by Thy power\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Proverbs 3:5-6 and Hebrews 11:1, \"Saviour, lead us by Thy power\" calls the believer to absolute, childlike reliance upon God's unchanging counsel. When circumstances shift and human understanding fails, this hymn reminds us that God's covenant promises are bedrock, and He never abandons those who put their trust in Him.",
+    "devotionalPrayer": "Faithful Shepherd, through the inspiring lines of \"Saviour, lead us by Thy power\", teach me to lean wholly upon Your strength. Dispel every lingering fear, anxiety, and doubt. Guide my steps in paths of righteousness for Your Name's sake, and let my faith remain unshaken in every tempest. In Jesus' Name, Amen.",
     "tags": [
       "Faith & Trust",
       "Classic Hymn",
@@ -4454,11 +4454,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "6.5.6.5.",
     "keySignature": "D Major",
     "scriptureAnchor": {
-      "reference": "Romans 8:38-39",
-      "text": "For I am persuaded, that neither death, nor life, nor angels, nor principalities... shall be able to separate us from the love of God, which is in Christ Jesus our Lord.",
+      "reference": "Romans 12:1-2",
+      "text": "I beseech you therefore, brethren, by the mercies of God, that ye present your bodies a living sacrifice, holy, acceptable unto God, which is your reasonable service.",
       "book": "Romans",
-      "chapter": 8,
-      "verse": 38
+      "chapter": 12,
+      "verse": 1
     },
     "stanzas": [
       {
@@ -4487,8 +4487,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Written by Emily May Grimes Crawford and cherished across generations of Christian hymnody, this anthem reflects a pivotal moment of spiritual surrender and adoration. Drawing directly upon the promises of Scripture, it captures the believer's steadfast confidence in the sovereignty, mercy, and lovingkindness of God in every season of life.",
-    "theologicalInsight": "Anchored in Romans 8:38-39, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Speak, Lord, in the stillness\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Romans 12:1-2 and Psalm 63:1, \"Speak, Lord, in the stillness\" is an altar call of wholehearted devotion. It summons the believer to lay aside every weight and sin, seeking a consecrated walk with God that reflects His holiness, desires His presence above all gifts, and obeys His commandments with gladness.",
+    "devotionalPrayer": "Heavenly Father, as I pray through the words of \"Speak, Lord, in the stillness\", I lay my life afresh upon Your altar. Purify my motives, kindle the fire of Your love within my spirit, and teach me to seek Your face daily in prayer and communion. Not my will, but Thine be done. In Jesus' Name, Amen.",
     "tags": [
       "Prayer & Consecration",
       "Classic Hymn",
@@ -4538,10 +4538,10 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "6.4.6.4.6.6.6.4.",
     "keySignature": "Eb Major",
     "scriptureAnchor": {
-      "reference": "Isaiah 53:5",
-      "text": "He was wounded for our transgressions, he was bruised for our iniquities: the chastisement of our peace was upon him; and with his stripes we are healed.",
-      "book": "Isaiah",
-      "chapter": 53,
+      "reference": "Proverbs 3:5-6",
+      "text": "Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths.",
+      "book": "Proverbs",
+      "chapter": 3,
       "verse": 5
     },
     "stanzas": [
@@ -4559,8 +4559,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Written in 1899 by Benjamin Mansell Ramsey, an English music teacher and organist of Bournemouth, based on Psalm 27:11 ('Teach me thy way, O Lord'). Ramsey composed both words and music to serve as a tender prayer for guidance when life's path appears obscure and full of trials.",
-    "theologicalInsight": "Anchored in Isaiah 53:5, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Teach me Thy way, O Lord\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Proverbs 3:5-6 and Hebrews 11:1, \"Teach me Thy way, O Lord\" calls the believer to absolute, childlike reliance upon God's unchanging counsel. When circumstances shift and human understanding fails, this hymn reminds us that God's covenant promises are bedrock, and He never abandons those who put their trust in Him.",
+    "devotionalPrayer": "Faithful Shepherd, through the inspiring lines of \"Teach me Thy way, O Lord\", teach me to lean wholly upon Your strength. Dispel every lingering fear, anxiety, and doubt. Guide my steps in paths of righteousness for Your Name's sake, and let my faith remain unshaken in every tempest. In Jesus' Name, Amen.",
     "tags": [
       "Faith & Trust",
       "Classic Hymn",
@@ -4610,11 +4610,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "10's",
     "keySignature": "C Major",
     "scriptureAnchor": {
-      "reference": "Revelation 5:12",
-      "text": "Worthy is the Lamb that was slain to receive power, and riches, and wisdom, and strength, and honour, and glory, and blessing.",
-      "book": "Revelation",
-      "chapter": 5,
-      "verse": 12
+      "reference": "Galatians 2:20",
+      "text": "I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me.",
+      "book": "Galatians",
+      "chapter": 2,
+      "verse": 20
     },
     "stanzas": [
       {
@@ -4643,8 +4643,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Penned by George Goodman, this treasured hymn was birthed in a season of fervent prayer and contemplation upon the majesty of the Redeemer. Across continents and church traditions, believers have drawn courage and spiritual resolve from its lines when facing adversity, standing firm upon God's unchanging Word.",
-    "theologicalInsight": "Anchored in Revelation 5:12, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"The bread and wine are spread upon the board\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Galatians 2:20 and 1 Peter 1:18-19, \"The bread and wine are spread upon the board\" centers upon the finished work of Christ at the cross. It proclaims that true Christian liberty and eternal life flow exclusively from the shed blood of Jesus, which disarms demonic powers, cancels the debt of sin, and ushers the believer into holy resurrection victory.",
+    "devotionalPrayer": "Lord Jesus, as I meditate upon the sacred truth of \"The bread and wine are spread upon the board\", I turn my eyes to Calvary. Thank You for taking my place, enduring the cross, and securing my eternal redemption. Let the power of Your blood cleanse my conscience and empower me to walk in resurrection life today. Amen.",
     "tags": [
       "Cross & Resurrection",
       "Classic Hymn",
@@ -4694,11 +4694,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "7.6.7.6.D.",
     "keySignature": "Bb Major",
     "scriptureAnchor": {
-      "reference": "Psalm 46:1-2",
-      "text": "God is our refuge and strength, a very present help in trouble. Therefore will not we fear.",
-      "book": "Psalms",
-      "chapter": 46,
-      "verse": 1
+      "reference": "Galatians 2:20",
+      "text": "I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me.",
+      "book": "Galatians",
+      "chapter": 2,
+      "verse": 20
     },
     "stanzas": [
       {
@@ -4719,8 +4719,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Composed during the great revival movements of the eighteenth and nineteenth centuries, this sacred hymn was born out of an intense longing for deeper holiness and unswerving trust in God's promises. Sung by congregations, prayer meetings, and open-air gospel gatherings across the world, its stirring lines continue to point troubled hearts toward the anchor of Christ's cross.",
-    "theologicalInsight": "Anchored in Psalm 46:1-2, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"The Church's one foundation\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Galatians 2:20 and 1 Peter 1:18-19, \"The Church's one foundation\" centers upon the finished work of Christ at the cross. It proclaims that true Christian liberty and eternal life flow exclusively from the shed blood of Jesus, which disarms demonic powers, cancels the debt of sin, and ushers the believer into holy resurrection victory.",
+    "devotionalPrayer": "Lord Jesus, as I meditate upon the sacred truth of \"The Church's one foundation\", I turn my eyes to Calvary. Thank You for taking my place, enduring the cross, and securing my eternal redemption. Let the power of Your blood cleanse my conscience and empower me to walk in resurrection life today. Amen.",
     "tags": [
       "Cross & Resurrection",
       "Classic Hymn",
@@ -4770,11 +4770,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "9.8.9.8.",
     "keySignature": "Ab Major",
     "scriptureAnchor": {
-      "reference": "2 Corinthians 5:17",
-      "text": "Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new.",
-      "book": "2 Corinthians",
-      "chapter": 5,
-      "verse": 17
+      "reference": "Psalm 103:1-4",
+      "text": "Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.",
+      "book": "Psalms",
+      "chapter": 103,
+      "verse": 1
     },
     "stanzas": [
       {
@@ -4799,8 +4799,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Written by John Ellerton and cherished across generations of Christian hymnody, this anthem reflects a pivotal moment of spiritual surrender and adoration. Drawing directly upon the promises of Scripture, it captures the believer's steadfast confidence in the sovereignty, mercy, and lovingkindness of God in every season of life.",
-    "theologicalInsight": "Anchored in 2 Corinthians 5:17, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"The day Thou gavest, Lord, is ended;\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Psalm 103:1-4 and Revelation 19:6, \"The day Thou gavest, Lord, is ended;\" lifts the soul above earthly burdens into the majestic atmosphere of divine praise. It declares the unmatched greatness, sovereignty, and everlasting lovingkindness of God, summoning every faculty of the believer to worship Him in spirit and in truth.",
+    "devotionalPrayer": "Sovereign God, my heart rejoices in the words of \"The day Thou gavest, Lord, is ended;\". I worship You as the King of glory and Lord of all creation. Let my speech, thoughts, and deeds be a sweet-smelling savor of praise unto You, exalting Your holy Name before a watching world. Through Christ our Lord, Amen.",
     "tags": [
       "Praise & Adoration",
       "Classic Hymn",
@@ -4850,11 +4850,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.",
     "keySignature": "G Major",
     "scriptureAnchor": {
-      "reference": "Colossians 3:16",
-      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs.",
-      "book": "Colossians",
-      "chapter": 3,
-      "verse": 16
+      "reference": "Galatians 2:20",
+      "text": "I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me.",
+      "book": "Galatians",
+      "chapter": 2,
+      "verse": 20
     },
     "stanzas": [
       {
@@ -4883,8 +4883,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Composed in 1868 by Sir Henry Williams Baker, vicar of Monkland, Herefordshire, and chairman of the committee that produced Hymns Ancient & Modern. Baker penned this exquisite paraphrase of Psalm 23 on his deathbed; his final spoken words before passing into glory were the third stanza: 'Perverse and foolish oft I strayed.'",
-    "theologicalInsight": "Anchored in Colossians 3:16, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"The King of love my Shepherd is\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Galatians 2:20 and 1 Peter 1:18-19, \"The King of love my Shepherd is\" centers upon the finished work of Christ at the cross. It proclaims that true Christian liberty and eternal life flow exclusively from the shed blood of Jesus, which disarms demonic powers, cancels the debt of sin, and ushers the believer into holy resurrection victory.",
+    "devotionalPrayer": "Lord Jesus, as I meditate upon the sacred truth of \"The King of love my Shepherd is\", I turn my eyes to Calvary. Thank You for taking my place, enduring the cross, and securing my eternal redemption. Let the power of Your blood cleanse my conscience and empower me to walk in resurrection life today. Amen.",
     "tags": [
       "Cross & Resurrection",
       "Classic Hymn",
@@ -4934,11 +4934,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "C.M.",
     "keySignature": "F Major",
     "scriptureAnchor": {
-      "reference": "1 Peter 1:18-19",
-      "text": "Knowing that ye were not redeemed with corruptible things... but with the precious blood of Christ, as of a lamb without blemish.",
-      "book": "1 Peter",
-      "chapter": 1,
-      "verse": 19
+      "reference": "Galatians 2:20",
+      "text": "I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me.",
+      "book": "Galatians",
+      "chapter": 2,
+      "verse": 20
     },
     "stanzas": [
       {
@@ -4963,8 +4963,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Penned by Samuel Prideaux Tregelles, this treasured hymn was birthed in a season of fervent prayer and contemplation upon the majesty of the Redeemer. Across continents and church traditions, believers have drawn courage and spiritual resolve from its lines when facing adversity, standing firm upon God's unchanging Word.",
-    "theologicalInsight": "Anchored in 1 Peter 1:18-19, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"The gloomy night will soon be past\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Galatians 2:20 and 1 Peter 1:18-19, \"The gloomy night will soon be past\" centers upon the finished work of Christ at the cross. It proclaims that true Christian liberty and eternal life flow exclusively from the shed blood of Jesus, which disarms demonic powers, cancels the debt of sin, and ushers the believer into holy resurrection victory.",
+    "devotionalPrayer": "Lord Jesus, as I meditate upon the sacred truth of \"The gloomy night will soon be past\", I turn my eyes to Calvary. Thank You for taking my place, enduring the cross, and securing my eternal redemption. Let the power of Your blood cleanse my conscience and empower me to walk in resurrection life today. Amen.",
     "tags": [
       "Cross & Resurrection",
       "Classic Hymn",
@@ -5014,11 +5014,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "11.10's",
     "keySignature": "D Major",
     "scriptureAnchor": {
-      "reference": "Psalm 100:1-3",
-      "text": "Make a joyful noise unto the LORD, all ye lands. Serve the LORD with gladness: come before his presence with singing.",
-      "book": "Psalms",
-      "chapter": 100,
-      "verse": 2
+      "reference": "Colossians 3:16",
+      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs, singing with grace in your hearts to the Lord.",
+      "book": "Colossians",
+      "chapter": 3,
+      "verse": 16
     },
     "stanzas": [
       {
@@ -5043,8 +5043,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Composed during the great revival movements of the eighteenth and nineteenth centuries, this sacred hymn was born out of an intense longing for deeper holiness and unswerving trust in God's promises. Sung by congregations, prayer meetings, and open-air gospel gatherings across the world, its stirring lines continue to point troubled hearts toward the anchor of Christ's cross.",
-    "theologicalInsight": "Anchored in Psalm 100:1-3, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"The Lord will perfect that which doth concern me\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Colossians 3:16, \"The Lord will perfect that which doth concern me\" stands as a vibrant testimony of apostolic faith. It teaches and admonishes the church in the eternal verities of the Gospel, encouraging the believer to walk worthy of the high calling of God in Christ Jesus with steadfast joy and unwavering obedience.",
+    "devotionalPrayer": "Lord God of our fathers, let the timeless truth expressed in \"The Lord will perfect that which doth concern me\" dwell richly in my heart. Grant me spiritual discernment to recognize Your guidance, humility to serve my fellow believers, and holy zeal to fulfill Your purpose in my generation. Through Jesus Christ our Lord, Amen.",
     "tags": [
       "Grace & Redemption",
       "Classic Hymn",
@@ -5094,11 +5094,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "C.M.",
     "keySignature": "Eb Major",
     "scriptureAnchor": {
-      "reference": "Ephesians 2:8-9",
-      "text": "For by grace are ye saved through faith; and that not of yourselves: it is the gift of God.",
-      "book": "Ephesians",
-      "chapter": 2,
-      "verse": 8
+      "reference": "Colossians 3:16",
+      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs, singing with grace in your hearts to the Lord.",
+      "book": "Colossians",
+      "chapter": 3,
+      "verse": 16
     },
     "stanzas": [
       {
@@ -5123,8 +5123,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Written by Francis Rous (Rowe) &  Scottish Psalter and cherished across generations of Christian hymnody, this anthem reflects a pivotal moment of spiritual surrender and adoration. Drawing directly upon the promises of Scripture, it captures the believer's steadfast confidence in the sovereignty, mercy, and lovingkindness of God in every season of life.",
-    "theologicalInsight": "Anchored in Ephesians 2:8-9, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"The Lord's my Shepherd, I'll not want:\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Colossians 3:16, \"The Lord's my Shepherd, I'll not want:\" stands as a vibrant testimony of apostolic faith. It teaches and admonishes the church in the eternal verities of the Gospel, encouraging the believer to walk worthy of the high calling of God in Christ Jesus with steadfast joy and unwavering obedience.",
+    "devotionalPrayer": "Lord God of our fathers, let the timeless truth expressed in \"The Lord's my Shepherd, I'll not want:\" dwell richly in my heart. Grant me spiritual discernment to recognize Your guidance, humility to serve my fellow believers, and holy zeal to fulfill Your purpose in my generation. Through Jesus Christ our Lord, Amen.",
     "tags": [
       "Grace & Redemption",
       "Classic Hymn",
@@ -5174,11 +5174,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "C.M.",
     "keySignature": "C Major",
     "scriptureAnchor": {
-      "reference": "Psalm 145:3",
-      "text": "Great is the LORD, and greatly to be praised; and his greatness is unsearchable.",
-      "book": "Psalms",
-      "chapter": 145,
-      "verse": 3
+      "reference": "Galatians 2:20",
+      "text": "I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me.",
+      "book": "Galatians",
+      "chapter": 2,
+      "verse": 20
     },
     "stanzas": [
       {
@@ -5203,8 +5203,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Written in 1848 by Cecil Frances Alexander in Derry, Ireland, while sitting by the bed of a sick child. Alexander composed this tender hymn to explain the phrase 'suffered under Pontius Pilate' in the Apostles' Creed, helping young minds understand the redemptive cost of Calvary's green hill.",
-    "theologicalInsight": "Anchored in Psalm 145:3, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"There is a green hill far away\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Galatians 2:20 and 1 Peter 1:18-19, \"There is a green hill far away\" centers upon the finished work of Christ at the cross. It proclaims that true Christian liberty and eternal life flow exclusively from the shed blood of Jesus, which disarms demonic powers, cancels the debt of sin, and ushers the believer into holy resurrection victory.",
+    "devotionalPrayer": "Lord Jesus, as I meditate upon the sacred truth of \"There is a green hill far away\", I turn my eyes to Calvary. Thank You for taking my place, enduring the cross, and securing my eternal redemption. Let the power of Your blood cleanse my conscience and empower me to walk in resurrection life today. Amen.",
     "tags": [
       "Cross & Resurrection",
       "Classic Hymn",
@@ -5254,11 +5254,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "6.6.4.6.6.6.4.",
     "keySignature": "Bb Major",
     "scriptureAnchor": {
-      "reference": "Galatians 6:14",
-      "text": "God forbid that I should boast except in the cross of our Lord Jesus Christ, by whom the world has been crucified to me.",
+      "reference": "Galatians 2:20",
+      "text": "I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me.",
       "book": "Galatians",
-      "chapter": 6,
-      "verse": 14
+      "chapter": 2,
+      "verse": 20
     },
     "stanzas": [
       {
@@ -5279,8 +5279,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Penned by K. H. Elders, this treasured hymn was birthed in a season of fervent prayer and contemplation upon the majesty of the Redeemer. Across continents and church traditions, believers have drawn courage and spiritual resolve from its lines when facing adversity, standing firm upon God's unchanging Word.",
-    "theologicalInsight": "Anchored in Galatians 6:14, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Thou who did'st come to die\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Galatians 2:20 and 1 Peter 1:18-19, \"Thou who did'st come to die\" centers upon the finished work of Christ at the cross. It proclaims that true Christian liberty and eternal life flow exclusively from the shed blood of Jesus, which disarms demonic powers, cancels the debt of sin, and ushers the believer into holy resurrection victory.",
+    "devotionalPrayer": "Lord Jesus, as I meditate upon the sacred truth of \"Thou who did'st come to die\", I turn my eyes to Calvary. Thank You for taking my place, enduring the cross, and securing my eternal redemption. Let the power of Your blood cleanse my conscience and empower me to walk in resurrection life today. Amen.",
     "tags": [
       "Cross & Resurrection",
       "Classic Hymn",
@@ -5330,11 +5330,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "6.6.4.6.6.6.4.",
     "keySignature": "Ab Major",
     "scriptureAnchor": {
-      "reference": "Philippians 4:6-7",
-      "text": "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God.",
-      "book": "Philippians",
-      "chapter": 4,
-      "verse": 6
+      "reference": "Colossians 3:16",
+      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs, singing with grace in your hearts to the Lord.",
+      "book": "Colossians",
+      "chapter": 3,
+      "verse": 16
     },
     "stanzas": [
       {
@@ -5355,8 +5355,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Composed during the great revival movements of the eighteenth and nineteenth centuries, this sacred hymn was born out of an intense longing for deeper holiness and unswerving trust in God's promises. Sung by congregations, prayer meetings, and open-air gospel gatherings across the world, its stirring lines continue to point troubled hearts toward the anchor of Christ's cross.",
-    "theologicalInsight": "Anchored in Philippians 4:6-7, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Thou whose almighty word\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Colossians 3:16, \"Thou whose almighty word\" stands as a vibrant testimony of apostolic faith. It teaches and admonishes the church in the eternal verities of the Gospel, encouraging the believer to walk worthy of the high calling of God in Christ Jesus with steadfast joy and unwavering obedience.",
+    "devotionalPrayer": "Lord God of our fathers, let the timeless truth expressed in \"Thou whose almighty word\" dwell richly in my heart. Grant me spiritual discernment to recognize Your guidance, humility to serve my fellow believers, and holy zeal to fulfill Your purpose in my generation. Through Jesus Christ our Lord, Amen.",
     "tags": [
       "Grace & Redemption",
       "Classic Hymn",
@@ -5406,11 +5406,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "6.6.6.6.6.6.",
     "keySignature": "G Major",
     "scriptureAnchor": {
-      "reference": "Psalm 23:1-3",
-      "text": "The LORD is my shepherd; I shall not want. He maketh me to lie down in green pastures: he leadeth me beside the still waters.",
-      "book": "Psalms",
-      "chapter": 23,
-      "verse": 1
+      "reference": "Galatians 2:20",
+      "text": "I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me.",
+      "book": "Galatians",
+      "chapter": 2,
+      "verse": 20
     },
     "stanzas": [
       {
@@ -5435,8 +5435,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Frances Ridley Havergal (1836–1879) was a gifted English musician and devotional writer who consecrated every talent, time, and possession to the Master. She wrote this hymn after experiencing a spiritual breakthrough in which all members of a household where she was staying surrendered to Jesus. Penned in deep communion with the Holy Spirit, this sacred hymn stands as a lasting monument of faith, having ministered grace and reassurance to generations of worshipping believers.",
-    "theologicalInsight": "Anchored in Psalm 23:1-3, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Thy life was given for me\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Galatians 2:20 and 1 Peter 1:18-19, \"Thy life was given for me\" centers upon the finished work of Christ at the cross. It proclaims that true Christian liberty and eternal life flow exclusively from the shed blood of Jesus, which disarms demonic powers, cancels the debt of sin, and ushers the believer into holy resurrection victory.",
+    "devotionalPrayer": "Lord Jesus, as I meditate upon the sacred truth of \"Thy life was given for me\", I turn my eyes to Calvary. Thank You for taking my place, enduring the cross, and securing my eternal redemption. Let the power of Your blood cleanse my conscience and empower me to walk in resurrection life today. Amen.",
     "tags": [
       "Cross & Resurrection",
       "Classic Hymn",
@@ -5486,11 +5486,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "L.M.",
     "keySignature": "F Major",
     "scriptureAnchor": {
-      "reference": "Lamentations 3:22-23",
-      "text": "It is of the LORD's mercies that we are not consumed, because his compassions fail not. They are new every morning: great is thy faithfulness.",
-      "book": "Lamentations",
-      "chapter": 3,
-      "verse": 23
+      "reference": "Galatians 2:20",
+      "text": "I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me.",
+      "book": "Galatians",
+      "chapter": 2,
+      "verse": 20
     },
     "stanzas": [
       {
@@ -5519,8 +5519,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Penned in 1781 by John Morrison, parish schoolmaster and minister of Canisbay in Caithness, Scotland. Morrison contributed this classic communion text to the Scottish Translations and Paraphrases, memorializing the fateful night when the Savior broke bread before His betrayal.",
-    "theologicalInsight": "Anchored in Lamentations 3:22-23, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"'Twas on that night, when doomed to know\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Galatians 2:20 and 1 Peter 1:18-19, \"'Twas on that night, when doomed to know\" centers upon the finished work of Christ at the cross. It proclaims that true Christian liberty and eternal life flow exclusively from the shed blood of Jesus, which disarms demonic powers, cancels the debt of sin, and ushers the believer into holy resurrection victory.",
+    "devotionalPrayer": "Lord Jesus, as I meditate upon the sacred truth of \"'Twas on that night, when doomed to know\", I turn my eyes to Calvary. Thank You for taking my place, enduring the cross, and securing my eternal redemption. Let the power of Your blood cleanse my conscience and empower me to walk in resurrection life today. Amen.",
     "tags": [
       "Cross & Resurrection",
       "Classic Hymn",
@@ -5570,11 +5570,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "7.6.7.6.D.",
     "keySignature": "D Major",
     "scriptureAnchor": {
-      "reference": "Hebrews 12:1-2",
-      "text": "Looking unto Jesus the author and finisher of our faith; who for the joy that was set before him endured the cross.",
-      "book": "Hebrews",
-      "chapter": 12,
-      "verse": 2
+      "reference": "Psalm 103:1-4",
+      "text": "Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.",
+      "book": "Psalms",
+      "chapter": 103,
+      "verse": 1
     },
     "stanzas": [
       {
@@ -5591,8 +5591,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Penned by Alexander Carruthers, this treasured hymn was birthed in a season of fervent prayer and contemplation upon the majesty of the Redeemer. Across continents and church traditions, believers have drawn courage and spiritual resolve from its lines when facing adversity, standing firm upon God's unchanging Word.",
-    "theologicalInsight": "Anchored in Hebrews 12:1-2, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"We bless Thee, God and Father\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Psalm 103:1-4 and Revelation 19:6, \"We bless Thee, God and Father\" lifts the soul above earthly burdens into the majestic atmosphere of divine praise. It declares the unmatched greatness, sovereignty, and everlasting lovingkindness of God, summoning every faculty of the believer to worship Him in spirit and in truth.",
+    "devotionalPrayer": "Sovereign God, my heart rejoices in the words of \"We bless Thee, God and Father\". I worship You as the King of glory and Lord of all creation. Let my speech, thoughts, and deeds be a sweet-smelling savor of praise unto You, exalting Your holy Name before a watching world. Through Christ our Lord, Amen.",
     "tags": [
       "Praise & Adoration",
       "Classic Hymn",
@@ -5642,11 +5642,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.8.8.8.8.8.",
     "keySignature": "Eb Major",
     "scriptureAnchor": {
-      "reference": "Romans 8:38-39",
-      "text": "For I am persuaded, that neither death, nor life, nor angels, nor principalities... shall be able to separate us from the love of God, which is in Christ Jesus our Lord.",
-      "book": "Romans",
-      "chapter": 8,
-      "verse": 38
+      "reference": "Galatians 2:20",
+      "text": "I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me.",
+      "book": "Galatians",
+      "chapter": 2,
+      "verse": 20
     },
     "stanzas": [
       {
@@ -5671,8 +5671,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Composed during the great revival movements of the eighteenth and nineteenth centuries, this sacred hymn was born out of an intense longing for deeper holiness and unswerving trust in God's promises. Sung by congregations, prayer meetings, and open-air gospel gatherings across the world, its stirring lines continue to point troubled hearts toward the anchor of Christ's cross.",
-    "theologicalInsight": "Anchored in Romans 8:38-39, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"We saw Thee not when Thou didst come\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Galatians 2:20 and 1 Peter 1:18-19, \"We saw Thee not when Thou didst come\" centers upon the finished work of Christ at the cross. It proclaims that true Christian liberty and eternal life flow exclusively from the shed blood of Jesus, which disarms demonic powers, cancels the debt of sin, and ushers the believer into holy resurrection victory.",
+    "devotionalPrayer": "Lord Jesus, as I meditate upon the sacred truth of \"We saw Thee not when Thou didst come\", I turn my eyes to Calvary. Thank You for taking my place, enduring the cross, and securing my eternal redemption. Let the power of Your blood cleanse my conscience and empower me to walk in resurrection life today. Amen.",
     "tags": [
       "Cross & Resurrection",
       "Classic Hymn",
@@ -5722,11 +5722,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "L.M.",
     "keySignature": "C Major",
     "scriptureAnchor": {
-      "reference": "Isaiah 53:5",
-      "text": "He was wounded for our transgressions, he was bruised for our iniquities: the chastisement of our peace was upon him; and with his stripes we are healed.",
-      "book": "Isaiah",
-      "chapter": 53,
-      "verse": 5
+      "reference": "Psalm 103:1-4",
+      "text": "Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.",
+      "book": "Psalms",
+      "chapter": 103,
+      "verse": 1
     },
     "stanzas": [
       {
@@ -5747,8 +5747,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Written by F. Theodora Wigram and cherished across generations of Christian hymnody, this anthem reflects a pivotal moment of spiritual surrender and adoration. Drawing directly upon the promises of Scripture, it captures the believer's steadfast confidence in the sovereignty, mercy, and lovingkindness of God in every season of life.",
-    "theologicalInsight": "Anchored in Isaiah 53:5, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Worthy of homage and of praise;\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Psalm 103:1-4 and Revelation 19:6, \"Worthy of homage and of praise;\" lifts the soul above earthly burdens into the majestic atmosphere of divine praise. It declares the unmatched greatness, sovereignty, and everlasting lovingkindness of God, summoning every faculty of the believer to worship Him in spirit and in truth.",
+    "devotionalPrayer": "Sovereign God, my heart rejoices in the words of \"Worthy of homage and of praise;\". I worship You as the King of glory and Lord of all creation. Let my speech, thoughts, and deeds be a sweet-smelling savor of praise unto You, exalting Your holy Name before a watching world. Through Christ our Lord, Amen.",
     "tags": [
       "Praise & Adoration",
       "Classic Hymn",
@@ -5798,11 +5798,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "P.M.",
     "keySignature": "Bb Major",
     "scriptureAnchor": {
-      "reference": "Revelation 5:12",
-      "text": "Worthy is the Lamb that was slain to receive power, and riches, and wisdom, and strength, and honour, and glory, and blessing.",
-      "book": "Revelation",
-      "chapter": 5,
-      "verse": 12
+      "reference": "Psalm 103:1-4",
+      "text": "Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.",
+      "book": "Psalms",
+      "chapter": 103,
+      "verse": 1
     },
     "stanzas": [
       {
@@ -5816,8 +5816,8 @@ export const HYMNS_PART_5: HymnItem[] = [
     ],
     "chorus": "Hallelujah! Hallelujah!\nHallelujah! Hallelujah!\nAmen, Amen, Amen.",
     "historicalStory": "Adapted from the 1650 Scottish Metrical Psalter, based on the translation by Francis Rous. This majestic paraphrase of Psalm 24:7-10 ('Ye gates, lift up your heads on high') has been sung for centuries in Scottish Presbyterian churches during communion seasons to welcome the King of Glory.",
-    "theologicalInsight": "Anchored in Revelation 5:12, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Ye gates, lift up your heads on high;\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Psalm 103:1-4 and Revelation 19:6, \"Ye gates, lift up your heads on high;\" lifts the soul above earthly burdens into the majestic atmosphere of divine praise. It declares the unmatched greatness, sovereignty, and everlasting lovingkindness of God, summoning every faculty of the believer to worship Him in spirit and in truth.",
+    "devotionalPrayer": "Sovereign God, my heart rejoices in the words of \"Ye gates, lift up your heads on high;\". I worship You as the King of glory and Lord of all creation. Let my speech, thoughts, and deeds be a sweet-smelling savor of praise unto You, exalting Your holy Name before a watching world. Through Christ our Lord, Amen.",
     "tags": [
       "Praise & Adoration",
       "Classic Hymn",
@@ -5867,10 +5867,10 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "10.11's",
     "keySignature": "Ab Major",
     "scriptureAnchor": {
-      "reference": "Psalm 46:1-2",
-      "text": "God is our refuge and strength, a very present help in trouble. Therefore will not we fear.",
+      "reference": "Psalm 103:1-4",
+      "text": "Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.",
       "book": "Psalms",
-      "chapter": 46,
+      "chapter": 103,
       "verse": 1
     },
     "stanzas": [
@@ -5892,8 +5892,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Charles Wesley (1707–1788) was the chief poet and hymn-writer of the 18th-century Methodist Revival. Over his lifetime he composed more than 6,500 hymns, conveying profound biblical theology through magnificent rhythm and heartfelt adoration of Christ. Penned in deep communion with the Holy Spirit, this sacred hymn stands as a lasting monument of faith, having ministered grace and reassurance to generations of worshipping believers.",
-    "theologicalInsight": "Anchored in Psalm 46:1-2, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Ye servants of God, your Master proclaim\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Psalm 103:1-4 and Revelation 19:6, \"Ye servants of God, your Master proclaim\" lifts the soul above earthly burdens into the majestic atmosphere of divine praise. It declares the unmatched greatness, sovereignty, and everlasting lovingkindness of God, summoning every faculty of the believer to worship Him in spirit and in truth.",
+    "devotionalPrayer": "Sovereign God, my heart rejoices in the words of \"Ye servants of God, your Master proclaim\". I worship You as the King of glory and Lord of all creation. Let my speech, thoughts, and deeds be a sweet-smelling savor of praise unto You, exalting Your holy Name before a watching world. Through Christ our Lord, Amen.",
     "tags": [
       "Praise & Adoration",
       "Classic Hymn",
@@ -5943,11 +5943,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.8.7.",
     "keySignature": "G Major",
     "scriptureAnchor": {
-      "reference": "2 Corinthians 5:17",
-      "text": "Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new.",
-      "book": "2 Corinthians",
-      "chapter": 5,
-      "verse": 17
+      "reference": "Galatians 2:20",
+      "text": "I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me.",
+      "book": "Galatians",
+      "chapter": 2,
+      "verse": 20
     },
     "stanzas": [
       {
@@ -5956,8 +5956,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Composed during the great revival movements of the eighteenth and nineteenth centuries, this sacred hymn was born out of an intense longing for deeper holiness and unswerving trust in God's promises. Sung by congregations, prayer meetings, and open-air gospel gatherings across the world, its stirring lines continue to point troubled hearts toward the anchor of Christ's cross.",
-    "theologicalInsight": "Anchored in 2 Corinthians 5:17, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Now to Him who loved us, gave us\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Galatians 2:20 and 1 Peter 1:18-19, \"Now to Him who loved us, gave us\" centers upon the finished work of Christ at the cross. It proclaims that true Christian liberty and eternal life flow exclusively from the shed blood of Jesus, which disarms demonic powers, cancels the debt of sin, and ushers the believer into holy resurrection victory.",
+    "devotionalPrayer": "Lord Jesus, as I meditate upon the sacred truth of \"Now to Him who loved us, gave us\", I turn my eyes to Calvary. Thank You for taking my place, enduring the cross, and securing my eternal redemption. Let the power of Your blood cleanse my conscience and empower me to walk in resurrection life today. Amen.",
     "tags": [
       "Cross & Resurrection",
       "Classic Hymn",
@@ -6008,7 +6008,7 @@ export const HYMNS_PART_5: HymnItem[] = [
     "keySignature": "F Major",
     "scriptureAnchor": {
       "reference": "Colossians 3:16",
-      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs.",
+      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs, singing with grace in your hearts to the Lord.",
       "book": "Colossians",
       "chapter": 3,
       "verse": 16
@@ -6029,8 +6029,8 @@ export const HYMNS_PART_5: HymnItem[] = [
     ],
     "chorus": "Surely goodness and mercy shall follow me\nAll the days, all the days of my life;\nSurely goodness and mercy shall follow me\nAll the days, all the days of my life.\nAnd I shall dwell in the house of the Lord forever,\nAnd I shall feast at the table spread for me;\nSurely goodness and mercy shall follow me\nAll the days, all the days of my life.",
     "historicalStory": "Written by John W. Peterson and cherished across generations of Christian hymnody, this anthem reflects a pivotal moment of spiritual surrender and adoration. Drawing directly upon the promises of Scripture, it captures the believer's steadfast confidence in the sovereignty, mercy, and lovingkindness of God in every season of life.",
-    "theologicalInsight": "Anchored in Colossians 3:16, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"A pilgrim was I and awand'ring\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Colossians 3:16, \"A pilgrim was I and awand'ring\" stands as a vibrant testimony of apostolic faith. It teaches and admonishes the church in the eternal verities of the Gospel, encouraging the believer to walk worthy of the high calling of God in Christ Jesus with steadfast joy and unwavering obedience.",
+    "devotionalPrayer": "Lord God of our fathers, let the timeless truth expressed in \"A pilgrim was I and awand'ring\" dwell richly in my heart. Grant me spiritual discernment to recognize Your guidance, humility to serve my fellow believers, and holy zeal to fulfill Your purpose in my generation. Through Jesus Christ our Lord, Amen.",
     "tags": [
       "Grace & Redemption",
       "Classic Hymn",
@@ -6080,11 +6080,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.D",
     "keySignature": "D Major",
     "scriptureAnchor": {
-      "reference": "1 Peter 1:18-19",
-      "text": "Knowing that ye were not redeemed with corruptible things... but with the precious blood of Christ, as of a lamb without blemish.",
-      "book": "1 Peter",
-      "chapter": 1,
-      "verse": 19
+      "reference": "Colossians 3:16",
+      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs, singing with grace in your hearts to the Lord.",
+      "book": "Colossians",
+      "chapter": 3,
+      "verse": 16
     },
     "stanzas": [
       {
@@ -6094,8 +6094,8 @@ export const HYMNS_PART_5: HymnItem[] = [
     ],
     "chorus": "For Jesus is my Saviour;\nHe paid my debt on Calvary's mountain,\nI'm happy in His wondrous love,\nI'm drinking, yes I'm drinking at the fountain.",
     "historicalStory": "Composed in 1890 by Robert Johnson, an American evangelist and camp meeting songwriter. Drawing on Revelation 3:5 and 2 Timothy 4:8, Johnson wrote this exuberant gospel song to lift the hearts of weary laborers toward the day when they will exchange their earthly crosses for white robes and crowns of gold.",
-    "theologicalInsight": "Anchored in 1 Peter 1:18-19, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"A robe of white, a crown of gold\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Colossians 3:16, \"A robe of white, a crown of gold\" stands as a vibrant testimony of apostolic faith. It teaches and admonishes the church in the eternal verities of the Gospel, encouraging the believer to walk worthy of the high calling of God in Christ Jesus with steadfast joy and unwavering obedience.",
+    "devotionalPrayer": "Lord God of our fathers, let the timeless truth expressed in \"A robe of white, a crown of gold\" dwell richly in my heart. Grant me spiritual discernment to recognize Your guidance, humility to serve my fellow believers, and holy zeal to fulfill Your purpose in my generation. Through Jesus Christ our Lord, Amen.",
     "tags": [
       "Old Spirituals & Revival",
       "Classic Hymn",
@@ -6145,11 +6145,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.D",
     "keySignature": "Eb Major",
     "scriptureAnchor": {
-      "reference": "Psalm 100:1-3",
-      "text": "Make a joyful noise unto the LORD, all ye lands. Serve the LORD with gladness: come before his presence with singing.",
-      "book": "Psalms",
-      "chapter": 100,
-      "verse": 2
+      "reference": "Colossians 3:16",
+      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs, singing with grace in your hearts to the Lord.",
+      "book": "Colossians",
+      "chapter": 3,
+      "verse": 16
     },
     "stanzas": [
       {
@@ -6171,8 +6171,8 @@ export const HYMNS_PART_5: HymnItem[] = [
     ],
     "chorus": "He hideth my soul in the cleft of the rock\nThat shadows a dry, thirsty land;\nHe hideth my life in the depths of His love,\nAnd covers me there with His hand,\nAnd covers me there with His hand.",
     "historicalStory": "Penned by Fanny J. Crosby, this treasured hymn was birthed in a season of fervent prayer and contemplation upon the majesty of the Redeemer. Across continents and church traditions, believers have drawn courage and spiritual resolve from its lines when facing adversity, standing firm upon God's unchanging Word.",
-    "theologicalInsight": "Anchored in Psalm 100:1-3, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"He hideth my soul\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Colossians 3:16, \"He hideth my soul\" stands as a vibrant testimony of apostolic faith. It teaches and admonishes the church in the eternal verities of the Gospel, encouraging the believer to walk worthy of the high calling of God in Christ Jesus with steadfast joy and unwavering obedience.",
+    "devotionalPrayer": "Lord God of our fathers, let the timeless truth expressed in \"He hideth my soul\" dwell richly in my heart. Grant me spiritual discernment to recognize Your guidance, humility to serve my fellow believers, and holy zeal to fulfill Your purpose in my generation. Through Jesus Christ our Lord, Amen.",
     "tags": [
       "Grace & Redemption",
       "Classic Hymn",
@@ -6222,11 +6222,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.D",
     "keySignature": "C Major",
     "scriptureAnchor": {
-      "reference": "Ephesians 2:8-9",
-      "text": "For by grace are ye saved through faith; and that not of yourselves: it is the gift of God.",
-      "book": "Ephesians",
-      "chapter": 2,
-      "verse": 8
+      "reference": "Colossians 3:16",
+      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs, singing with grace in your hearts to the Lord.",
+      "book": "Colossians",
+      "chapter": 3,
+      "verse": 16
     },
     "stanzas": [
       {
@@ -6235,8 +6235,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Composed during the great revival movements of the eighteenth and nineteenth centuries, this sacred hymn was born out of an intense longing for deeper holiness and unswerving trust in God's promises. Sung by congregations, prayer meetings, and open-air gospel gatherings across the world, its stirring lines continue to point troubled hearts toward the anchor of Christ's cross.",
-    "theologicalInsight": "Anchored in Ephesians 2:8-9, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Altogether lovely\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Colossians 3:16, \"Altogether lovely\" stands as a vibrant testimony of apostolic faith. It teaches and admonishes the church in the eternal verities of the Gospel, encouraging the believer to walk worthy of the high calling of God in Christ Jesus with steadfast joy and unwavering obedience.",
+    "devotionalPrayer": "Lord God of our fathers, let the timeless truth expressed in \"Altogether lovely\" dwell richly in my heart. Grant me spiritual discernment to recognize Your guidance, humility to serve my fellow believers, and holy zeal to fulfill Your purpose in my generation. Through Jesus Christ our Lord, Amen.",
     "tags": [
       "Grace & Redemption",
       "Classic Hymn",
@@ -6286,11 +6286,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.D",
     "keySignature": "Bb Major",
     "scriptureAnchor": {
-      "reference": "Psalm 145:3",
-      "text": "Great is the LORD, and greatly to be praised; and his greatness is unsearchable.",
-      "book": "Psalms",
-      "chapter": 145,
-      "verse": 3
+      "reference": "Galatians 2:20",
+      "text": "I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me.",
+      "book": "Galatians",
+      "chapter": 2,
+      "verse": 20
     },
     "stanzas": [
       {
@@ -6307,8 +6307,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Charles Wesley (1707–1788) was the chief poet and hymn-writer of the 18th-century Methodist Revival. Over his lifetime he composed more than 6,500 hymns, conveying profound biblical theology through magnificent rhythm and heartfelt adoration of Christ. Penned in deep communion with the Holy Spirit, this sacred hymn stands as a lasting monument of faith, having ministered grace and reassurance to generations of worshipping believers.",
-    "theologicalInsight": "Anchored in Psalm 145:3, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"And can it be\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Galatians 2:20 and 1 Peter 1:18-19, \"And can it be\" centers upon the finished work of Christ at the cross. It proclaims that true Christian liberty and eternal life flow exclusively from the shed blood of Jesus, which disarms demonic powers, cancels the debt of sin, and ushers the believer into holy resurrection victory.",
+    "devotionalPrayer": "Lord Jesus, as I meditate upon the sacred truth of \"And can it be\", I turn my eyes to Calvary. Thank You for taking my place, enduring the cross, and securing my eternal redemption. Let the power of Your blood cleanse my conscience and empower me to walk in resurrection life today. Amen.",
     "tags": [
       "Cross & Resurrection",
       "Classic Hymn",
@@ -6358,11 +6358,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.D",
     "keySignature": "Ab Major",
     "scriptureAnchor": {
-      "reference": "Galatians 6:14",
-      "text": "God forbid that I should boast except in the cross of our Lord Jesus Christ, by whom the world has been crucified to me.",
-      "book": "Galatians",
-      "chapter": 6,
-      "verse": 14
+      "reference": "Psalm 103:1-4",
+      "text": "Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.",
+      "book": "Psalms",
+      "chapter": 103,
+      "verse": 1
     },
     "stanzas": [
       {
@@ -6380,8 +6380,8 @@ export const HYMNS_PART_5: HymnItem[] = [
     ],
     "chorus": "Anywhere! Anywhere! Fear I cannot know\nAnywhere with Jesus I can safely go",
     "historicalStory": "Written in 1887 by Jessie Brown Pounds, an American author from Hiram, Ohio, who served as editor of the Christian Standard. Set to music by Daniel B. Towner, Pounds composed this beloved hymn to express unquestioning willingness to follow Christ anywhere, through light or shadow.",
-    "theologicalInsight": "Anchored in Galatians 6:14, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Anywhere with Jesus\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Psalm 103:1-4 and Revelation 19:6, \"Anywhere with Jesus\" lifts the soul above earthly burdens into the majestic atmosphere of divine praise. It declares the unmatched greatness, sovereignty, and everlasting lovingkindness of God, summoning every faculty of the believer to worship Him in spirit and in truth.",
+    "devotionalPrayer": "Sovereign God, my heart rejoices in the words of \"Anywhere with Jesus\". I worship You as the King of glory and Lord of all creation. Let my speech, thoughts, and deeds be a sweet-smelling savor of praise unto You, exalting Your holy Name before a watching world. Through Christ our Lord, Amen.",
     "tags": [
       "Praise & Adoration",
       "Classic Hymn",
@@ -6431,11 +6431,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.D",
     "keySignature": "G Major",
     "scriptureAnchor": {
-      "reference": "Philippians 4:6-7",
-      "text": "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God.",
-      "book": "Philippians",
-      "chapter": 4,
-      "verse": 6
+      "reference": "Proverbs 3:5-6",
+      "text": "Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths.",
+      "book": "Proverbs",
+      "chapter": 3,
+      "verse": 5
     },
     "stanzas": [
       {
@@ -6448,8 +6448,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Penned by Ted Silva, this treasured hymn was birthed in a season of fervent prayer and contemplation upon the majesty of the Redeemer. Across continents and church traditions, believers have drawn courage and spiritual resolve from its lines when facing adversity, standing firm upon God's unchanging Word.",
-    "theologicalInsight": "Anchored in Philippians 4:6-7, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Beside the still waters\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Proverbs 3:5-6 and Hebrews 11:1, \"Beside the still waters\" calls the believer to absolute, childlike reliance upon God's unchanging counsel. When circumstances shift and human understanding fails, this hymn reminds us that God's covenant promises are bedrock, and He never abandons those who put their trust in Him.",
+    "devotionalPrayer": "Faithful Shepherd, through the inspiring lines of \"Beside the still waters\", teach me to lean wholly upon Your strength. Dispel every lingering fear, anxiety, and doubt. Guide my steps in paths of righteousness for Your Name's sake, and let my faith remain unshaken in every tempest. In Jesus' Name, Amen.",
     "tags": [
       "Faith & Trust",
       "Classic Hymn",
@@ -6499,11 +6499,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.D",
     "keySignature": "F Major",
     "scriptureAnchor": {
-      "reference": "Psalm 23:1-3",
-      "text": "The LORD is my shepherd; I shall not want. He maketh me to lie down in green pastures: he leadeth me beside the still waters.",
-      "book": "Psalms",
-      "chapter": 23,
-      "verse": 1
+      "reference": "Proverbs 3:5-6",
+      "text": "Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths.",
+      "book": "Proverbs",
+      "chapter": 3,
+      "verse": 5
     },
     "stanzas": [
       {
@@ -6524,8 +6524,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Composed during the great revival movements of the eighteenth and nineteenth centuries, this sacred hymn was born out of an intense longing for deeper holiness and unswerving trust in God's promises. Sung by congregations, prayer meetings, and open-air gospel gatherings across the world, its stirring lines continue to point troubled hearts toward the anchor of Christ's cross.",
-    "theologicalInsight": "Anchored in Psalm 23:1-3, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Beyond the Sunset\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Proverbs 3:5-6 and Hebrews 11:1, \"Beyond the Sunset\" calls the believer to absolute, childlike reliance upon God's unchanging counsel. When circumstances shift and human understanding fails, this hymn reminds us that God's covenant promises are bedrock, and He never abandons those who put their trust in Him.",
+    "devotionalPrayer": "Faithful Shepherd, through the inspiring lines of \"Beyond the Sunset\", teach me to lean wholly upon Your strength. Dispel every lingering fear, anxiety, and doubt. Guide my steps in paths of righteousness for Your Name's sake, and let my faith remain unshaken in every tempest. In Jesus' Name, Amen.",
     "tags": [
       "Faith & Trust",
       "Classic Hymn",
@@ -6575,11 +6575,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.D",
     "keySignature": "D Major",
     "scriptureAnchor": {
-      "reference": "Lamentations 3:22-23",
-      "text": "It is of the LORD's mercies that we are not consumed, because his compassions fail not. They are new every morning: great is thy faithfulness.",
-      "book": "Lamentations",
-      "chapter": 3,
-      "verse": 23
+      "reference": "Psalm 103:1-4",
+      "text": "Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.",
+      "book": "Psalms",
+      "chapter": 103,
+      "verse": 1
     },
     "stanzas": [
       {
@@ -6597,8 +6597,8 @@ export const HYMNS_PART_5: HymnItem[] = [
     ],
     "chorus": "He that winneth souls is wise;\nIn that home beyond the skies,\nThere's a crown of glory, O the wondrous prize!\nHe that winneth souls is wise.",
     "historicalStory": "Written by N. H. Lines and cherished across generations of Christian hymnody, this anthem reflects a pivotal moment of spiritual surrender and adoration. Drawing directly upon the promises of Scripture, it captures the believer's steadfast confidence in the sovereignty, mercy, and lovingkindness of God in every season of life.",
-    "theologicalInsight": "Anchored in Lamentations 3:22-23, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"He that winneth souls is wise\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Psalm 103:1-4 and Revelation 19:6, \"He that winneth souls is wise\" lifts the soul above earthly burdens into the majestic atmosphere of divine praise. It declares the unmatched greatness, sovereignty, and everlasting lovingkindness of God, summoning every faculty of the believer to worship Him in spirit and in truth.",
+    "devotionalPrayer": "Sovereign God, my heart rejoices in the words of \"He that winneth souls is wise\". I worship You as the King of glory and Lord of all creation. Let my speech, thoughts, and deeds be a sweet-smelling savor of praise unto You, exalting Your holy Name before a watching world. Through Christ our Lord, Amen.",
     "tags": [
       "Praise & Adoration",
       "Classic Hymn",
@@ -6648,11 +6648,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.D",
     "keySignature": "Eb Major",
     "scriptureAnchor": {
-      "reference": "Hebrews 12:1-2",
-      "text": "Looking unto Jesus the author and finisher of our faith; who for the joy that was set before him endured the cross.",
-      "book": "Hebrews",
-      "chapter": 12,
-      "verse": 2
+      "reference": "Colossians 3:16",
+      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs, singing with grace in your hearts to the Lord.",
+      "book": "Colossians",
+      "chapter": 3,
+      "verse": 16
     },
     "stanzas": [
       {
@@ -6666,8 +6666,8 @@ export const HYMNS_PART_5: HymnItem[] = [
     ],
     "chorus": "Let the lower lights be burning!\nSend a gleam across the wave!\nSome poor fainting, struggling seaman\nYou may rescue, you may save.",
     "historicalStory": "Philip P. Bliss (1838–1876) was an evangelistic singer and song leader with D.L. Moody who composed numerous memorable gospel hymns. His life was cut short in a tragic train derailment, yet his sacred compositions continue to echo throughout the global church. Penned in deep communion with the Holy Spirit, this sacred hymn stands as a lasting monument of faith, having ministered grace and reassurance to generations of worshipping believers.",
-    "theologicalInsight": "Anchored in Hebrews 12:1-2, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Let the Lower Lights Be Burning\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Colossians 3:16, \"Let the Lower Lights Be Burning\" stands as a vibrant testimony of apostolic faith. It teaches and admonishes the church in the eternal verities of the Gospel, encouraging the believer to walk worthy of the high calling of God in Christ Jesus with steadfast joy and unwavering obedience.",
+    "devotionalPrayer": "Lord God of our fathers, let the timeless truth expressed in \"Let the Lower Lights Be Burning\" dwell richly in my heart. Grant me spiritual discernment to recognize Your guidance, humility to serve my fellow believers, and holy zeal to fulfill Your purpose in my generation. Through Jesus Christ our Lord, Amen.",
     "tags": [
       "Grace & Redemption",
       "Classic Hymn",
@@ -6717,11 +6717,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.D",
     "keySignature": "C Major",
     "scriptureAnchor": {
-      "reference": "Romans 8:38-39",
-      "text": "For I am persuaded, that neither death, nor life, nor angels, nor principalities... shall be able to separate us from the love of God, which is in Christ Jesus our Lord.",
-      "book": "Romans",
-      "chapter": 8,
-      "verse": 38
+      "reference": "Colossians 3:16",
+      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs, singing with grace in your hearts to the Lord.",
+      "book": "Colossians",
+      "chapter": 3,
+      "verse": 16
     },
     "stanzas": [
       {
@@ -6747,8 +6747,8 @@ export const HYMNS_PART_5: HymnItem[] = [
     ],
     "chorus": "Neither do I condemn thee, precious words divine\nFrom the lips of mercy, like sweetest chimes\nWonderful words of Jesus, sing them o'er and o'er\nNeither do I condemn thee, go and sin no more.",
     "historicalStory": "Penned by Carol & Jimmy Snow, this treasured hymn was birthed in a season of fervent prayer and contemplation upon the majesty of the Redeemer. Across continents and church traditions, believers have drawn courage and spiritual resolve from its lines when facing adversity, standing firm upon God's unchanging Word.",
-    "theologicalInsight": "Anchored in Romans 8:38-39, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"By the Crowd of Worshippers\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Colossians 3:16, \"By the Crowd of Worshippers\" stands as a vibrant testimony of apostolic faith. It teaches and admonishes the church in the eternal verities of the Gospel, encouraging the believer to walk worthy of the high calling of God in Christ Jesus with steadfast joy and unwavering obedience.",
+    "devotionalPrayer": "Lord God of our fathers, let the timeless truth expressed in \"By the Crowd of Worshippers\" dwell richly in my heart. Grant me spiritual discernment to recognize Your guidance, humility to serve my fellow believers, and holy zeal to fulfill Your purpose in my generation. Through Jesus Christ our Lord, Amen.",
     "tags": [
       "Grace & Redemption",
       "Classic Hymn",
@@ -6798,11 +6798,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.D",
     "keySignature": "Bb Major",
     "scriptureAnchor": {
-      "reference": "Isaiah 53:5",
-      "text": "He was wounded for our transgressions, he was bruised for our iniquities: the chastisement of our peace was upon him; and with his stripes we are healed.",
-      "book": "Isaiah",
-      "chapter": 53,
-      "verse": 5
+      "reference": "Galatians 2:20",
+      "text": "I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me.",
+      "book": "Galatians",
+      "chapter": 2,
+      "verse": 20
     },
     "stanzas": [
       {
@@ -6820,8 +6820,8 @@ export const HYMNS_PART_5: HymnItem[] = [
     ],
     "chorus": "What a wonderful Savior is Jesus, my Jesus!\nWhat a wonderful Savior is Jesus, my Lord!",
     "historicalStory": "Composed during the great revival movements of the eighteenth and nineteenth centuries, this sacred hymn was born out of an intense longing for deeper holiness and unswerving trust in God's promises. Sung by congregations, prayer meetings, and open-air gospel gatherings across the world, its stirring lines continue to point troubled hearts toward the anchor of Christ's cross.",
-    "theologicalInsight": "Anchored in Isaiah 53:5, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Christ Has For Sin Atonement Made\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Galatians 2:20 and 1 Peter 1:18-19, \"Christ Has For Sin Atonement Made\" centers upon the finished work of Christ at the cross. It proclaims that true Christian liberty and eternal life flow exclusively from the shed blood of Jesus, which disarms demonic powers, cancels the debt of sin, and ushers the believer into holy resurrection victory.",
+    "devotionalPrayer": "Lord Jesus, as I meditate upon the sacred truth of \"Christ Has For Sin Atonement Made\", I turn my eyes to Calvary. Thank You for taking my place, enduring the cross, and securing my eternal redemption. Let the power of Your blood cleanse my conscience and empower me to walk in resurrection life today. Amen.",
     "tags": [
       "Cross & Resurrection",
       "Classic Hymn",
@@ -6871,11 +6871,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.D",
     "keySignature": "Ab Major",
     "scriptureAnchor": {
-      "reference": "Revelation 5:12",
-      "text": "Worthy is the Lamb that was slain to receive power, and riches, and wisdom, and strength, and honour, and glory, and blessing.",
-      "book": "Revelation",
-      "chapter": 5,
-      "verse": 12
+      "reference": "Galatians 2:20",
+      "text": "I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me.",
+      "book": "Galatians",
+      "chapter": 2,
+      "verse": 20
     },
     "stanzas": [
       {
@@ -6893,8 +6893,8 @@ export const HYMNS_PART_5: HymnItem[] = [
     ],
     "chorus": "Burdens are lifted at Calvary,\nCalvary, Calvary;\nBurdens are lifted at Calvary,\nJesus is very near.",
     "historicalStory": "Written by John M. Moore and cherished across generations of Christian hymnody, this anthem reflects a pivotal moment of spiritual surrender and adoration. Drawing directly upon the promises of Scripture, it captures the believer's steadfast confidence in the sovereignty, mercy, and lovingkindness of God in every season of life.",
-    "theologicalInsight": "Anchored in Revelation 5:12, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Burdens Are Lifted At Calvary\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Galatians 2:20 and 1 Peter 1:18-19, \"Burdens Are Lifted At Calvary\" centers upon the finished work of Christ at the cross. It proclaims that true Christian liberty and eternal life flow exclusively from the shed blood of Jesus, which disarms demonic powers, cancels the debt of sin, and ushers the believer into holy resurrection victory.",
+    "devotionalPrayer": "Lord Jesus, as I meditate upon the sacred truth of \"Burdens Are Lifted At Calvary\", I turn my eyes to Calvary. Thank You for taking my place, enduring the cross, and securing my eternal redemption. Let the power of Your blood cleanse my conscience and empower me to walk in resurrection life today. Amen.",
     "tags": [
       "Cross & Resurrection",
       "Classic Hymn",
@@ -6944,11 +6944,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.D",
     "keySignature": "G Major",
     "scriptureAnchor": {
-      "reference": "Psalm 46:1-2",
-      "text": "God is our refuge and strength, a very present help in trouble. Therefore will not we fear.",
-      "book": "Psalms",
-      "chapter": 46,
-      "verse": 1
+      "reference": "Colossians 3:16",
+      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs, singing with grace in your hearts to the Lord.",
+      "book": "Colossians",
+      "chapter": 3,
+      "verse": 16
     },
     "stanzas": [
       {
@@ -6958,8 +6958,8 @@ export const HYMNS_PART_5: HymnItem[] = [
     ],
     "chorus": "Brighten the corner where you are!\nBrighten the corner where you are!\nSomeone far from harbour you may guide across the bar;\nBrighten the corner where you are!",
     "historicalStory": "Composed in 1913 by Ina Duley Ogdon of Toledo, Ohio. Ogdon had dreamed of becoming a traveling Chautauqua platform speaker, but her plans were shattered when her father was severely injured in an accident, requiring her full-time care; from that crucible, she wrote this song about serving God wherever He places you. It became a global sensation during the Billy Sunday campaigns sung by Homer Rodeheaver.",
-    "theologicalInsight": "Anchored in Psalm 46:1-2, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Brighten the Corner Where You Are\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Colossians 3:16, \"Brighten the Corner Where You Are\" stands as a vibrant testimony of apostolic faith. It teaches and admonishes the church in the eternal verities of the Gospel, encouraging the believer to walk worthy of the high calling of God in Christ Jesus with steadfast joy and unwavering obedience.",
+    "devotionalPrayer": "Lord God of our fathers, let the timeless truth expressed in \"Brighten the Corner Where You Are\" dwell richly in my heart. Grant me spiritual discernment to recognize Your guidance, humility to serve my fellow believers, and holy zeal to fulfill Your purpose in my generation. Through Jesus Christ our Lord, Amen.",
     "tags": [
       "Old Spirituals & Revival",
       "Classic Hymn",
@@ -7009,11 +7009,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.D",
     "keySignature": "F Major",
     "scriptureAnchor": {
-      "reference": "2 Corinthians 5:17",
-      "text": "Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new.",
-      "book": "2 Corinthians",
-      "chapter": 5,
-      "verse": 17
+      "reference": "Romans 12:1-2",
+      "text": "I beseech you therefore, brethren, by the mercies of God, that ye present your bodies a living sacrifice, holy, acceptable unto God, which is your reasonable service.",
+      "book": "Romans",
+      "chapter": 12,
+      "verse": 1
     },
     "stanzas": [
       {
@@ -7035,8 +7035,8 @@ export const HYMNS_PART_5: HymnItem[] = [
     ],
     "chorus": "Oh, yes, He cares, I know He cares,\nHis heart is touched with my grief;\nWhen the days are weary, the long nights dreary,\nI know my Savior cares.",
     "historicalStory": "Penned by Frank E. Graeff, this treasured hymn was birthed in a season of fervent prayer and contemplation upon the majesty of the Redeemer. Across continents and church traditions, believers have drawn courage and spiritual resolve from its lines when facing adversity, standing firm upon God's unchanging Word.",
-    "theologicalInsight": "Anchored in 2 Corinthians 5:17, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Does Jesus Care\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Romans 12:1-2 and Psalm 63:1, \"Does Jesus Care\" is an altar call of wholehearted devotion. It summons the believer to lay aside every weight and sin, seeking a consecrated walk with God that reflects His holiness, desires His presence above all gifts, and obeys His commandments with gladness.",
+    "devotionalPrayer": "Heavenly Father, as I pray through the words of \"Does Jesus Care\", I lay my life afresh upon Your altar. Purify my motives, kindle the fire of Your love within my spirit, and teach me to seek Your face daily in prayer and communion. Not my will, but Thine be done. In Jesus' Name, Amen.",
     "tags": [
       "Prayer & Consecration",
       "Classic Hymn",
@@ -7086,11 +7086,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.D",
     "keySignature": "D Major",
     "scriptureAnchor": {
-      "reference": "Colossians 3:16",
-      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs.",
-      "book": "Colossians",
-      "chapter": 3,
-      "verse": 16
+      "reference": "Galatians 2:20",
+      "text": "I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me.",
+      "book": "Galatians",
+      "chapter": 2,
+      "verse": 20
     },
     "stanzas": [
       {
@@ -7108,8 +7108,8 @@ export const HYMNS_PART_5: HymnItem[] = [
     ],
     "chorus": "O how I love Him! How I adore Him!\nMy breath, my sunshine, my All in All.\nThe great Creator became my Saviour,\nAnd all God's fullness dwelleth in Him.",
     "historicalStory": "Composed during the great revival movements of the eighteenth and nineteenth centuries, this sacred hymn was born out of an intense longing for deeper holiness and unswerving trust in God's promises. Sung by congregations, prayer meetings, and open-air gospel gatherings across the world, its stirring lines continue to point troubled hearts toward the anchor of Christ's cross.",
-    "theologicalInsight": "Anchored in Colossians 3:16, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Down From His Glory\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Galatians 2:20 and 1 Peter 1:18-19, \"Down From His Glory\" centers upon the finished work of Christ at the cross. It proclaims that true Christian liberty and eternal life flow exclusively from the shed blood of Jesus, which disarms demonic powers, cancels the debt of sin, and ushers the believer into holy resurrection victory.",
+    "devotionalPrayer": "Lord Jesus, as I meditate upon the sacred truth of \"Down From His Glory\", I turn my eyes to Calvary. Thank You for taking my place, enduring the cross, and securing my eternal redemption. Let the power of Your blood cleanse my conscience and empower me to walk in resurrection life today. Amen.",
     "tags": [
       "Cross & Resurrection",
       "Classic Hymn",
@@ -7159,11 +7159,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.D",
     "keySignature": "Eb Major",
     "scriptureAnchor": {
-      "reference": "1 Peter 1:18-19",
-      "text": "Knowing that ye were not redeemed with corruptible things... but with the precious blood of Christ, as of a lamb without blemish.",
-      "book": "1 Peter",
-      "chapter": 1,
-      "verse": 19
+      "reference": "Colossians 3:16",
+      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs, singing with grace in your hearts to the Lord.",
+      "book": "Colossians",
+      "chapter": 3,
+      "verse": 16
     },
     "stanzas": [
       {
@@ -7180,8 +7180,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Written by Harry D. Loes and cherished across generations of Christian hymnody, this anthem reflects a pivotal moment of spiritual surrender and adoration. Drawing directly upon the promises of Scripture, it captures the believer's steadfast confidence in the sovereignty, mercy, and lovingkindness of God in every season of life.",
-    "theologicalInsight": "Anchored in 1 Peter 1:18-19, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Everybody Ought to Know\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Colossians 3:16, \"Everybody Ought to Know\" stands as a vibrant testimony of apostolic faith. It teaches and admonishes the church in the eternal verities of the Gospel, encouraging the believer to walk worthy of the high calling of God in Christ Jesus with steadfast joy and unwavering obedience.",
+    "devotionalPrayer": "Lord God of our fathers, let the timeless truth expressed in \"Everybody Ought to Know\" dwell richly in my heart. Grant me spiritual discernment to recognize Your guidance, humility to serve my fellow believers, and holy zeal to fulfill Your purpose in my generation. Through Jesus Christ our Lord, Amen.",
     "tags": [
       "Old Spirituals & Revival",
       "Classic Hymn",
@@ -7231,11 +7231,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7 D",
     "keySignature": "C Major",
     "scriptureAnchor": {
-      "reference": "Psalm 100:1-3",
-      "text": "Make a joyful noise unto the LORD, all ye lands. Serve the LORD with gladness: come before his presence with singing.",
-      "book": "Psalms",
-      "chapter": 100,
-      "verse": 2
+      "reference": "Colossians 3:16",
+      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs, singing with grace in your hearts to the Lord.",
+      "book": "Colossians",
+      "chapter": 3,
+      "verse": 16
     },
     "stanzas": [
       {
@@ -7253,8 +7253,8 @@ export const HYMNS_PART_5: HymnItem[] = [
     ],
     "chorus": "Face to face I shall behold Him,\nFar beyond the starry sky,\nFace to face in all His glory,\nI shall see Him by and by.",
     "historicalStory": "Written in 1898 by Carrie E. Breck of Portland, Oregon, a mother of five who wrote sacred verses while caring for her household and rocking her babies. Set to music by Grant C. Tullar, Breck wrote this glorious advent hymn based on 1 Corinthians 13:12, anticipating the day when we will see the Savior face to face.",
-    "theologicalInsight": "Anchored in Psalm 100:1-3, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Face to Face With Christ My Saviour\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Colossians 3:16, \"Face to Face With Christ My Saviour\" stands as a vibrant testimony of apostolic faith. It teaches and admonishes the church in the eternal verities of the Gospel, encouraging the believer to walk worthy of the high calling of God in Christ Jesus with steadfast joy and unwavering obedience.",
+    "devotionalPrayer": "Lord God of our fathers, let the timeless truth expressed in \"Face to Face With Christ My Saviour\" dwell richly in my heart. Grant me spiritual discernment to recognize Your guidance, humility to serve my fellow believers, and holy zeal to fulfill Your purpose in my generation. Through Jesus Christ our Lord, Amen.",
     "tags": [
       "Grace & Redemption",
       "Classic Hymn",
@@ -7304,11 +7304,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.D",
     "keySignature": "Bb Major",
     "scriptureAnchor": {
-      "reference": "Ephesians 2:8-9",
-      "text": "For by grace are ye saved through faith; and that not of yourselves: it is the gift of God.",
-      "book": "Ephesians",
+      "reference": "Galatians 2:20",
+      "text": "I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me.",
+      "book": "Galatians",
       "chapter": 2,
-      "verse": 8
+      "verse": 20
     },
     "stanzas": [
       {
@@ -7326,8 +7326,8 @@ export const HYMNS_PART_5: HymnItem[] = [
     ],
     "chorus": "That Man of Calvary\nHas won my heart from me;\nAnd died to set me free,\nBlest Man of Calvary.",
     "historicalStory": "Penned by Manie P. Ferguson, this treasured hymn was birthed in a season of fervent prayer and contemplation upon the majesty of the Redeemer. Across continents and church traditions, believers have drawn courage and spiritual resolve from its lines when facing adversity, standing firm upon God's unchanging Word.",
-    "theologicalInsight": "Anchored in Ephesians 2:8-9, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"That Man of Calvary\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Galatians 2:20 and 1 Peter 1:18-19, \"That Man of Calvary\" centers upon the finished work of Christ at the cross. It proclaims that true Christian liberty and eternal life flow exclusively from the shed blood of Jesus, which disarms demonic powers, cancels the debt of sin, and ushers the believer into holy resurrection victory.",
+    "devotionalPrayer": "Lord Jesus, as I meditate upon the sacred truth of \"That Man of Calvary\", I turn my eyes to Calvary. Thank You for taking my place, enduring the cross, and securing my eternal redemption. Let the power of Your blood cleanse my conscience and empower me to walk in resurrection life today. Amen.",
     "tags": [
       "Cross & Resurrection",
       "Classic Hymn",
@@ -7377,11 +7377,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.D",
     "keySignature": "Ab Major",
     "scriptureAnchor": {
-      "reference": "Psalm 145:3",
-      "text": "Great is the LORD, and greatly to be praised; and his greatness is unsearchable.",
-      "book": "Psalms",
-      "chapter": 145,
-      "verse": 3
+      "reference": "Galatians 2:20",
+      "text": "I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me.",
+      "book": "Galatians",
+      "chapter": 2,
+      "verse": 20
     },
     "stanzas": [
       {
@@ -7403,8 +7403,8 @@ export const HYMNS_PART_5: HymnItem[] = [
     ],
     "chorus": "Oh, make me understand it,\nHelp me to take it in,\nWhat it meant to Thee, the Holy One,\nTo bear away my sin.",
     "historicalStory": "Composed during the great revival movements of the eighteenth and nineteenth centuries, this sacred hymn was born out of an intense longing for deeper holiness and unswerving trust in God's promises. Sung by congregations, prayer meetings, and open-air gospel gatherings across the world, its stirring lines continue to point troubled hearts toward the anchor of Christ's cross.",
-    "theologicalInsight": "Anchored in Psalm 145:3, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Give me a Sight, O Saviour\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Galatians 2:20 and 1 Peter 1:18-19, \"Give me a Sight, O Saviour\" centers upon the finished work of Christ at the cross. It proclaims that true Christian liberty and eternal life flow exclusively from the shed blood of Jesus, which disarms demonic powers, cancels the debt of sin, and ushers the believer into holy resurrection victory.",
+    "devotionalPrayer": "Lord Jesus, as I meditate upon the sacred truth of \"Give me a Sight, O Saviour\", I turn my eyes to Calvary. Thank You for taking my place, enduring the cross, and securing my eternal redemption. Let the power of Your blood cleanse my conscience and empower me to walk in resurrection life today. Amen.",
     "tags": [
       "Cross & Resurrection",
       "Classic Hymn",
@@ -7454,11 +7454,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.D",
     "keySignature": "G Major",
     "scriptureAnchor": {
-      "reference": "Galatians 6:14",
-      "text": "God forbid that I should boast except in the cross of our Lord Jesus Christ, by whom the world has been crucified to me.",
-      "book": "Galatians",
-      "chapter": 6,
-      "verse": 14
+      "reference": "Psalm 103:1-4",
+      "text": "Bless the LORD, O my soul: and all that is within me, bless his holy name. Bless the LORD, O my soul, and forget not all his benefits.",
+      "book": "Psalms",
+      "chapter": 103,
+      "verse": 1
     },
     "stanzas": [
       {
@@ -7476,8 +7476,8 @@ export const HYMNS_PART_5: HymnItem[] = [
     ],
     "chorus": "Do you know my Jesus?\nDo you know my friend?\nHave you heard He loves you?\nAnd that He will abide 'till the end?",
     "historicalStory": "Written by Rev. Vep B. Ellis and cherished across generations of Christian hymnody, this anthem reflects a pivotal moment of spiritual surrender and adoration. Drawing directly upon the promises of Scripture, it captures the believer's steadfast confidence in the sovereignty, mercy, and lovingkindness of God in every season of life.",
-    "theologicalInsight": "Anchored in Galatians 6:14, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Do You Know My Jesus?\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Psalm 103:1-4 and Revelation 19:6, \"Do You Know My Jesus?\" lifts the soul above earthly burdens into the majestic atmosphere of divine praise. It declares the unmatched greatness, sovereignty, and everlasting lovingkindness of God, summoning every faculty of the believer to worship Him in spirit and in truth.",
+    "devotionalPrayer": "Sovereign God, my heart rejoices in the words of \"Do You Know My Jesus?\". I worship You as the King of glory and Lord of all creation. Let my speech, thoughts, and deeds be a sweet-smelling savor of praise unto You, exalting Your holy Name before a watching world. Through Christ our Lord, Amen.",
     "tags": [
       "Praise & Adoration",
       "Classic Hymn",
@@ -7527,11 +7527,11 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.D",
     "keySignature": "F Major",
     "scriptureAnchor": {
-      "reference": "Philippians 4:6-7",
-      "text": "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God.",
-      "book": "Philippians",
-      "chapter": 4,
-      "verse": 6
+      "reference": "Colossians 3:16",
+      "text": "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs, singing with grace in your hearts to the Lord.",
+      "book": "Colossians",
+      "chapter": 3,
+      "verse": 16
     },
     "stanzas": [
       {
@@ -7553,8 +7553,8 @@ export const HYMNS_PART_5: HymnItem[] = [
     ],
     "chorus": "God is still on the throne, and He will remember His own;\nThough trials may press us and burdens distress us,\nHe never will leave us alone;\nGod is still on the throne, He never forsaketh His own;\nHis promise is true, He will not forget you;\nGod is still on the throne.",
     "historicalStory": "Penned in 1929 by Kittie Louise Suffield, wife of Canadian evangelist Fred Suffield. Written during the onset of the Great Depression as financial ruin swept the continent, Suffield composed this reassuring gospel song to remind anxious believers that no matter how earthly empires shake, God remains sovereign on His throne.",
-    "theologicalInsight": "Anchored in Philippians 4:6-7, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"God Is Still on the Throne\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Colossians 3:16, \"God Is Still on the Throne\" stands as a vibrant testimony of apostolic faith. It teaches and admonishes the church in the eternal verities of the Gospel, encouraging the believer to walk worthy of the high calling of God in Christ Jesus with steadfast joy and unwavering obedience.",
+    "devotionalPrayer": "Lord God of our fathers, let the timeless truth expressed in \"God Is Still on the Throne\" dwell richly in my heart. Grant me spiritual discernment to recognize Your guidance, humility to serve my fellow believers, and holy zeal to fulfill Your purpose in my generation. Through Jesus Christ our Lord, Amen.",
     "tags": [
       "Grace & Redemption",
       "Classic Hymn",
@@ -7604,10 +7604,10 @@ export const HYMNS_PART_5: HymnItem[] = [
     "meter": "8.7.8.7.D",
     "keySignature": "D Major",
     "scriptureAnchor": {
-      "reference": "Psalm 23:1-3",
-      "text": "The LORD is my shepherd; I shall not want. He maketh me to lie down in green pastures: he leadeth me beside the still waters.",
-      "book": "Psalms",
-      "chapter": 23,
+      "reference": "Romans 12:1-2",
+      "text": "I beseech you therefore, brethren, by the mercies of God, that ye present your bodies a living sacrifice, holy, acceptable unto God, which is your reasonable service.",
+      "book": "Romans",
+      "chapter": 12,
       "verse": 1
     },
     "stanzas": [
@@ -7637,8 +7637,8 @@ export const HYMNS_PART_5: HymnItem[] = [
       }
     ],
     "historicalStory": "Penned by Ora Rowan, this treasured hymn was birthed in a season of fervent prayer and contemplation upon the majesty of the Redeemer. Across continents and church traditions, believers have drawn courage and spiritual resolve from its lines when facing adversity, standing firm upon God's unchanging Word.",
-    "theologicalInsight": "Anchored in Psalm 23:1-3, this hymn articulates the timeless biblical truth of God's sovereign covenant love and the sufficiency of Jesus Christ. It reminds the believer that redemption is rooted not in fragile human merit, but in the steadfast mercy, righteousness, and eternal victory of the Triune God.",
-    "devotionalPrayer": "Heavenly Father, as I lift my voice and heart in the words of \"Hast Thou Heard Him, Seen Him, Known Him\", I consecrate my life afresh to You. Anchor my soul in Your unfailing truth, grant me strength to walk faithfully in Your commandments, and let my everyday conduct bring glory to Your holy Name. Through Jesus Christ our Lord, Amen.",
+    "theologicalInsight": "Anchored in Romans 12:1-2 and Psalm 63:1, \"Hast Thou Heard Him, Seen Him, Known Him\" is an altar call of wholehearted devotion. It summons the believer to lay aside every weight and sin, seeking a consecrated walk with God that reflects His holiness, desires His presence above all gifts, and obeys His commandments with gladness.",
+    "devotionalPrayer": "Heavenly Father, as I pray through the words of \"Hast Thou Heard Him, Seen Him, Known Him\", I lay my life afresh upon Your altar. Purify my motives, kindle the fire of Your love within my spirit, and teach me to seek Your face daily in prayer and communion. Not my will, but Thine be done. In Jesus' Name, Amen.",
     "tags": [
       "Prayer & Consecration",
       "Classic Hymn",

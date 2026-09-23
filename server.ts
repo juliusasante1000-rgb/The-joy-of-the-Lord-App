@@ -551,12 +551,17 @@ export function isQuotaExceededError(err: any): boolean {
   const status = err.status || err.statusCode || err.code;
   return (
     status === 429 ||
+    status === 503 ||
     rawMsg.includes("429") ||
+    rawMsg.includes("503") ||
     rawMsg.includes("quota") ||
     rawMsg.includes("rate limit") ||
     rawMsg.includes("resource_exhausted") ||
     rawMsg.includes("too many requests") ||
-    rawMsg.includes("exceeded your current quota")
+    rawMsg.includes("exceeded your current quota") ||
+    rawMsg.includes("overloaded") ||
+    rawMsg.includes("service unavailable") ||
+    rawMsg.includes("temporary high demand")
   );
 }
 

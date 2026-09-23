@@ -44,6 +44,93 @@ interface ShemotGeulahTabProps {
   }) => void;
 }
 
+const CATEGORY_INTRODUCTIONS: Record<string, { badge: string; subtitle: string; description: string; contextNote: string; scripturalAnchor: string }> = {
+  "all": {
+    badge: "500 Names of Redemption",
+    subtitle: "“Prophetic names God calls you, not what men called you.”",
+    description: "From Isaiah 62, Hosea 2, the Psalms, and the Prophetic Scrolls: every title is an authentic Hebrew redemptive identity sealed in Scripture. Replace shame with honor, rejection with delight, and wear your royal covenant name before the Throne.",
+    contextNote: "The 500 titles in Shemot Geulah represent the multifaceted spectrum of God's redemptive grace across the Old and New Covenants. Each name cancels earthly verdicts and establishes your eternal standing in Christ.",
+    scripturalAnchor: "Isaiah 62:2 • Revelation 2:17"
+  },
+  "New Identity": {
+    badge: "Divine Re-Creation & Eternal Status",
+    subtitle: "“Thou shalt be called by a new name, which the mouth of the LORD shall name.”",
+    description: "In the courts of heaven, earthly labels of failure, obscurity, and sorrow are blotted out forever. God replaces them with divine majesty, conferring names that declare your restored status as a co-heir in Christ Jesus.",
+    contextNote: "Anchored in Isaiah 62:2-4 and 2 Corinthians 5:17, these names announce that the old things have passed away and all things have become new. You are no longer defined by human history, but by divine decree.",
+    scripturalAnchor: "Isaiah 62:2-4 • 2 Corinthians 5:17"
+  },
+  "Grace & Belonging": {
+    badge: "Unconditional Acceptance & Sonship",
+    subtitle: "“I will say to them which were not my people, Thou art my people; and they shall say, Thou art my God.”",
+    description: "Every orphan spirit and feeling of alienation is dismantled. Under these titles, God draws the weary soul into the warmth of divine adoption, where you are unconditionally embraced, safe, and seated at the King's table.",
+    contextNote: "Rooted in Hosea 2:23 and Romans 8:15-16, these redemptive names declare that you have received the Spirit of adoption whereby we cry, 'Abba, Father'. You belong to the eternal family of God.",
+    scripturalAnchor: "Hosea 2:23 • Romans 8:15-16"
+  },
+  "Breakthrough & Restoration": {
+    badge: "Supernatural Acceleration & Open Gates",
+    subtitle: "“The Breaker is come up before them: they have broken up, and have passed through the gate.”",
+    description: "These titles release spiritual momentum against stagnation and ancestral delay. Yahweh Sabaoth marches before you as the Breaker, shattering iron gates of limitation and turning seasons of drought into sudden springs of triumph.",
+    contextNote: "Derived from Micah 2:13 and Isaiah 58:12, these titles establish divine breakthrough. God goes before you to level mountains, break in pieces bronze gates, and cut asunder iron bars of oppression.",
+    scripturalAnchor: "Micah 2:13 • Isaiah 58:12"
+  },
+  "Royal Garment & Glory": {
+    badge: "Sacred Robes & Double Honor",
+    subtitle: "“He hath clothed me with the garments of salvation, he hath covered me with the robe of righteousness.”",
+    description: "Soiled garments of guilt and ashes of affliction are stripped away. God arrays you in robes of splendor, fine linen clean and white, bestowing a crown of royal beauty that commands angelic honor and silences the accuser.",
+    contextNote: "Drawing from Isaiah 61:10 and Zechariah 3:4-5, these names celebrate the royal investiture of the believer, exchanging former disgrace for double honor in the presence of heaven.",
+    scripturalAnchor: "Isaiah 61:10 • Zechariah 3:4-5"
+  },
+  "Royal Calling & Priesthood": {
+    badge: "Holy Consecration & Kingdom Authority",
+    subtitle: "“Ye shall be named the Priests of the LORD: men shall call you the Ministers of our God.”",
+    description: "Elevated into the order of royal priests under our Great High Priest, Jesus Christ. These names endow you with spiritual authority to govern in prayer, offer spiritual sacrifices, and carry the presence of God into the nations.",
+    contextNote: "Proclaimed in Exodus 19:6, Isaiah 61:6, and 1 Peter 2:9, these sacred designations summon you to minister at the golden altar of incense with purity, boldness, and prophetic intercession.",
+    scripturalAnchor: "Isaiah 61:6 • 1 Peter 2:9"
+  },
+  "Covenant & Treasured": {
+    badge: "Yahweh's Peculiar Treasure (Segullah)",
+    subtitle: "“And they shall be mine, saith the LORD of hosts, in that day when I make up my jewels.”",
+    description: "You are not an afterthought; you are God's 'Segullah'—a prized possession guarded by divine oath. These names affirm that you are sealed in the palm of His hands, irreplaceable and cherished beyond the treasures of earth.",
+    contextNote: "Anchored in Malachi 3:17 and Deuteronomy 7:6, these titles impart absolute covenant security. Nothing can snatch you out of the Father's hand or separate you from His eternal love.",
+    scripturalAnchor: "Malachi 3:17 • Deuteronomy 7:6"
+  },
+  "Redemption & Grace": {
+    badge: "Ransomed by Precious Blood",
+    subtitle: "“In whom we have redemption through his blood, the forgiveness of sins, according to the riches of his grace.”",
+    description: "Paid in full at Calvary's cross. These sacred names testify of total cancellation of debt, deliverance from the snare of the fowler, and liberty to walk as an uncompromised son or daughter of the Most High God.",
+    contextNote: "Sealed through Ephesians 1:7 and Colossians 1:13-14, these names declare the legal and spiritual victory of the Cross over sin, condemnation, and the power of darkness.",
+    scripturalAnchor: "Ephesians 1:7 • Titus 2:14"
+  },
+  "Beloved & Intimacy": {
+    badge: "Sacred Bridal Communion",
+    subtitle: "“His banner over me was love... My beloved is mine, and I am his.”",
+    description: "Beyond religious striving lies the secret place of divine romance and deep friendship with God. These names unveil the Father's relentless affection, where perfect love casts out all fear and sorrow turns to joy.",
+    contextNote: "Echoing the Song of Solomon and Psalm 45, these tender redemptive identities awaken your heart to the unconditional, passionate delight the Bridegroom has in His saints.",
+    scripturalAnchor: "Song of Solomon 2:4 • Jeremiah 31:3"
+  },
+  "Everlasting Joy & Peace": {
+    badge: "Unshakeable Gladness & Shalom",
+    subtitle: "“Everlasting joy shall be unto them... and sorrow and mourning shall flee away.”",
+    description: "Joy is not a passing emotional response to circumstances; it is an indestructible fruit of the Holy Spirit. These names fortify your spirit with heavenly Shalom, where Nehemiah 8:10 becomes your daily living victory.",
+    contextNote: "Rooted in Isaiah 35:10, Nehemiah 8:10, and Philippians 4:7, these titles impart the supernatural fortitude of divine joy that sustains your heart through every earthly season.",
+    scripturalAnchor: "Isaiah 35:10 • Nehemiah 8:10"
+  },
+  "Spiritual Strength": {
+    badge: "Divine Fortitude & Warrior Might",
+    subtitle: "“God is my strength and power: and he maketh my way perfect.”",
+    description: "Girded with celestial power to withstand the storms of life. These names remind the believer that our sufficiency is of God alone, pulling down strongholds, bending bows of steel, and running through troops unhindered.",
+    contextNote: "Derived from 2 Samuel 22:33, Psalm 18, and Ephesians 6:10, these names instill fearless faith in the God who empowers the weak and makes your feet like hinds' feet on high places.",
+    scripturalAnchor: "2 Samuel 22:33 • Ephesians 6:10"
+  },
+  "Blessing & Favor": {
+    badge: "Abundant Increase & Radiant Light",
+    subtitle: "“For thou, LORD, wilt bless the righteous; with favour wilt thou compass him as with a shield.”",
+    description: "Positioned beneath an open heaven of divine multiplication. These titles declare that the blessing of Abraham is upon you, causing goodness, mercy, and supernatural favor to pursue your footsteps every single day.",
+    contextNote: "Grounded in Numbers 6:24-26, Psalm 5:12, and Deuteronomy 28, these names invite the fragrance of heaven's blessing to overtake every area of your family, work, and calling.",
+    scripturalAnchor: "Psalm 5:12 • Numbers 6:24-26"
+  }
+};
+
 export const ShemotGeulahTab: React.FC<ShemotGeulahTabProps> = ({
   onNavigateToBibleChapter,
   onOpenDevotion,
@@ -136,6 +223,8 @@ export const ShemotGeulahTab: React.FC<ShemotGeulahTabProps> = ({
     setActiveModalName(filteredNames[prevIdx]);
   };
 
+  const currentIntro = CATEGORY_INTRODUCTIONS[selectedCategory] || CATEGORY_INTRODUCTIONS["all"];
+
   return (
     <div className="space-y-6">
       {/* Banner */}
@@ -146,10 +235,10 @@ export const ShemotGeulahTab: React.FC<ShemotGeulahTabProps> = ({
           <div className="flex flex-wrap items-center gap-2">
             <span className="px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 text-xs font-bold uppercase tracking-wider border border-amber-400/30 flex items-center gap-1.5 backdrop-blur-xs">
               <Crown className="w-3.5 h-3.5 text-amber-400" />
-              שְׁמוֹת גְּאֻלָּה • 500 Names of Redemption
+              שְׁמוֹת גְּאֻלָּה • {currentIntro.badge}
             </span>
             <span className="text-xs text-purple-200/80">
-              Prophetic identity spoken by God over your life
+              {currentIntro.scripturalAnchor}
             </span>
           </div>
 
@@ -161,11 +250,11 @@ export const ShemotGeulahTab: React.FC<ShemotGeulahTabProps> = ({
           </h2>
 
           <p className="text-base sm:text-lg text-amber-200 font-serif italic max-w-3xl">
-            “Prophetic names God calls you, not what men called you.”
+            {currentIntro.subtitle}
           </p>
 
           <p className="text-xs sm:text-sm text-purple-100/90 max-w-3xl leading-relaxed">
-            From Isaiah 62, Hosea 2, the Psalms, and the Prophetic Scrolls: every title is an authentic Hebrew redemptive identity sealed in Scripture. Replace shame with honor, rejection with delight, and wear your royal covenant name before the Throne.
+            {currentIntro.description}
           </p>
 
           <div className="pt-2 flex flex-wrap gap-3">
@@ -189,10 +278,10 @@ export const ShemotGeulahTab: React.FC<ShemotGeulahTabProps> = ({
         <Info className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
         <div className="space-y-1">
           <p className="font-bold text-amber-900 tracking-wide uppercase text-[11px]">
-            Theological Context &amp; Prophetic Revelation
+            Theological Context &amp; Revelation ({selectedCategory === "all" ? "All 500 Names" : selectedCategory})
           </p>
           <p className="text-slate-700 leading-relaxed">
-            The titles in <em>Shemot Geulah</em> are redemptive identities spoken by the Living God in Scripture (Isaiah 62, Hosea 2, Psalms, and the Prophets). Each name replaces former rejection and sorrow with divine belonging, righteousness, and covenant favor. Meditate on each name in conjunction with its biblical narrative.
+            {currentIntro.contextNote}
           </p>
         </div>
       </div>
@@ -366,13 +455,15 @@ export const ShemotGeulahTab: React.FC<ShemotGeulahTabProps> = ({
                   </blockquote>
 
                   {/* Brief Expository Explanation (Spiritual Places Format) */}
-                  <div className="p-3 bg-slate-50/90 rounded-xl border border-slate-100 text-xs text-slate-600 leading-relaxed space-y-1">
+                    <div className="p-3 bg-slate-50/90 rounded-xl border border-slate-100 text-xs text-slate-600 leading-relaxed space-y-1">
                     <div className="flex items-center gap-1.5 font-bold text-purple-950 text-[11px] uppercase tracking-wider">
                       <Sparkles className="w-3 h-3 text-amber-500 shrink-0" />
                       <span>Spiritual Significance &amp; Revelation</span>
                     </div>
                     <p className="line-clamp-3 text-slate-600">
-                      {item.biblicalContext || `An authentic Hebrew prophetic title from ${item.scriptureReference} declaring covenant restoration, divine delight, and God's sovereign protection over your destiny.`}
+                      {item.biblicalContext && !item.biblicalContext.startsWith("An authentic Hebrew prophetic title from")
+                        ? item.biblicalContext
+                        : `Revealed in ${item.scriptureReference}, '${item.name}' (${item.hebrew} • ${item.transliteration}) establishes your standing as "${item.meaning}". This prophetic identity shatters past rejection and crowns you with royal favor in ${item.category.toLowerCase()}.`}
                     </p>
                   </div>
 

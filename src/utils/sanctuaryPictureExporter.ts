@@ -241,23 +241,110 @@ export async function downloadBibleVersePicture(
   ctx.letterSpacing = "1px";
   ctx.fillText(versionLabel, centerX, curY);
 
-  // 5. Scripture Passage Card
-  curY += 45;
+  // 5. Dynamic Full-Canvas Sizing & Space Distribution
+  curY += 35;
   const cardX = innerMargin + 50;
   const cardW = W - (innerMargin + 50) * 2;
   const contentMaxW = cardW - 120;
+  const footerY = H - innerMargin - 110;
+  const cardGap = 35;
 
-  ctx.font = "italic 52px 'Georgia', 'Source Serif 4', serif";
-  const passageLines = wrapText(ctx, `"${verseItem.text}"`, contentMaxW);
-  const passageLineH = 74;
-  const cardInnerH = Math.max(260, passageLines.length * passageLineH + 110);
+  // Prepare Note & Prayer Content
+  const ws = verseItem.wordStudy;
+  const comm = verseItem.commentary;
+  const hasNotes = Boolean(ws || verseItem.reflection || comm?.matthewHenry || comm?.spurgeon);
 
-  // Card background
+  let noteTitle = "EXEGESIS & SPIRITUAL REVELATION";
+  let noteBody = cleanMathFromNonMathContent(verseItem.reflection || "");
+
+  if (ws && ws.originalWord) {
+    noteTitle = `HEBREW / GREEK WORD STUDY: ${ws.originalWord} (${ws.strongsNumber || ""})`;
+    noteBody = `${ws.transliteration ? `Transliteration: "${ws.transliteration}". ` : ""}${ws.shortDef ? `Definition: ${ws.shortDef}. ` : ""}${ws.theologicalInsight ? `Theological Insight: ${ws.theologicalInsight}` : ""}`;
+  } else if (!noteBody && comm) {
+    noteTitle = "CLASSIC SCRIPTURAL EXPOSITION";
+    noteBody = comm.matthewHenry ? `Matthew Henry: ${comm.matthewHenry}` : (comm.spurgeon ? `Charles Spurgeon: ${comm.spurgeon}` : "");
+  }
+
+  if (!noteBody) {
+    noteBody = `Meditate upon this sacred revelation from ${refText}. The living Word of God produces supernatural life, divine clarity, and eternal hope in the believer's heart.`;
+  }
+
+  const defaultPrayer = verseItem.guidedPrayer ||
+    `Heavenly Father, thank You for the living truth of ${refText}. Establish my faith firmly in Your promises, grant me divine discernment, and empower me to walk in holy obedience. In Jesus' mighty Name, Amen.`;
+
+  // Total available space to cover 1 full page down to the footer
+  const totalAvailableSpace = Math.max(900, footerY - 25 - curY - (hasNotes ? cardGap * 2 : cardGap));
+
+  // Determine optimal font sizes and wrap lines dynamically so everything fits completely
+  let passageFontSize = 52;
+  let passageLineH = 74;
+  ctx.font = `italic ${passageFontSize}px 'Georgia', 'Source Serif 4', serif`;
+  let passageLines = wrapText(ctx, `"${verseItem.text}"`, contentMaxW);
+
+  while (passageLines.length > 5 && passageFontSize > 34) {
+    passageFontSize -= 3;
+    passageLineH = Math.round(passageFontSize * 1.4);
+    ctx.font = `italic ${passageFontSize}px 'Georgia', 'Source Serif 4', serif`;
+    passageLines = wrapText(ctx, `"${verseItem.text}"`, contentMaxW);
+  }
+
+  let noteFontSize = 32;
+  let noteLineH = 48;
+  ctx.font = `${noteFontSize}px 'Georgia', serif`;
+  let noteLines = hasNotes ? wrapText(ctx, noteBody, contentMaxW) : [];
+
+  while (noteLines.length > 9 && noteFontSize > 22) {
+    noteFontSize -= 2;
+    noteLineH = Math.round(noteFontSize * 1.4);
+    ctx.font = `${noteFontSize}px 'Georgia', serif`;
+    noteLines = wrapText(ctx, noteBody, contentMaxW);
+  }
+
+  let prayerFontSize = 30;
+  let prayerLineH = 46;
+  ctx.font = `italic ${prayerFontSize}px 'Georgia', serif`;
+  let prayerLines = wrapText(ctx, defaultPrayer, contentMaxW);
+
+  while (prayerLines.length > 5 && prayerFontSize > 22) {
+    prayerFontSize -= 2;
+    prayerLineH = Math.round(prayerFontSize * 1.4);
+    ctx.font = `italic ${prayerFontSize}px 'Georgia', serif`;
+    prayerLines = wrapText(ctx, defaultPrayer, contentMaxW);
+  }
+
+  // Calculate natural height for each card
+  const minPassageH = 120 + passageLines.length * passageLineH;
+  const minNoteH = hasNotes ? (100 + noteLines.length * noteLineH) : 0;
+  const minPrayerH = 125 + prayerLines.length * prayerLineH;
+  const totalMinRequiredH = minPassageH + minNoteH + minPrayerH;
+
+  let passageCardH = minPassageH;
+  let noteCardH = minNoteH;
+  let prayerCardH = minPrayerH;
+
+  // Distribute remaining slack so cards cover the entire page down to the footer
+  if (totalAvailableSpace > totalMinRequiredH) {
+    const slack = totalAvailableSpace - totalMinRequiredH;
+    const pWeight = hasNotes ? 0.35 : 0.52;
+    const nWeight = hasNotes ? 0.38 : 0;
+    const rWeight = 1 - pWeight - nWeight;
+
+    passageCardH += Math.round(slack * pWeight);
+    if (hasNotes) noteCardH += Math.round(slack * nWeight);
+    prayerCardH = totalAvailableSpace - passageCardH - noteCardH;
+  } else {
+    const scaleFactor = totalAvailableSpace / totalMinRequiredH;
+    passageCardH = Math.round(passageCardH * scaleFactor);
+    if (hasNotes) noteCardH = Math.round(noteCardH * scaleFactor);
+    prayerCardH = totalAvailableSpace - passageCardH - noteCardH;
+  }
+
+  // Draw Passage Card
   ctx.fillStyle = "#FFFFFF";
   ctx.shadowColor = "rgba(180, 140, 53, 0.12)";
   ctx.shadowBlur = 24;
   ctx.shadowOffsetY = 10;
-  roundRect(ctx, cardX, curY, cardW, cardInnerH, 18);
+  roundRect(ctx, cardX, curY, cardW, passageCardH, 18);
   ctx.fill();
 
   // Card border
@@ -268,46 +355,23 @@ export async function downloadBibleVersePicture(
 
   // Left accent bar
   ctx.fillStyle = "#B48C35";
-  ctx.fillRect(cardX, curY + 18, 10, cardInnerH - 36);
+  ctx.fillRect(cardX, curY + 18, 10, passageCardH - 36);
 
-  // Draw Passage Text
+  // Draw Passage Text (vertically balanced inside card)
   ctx.fillStyle = "#0A0F1D";
   ctx.textAlign = "left";
-  ctx.font = "italic 50px 'Georgia', 'Source Serif 4', serif";
-  let textY = curY + 84;
+  ctx.font = `italic ${passageFontSize}px 'Georgia', 'Source Serif 4', serif`;
+  const passageContentH = passageLines.length * passageLineH;
+  let textY = curY + Math.max(65, Math.round((passageCardH - passageContentH) / 2) + Math.round(passageLineH * 0.4));
   for (const line of passageLines) {
     ctx.fillText(line, cardX + 60, textY);
     textY += passageLineH;
   }
 
-  curY += cardInnerH + 40;
+  curY += passageCardH + cardGap;
 
   // 6. Theological Reflection / Word Study Box
-  const ws = verseItem.wordStudy;
-  const comm = verseItem.commentary;
-  const hasNotes = Boolean(ws || verseItem.reflection || comm?.matthewHenry || comm?.spurgeon);
-
-  if (hasNotes) {
-    let noteTitle = "EXEGESIS & SPIRITUAL REVELATION";
-    let noteBody = cleanMathFromNonMathContent(verseItem.reflection || "");
-
-    if (ws && ws.originalWord) {
-      noteTitle = `HEBREW / GREEK WORD STUDY: ${ws.originalWord} (${ws.strongsNumber || ""})`;
-      noteBody = `${ws.transliteration ? `Transliteration: "${ws.transliteration}". ` : ""}${ws.shortDef ? `Definition: ${ws.shortDef}. ` : ""}${ws.theologicalInsight ? `Theological Insight: ${ws.theologicalInsight}` : ""}`;
-    } else if (!noteBody && comm) {
-      noteTitle = "CLASSIC SCRIPTURAL EXPOSITION";
-      noteBody = comm.matthewHenry ? `Matthew Henry: ${comm.matthewHenry}` : (comm.spurgeon ? `Charles Spurgeon: ${comm.spurgeon}` : "");
-    }
-
-    if (!noteBody) {
-      noteBody = `Meditate upon this sacred revelation from ${refText}. The living Word of God produces supernatural life, divine clarity, and eternal hope in the believer's heart.`;
-    }
-
-    ctx.font = "36px 'Georgia', serif";
-    const noteLines = wrapText(ctx, noteBody, contentMaxW);
-    const noteLineH = 52;
-    const noteCardH = Math.min(420, noteLines.length * noteLineH + 110);
-
+  if (hasNotes && noteCardH > 0) {
     ctx.fillStyle = "#FDFBF7";
     roundRect(ctx, cardX, curY, cardW, noteCardH, 16);
     ctx.fill();
@@ -321,22 +385,19 @@ export async function downloadBibleVersePicture(
     ctx.letterSpacing = "2px";
     ctx.fillText(`✦ ${noteTitle.toUpperCase()}`, cardX + 45, curY + 48);
 
-    // Section content
+    // Section content - draw every single line cleanly
+    ctx.font = `${noteFontSize}px 'Georgia', serif`;
     ctx.fillStyle = "#1E293B";
-    ctx.font = "34px 'Georgia', serif";
-    let ny = curY + 98;
-    for (let i = 0; i < Math.min(noteLines.length, 6); i++) {
+    let ny = curY + 96;
+    for (let i = 0; i < noteLines.length; i++) {
       ctx.fillText(noteLines[i], cardX + 45, ny);
       ny += noteLineH;
     }
 
-    curY += noteCardH + 35;
+    curY += noteCardH + cardGap;
   }
 
   // 7. Guided Prayer & Faith Decree Box
-  const footerY = H - innerMargin - 110;
-  const maxPrayerH = Math.max(120, footerY - curY - 24);
-  const prayerCardH = Math.min(260, maxPrayerH);
   ctx.fillStyle = "#0F172A";
   roundRect(ctx, cardX, curY, cardW, prayerCardH, 16);
   ctx.fill();
@@ -348,28 +409,22 @@ export async function downloadBibleVersePicture(
   ctx.fillStyle = "#DCC398";
   ctx.font = "bold 24px 'Plus Jakarta Sans', sans-serif";
   ctx.letterSpacing = "2px";
-  ctx.fillText("✦ GUIDED PRAYER & FAITH DECREE", cardX + 45, curY + 48);
-
-  const defaultPrayer = verseItem.guidedPrayer ||
-    `Heavenly Father, thank You for the living truth of ${refText}. Establish my faith firmly in Your promises, grant me divine discernment, and empower me to walk in holy obedience. In Jesus' mighty Name, Amen.`;
+  ctx.fillText("✦ GUIDED PRAYER & FAITH DECREE", cardX + 45, curY + 46);
 
   ctx.fillStyle = "#F8FAFC";
-  ctx.font = "italic 32px 'Georgia', serif";
-  const prayerLines = wrapText(ctx, defaultPrayer, contentMaxW);
-  let py = curY + 96;
-  for (let i = 0; i < Math.min(prayerLines.length, 3); i++) {
-    if (py + 44 <= curY + prayerCardH - 45) {
-      ctx.fillText(prayerLines[i], cardX + 45, py);
-      py += 44;
-    }
+  ctx.font = `italic ${prayerFontSize}px 'Georgia', serif`;
+  let py = curY + 94;
+  for (let i = 0; i < prayerLines.length; i++) {
+    ctx.fillText(prayerLines[i], cardX + 45, py);
+    py += prayerLineH;
   }
 
   ctx.fillStyle = "#B48C35";
-  ctx.font = "bold 21px 'Georgia', serif";
+  ctx.font = "bold 22px 'Georgia', serif";
   ctx.fillText(
     `Faith Decree: "The joy of the Lord is my strength" (Nehemiah 8:10) — Living and Victorious!`,
-    cardX + 40,
-    curY + prayerCardH - 20
+    cardX + 45,
+    curY + prayerCardH - 22
   );
 
   // 8. Founder Signature & Subscription Footer
@@ -556,19 +611,80 @@ export async function downloadSystematicTopicPicture(
   ctx.letterSpacing = "2px";
   ctx.fillText(categoryLabel, centerX, curY);
 
-  // 5. Scriptural Anchor Box
-  curY += 40;
+  // 5. Dynamic Full-Canvas Sizing & Scriptural Anchor Box
+  curY += 35;
   const cardX = innerMargin + 60;
   const cardW = W - (innerMargin + 60) * 2;
   const contentMaxW = cardW - 100;
+  const footerY = H - innerMargin - 110;
+  const cardGap = 35;
 
   const primaryRef = topic.anchorScriptures[0]?.reference || "Scriptural Anchor";
   const primaryText = topic.anchorScriptures[0]?.text || topic.theologicalSummary;
+  const practicalText = topic.practicalApplication || "Live out this biblical truth daily through prayer, righteous walking, and steadfast trust in the Lord.";
 
-  ctx.font = "italic 32px 'Georgia', serif";
-  const scriptureLines = wrapText(ctx, `"${primaryText}"`, contentMaxW);
-  const scriptureCardH = Math.max(180, scriptureLines.length * 48 + 80);
+  // Calculate available space to fill whole canvas down to footer
+  const totalAvailableSpace = Math.max(900, footerY - 25 - curY - (cardGap * 2));
 
+  // Dynamically wrap text and calculate optimal sizes so zero lines are clipped
+  let scripFontSize = 32;
+  let scripLineH = 46;
+  ctx.font = `italic ${scripFontSize}px 'Georgia', serif`;
+  let scriptureLines = wrapText(ctx, `"${primaryText}"`, contentMaxW);
+
+  while (scriptureLines.length > 5 && scripFontSize > 22) {
+    scripFontSize -= 2;
+    scripLineH = Math.round(scripFontSize * 1.4);
+    ctx.font = `italic ${scripFontSize}px 'Georgia', serif`;
+    scriptureLines = wrapText(ctx, `"${primaryText}"`, contentMaxW);
+  }
+
+  let sumFontSize = 28;
+  let sumLineH = 42;
+  ctx.font = `${sumFontSize}px 'Georgia', serif`;
+  let summaryLines = wrapText(ctx, topic.theologicalSummary, contentMaxW);
+
+  while (summaryLines.length > 8 && sumFontSize > 20) {
+    sumFontSize -= 2;
+    sumLineH = Math.round(sumFontSize * 1.4);
+    ctx.font = `${sumFontSize}px 'Georgia', serif`;
+    summaryLines = wrapText(ctx, topic.theologicalSummary, contentMaxW);
+  }
+
+  let pracFontSize = 24;
+  let pracLineH = 36;
+  ctx.font = `italic ${pracFontSize}px 'Georgia', serif`;
+  let practicalLines = wrapText(ctx, practicalText, contentMaxW);
+
+  while (practicalLines.length > 5 && pracFontSize > 18) {
+    pracFontSize -= 2;
+    pracLineH = Math.round(pracFontSize * 1.4);
+    ctx.font = `italic ${pracFontSize}px 'Georgia', serif`;
+    practicalLines = wrapText(ctx, practicalText, contentMaxW);
+  }
+
+  const minScripH = 95 + scriptureLines.length * scripLineH;
+  const minSumH = 95 + summaryLines.length * sumLineH;
+  const minPracH = 115 + practicalLines.length * pracLineH;
+  const totalMinH = minScripH + minSumH + minPracH;
+
+  let scriptureCardH = minScripH;
+  let summaryCardH = minSumH;
+  let pillarsBoxH = minPracH;
+
+  if (totalAvailableSpace > totalMinH) {
+    const slack = totalAvailableSpace - totalMinH;
+    scriptureCardH += Math.round(slack * 0.32);
+    summaryCardH += Math.round(slack * 0.42);
+    pillarsBoxH = totalAvailableSpace - scriptureCardH - summaryCardH;
+  } else {
+    const scale = totalAvailableSpace / totalMinH;
+    scriptureCardH = Math.round(scriptureCardH * scale);
+    summaryCardH = Math.round(summaryCardH * scale);
+    pillarsBoxH = totalAvailableSpace - scriptureCardH - summaryCardH;
+  }
+
+  // 1. Scriptural Anchor Box
   ctx.fillStyle = "#FFFFFF";
   ctx.shadowColor = "rgba(180, 140, 53, 0.12)";
   ctx.shadowBlur = 18;
@@ -586,55 +702,43 @@ export async function downloadSystematicTopicPicture(
 
   ctx.textAlign = "left";
   ctx.fillStyle = "#B48C35";
-  ctx.font = "bold 22px 'Plus Jakarta Sans', sans-serif";
-  ctx.fillText(`✦ ANCHOR SCRIPTURE: ${primaryRef}`, cardX + 45, curY + 45);
+  ctx.font = "bold 24px 'Plus Jakarta Sans', sans-serif";
+  ctx.fillText(`✦ ANCHOR SCRIPTURE: ${primaryRef}`, cardX + 45, curY + 48);
 
   ctx.fillStyle = "#0F172A";
-  ctx.font = "italic 28px 'Georgia', serif";
-  let sy = curY + 90;
+  ctx.font = `italic ${scripFontSize}px 'Georgia', serif`;
+  let sy = curY + 96;
   for (const line of scriptureLines) {
     ctx.fillText(line, cardX + 45, sy);
-    sy += 44;
+    sy += scripLineH;
   }
 
-  curY += scriptureCardH + 35;
+  curY += scriptureCardH + cardGap;
 
   // 6. Theological & Doctrinal Summary Box
-  ctx.font = "26px 'Georgia', serif";
-  const summaryLines = wrapText(ctx, topic.theologicalSummary, contentMaxW);
-  const summaryCardH = Math.max(220, summaryLines.length * 40 + 80);
-
   ctx.fillStyle = "#FDFBF7";
-  roundRect(ctx, cardX, curY, cardW, summaryCardH, 12);
+  roundRect(ctx, cardX, curY, cardW, summaryCardH, 14);
   ctx.fill();
   ctx.strokeStyle = "#DCC398";
-  ctx.lineWidth = 1.5;
+  ctx.lineWidth = 2;
   ctx.stroke();
 
   ctx.fillStyle = "#B48C35";
-  ctx.font = "bold 20px 'Plus Jakarta Sans', sans-serif";
+  ctx.font = "bold 24px 'Plus Jakarta Sans', sans-serif";
   ctx.letterSpacing = "2px";
-  ctx.fillText("✦ THEOLOGICAL EXPOSITION & SYSTEMATIC DEFINITION", cardX + 40, curY + 42);
+  ctx.fillText("✦ THEOLOGICAL EXPOSITION & SYSTEMATIC DEFINITION", cardX + 40, curY + 48);
 
   ctx.fillStyle = "#1E293B";
-  ctx.font = "25px 'Georgia', serif";
-  let sumY = curY + 82;
-  for (let i = 0; i < Math.min(summaryLines.length, 6); i++) {
+  ctx.font = `${sumFontSize}px 'Georgia', serif`;
+  let sumY = curY + 94;
+  for (let i = 0; i < summaryLines.length; i++) {
     ctx.fillText(summaryLines[i], cardX + 40, sumY);
-    sumY += 38;
+    sumY += sumLineH;
   }
 
-  curY += summaryCardH + 35;
+  curY += summaryCardH + cardGap;
 
   // 7. Core Pillars & Practical Application Box
-  const footerY = H - innerMargin - 110;
-  const maxPillarsH = footerY - curY - 25;
-  const practicalText = topic.practicalApplication || "Live out this biblical truth daily through prayer, righteous walking, and steadfast trust in the Lord.";
-  ctx.font = "italic 24px 'Georgia', serif";
-  const practicalLines = wrapText(ctx, practicalText, contentMaxW);
-  const naturalPillarsBoxH = Math.max(260, practicalLines.length * 36 + 140);
-  const pillarsBoxH = Math.min(naturalPillarsBoxH, Math.max(160, maxPillarsH));
-
   ctx.fillStyle = "#0F172A";
   roundRect(ctx, cardX, curY, cardW, pillarsBoxH, 14);
   ctx.fill();
@@ -643,18 +747,16 @@ export async function downloadSystematicTopicPicture(
   ctx.stroke();
 
   ctx.fillStyle = "#DCC398";
-  ctx.font = "bold 20px 'Plus Jakarta Sans', sans-serif";
+  ctx.font = "bold 22px 'Plus Jakarta Sans', sans-serif";
   ctx.letterSpacing = "2px";
   ctx.fillText("✦ PRACTICAL DISCIPLESHIP & CONFESSION", cardX + 40, curY + 42);
 
   ctx.fillStyle = "#F8FAFC";
-  ctx.font = "italic 24px 'Georgia', serif";
+  ctx.font = `italic ${pracFontSize}px 'Georgia', serif`;
   let pracY = curY + 84;
-  for (let i = 0; i < Math.min(practicalLines.length, 4); i++) {
-    if (pracY + 36 <= curY + pillarsBoxH - 45) {
-      ctx.fillText(practicalLines[i], cardX + 40, pracY);
-      pracY += 36;
-    }
+  for (let i = 0; i < practicalLines.length; i++) {
+    ctx.fillText(practicalLines[i], cardX + 40, pracY);
+    pracY += pracLineH;
   }
 
   // Faith decree

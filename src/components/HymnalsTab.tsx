@@ -1009,22 +1009,67 @@ Scripture Anchor: ${selectedHymn.scriptureAnchor.reference}
 
           {activeViewMode === "theology" && (
             <div className="space-y-4">
+              {/* Supporting Scripture Anchor */}
+              <div className="p-6 bg-amber-50/80 rounded-3xl border border-amber-200/90 shadow-sm space-y-3">
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#92400E]">
+                    <BookOpen className="w-4 h-4 text-amber-700" /> Supporting Scripture Anchor
+                  </div>
+                  {onNavigateToBible && (
+                    <button
+                      onClick={() =>
+                        onNavigateToBible(
+                          selectedHymn.scriptureAnchor.book,
+                          selectedHymn.scriptureAnchor.chapter,
+                          selectedHymn.scriptureAnchor.verse
+                        )
+                      }
+                      className="px-3 py-1.5 rounded-lg bg-[#16235A] text-white font-bold text-xs flex items-center gap-1.5 hover:bg-[#2563EB] cursor-pointer transition-all shadow-xs"
+                    >
+                      <span>Read in Bible</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </button>
+                  )}
+                </div>
+                <blockquote className="font-serif italic text-base sm:text-lg text-slate-900 border-l-4 border-amber-600 pl-4 py-1 leading-relaxed">
+                  "{selectedHymn.scriptureAnchor.text}"
+                </blockquote>
+                <div className="flex items-center justify-between text-xs text-amber-900 font-mono font-bold pt-1">
+                  <span>— {selectedHymn.scriptureAnchor.reference}</span>
+                  <span className="text-slate-600 font-sans font-medium">Category: {selectedHymn.category}</span>
+                </div>
+              </div>
+
+              {/* Systematic Theological Exegesis */}
               <div className="p-6 bg-white rounded-3xl border border-slate-200 shadow-sm space-y-4">
                 <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#9333EA]">
-                  <BookOpen className="w-4 h-4" /> Theological Insight & Biblical Exposition
+                  <Sparkles className="w-4 h-4 text-purple-700" /> Theological Insight & Biblical Exposition
                 </div>
-                <p className="text-sm sm:text-base text-slate-800 leading-relaxed font-serif">
+                <p className="text-sm sm:text-base text-slate-800 leading-relaxed font-serif whitespace-pre-line">
                   {selectedHymn.theologicalInsight}
                 </p>
               </div>
 
+              {/* Devotional & Consecration Prayer */}
               <div className="p-6 bg-gradient-to-br from-[#16235A] to-[#24357D] rounded-3xl text-white shadow-md space-y-3">
                 <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#DCC398]">
-                  <Sparkles className="w-4 h-4" /> Devotional & Consecration Prayer
+                  <Heart className="w-4 h-4 text-amber-400" /> Devotional & Consecration Prayer
                 </div>
                 <p className="text-sm sm:text-base text-slate-100 font-serif italic leading-relaxed">
                   "{selectedHymn.devotionalPrayer}"
                 </p>
+                <div className="pt-2 flex items-center justify-between text-xs text-slate-300 border-t border-white/10">
+                  <span>Faithfully anchored in {selectedHymn.scriptureAnchor.reference}</span>
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText(`DEVOTIONAL PRAYER (${selectedHymn.title}):\n"${selectedHymn.devotionalPrayer}"\n\nScripture: ${selectedHymn.scriptureAnchor.reference}`);
+                    }}
+                    className="hover:text-amber-300 flex items-center gap-1 cursor-pointer transition-colors"
+                  >
+                    <Copy className="w-3.5 h-3.5" />
+                    <span>Copy Prayer</span>
+                  </button>
+                </div>
               </div>
             </div>
           )}

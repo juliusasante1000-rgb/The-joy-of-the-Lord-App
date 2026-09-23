@@ -14,8 +14,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "My delight is in her",
     "scriptureReference": "Isaiah 62:4",
     "category": "New Identity",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Hephzibah (חֶפְצִי־בָהּ). I walk in my delight is in her according to Isaiah 62:4.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Hephzibah (חֶפְצִי־בָהּ). Through Isaiah 62:4, God has established me in My delight is in her; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in Isaiah 62:4, this prophetic name marks a definitive transition from obscurity into God's radiant decree: My delight is in her."
   },
   {
     "id": 2,
@@ -25,8 +25,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Married / Espoused to God",
     "scriptureReference": "Isaiah 62:4",
     "category": "New Identity",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Beulah (בְּעוּלָה). I walk in married / espoused to god according to Isaiah 62:4.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Beulah (בְּעוּלָה). Through Isaiah 62:4, God has established me in Married and Espoused to God; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Isaiah 62:4, the mouth of the Lord bestows this name to nullify human mockery and establish you in the reality of Married and Espoused to God."
   },
   {
     "id": 3,
@@ -36,8 +36,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Sought after / Greatly desired",
     "scriptureReference": "Isaiah 62:12",
     "category": "New Identity",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Derushah (דְּרוּשָׁה). I walk in sought after / greatly desired according to Isaiah 62:12.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Derushah (דְּרוּשָׁה). Through Isaiah 62:12, God has established me in Sought after and Greatly desired; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Spoken through the prophetic consolations of Isaiah (Isaiah 62:12), this consecrated title replaces past labels of barrenness and defeat with royal identity as Sought after and Greatly desired."
   },
   {
     "id": 4,
@@ -47,8 +47,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "City not forsaken / Never abandoned",
     "scriptureReference": "Isaiah 62:12",
     "category": "New Identity",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ir Lo Ne'ezavah (עִיר לֹא נֶעֱזָבָה). I walk in city not forsaken / never abandoned according to Isaiah 62:12.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ir Lo Ne'ezavah (עִיר לֹא נֶעֱזָבָה). Through Isaiah 62:12, God has established me in City not forsaken and Never abandoned; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in Isaiah 62:12, this prophetic name marks a definitive transition from obscurity into God's radiant decree: City not forsaken and Never abandoned."
   },
   {
     "id": 5,
@@ -58,8 +58,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "A new prophetic name",
     "scriptureReference": "Isaiah 62:2",
     "category": "New Identity",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shem Chadash (שֵׁם חָדָשׁ). I walk in a new prophetic name according to Isaiah 62:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shem Chadash (שֵׁם חָדָשׁ). Through Isaiah 62:2, God has established me in A new prophetic name; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Isaiah 62:2, the mouth of the Lord bestows this name to nullify human mockery and establish you in the reality of A new prophetic name."
   },
   {
     "id": 6,
@@ -69,8 +69,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Crown of glory in the Lord's hand",
     "scriptureReference": "Isaiah 62:3",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret Tiferet (עֲטֶרֶת תִּפְאֶרֶת). I walk in crown of glory in the lord's hand according to Isaiah 62:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret Tiferet (עֲטֶרֶת תִּפְאֶרֶת). Through Isaiah 62:3, God has established me in Crown of glory in the Lord's hand; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Rooted in Isaiah 62:3, this title symbolizes celestial investiture, clothing the believer in robes of praise and divine authority as Crown of glory in the Lord's hand."
   },
   {
     "id": 7,
@@ -80,8 +80,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Royal diadem / Kingly turban",
     "scriptureReference": "Isaiah 62:3",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Tsenif Melukhah (צְנִיף מְלוּכָה). I walk in royal diadem / kingly turban according to Isaiah 62:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Tsenif Melukhah (צְנִיף מְלוּכָה). Through Isaiah 62:3, God has established me in Royal diadem and Kingly turban; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Isaiah 62:3, this redemptive declaration removes garments of mourning and clothes you in the majesty of Royal diadem and Kingly turban."
   },
   {
     "id": 8,
@@ -91,8 +91,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "The Holy People",
     "scriptureReference": "Isaiah 62:12",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Am HaKodesh (עַם־הַקֹּדֶשׁ). I walk in the holy people according to Isaiah 62:12.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Am HaKodesh (עַם־הַקֹּדֶשׁ). Through Isaiah 62:12, God has established me in The Holy People; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Guaranteed by the covenant promises of Isaiah 62:12, this sacred title reminds you that you are eternally set apart and cherished as The Holy People."
   },
   {
     "id": 9,
@@ -102,8 +102,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Redeemed / Purchased by blood",
     "scriptureReference": "Isaiah 62:12",
     "category": "Redemption & Grace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ge'ulah (גְּאוּלָה). I walk in redeemed / purchased by blood according to Isaiah 62:12.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ge'ulah (גְּאוּלָה). Through Isaiah 62:12, God has established me in Redeemed and Purchased by blood; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Unveiled in Isaiah 62:12, this redemptive name celebrates total ransom from captivity, establishing the believer's life upon Redeemed and Purchased by blood."
   },
   {
     "id": 10,
@@ -113,8 +113,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "My people / Belonging to God",
     "scriptureReference": "Hosea 2:1",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ammi (עַמִּי). I walk in my people / belonging to god according to Hosea 2:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ammi (עַמִּי). Through Hosea 2:1, God has established me in My people and Belonging to God; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Hosea 2:1, this name affirms that by sovereign grace you are brought near and forever granted the status of My people and Belonging to God."
   },
   {
     "id": 11,
@@ -124,8 +124,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "You have obtained mercy",
     "scriptureReference": "Hosea 2:1",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ruhamah (רֻחָמָה). I walk in you have obtained mercy according to Hosea 2:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ruhamah (רֻחָמָה). Through Hosea 2:1, God has established me in You have obtained mercy; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Hosea 2:1, this redemptive designation assures your heart that in the house of God you walk in full acceptance as You have obtained mercy."
   },
   {
     "id": 12,
@@ -135,8 +135,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "God will sow / Plant you fruitful again",
     "scriptureReference": "Hosea 2:22-23",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Yizre'el (יִזְרְעֶאל). I walk in god will sow / plant you fruitful again according to Hosea 2:22-23.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Yizre'el (יִזְרְעֶאל). Through Hosea 2:22-23, God has established me in God will sow and Plant you fruitful again; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Prophesied in Hosea 2:22-23, this powerful decree overturns generational stagnation, commanding supernatural emergence and God will sow and Plant you fruitful again."
   },
   {
     "id": 13,
@@ -146,8 +146,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Priests of the Lord",
     "scriptureReference": "Isaiah 61:6",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Kohanei Adonai (כֹּהֲנֵי יְהוָה). I walk in priests of the lord according to Isaiah 61:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Kohanei Adonai (כֹּהֲנֵי יְהוָה). Through Isaiah 61:6, God has established me in Priests of the Lord; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Set forth in Isaiah 61:6, this apostolic designation calls you to stand as a king and priest unto God, walking in the dignity of Priests of the Lord."
   },
   {
     "id": 14,
@@ -157,8 +157,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Ministers of our God",
     "scriptureReference": "Isaiah 61:6",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mesharetei Eloheinu (מְשָׁרְתֵי אֱלֹהֵינוּ). I walk in ministers of our god according to Isaiah 61:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mesharetei Eloheinu (מְשָׁרְתֵי אֱלֹהֵינוּ). Through Isaiah 61:6, God has established me in Ministers of our God; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Isaiah 61:6, this heavenly mandate establishes your life as an altar of worship and a vessel of divine dominion in Ministers of our God."
   },
   {
     "id": 15,
@@ -168,8 +168,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Double portion of honor",
     "scriptureReference": "Isaiah 61:7",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mishneh (מִשְׁנֶה). I walk in double portion of honor according to Isaiah 61:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mishneh (מִשְׁנֶה). Through Isaiah 61:7, God has established me in Double portion of honor; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Prophesied in Isaiah 61:7, this powerful decree overturns generational stagnation, commanding supernatural emergence and Double portion of honor."
   },
   {
     "id": 16,
@@ -179,8 +179,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Everlasting joy upon your head",
     "scriptureReference": "Isaiah 61:7",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Simchat Olam (שִׂמְחַת עוֹלָם). I walk in everlasting joy upon your head according to Isaiah 61:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Simchat Olam (שִׂמְחַת עוֹלָם). Through Isaiah 61:7, God has established me in Everlasting joy upon your head; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Celebrated in Isaiah 61:7, this name releases the supernatural peace that surpasses understanding, crowning your days with Everlasting joy upon your head."
   },
   {
     "id": 17,
@@ -190,8 +190,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Seed blessed by the Lord",
     "scriptureReference": "Isaiah 61:9",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Zera Berakh Adonai (זֶרַע בֵּרַךְ יְהוָה). I walk in seed blessed by the lord according to Isaiah 61:9.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Zera Berakh Adonai (זֶרַע בֵּרַךְ יְהוָה). Through Isaiah 61:9, God has established me in Seed blessed by the Lord; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Guaranteed by the covenant promises of Isaiah 61:9, this sacred title reminds you that you are eternally set apart and cherished as Seed blessed by the Lord."
   },
   {
     "id": 18,
@@ -201,8 +201,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Garment of praise for spirit of heaviness",
     "scriptureReference": "Isaiah 61:3",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ma'ateh Tehillah (מַעֲטֵה תְהִלָּה). I walk in garment of praise for spirit of heaviness according to Isaiah 61:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ma'ateh Tehillah (מַעֲטֵה תְהִלָּה). Through Isaiah 61:3, God has established me in Garment of praise for spirit of heaviness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Rooted in Isaiah 61:3, this title symbolizes celestial investiture, clothing the believer in robes of praise and divine authority as Garment of praise for spirit of heaviness."
   },
   {
     "id": 19,
@@ -212,8 +212,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Clothed with the robe of righteousness",
     "scriptureReference": "Isaiah 61:10",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Levush Tsedakah (לְבוּשׁ צְדָקָה). I walk in clothed with the robe of righteousness according to Isaiah 61:10.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Levush Tsedakah (לְבוּשׁ צְדָקָה). Through Isaiah 61:10, God has established me in Clothed with the robe of righteousness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Isaiah 61:10, this redemptive declaration removes garments of mourning and clothes you in the majesty of Clothed with the robe of righteousness."
   },
   {
     "id": 20,
@@ -223,8 +223,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Oaks of righteousness / Planting of Yahweh",
     "scriptureReference": "Isaiah 61:3",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Eilei HaTsedek (אֵילֵי הַצֶּדֶק). I walk in oaks of righteousness / planting of yahweh according to Isaiah 61:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Eilei HaTsedek (אֵילֵי הַצֶּדֶק). Through Isaiah 61:3, God has established me in Oaks of righteousness and Planting of Yahweh; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Isaiah 61:3, this name proclaims that your life is fortified against every onslaught of darkness by the power of Oaks of righteousness and Planting of Yahweh."
   },
   {
     "id": 21,
@@ -234,8 +234,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Rebuilders of ancient ruins",
     "scriptureReference": "Isaiah 61:4",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Boney Choravot (בּוֹנֵי חֳרָבוֹת). I walk in rebuilders of ancient ruins according to Isaiah 61:4.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Boney Choravot (בּוֹנֵי חֳרָבוֹת). Through Isaiah 61:4, God has established me in Rebuilders of ancient ruins; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Prophesied in Isaiah 61:4, this powerful decree overturns generational stagnation, commanding supernatural emergence and Rebuilders of ancient ruins."
   },
   {
     "id": 22,
@@ -245,8 +245,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Treasured possession / Peculiar treasure",
     "scriptureReference": "Exodus 19:5",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Segulah (סְגֻלָּה). I walk in treasured possession / peculiar treasure according to Exodus 19:5.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Segulah (סְגֻלָּה). Through Exodus 19:5, God has established me in Treasured possession and Peculiar treasure; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Proclaimed in Exodus 19:5, this covenant moniker assures the believer that God's steadfast chesed preserves and honors you as Treasured possession and Peculiar treasure."
   },
   {
     "id": 23,
@@ -256,8 +256,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Spared / Object of tender compassion",
     "scriptureReference": "Isaiah 63:9",
     "category": "Redemption & Grace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Chemla (חֶמְלָה). I walk in spared / object of tender compassion according to Isaiah 63:9.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Chemla (חֶמְלָה). Through Isaiah 63:9, God has established me in Spared and Object of tender compassion; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Spoken in Isaiah 63:9, this name commemorates the price paid to bring you into the liberty, righteousness, and unmerited favor of Spared and Object of tender compassion."
   },
   {
     "id": 24,
@@ -267,8 +267,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Delightsome land and soul",
     "scriptureReference": "Malachi 3:12",
     "category": "New Identity",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Cheftsa (חֶפְצָה). I walk in delightsome land and soul according to Malachi 3:12.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Cheftsa (חֶפְצָה). Through Malachi 3:12, God has established me in Delightsome land and soul; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Proclaimed during the post-exilic prophetic revival of Jerusalem and Zion (Malachi 3:12), this consecrated title replaces past labels of barrenness and defeat with royal identity as Delightsome land and soul."
   },
   {
     "id": 25,
@@ -278,8 +278,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Beloved of the Lord / Dwelling in safety",
     "scriptureReference": "Deuteronomy 33:12",
     "category": "Beloved & Intimacy",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Yedid Adonai (יְדִיד יְהוָה). I walk in beloved of the lord / dwelling in safety according to Deuteronomy 33:12.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Yedid Adonai (יְדִיד יְהוָה). Through Deuteronomy 33:12, God has established me in Beloved of the Lord and Dwelling in safety; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in Deuteronomy 33:12, this cherished title expresses Yahweh's profound delight and jealous affection over your soul as Beloved of the Lord and Dwelling in safety."
   },
   {
     "id": 26,
@@ -289,8 +289,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Blessed woman above women",
     "scriptureReference": "Judges 5:24",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Berukhah (בְּרוּכָה). I walk in blessed woman above women according to Judges 5:24.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Berukhah (בְּרוּכָה). Through Judges 5:24, God has established me in Blessed woman above women; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Judges 5:24, this redemptive declaration commands the blessings of heaven to overtake every area of your journey in Blessed woman above women."
   },
   {
     "id": 27,
@@ -300,8 +300,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Blessed man rooted by rivers",
     "scriptureReference": "Jeremiah 17:7",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Berukh (בָּרוּךְ). I walk in blessed man rooted by rivers according to Jeremiah 17:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Berukh (בָּרוּךְ). Through Jeremiah 17:7, God has established me in Blessed man rooted by rivers; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Poured out in Jeremiah 17:7, this title carries the generational blessing of Abraham, causing uncommon favor and Blessed man rooted by rivers to rest upon you."
   },
   {
     "id": 28,
@@ -311,8 +311,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Peaceful / Secure serenity within palaces",
     "scriptureReference": "Psalm 122:7",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shalva (שַׁלְוָה). I walk in peaceful / secure serenity within palaces according to Psalm 122:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shalva (שַׁלְוָה). Through Psalm 122:7, God has established me in Peaceful and Secure serenity within palaces; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Celebrated in Psalm 122:7, this name releases the supernatural peace that surpasses understanding, crowning your days with Peaceful and Secure serenity within palaces."
   },
   {
     "id": 29,
@@ -322,8 +322,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Resting place of My dwelling",
     "scriptureReference": "Psalm 132:14",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Menuchah (מְנוּחָה). I walk in resting place of my dwelling according to Psalm 132:14.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Menuchah (מְנוּחָה). Through Psalm 132:14, God has established me in Resting place of My dwelling; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Psalm 132:14, this sacred title reminds the believer that the oil of gladness has triumphed over spirit of heaviness in Resting place of My dwelling."
   },
   {
     "id": 30,
@@ -333,8 +333,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Inheritance of the Lord",
     "scriptureReference": "Psalm 33:12",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Nachalat Adonai (נַחֲלַת יְהוָה). I walk in inheritance of the lord according to Psalm 33:12.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Nachalat Adonai (נַחֲלַת יְהוָה). Through Psalm 33:12, God has established me in Inheritance of the Lord; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Enshrined in Psalm 33:12, this name seals Yahweh's unshakeable covenant oath, affirming you as His treasured possession in Inheritance of the Lord."
   },
   {
     "id": 31,
@@ -344,8 +344,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Breakthrough / Breaker going before",
     "scriptureReference": "Micah 2:13",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Peretz (פֶּרֶץ). I walk in breakthrough / breaker going before according to Micah 2:13.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Peretz (פֶּרֶץ). Through Micah 2:13, God has established me in Breakthrough and Breaker going before; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Proclaimed in Micah 2:13, this title marks the breaking of every ungodly siege, ushering the soul into divine abundance and Breakthrough and Breaker going before."
   },
   {
     "id": 32,
@@ -355,8 +355,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Enlarged room / Made fruitful",
     "scriptureReference": "Genesis 26:22",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Rechavah (רְחָבָה). I walk in enlarged room / made fruitful according to Genesis 26:22.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Rechavah (רְחָבָה). Through Genesis 26:22, God has established me in Enlarged room and Made fruitful; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in Genesis 26:22, this redemptive name heralds total restoration of wasted years, re-establishing you in the joy of Enlarged room and Made fruitful."
   },
   {
     "id": 33,
@@ -366,8 +366,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Carried on hovering wings of the Spirit",
     "scriptureReference": "Deuteronomy 32:11",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Merachefet (מְרַחֶפֶת). I walk in carried on hovering wings of the spirit according to Deuteronomy 32:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Merachefet (מְרַחֶפֶת). Through Deuteronomy 32:11, God has established me in Carried on hovering wings of the Spirit; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Forged in spiritual victory in Deuteronomy 32:11, this redemptive name endows the believer with holy tenacity and supernatural Carried on hovering wings of the Spirit."
   },
   {
     "id": 34,
@@ -377,8 +377,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Branch of God's planting",
     "scriptureReference": "Isaiah 60:21",
     "category": "New Identity",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Natzar Elohim (נֵצֶר אֱלֹהִים). I walk in branch of god's planting according to Isaiah 60:21.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Natzar Elohim (נֵצֶר אֱלֹהִים). Through Isaiah 60:21, God has established me in Branch of God's planting; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in Isaiah 60:21, this prophetic name marks a definitive transition from obscurity into God's radiant decree: Branch of God's planting."
   },
   {
     "id": 35,
@@ -388,8 +388,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Work of My hands to be glorified",
     "scriptureReference": "Isaiah 60:21",
     "category": "New Identity",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ma'aseh Yadai (מַעֲשֵׂה יָדַי). I walk in work of my hands to be glorified according to Isaiah 60:21.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ma'aseh Yadai (מַעֲשֵׂה יָדַי). Through Isaiah 60:21, God has established me in Work of My hands to be glorified; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Isaiah 60:21, the mouth of the Lord bestows this name to nullify human mockery and establish you in the reality of Work of My hands to be glorified."
   },
   {
     "id": 36,
@@ -399,8 +399,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Light of the Lord risen upon you",
     "scriptureReference": "Isaiah 60:1",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Or Adonai (אוֹר יְהוָה). I walk in light of the lord risen upon you according to Isaiah 60:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Or Adonai (אוֹר יְהוָה). Through Isaiah 60:1, God has established me in Light of the Lord risen upon you; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Rooted in Isaiah 60:1, this title symbolizes celestial investiture, clothing the believer in robes of praise and divine authority as Light of the Lord risen upon you."
   },
   {
     "id": 37,
@@ -410,8 +410,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Seer of heavenly vision",
     "scriptureReference": "Habakkuk 2:2",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Chosson Chazon (חוֹזֶה חָזוֹן). I walk in seer of heavenly vision according to Habakkuk 2:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Chosson Chazon (חוֹזֶה חָזוֹן). Through Habakkuk 2:2, God has established me in Seer of heavenly vision; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Set forth in Habakkuk 2:2, this apostolic designation calls you to stand as a king and priest unto God, walking in the dignity of Seer of heavenly vision."
   },
   {
     "id": 38,
@@ -421,8 +421,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Beauty / Heavenly splendor",
     "scriptureReference": "Isaiah 62:3",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Tiferet (תִּפְאֶרֶת). I walk in beauty / heavenly splendor according to Isaiah 62:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Tiferet (תִּפְאֶרֶת). Through Isaiah 62:3, God has established me in Beauty and Heavenly splendor; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Isaiah 62:3, this heavenly title represents the royal ornament and priestly splendor of Beauty and Heavenly splendor placed upon your life."
   },
   {
     "id": 39,
@@ -432,8 +432,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Weighty glory returned and multiplied",
     "scriptureReference": "Haggai 2:9",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Kavod (כָּבוֹד). I walk in weighty glory returned and multiplied according to Haggai 2:9.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Kavod (כָּבוֹד). Through Haggai 2:9, God has established me in Weighty glory returned and multiplied; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Rooted in Haggai 2:9, this title symbolizes celestial investiture, clothing the believer in robes of praise and divine authority as Weighty glory returned and multiplied."
   },
   {
     "id": 40,
@@ -443,8 +443,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Strength / Valiant virtue and power",
     "scriptureReference": "Proverbs 31:10",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Chayil (חַיִל). I walk in strength / valiant virtue and power according to Proverbs 31:10.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Chayil (חַיִל). Through Proverbs 31:10, God has established me in Strength and Valiant virtue and power; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Proverbs 31:10, this warrior title declares that through Christ who strengthens you, you arise and conquer in Strength and Valiant virtue and power."
   },
   {
     "id": 41,
@@ -454,8 +454,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Perfect peace of mind stayed on God",
     "scriptureReference": "Isaiah 26:3",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom Shalem (שָׁלוֹם שָׁלֵם). I walk in perfect peace of mind stayed on god according to Isaiah 26:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom Shalem (שָׁלוֹם שָׁלֵם). Through Isaiah 26:3, God has established me in Perfect peace of mind stayed on God; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Isaiah 26:3, this sacred title reminds the believer that the oil of gladness has triumphed over spirit of heaviness in Perfect peace of mind stayed on God."
   },
   {
     "id": 42,
@@ -465,8 +465,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Graced / Overflowing with unmerited favor",
     "scriptureReference": "Psalm 112:4",
     "category": "Redemption & Grace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Chanan (חַנָּן). I walk in graced / overflowing with unmerited favor according to Psalm 112:4.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Chanan (חַנָּן). Through Psalm 112:4, God has established me in Graced and Overflowing with unmerited favor; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Unveiled in Psalm 112:4, this redemptive name celebrates total ransom from captivity, establishing the believer's life upon Graced and Overflowing with unmerited favor."
   },
   {
     "id": 43,
@@ -476,8 +476,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "One who found favor in Yahweh's sight",
     "scriptureReference": "Genesis 6:8",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Matzui Chen (מָצוּא חֵן). I walk in one who found favor in yahweh's sight according to Genesis 6:8.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Matzui Chen (מָצוּא חֵן). Through Genesis 6:8, God has established me in One who found favor in Yahweh's sight; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Genesis 6:8, this prophetic name marks you with the goodness and lovingkindness of God, releasing the fullness of One who found favor in Yahweh's sight."
   },
   {
     "id": 44,
@@ -487,8 +487,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Daughter of Zion / Triumphant city",
     "scriptureReference": "Zechariah 9:9",
     "category": "Beloved & Intimacy",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bat Tzion (בַּת־צִיּוֹן). I walk in daughter of zion / triumphant city according to Zechariah 9:9.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bat Tzion (בַּת־צִיּוֹן). Through Zechariah 9:9, God has established me in Daughter of Zion and Triumphant city; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Zechariah 9:9, this redemptive designation confirms that you are neither forgotten nor overlooked, but ever held close as Daughter of Zion and Triumphant city."
   },
   {
     "id": 45,
@@ -498,8 +498,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Son of innocence and clean hands",
     "scriptureReference": "Ezra 2:9",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ben Zakkai (בֶּן־זַכַּאי). I walk in son of innocence and clean hands according to Ezra 2:9.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ben Zakkai (בֶּן־זַכַּאי). Through Ezra 2:9, God has established me in Son of innocence and clean hands; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Forged in spiritual victory in Ezra 2:9, this redemptive name endows the believer with holy tenacity and supernatural Son of innocence and clean hands."
   },
   {
     "id": 46,
@@ -509,8 +509,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Salvation, deliverance and triumph",
     "scriptureReference": "Isaiah 62:11",
     "category": "Redemption & Grace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Yeshua (יְשׁוּעָה). I walk in salvation, deliverance and triumph according to Isaiah 62:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Yeshua (יְשׁוּעָה). Through Isaiah 62:11, God has established me in Salvation, deliverance and triumph; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Grounded in Isaiah 62:11, this title bears witness to the triumph of divine mercy over judgment, designating you as an inheritor of Salvation, deliverance and triumph."
   },
   {
     "id": 47,
@@ -520,8 +520,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Great light shining in deep darkness",
     "scriptureReference": "Isaiah 9:2",
     "category": "New Identity",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Or Gadol (אוֹר גָּדוֹל). I walk in great light shining in deep darkness according to Isaiah 9:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Or Gadol (אוֹר גָּדוֹל). Through Isaiah 9:2, God has established me in Great light shining in deep darkness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Isaiah 9:2, the mouth of the Lord bestows this name to nullify human mockery and establish you in the reality of Great light shining in deep darkness."
   },
   {
     "id": 48,
@@ -531,8 +531,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Ransomed of the Lord returning to Zion",
     "scriptureReference": "Isaiah 35:10",
     "category": "Redemption & Grace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Peduim (פְּדוּיִם). I walk in ransomed of the lord returning to zion according to Isaiah 35:10.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Peduim (פְּדוּיִם). Through Isaiah 35:10, God has established me in Ransomed of the Lord returning to Zion; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Unveiled in Isaiah 35:10, this redemptive name celebrates total ransom from captivity, establishing the believer's life upon Ransomed of the Lord returning to Zion."
   },
   {
     "id": 49,
@@ -542,8 +542,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Lily blooming pure among thorns",
     "scriptureReference": "Song of Songs 2:2",
     "category": "Beloved & Intimacy",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shoshana (שׁוֹשַׁנָּה). I walk in lily blooming pure among thorns according to Song of Songs 2:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shoshana (שׁוֹשַׁנָּה). Through Song of Songs 2:2, God has established me in Lily blooming pure among thorns; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in Song of Songs 2:2, this cherished title expresses Yahweh's profound delight and jealous affection over your soul as Lily blooming pure among thorns."
   },
   {
     "id": 50,
@@ -553,8 +553,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Intimate friend who walks with God",
     "scriptureReference": "Exodus 33:11",
     "category": "Beloved & Intimacy",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Re'ah (רֵעַ). I walk in intimate friend who walks with god according to Exodus 33:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Re'ah (רֵעַ). Through Exodus 33:11, God has established me in Intimate friend who walks with God; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Exodus 33:11, this redemptive designation confirms that you are neither forgotten nor overlooked, but ever held close as Intimate friend who walks with God."
   },
   {
     "id": 51,
@@ -564,8 +564,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "My darling companion / My cherished love",
     "scriptureReference": "Song of Songs 1:9",
     "category": "Beloved & Intimacy",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Rayati (רַעְיָתִי). I walk in my darling companion / my cherished love according to Song of Songs 1:9.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Rayati (רַעְיָתִי). Through Song of Songs 1:9, God has established me in My darling companion and My cherished love; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Breathed with tender bridal love in Song of Songs 1:9, this name reflects the secret place of divine intimacy where you abide as My darling companion and My cherished love."
   },
   {
     "id": 52,
@@ -575,8 +575,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "My undefiled and blameless one",
     "scriptureReference": "Song of Songs 5:2",
     "category": "Beloved & Intimacy",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Tamati (תַּמָּתִי). I walk in my undefiled and blameless one according to Song of Songs 5:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Tamati (תַּמָּתִי). Through Song of Songs 5:2, God has established me in My undefiled and blameless one; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in Song of Songs 5:2, this cherished title expresses Yahweh's profound delight and jealous affection over your soul as My undefiled and blameless one."
   },
   {
     "id": 53,
@@ -586,8 +586,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "My dove hidden safely in the clefts of the rock",
     "scriptureReference": "Song of Songs 2:14",
     "category": "Beloved & Intimacy",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Yonati (יוֹנָתִי). I walk in my dove hidden safely in the clefts of the rock according to Song of Songs 2:14.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Yonati (יוֹנָתִי). Through Song of Songs 2:14, God has established me in My dove hidden safely in the clefts of the rock; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Song of Songs 2:14, this redemptive designation confirms that you are neither forgotten nor overlooked, but ever held close as My dove hidden safely in the clefts of the rock."
   },
   {
     "id": 54,
@@ -597,8 +597,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Adorned bride crowned for the King",
     "scriptureReference": "Song of Songs 4:8",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Kallah (כַּלָּה). I walk in adorned bride crowned for the king according to Song of Songs 4:8.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Kallah (כַּלָּה). Through Song of Songs 4:8, God has established me in Adorned bride crowned for the King; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Rooted in Song of Songs 4:8, this title symbolizes celestial investiture, clothing the believer in robes of praise and divine authority as Adorned bride crowned for the King."
   },
   {
     "id": 55,
@@ -608,8 +608,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Rose of Sharon blooming in fragrant beauty",
     "scriptureReference": "Song of Songs 2:1",
     "category": "Beloved & Intimacy",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Chavatzelet HaSharon (חֲבַצֶּלֶת הַשָּׁרוֹן). I walk in rose of sharon blooming in fragrant beauty according to Song of Songs 2:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Chavatzelet HaSharon (חֲבַצֶּלֶת הַשָּׁרוֹן). Through Song of Songs 2:1, God has established me in Rose of Sharon blooming in fragrant beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in Song of Songs 2:1, this cherished title expresses Yahweh's profound delight and jealous affection over your soul as Rose of Sharon blooming in fragrant beauty."
   },
   {
     "id": 56,
@@ -619,8 +619,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Lily of the valleys thriving in lowly places",
     "scriptureReference": "Song of Songs 2:1",
     "category": "Beloved & Intimacy",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shoshanat HaAmakim (שׁוֹשַׁנַּת הָעֲמָקִים). I walk in lily of the valleys thriving in lowly places according to Song of Songs 2:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shoshanat HaAmakim (שׁוֹשַׁנַּת הָעֲמָקִים). Through Song of Songs 2:1, God has established me in Lily of the valleys thriving in lowly places; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Song of Songs 2:1, this redemptive designation confirms that you are neither forgotten nor overlooked, but ever held close as Lily of the valleys thriving in lowly places."
   },
   {
     "id": 57,
@@ -630,8 +630,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Enclosed private garden of sacred delight",
     "scriptureReference": "Song of Songs 4:12",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Gan Na'ul (גַּן נָעוּל). I walk in enclosed private garden of sacred delight according to Song of Songs 4:12.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Gan Na'ul (גַּן נָעוּל). Through Song of Songs 4:12, God has established me in Enclosed private garden of sacred delight; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Enshrined in Song of Songs 4:12, this name seals Yahweh's unshakeable covenant oath, affirming you as His treasured possession in Enclosed private garden of sacred delight."
   },
   {
     "id": 58,
@@ -641,8 +641,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Sealed spring flowing with purity",
     "scriptureReference": "Song of Songs 4:12",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ma'ayan Chatum (מַעְיָן חָתוּם). I walk in sealed spring flowing with purity according to Song of Songs 4:12.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ma'ayan Chatum (מַעְיָן חָתוּם). Through Song of Songs 4:12, God has established me in Sealed spring flowing with purity; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Proclaimed in Song of Songs 4:12, this covenant moniker assures the believer that God's steadfast chesed preserves and honors you as Sealed spring flowing with purity."
   },
   {
     "id": 59,
@@ -652,8 +652,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Well of living waters from Lebanon",
     "scriptureReference": "Song of Songs 4:15",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Be'er Mayim Chayim (בְּאֵר מַיִם חַיִּים). I walk in well of living waters from lebanon according to Song of Songs 4:15.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Be'er Mayim Chayim (בְּאֵר מַיִם חַיִּים). Through Song of Songs 4:15, God has established me in Well of living waters from Lebanon; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in Song of Songs 4:15, this redemptive name heralds total restoration of wasted years, re-establishing you in the joy of Well of living waters from Lebanon."
   },
   {
     "id": 60,
@@ -663,8 +663,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Lips dropping the sweetness of honeycomb",
     "scriptureReference": "Song of Songs 4:11",
     "category": "Beloved & Intimacy",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Nofet Tizolnah (נֹפֶת תִּטֹּפְנָה). I walk in lips dropping the sweetness of honeycomb according to Song of Songs 4:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Nofet Tizolnah (נֹפֶת תִּטֹּפְנָה). Through Song of Songs 4:11, God has established me in Lips dropping the sweetness of honeycomb; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Breathed with tender bridal love in Song of Songs 4:11, this name reflects the secret place of divine intimacy where you abide as Lips dropping the sweetness of honeycomb."
   },
   {
     "id": 61,
@@ -674,8 +674,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Lion of God / Sacred altar of victory",
     "scriptureReference": "Isaiah 29:1",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ariel (אֲרִיאֵל). I walk in lion of god / sacred altar of victory according to Isaiah 29:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ariel (אֲרִיאֵל). Through Isaiah 29:1, God has established me in Lion of God and Sacred altar of victory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Isaiah 29:1, this warrior title declares that through Christ who strengthens you, you arise and conquer in Lion of God and Sacred altar of victory."
   },
   {
     "id": 62,
@@ -685,8 +685,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Holy unto the Lord engraved upon your forehead",
     "scriptureReference": "Exodus 28:36",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Kadosh L'Adonai (קָדֹשׁ לַיהוָה). I walk in holy unto the lord engraved upon your forehead according to Exodus 28:36.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Kadosh L'Adonai (קָדֹשׁ לַיהוָה). Through Exodus 28:36, God has established me in Holy unto the Lord engraved upon your forehead; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Exodus 28:36, this heavenly mandate establishes your life as an altar of worship and a vessel of divine dominion in Holy unto the Lord engraved upon your forehead."
   },
   {
     "id": 63,
@@ -696,8 +696,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Daughter of kings clothed in gold of Ophir",
     "scriptureReference": "Psalm 45:9",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bnot Melachim (בְּנוֹת מְלָכִים). I walk in daughter of kings clothed in gold of ophir according to Psalm 45:9.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bnot Melachim (בְּנוֹת מְלָכִים). Through Psalm 45:9, God has established me in Daughter of kings clothed in gold of Ophir; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Rooted in Psalm 45:9, this title symbolizes celestial investiture, clothing the believer in robes of praise and divine authority as Daughter of kings clothed in gold of Ophir."
   },
   {
     "id": 64,
@@ -707,8 +707,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Precious vessel of honorable desire",
     "scriptureReference": "Jeremiah 25:34",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Kley Hemdah (כְּלֵי חֶמְדָּה). I walk in precious vessel of honorable desire according to Jeremiah 25:34.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Kley Hemdah (כְּלֵי חֶמְדָּה). Through Jeremiah 25:34, God has established me in Precious vessel of honorable desire; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Proclaimed in Jeremiah 25:34, this covenant moniker assures the believer that God's steadfast chesed preserves and honors you as Precious vessel of honorable desire."
   },
   {
     "id": 65,
@@ -718,8 +718,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Anointed with the oil of gladness above peers",
     "scriptureReference": "Psalm 45:7",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shemen Sasson (שֶׁמֶן שָׂשׂוֹן). I walk in anointed with the oil of gladness above peers according to Psalm 45:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shemen Sasson (שֶׁמֶן שָׂשׂוֹן). Through Psalm 45:7, God has established me in Anointed with the oil of gladness above peers; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Psalm 45:7, this sacred title reminds the believer that the oil of gladness has triumphed over spirit of heaviness in Anointed with the oil of gladness above peers."
   },
   {
     "id": 66,
@@ -729,8 +729,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Olive tree rich in holy anointing",
     "scriptureReference": "Isaiah 41:19",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ets Shemen (עֵץ שֶׁמֶן). I walk in olive tree rich in holy anointing according to Isaiah 41:19.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ets Shemen (עֵץ שֶׁמֶן). Through Isaiah 41:19, God has established me in Olive tree rich in holy anointing; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Forged in spiritual victory in Isaiah 41:19, this redemptive name endows the believer with holy tenacity and supernatural Olive tree rich in holy anointing."
   },
   {
     "id": 67,
@@ -740,8 +740,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Living water gushing to eternal life",
     "scriptureReference": "John 4:14",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mayim Chayim (מַיִם חַיִּים). I walk in living water gushing to eternal life according to John 4:14.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mayim Chayim (מַיִם חַיִּים). Through John 4:14, God has established me in Living water gushing to eternal life; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Proclaimed in John 4:14, this title marks the breaking of every ungodly siege, ushering the soul into divine abundance and Living water gushing to eternal life."
   },
   {
     "id": 68,
@@ -751,8 +751,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Shield of glory and lifter of your head",
     "scriptureReference": "Psalm 3:3",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Magen Kavod (מָגֵן כָּבוֹד). I walk in shield of glory and lifter of your head according to Psalm 3:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Magen Kavod (מָגֵן כָּבוֹד). Through Psalm 3:3, God has established me in Shield of glory and lifter of your head; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Psalm 3:3, this name proclaims that your life is fortified against every onslaught of darkness by the power of Shield of glory and lifter of your head."
   },
   {
     "id": 69,
@@ -762,8 +762,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Holy seed that remains in the stump",
     "scriptureReference": "Isaiah 6:13",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Zera Kodesh (זֶרַע קֹדֶשׁ). I walk in holy seed that remains in the stump according to Isaiah 6:13.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Zera Kodesh (זֶרַע קֹדֶשׁ). Through Isaiah 6:13, God has established me in Holy seed that remains in the stump; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Enshrined in Isaiah 6:13, this name seals Yahweh's unshakeable covenant oath, affirming you as His treasured possession in Holy seed that remains in the stump."
   },
   {
     "id": 70,
@@ -773,8 +773,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Sprout carrying the Spirit of the Lord",
     "scriptureReference": "Isaiah 11:1",
     "category": "New Identity",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Choter Yishai (חֹטֶר יִשַׁי). I walk in sprout carrying the spirit of the lord according to Isaiah 11:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Choter Yishai (חֹטֶר יִשַׁי). Through Isaiah 11:1, God has established me in Sprout carrying the Spirit of the Lord; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in Isaiah 11:1, this prophetic name marks a definitive transition from obscurity into God's radiant decree: Sprout carrying the Spirit of the Lord."
   },
   {
     "id": 71,
@@ -784,8 +784,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Branch of righteousness executing justice",
     "scriptureReference": "Jeremiah 33:15",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Tzemach Tzedakah (צֶמַח צְדָקָה). I walk in branch of righteousness executing justice according to Jeremiah 33:15.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Tzemach Tzedakah (צֶמַח צְדָקָה). Through Jeremiah 33:15, God has established me in Branch of righteousness executing justice; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Jeremiah 33:15, this heavenly mandate establishes your life as an altar of worship and a vessel of divine dominion in Branch of righteousness executing justice."
   },
   {
     "id": 72,
@@ -795,8 +795,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Golden crown of dedicated consecration",
     "scriptureReference": "Leviticus 8:9",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Nezer Zahav (נֵזֶר זָהָב). I walk in golden crown of dedicated consecration according to Leviticus 8:9.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Nezer Zahav (נֵזֶר זָהָב). Through Leviticus 8:9, God has established me in Golden crown of dedicated consecration; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Rooted in Leviticus 8:9, this title symbolizes celestial investiture, clothing the believer in robes of praise and divine authority as Golden crown of dedicated consecration."
   },
   {
     "id": 73,
@@ -806,8 +806,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Dwelling tabernacle of the Most High",
     "scriptureReference": "Psalm 46:4",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan Elyon (מִשְׁכַּן עֶלְיוֹן). I walk in dwelling tabernacle of the most high according to Psalm 46:4.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan Elyon (מִשְׁכַּן עֶלְיוֹן). Through Psalm 46:4, God has established me in Dwelling tabernacle of the Most High; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Proclaimed in Psalm 46:4, this covenant moniker assures the believer that God's steadfast chesed preserves and honors you as Dwelling tabernacle of the Most High."
   },
   {
     "id": 74,
@@ -817,8 +817,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Sons and daughters of the Most High God",
     "scriptureReference": "Psalm 82:6",
     "category": "New Identity",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei Elyon (בְּנֵי עֶלְיוֹן). I walk in sons and daughters of the most high god according to Psalm 82:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei Elyon (בְּנֵי עֶלְיוֹן). Through Psalm 82:6, God has established me in Sons and daughters of the Most High God; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Psalm 82:6, the mouth of the Lord bestows this name to nullify human mockery and establish you in the reality of Sons and daughters of the Most High God."
   },
   {
     "id": 75,
@@ -828,8 +828,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Watchman upon the walls who never keeps silent",
     "scriptureReference": "Isaiah 62:6",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer Chomot (שֹׁמֵר חוֹמוֹת). I walk in watchman upon the walls who never keeps silent according to Isaiah 62:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer Chomot (שֹׁמֵר חוֹמוֹת). Through Isaiah 62:6, God has established me in Watchman upon the walls who never keeps silent; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Consecrated in Isaiah 62:6, this priestly title confers kingdom authority and intercessory access, ordaining the believer for Watchman upon the walls who never keeps silent."
   },
   {
     "id": 76,
@@ -839,8 +839,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Precious sons of Zion weighed against fine gold",
     "scriptureReference": "Lamentations 4:2",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei Tzion HaYekarim (בְּנֵי צִיּוֹן הַיְקָרִים). I walk in precious sons of zion weighed against fine gold according to Lamentations 4:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei Tzion HaYekarim (בְּנֵי צִיּוֹן הַיְקָרִים). Through Lamentations 4:2, God has established me in Precious sons of Zion weighed against fine gold; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Proclaimed in Lamentations 4:2, this covenant moniker assures the believer that God's steadfast chesed preserves and honors you as Precious sons of Zion weighed against fine gold."
   },
   {
     "id": 77,
@@ -850,8 +850,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Crown of beauty in the day of harvest",
     "scriptureReference": "Isaiah 28:5",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret Tzvi (עֲטֶרֶת צְבִי). I walk in crown of beauty in the day of harvest according to Isaiah 28:5.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret Tzvi (עֲטֶרֶת צְבִי). Through Isaiah 28:5, God has established me in Crown of beauty in the day of harvest; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Isaiah 28:5, this heavenly title represents the royal ornament and priestly splendor of Crown of beauty in the day of harvest placed upon your life."
   },
   {
     "id": 78,
@@ -861,8 +861,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Diadem of beauty unto the remnant",
     "scriptureReference": "Isaiah 28:5",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Tzephirat Tif'arah (צְפִירַת תִּפְאָרָה). I walk in diadem of beauty unto the remnant according to Isaiah 28:5.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Tzephirat Tif'arah (צְפִירַת תִּפְאָרָה). Through Isaiah 28:5, God has established me in Diadem of beauty unto the remnant; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Rooted in Isaiah 28:5, this title symbolizes celestial investiture, clothing the believer in robes of praise and divine authority as Diadem of beauty unto the remnant."
   },
   {
     "id": 79,
@@ -872,8 +872,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Children of light walking in daylight",
     "scriptureReference": "Ephesians 5:8",
     "category": "New Identity",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaOr (בְּנֵי הָאוֹר). I walk in children of light walking in daylight according to Ephesians 5:8.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaOr (בְּנֵי הָאוֹר). Through Ephesians 5:8, God has established me in Children of light walking in daylight; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in Ephesians 5:8, this prophetic name marks a definitive transition from obscurity into God's radiant decree: Children of light walking in daylight."
   },
   {
     "id": 80,
@@ -883,8 +883,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Kings and priests reigning upon the earth",
     "scriptureReference": "Revelation 1:6",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Melachim V'Chohanim (מְלָכִים וְכֹהֲנִים). I walk in kings and priests reigning upon the earth according to Revelation 1:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Melachim V'Chohanim (מְלָכִים וְכֹהֲנִים). Through Revelation 1:6, God has established me in Kings and priests reigning upon the earth; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Revelation 1:6, this heavenly mandate establishes your life as an altar of worship and a vessel of divine dominion in Kings and priests reigning upon the earth."
   },
   {
     "id": 81,
@@ -894,8 +894,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Children of the living God called out of darkness",
     "scriptureReference": "Hosea 1:10",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei Elohim Chayim (בְּנֵי אֱלֹהִים חַיִּים). I walk in children of the living god called out of darkness according to Hosea 1:10.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei Elohim Chayim (בְּנֵי אֱלֹהִים חַיִּים). Through Hosea 1:10, God has established me in Children of the living God called out of darkness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Hosea 1:10, this title breaks the spirit of rejection and orphanhood, welcoming the believer into intimate communion as Children of the living God called out of darkness."
   },
   {
     "id": 82,
@@ -905,8 +905,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Supernatural strength and triumph",
     "scriptureReference": "Psalm 89:13",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am G'vurah (גְּבוּרָה). I walk in supernatural strength and triumph according to Psalm 89:13.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am G'vurah (גְּבוּרָה). Through Psalm 89:13, God has established me in Supernatural strength and triumph; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Psalm 89:13, this warrior title declares that through Christ who strengthens you, you arise and conquer in Supernatural strength and triumph."
   },
   {
     "id": 83,
@@ -916,8 +916,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "High fortress shielded from arrows",
     "scriptureReference": "Psalm 18:2",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mivtzar (מִבְצָר). I walk in high fortress shielded from arrows according to Psalm 18:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mivtzar (מִבְצָר). Through Psalm 18:2, God has established me in High fortress shielded from arrows; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Psalm 18:2, this name proclaims that your life is fortified against every onslaught of darkness by the power of High fortress shielded from arrows."
   },
   {
     "id": 84,
@@ -927,8 +927,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Impregnable stronghold of safety",
     "scriptureReference": "Psalm 91:2",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Metzudah (מְצוּדָה). I walk in impregnable stronghold of safety according to Psalm 91:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Metzudah (מְצוּדָה). Through Psalm 91:2, God has established me in Impregnable stronghold of safety; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Forged in spiritual victory in Psalm 91:2, this redemptive name endows the believer with holy tenacity and supernatural Impregnable stronghold of safety."
   },
   {
     "id": 85,
@@ -938,8 +938,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Refuge from the storm and blast",
     "scriptureReference": "Psalm 55:8",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Miflat (מִפְלָט). I walk in refuge from the storm and blast according to Psalm 55:8.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Miflat (מִפְלָט). Through Psalm 55:8, God has established me in Refuge from the storm and blast; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Psalm 55:8, this warrior title declares that through Christ who strengthens you, you arise and conquer in Refuge from the storm and blast."
   },
   {
     "id": 86,
@@ -949,8 +949,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Formed in the light of His face",
     "scriptureReference": "Isaiah 45:7",
     "category": "New Identity",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Yotzer HaOr (יוֹצֵר הָאוֹר). I walk in formed in the light of his face according to Isaiah 45:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Yotzer HaOr (יוֹצֵר הָאוֹר). Through Isaiah 45:7, God has established me in Formed in the light of His face; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Isaiah 45:7, the mouth of the Lord bestows this name to nullify human mockery and establish you in the reality of Formed in the light of His face."
   },
   {
     "id": 87,
@@ -960,8 +960,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Precious and honorable in My eyes",
     "scriptureReference": "Isaiah 43:4",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Yakar B'Eynai (יָקָר בְּעֵינַי). I walk in precious and honorable in my eyes according to Isaiah 43:4.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Yakar B'Eynai (יָקָר בְּעֵינַי). Through Isaiah 43:4, God has established me in Precious and honorable in My eyes; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Enshrined in Isaiah 43:4, this name seals Yahweh's unshakeable covenant oath, affirming you as His treasured possession in Precious and honorable in My eyes."
   },
   {
     "id": 88,
@@ -971,8 +971,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Loved with an everlasting covenant love",
     "scriptureReference": "Jeremiah 31:3",
     "category": "Beloved & Intimacy",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ne'ehav (נֶאֱהָב). I walk in loved with an everlasting covenant love according to Jeremiah 31:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ne'ehav (נֶאֱהָב). Through Jeremiah 31:3, God has established me in Loved with an everlasting covenant love; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in Jeremiah 31:3, this cherished title expresses Yahweh's profound delight and jealous affection over your soul as Loved with an everlasting covenant love."
   },
   {
     "id": 89,
@@ -982,8 +982,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Drawn with cords of eternal lovingkindness",
     "scriptureReference": "Jeremiah 31:3",
     "category": "Beloved & Intimacy",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ahavat Olam (אַהֲבַת עוֹלָם). I walk in drawn with cords of eternal lovingkindness according to Jeremiah 31:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ahavat Olam (אַהֲבַת עוֹלָם). Through Jeremiah 31:3, God has established me in Drawn with cords of eternal lovingkindness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Jeremiah 31:3, this redemptive designation confirms that you are neither forgotten nor overlooked, but ever held close as Drawn with cords of eternal lovingkindness."
   },
   {
     "id": 90,
@@ -993,8 +993,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Fountain of life drinking from His river",
     "scriptureReference": "Psalm 36:9",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor Chayim (מְקוֹר חַיִּים). I walk in fountain of life drinking from his river according to Psalm 36:9.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor Chayim (מְקוֹר חַיִּים). Through Psalm 36:9, God has established me in Fountain of life drinking from His river; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Prophesied in Psalm 36:9, this powerful decree overturns generational stagnation, commanding supernatural emergence and Fountain of life drinking from His river."
   },
   {
     "id": 91,
@@ -1004,8 +1004,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Horn of salvation exalted in righteousness",
     "scriptureReference": "Psalm 18:2",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Keren Yesha (קֶרֶן יֶשַׁע). I walk in horn of salvation exalted in righteousness according to Psalm 18:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Keren Yesha (קֶרֶן יֶשַׁע). Through Psalm 18:2, God has established me in Horn of salvation exalted in righteousness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Proclaimed in Psalm 18:2, this title marks the breaking of every ungodly siege, ushering the soul into divine abundance and Horn of salvation exalted in righteousness."
   },
   {
     "id": 92,
@@ -1015,8 +1015,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Seen of Yahweh / Provided on the mount",
     "scriptureReference": "Genesis 22:14",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Moriah (מוֹרִיָּה). I walk in seen of yahweh / provided on the mount according to Genesis 22:14.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Moriah (מוֹרִיָּה). Through Genesis 22:14, God has established me in Seen of Yahweh and Provided on the mount; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Genesis 22:14, this redemptive declaration commands the blessings of heaven to overtake every area of your journey in Seen of Yahweh and Provided on the mount."
   },
   {
     "id": 93,
@@ -1026,8 +1026,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Rock of refuge standing unshaken",
     "scriptureReference": "Psalm 94:22",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Tzur Machaseh (צוּר מַחֲסֶה). I walk in rock of refuge standing unshaken according to Psalm 94:22.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Tzur Machaseh (צוּר מַחֲסֶה). Through Psalm 94:22, God has established me in Rock of refuge standing unshaken; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Forged in spiritual victory in Psalm 94:22, this redemptive name endows the believer with holy tenacity and supernatural Rock of refuge standing unshaken."
   },
   {
     "id": 94,
@@ -1037,8 +1037,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Fragrant bloom of peace in dry seasons",
     "scriptureReference": "Song of Songs 2:1",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shoshan HaSharon (שׁוֹשַׁן הַשָּׁרוֹן). I walk in fragrant bloom of peace in dry seasons according to Song of Songs 2:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shoshan HaSharon (שׁוֹשַׁן הַשָּׁרוֹן). Through Song of Songs 2:1, God has established me in Fragrant bloom of peace in dry seasons; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Celebrated in Song of Songs 2:1, this name releases the supernatural peace that surpasses understanding, crowning your days with Fragrant bloom of peace in dry seasons."
   },
   {
     "id": 95,
@@ -1048,8 +1048,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Endowed with supernatural grace",
     "scriptureReference": "Proverbs 3:34",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Natan Chen (נָתַן חֵן). I walk in endowed with supernatural grace according to Proverbs 3:34.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Natan Chen (נָתַן חֵן). Through Proverbs 3:34, God has established me in Endowed with supernatural grace; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Proverbs 3:34, this redemptive declaration commands the blessings of heaven to overtake every area of your journey in Endowed with supernatural grace."
   },
   {
     "id": 96,
@@ -1059,8 +1059,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Firstfruits holy to the Lord",
     "scriptureReference": "James 1:18",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bikurim (בִּכּוּרִים). I walk in firstfruits holy to the lord according to James 1:18.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bikurim (בִּכּוּרִים). Through James 1:18, God has established me in Firstfruits holy to the Lord; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Enshrined in James 1:18, this name seals Yahweh's unshakeable covenant oath, affirming you as His treasured possession in Firstfruits holy to the Lord."
   },
   {
     "id": 97,
@@ -1070,8 +1070,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Holy of Holies sanctuary of His presence",
     "scriptureReference": "Exodus 26:34",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Kodesh Kodashim (קֹדֶשׁ קָדָשִׁים). I walk in holy of holies sanctuary of his presence according to Exodus 26:34.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Kodesh Kodashim (קֹדֶשׁ קָדָשִׁים). Through Exodus 26:34, God has established me in Holy of Holies sanctuary of His presence; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Set forth in Exodus 26:34, this apostolic designation calls you to stand as a king and priest unto God, walking in the dignity of Holy of Holies sanctuary of His presence."
   },
   {
     "id": 98,
@@ -1081,8 +1081,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Bearer of the sacred covenant ark",
     "scriptureReference": "Joshua 3:6",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Aron HaKodesh (אֲרוֹן הַקֹּדֶשׁ). I walk in bearer of the sacred covenant ark according to Joshua 3:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Aron HaKodesh (אֲרוֹן הַקֹּדֶשׁ). Through Joshua 3:6, God has established me in Bearer of the sacred covenant ark; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Joshua 3:6, this heavenly mandate establishes your life as an altar of worship and a vessel of divine dominion in Bearer of the sacred covenant ark."
   },
   {
     "id": 99,
@@ -1092,8 +1092,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Golden lampstand burning with holy fire",
     "scriptureReference": "Zechariah 4:2",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Menorat Zahav (מְנוֹרַת זָהָב). I walk in golden lampstand burning with holy fire according to Zechariah 4:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Menorat Zahav (מְנוֹרַת זָהָב). Through Zechariah 4:2, God has established me in Golden lampstand burning with holy fire; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Consecrated in Zechariah 4:2, this priestly title confers kingdom authority and intercessory access, ordaining the believer for Golden lampstand burning with holy fire."
   },
   {
     "id": 100,
@@ -1103,8 +1103,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "The vehement flame of Yahweh's love",
     "scriptureReference": "Song of Songs 8:6",
     "category": "Beloved & Intimacy",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shalhevet Yah (שַׁלְהֶבֶת יָהּ). I walk in the vehement flame of yahweh's love according to Song of Songs 8:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shalhevet Yah (שַׁלְהֶבֶת יָהּ). Through Song of Songs 8:6, God has established me in The vehement flame of Yahweh's love; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in Song of Songs 8:6, this cherished title expresses Yahweh's profound delight and jealous affection over your soul as The vehement flame of Yahweh's love."
   },
   {
     "id": 101,
@@ -1114,8 +1114,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "House of Righteousness",
     "scriptureReference": "Psalm 23:3",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaTsedek (בֵּית הַצֶּדֶק). I walk in house of righteousness according to Psalm 23:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaTsedek (בֵּית הַצֶּדֶק). Through Psalm 23:3, God has established me in House of Righteousness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Psalm 23:3, this heavenly title represents the royal ornament and priestly splendor of House of Righteousness placed upon your life."
   },
   {
     "id": 102,
@@ -1125,8 +1125,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "House of Lovingkindness",
     "scriptureReference": "Psalm 103:4",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaChesed (בֵּית הַחֶסֶד). I walk in house of lovingkindness according to Psalm 103:4.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaChesed (בֵּית הַחֶסֶד). Through Psalm 103:4, God has established me in House of Lovingkindness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Psalm 103:4, this title breaks the spirit of rejection and orphanhood, welcoming the believer into intimate communion as House of Lovingkindness."
   },
   {
     "id": 103,
@@ -1136,8 +1136,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "House of Faithfulness",
     "scriptureReference": "Lamentations 3:23",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaEmunah (בֵּית הָאֱמוּנָה). I walk in house of faithfulness according to Lamentations 3:23.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaEmunah (בֵּית הָאֱמוּנָה). Through Lamentations 3:23, God has established me in House of Faithfulness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Lamentations 3:23, this warrior title declares that through Christ who strengthens you, you arise and conquer in House of Faithfulness."
   },
   {
     "id": 104,
@@ -1147,8 +1147,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "House of Triumphant Salvation",
     "scriptureReference": "Psalm 118:15",
     "category": "Redemption & Grace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaYeshua (בֵּית הַיְשׁוּעָה). I walk in house of triumphant salvation according to Psalm 118:15.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaYeshua (בֵּית הַיְשׁוּעָה). Through Psalm 118:15, God has established me in House of Triumphant Salvation; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Spoken in Psalm 118:15, this name commemorates the price paid to bring you into the liberty, righteousness, and unmerited favor of House of Triumphant Salvation."
   },
   {
     "id": 105,
@@ -1158,8 +1158,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "House of Heavenly Beauty",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaTiferet (בֵּית הַתִּפְאֶרֶת). I walk in house of heavenly beauty according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaTiferet (בֵּית הַתִּפְאֶרֶת). Through 1 Chronicles 29:11, God has established me in House of Heavenly Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Rooted in 1 Chronicles 29:11, this title symbolizes celestial investiture, clothing the believer in robes of praise and divine authority as House of Heavenly Beauty."
   },
   {
     "id": 106,
@@ -1169,8 +1169,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "House of Divine Greatness",
     "scriptureReference": "Psalm 145:3",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaG'dulah (בֵּית הַגְּדֻלָּה). I walk in house of divine greatness according to Psalm 145:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaG'dulah (בֵּית הַגְּדֻלָּה). Through Psalm 145:3, God has established me in House of Divine Greatness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Psalm 145:3, this prophetic name marks you with the goodness and lovingkindness of God, releasing the fullness of House of Divine Greatness."
   },
   {
     "id": 107,
@@ -1180,8 +1180,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "House of Wholeness and Peace",
     "scriptureReference": "Numbers 6:26",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaShalom (בֵּית הַשָּׁלוֹם). I walk in house of wholeness and peace according to Numbers 6:26.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaShalom (בֵּית הַשָּׁלוֹם). Through Numbers 6:26, God has established me in House of Wholeness and Peace; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Numbers 6:26, this sacred title reminds the believer that the oil of gladness has triumphed over spirit of heaviness in House of Wholeness and Peace."
   },
   {
     "id": 108,
@@ -1191,8 +1191,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "House of Weighty Glory",
     "scriptureReference": "Psalm 24:7",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaKavod (בֵּית הַכָּבוֹד). I walk in house of weighty glory according to Psalm 24:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaKavod (בֵּית הַכָּבוֹד). Through Psalm 24:7, God has established me in House of Weighty Glory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Rooted in Psalm 24:7, this title symbolizes celestial investiture, clothing the believer in robes of praise and divine authority as House of Weighty Glory."
   },
   {
     "id": 109,
@@ -1202,8 +1202,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "House of Consecrated Holiness",
     "scriptureReference": "Leviticus 19:2",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaKedushah (בֵּית הַקְּדֻשָּׁה). I walk in house of consecrated holiness according to Leviticus 19:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaKedushah (בֵּית הַקְּדֻשָּׁה). Through Leviticus 19:2, God has established me in House of Consecrated Holiness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Set forth in Leviticus 19:2, this apostolic designation calls you to stand as a king and priest unto God, walking in the dignity of House of Consecrated Holiness."
   },
   {
     "id": 110,
@@ -1213,8 +1213,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "House of Tender Mercies",
     "scriptureReference": "Daniel 9:9",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaRachamim (בֵּית הָרַחֲמִים). I walk in house of tender mercies according to Daniel 9:9.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaRachamim (בֵּית הָרַחֲמִים). Through Daniel 9:9, God has established me in House of Tender Mercies; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Daniel 9:9, this redemptive designation assures your heart that in the house of God you walk in full acceptance as House of Tender Mercies."
   },
   {
     "id": 111,
@@ -1224,8 +1224,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "House of Unending Praise",
     "scriptureReference": "Psalm 145:1",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaTehillah (בֵּית הַתְּהִלָּה). I walk in house of unending praise according to Psalm 145:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaTehillah (בֵּית הַתְּהִלָּה). Through Psalm 145:1, God has established me in House of Unending Praise; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Infused with the joy of the Lord in Psalm 145:1, this title dissolves sorrow and imparts an unshakeable fortress of House of Unending Praise."
   },
   {
     "id": 112,
@@ -1235,8 +1235,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "House of Generational Blessing",
     "scriptureReference": "Genesis 12:2",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaBerakhah (בֵּית הַבְּרָכָה). I walk in house of generational blessing according to Genesis 12:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaBerakhah (בֵּית הַבְּרָכָה). Through Genesis 12:2, God has established me in House of Generational Blessing; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Genesis 12:2, this prophetic name marks you with the goodness and lovingkindness of God, releasing the fullness of House of Generational Blessing."
   },
   {
     "id": 113,
@@ -1246,8 +1246,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "House of Exuberant Joy",
     "scriptureReference": "Nehemiah 8:10",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaSimchah (בֵּית הַשִּׂמְחָה). I walk in house of exuberant joy according to Nehemiah 8:10.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaSimchah (בֵּית הַשִּׂמְחָה). Through Nehemiah 8:10, God has established me in House of Exuberant Joy; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Nehemiah 8:10, this sacred title reminds the believer that the oil of gladness has triumphed over spirit of heaviness in House of Exuberant Joy."
   },
   {
     "id": 114,
@@ -1257,8 +1257,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "House of Eternity and Ages",
     "scriptureReference": "Ecclesiastes 3:11",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaOlam (בֵּית הָעוֹלָם). I walk in house of eternity and ages according to Ecclesiastes 3:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaOlam (בֵּית הָעוֹלָם). Through Ecclesiastes 3:11, God has established me in House of Eternity and Ages; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Enshrined in Ecclesiastes 3:11, this name seals Yahweh's unshakeable covenant oath, affirming you as His treasured possession in House of Eternity and Ages."
   },
   {
     "id": 115,
@@ -1268,8 +1268,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "House of Abundant Life",
     "scriptureReference": "Deuteronomy 30:19",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaChayim (בֵּית הַחַיִּים). I walk in house of abundant life according to Deuteronomy 30:19.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaChayim (בֵּית הַחַיִּים). Through Deuteronomy 30:19, God has established me in House of Abundant Life; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Proclaimed in Deuteronomy 30:19, this title marks the breaking of every ungodly siege, ushering the soul into divine abundance and House of Abundant Life."
   },
   {
     "id": 116,
@@ -1279,8 +1279,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "House of Supernatural Power",
     "scriptureReference": "Psalm 66:7",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaG'vurah (בֵּית הַגְּבוּרָה). I walk in house of supernatural power according to Psalm 66:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaG'vurah (בֵּית הַגְּבוּרָה). Through Psalm 66:7, God has established me in House of Supernatural Power; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Psalm 66:7, this name proclaims that your life is fortified against every onslaught of darkness by the power of House of Supernatural Power."
   },
   {
     "id": 117,
@@ -1290,8 +1290,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "House of Heavenly Wisdom",
     "scriptureReference": "Proverbs 8:14",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaChokhmah (בֵּית הַחָכְמָה). I walk in house of heavenly wisdom according to Proverbs 8:14.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaChokhmah (בֵּית הַחָכְמָה). Through Proverbs 8:14, God has established me in House of Heavenly Wisdom; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Forged in spiritual victory in Proverbs 8:14, this redemptive name endows the believer with holy tenacity and supernatural House of Heavenly Wisdom."
   },
   {
     "id": 118,
@@ -1301,8 +1301,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "House of Spiritual Discernment",
     "scriptureReference": "1 Chronicles 12:32",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaBina (בֵּית הַבִּינָה). I walk in house of spiritual discernment according to 1 Chronicles 12:32.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaBina (בֵּית הַבִּינָה). Through 1 Chronicles 12:32, God has established me in House of Spiritual Discernment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Set forth in 1 Chronicles 12:32, this apostolic designation calls you to stand as a king and priest unto God, walking in the dignity of House of Spiritual Discernment."
   },
   {
     "id": 119,
@@ -1312,8 +1312,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "House of Unbreakable Covenant",
     "scriptureReference": "Genesis 9:16",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaBrit (בֵּית הַבְּרִית). I walk in house of unbreakable covenant according to Genesis 9:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaBrit (בֵּית הַבְּרִית). Through Genesis 9:16, God has established me in House of Unbreakable Covenant; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Guaranteed by the covenant promises of Genesis 9:16, this sacred title reminds you that you are eternally set apart and cherished as House of Unbreakable Covenant."
   },
   {
     "id": 120,
@@ -1323,8 +1323,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "House of Good Will and Delight",
     "scriptureReference": "Psalm 30:5",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaRatzon (בֵּית הָרָצוֹן). I walk in house of good will and delight according to Psalm 30:5.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaRatzon (בֵּית הָרָצוֹן). Through Psalm 30:5, God has established me in House of Good Will and Delight; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Poured out in Psalm 30:5, this title carries the generational blessing of Abraham, causing uncommon favor and House of Good Will and Delight to rest upon you."
   },
   {
     "id": 121,
@@ -1334,8 +1334,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "House of Everlasting Victory",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaNetzach (בֵּית הַנֵּצַח). I walk in house of everlasting victory according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaNetzach (בֵּית הַנֵּצַח). Through 1 Chronicles 29:11, God has established me in House of Everlasting Victory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Proclaimed in 1 Chronicles 29:11, this title marks the breaking of every ungodly siege, ushering the soul into divine abundance and House of Everlasting Victory."
   },
   {
     "id": 122,
@@ -1345,8 +1345,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "House of Majesty and Splendor",
     "scriptureReference": "Psalm 104:1",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaHod (בֵּית הַהוֹד). I walk in house of majesty and splendor according to Psalm 104:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaHod (בֵּית הַהוֹד). Through Psalm 104:1, God has established me in House of Majesty and Splendor; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Psalm 104:1, this heavenly title represents the royal ornament and priestly splendor of House of Majesty and Splendor placed upon your life."
   },
   {
     "id": 123,
@@ -1356,8 +1356,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "House of Desirable Beauty",
     "scriptureReference": "Ezekiel 20:6",
     "category": "New Identity",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaTzvi (בֵּית הַצְּבִי). I walk in house of desirable beauty according to Ezekiel 20:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaTzvi (בֵּית הַצְּבִי). Through Ezekiel 20:6, God has established me in House of Desirable Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Unveiled in Ezekiel's prophetic visions of divine renewal and temple restoration (Ezekiel 20:6), this consecrated title replaces past labels of barrenness and defeat with royal identity as House of Desirable Beauty."
   },
   {
     "id": 124,
@@ -1367,8 +1367,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "House of Righteous Judgment",
     "scriptureReference": "Isaiah 28:6",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaMishpat (בֵּית הַמִּשְׁפָּט). I walk in house of righteous judgment according to Isaiah 28:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaMishpat (בֵּית הַמִּשְׁפָּט). Through Isaiah 28:6, God has established me in House of Righteous Judgment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Set forth in Isaiah 28:6, this apostolic designation calls you to stand as a king and priest unto God, walking in the dignity of House of Righteous Judgment."
   },
   {
     "id": 125,
@@ -1378,8 +1378,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "House of My Beloved One",
     "scriptureReference": "Song of Songs 2:16",
     "category": "Beloved & Intimacy",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaDodi (בֵּית הַדּוֹדִי). I walk in house of my beloved one according to Song of Songs 2:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Beit HaDodi (בֵּית הַדּוֹדִי). Through Song of Songs 2:16, God has established me in House of My Beloved One; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Song of Songs 2:16, this redemptive designation confirms that you are neither forgotten nor overlooked, but ever held close as House of My Beloved One."
   },
   {
     "id": 126,
@@ -1389,8 +1389,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Horn / Exaltation of Righteousness",
     "scriptureReference": "Psalm 23:3",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaTsedek (קֶרֶן הַצֶּדֶק). I walk in horn / exaltation of righteousness according to Psalm 23:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaTsedek (קֶרֶן הַצֶּדֶק). Through Psalm 23:3, God has established me in Horn and Exaltation of Righteousness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Rooted in Psalm 23:3, this title symbolizes celestial investiture, clothing the believer in robes of praise and divine authority as Horn and Exaltation of Righteousness."
   },
   {
     "id": 127,
@@ -1400,8 +1400,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Horn / Exaltation of Lovingkindness",
     "scriptureReference": "Psalm 103:4",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaChesed (קֶרֶן הַחֶסֶד). I walk in horn / exaltation of lovingkindness according to Psalm 103:4.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaChesed (קֶרֶן הַחֶסֶד). Through Psalm 103:4, God has established me in Horn and Exaltation of Lovingkindness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Psalm 103:4, this name affirms that by sovereign grace you are brought near and forever granted the status of Horn and Exaltation of Lovingkindness."
   },
   {
     "id": 128,
@@ -1411,8 +1411,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Horn / Exaltation of Faithfulness",
     "scriptureReference": "Lamentations 3:23",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaEmunah (קֶרֶן הָאֱמוּנָה). I walk in horn / exaltation of faithfulness according to Lamentations 3:23.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaEmunah (קֶרֶן הָאֱמוּנָה). Through Lamentations 3:23, God has established me in Horn and Exaltation of Faithfulness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Lamentations 3:23, this name proclaims that your life is fortified against every onslaught of darkness by the power of Horn and Exaltation of Faithfulness."
   },
   {
     "id": 129,
@@ -1422,8 +1422,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Horn / Exaltation of Triumphant Salvation",
     "scriptureReference": "Psalm 118:15",
     "category": "Redemption & Grace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaYeshua (קֶרֶן הַיְשׁוּעָה). I walk in horn / exaltation of triumphant salvation according to Psalm 118:15.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaYeshua (קֶרֶן הַיְשׁוּעָה). Through Psalm 118:15, God has established me in Horn and Exaltation of Triumphant Salvation; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Unveiled in Psalm 118:15, this redemptive name celebrates total ransom from captivity, establishing the believer's life upon Horn and Exaltation of Triumphant Salvation."
   },
   {
     "id": 130,
@@ -1433,8 +1433,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Horn / Exaltation of Heavenly Beauty",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaTiferet (קֶרֶן הַתִּפְאֶרֶת). I walk in horn / exaltation of heavenly beauty according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaTiferet (קֶרֶן הַתִּפְאֶרֶת). Through 1 Chronicles 29:11, God has established me in Horn and Exaltation of Heavenly Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from 1 Chronicles 29:11, this redemptive declaration removes garments of mourning and clothes you in the majesty of Horn and Exaltation of Heavenly Beauty."
   },
   {
     "id": 131,
@@ -1444,8 +1444,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Horn / Exaltation of Divine Greatness",
     "scriptureReference": "Psalm 145:3",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaG'dulah (קֶרֶן הַגְּדֻלָּה). I walk in horn / exaltation of divine greatness according to Psalm 145:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaG'dulah (קֶרֶן הַגְּדֻלָּה). Through Psalm 145:3, God has established me in Horn and Exaltation of Divine Greatness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Psalm 145:3, this redemptive declaration commands the blessings of heaven to overtake every area of your journey in Horn and Exaltation of Divine Greatness."
   },
   {
     "id": 132,
@@ -1455,8 +1455,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Horn / Exaltation of Wholeness and Peace",
     "scriptureReference": "Numbers 6:26",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaShalom (קֶרֶן הַשָּׁלוֹם). I walk in horn / exaltation of wholeness and peace according to Numbers 6:26.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaShalom (קֶרֶן הַשָּׁלוֹם). Through Numbers 6:26, God has established me in Horn and Exaltation of Wholeness and Peace; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Infused with the joy of the Lord in Numbers 6:26, this title dissolves sorrow and imparts an unshakeable fortress of Horn and Exaltation of Wholeness and Peace."
   },
   {
     "id": 133,
@@ -1466,8 +1466,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Horn / Exaltation of Weighty Glory",
     "scriptureReference": "Psalm 24:7",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaKavod (קֶרֶן הַכָּבוֹד). I walk in horn / exaltation of weighty glory according to Psalm 24:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaKavod (קֶרֶן הַכָּבוֹד). Through Psalm 24:7, God has established me in Horn and Exaltation of Weighty Glory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Psalm 24:7, this redemptive declaration removes garments of mourning and clothes you in the majesty of Horn and Exaltation of Weighty Glory."
   },
   {
     "id": 134,
@@ -1477,8 +1477,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Horn / Exaltation of Consecrated Holiness",
     "scriptureReference": "Leviticus 19:2",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaKedushah (קֶרֶן הַקְּדֻשָּׁה). I walk in horn / exaltation of consecrated holiness according to Leviticus 19:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaKedushah (קֶרֶן הַקְּדֻשָּׁה). Through Leviticus 19:2, God has established me in Horn and Exaltation of Consecrated Holiness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Leviticus 19:2, this heavenly mandate establishes your life as an altar of worship and a vessel of divine dominion in Horn and Exaltation of Consecrated Holiness."
   },
   {
     "id": 135,
@@ -1488,8 +1488,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Horn / Exaltation of Tender Mercies",
     "scriptureReference": "Daniel 9:9",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaRachamim (קֶרֶן הָרַחֲמִים). I walk in horn / exaltation of tender mercies according to Daniel 9:9.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaRachamim (קֶרֶן הָרַחֲמִים). Through Daniel 9:9, God has established me in Horn and Exaltation of Tender Mercies; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Daniel 9:9, this title breaks the spirit of rejection and orphanhood, welcoming the believer into intimate communion as Horn and Exaltation of Tender Mercies."
   },
   {
     "id": 136,
@@ -1499,8 +1499,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Horn / Exaltation of Unending Praise",
     "scriptureReference": "Psalm 145:1",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaTehillah (קֶרֶן הַתְּהִלָּה). I walk in horn / exaltation of unending praise according to Psalm 145:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaTehillah (קֶרֶן הַתְּהִלָּה). Through Psalm 145:1, God has established me in Horn and Exaltation of Unending Praise; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Celebrated in Psalm 145:1, this name releases the supernatural peace that surpasses understanding, crowning your days with Horn and Exaltation of Unending Praise."
   },
   {
     "id": 137,
@@ -1510,8 +1510,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Horn / Exaltation of Generational Blessing",
     "scriptureReference": "Genesis 12:2",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaBerakhah (קֶרֶן הַבְּרָכָה). I walk in horn / exaltation of generational blessing according to Genesis 12:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaBerakhah (קֶרֶן הַבְּרָכָה). Through Genesis 12:2, God has established me in Horn and Exaltation of Generational Blessing; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Genesis 12:2, this redemptive declaration commands the blessings of heaven to overtake every area of your journey in Horn and Exaltation of Generational Blessing."
   },
   {
     "id": 138,
@@ -1521,8 +1521,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Horn / Exaltation of Exuberant Joy",
     "scriptureReference": "Nehemiah 8:10",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaSimchah (קֶרֶן הַשִּׂמְחָה). I walk in horn / exaltation of exuberant joy according to Nehemiah 8:10.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaSimchah (קֶרֶן הַשִּׂמְחָה). Through Nehemiah 8:10, God has established me in Horn and Exaltation of Exuberant Joy; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Infused with the joy of the Lord in Nehemiah 8:10, this title dissolves sorrow and imparts an unshakeable fortress of Horn and Exaltation of Exuberant Joy."
   },
   {
     "id": 139,
@@ -1532,8 +1532,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Horn / Exaltation of Eternity and Ages",
     "scriptureReference": "Ecclesiastes 3:11",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaOlam (קֶרֶן הָעוֹלָם). I walk in horn / exaltation of eternity and ages according to Ecclesiastes 3:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaOlam (קֶרֶן הָעוֹלָם). Through Ecclesiastes 3:11, God has established me in Horn and Exaltation of Eternity and Ages; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Proclaimed in Ecclesiastes 3:11, this covenant moniker assures the believer that God's steadfast chesed preserves and honors you as Horn and Exaltation of Eternity and Ages."
   },
   {
     "id": 140,
@@ -1543,8 +1543,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Horn / Exaltation of Abundant Life",
     "scriptureReference": "Deuteronomy 30:19",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaChayim (קֶרֶן הַחַיִּים). I walk in horn / exaltation of abundant life according to Deuteronomy 30:19.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaChayim (קֶרֶן הַחַיִּים). Through Deuteronomy 30:19, God has established me in Horn and Exaltation of Abundant Life; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in Deuteronomy 30:19, this redemptive name heralds total restoration of wasted years, re-establishing you in the joy of Horn and Exaltation of Abundant Life."
   },
   {
     "id": 141,
@@ -1554,8 +1554,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Horn / Exaltation of Supernatural Power",
     "scriptureReference": "Psalm 66:7",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaG'vurah (קֶרֶן הַגְּבוּרָה). I walk in horn / exaltation of supernatural power according to Psalm 66:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaG'vurah (קֶרֶן הַגְּבוּרָה). Through Psalm 66:7, God has established me in Horn and Exaltation of Supernatural Power; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Forged in spiritual victory in Psalm 66:7, this redemptive name endows the believer with holy tenacity and supernatural Horn and Exaltation of Supernatural Power."
   },
   {
     "id": 142,
@@ -1565,8 +1565,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Horn / Exaltation of Heavenly Wisdom",
     "scriptureReference": "Proverbs 8:14",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaChokhmah (קֶרֶן הַחָכְמָה). I walk in horn / exaltation of heavenly wisdom according to Proverbs 8:14.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaChokhmah (קֶרֶן הַחָכְמָה). Through Proverbs 8:14, God has established me in Horn and Exaltation of Heavenly Wisdom; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Proverbs 8:14, this warrior title declares that through Christ who strengthens you, you arise and conquer in Horn and Exaltation of Heavenly Wisdom."
   },
   {
     "id": 143,
@@ -1576,8 +1576,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Horn / Exaltation of Spiritual Discernment",
     "scriptureReference": "1 Chronicles 12:32",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaBina (קֶרֶן הַבִּינָה). I walk in horn / exaltation of spiritual discernment according to 1 Chronicles 12:32.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaBina (קֶרֶן הַבִּינָה). Through 1 Chronicles 12:32, God has established me in Horn and Exaltation of Spiritual Discernment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in 1 Chronicles 12:32, this heavenly mandate establishes your life as an altar of worship and a vessel of divine dominion in Horn and Exaltation of Spiritual Discernment."
   },
   {
     "id": 144,
@@ -1587,8 +1587,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Horn / Exaltation of Unbreakable Covenant",
     "scriptureReference": "Genesis 9:16",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaBrit (קֶרֶן הַבְּרִית). I walk in horn / exaltation of unbreakable covenant according to Genesis 9:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaBrit (קֶרֶן הַבְּרִית). Through Genesis 9:16, God has established me in Horn and Exaltation of Unbreakable Covenant; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Enshrined in Genesis 9:16, this name seals Yahweh's unshakeable covenant oath, affirming you as His treasured possession in Horn and Exaltation of Unbreakable Covenant."
   },
   {
     "id": 145,
@@ -1598,8 +1598,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Horn / Exaltation of Good Will and Delight",
     "scriptureReference": "Psalm 30:5",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaRatzon (קֶרֶן הָרָצוֹן). I walk in horn / exaltation of good will and delight according to Psalm 30:5.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaRatzon (קֶרֶן הָרָצוֹן). Through Psalm 30:5, God has established me in Horn and Exaltation of Good Will and Delight; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Psalm 30:5, this prophetic name marks you with the goodness and lovingkindness of God, releasing the fullness of Horn and Exaltation of Good Will and Delight."
   },
   {
     "id": 146,
@@ -1609,8 +1609,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Horn / Exaltation of Everlasting Victory",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaNetzach (קֶרֶן הַנֵּצַח). I walk in horn / exaltation of everlasting victory according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaNetzach (קֶרֶן הַנֵּצַח). Through 1 Chronicles 29:11, God has established me in Horn and Exaltation of Everlasting Victory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in 1 Chronicles 29:11, this redemptive name heralds total restoration of wasted years, re-establishing you in the joy of Horn and Exaltation of Everlasting Victory."
   },
   {
     "id": 147,
@@ -1620,8 +1620,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Horn / Exaltation of Majesty and Splendor",
     "scriptureReference": "Psalm 104:1",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaHod (קֶרֶן הַהוֹד). I walk in horn / exaltation of majesty and splendor according to Psalm 104:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaHod (קֶרֶן הַהוֹד). Through Psalm 104:1, God has established me in Horn and Exaltation of Majesty and Splendor; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Rooted in Psalm 104:1, this title symbolizes celestial investiture, clothing the believer in robes of praise and divine authority as Horn and Exaltation of Majesty and Splendor."
   },
   {
     "id": 148,
@@ -1631,8 +1631,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Horn / Exaltation of Desirable Beauty",
     "scriptureReference": "Ezekiel 20:6",
     "category": "New Identity",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaTzvi (קֶרֶן הַצְּבִי). I walk in horn / exaltation of desirable beauty according to Ezekiel 20:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaTzvi (קֶרֶן הַצְּבִי). Through Ezekiel 20:6, God has established me in Horn and Exaltation of Desirable Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in Ezekiel 20:6, this prophetic name marks a definitive transition from obscurity into God's radiant decree: Horn and Exaltation of Desirable Beauty."
   },
   {
     "id": 149,
@@ -1642,8 +1642,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Horn / Exaltation of Righteous Judgment",
     "scriptureReference": "Isaiah 28:6",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaMishpat (קֶרֶן הַמִּשְׁפָּט). I walk in horn / exaltation of righteous judgment according to Isaiah 28:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaMishpat (קֶרֶן הַמִּשְׁפָּט). Through Isaiah 28:6, God has established me in Horn and Exaltation of Righteous Judgment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Isaiah 28:6, this heavenly mandate establishes your life as an altar of worship and a vessel of divine dominion in Horn and Exaltation of Righteous Judgment."
   },
   {
     "id": 150,
@@ -1653,8 +1653,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Horn / Exaltation of My Beloved One",
     "scriptureReference": "Song of Songs 2:16",
     "category": "Beloved & Intimacy",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaDodi (קֶרֶן הַדּוֹדִי). I walk in horn / exaltation of my beloved one according to Song of Songs 2:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Keren HaDodi (קֶרֶן הַדּוֹדִי). Through Song of Songs 2:16, God has established me in Horn and Exaltation of My Beloved One; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Breathed with tender bridal love in Song of Songs 2:16, this name reflects the secret place of divine intimacy where you abide as Horn and Exaltation of My Beloved One."
   },
   {
     "id": 151,
@@ -1664,8 +1664,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Fountain of Righteousness",
     "scriptureReference": "Psalm 23:3",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaTsedek (מְקוֹר הַצֶּדֶק). I walk in fountain of righteousness according to Psalm 23:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaTsedek (מְקוֹר הַצֶּדֶק). Through Psalm 23:3, God has established me in Fountain of Righteousness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Psalm 23:3, this redemptive declaration removes garments of mourning and clothes you in the majesty of Fountain of Righteousness."
   },
   {
     "id": 152,
@@ -1675,8 +1675,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Fountain of Lovingkindness",
     "scriptureReference": "Psalm 103:4",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaChesed (מְקוֹר הַחֶסֶד). I walk in fountain of lovingkindness according to Psalm 103:4.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaChesed (מְקוֹר הַחֶסֶד). Through Psalm 103:4, God has established me in Fountain of Lovingkindness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Psalm 103:4, this redemptive designation assures your heart that in the house of God you walk in full acceptance as Fountain of Lovingkindness."
   },
   {
     "id": 153,
@@ -1686,8 +1686,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Fountain of Faithfulness",
     "scriptureReference": "Lamentations 3:23",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaEmunah (מְקוֹר הָאֱמוּנָה). I walk in fountain of faithfulness according to Lamentations 3:23.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaEmunah (מְקוֹר הָאֱמוּנָה). Through Lamentations 3:23, God has established me in Fountain of Faithfulness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Forged in spiritual victory in Lamentations 3:23, this redemptive name endows the believer with holy tenacity and supernatural Fountain of Faithfulness."
   },
   {
     "id": 154,
@@ -1697,8 +1697,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Fountain of Triumphant Salvation",
     "scriptureReference": "Psalm 118:15",
     "category": "Redemption & Grace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaYeshua (מְקוֹר הַיְשׁוּעָה). I walk in fountain of triumphant salvation according to Psalm 118:15.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaYeshua (מְקוֹר הַיְשׁוּעָה). Through Psalm 118:15, God has established me in Fountain of Triumphant Salvation; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Grounded in Psalm 118:15, this title bears witness to the triumph of divine mercy over judgment, designating you as an inheritor of Fountain of Triumphant Salvation."
   },
   {
     "id": 155,
@@ -1708,8 +1708,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Fountain of Heavenly Beauty",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaTiferet (מְקוֹר הַתִּפְאֶרֶת). I walk in fountain of heavenly beauty according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaTiferet (מְקוֹר הַתִּפְאֶרֶת). Through 1 Chronicles 29:11, God has established me in Fountain of Heavenly Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in 1 Chronicles 29:11, this heavenly title represents the royal ornament and priestly splendor of Fountain of Heavenly Beauty placed upon your life."
   },
   {
     "id": 156,
@@ -1719,8 +1719,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Fountain of Divine Greatness",
     "scriptureReference": "Psalm 145:3",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaG'dulah (מְקוֹר הַגְּדֻלָּה). I walk in fountain of divine greatness according to Psalm 145:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaG'dulah (מְקוֹר הַגְּדֻלָּה). Through Psalm 145:3, God has established me in Fountain of Divine Greatness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Poured out in Psalm 145:3, this title carries the generational blessing of Abraham, causing uncommon favor and Fountain of Divine Greatness to rest upon you."
   },
   {
     "id": 157,
@@ -1730,8 +1730,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Fountain of Wholeness and Peace",
     "scriptureReference": "Numbers 6:26",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaShalom (מְקוֹר הַשָּׁלוֹם). I walk in fountain of wholeness and peace according to Numbers 6:26.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaShalom (מְקוֹר הַשָּׁלוֹם). Through Numbers 6:26, God has established me in Fountain of Wholeness and Peace; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Celebrated in Numbers 6:26, this name releases the supernatural peace that surpasses understanding, crowning your days with Fountain of Wholeness and Peace."
   },
   {
     "id": 158,
@@ -1741,8 +1741,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Fountain of Weighty Glory",
     "scriptureReference": "Psalm 24:7",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaKavod (מְקוֹר הַכָּבוֹד). I walk in fountain of weighty glory according to Psalm 24:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaKavod (מְקוֹר הַכָּבוֹד). Through Psalm 24:7, God has established me in Fountain of Weighty Glory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Psalm 24:7, this heavenly title represents the royal ornament and priestly splendor of Fountain of Weighty Glory placed upon your life."
   },
   {
     "id": 159,
@@ -1752,8 +1752,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Fountain of Consecrated Holiness",
     "scriptureReference": "Leviticus 19:2",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaKedushah (מְקוֹר הַקְּדֻשָּׁה). I walk in fountain of consecrated holiness according to Leviticus 19:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaKedushah (מְקוֹר הַקְּדֻשָּׁה). Through Leviticus 19:2, God has established me in Fountain of Consecrated Holiness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Consecrated in Leviticus 19:2, this priestly title confers kingdom authority and intercessory access, ordaining the believer for Fountain of Consecrated Holiness."
   },
   {
     "id": 160,
@@ -1763,8 +1763,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Fountain of Tender Mercies",
     "scriptureReference": "Daniel 9:9",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaRachamim (מְקוֹר הָרַחֲמִים). I walk in fountain of tender mercies according to Daniel 9:9.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaRachamim (מְקוֹר הָרַחֲמִים). Through Daniel 9:9, God has established me in Fountain of Tender Mercies; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Daniel 9:9, this name affirms that by sovereign grace you are brought near and forever granted the status of Fountain of Tender Mercies."
   },
   {
     "id": 161,
@@ -1774,8 +1774,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Fountain of Unending Praise",
     "scriptureReference": "Psalm 145:1",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaTehillah (מְקוֹר הַתְּהִלָּה). I walk in fountain of unending praise according to Psalm 145:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaTehillah (מְקוֹר הַתְּהִלָּה). Through Psalm 145:1, God has established me in Fountain of Unending Praise; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Psalm 145:1, this sacred title reminds the believer that the oil of gladness has triumphed over spirit of heaviness in Fountain of Unending Praise."
   },
   {
     "id": 162,
@@ -1785,8 +1785,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Fountain of Generational Blessing",
     "scriptureReference": "Genesis 12:2",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaBerakhah (מְקוֹר הַבְּרָכָה). I walk in fountain of generational blessing according to Genesis 12:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaBerakhah (מְקוֹר הַבְּרָכָה). Through Genesis 12:2, God has established me in Fountain of Generational Blessing; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Poured out in Genesis 12:2, this title carries the generational blessing of Abraham, causing uncommon favor and Fountain of Generational Blessing to rest upon you."
   },
   {
     "id": 163,
@@ -1796,8 +1796,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Fountain of Exuberant Joy",
     "scriptureReference": "Nehemiah 8:10",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaSimchah (מְקוֹר הַשִּׂמְחָה). I walk in fountain of exuberant joy according to Nehemiah 8:10.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaSimchah (מְקוֹר הַשִּׂמְחָה). Through Nehemiah 8:10, God has established me in Fountain of Exuberant Joy; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Celebrated in Nehemiah 8:10, this name releases the supernatural peace that surpasses understanding, crowning your days with Fountain of Exuberant Joy."
   },
   {
     "id": 164,
@@ -1807,8 +1807,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Fountain of Eternity and Ages",
     "scriptureReference": "Ecclesiastes 3:11",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaOlam (מְקוֹר הָעוֹלָם). I walk in fountain of eternity and ages according to Ecclesiastes 3:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaOlam (מְקוֹר הָעוֹלָם). Through Ecclesiastes 3:11, God has established me in Fountain of Eternity and Ages; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Guaranteed by the covenant promises of Ecclesiastes 3:11, this sacred title reminds you that you are eternally set apart and cherished as Fountain of Eternity and Ages."
   },
   {
     "id": 165,
@@ -1818,8 +1818,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Fountain of Abundant Life",
     "scriptureReference": "Deuteronomy 30:19",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaChayim (מְקוֹר הַחַיִּים). I walk in fountain of abundant life according to Deuteronomy 30:19.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaChayim (מְקוֹר הַחַיִּים). Through Deuteronomy 30:19, God has established me in Fountain of Abundant Life; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Prophesied in Deuteronomy 30:19, this powerful decree overturns generational stagnation, commanding supernatural emergence and Fountain of Abundant Life."
   },
   {
     "id": 166,
@@ -1829,8 +1829,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Fountain of Supernatural Power",
     "scriptureReference": "Psalm 66:7",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaG'vurah (מְקוֹר הַגְּבוּרָה). I walk in fountain of supernatural power according to Psalm 66:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaG'vurah (מְקוֹר הַגְּבוּרָה). Through Psalm 66:7, God has established me in Fountain of Supernatural Power; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Psalm 66:7, this warrior title declares that through Christ who strengthens you, you arise and conquer in Fountain of Supernatural Power."
   },
   {
     "id": 167,
@@ -1840,8 +1840,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Fountain of Heavenly Wisdom",
     "scriptureReference": "Proverbs 8:14",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaChokhmah (מְקוֹר הַחָכְמָה). I walk in fountain of heavenly wisdom according to Proverbs 8:14.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaChokhmah (מְקוֹר הַחָכְמָה). Through Proverbs 8:14, God has established me in Fountain of Heavenly Wisdom; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Proverbs 8:14, this name proclaims that your life is fortified against every onslaught of darkness by the power of Fountain of Heavenly Wisdom."
   },
   {
     "id": 168,
@@ -1851,8 +1851,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Fountain of Spiritual Discernment",
     "scriptureReference": "1 Chronicles 12:32",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaBina (מְקוֹר הַבִּינָה). I walk in fountain of spiritual discernment according to 1 Chronicles 12:32.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaBina (מְקוֹר הַבִּינָה). Through 1 Chronicles 12:32, God has established me in Fountain of Spiritual Discernment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Consecrated in 1 Chronicles 12:32, this priestly title confers kingdom authority and intercessory access, ordaining the believer for Fountain of Spiritual Discernment."
   },
   {
     "id": 169,
@@ -1862,8 +1862,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Fountain of Unbreakable Covenant",
     "scriptureReference": "Genesis 9:16",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaBrit (מְקוֹר הַבְּרִית). I walk in fountain of unbreakable covenant according to Genesis 9:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaBrit (מְקוֹר הַבְּרִית). Through Genesis 9:16, God has established me in Fountain of Unbreakable Covenant; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Proclaimed in Genesis 9:16, this covenant moniker assures the believer that God's steadfast chesed preserves and honors you as Fountain of Unbreakable Covenant."
   },
   {
     "id": 170,
@@ -1873,8 +1873,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Fountain of Good Will and Delight",
     "scriptureReference": "Psalm 30:5",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaRatzon (מְקוֹר הָרָצוֹן). I walk in fountain of good will and delight according to Psalm 30:5.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaRatzon (מְקוֹר הָרָצוֹן). Through Psalm 30:5, God has established me in Fountain of Good Will and Delight; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Psalm 30:5, this redemptive declaration commands the blessings of heaven to overtake every area of your journey in Fountain of Good Will and Delight."
   },
   {
     "id": 171,
@@ -1884,8 +1884,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Fountain of Everlasting Victory",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaNetzach (מְקוֹר הַנֵּצַח). I walk in fountain of everlasting victory according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaNetzach (מְקוֹר הַנֵּצַח). Through 1 Chronicles 29:11, God has established me in Fountain of Everlasting Victory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Prophesied in 1 Chronicles 29:11, this powerful decree overturns generational stagnation, commanding supernatural emergence and Fountain of Everlasting Victory."
   },
   {
     "id": 172,
@@ -1895,8 +1895,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Fountain of Majesty and Splendor",
     "scriptureReference": "Psalm 104:1",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaHod (מְקוֹר הַהוֹד). I walk in fountain of majesty and splendor according to Psalm 104:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaHod (מְקוֹר הַהוֹד). Through Psalm 104:1, God has established me in Fountain of Majesty and Splendor; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Psalm 104:1, this redemptive declaration removes garments of mourning and clothes you in the majesty of Fountain of Majesty and Splendor."
   },
   {
     "id": 173,
@@ -1906,8 +1906,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Fountain of Desirable Beauty",
     "scriptureReference": "Ezekiel 20:6",
     "category": "New Identity",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaTzvi (מְקוֹר הַצְּבִי). I walk in fountain of desirable beauty according to Ezekiel 20:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaTzvi (מְקוֹר הַצְּבִי). Through Ezekiel 20:6, God has established me in Fountain of Desirable Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Ezekiel 20:6, the mouth of the Lord bestows this name to nullify human mockery and establish you in the reality of Fountain of Desirable Beauty."
   },
   {
     "id": 174,
@@ -1917,8 +1917,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Fountain of Righteous Judgment",
     "scriptureReference": "Isaiah 28:6",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaMishpat (מְקוֹר הַמִּשְׁפָּט). I walk in fountain of righteous judgment according to Isaiah 28:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaMishpat (מְקוֹר הַמִּשְׁפָּט). Through Isaiah 28:6, God has established me in Fountain of Righteous Judgment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Consecrated in Isaiah 28:6, this priestly title confers kingdom authority and intercessory access, ordaining the believer for Fountain of Righteous Judgment."
   },
   {
     "id": 175,
@@ -1928,8 +1928,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Fountain of My Beloved One",
     "scriptureReference": "Song of Songs 2:16",
     "category": "Beloved & Intimacy",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaDodi (מְקוֹר הַדּוֹדִי). I walk in fountain of my beloved one according to Song of Songs 2:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mekor HaDodi (מְקוֹר הַדּוֹדִי). Through Song of Songs 2:16, God has established me in Fountain of My Beloved One; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in Song of Songs 2:16, this cherished title expresses Yahweh's profound delight and jealous affection over your soul as Fountain of My Beloved One."
   },
   {
     "id": 176,
@@ -1939,8 +1939,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "River of Righteousness",
     "scriptureReference": "Psalm 23:3",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaTsedek (נְהַר הַצֶּדֶק). I walk in river of righteousness according to Psalm 23:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaTsedek (נְהַר הַצֶּדֶק). Through Psalm 23:3, God has established me in River of Righteousness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Psalm 23:3, this heavenly title represents the royal ornament and priestly splendor of River of Righteousness placed upon your life."
   },
   {
     "id": 177,
@@ -1950,8 +1950,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "River of Lovingkindness",
     "scriptureReference": "Psalm 103:4",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaChesed (נְהַר הַחֶסֶד). I walk in river of lovingkindness according to Psalm 103:4.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaChesed (נְהַר הַחֶסֶד). Through Psalm 103:4, God has established me in River of Lovingkindness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Psalm 103:4, this title breaks the spirit of rejection and orphanhood, welcoming the believer into intimate communion as River of Lovingkindness."
   },
   {
     "id": 178,
@@ -1961,8 +1961,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "River of Faithfulness",
     "scriptureReference": "Lamentations 3:23",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaEmunah (נְהַר הָאֱמוּנָה). I walk in river of faithfulness according to Lamentations 3:23.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaEmunah (נְהַר הָאֱמוּנָה). Through Lamentations 3:23, God has established me in River of Faithfulness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Lamentations 3:23, this warrior title declares that through Christ who strengthens you, you arise and conquer in River of Faithfulness."
   },
   {
     "id": 179,
@@ -1972,8 +1972,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "River of Triumphant Salvation",
     "scriptureReference": "Psalm 118:15",
     "category": "Redemption & Grace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaYeshua (נְהַר הַיְשׁוּעָה). I walk in river of triumphant salvation according to Psalm 118:15.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaYeshua (נְהַר הַיְשׁוּעָה). Through Psalm 118:15, God has established me in River of Triumphant Salvation; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Spoken in Psalm 118:15, this name commemorates the price paid to bring you into the liberty, righteousness, and unmerited favor of River of Triumphant Salvation."
   },
   {
     "id": 180,
@@ -1983,8 +1983,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "River of Heavenly Beauty",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaTiferet (נְהַר הַתִּפְאֶרֶת). I walk in river of heavenly beauty according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaTiferet (נְהַר הַתִּפְאֶרֶת). Through 1 Chronicles 29:11, God has established me in River of Heavenly Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Rooted in 1 Chronicles 29:11, this title symbolizes celestial investiture, clothing the believer in robes of praise and divine authority as River of Heavenly Beauty."
   },
   {
     "id": 181,
@@ -1994,8 +1994,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "River of Divine Greatness",
     "scriptureReference": "Psalm 145:3",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaG'dulah (נְהַר הַגְּדֻלָּה). I walk in river of divine greatness according to Psalm 145:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaG'dulah (נְהַר הַגְּדֻלָּה). Through Psalm 145:3, God has established me in River of Divine Greatness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Psalm 145:3, this prophetic name marks you with the goodness and lovingkindness of God, releasing the fullness of River of Divine Greatness."
   },
   {
     "id": 182,
@@ -2005,8 +2005,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "River of Wholeness and Peace",
     "scriptureReference": "Numbers 6:26",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaShalom (נְהַר הַשָּׁלוֹם). I walk in river of wholeness and peace according to Numbers 6:26.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaShalom (נְהַר הַשָּׁלוֹם). Through Numbers 6:26, God has established me in River of Wholeness and Peace; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Numbers 6:26, this sacred title reminds the believer that the oil of gladness has triumphed over spirit of heaviness in River of Wholeness and Peace."
   },
   {
     "id": 183,
@@ -2016,8 +2016,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "River of Weighty Glory",
     "scriptureReference": "Psalm 24:7",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaKavod (נְהַר הַכָּבוֹד). I walk in river of weighty glory according to Psalm 24:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaKavod (נְהַר הַכָּבוֹד). Through Psalm 24:7, God has established me in River of Weighty Glory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Rooted in Psalm 24:7, this title symbolizes celestial investiture, clothing the believer in robes of praise and divine authority as River of Weighty Glory."
   },
   {
     "id": 184,
@@ -2027,8 +2027,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "River of Consecrated Holiness",
     "scriptureReference": "Leviticus 19:2",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaKedushah (נְהַר הַקְּדֻשָּׁה). I walk in river of consecrated holiness according to Leviticus 19:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaKedushah (נְהַר הַקְּדֻשָּׁה). Through Leviticus 19:2, God has established me in River of Consecrated Holiness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Set forth in Leviticus 19:2, this apostolic designation calls you to stand as a king and priest unto God, walking in the dignity of River of Consecrated Holiness."
   },
   {
     "id": 185,
@@ -2038,8 +2038,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "River of Tender Mercies",
     "scriptureReference": "Daniel 9:9",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaRachamim (נְהַר הָרַחֲמִים). I walk in river of tender mercies according to Daniel 9:9.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaRachamim (נְהַר הָרַחֲמִים). Through Daniel 9:9, God has established me in River of Tender Mercies; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Daniel 9:9, this redemptive designation assures your heart that in the house of God you walk in full acceptance as River of Tender Mercies."
   },
   {
     "id": 186,
@@ -2049,8 +2049,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "River of Unending Praise",
     "scriptureReference": "Psalm 145:1",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaTehillah (נְהַר הַתְּהִלָּה). I walk in river of unending praise according to Psalm 145:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaTehillah (נְהַר הַתְּהִלָּה). Through Psalm 145:1, God has established me in River of Unending Praise; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Infused with the joy of the Lord in Psalm 145:1, this title dissolves sorrow and imparts an unshakeable fortress of River of Unending Praise."
   },
   {
     "id": 187,
@@ -2060,8 +2060,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "River of Generational Blessing",
     "scriptureReference": "Genesis 12:2",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaBerakhah (נְהַר הַבְּרָכָה). I walk in river of generational blessing according to Genesis 12:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaBerakhah (נְהַר הַבְּרָכָה). Through Genesis 12:2, God has established me in River of Generational Blessing; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Genesis 12:2, this prophetic name marks you with the goodness and lovingkindness of God, releasing the fullness of River of Generational Blessing."
   },
   {
     "id": 188,
@@ -2071,8 +2071,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "River of Exuberant Joy",
     "scriptureReference": "Nehemiah 8:10",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaSimchah (נְהַר הַשִּׂמְחָה). I walk in river of exuberant joy according to Nehemiah 8:10.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaSimchah (נְהַר הַשִּׂמְחָה). Through Nehemiah 8:10, God has established me in River of Exuberant Joy; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Nehemiah 8:10, this sacred title reminds the believer that the oil of gladness has triumphed over spirit of heaviness in River of Exuberant Joy."
   },
   {
     "id": 189,
@@ -2082,8 +2082,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "River of Eternity and Ages",
     "scriptureReference": "Ecclesiastes 3:11",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaOlam (נְהַר הָעוֹלָם). I walk in river of eternity and ages according to Ecclesiastes 3:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaOlam (נְהַר הָעוֹלָם). Through Ecclesiastes 3:11, God has established me in River of Eternity and Ages; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Enshrined in Ecclesiastes 3:11, this name seals Yahweh's unshakeable covenant oath, affirming you as His treasured possession in River of Eternity and Ages."
   },
   {
     "id": 190,
@@ -2093,8 +2093,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "River of Abundant Life",
     "scriptureReference": "Deuteronomy 30:19",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaChayim (נְהַר הַחַיִּים). I walk in river of abundant life according to Deuteronomy 30:19.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaChayim (נְהַר הַחַיִּים). Through Deuteronomy 30:19, God has established me in River of Abundant Life; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Proclaimed in Deuteronomy 30:19, this title marks the breaking of every ungodly siege, ushering the soul into divine abundance and River of Abundant Life."
   },
   {
     "id": 191,
@@ -2104,8 +2104,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "River of Supernatural Power",
     "scriptureReference": "Psalm 66:7",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaG'vurah (נְהַר הַגְּבוּרָה). I walk in river of supernatural power according to Psalm 66:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaG'vurah (נְהַר הַגְּבוּרָה). Through Psalm 66:7, God has established me in River of Supernatural Power; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Psalm 66:7, this name proclaims that your life is fortified against every onslaught of darkness by the power of River of Supernatural Power."
   },
   {
     "id": 192,
@@ -2115,8 +2115,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "River of Heavenly Wisdom",
     "scriptureReference": "Proverbs 8:14",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaChokhmah (נְהַר הַחָכְמָה). I walk in river of heavenly wisdom according to Proverbs 8:14.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaChokhmah (נְהַר הַחָכְמָה). Through Proverbs 8:14, God has established me in River of Heavenly Wisdom; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Forged in spiritual victory in Proverbs 8:14, this redemptive name endows the believer with holy tenacity and supernatural River of Heavenly Wisdom."
   },
   {
     "id": 193,
@@ -2126,8 +2126,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "River of Spiritual Discernment",
     "scriptureReference": "1 Chronicles 12:32",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaBina (נְהַר הַבִּינָה). I walk in river of spiritual discernment according to 1 Chronicles 12:32.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaBina (נְהַר הַבִּינָה). Through 1 Chronicles 12:32, God has established me in River of Spiritual Discernment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Set forth in 1 Chronicles 12:32, this apostolic designation calls you to stand as a king and priest unto God, walking in the dignity of River of Spiritual Discernment."
   },
   {
     "id": 194,
@@ -2137,8 +2137,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "River of Unbreakable Covenant",
     "scriptureReference": "Genesis 9:16",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaBrit (נְהַר הַבְּרִית). I walk in river of unbreakable covenant according to Genesis 9:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaBrit (נְהַר הַבְּרִית). Through Genesis 9:16, God has established me in River of Unbreakable Covenant; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Guaranteed by the covenant promises of Genesis 9:16, this sacred title reminds you that you are eternally set apart and cherished as River of Unbreakable Covenant."
   },
   {
     "id": 195,
@@ -2148,8 +2148,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "River of Good Will and Delight",
     "scriptureReference": "Psalm 30:5",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaRatzon (נְהַר הָרָצוֹן). I walk in river of good will and delight according to Psalm 30:5.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaRatzon (נְהַר הָרָצוֹן). Through Psalm 30:5, God has established me in River of Good Will and Delight; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Poured out in Psalm 30:5, this title carries the generational blessing of Abraham, causing uncommon favor and River of Good Will and Delight to rest upon you."
   },
   {
     "id": 196,
@@ -2159,8 +2159,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "River of Everlasting Victory",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaNetzach (נְהַר הַנֵּצַח). I walk in river of everlasting victory according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaNetzach (נְהַר הַנֵּצַח). Through 1 Chronicles 29:11, God has established me in River of Everlasting Victory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Proclaimed in 1 Chronicles 29:11, this title marks the breaking of every ungodly siege, ushering the soul into divine abundance and River of Everlasting Victory."
   },
   {
     "id": 197,
@@ -2170,8 +2170,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "River of Majesty and Splendor",
     "scriptureReference": "Psalm 104:1",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaHod (נְהַר הַהוֹד). I walk in river of majesty and splendor according to Psalm 104:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaHod (נְהַר הַהוֹד). Through Psalm 104:1, God has established me in River of Majesty and Splendor; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Psalm 104:1, this heavenly title represents the royal ornament and priestly splendor of River of Majesty and Splendor placed upon your life."
   },
   {
     "id": 198,
@@ -2181,8 +2181,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "River of Desirable Beauty",
     "scriptureReference": "Ezekiel 20:6",
     "category": "New Identity",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaTzvi (נְהַר הַצְּבִי). I walk in river of desirable beauty according to Ezekiel 20:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaTzvi (נְהַר הַצְּבִי). Through Ezekiel 20:6, God has established me in River of Desirable Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Unveiled in Ezekiel's prophetic visions of divine renewal and temple restoration (Ezekiel 20:6), this consecrated title replaces past labels of barrenness and defeat with royal identity as River of Desirable Beauty."
   },
   {
     "id": 199,
@@ -2192,8 +2192,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "River of Righteous Judgment",
     "scriptureReference": "Isaiah 28:6",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaMishpat (נְהַר הַמִּשְׁפָּט). I walk in river of righteous judgment according to Isaiah 28:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaMishpat (נְהַר הַמִּשְׁפָּט). Through Isaiah 28:6, God has established me in River of Righteous Judgment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Set forth in Isaiah 28:6, this apostolic designation calls you to stand as a king and priest unto God, walking in the dignity of River of Righteous Judgment."
   },
   {
     "id": 200,
@@ -2203,8 +2203,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "River of My Beloved One",
     "scriptureReference": "Song of Songs 2:16",
     "category": "Beloved & Intimacy",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaDodi (נְהַר הַדּוֹדִי). I walk in river of my beloved one according to Song of Songs 2:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Nahar HaDodi (נְהַר הַדּוֹדִי). Through Song of Songs 2:16, God has established me in River of My Beloved One; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Song of Songs 2:16, this redemptive designation confirms that you are neither forgotten nor overlooked, but ever held close as River of My Beloved One."
   },
   {
     "id": 201,
@@ -2214,8 +2214,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Seed of Righteousness",
     "scriptureReference": "Psalm 23:3",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaTsedek (זֶרַע הַצֶּדֶק). I walk in seed of righteousness according to Psalm 23:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaTsedek (זֶרַע הַצֶּדֶק). Through Psalm 23:3, God has established me in Seed of Righteousness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Rooted in Psalm 23:3, this title symbolizes celestial investiture, clothing the believer in robes of praise and divine authority as Seed of Righteousness."
   },
   {
     "id": 202,
@@ -2225,8 +2225,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Seed of Lovingkindness",
     "scriptureReference": "Psalm 103:4",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaChesed (זֶרַע הַחֶסֶד). I walk in seed of lovingkindness according to Psalm 103:4.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaChesed (זֶרַע הַחֶסֶד). Through Psalm 103:4, God has established me in Seed of Lovingkindness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Psalm 103:4, this name affirms that by sovereign grace you are brought near and forever granted the status of Seed of Lovingkindness."
   },
   {
     "id": 203,
@@ -2236,8 +2236,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Seed of Faithfulness",
     "scriptureReference": "Lamentations 3:23",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaEmunah (זֶרַע הָאֱמוּנָה). I walk in seed of faithfulness according to Lamentations 3:23.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaEmunah (זֶרַע הָאֱמוּנָה). Through Lamentations 3:23, God has established me in Seed of Faithfulness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Lamentations 3:23, this name proclaims that your life is fortified against every onslaught of darkness by the power of Seed of Faithfulness."
   },
   {
     "id": 204,
@@ -2247,8 +2247,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Seed of Triumphant Salvation",
     "scriptureReference": "Psalm 118:15",
     "category": "Redemption & Grace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaYeshua (זֶרַע הַיְשׁוּעָה). I walk in seed of triumphant salvation according to Psalm 118:15.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaYeshua (זֶרַע הַיְשׁוּעָה). Through Psalm 118:15, God has established me in Seed of Triumphant Salvation; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Unveiled in Psalm 118:15, this redemptive name celebrates total ransom from captivity, establishing the believer's life upon Seed of Triumphant Salvation."
   },
   {
     "id": 205,
@@ -2258,8 +2258,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Seed of Heavenly Beauty",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaTiferet (זֶרַע הַתִּפְאֶרֶת). I walk in seed of heavenly beauty according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaTiferet (זֶרַע הַתִּפְאֶרֶת). Through 1 Chronicles 29:11, God has established me in Seed of Heavenly Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from 1 Chronicles 29:11, this redemptive declaration removes garments of mourning and clothes you in the majesty of Seed of Heavenly Beauty."
   },
   {
     "id": 206,
@@ -2269,8 +2269,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Seed of Divine Greatness",
     "scriptureReference": "Psalm 145:3",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaG'dulah (זֶרַע הַגְּדֻלָּה). I walk in seed of divine greatness according to Psalm 145:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaG'dulah (זֶרַע הַגְּדֻלָּה). Through Psalm 145:3, God has established me in Seed of Divine Greatness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Psalm 145:3, this redemptive declaration commands the blessings of heaven to overtake every area of your journey in Seed of Divine Greatness."
   },
   {
     "id": 207,
@@ -2280,8 +2280,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Seed of Wholeness and Peace",
     "scriptureReference": "Numbers 6:26",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaShalom (זֶרַע הַשָּׁלוֹם). I walk in seed of wholeness and peace according to Numbers 6:26.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaShalom (זֶרַע הַשָּׁלוֹם). Through Numbers 6:26, God has established me in Seed of Wholeness and Peace; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Infused with the joy of the Lord in Numbers 6:26, this title dissolves sorrow and imparts an unshakeable fortress of Seed of Wholeness and Peace."
   },
   {
     "id": 208,
@@ -2291,8 +2291,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Seed of Weighty Glory",
     "scriptureReference": "Psalm 24:7",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaKavod (זֶרַע הַכָּבוֹד). I walk in seed of weighty glory according to Psalm 24:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaKavod (זֶרַע הַכָּבוֹד). Through Psalm 24:7, God has established me in Seed of Weighty Glory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Psalm 24:7, this redemptive declaration removes garments of mourning and clothes you in the majesty of Seed of Weighty Glory."
   },
   {
     "id": 209,
@@ -2302,8 +2302,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Seed of Consecrated Holiness",
     "scriptureReference": "Leviticus 19:2",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaKedushah (זֶרַע הַקְּדֻשָּׁה). I walk in seed of consecrated holiness according to Leviticus 19:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaKedushah (זֶרַע הַקְּדֻשָּׁה). Through Leviticus 19:2, God has established me in Seed of Consecrated Holiness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Leviticus 19:2, this heavenly mandate establishes your life as an altar of worship and a vessel of divine dominion in Seed of Consecrated Holiness."
   },
   {
     "id": 210,
@@ -2313,8 +2313,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Seed of Tender Mercies",
     "scriptureReference": "Daniel 9:9",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaRachamim (זֶרַע הָרַחֲמִים). I walk in seed of tender mercies according to Daniel 9:9.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaRachamim (זֶרַע הָרַחֲמִים). Through Daniel 9:9, God has established me in Seed of Tender Mercies; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Daniel 9:9, this title breaks the spirit of rejection and orphanhood, welcoming the believer into intimate communion as Seed of Tender Mercies."
   },
   {
     "id": 211,
@@ -2324,8 +2324,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Seed of Unending Praise",
     "scriptureReference": "Psalm 145:1",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaTehillah (זֶרַע הַתְּהִלָּה). I walk in seed of unending praise according to Psalm 145:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaTehillah (זֶרַע הַתְּהִלָּה). Through Psalm 145:1, God has established me in Seed of Unending Praise; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Celebrated in Psalm 145:1, this name releases the supernatural peace that surpasses understanding, crowning your days with Seed of Unending Praise."
   },
   {
     "id": 212,
@@ -2335,8 +2335,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Seed of Generational Blessing",
     "scriptureReference": "Genesis 12:2",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaBerakhah (זֶרַע הַבְּרָכָה). I walk in seed of generational blessing according to Genesis 12:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaBerakhah (זֶרַע הַבְּרָכָה). Through Genesis 12:2, God has established me in Seed of Generational Blessing; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Genesis 12:2, this redemptive declaration commands the blessings of heaven to overtake every area of your journey in Seed of Generational Blessing."
   },
   {
     "id": 213,
@@ -2346,8 +2346,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Seed of Exuberant Joy",
     "scriptureReference": "Nehemiah 8:10",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaSimchah (זֶרַע הַשִּׂמְחָה). I walk in seed of exuberant joy according to Nehemiah 8:10.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaSimchah (זֶרַע הַשִּׂמְחָה). Through Nehemiah 8:10, God has established me in Seed of Exuberant Joy; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Infused with the joy of the Lord in Nehemiah 8:10, this title dissolves sorrow and imparts an unshakeable fortress of Seed of Exuberant Joy."
   },
   {
     "id": 214,
@@ -2357,8 +2357,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Seed of Eternity and Ages",
     "scriptureReference": "Ecclesiastes 3:11",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaOlam (זֶרַע הָעוֹלָם). I walk in seed of eternity and ages according to Ecclesiastes 3:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaOlam (זֶרַע הָעוֹלָם). Through Ecclesiastes 3:11, God has established me in Seed of Eternity and Ages; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Proclaimed in Ecclesiastes 3:11, this covenant moniker assures the believer that God's steadfast chesed preserves and honors you as Seed of Eternity and Ages."
   },
   {
     "id": 215,
@@ -2368,8 +2368,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Seed of Abundant Life",
     "scriptureReference": "Deuteronomy 30:19",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaChayim (זֶרַע הַחַיִּים). I walk in seed of abundant life according to Deuteronomy 30:19.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaChayim (זֶרַע הַחַיִּים). Through Deuteronomy 30:19, God has established me in Seed of Abundant Life; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in Deuteronomy 30:19, this redemptive name heralds total restoration of wasted years, re-establishing you in the joy of Seed of Abundant Life."
   },
   {
     "id": 216,
@@ -2379,8 +2379,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Seed of Supernatural Power",
     "scriptureReference": "Psalm 66:7",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaG'vurah (זֶרַע הַגְּבוּרָה). I walk in seed of supernatural power according to Psalm 66:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaG'vurah (זֶרַע הַגְּבוּרָה). Through Psalm 66:7, God has established me in Seed of Supernatural Power; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Forged in spiritual victory in Psalm 66:7, this redemptive name endows the believer with holy tenacity and supernatural Seed of Supernatural Power."
   },
   {
     "id": 217,
@@ -2390,8 +2390,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Seed of Heavenly Wisdom",
     "scriptureReference": "Proverbs 8:14",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaChokhmah (זֶרַע הַחָכְמָה). I walk in seed of heavenly wisdom according to Proverbs 8:14.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaChokhmah (זֶרַע הַחָכְמָה). Through Proverbs 8:14, God has established me in Seed of Heavenly Wisdom; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Proverbs 8:14, this warrior title declares that through Christ who strengthens you, you arise and conquer in Seed of Heavenly Wisdom."
   },
   {
     "id": 218,
@@ -2401,8 +2401,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Seed of Spiritual Discernment",
     "scriptureReference": "1 Chronicles 12:32",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaBina (זֶרַע הַבִּינָה). I walk in seed of spiritual discernment according to 1 Chronicles 12:32.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaBina (זֶרַע הַבִּינָה). Through 1 Chronicles 12:32, God has established me in Seed of Spiritual Discernment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in 1 Chronicles 12:32, this heavenly mandate establishes your life as an altar of worship and a vessel of divine dominion in Seed of Spiritual Discernment."
   },
   {
     "id": 219,
@@ -2412,8 +2412,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Seed of Unbreakable Covenant",
     "scriptureReference": "Genesis 9:16",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaBrit (זֶרַע הַבְּרִית). I walk in seed of unbreakable covenant according to Genesis 9:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaBrit (זֶרַע הַבְּרִית). Through Genesis 9:16, God has established me in Seed of Unbreakable Covenant; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Enshrined in Genesis 9:16, this name seals Yahweh's unshakeable covenant oath, affirming you as His treasured possession in Seed of Unbreakable Covenant."
   },
   {
     "id": 220,
@@ -2423,8 +2423,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Seed of Good Will and Delight",
     "scriptureReference": "Psalm 30:5",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaRatzon (זֶרַע הָרָצוֹן). I walk in seed of good will and delight according to Psalm 30:5.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaRatzon (זֶרַע הָרָצוֹן). Through Psalm 30:5, God has established me in Seed of Good Will and Delight; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Psalm 30:5, this prophetic name marks you with the goodness and lovingkindness of God, releasing the fullness of Seed of Good Will and Delight."
   },
   {
     "id": 221,
@@ -2434,8 +2434,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Seed of Everlasting Victory",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaNetzach (זֶרַע הַנֵּצַח). I walk in seed of everlasting victory according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaNetzach (זֶרַע הַנֵּצַח). Through 1 Chronicles 29:11, God has established me in Seed of Everlasting Victory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in 1 Chronicles 29:11, this redemptive name heralds total restoration of wasted years, re-establishing you in the joy of Seed of Everlasting Victory."
   },
   {
     "id": 222,
@@ -2445,8 +2445,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Seed of Majesty and Splendor",
     "scriptureReference": "Psalm 104:1",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaHod (זֶרַע הַהוֹד). I walk in seed of majesty and splendor according to Psalm 104:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaHod (זֶרַע הַהוֹד). Through Psalm 104:1, God has established me in Seed of Majesty and Splendor; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Rooted in Psalm 104:1, this title symbolizes celestial investiture, clothing the believer in robes of praise and divine authority as Seed of Majesty and Splendor."
   },
   {
     "id": 223,
@@ -2456,8 +2456,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Seed of Desirable Beauty",
     "scriptureReference": "Ezekiel 20:6",
     "category": "New Identity",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaTzvi (זֶרַע הַצְּבִי). I walk in seed of desirable beauty according to Ezekiel 20:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaTzvi (זֶרַע הַצְּבִי). Through Ezekiel 20:6, God has established me in Seed of Desirable Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in Ezekiel 20:6, this prophetic name marks a definitive transition from obscurity into God's radiant decree: Seed of Desirable Beauty."
   },
   {
     "id": 224,
@@ -2467,8 +2467,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Seed of Righteous Judgment",
     "scriptureReference": "Isaiah 28:6",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaMishpat (זֶרַע הַמִּשְׁפָּט). I walk in seed of righteous judgment according to Isaiah 28:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaMishpat (זֶרַע הַמִּשְׁפָּט). Through Isaiah 28:6, God has established me in Seed of Righteous Judgment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Isaiah 28:6, this heavenly mandate establishes your life as an altar of worship and a vessel of divine dominion in Seed of Righteous Judgment."
   },
   {
     "id": 225,
@@ -2478,8 +2478,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Seed of My Beloved One",
     "scriptureReference": "Song of Songs 2:16",
     "category": "Beloved & Intimacy",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaDodi (זֶרַע הַדּוֹדִי). I walk in seed of my beloved one according to Song of Songs 2:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Zera HaDodi (זֶרַע הַדּוֹדִי). Through Song of Songs 2:16, God has established me in Seed of My Beloved One; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Breathed with tender bridal love in Song of Songs 2:16, this name reflects the secret place of divine intimacy where you abide as Seed of My Beloved One."
   },
   {
     "id": 226,
@@ -2489,8 +2489,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Crown of Righteousness",
     "scriptureReference": "Psalm 23:3",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaTsedek (עֲטֶרֶת הַצֶּדֶק). I walk in crown of righteousness according to Psalm 23:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaTsedek (עֲטֶרֶת הַצֶּדֶק). Through Psalm 23:3, God has established me in Crown of Righteousness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Psalm 23:3, this redemptive declaration removes garments of mourning and clothes you in the majesty of Crown of Righteousness."
   },
   {
     "id": 227,
@@ -2500,8 +2500,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Crown of Lovingkindness",
     "scriptureReference": "Psalm 103:4",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaChesed (עֲטֶרֶת הַחֶסֶד). I walk in crown of lovingkindness according to Psalm 103:4.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaChesed (עֲטֶרֶת הַחֶסֶד). Through Psalm 103:4, God has established me in Crown of Lovingkindness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Psalm 103:4, this redemptive designation assures your heart that in the house of God you walk in full acceptance as Crown of Lovingkindness."
   },
   {
     "id": 228,
@@ -2511,8 +2511,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Crown of Faithfulness",
     "scriptureReference": "Lamentations 3:23",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaEmunah (עֲטֶרֶת הָאֱמוּנָה). I walk in crown of faithfulness according to Lamentations 3:23.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaEmunah (עֲטֶרֶת הָאֱמוּנָה). Through Lamentations 3:23, God has established me in Crown of Faithfulness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Forged in spiritual victory in Lamentations 3:23, this redemptive name endows the believer with holy tenacity and supernatural Crown of Faithfulness."
   },
   {
     "id": 229,
@@ -2522,8 +2522,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Crown of Triumphant Salvation",
     "scriptureReference": "Psalm 118:15",
     "category": "Redemption & Grace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaYeshua (עֲטֶרֶת הַיְשׁוּעָה). I walk in crown of triumphant salvation according to Psalm 118:15.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaYeshua (עֲטֶרֶת הַיְשׁוּעָה). Through Psalm 118:15, God has established me in Crown of Triumphant Salvation; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Grounded in Psalm 118:15, this title bears witness to the triumph of divine mercy over judgment, designating you as an inheritor of Crown of Triumphant Salvation."
   },
   {
     "id": 230,
@@ -2533,8 +2533,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Crown of Heavenly Beauty",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaTiferet (עֲטֶרֶת הַתִּפְאֶרֶת). I walk in crown of heavenly beauty according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaTiferet (עֲטֶרֶת הַתִּפְאֶרֶת). Through 1 Chronicles 29:11, God has established me in Crown of Heavenly Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in 1 Chronicles 29:11, this heavenly title represents the royal ornament and priestly splendor of Crown of Heavenly Beauty placed upon your life."
   },
   {
     "id": 231,
@@ -2544,8 +2544,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Crown of Divine Greatness",
     "scriptureReference": "Psalm 145:3",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaG'dulah (עֲטֶרֶת הַגְּדֻלָּה). I walk in crown of divine greatness according to Psalm 145:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaG'dulah (עֲטֶרֶת הַגְּדֻלָּה). Through Psalm 145:3, God has established me in Crown of Divine Greatness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Poured out in Psalm 145:3, this title carries the generational blessing of Abraham, causing uncommon favor and Crown of Divine Greatness to rest upon you."
   },
   {
     "id": 232,
@@ -2555,8 +2555,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Crown of Wholeness and Peace",
     "scriptureReference": "Numbers 6:26",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaShalom (עֲטֶרֶת הַשָּׁלוֹם). I walk in crown of wholeness and peace according to Numbers 6:26.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaShalom (עֲטֶרֶת הַשָּׁלוֹם). Through Numbers 6:26, God has established me in Crown of Wholeness and Peace; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Celebrated in Numbers 6:26, this name releases the supernatural peace that surpasses understanding, crowning your days with Crown of Wholeness and Peace."
   },
   {
     "id": 233,
@@ -2566,8 +2566,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Crown of Weighty Glory",
     "scriptureReference": "Psalm 24:7",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaKavod (עֲטֶרֶת הַכָּבוֹד). I walk in crown of weighty glory according to Psalm 24:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaKavod (עֲטֶרֶת הַכָּבוֹד). Through Psalm 24:7, God has established me in Crown of Weighty Glory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Psalm 24:7, this heavenly title represents the royal ornament and priestly splendor of Crown of Weighty Glory placed upon your life."
   },
   {
     "id": 234,
@@ -2577,8 +2577,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Crown of Consecrated Holiness",
     "scriptureReference": "Leviticus 19:2",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaKedushah (עֲטֶרֶת הַקְּדֻשָּׁה). I walk in crown of consecrated holiness according to Leviticus 19:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaKedushah (עֲטֶרֶת הַקְּדֻשָּׁה). Through Leviticus 19:2, God has established me in Crown of Consecrated Holiness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Consecrated in Leviticus 19:2, this priestly title confers kingdom authority and intercessory access, ordaining the believer for Crown of Consecrated Holiness."
   },
   {
     "id": 235,
@@ -2588,8 +2588,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Crown of Tender Mercies",
     "scriptureReference": "Daniel 9:9",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaRachamim (עֲטֶרֶת הָרַחֲמִים). I walk in crown of tender mercies according to Daniel 9:9.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaRachamim (עֲטֶרֶת הָרַחֲמִים). Through Daniel 9:9, God has established me in Crown of Tender Mercies; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Daniel 9:9, this name affirms that by sovereign grace you are brought near and forever granted the status of Crown of Tender Mercies."
   },
   {
     "id": 236,
@@ -2599,8 +2599,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Crown of Unending Praise",
     "scriptureReference": "Psalm 145:1",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaTehillah (עֲטֶרֶת הַתְּהִלָּה). I walk in crown of unending praise according to Psalm 145:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaTehillah (עֲטֶרֶת הַתְּהִלָּה). Through Psalm 145:1, God has established me in Crown of Unending Praise; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Psalm 145:1, this sacred title reminds the believer that the oil of gladness has triumphed over spirit of heaviness in Crown of Unending Praise."
   },
   {
     "id": 237,
@@ -2610,8 +2610,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Crown of Generational Blessing",
     "scriptureReference": "Genesis 12:2",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaBerakhah (עֲטֶרֶת הַבְּרָכָה). I walk in crown of generational blessing according to Genesis 12:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaBerakhah (עֲטֶרֶת הַבְּרָכָה). Through Genesis 12:2, God has established me in Crown of Generational Blessing; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Poured out in Genesis 12:2, this title carries the generational blessing of Abraham, causing uncommon favor and Crown of Generational Blessing to rest upon you."
   },
   {
     "id": 238,
@@ -2621,8 +2621,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Crown of Exuberant Joy",
     "scriptureReference": "Nehemiah 8:10",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaSimchah (עֲטֶרֶת הַשִּׂמְחָה). I walk in crown of exuberant joy according to Nehemiah 8:10.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaSimchah (עֲטֶרֶת הַשִּׂמְחָה). Through Nehemiah 8:10, God has established me in Crown of Exuberant Joy; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Celebrated in Nehemiah 8:10, this name releases the supernatural peace that surpasses understanding, crowning your days with Crown of Exuberant Joy."
   },
   {
     "id": 239,
@@ -2632,8 +2632,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Crown of Eternity and Ages",
     "scriptureReference": "Ecclesiastes 3:11",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaOlam (עֲטֶרֶת הָעוֹלָם). I walk in crown of eternity and ages according to Ecclesiastes 3:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaOlam (עֲטֶרֶת הָעוֹלָם). Through Ecclesiastes 3:11, God has established me in Crown of Eternity and Ages; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Guaranteed by the covenant promises of Ecclesiastes 3:11, this sacred title reminds you that you are eternally set apart and cherished as Crown of Eternity and Ages."
   },
   {
     "id": 240,
@@ -2643,8 +2643,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Crown of Abundant Life",
     "scriptureReference": "Deuteronomy 30:19",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaChayim (עֲטֶרֶת הַחַיִּים). I walk in crown of abundant life according to Deuteronomy 30:19.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaChayim (עֲטֶרֶת הַחַיִּים). Through Deuteronomy 30:19, God has established me in Crown of Abundant Life; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Prophesied in Deuteronomy 30:19, this powerful decree overturns generational stagnation, commanding supernatural emergence and Crown of Abundant Life."
   },
   {
     "id": 241,
@@ -2654,8 +2654,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Crown of Supernatural Power",
     "scriptureReference": "Psalm 66:7",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaG'vurah (עֲטֶרֶת הַגְּבוּרָה). I walk in crown of supernatural power according to Psalm 66:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaG'vurah (עֲטֶרֶת הַגְּבוּרָה). Through Psalm 66:7, God has established me in Crown of Supernatural Power; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Psalm 66:7, this warrior title declares that through Christ who strengthens you, you arise and conquer in Crown of Supernatural Power."
   },
   {
     "id": 242,
@@ -2665,8 +2665,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Crown of Heavenly Wisdom",
     "scriptureReference": "Proverbs 8:14",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaChokhmah (עֲטֶרֶת הַחָכְמָה). I walk in crown of heavenly wisdom according to Proverbs 8:14.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaChokhmah (עֲטֶרֶת הַחָכְמָה). Through Proverbs 8:14, God has established me in Crown of Heavenly Wisdom; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Proverbs 8:14, this name proclaims that your life is fortified against every onslaught of darkness by the power of Crown of Heavenly Wisdom."
   },
   {
     "id": 243,
@@ -2676,8 +2676,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Crown of Spiritual Discernment",
     "scriptureReference": "1 Chronicles 12:32",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaBina (עֲטֶרֶת הַבִּינָה). I walk in crown of spiritual discernment according to 1 Chronicles 12:32.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaBina (עֲטֶרֶת הַבִּינָה). Through 1 Chronicles 12:32, God has established me in Crown of Spiritual Discernment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Consecrated in 1 Chronicles 12:32, this priestly title confers kingdom authority and intercessory access, ordaining the believer for Crown of Spiritual Discernment."
   },
   {
     "id": 244,
@@ -2687,8 +2687,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Crown of Unbreakable Covenant",
     "scriptureReference": "Genesis 9:16",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaBrit (עֲטֶרֶת הַבְּרִית). I walk in crown of unbreakable covenant according to Genesis 9:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaBrit (עֲטֶרֶת הַבְּרִית). Through Genesis 9:16, God has established me in Crown of Unbreakable Covenant; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Proclaimed in Genesis 9:16, this covenant moniker assures the believer that God's steadfast chesed preserves and honors you as Crown of Unbreakable Covenant."
   },
   {
     "id": 245,
@@ -2698,8 +2698,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Crown of Good Will and Delight",
     "scriptureReference": "Psalm 30:5",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaRatzon (עֲטֶרֶת הָרָצוֹן). I walk in crown of good will and delight according to Psalm 30:5.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaRatzon (עֲטֶרֶת הָרָצוֹן). Through Psalm 30:5, God has established me in Crown of Good Will and Delight; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Psalm 30:5, this redemptive declaration commands the blessings of heaven to overtake every area of your journey in Crown of Good Will and Delight."
   },
   {
     "id": 246,
@@ -2709,8 +2709,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Crown of Everlasting Victory",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaNetzach (עֲטֶרֶת הַנֵּצַח). I walk in crown of everlasting victory according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaNetzach (עֲטֶרֶת הַנֵּצַח). Through 1 Chronicles 29:11, God has established me in Crown of Everlasting Victory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Prophesied in 1 Chronicles 29:11, this powerful decree overturns generational stagnation, commanding supernatural emergence and Crown of Everlasting Victory."
   },
   {
     "id": 247,
@@ -2720,8 +2720,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Crown of Majesty and Splendor",
     "scriptureReference": "Psalm 104:1",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaHod (עֲטֶרֶת הַהוֹד). I walk in crown of majesty and splendor according to Psalm 104:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaHod (עֲטֶרֶת הַהוֹד). Through Psalm 104:1, God has established me in Crown of Majesty and Splendor; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Psalm 104:1, this redemptive declaration removes garments of mourning and clothes you in the majesty of Crown of Majesty and Splendor."
   },
   {
     "id": 248,
@@ -2731,8 +2731,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Crown of Desirable Beauty",
     "scriptureReference": "Ezekiel 20:6",
     "category": "New Identity",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaTzvi (עֲטֶרֶת הַצְּבִי). I walk in crown of desirable beauty according to Ezekiel 20:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaTzvi (עֲטֶרֶת הַצְּבִי). Through Ezekiel 20:6, God has established me in Crown of Desirable Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Ezekiel 20:6, the mouth of the Lord bestows this name to nullify human mockery and establish you in the reality of Crown of Desirable Beauty."
   },
   {
     "id": 249,
@@ -2742,8 +2742,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Crown of Righteous Judgment",
     "scriptureReference": "Isaiah 28:6",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaMishpat (עֲטֶרֶת הַמִּשְׁפָּט). I walk in crown of righteous judgment according to Isaiah 28:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaMishpat (עֲטֶרֶת הַמִּשְׁפָּט). Through Isaiah 28:6, God has established me in Crown of Righteous Judgment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Consecrated in Isaiah 28:6, this priestly title confers kingdom authority and intercessory access, ordaining the believer for Crown of Righteous Judgment."
   },
   {
     "id": 250,
@@ -2753,8 +2753,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Crown of My Beloved One",
     "scriptureReference": "Song of Songs 2:16",
     "category": "Beloved & Intimacy",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaDodi (עֲטֶרֶת הַדּוֹדִי). I walk in crown of my beloved one according to Song of Songs 2:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ateret HaDodi (עֲטֶרֶת הַדּוֹדִי). Through Song of Songs 2:16, God has established me in Crown of My Beloved One; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in Song of Songs 2:16, this cherished title expresses Yahweh's profound delight and jealous affection over your soul as Crown of My Beloved One."
   },
   {
     "id": 251,
@@ -2764,8 +2764,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Tree of Righteousness",
     "scriptureReference": "Psalm 23:3",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaTsedek (עֵץ הַצֶּדֶק). I walk in tree of righteousness according to Psalm 23:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaTsedek (עֵץ הַצֶּדֶק). Through Psalm 23:3, God has established me in Tree of Righteousness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Psalm 23:3, this heavenly title represents the royal ornament and priestly splendor of Tree of Righteousness placed upon your life."
   },
   {
     "id": 252,
@@ -2775,8 +2775,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Tree of Lovingkindness",
     "scriptureReference": "Psalm 103:4",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaChesed (עֵץ הַחֶסֶד). I walk in tree of lovingkindness according to Psalm 103:4.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaChesed (עֵץ הַחֶסֶד). Through Psalm 103:4, God has established me in Tree of Lovingkindness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Psalm 103:4, this title breaks the spirit of rejection and orphanhood, welcoming the believer into intimate communion as Tree of Lovingkindness."
   },
   {
     "id": 253,
@@ -2786,8 +2786,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Tree of Faithfulness",
     "scriptureReference": "Lamentations 3:23",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaEmunah (עֵץ הָאֱמוּנָה). I walk in tree of faithfulness according to Lamentations 3:23.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaEmunah (עֵץ הָאֱמוּנָה). Through Lamentations 3:23, God has established me in Tree of Faithfulness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Lamentations 3:23, this warrior title declares that through Christ who strengthens you, you arise and conquer in Tree of Faithfulness."
   },
   {
     "id": 254,
@@ -2797,8 +2797,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Tree of Triumphant Salvation",
     "scriptureReference": "Psalm 118:15",
     "category": "Redemption & Grace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaYeshua (עֵץ הַיְשׁוּעָה). I walk in tree of triumphant salvation according to Psalm 118:15.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaYeshua (עֵץ הַיְשׁוּעָה). Through Psalm 118:15, God has established me in Tree of Triumphant Salvation; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Spoken in Psalm 118:15, this name commemorates the price paid to bring you into the liberty, righteousness, and unmerited favor of Tree of Triumphant Salvation."
   },
   {
     "id": 255,
@@ -2808,8 +2808,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Tree of Heavenly Beauty",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaTiferet (עֵץ הַתִּפְאֶרֶת). I walk in tree of heavenly beauty according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaTiferet (עֵץ הַתִּפְאֶרֶת). Through 1 Chronicles 29:11, God has established me in Tree of Heavenly Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Rooted in 1 Chronicles 29:11, this title symbolizes celestial investiture, clothing the believer in robes of praise and divine authority as Tree of Heavenly Beauty."
   },
   {
     "id": 256,
@@ -2819,8 +2819,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Tree of Divine Greatness",
     "scriptureReference": "Psalm 145:3",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaG'dulah (עֵץ הַגְּדֻלָּה). I walk in tree of divine greatness according to Psalm 145:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaG'dulah (עֵץ הַגְּדֻלָּה). Through Psalm 145:3, God has established me in Tree of Divine Greatness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Psalm 145:3, this prophetic name marks you with the goodness and lovingkindness of God, releasing the fullness of Tree of Divine Greatness."
   },
   {
     "id": 257,
@@ -2830,8 +2830,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Tree of Wholeness and Peace",
     "scriptureReference": "Numbers 6:26",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaShalom (עֵץ הַשָּׁלוֹם). I walk in tree of wholeness and peace according to Numbers 6:26.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaShalom (עֵץ הַשָּׁלוֹם). Through Numbers 6:26, God has established me in Tree of Wholeness and Peace; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Numbers 6:26, this sacred title reminds the believer that the oil of gladness has triumphed over spirit of heaviness in Tree of Wholeness and Peace."
   },
   {
     "id": 258,
@@ -2841,8 +2841,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Tree of Weighty Glory",
     "scriptureReference": "Psalm 24:7",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaKavod (עֵץ הַכָּבוֹד). I walk in tree of weighty glory according to Psalm 24:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaKavod (עֵץ הַכָּבוֹד). Through Psalm 24:7, God has established me in Tree of Weighty Glory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Rooted in Psalm 24:7, this title symbolizes celestial investiture, clothing the believer in robes of praise and divine authority as Tree of Weighty Glory."
   },
   {
     "id": 259,
@@ -2852,8 +2852,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Tree of Consecrated Holiness",
     "scriptureReference": "Leviticus 19:2",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaKedushah (עֵץ הַקְּדֻשָּׁה). I walk in tree of consecrated holiness according to Leviticus 19:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaKedushah (עֵץ הַקְּדֻשָּׁה). Through Leviticus 19:2, God has established me in Tree of Consecrated Holiness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Set forth in Leviticus 19:2, this apostolic designation calls you to stand as a king and priest unto God, walking in the dignity of Tree of Consecrated Holiness."
   },
   {
     "id": 260,
@@ -2863,8 +2863,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Tree of Tender Mercies",
     "scriptureReference": "Daniel 9:9",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaRachamim (עֵץ הָרַחֲמִים). I walk in tree of tender mercies according to Daniel 9:9.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaRachamim (עֵץ הָרַחֲמִים). Through Daniel 9:9, God has established me in Tree of Tender Mercies; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Daniel 9:9, this redemptive designation assures your heart that in the house of God you walk in full acceptance as Tree of Tender Mercies."
   },
   {
     "id": 261,
@@ -2874,8 +2874,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Tree of Unending Praise",
     "scriptureReference": "Psalm 145:1",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaTehillah (עֵץ הַתְּהִלָּה). I walk in tree of unending praise according to Psalm 145:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaTehillah (עֵץ הַתְּהִלָּה). Through Psalm 145:1, God has established me in Tree of Unending Praise; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Infused with the joy of the Lord in Psalm 145:1, this title dissolves sorrow and imparts an unshakeable fortress of Tree of Unending Praise."
   },
   {
     "id": 262,
@@ -2885,8 +2885,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Tree of Generational Blessing",
     "scriptureReference": "Genesis 12:2",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaBerakhah (עֵץ הַבְּרָכָה). I walk in tree of generational blessing according to Genesis 12:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaBerakhah (עֵץ הַבְּרָכָה). Through Genesis 12:2, God has established me in Tree of Generational Blessing; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Genesis 12:2, this prophetic name marks you with the goodness and lovingkindness of God, releasing the fullness of Tree of Generational Blessing."
   },
   {
     "id": 263,
@@ -2896,8 +2896,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Tree of Exuberant Joy",
     "scriptureReference": "Nehemiah 8:10",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaSimchah (עֵץ הַשִּׂמְחָה). I walk in tree of exuberant joy according to Nehemiah 8:10.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaSimchah (עֵץ הַשִּׂמְחָה). Through Nehemiah 8:10, God has established me in Tree of Exuberant Joy; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Nehemiah 8:10, this sacred title reminds the believer that the oil of gladness has triumphed over spirit of heaviness in Tree of Exuberant Joy."
   },
   {
     "id": 264,
@@ -2907,8 +2907,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Tree of Eternity and Ages",
     "scriptureReference": "Ecclesiastes 3:11",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaOlam (עֵץ הָעוֹלָם). I walk in tree of eternity and ages according to Ecclesiastes 3:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaOlam (עֵץ הָעוֹלָם). Through Ecclesiastes 3:11, God has established me in Tree of Eternity and Ages; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Enshrined in Ecclesiastes 3:11, this name seals Yahweh's unshakeable covenant oath, affirming you as His treasured possession in Tree of Eternity and Ages."
   },
   {
     "id": 265,
@@ -2918,8 +2918,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Tree of Abundant Life",
     "scriptureReference": "Deuteronomy 30:19",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaChayim (עֵץ הַחַיִּים). I walk in tree of abundant life according to Deuteronomy 30:19.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaChayim (עֵץ הַחַיִּים). Through Deuteronomy 30:19, God has established me in Tree of Abundant Life; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Proclaimed in Deuteronomy 30:19, this title marks the breaking of every ungodly siege, ushering the soul into divine abundance and Tree of Abundant Life."
   },
   {
     "id": 266,
@@ -2929,8 +2929,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Tree of Supernatural Power",
     "scriptureReference": "Psalm 66:7",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaG'vurah (עֵץ הַגְּבוּרָה). I walk in tree of supernatural power according to Psalm 66:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaG'vurah (עֵץ הַגְּבוּרָה). Through Psalm 66:7, God has established me in Tree of Supernatural Power; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Psalm 66:7, this name proclaims that your life is fortified against every onslaught of darkness by the power of Tree of Supernatural Power."
   },
   {
     "id": 267,
@@ -2940,8 +2940,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Tree of Heavenly Wisdom",
     "scriptureReference": "Proverbs 8:14",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaChokhmah (עֵץ הַחָכְמָה). I walk in tree of heavenly wisdom according to Proverbs 8:14.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaChokhmah (עֵץ הַחָכְמָה). Through Proverbs 8:14, God has established me in Tree of Heavenly Wisdom; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Forged in spiritual victory in Proverbs 8:14, this redemptive name endows the believer with holy tenacity and supernatural Tree of Heavenly Wisdom."
   },
   {
     "id": 268,
@@ -2951,8 +2951,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Tree of Spiritual Discernment",
     "scriptureReference": "1 Chronicles 12:32",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaBina (עֵץ הַבִּינָה). I walk in tree of spiritual discernment according to 1 Chronicles 12:32.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaBina (עֵץ הַבִּינָה). Through 1 Chronicles 12:32, God has established me in Tree of Spiritual Discernment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Set forth in 1 Chronicles 12:32, this apostolic designation calls you to stand as a king and priest unto God, walking in the dignity of Tree of Spiritual Discernment."
   },
   {
     "id": 269,
@@ -2962,8 +2962,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Tree of Unbreakable Covenant",
     "scriptureReference": "Genesis 9:16",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaBrit (עֵץ הַבְּרִית). I walk in tree of unbreakable covenant according to Genesis 9:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaBrit (עֵץ הַבְּרִית). Through Genesis 9:16, God has established me in Tree of Unbreakable Covenant; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Guaranteed by the covenant promises of Genesis 9:16, this sacred title reminds you that you are eternally set apart and cherished as Tree of Unbreakable Covenant."
   },
   {
     "id": 270,
@@ -2973,8 +2973,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Tree of Good Will and Delight",
     "scriptureReference": "Psalm 30:5",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaRatzon (עֵץ הָרָצוֹן). I walk in tree of good will and delight according to Psalm 30:5.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaRatzon (עֵץ הָרָצוֹן). Through Psalm 30:5, God has established me in Tree of Good Will and Delight; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Poured out in Psalm 30:5, this title carries the generational blessing of Abraham, causing uncommon favor and Tree of Good Will and Delight to rest upon you."
   },
   {
     "id": 271,
@@ -2984,8 +2984,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Tree of Everlasting Victory",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaNetzach (עֵץ הַנֵּצַח). I walk in tree of everlasting victory according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaNetzach (עֵץ הַנֵּצַח). Through 1 Chronicles 29:11, God has established me in Tree of Everlasting Victory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Proclaimed in 1 Chronicles 29:11, this title marks the breaking of every ungodly siege, ushering the soul into divine abundance and Tree of Everlasting Victory."
   },
   {
     "id": 272,
@@ -2995,8 +2995,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Tree of Majesty and Splendor",
     "scriptureReference": "Psalm 104:1",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaHod (עֵץ הַהוֹד). I walk in tree of majesty and splendor according to Psalm 104:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaHod (עֵץ הַהוֹד). Through Psalm 104:1, God has established me in Tree of Majesty and Splendor; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Psalm 104:1, this heavenly title represents the royal ornament and priestly splendor of Tree of Majesty and Splendor placed upon your life."
   },
   {
     "id": 273,
@@ -3006,8 +3006,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Tree of Desirable Beauty",
     "scriptureReference": "Ezekiel 20:6",
     "category": "New Identity",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaTzvi (עֵץ הַצְּבִי). I walk in tree of desirable beauty according to Ezekiel 20:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaTzvi (עֵץ הַצְּבִי). Through Ezekiel 20:6, God has established me in Tree of Desirable Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Unveiled in Ezekiel's prophetic visions of divine renewal and temple restoration (Ezekiel 20:6), this consecrated title replaces past labels of barrenness and defeat with royal identity as Tree of Desirable Beauty."
   },
   {
     "id": 274,
@@ -3017,8 +3017,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Tree of Righteous Judgment",
     "scriptureReference": "Isaiah 28:6",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaMishpat (עֵץ הַמִּשְׁפָּט). I walk in tree of righteous judgment according to Isaiah 28:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaMishpat (עֵץ הַמִּשְׁפָּט). Through Isaiah 28:6, God has established me in Tree of Righteous Judgment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Set forth in Isaiah 28:6, this apostolic designation calls you to stand as a king and priest unto God, walking in the dignity of Tree of Righteous Judgment."
   },
   {
     "id": 275,
@@ -3028,8 +3028,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Tree of My Beloved One",
     "scriptureReference": "Song of Songs 2:16",
     "category": "Beloved & Intimacy",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaDodi (עֵץ הַדּוֹדִי). I walk in tree of my beloved one according to Song of Songs 2:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ets HaDodi (עֵץ הַדּוֹדִי). Through Song of Songs 2:16, God has established me in Tree of My Beloved One; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Song of Songs 2:16, this redemptive designation confirms that you are neither forgotten nor overlooked, but ever held close as Tree of My Beloved One."
   },
   {
     "id": 276,
@@ -3039,8 +3039,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Guardian of Righteousness",
     "scriptureReference": "Psalm 23:3",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaTsedek (שֹׁמֵר הַצֶּדֶק). I walk in guardian of righteousness according to Psalm 23:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaTsedek (שֹׁמֵר הַצֶּדֶק). Through Psalm 23:3, God has established me in Guardian of Righteousness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Rooted in Psalm 23:3, this title symbolizes celestial investiture, clothing the believer in robes of praise and divine authority as Guardian of Righteousness."
   },
   {
     "id": 277,
@@ -3050,8 +3050,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Guardian of Lovingkindness",
     "scriptureReference": "Psalm 103:4",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaChesed (שֹׁמֵר הַחֶסֶד). I walk in guardian of lovingkindness according to Psalm 103:4.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaChesed (שֹׁמֵר הַחֶסֶד). Through Psalm 103:4, God has established me in Guardian of Lovingkindness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Psalm 103:4, this name affirms that by sovereign grace you are brought near and forever granted the status of Guardian of Lovingkindness."
   },
   {
     "id": 278,
@@ -3061,8 +3061,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Guardian of Faithfulness",
     "scriptureReference": "Lamentations 3:23",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaEmunah (שֹׁמֵר הָאֱמוּנָה). I walk in guardian of faithfulness according to Lamentations 3:23.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaEmunah (שֹׁמֵר הָאֱמוּנָה). Through Lamentations 3:23, God has established me in Guardian of Faithfulness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Lamentations 3:23, this name proclaims that your life is fortified against every onslaught of darkness by the power of Guardian of Faithfulness."
   },
   {
     "id": 279,
@@ -3072,8 +3072,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Guardian of Triumphant Salvation",
     "scriptureReference": "Psalm 118:15",
     "category": "Redemption & Grace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaYeshua (שֹׁמֵר הַיְשׁוּעָה). I walk in guardian of triumphant salvation according to Psalm 118:15.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaYeshua (שֹׁמֵר הַיְשׁוּעָה). Through Psalm 118:15, God has established me in Guardian of Triumphant Salvation; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Unveiled in Psalm 118:15, this redemptive name celebrates total ransom from captivity, establishing the believer's life upon Guardian of Triumphant Salvation."
   },
   {
     "id": 280,
@@ -3083,8 +3083,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Guardian of Heavenly Beauty",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaTiferet (שֹׁמֵר הַתִּפְאֶרֶת). I walk in guardian of heavenly beauty according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaTiferet (שֹׁמֵר הַתִּפְאֶרֶת). Through 1 Chronicles 29:11, God has established me in Guardian of Heavenly Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from 1 Chronicles 29:11, this redemptive declaration removes garments of mourning and clothes you in the majesty of Guardian of Heavenly Beauty."
   },
   {
     "id": 281,
@@ -3094,8 +3094,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Guardian of Divine Greatness",
     "scriptureReference": "Psalm 145:3",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaG'dulah (שֹׁמֵר הַגְּדֻלָּה). I walk in guardian of divine greatness according to Psalm 145:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaG'dulah (שֹׁמֵר הַגְּדֻלָּה). Through Psalm 145:3, God has established me in Guardian of Divine Greatness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Psalm 145:3, this redemptive declaration commands the blessings of heaven to overtake every area of your journey in Guardian of Divine Greatness."
   },
   {
     "id": 282,
@@ -3105,8 +3105,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Guardian of Wholeness and Peace",
     "scriptureReference": "Numbers 6:26",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaShalom (שֹׁמֵר הַשָּׁלוֹם). I walk in guardian of wholeness and peace according to Numbers 6:26.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaShalom (שֹׁמֵר הַשָּׁלוֹם). Through Numbers 6:26, God has established me in Guardian of Wholeness and Peace; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Infused with the joy of the Lord in Numbers 6:26, this title dissolves sorrow and imparts an unshakeable fortress of Guardian of Wholeness and Peace."
   },
   {
     "id": 283,
@@ -3116,8 +3116,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Guardian of Weighty Glory",
     "scriptureReference": "Psalm 24:7",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaKavod (שֹׁמֵר הַכָּבוֹד). I walk in guardian of weighty glory according to Psalm 24:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaKavod (שֹׁמֵר הַכָּבוֹד). Through Psalm 24:7, God has established me in Guardian of Weighty Glory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Psalm 24:7, this redemptive declaration removes garments of mourning and clothes you in the majesty of Guardian of Weighty Glory."
   },
   {
     "id": 284,
@@ -3127,8 +3127,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Guardian of Consecrated Holiness",
     "scriptureReference": "Leviticus 19:2",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaKedushah (שֹׁמֵר הַקְּדֻשָּׁה). I walk in guardian of consecrated holiness according to Leviticus 19:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaKedushah (שֹׁמֵר הַקְּדֻשָּׁה). Through Leviticus 19:2, God has established me in Guardian of Consecrated Holiness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Leviticus 19:2, this heavenly mandate establishes your life as an altar of worship and a vessel of divine dominion in Guardian of Consecrated Holiness."
   },
   {
     "id": 285,
@@ -3138,8 +3138,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Guardian of Tender Mercies",
     "scriptureReference": "Daniel 9:9",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaRachamim (שֹׁמֵר הָרַחֲמִים). I walk in guardian of tender mercies according to Daniel 9:9.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaRachamim (שֹׁמֵר הָרַחֲמִים). Through Daniel 9:9, God has established me in Guardian of Tender Mercies; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Daniel 9:9, this title breaks the spirit of rejection and orphanhood, welcoming the believer into intimate communion as Guardian of Tender Mercies."
   },
   {
     "id": 286,
@@ -3149,8 +3149,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Guardian of Unending Praise",
     "scriptureReference": "Psalm 145:1",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaTehillah (שֹׁמֵר הַתְּהִלָּה). I walk in guardian of unending praise according to Psalm 145:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaTehillah (שֹׁמֵר הַתְּהִלָּה). Through Psalm 145:1, God has established me in Guardian of Unending Praise; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Celebrated in Psalm 145:1, this name releases the supernatural peace that surpasses understanding, crowning your days with Guardian of Unending Praise."
   },
   {
     "id": 287,
@@ -3160,8 +3160,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Guardian of Generational Blessing",
     "scriptureReference": "Genesis 12:2",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaBerakhah (שֹׁמֵר הַבְּרָכָה). I walk in guardian of generational blessing according to Genesis 12:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaBerakhah (שֹׁמֵר הַבְּרָכָה). Through Genesis 12:2, God has established me in Guardian of Generational Blessing; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Genesis 12:2, this redemptive declaration commands the blessings of heaven to overtake every area of your journey in Guardian of Generational Blessing."
   },
   {
     "id": 288,
@@ -3171,8 +3171,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Guardian of Exuberant Joy",
     "scriptureReference": "Nehemiah 8:10",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaSimchah (שֹׁמֵר הַשִּׂמְחָה). I walk in guardian of exuberant joy according to Nehemiah 8:10.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaSimchah (שֹׁמֵר הַשִּׂמְחָה). Through Nehemiah 8:10, God has established me in Guardian of Exuberant Joy; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Infused with the joy of the Lord in Nehemiah 8:10, this title dissolves sorrow and imparts an unshakeable fortress of Guardian of Exuberant Joy."
   },
   {
     "id": 289,
@@ -3182,8 +3182,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Guardian of Eternity and Ages",
     "scriptureReference": "Ecclesiastes 3:11",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaOlam (שֹׁמֵר הָעוֹלָם). I walk in guardian of eternity and ages according to Ecclesiastes 3:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaOlam (שֹׁמֵר הָעוֹלָם). Through Ecclesiastes 3:11, God has established me in Guardian of Eternity and Ages; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Proclaimed in Ecclesiastes 3:11, this covenant moniker assures the believer that God's steadfast chesed preserves and honors you as Guardian of Eternity and Ages."
   },
   {
     "id": 290,
@@ -3193,8 +3193,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Guardian of Abundant Life",
     "scriptureReference": "Deuteronomy 30:19",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaChayim (שֹׁמֵר הַחַיִּים). I walk in guardian of abundant life according to Deuteronomy 30:19.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaChayim (שֹׁמֵר הַחַיִּים). Through Deuteronomy 30:19, God has established me in Guardian of Abundant Life; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in Deuteronomy 30:19, this redemptive name heralds total restoration of wasted years, re-establishing you in the joy of Guardian of Abundant Life."
   },
   {
     "id": 291,
@@ -3204,8 +3204,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Guardian of Supernatural Power",
     "scriptureReference": "Psalm 66:7",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaG'vurah (שֹׁמֵר הַגְּבוּרָה). I walk in guardian of supernatural power according to Psalm 66:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaG'vurah (שֹׁמֵר הַגְּבוּרָה). Through Psalm 66:7, God has established me in Guardian of Supernatural Power; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Forged in spiritual victory in Psalm 66:7, this redemptive name endows the believer with holy tenacity and supernatural Guardian of Supernatural Power."
   },
   {
     "id": 292,
@@ -3215,8 +3215,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Guardian of Heavenly Wisdom",
     "scriptureReference": "Proverbs 8:14",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaChokhmah (שֹׁמֵר הַחָכְמָה). I walk in guardian of heavenly wisdom according to Proverbs 8:14.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaChokhmah (שֹׁמֵר הַחָכְמָה). Through Proverbs 8:14, God has established me in Guardian of Heavenly Wisdom; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Proverbs 8:14, this warrior title declares that through Christ who strengthens you, you arise and conquer in Guardian of Heavenly Wisdom."
   },
   {
     "id": 293,
@@ -3226,8 +3226,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Guardian of Spiritual Discernment",
     "scriptureReference": "1 Chronicles 12:32",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaBina (שֹׁמֵר הַבִּינָה). I walk in guardian of spiritual discernment according to 1 Chronicles 12:32.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaBina (שֹׁמֵר הַבִּינָה). Through 1 Chronicles 12:32, God has established me in Guardian of Spiritual Discernment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in 1 Chronicles 12:32, this heavenly mandate establishes your life as an altar of worship and a vessel of divine dominion in Guardian of Spiritual Discernment."
   },
   {
     "id": 294,
@@ -3237,8 +3237,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Guardian of Unbreakable Covenant",
     "scriptureReference": "Genesis 9:16",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaBrit (שֹׁמֵר הַבְּרִית). I walk in guardian of unbreakable covenant according to Genesis 9:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaBrit (שֹׁמֵר הַבְּרִית). Through Genesis 9:16, God has established me in Guardian of Unbreakable Covenant; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Enshrined in Genesis 9:16, this name seals Yahweh's unshakeable covenant oath, affirming you as His treasured possession in Guardian of Unbreakable Covenant."
   },
   {
     "id": 295,
@@ -3248,8 +3248,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Guardian of Good Will and Delight",
     "scriptureReference": "Psalm 30:5",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaRatzon (שֹׁמֵר הָרָצוֹן). I walk in guardian of good will and delight according to Psalm 30:5.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaRatzon (שֹׁמֵר הָרָצוֹן). Through Psalm 30:5, God has established me in Guardian of Good Will and Delight; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Psalm 30:5, this prophetic name marks you with the goodness and lovingkindness of God, releasing the fullness of Guardian of Good Will and Delight."
   },
   {
     "id": 296,
@@ -3259,8 +3259,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Guardian of Everlasting Victory",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaNetzach (שֹׁמֵר הַנֵּצַח). I walk in guardian of everlasting victory according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaNetzach (שֹׁמֵר הַנֵּצַח). Through 1 Chronicles 29:11, God has established me in Guardian of Everlasting Victory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in 1 Chronicles 29:11, this redemptive name heralds total restoration of wasted years, re-establishing you in the joy of Guardian of Everlasting Victory."
   },
   {
     "id": 297,
@@ -3270,8 +3270,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Guardian of Majesty and Splendor",
     "scriptureReference": "Psalm 104:1",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaHod (שֹׁמֵר הַהוֹד). I walk in guardian of majesty and splendor according to Psalm 104:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaHod (שֹׁמֵר הַהוֹד). Through Psalm 104:1, God has established me in Guardian of Majesty and Splendor; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Rooted in Psalm 104:1, this title symbolizes celestial investiture, clothing the believer in robes of praise and divine authority as Guardian of Majesty and Splendor."
   },
   {
     "id": 298,
@@ -3281,8 +3281,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Guardian of Desirable Beauty",
     "scriptureReference": "Ezekiel 20:6",
     "category": "New Identity",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaTzvi (שֹׁמֵר הַצְּבִי). I walk in guardian of desirable beauty according to Ezekiel 20:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaTzvi (שֹׁמֵר הַצְּבִי). Through Ezekiel 20:6, God has established me in Guardian of Desirable Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in Ezekiel 20:6, this prophetic name marks a definitive transition from obscurity into God's radiant decree: Guardian of Desirable Beauty."
   },
   {
     "id": 299,
@@ -3292,8 +3292,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Guardian of Righteous Judgment",
     "scriptureReference": "Isaiah 28:6",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaMishpat (שֹׁמֵר הַמִּשְׁפָּט). I walk in guardian of righteous judgment according to Isaiah 28:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaMishpat (שֹׁמֵר הַמִּשְׁפָּט). Through Isaiah 28:6, God has established me in Guardian of Righteous Judgment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Isaiah 28:6, this heavenly mandate establishes your life as an altar of worship and a vessel of divine dominion in Guardian of Righteous Judgment."
   },
   {
     "id": 300,
@@ -3303,8 +3303,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Guardian of My Beloved One",
     "scriptureReference": "Song of Songs 2:16",
     "category": "Beloved & Intimacy",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaDodi (שֹׁמֵר הַדּוֹדִי). I walk in guardian of my beloved one according to Song of Songs 2:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shomer HaDodi (שֹׁמֵר הַדּוֹדִי). Through Song of Songs 2:16, God has established me in Guardian of My Beloved One; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Breathed with tender bridal love in Song of Songs 2:16, this name reflects the secret place of divine intimacy where you abide as Guardian of My Beloved One."
   },
   {
     "id": 301,
@@ -3314,8 +3314,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Lover of Righteousness",
     "scriptureReference": "Psalm 23:3",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaTsedek (אוֹהֵב הַצֶּדֶק). I walk in lover of righteousness according to Psalm 23:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaTsedek (אוֹהֵב הַצֶּדֶק). Through Psalm 23:3, God has established me in Lover of Righteousness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Psalm 23:3, this redemptive declaration removes garments of mourning and clothes you in the majesty of Lover of Righteousness."
   },
   {
     "id": 302,
@@ -3325,8 +3325,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Lover of Lovingkindness",
     "scriptureReference": "Psalm 103:4",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaChesed (אוֹהֵב הַחֶסֶד). I walk in lover of lovingkindness according to Psalm 103:4.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaChesed (אוֹהֵב הַחֶסֶד). Through Psalm 103:4, God has established me in Lover of Lovingkindness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Psalm 103:4, this redemptive designation assures your heart that in the house of God you walk in full acceptance as Lover of Lovingkindness."
   },
   {
     "id": 303,
@@ -3336,8 +3336,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Lover of Faithfulness",
     "scriptureReference": "Lamentations 3:23",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaEmunah (אוֹהֵב הָאֱמוּנָה). I walk in lover of faithfulness according to Lamentations 3:23.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaEmunah (אוֹהֵב הָאֱמוּנָה). Through Lamentations 3:23, God has established me in Lover of Faithfulness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Forged in spiritual victory in Lamentations 3:23, this redemptive name endows the believer with holy tenacity and supernatural Lover of Faithfulness."
   },
   {
     "id": 304,
@@ -3347,8 +3347,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Lover of Triumphant Salvation",
     "scriptureReference": "Psalm 118:15",
     "category": "Redemption & Grace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaYeshua (אוֹהֵב הַיְשׁוּעָה). I walk in lover of triumphant salvation according to Psalm 118:15.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaYeshua (אוֹהֵב הַיְשׁוּעָה). Through Psalm 118:15, God has established me in Lover of Triumphant Salvation; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Grounded in Psalm 118:15, this title bears witness to the triumph of divine mercy over judgment, designating you as an inheritor of Lover of Triumphant Salvation."
   },
   {
     "id": 305,
@@ -3358,8 +3358,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Lover of Heavenly Beauty",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaTiferet (אוֹהֵב הַתִּפְאֶרֶת). I walk in lover of heavenly beauty according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaTiferet (אוֹהֵב הַתִּפְאֶרֶת). Through 1 Chronicles 29:11, God has established me in Lover of Heavenly Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in 1 Chronicles 29:11, this heavenly title represents the royal ornament and priestly splendor of Lover of Heavenly Beauty placed upon your life."
   },
   {
     "id": 306,
@@ -3369,8 +3369,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Lover of Divine Greatness",
     "scriptureReference": "Psalm 145:3",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaG'dulah (אוֹהֵב הַגְּדֻלָּה). I walk in lover of divine greatness according to Psalm 145:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaG'dulah (אוֹהֵב הַגְּדֻלָּה). Through Psalm 145:3, God has established me in Lover of Divine Greatness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Poured out in Psalm 145:3, this title carries the generational blessing of Abraham, causing uncommon favor and Lover of Divine Greatness to rest upon you."
   },
   {
     "id": 307,
@@ -3380,8 +3380,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Lover of Wholeness and Peace",
     "scriptureReference": "Numbers 6:26",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaShalom (אוֹהֵב הַשָּׁלוֹם). I walk in lover of wholeness and peace according to Numbers 6:26.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaShalom (אוֹהֵב הַשָּׁלוֹם). Through Numbers 6:26, God has established me in Lover of Wholeness and Peace; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Celebrated in Numbers 6:26, this name releases the supernatural peace that surpasses understanding, crowning your days with Lover of Wholeness and Peace."
   },
   {
     "id": 308,
@@ -3391,8 +3391,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Lover of Weighty Glory",
     "scriptureReference": "Psalm 24:7",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaKavod (אוֹהֵב הַכָּבוֹד). I walk in lover of weighty glory according to Psalm 24:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaKavod (אוֹהֵב הַכָּבוֹד). Through Psalm 24:7, God has established me in Lover of Weighty Glory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Psalm 24:7, this heavenly title represents the royal ornament and priestly splendor of Lover of Weighty Glory placed upon your life."
   },
   {
     "id": 309,
@@ -3402,8 +3402,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Lover of Consecrated Holiness",
     "scriptureReference": "Leviticus 19:2",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaKedushah (אוֹהֵב הַקְּדֻשָּׁה). I walk in lover of consecrated holiness according to Leviticus 19:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaKedushah (אוֹהֵב הַקְּדֻשָּׁה). Through Leviticus 19:2, God has established me in Lover of Consecrated Holiness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Consecrated in Leviticus 19:2, this priestly title confers kingdom authority and intercessory access, ordaining the believer for Lover of Consecrated Holiness."
   },
   {
     "id": 310,
@@ -3413,8 +3413,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Lover of Tender Mercies",
     "scriptureReference": "Daniel 9:9",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaRachamim (אוֹהֵב הָרַחֲמִים). I walk in lover of tender mercies according to Daniel 9:9.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaRachamim (אוֹהֵב הָרַחֲמִים). Through Daniel 9:9, God has established me in Lover of Tender Mercies; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Daniel 9:9, this name affirms that by sovereign grace you are brought near and forever granted the status of Lover of Tender Mercies."
   },
   {
     "id": 311,
@@ -3424,8 +3424,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Lover of Unending Praise",
     "scriptureReference": "Psalm 145:1",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaTehillah (אוֹהֵב הַתְּהִלָּה). I walk in lover of unending praise according to Psalm 145:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaTehillah (אוֹהֵב הַתְּהִלָּה). Through Psalm 145:1, God has established me in Lover of Unending Praise; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Psalm 145:1, this sacred title reminds the believer that the oil of gladness has triumphed over spirit of heaviness in Lover of Unending Praise."
   },
   {
     "id": 312,
@@ -3435,8 +3435,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Lover of Generational Blessing",
     "scriptureReference": "Genesis 12:2",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaBerakhah (אוֹהֵב הַבְּרָכָה). I walk in lover of generational blessing according to Genesis 12:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaBerakhah (אוֹהֵב הַבְּרָכָה). Through Genesis 12:2, God has established me in Lover of Generational Blessing; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Poured out in Genesis 12:2, this title carries the generational blessing of Abraham, causing uncommon favor and Lover of Generational Blessing to rest upon you."
   },
   {
     "id": 313,
@@ -3446,8 +3446,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Lover of Exuberant Joy",
     "scriptureReference": "Nehemiah 8:10",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaSimchah (אוֹהֵב הַשִּׂמְחָה). I walk in lover of exuberant joy according to Nehemiah 8:10.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaSimchah (אוֹהֵב הַשִּׂמְחָה). Through Nehemiah 8:10, God has established me in Lover of Exuberant Joy; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Celebrated in Nehemiah 8:10, this name releases the supernatural peace that surpasses understanding, crowning your days with Lover of Exuberant Joy."
   },
   {
     "id": 314,
@@ -3457,8 +3457,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Lover of Eternity and Ages",
     "scriptureReference": "Ecclesiastes 3:11",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaOlam (אוֹהֵב הָעוֹלָם). I walk in lover of eternity and ages according to Ecclesiastes 3:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaOlam (אוֹהֵב הָעוֹלָם). Through Ecclesiastes 3:11, God has established me in Lover of Eternity and Ages; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Guaranteed by the covenant promises of Ecclesiastes 3:11, this sacred title reminds you that you are eternally set apart and cherished as Lover of Eternity and Ages."
   },
   {
     "id": 315,
@@ -3468,8 +3468,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Lover of Abundant Life",
     "scriptureReference": "Deuteronomy 30:19",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaChayim (אוֹהֵב הַחַיִּים). I walk in lover of abundant life according to Deuteronomy 30:19.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaChayim (אוֹהֵב הַחַיִּים). Through Deuteronomy 30:19, God has established me in Lover of Abundant Life; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Prophesied in Deuteronomy 30:19, this powerful decree overturns generational stagnation, commanding supernatural emergence and Lover of Abundant Life."
   },
   {
     "id": 316,
@@ -3479,8 +3479,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Lover of Supernatural Power",
     "scriptureReference": "Psalm 66:7",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaG'vurah (אוֹהֵב הַגְּבוּרָה). I walk in lover of supernatural power according to Psalm 66:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaG'vurah (אוֹהֵב הַגְּבוּרָה). Through Psalm 66:7, God has established me in Lover of Supernatural Power; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Psalm 66:7, this warrior title declares that through Christ who strengthens you, you arise and conquer in Lover of Supernatural Power."
   },
   {
     "id": 317,
@@ -3490,8 +3490,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Lover of Heavenly Wisdom",
     "scriptureReference": "Proverbs 8:14",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaChokhmah (אוֹהֵב הַחָכְמָה). I walk in lover of heavenly wisdom according to Proverbs 8:14.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaChokhmah (אוֹהֵב הַחָכְמָה). Through Proverbs 8:14, God has established me in Lover of Heavenly Wisdom; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Proverbs 8:14, this name proclaims that your life is fortified against every onslaught of darkness by the power of Lover of Heavenly Wisdom."
   },
   {
     "id": 318,
@@ -3501,8 +3501,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Lover of Spiritual Discernment",
     "scriptureReference": "1 Chronicles 12:32",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaBina (אוֹהֵב הַבִּינָה). I walk in lover of spiritual discernment according to 1 Chronicles 12:32.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaBina (אוֹהֵב הַבִּינָה). Through 1 Chronicles 12:32, God has established me in Lover of Spiritual Discernment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Consecrated in 1 Chronicles 12:32, this priestly title confers kingdom authority and intercessory access, ordaining the believer for Lover of Spiritual Discernment."
   },
   {
     "id": 319,
@@ -3512,8 +3512,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Lover of Unbreakable Covenant",
     "scriptureReference": "Genesis 9:16",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaBrit (אוֹהֵב הַבְּרִית). I walk in lover of unbreakable covenant according to Genesis 9:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaBrit (אוֹהֵב הַבְּרִית). Through Genesis 9:16, God has established me in Lover of Unbreakable Covenant; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Proclaimed in Genesis 9:16, this covenant moniker assures the believer that God's steadfast chesed preserves and honors you as Lover of Unbreakable Covenant."
   },
   {
     "id": 320,
@@ -3523,8 +3523,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Lover of Good Will and Delight",
     "scriptureReference": "Psalm 30:5",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaRatzon (אוֹהֵב הָרָצוֹן). I walk in lover of good will and delight according to Psalm 30:5.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaRatzon (אוֹהֵב הָרָצוֹן). Through Psalm 30:5, God has established me in Lover of Good Will and Delight; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Psalm 30:5, this redemptive declaration commands the blessings of heaven to overtake every area of your journey in Lover of Good Will and Delight."
   },
   {
     "id": 321,
@@ -3534,8 +3534,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Lover of Everlasting Victory",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaNetzach (אוֹהֵב הַנֵּצַח). I walk in lover of everlasting victory according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaNetzach (אוֹהֵב הַנֵּצַח). Through 1 Chronicles 29:11, God has established me in Lover of Everlasting Victory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Prophesied in 1 Chronicles 29:11, this powerful decree overturns generational stagnation, commanding supernatural emergence and Lover of Everlasting Victory."
   },
   {
     "id": 322,
@@ -3545,8 +3545,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Lover of Majesty and Splendor",
     "scriptureReference": "Psalm 104:1",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaHod (אוֹהֵב הַהוֹד). I walk in lover of majesty and splendor according to Psalm 104:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaHod (אוֹהֵב הַהוֹד). Through Psalm 104:1, God has established me in Lover of Majesty and Splendor; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Psalm 104:1, this redemptive declaration removes garments of mourning and clothes you in the majesty of Lover of Majesty and Splendor."
   },
   {
     "id": 323,
@@ -3556,8 +3556,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Lover of Desirable Beauty",
     "scriptureReference": "Ezekiel 20:6",
     "category": "New Identity",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaTzvi (אוֹהֵב הַצְּבִי). I walk in lover of desirable beauty according to Ezekiel 20:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaTzvi (אוֹהֵב הַצְּבִי). Through Ezekiel 20:6, God has established me in Lover of Desirable Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Ezekiel 20:6, the mouth of the Lord bestows this name to nullify human mockery and establish you in the reality of Lover of Desirable Beauty."
   },
   {
     "id": 324,
@@ -3567,8 +3567,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Lover of Righteous Judgment",
     "scriptureReference": "Isaiah 28:6",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaMishpat (אוֹהֵב הַמִּשְׁפָּט). I walk in lover of righteous judgment according to Isaiah 28:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaMishpat (אוֹהֵב הַמִּשְׁפָּט). Through Isaiah 28:6, God has established me in Lover of Righteous Judgment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Consecrated in Isaiah 28:6, this priestly title confers kingdom authority and intercessory access, ordaining the believer for Lover of Righteous Judgment."
   },
   {
     "id": 325,
@@ -3578,8 +3578,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Lover of My Beloved One",
     "scriptureReference": "Song of Songs 2:16",
     "category": "Beloved & Intimacy",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaDodi (אוֹהֵב הַדּוֹדִי). I walk in lover of my beloved one according to Song of Songs 2:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Ohev HaDodi (אוֹהֵב הַדּוֹדִי). Through Song of Songs 2:16, God has established me in Lover of My Beloved One; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in Song of Songs 2:16, this cherished title expresses Yahweh's profound delight and jealous affection over your soul as Lover of My Beloved One."
   },
   {
     "id": 326,
@@ -3589,8 +3589,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Children of Righteousness",
     "scriptureReference": "Psalm 23:3",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaTsedek (בְּנֵי הַצֶּדֶק). I walk in children of righteousness according to Psalm 23:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaTsedek (בְּנֵי הַצֶּדֶק). Through Psalm 23:3, God has established me in Children of Righteousness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Psalm 23:3, this heavenly title represents the royal ornament and priestly splendor of Children of Righteousness placed upon your life."
   },
   {
     "id": 327,
@@ -3600,8 +3600,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Children of Lovingkindness",
     "scriptureReference": "Psalm 103:4",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaChesed (בְּנֵי הַחֶסֶד). I walk in children of lovingkindness according to Psalm 103:4.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaChesed (בְּנֵי הַחֶסֶד). Through Psalm 103:4, God has established me in Children of Lovingkindness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Psalm 103:4, this title breaks the spirit of rejection and orphanhood, welcoming the believer into intimate communion as Children of Lovingkindness."
   },
   {
     "id": 328,
@@ -3611,8 +3611,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Children of Faithfulness",
     "scriptureReference": "Lamentations 3:23",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaEmunah (בְּנֵי הָאֱמוּנָה). I walk in children of faithfulness according to Lamentations 3:23.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaEmunah (בְּנֵי הָאֱמוּנָה). Through Lamentations 3:23, God has established me in Children of Faithfulness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Lamentations 3:23, this warrior title declares that through Christ who strengthens you, you arise and conquer in Children of Faithfulness."
   },
   {
     "id": 329,
@@ -3622,8 +3622,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Children of Triumphant Salvation",
     "scriptureReference": "Psalm 118:15",
     "category": "Redemption & Grace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaYeshua (בְּנֵי הַיְשׁוּעָה). I walk in children of triumphant salvation according to Psalm 118:15.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaYeshua (בְּנֵי הַיְשׁוּעָה). Through Psalm 118:15, God has established me in Children of Triumphant Salvation; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Spoken in Psalm 118:15, this name commemorates the price paid to bring you into the liberty, righteousness, and unmerited favor of Children of Triumphant Salvation."
   },
   {
     "id": 330,
@@ -3633,8 +3633,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Children of Heavenly Beauty",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaTiferet (בְּנֵי הַתִּפְאֶרֶת). I walk in children of heavenly beauty according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaTiferet (בְּנֵי הַתִּפְאֶרֶת). Through 1 Chronicles 29:11, God has established me in Children of Heavenly Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Rooted in 1 Chronicles 29:11, this title symbolizes celestial investiture, clothing the believer in robes of praise and divine authority as Children of Heavenly Beauty."
   },
   {
     "id": 331,
@@ -3644,8 +3644,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Children of Divine Greatness",
     "scriptureReference": "Psalm 145:3",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaG'dulah (בְּנֵי הַגְּדֻלָּה). I walk in children of divine greatness according to Psalm 145:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaG'dulah (בְּנֵי הַגְּדֻלָּה). Through Psalm 145:3, God has established me in Children of Divine Greatness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Psalm 145:3, this prophetic name marks you with the goodness and lovingkindness of God, releasing the fullness of Children of Divine Greatness."
   },
   {
     "id": 332,
@@ -3655,8 +3655,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Children of Wholeness and Peace",
     "scriptureReference": "Numbers 6:26",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaShalom (בְּנֵי הַשָּׁלוֹם). I walk in children of wholeness and peace according to Numbers 6:26.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaShalom (בְּנֵי הַשָּׁלוֹם). Through Numbers 6:26, God has established me in Children of Wholeness and Peace; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Numbers 6:26, this sacred title reminds the believer that the oil of gladness has triumphed over spirit of heaviness in Children of Wholeness and Peace."
   },
   {
     "id": 333,
@@ -3666,8 +3666,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Children of Weighty Glory",
     "scriptureReference": "Psalm 24:7",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaKavod (בְּנֵי הַכָּבוֹד). I walk in children of weighty glory according to Psalm 24:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaKavod (בְּנֵי הַכָּבוֹד). Through Psalm 24:7, God has established me in Children of Weighty Glory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Rooted in Psalm 24:7, this title symbolizes celestial investiture, clothing the believer in robes of praise and divine authority as Children of Weighty Glory."
   },
   {
     "id": 334,
@@ -3677,8 +3677,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Children of Consecrated Holiness",
     "scriptureReference": "Leviticus 19:2",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaKedushah (בְּנֵי הַקְּדֻשָּׁה). I walk in children of consecrated holiness according to Leviticus 19:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaKedushah (בְּנֵי הַקְּדֻשָּׁה). Through Leviticus 19:2, God has established me in Children of Consecrated Holiness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Set forth in Leviticus 19:2, this apostolic designation calls you to stand as a king and priest unto God, walking in the dignity of Children of Consecrated Holiness."
   },
   {
     "id": 335,
@@ -3688,8 +3688,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Children of Tender Mercies",
     "scriptureReference": "Daniel 9:9",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaRachamim (בְּנֵי הָרַחֲמִים). I walk in children of tender mercies according to Daniel 9:9.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaRachamim (בְּנֵי הָרַחֲמִים). Through Daniel 9:9, God has established me in Children of Tender Mercies; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Daniel 9:9, this redemptive designation assures your heart that in the house of God you walk in full acceptance as Children of Tender Mercies."
   },
   {
     "id": 336,
@@ -3699,8 +3699,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Children of Unending Praise",
     "scriptureReference": "Psalm 145:1",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaTehillah (בְּנֵי הַתְּהִלָּה). I walk in children of unending praise according to Psalm 145:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaTehillah (בְּנֵי הַתְּהִלָּה). Through Psalm 145:1, God has established me in Children of Unending Praise; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Infused with the joy of the Lord in Psalm 145:1, this title dissolves sorrow and imparts an unshakeable fortress of Children of Unending Praise."
   },
   {
     "id": 337,
@@ -3710,8 +3710,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Children of Generational Blessing",
     "scriptureReference": "Genesis 12:2",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaBerakhah (בְּנֵי הַבְּרָכָה). I walk in children of generational blessing according to Genesis 12:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaBerakhah (בְּנֵי הַבְּרָכָה). Through Genesis 12:2, God has established me in Children of Generational Blessing; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Genesis 12:2, this prophetic name marks you with the goodness and lovingkindness of God, releasing the fullness of Children of Generational Blessing."
   },
   {
     "id": 338,
@@ -3721,8 +3721,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Children of Exuberant Joy",
     "scriptureReference": "Nehemiah 8:10",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaSimchah (בְּנֵי הַשִּׂמְחָה). I walk in children of exuberant joy according to Nehemiah 8:10.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaSimchah (בְּנֵי הַשִּׂמְחָה). Through Nehemiah 8:10, God has established me in Children of Exuberant Joy; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Nehemiah 8:10, this sacred title reminds the believer that the oil of gladness has triumphed over spirit of heaviness in Children of Exuberant Joy."
   },
   {
     "id": 339,
@@ -3732,8 +3732,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Children of Eternity and Ages",
     "scriptureReference": "Ecclesiastes 3:11",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaOlam (בְּנֵי הָעוֹלָם). I walk in children of eternity and ages according to Ecclesiastes 3:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaOlam (בְּנֵי הָעוֹלָם). Through Ecclesiastes 3:11, God has established me in Children of Eternity and Ages; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Enshrined in Ecclesiastes 3:11, this name seals Yahweh's unshakeable covenant oath, affirming you as His treasured possession in Children of Eternity and Ages."
   },
   {
     "id": 340,
@@ -3743,8 +3743,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Children of Abundant Life",
     "scriptureReference": "Deuteronomy 30:19",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaChayim (בְּנֵי הַחַיִּים). I walk in children of abundant life according to Deuteronomy 30:19.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaChayim (בְּנֵי הַחַיִּים). Through Deuteronomy 30:19, God has established me in Children of Abundant Life; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Proclaimed in Deuteronomy 30:19, this title marks the breaking of every ungodly siege, ushering the soul into divine abundance and Children of Abundant Life."
   },
   {
     "id": 341,
@@ -3754,8 +3754,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Children of Supernatural Power",
     "scriptureReference": "Psalm 66:7",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaG'vurah (בְּנֵי הַגְּבוּרָה). I walk in children of supernatural power according to Psalm 66:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaG'vurah (בְּנֵי הַגְּבוּרָה). Through Psalm 66:7, God has established me in Children of Supernatural Power; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Psalm 66:7, this name proclaims that your life is fortified against every onslaught of darkness by the power of Children of Supernatural Power."
   },
   {
     "id": 342,
@@ -3765,8 +3765,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Children of Heavenly Wisdom",
     "scriptureReference": "Proverbs 8:14",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaChokhmah (בְּנֵי הַחָכְמָה). I walk in children of heavenly wisdom according to Proverbs 8:14.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaChokhmah (בְּנֵי הַחָכְמָה). Through Proverbs 8:14, God has established me in Children of Heavenly Wisdom; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Forged in spiritual victory in Proverbs 8:14, this redemptive name endows the believer with holy tenacity and supernatural Children of Heavenly Wisdom."
   },
   {
     "id": 343,
@@ -3776,8 +3776,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Children of Spiritual Discernment",
     "scriptureReference": "1 Chronicles 12:32",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaBina (בְּנֵי הַבִּינָה). I walk in children of spiritual discernment according to 1 Chronicles 12:32.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaBina (בְּנֵי הַבִּינָה). Through 1 Chronicles 12:32, God has established me in Children of Spiritual Discernment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Set forth in 1 Chronicles 12:32, this apostolic designation calls you to stand as a king and priest unto God, walking in the dignity of Children of Spiritual Discernment."
   },
   {
     "id": 344,
@@ -3787,8 +3787,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Children of Unbreakable Covenant",
     "scriptureReference": "Genesis 9:16",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaBrit (בְּנֵי הַבְּרִית). I walk in children of unbreakable covenant according to Genesis 9:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaBrit (בְּנֵי הַבְּרִית). Through Genesis 9:16, God has established me in Children of Unbreakable Covenant; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Guaranteed by the covenant promises of Genesis 9:16, this sacred title reminds you that you are eternally set apart and cherished as Children of Unbreakable Covenant."
   },
   {
     "id": 345,
@@ -3798,8 +3798,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Children of Good Will and Delight",
     "scriptureReference": "Psalm 30:5",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaRatzon (בְּנֵי הָרָצוֹן). I walk in children of good will and delight according to Psalm 30:5.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaRatzon (בְּנֵי הָרָצוֹן). Through Psalm 30:5, God has established me in Children of Good Will and Delight; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Poured out in Psalm 30:5, this title carries the generational blessing of Abraham, causing uncommon favor and Children of Good Will and Delight to rest upon you."
   },
   {
     "id": 346,
@@ -3809,8 +3809,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Children of Everlasting Victory",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaNetzach (בְּנֵי הַנֵּצַח). I walk in children of everlasting victory according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaNetzach (בְּנֵי הַנֵּצַח). Through 1 Chronicles 29:11, God has established me in Children of Everlasting Victory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Proclaimed in 1 Chronicles 29:11, this title marks the breaking of every ungodly siege, ushering the soul into divine abundance and Children of Everlasting Victory."
   },
   {
     "id": 347,
@@ -3820,8 +3820,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Children of Majesty and Splendor",
     "scriptureReference": "Psalm 104:1",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaHod (בְּנֵי הַהוֹד). I walk in children of majesty and splendor according to Psalm 104:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaHod (בְּנֵי הַהוֹד). Through Psalm 104:1, God has established me in Children of Majesty and Splendor; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Psalm 104:1, this heavenly title represents the royal ornament and priestly splendor of Children of Majesty and Splendor placed upon your life."
   },
   {
     "id": 348,
@@ -3831,8 +3831,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Children of Desirable Beauty",
     "scriptureReference": "Ezekiel 20:6",
     "category": "New Identity",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaTzvi (בְּנֵי הַצְּבִי). I walk in children of desirable beauty according to Ezekiel 20:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaTzvi (בְּנֵי הַצְּבִי). Through Ezekiel 20:6, God has established me in Children of Desirable Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Unveiled in Ezekiel's prophetic visions of divine renewal and temple restoration (Ezekiel 20:6), this consecrated title replaces past labels of barrenness and defeat with royal identity as Children of Desirable Beauty."
   },
   {
     "id": 349,
@@ -3842,8 +3842,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Children of Righteous Judgment",
     "scriptureReference": "Isaiah 28:6",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaMishpat (בְּנֵי הַמִּשְׁפָּט). I walk in children of righteous judgment according to Isaiah 28:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaMishpat (בְּנֵי הַמִּשְׁפָּט). Through Isaiah 28:6, God has established me in Children of Righteous Judgment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Set forth in Isaiah 28:6, this apostolic designation calls you to stand as a king and priest unto God, walking in the dignity of Children of Righteous Judgment."
   },
   {
     "id": 350,
@@ -3853,8 +3853,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Children of My Beloved One",
     "scriptureReference": "Song of Songs 2:16",
     "category": "Beloved & Intimacy",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaDodi (בְּנֵי הַדּוֹדִי). I walk in children of my beloved one according to Song of Songs 2:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bnei HaDodi (בְּנֵי הַדּוֹדִי). Through Song of Songs 2:16, God has established me in Children of My Beloved One; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Song of Songs 2:16, this redemptive designation confirms that you are neither forgotten nor overlooked, but ever held close as Children of My Beloved One."
   },
   {
     "id": 351,
@@ -3864,8 +3864,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Daughter of Righteousness",
     "scriptureReference": "Psalm 23:3",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaTsedek (בַּת הַצֶּדֶק). I walk in daughter of righteousness according to Psalm 23:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaTsedek (בַּת הַצֶּדֶק). Through Psalm 23:3, God has established me in Daughter of Righteousness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Rooted in Psalm 23:3, this title symbolizes celestial investiture, clothing the believer in robes of praise and divine authority as Daughter of Righteousness."
   },
   {
     "id": 352,
@@ -3875,8 +3875,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Daughter of Lovingkindness",
     "scriptureReference": "Psalm 103:4",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaChesed (בַּת הַחֶסֶד). I walk in daughter of lovingkindness according to Psalm 103:4.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaChesed (בַּת הַחֶסֶד). Through Psalm 103:4, God has established me in Daughter of Lovingkindness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Psalm 103:4, this name affirms that by sovereign grace you are brought near and forever granted the status of Daughter of Lovingkindness."
   },
   {
     "id": 353,
@@ -3886,8 +3886,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Daughter of Faithfulness",
     "scriptureReference": "Lamentations 3:23",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaEmunah (בַּת הָאֱמוּנָה). I walk in daughter of faithfulness according to Lamentations 3:23.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaEmunah (בַּת הָאֱמוּנָה). Through Lamentations 3:23, God has established me in Daughter of Faithfulness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Lamentations 3:23, this name proclaims that your life is fortified against every onslaught of darkness by the power of Daughter of Faithfulness."
   },
   {
     "id": 354,
@@ -3897,8 +3897,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Daughter of Triumphant Salvation",
     "scriptureReference": "Psalm 118:15",
     "category": "Redemption & Grace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaYeshua (בַּת הַיְשׁוּעָה). I walk in daughter of triumphant salvation according to Psalm 118:15.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaYeshua (בַּת הַיְשׁוּעָה). Through Psalm 118:15, God has established me in Daughter of Triumphant Salvation; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Unveiled in Psalm 118:15, this redemptive name celebrates total ransom from captivity, establishing the believer's life upon Daughter of Triumphant Salvation."
   },
   {
     "id": 355,
@@ -3908,8 +3908,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Daughter of Heavenly Beauty",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaTiferet (בַּת הַתִּפְאֶרֶת). I walk in daughter of heavenly beauty according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaTiferet (בַּת הַתִּפְאֶרֶת). Through 1 Chronicles 29:11, God has established me in Daughter of Heavenly Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from 1 Chronicles 29:11, this redemptive declaration removes garments of mourning and clothes you in the majesty of Daughter of Heavenly Beauty."
   },
   {
     "id": 356,
@@ -3919,8 +3919,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Daughter of Divine Greatness",
     "scriptureReference": "Psalm 145:3",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaG'dulah (בַּת הַגְּדֻלָּה). I walk in daughter of divine greatness according to Psalm 145:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaG'dulah (בַּת הַגְּדֻלָּה). Through Psalm 145:3, God has established me in Daughter of Divine Greatness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Psalm 145:3, this redemptive declaration commands the blessings of heaven to overtake every area of your journey in Daughter of Divine Greatness."
   },
   {
     "id": 357,
@@ -3930,8 +3930,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Daughter of Wholeness and Peace",
     "scriptureReference": "Numbers 6:26",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaShalom (בַּת הַשָּׁלוֹם). I walk in daughter of wholeness and peace according to Numbers 6:26.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaShalom (בַּת הַשָּׁלוֹם). Through Numbers 6:26, God has established me in Daughter of Wholeness and Peace; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Infused with the joy of the Lord in Numbers 6:26, this title dissolves sorrow and imparts an unshakeable fortress of Daughter of Wholeness and Peace."
   },
   {
     "id": 358,
@@ -3941,8 +3941,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Daughter of Weighty Glory",
     "scriptureReference": "Psalm 24:7",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaKavod (בַּת הַכָּבוֹד). I walk in daughter of weighty glory according to Psalm 24:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaKavod (בַּת הַכָּבוֹד). Through Psalm 24:7, God has established me in Daughter of Weighty Glory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Psalm 24:7, this redemptive declaration removes garments of mourning and clothes you in the majesty of Daughter of Weighty Glory."
   },
   {
     "id": 359,
@@ -3952,8 +3952,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Daughter of Consecrated Holiness",
     "scriptureReference": "Leviticus 19:2",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaKedushah (בַּת הַקְּדֻשָּׁה). I walk in daughter of consecrated holiness according to Leviticus 19:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaKedushah (בַּת הַקְּדֻשָּׁה). Through Leviticus 19:2, God has established me in Daughter of Consecrated Holiness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Leviticus 19:2, this heavenly mandate establishes your life as an altar of worship and a vessel of divine dominion in Daughter of Consecrated Holiness."
   },
   {
     "id": 360,
@@ -3963,8 +3963,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Daughter of Tender Mercies",
     "scriptureReference": "Daniel 9:9",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaRachamim (בַּת הָרַחֲמִים). I walk in daughter of tender mercies according to Daniel 9:9.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaRachamim (בַּת הָרַחֲמִים). Through Daniel 9:9, God has established me in Daughter of Tender Mercies; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Daniel 9:9, this title breaks the spirit of rejection and orphanhood, welcoming the believer into intimate communion as Daughter of Tender Mercies."
   },
   {
     "id": 361,
@@ -3974,8 +3974,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Daughter of Unending Praise",
     "scriptureReference": "Psalm 145:1",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaTehillah (בַּת הַתְּהִלָּה). I walk in daughter of unending praise according to Psalm 145:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaTehillah (בַּת הַתְּהִלָּה). Through Psalm 145:1, God has established me in Daughter of Unending Praise; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Celebrated in Psalm 145:1, this name releases the supernatural peace that surpasses understanding, crowning your days with Daughter of Unending Praise."
   },
   {
     "id": 362,
@@ -3985,8 +3985,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Daughter of Generational Blessing",
     "scriptureReference": "Genesis 12:2",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaBerakhah (בַּת הַבְּרָכָה). I walk in daughter of generational blessing according to Genesis 12:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaBerakhah (בַּת הַבְּרָכָה). Through Genesis 12:2, God has established me in Daughter of Generational Blessing; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Genesis 12:2, this redemptive declaration commands the blessings of heaven to overtake every area of your journey in Daughter of Generational Blessing."
   },
   {
     "id": 363,
@@ -3996,8 +3996,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Daughter of Exuberant Joy",
     "scriptureReference": "Nehemiah 8:10",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaSimchah (בַּת הַשִּׂמְחָה). I walk in daughter of exuberant joy according to Nehemiah 8:10.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaSimchah (בַּת הַשִּׂמְחָה). Through Nehemiah 8:10, God has established me in Daughter of Exuberant Joy; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Infused with the joy of the Lord in Nehemiah 8:10, this title dissolves sorrow and imparts an unshakeable fortress of Daughter of Exuberant Joy."
   },
   {
     "id": 364,
@@ -4007,8 +4007,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Daughter of Eternity and Ages",
     "scriptureReference": "Ecclesiastes 3:11",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaOlam (בַּת הָעוֹלָם). I walk in daughter of eternity and ages according to Ecclesiastes 3:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaOlam (בַּת הָעוֹלָם). Through Ecclesiastes 3:11, God has established me in Daughter of Eternity and Ages; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Proclaimed in Ecclesiastes 3:11, this covenant moniker assures the believer that God's steadfast chesed preserves and honors you as Daughter of Eternity and Ages."
   },
   {
     "id": 365,
@@ -4018,8 +4018,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Daughter of Abundant Life",
     "scriptureReference": "Deuteronomy 30:19",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaChayim (בַּת הַחַיִּים). I walk in daughter of abundant life according to Deuteronomy 30:19.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaChayim (בַּת הַחַיִּים). Through Deuteronomy 30:19, God has established me in Daughter of Abundant Life; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in Deuteronomy 30:19, this redemptive name heralds total restoration of wasted years, re-establishing you in the joy of Daughter of Abundant Life."
   },
   {
     "id": 366,
@@ -4029,8 +4029,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Daughter of Supernatural Power",
     "scriptureReference": "Psalm 66:7",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaG'vurah (בַּת הַגְּבוּרָה). I walk in daughter of supernatural power according to Psalm 66:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaG'vurah (בַּת הַגְּבוּרָה). Through Psalm 66:7, God has established me in Daughter of Supernatural Power; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Forged in spiritual victory in Psalm 66:7, this redemptive name endows the believer with holy tenacity and supernatural Daughter of Supernatural Power."
   },
   {
     "id": 367,
@@ -4040,8 +4040,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Daughter of Heavenly Wisdom",
     "scriptureReference": "Proverbs 8:14",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaChokhmah (בַּת הַחָכְמָה). I walk in daughter of heavenly wisdom according to Proverbs 8:14.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaChokhmah (בַּת הַחָכְמָה). Through Proverbs 8:14, God has established me in Daughter of Heavenly Wisdom; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Proverbs 8:14, this warrior title declares that through Christ who strengthens you, you arise and conquer in Daughter of Heavenly Wisdom."
   },
   {
     "id": 368,
@@ -4051,8 +4051,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Daughter of Spiritual Discernment",
     "scriptureReference": "1 Chronicles 12:32",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaBina (בַּת הַבִּינָה). I walk in daughter of spiritual discernment according to 1 Chronicles 12:32.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaBina (בַּת הַבִּינָה). Through 1 Chronicles 12:32, God has established me in Daughter of Spiritual Discernment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in 1 Chronicles 12:32, this heavenly mandate establishes your life as an altar of worship and a vessel of divine dominion in Daughter of Spiritual Discernment."
   },
   {
     "id": 369,
@@ -4062,8 +4062,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Daughter of Unbreakable Covenant",
     "scriptureReference": "Genesis 9:16",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaBrit (בַּת הַבְּרִית). I walk in daughter of unbreakable covenant according to Genesis 9:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaBrit (בַּת הַבְּרִית). Through Genesis 9:16, God has established me in Daughter of Unbreakable Covenant; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Enshrined in Genesis 9:16, this name seals Yahweh's unshakeable covenant oath, affirming you as His treasured possession in Daughter of Unbreakable Covenant."
   },
   {
     "id": 370,
@@ -4073,8 +4073,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Daughter of Good Will and Delight",
     "scriptureReference": "Psalm 30:5",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaRatzon (בַּת הָרָצוֹן). I walk in daughter of good will and delight according to Psalm 30:5.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaRatzon (בַּת הָרָצוֹן). Through Psalm 30:5, God has established me in Daughter of Good Will and Delight; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Psalm 30:5, this prophetic name marks you with the goodness and lovingkindness of God, releasing the fullness of Daughter of Good Will and Delight."
   },
   {
     "id": 371,
@@ -4084,8 +4084,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Daughter of Everlasting Victory",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaNetzach (בַּת הַנֵּצַח). I walk in daughter of everlasting victory according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaNetzach (בַּת הַנֵּצַח). Through 1 Chronicles 29:11, God has established me in Daughter of Everlasting Victory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in 1 Chronicles 29:11, this redemptive name heralds total restoration of wasted years, re-establishing you in the joy of Daughter of Everlasting Victory."
   },
   {
     "id": 372,
@@ -4095,8 +4095,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Daughter of Majesty and Splendor",
     "scriptureReference": "Psalm 104:1",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaHod (בַּת הַהוֹד). I walk in daughter of majesty and splendor according to Psalm 104:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaHod (בַּת הַהוֹד). Through Psalm 104:1, God has established me in Daughter of Majesty and Splendor; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Rooted in Psalm 104:1, this title symbolizes celestial investiture, clothing the believer in robes of praise and divine authority as Daughter of Majesty and Splendor."
   },
   {
     "id": 373,
@@ -4106,8 +4106,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Daughter of Desirable Beauty",
     "scriptureReference": "Ezekiel 20:6",
     "category": "New Identity",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaTzvi (בַּת הַצְּבִי). I walk in daughter of desirable beauty according to Ezekiel 20:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaTzvi (בַּת הַצְּבִי). Through Ezekiel 20:6, God has established me in Daughter of Desirable Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in Ezekiel 20:6, this prophetic name marks a definitive transition from obscurity into God's radiant decree: Daughter of Desirable Beauty."
   },
   {
     "id": 374,
@@ -4117,8 +4117,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Daughter of Righteous Judgment",
     "scriptureReference": "Isaiah 28:6",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaMishpat (בַּת הַמִּשְׁפָּט). I walk in daughter of righteous judgment according to Isaiah 28:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaMishpat (בַּת הַמִּשְׁפָּט). Through Isaiah 28:6, God has established me in Daughter of Righteous Judgment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Isaiah 28:6, this heavenly mandate establishes your life as an altar of worship and a vessel of divine dominion in Daughter of Righteous Judgment."
   },
   {
     "id": 375,
@@ -4128,8 +4128,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Daughter of My Beloved One",
     "scriptureReference": "Song of Songs 2:16",
     "category": "Beloved & Intimacy",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaDodi (בַּת הַדּוֹדִי). I walk in daughter of my beloved one according to Song of Songs 2:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Bat HaDodi (בַּת הַדּוֹדִי). Through Song of Songs 2:16, God has established me in Daughter of My Beloved One; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Breathed with tender bridal love in Song of Songs 2:16, this name reflects the secret place of divine intimacy where you abide as Daughter of My Beloved One."
   },
   {
     "id": 376,
@@ -4139,8 +4139,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Heart of Righteousness",
     "scriptureReference": "Psalm 23:3",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaTsedek (לֵב הַצֶּדֶק). I walk in heart of righteousness according to Psalm 23:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaTsedek (לֵב הַצֶּדֶק). Through Psalm 23:3, God has established me in Heart of Righteousness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Psalm 23:3, this redemptive declaration removes garments of mourning and clothes you in the majesty of Heart of Righteousness."
   },
   {
     "id": 377,
@@ -4150,8 +4150,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Heart of Lovingkindness",
     "scriptureReference": "Psalm 103:4",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaChesed (לֵב הַחֶסֶד). I walk in heart of lovingkindness according to Psalm 103:4.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaChesed (לֵב הַחֶסֶד). Through Psalm 103:4, God has established me in Heart of Lovingkindness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Psalm 103:4, this redemptive designation assures your heart that in the house of God you walk in full acceptance as Heart of Lovingkindness."
   },
   {
     "id": 378,
@@ -4161,8 +4161,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Heart of Faithfulness",
     "scriptureReference": "Lamentations 3:23",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaEmunah (לֵב הָאֱמוּנָה). I walk in heart of faithfulness according to Lamentations 3:23.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaEmunah (לֵב הָאֱמוּנָה). Through Lamentations 3:23, God has established me in Heart of Faithfulness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Forged in spiritual victory in Lamentations 3:23, this redemptive name endows the believer with holy tenacity and supernatural Heart of Faithfulness."
   },
   {
     "id": 379,
@@ -4172,8 +4172,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Heart of Triumphant Salvation",
     "scriptureReference": "Psalm 118:15",
     "category": "Redemption & Grace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaYeshua (לֵב הַיְשׁוּעָה). I walk in heart of triumphant salvation according to Psalm 118:15.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaYeshua (לֵב הַיְשׁוּעָה). Through Psalm 118:15, God has established me in Heart of Triumphant Salvation; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Grounded in Psalm 118:15, this title bears witness to the triumph of divine mercy over judgment, designating you as an inheritor of Heart of Triumphant Salvation."
   },
   {
     "id": 380,
@@ -4183,8 +4183,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Heart of Heavenly Beauty",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaTiferet (לֵב הַתִּפְאֶרֶת). I walk in heart of heavenly beauty according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaTiferet (לֵב הַתִּפְאֶרֶת). Through 1 Chronicles 29:11, God has established me in Heart of Heavenly Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in 1 Chronicles 29:11, this heavenly title represents the royal ornament and priestly splendor of Heart of Heavenly Beauty placed upon your life."
   },
   {
     "id": 381,
@@ -4194,8 +4194,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Heart of Divine Greatness",
     "scriptureReference": "Psalm 145:3",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaG'dulah (לֵב הַגְּדֻלָּה). I walk in heart of divine greatness according to Psalm 145:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaG'dulah (לֵב הַגְּדֻלָּה). Through Psalm 145:3, God has established me in Heart of Divine Greatness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Poured out in Psalm 145:3, this title carries the generational blessing of Abraham, causing uncommon favor and Heart of Divine Greatness to rest upon you."
   },
   {
     "id": 382,
@@ -4205,8 +4205,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Heart of Wholeness and Peace",
     "scriptureReference": "Numbers 6:26",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaShalom (לֵב הַשָּׁלוֹם). I walk in heart of wholeness and peace according to Numbers 6:26.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaShalom (לֵב הַשָּׁלוֹם). Through Numbers 6:26, God has established me in Heart of Wholeness and Peace; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Celebrated in Numbers 6:26, this name releases the supernatural peace that surpasses understanding, crowning your days with Heart of Wholeness and Peace."
   },
   {
     "id": 383,
@@ -4216,8 +4216,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Heart of Weighty Glory",
     "scriptureReference": "Psalm 24:7",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaKavod (לֵב הַכָּבוֹד). I walk in heart of weighty glory according to Psalm 24:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaKavod (לֵב הַכָּבוֹד). Through Psalm 24:7, God has established me in Heart of Weighty Glory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Psalm 24:7, this heavenly title represents the royal ornament and priestly splendor of Heart of Weighty Glory placed upon your life."
   },
   {
     "id": 384,
@@ -4227,8 +4227,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Heart of Consecrated Holiness",
     "scriptureReference": "Leviticus 19:2",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaKedushah (לֵב הַקְּדֻשָּׁה). I walk in heart of consecrated holiness according to Leviticus 19:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaKedushah (לֵב הַקְּדֻשָּׁה). Through Leviticus 19:2, God has established me in Heart of Consecrated Holiness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Consecrated in Leviticus 19:2, this priestly title confers kingdom authority and intercessory access, ordaining the believer for Heart of Consecrated Holiness."
   },
   {
     "id": 385,
@@ -4238,8 +4238,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Heart of Tender Mercies",
     "scriptureReference": "Daniel 9:9",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaRachamim (לֵב הָרַחֲמִים). I walk in heart of tender mercies according to Daniel 9:9.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaRachamim (לֵב הָרַחֲמִים). Through Daniel 9:9, God has established me in Heart of Tender Mercies; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Daniel 9:9, this name affirms that by sovereign grace you are brought near and forever granted the status of Heart of Tender Mercies."
   },
   {
     "id": 386,
@@ -4249,8 +4249,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Heart of Unending Praise",
     "scriptureReference": "Psalm 145:1",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaTehillah (לֵב הַתְּהִלָּה). I walk in heart of unending praise according to Psalm 145:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaTehillah (לֵב הַתְּהִלָּה). Through Psalm 145:1, God has established me in Heart of Unending Praise; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Psalm 145:1, this sacred title reminds the believer that the oil of gladness has triumphed over spirit of heaviness in Heart of Unending Praise."
   },
   {
     "id": 387,
@@ -4260,8 +4260,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Heart of Generational Blessing",
     "scriptureReference": "Genesis 12:2",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaBerakhah (לֵב הַבְּרָכָה). I walk in heart of generational blessing according to Genesis 12:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaBerakhah (לֵב הַבְּרָכָה). Through Genesis 12:2, God has established me in Heart of Generational Blessing; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Poured out in Genesis 12:2, this title carries the generational blessing of Abraham, causing uncommon favor and Heart of Generational Blessing to rest upon you."
   },
   {
     "id": 388,
@@ -4271,8 +4271,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Heart of Exuberant Joy",
     "scriptureReference": "Nehemiah 8:10",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaSimchah (לֵב הַשִּׂמְחָה). I walk in heart of exuberant joy according to Nehemiah 8:10.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaSimchah (לֵב הַשִּׂמְחָה). Through Nehemiah 8:10, God has established me in Heart of Exuberant Joy; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Celebrated in Nehemiah 8:10, this name releases the supernatural peace that surpasses understanding, crowning your days with Heart of Exuberant Joy."
   },
   {
     "id": 389,
@@ -4282,8 +4282,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Heart of Eternity and Ages",
     "scriptureReference": "Ecclesiastes 3:11",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaOlam (לֵב הָעוֹלָם). I walk in heart of eternity and ages according to Ecclesiastes 3:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaOlam (לֵב הָעוֹלָם). Through Ecclesiastes 3:11, God has established me in Heart of Eternity and Ages; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Guaranteed by the covenant promises of Ecclesiastes 3:11, this sacred title reminds you that you are eternally set apart and cherished as Heart of Eternity and Ages."
   },
   {
     "id": 390,
@@ -4293,8 +4293,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Heart of Abundant Life",
     "scriptureReference": "Deuteronomy 30:19",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaChayim (לֵב הַחַיִּים). I walk in heart of abundant life according to Deuteronomy 30:19.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaChayim (לֵב הַחַיִּים). Through Deuteronomy 30:19, God has established me in Heart of Abundant Life; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Prophesied in Deuteronomy 30:19, this powerful decree overturns generational stagnation, commanding supernatural emergence and Heart of Abundant Life."
   },
   {
     "id": 391,
@@ -4304,8 +4304,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Heart of Supernatural Power",
     "scriptureReference": "Psalm 66:7",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaG'vurah (לֵב הַגְּבוּרָה). I walk in heart of supernatural power according to Psalm 66:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaG'vurah (לֵב הַגְּבוּרָה). Through Psalm 66:7, God has established me in Heart of Supernatural Power; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Psalm 66:7, this warrior title declares that through Christ who strengthens you, you arise and conquer in Heart of Supernatural Power."
   },
   {
     "id": 392,
@@ -4315,8 +4315,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Heart of Heavenly Wisdom",
     "scriptureReference": "Proverbs 8:14",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaChokhmah (לֵב הַחָכְמָה). I walk in heart of heavenly wisdom according to Proverbs 8:14.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaChokhmah (לֵב הַחָכְמָה). Through Proverbs 8:14, God has established me in Heart of Heavenly Wisdom; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Proverbs 8:14, this name proclaims that your life is fortified against every onslaught of darkness by the power of Heart of Heavenly Wisdom."
   },
   {
     "id": 393,
@@ -4326,8 +4326,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Heart of Spiritual Discernment",
     "scriptureReference": "1 Chronicles 12:32",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaBina (לֵב הַבִּינָה). I walk in heart of spiritual discernment according to 1 Chronicles 12:32.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaBina (לֵב הַבִּינָה). Through 1 Chronicles 12:32, God has established me in Heart of Spiritual Discernment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Consecrated in 1 Chronicles 12:32, this priestly title confers kingdom authority and intercessory access, ordaining the believer for Heart of Spiritual Discernment."
   },
   {
     "id": 394,
@@ -4337,8 +4337,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Heart of Unbreakable Covenant",
     "scriptureReference": "Genesis 9:16",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaBrit (לֵב הַבְּרִית). I walk in heart of unbreakable covenant according to Genesis 9:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaBrit (לֵב הַבְּרִית). Through Genesis 9:16, God has established me in Heart of Unbreakable Covenant; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Proclaimed in Genesis 9:16, this covenant moniker assures the believer that God's steadfast chesed preserves and honors you as Heart of Unbreakable Covenant."
   },
   {
     "id": 395,
@@ -4348,8 +4348,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Heart of Good Will and Delight",
     "scriptureReference": "Psalm 30:5",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaRatzon (לֵב הָרָצוֹן). I walk in heart of good will and delight according to Psalm 30:5.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaRatzon (לֵב הָרָצוֹן). Through Psalm 30:5, God has established me in Heart of Good Will and Delight; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Psalm 30:5, this redemptive declaration commands the blessings of heaven to overtake every area of your journey in Heart of Good Will and Delight."
   },
   {
     "id": 396,
@@ -4359,8 +4359,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Heart of Everlasting Victory",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaNetzach (לֵב הַנֵּצַח). I walk in heart of everlasting victory according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaNetzach (לֵב הַנֵּצַח). Through 1 Chronicles 29:11, God has established me in Heart of Everlasting Victory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Prophesied in 1 Chronicles 29:11, this powerful decree overturns generational stagnation, commanding supernatural emergence and Heart of Everlasting Victory."
   },
   {
     "id": 397,
@@ -4370,8 +4370,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Heart of Majesty and Splendor",
     "scriptureReference": "Psalm 104:1",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaHod (לֵב הַהוֹד). I walk in heart of majesty and splendor according to Psalm 104:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaHod (לֵב הַהוֹד). Through Psalm 104:1, God has established me in Heart of Majesty and Splendor; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Psalm 104:1, this redemptive declaration removes garments of mourning and clothes you in the majesty of Heart of Majesty and Splendor."
   },
   {
     "id": 398,
@@ -4381,8 +4381,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Heart of Desirable Beauty",
     "scriptureReference": "Ezekiel 20:6",
     "category": "New Identity",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaTzvi (לֵב הַצְּבִי). I walk in heart of desirable beauty according to Ezekiel 20:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaTzvi (לֵב הַצְּבִי). Through Ezekiel 20:6, God has established me in Heart of Desirable Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Ezekiel 20:6, the mouth of the Lord bestows this name to nullify human mockery and establish you in the reality of Heart of Desirable Beauty."
   },
   {
     "id": 399,
@@ -4392,8 +4392,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Heart of Righteous Judgment",
     "scriptureReference": "Isaiah 28:6",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaMishpat (לֵב הַמִּשְׁפָּט). I walk in heart of righteous judgment according to Isaiah 28:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaMishpat (לֵב הַמִּשְׁפָּט). Through Isaiah 28:6, God has established me in Heart of Righteous Judgment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Consecrated in Isaiah 28:6, this priestly title confers kingdom authority and intercessory access, ordaining the believer for Heart of Righteous Judgment."
   },
   {
     "id": 400,
@@ -4403,8 +4403,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Heart of My Beloved One",
     "scriptureReference": "Song of Songs 2:16",
     "category": "Beloved & Intimacy",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaDodi (לֵב הַדּוֹדִי). I walk in heart of my beloved one according to Song of Songs 2:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Lev HaDodi (לֵב הַדּוֹדִי). Through Song of Songs 2:16, God has established me in Heart of My Beloved One; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in Song of Songs 2:16, this cherished title expresses Yahweh's profound delight and jealous affection over your soul as Heart of My Beloved One."
   },
   {
     "id": 401,
@@ -4414,8 +4414,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Light of Righteousness",
     "scriptureReference": "Psalm 23:3",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaTsedek (אוֹר הַצֶּדֶק). I walk in light of righteousness according to Psalm 23:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaTsedek (אוֹר הַצֶּדֶק). Through Psalm 23:3, God has established me in Light of Righteousness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Psalm 23:3, this heavenly title represents the royal ornament and priestly splendor of Light of Righteousness placed upon your life."
   },
   {
     "id": 402,
@@ -4425,8 +4425,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Light of Lovingkindness",
     "scriptureReference": "Psalm 103:4",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaChesed (אוֹר הַחֶסֶד). I walk in light of lovingkindness according to Psalm 103:4.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaChesed (אוֹר הַחֶסֶד). Through Psalm 103:4, God has established me in Light of Lovingkindness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Psalm 103:4, this title breaks the spirit of rejection and orphanhood, welcoming the believer into intimate communion as Light of Lovingkindness."
   },
   {
     "id": 403,
@@ -4436,8 +4436,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Light of Faithfulness",
     "scriptureReference": "Lamentations 3:23",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaEmunah (אוֹר הָאֱמוּנָה). I walk in light of faithfulness according to Lamentations 3:23.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaEmunah (אוֹר הָאֱמוּנָה). Through Lamentations 3:23, God has established me in Light of Faithfulness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Lamentations 3:23, this warrior title declares that through Christ who strengthens you, you arise and conquer in Light of Faithfulness."
   },
   {
     "id": 404,
@@ -4447,8 +4447,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Light of Triumphant Salvation",
     "scriptureReference": "Psalm 118:15",
     "category": "Redemption & Grace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaYeshua (אוֹר הַיְשׁוּעָה). I walk in light of triumphant salvation according to Psalm 118:15.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaYeshua (אוֹר הַיְשׁוּעָה). Through Psalm 118:15, God has established me in Light of Triumphant Salvation; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Spoken in Psalm 118:15, this name commemorates the price paid to bring you into the liberty, righteousness, and unmerited favor of Light of Triumphant Salvation."
   },
   {
     "id": 405,
@@ -4458,8 +4458,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Light of Heavenly Beauty",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaTiferet (אוֹר הַתִּפְאֶרֶת). I walk in light of heavenly beauty according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaTiferet (אוֹר הַתִּפְאֶרֶת). Through 1 Chronicles 29:11, God has established me in Light of Heavenly Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Rooted in 1 Chronicles 29:11, this title symbolizes celestial investiture, clothing the believer in robes of praise and divine authority as Light of Heavenly Beauty."
   },
   {
     "id": 406,
@@ -4469,8 +4469,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Light of Divine Greatness",
     "scriptureReference": "Psalm 145:3",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaG'dulah (אוֹר הַגְּדֻלָּה). I walk in light of divine greatness according to Psalm 145:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaG'dulah (אוֹר הַגְּדֻלָּה). Through Psalm 145:3, God has established me in Light of Divine Greatness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Psalm 145:3, this prophetic name marks you with the goodness and lovingkindness of God, releasing the fullness of Light of Divine Greatness."
   },
   {
     "id": 407,
@@ -4480,8 +4480,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Light of Wholeness and Peace",
     "scriptureReference": "Numbers 6:26",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaShalom (אוֹר הַשָּׁלוֹם). I walk in light of wholeness and peace according to Numbers 6:26.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaShalom (אוֹר הַשָּׁלוֹם). Through Numbers 6:26, God has established me in Light of Wholeness and Peace; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Numbers 6:26, this sacred title reminds the believer that the oil of gladness has triumphed over spirit of heaviness in Light of Wholeness and Peace."
   },
   {
     "id": 408,
@@ -4491,8 +4491,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Light of Weighty Glory",
     "scriptureReference": "Psalm 24:7",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaKavod (אוֹר הַכָּבוֹד). I walk in light of weighty glory according to Psalm 24:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaKavod (אוֹר הַכָּבוֹד). Through Psalm 24:7, God has established me in Light of Weighty Glory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Rooted in Psalm 24:7, this title symbolizes celestial investiture, clothing the believer in robes of praise and divine authority as Light of Weighty Glory."
   },
   {
     "id": 409,
@@ -4502,8 +4502,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Light of Consecrated Holiness",
     "scriptureReference": "Leviticus 19:2",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaKedushah (אוֹר הַקְּדֻשָּׁה). I walk in light of consecrated holiness according to Leviticus 19:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaKedushah (אוֹר הַקְּדֻשָּׁה). Through Leviticus 19:2, God has established me in Light of Consecrated Holiness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Set forth in Leviticus 19:2, this apostolic designation calls you to stand as a king and priest unto God, walking in the dignity of Light of Consecrated Holiness."
   },
   {
     "id": 410,
@@ -4513,8 +4513,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Light of Tender Mercies",
     "scriptureReference": "Daniel 9:9",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaRachamim (אוֹר הָרַחֲמִים). I walk in light of tender mercies according to Daniel 9:9.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaRachamim (אוֹר הָרַחֲמִים). Through Daniel 9:9, God has established me in Light of Tender Mercies; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Daniel 9:9, this redemptive designation assures your heart that in the house of God you walk in full acceptance as Light of Tender Mercies."
   },
   {
     "id": 411,
@@ -4524,8 +4524,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Light of Unending Praise",
     "scriptureReference": "Psalm 145:1",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaTehillah (אוֹר הַתְּהִלָּה). I walk in light of unending praise according to Psalm 145:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaTehillah (אוֹר הַתְּהִלָּה). Through Psalm 145:1, God has established me in Light of Unending Praise; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Infused with the joy of the Lord in Psalm 145:1, this title dissolves sorrow and imparts an unshakeable fortress of Light of Unending Praise."
   },
   {
     "id": 412,
@@ -4535,8 +4535,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Light of Generational Blessing",
     "scriptureReference": "Genesis 12:2",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaBerakhah (אוֹר הַבְּרָכָה). I walk in light of generational blessing according to Genesis 12:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaBerakhah (אוֹר הַבְּרָכָה). Through Genesis 12:2, God has established me in Light of Generational Blessing; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Genesis 12:2, this prophetic name marks you with the goodness and lovingkindness of God, releasing the fullness of Light of Generational Blessing."
   },
   {
     "id": 413,
@@ -4546,8 +4546,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Light of Exuberant Joy",
     "scriptureReference": "Nehemiah 8:10",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaSimchah (אוֹר הַשִּׂמְחָה). I walk in light of exuberant joy according to Nehemiah 8:10.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaSimchah (אוֹר הַשִּׂמְחָה). Through Nehemiah 8:10, God has established me in Light of Exuberant Joy; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Nehemiah 8:10, this sacred title reminds the believer that the oil of gladness has triumphed over spirit of heaviness in Light of Exuberant Joy."
   },
   {
     "id": 414,
@@ -4557,8 +4557,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Light of Eternity and Ages",
     "scriptureReference": "Ecclesiastes 3:11",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaOlam (אוֹר הָעוֹלָם). I walk in light of eternity and ages according to Ecclesiastes 3:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaOlam (אוֹר הָעוֹלָם). Through Ecclesiastes 3:11, God has established me in Light of Eternity and Ages; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Enshrined in Ecclesiastes 3:11, this name seals Yahweh's unshakeable covenant oath, affirming you as His treasured possession in Light of Eternity and Ages."
   },
   {
     "id": 415,
@@ -4568,8 +4568,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Light of Abundant Life",
     "scriptureReference": "Deuteronomy 30:19",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaChayim (אוֹר הַחַיִּים). I walk in light of abundant life according to Deuteronomy 30:19.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaChayim (אוֹר הַחַיִּים). Through Deuteronomy 30:19, God has established me in Light of Abundant Life; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Proclaimed in Deuteronomy 30:19, this title marks the breaking of every ungodly siege, ushering the soul into divine abundance and Light of Abundant Life."
   },
   {
     "id": 416,
@@ -4579,8 +4579,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Light of Supernatural Power",
     "scriptureReference": "Psalm 66:7",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaG'vurah (אוֹר הַגְּבוּרָה). I walk in light of supernatural power according to Psalm 66:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaG'vurah (אוֹר הַגְּבוּרָה). Through Psalm 66:7, God has established me in Light of Supernatural Power; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Psalm 66:7, this name proclaims that your life is fortified against every onslaught of darkness by the power of Light of Supernatural Power."
   },
   {
     "id": 417,
@@ -4590,8 +4590,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Light of Heavenly Wisdom",
     "scriptureReference": "Proverbs 8:14",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaChokhmah (אוֹר הַחָכְמָה). I walk in light of heavenly wisdom according to Proverbs 8:14.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaChokhmah (אוֹר הַחָכְמָה). Through Proverbs 8:14, God has established me in Light of Heavenly Wisdom; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Forged in spiritual victory in Proverbs 8:14, this redemptive name endows the believer with holy tenacity and supernatural Light of Heavenly Wisdom."
   },
   {
     "id": 418,
@@ -4601,8 +4601,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Light of Spiritual Discernment",
     "scriptureReference": "1 Chronicles 12:32",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaBina (אוֹר הַבִּינָה). I walk in light of spiritual discernment according to 1 Chronicles 12:32.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaBina (אוֹר הַבִּינָה). Through 1 Chronicles 12:32, God has established me in Light of Spiritual Discernment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Set forth in 1 Chronicles 12:32, this apostolic designation calls you to stand as a king and priest unto God, walking in the dignity of Light of Spiritual Discernment."
   },
   {
     "id": 419,
@@ -4612,8 +4612,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Light of Unbreakable Covenant",
     "scriptureReference": "Genesis 9:16",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaBrit (אוֹר הַבְּרִית). I walk in light of unbreakable covenant according to Genesis 9:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaBrit (אוֹר הַבְּרִית). Through Genesis 9:16, God has established me in Light of Unbreakable Covenant; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Guaranteed by the covenant promises of Genesis 9:16, this sacred title reminds you that you are eternally set apart and cherished as Light of Unbreakable Covenant."
   },
   {
     "id": 420,
@@ -4623,8 +4623,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Light of Good Will and Delight",
     "scriptureReference": "Psalm 30:5",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaRatzon (אוֹר הָרָצוֹן). I walk in light of good will and delight according to Psalm 30:5.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaRatzon (אוֹר הָרָצוֹן). Through Psalm 30:5, God has established me in Light of Good Will and Delight; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Poured out in Psalm 30:5, this title carries the generational blessing of Abraham, causing uncommon favor and Light of Good Will and Delight to rest upon you."
   },
   {
     "id": 421,
@@ -4634,8 +4634,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Light of Everlasting Victory",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaNetzach (אוֹר הַנֵּצַח). I walk in light of everlasting victory according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaNetzach (אוֹר הַנֵּצַח). Through 1 Chronicles 29:11, God has established me in Light of Everlasting Victory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Proclaimed in 1 Chronicles 29:11, this title marks the breaking of every ungodly siege, ushering the soul into divine abundance and Light of Everlasting Victory."
   },
   {
     "id": 422,
@@ -4645,8 +4645,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Light of Majesty and Splendor",
     "scriptureReference": "Psalm 104:1",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaHod (אוֹר הַהוֹד). I walk in light of majesty and splendor according to Psalm 104:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaHod (אוֹר הַהוֹד). Through Psalm 104:1, God has established me in Light of Majesty and Splendor; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Psalm 104:1, this heavenly title represents the royal ornament and priestly splendor of Light of Majesty and Splendor placed upon your life."
   },
   {
     "id": 423,
@@ -4656,8 +4656,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Light of Desirable Beauty",
     "scriptureReference": "Ezekiel 20:6",
     "category": "New Identity",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaTzvi (אוֹר הַצְּבִי). I walk in light of desirable beauty according to Ezekiel 20:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaTzvi (אוֹר הַצְּבִי). Through Ezekiel 20:6, God has established me in Light of Desirable Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Unveiled in Ezekiel's prophetic visions of divine renewal and temple restoration (Ezekiel 20:6), this consecrated title replaces past labels of barrenness and defeat with royal identity as Light of Desirable Beauty."
   },
   {
     "id": 424,
@@ -4667,8 +4667,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Light of Righteous Judgment",
     "scriptureReference": "Isaiah 28:6",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaMishpat (אוֹר הַמִּשְׁפָּט). I walk in light of righteous judgment according to Isaiah 28:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaMishpat (אוֹר הַמִּשְׁפָּט). Through Isaiah 28:6, God has established me in Light of Righteous Judgment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Set forth in Isaiah 28:6, this apostolic designation calls you to stand as a king and priest unto God, walking in the dignity of Light of Righteous Judgment."
   },
   {
     "id": 425,
@@ -4678,8 +4678,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Light of My Beloved One",
     "scriptureReference": "Song of Songs 2:16",
     "category": "Beloved & Intimacy",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaDodi (אוֹר הַדּוֹדִי). I walk in light of my beloved one according to Song of Songs 2:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Or HaDodi (אוֹר הַדּוֹדִי). Through Song of Songs 2:16, God has established me in Light of My Beloved One; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Song of Songs 2:16, this redemptive designation confirms that you are neither forgotten nor overlooked, but ever held close as Light of My Beloved One."
   },
   {
     "id": 426,
@@ -4689,8 +4689,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Peace of Righteousness",
     "scriptureReference": "Psalm 23:3",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaTsedek (שָׁלוֹם הַצֶּדֶק). I walk in peace of righteousness according to Psalm 23:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaTsedek (שָׁלוֹם הַצֶּדֶק). Through Psalm 23:3, God has established me in Peace of Righteousness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Rooted in Psalm 23:3, this title symbolizes celestial investiture, clothing the believer in robes of praise and divine authority as Peace of Righteousness."
   },
   {
     "id": 427,
@@ -4700,8 +4700,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Peace of Lovingkindness",
     "scriptureReference": "Psalm 103:4",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaChesed (שָׁלוֹם הַחֶסֶד). I walk in peace of lovingkindness according to Psalm 103:4.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaChesed (שָׁלוֹם הַחֶסֶד). Through Psalm 103:4, God has established me in Peace of Lovingkindness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Psalm 103:4, this name affirms that by sovereign grace you are brought near and forever granted the status of Peace of Lovingkindness."
   },
   {
     "id": 428,
@@ -4711,8 +4711,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Peace of Faithfulness",
     "scriptureReference": "Lamentations 3:23",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaEmunah (שָׁלוֹם הָאֱמוּנָה). I walk in peace of faithfulness according to Lamentations 3:23.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaEmunah (שָׁלוֹם הָאֱמוּנָה). Through Lamentations 3:23, God has established me in Peace of Faithfulness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Lamentations 3:23, this name proclaims that your life is fortified against every onslaught of darkness by the power of Peace of Faithfulness."
   },
   {
     "id": 429,
@@ -4722,8 +4722,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Peace of Triumphant Salvation",
     "scriptureReference": "Psalm 118:15",
     "category": "Redemption & Grace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaYeshua (שָׁלוֹם הַיְשׁוּעָה). I walk in peace of triumphant salvation according to Psalm 118:15.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaYeshua (שָׁלוֹם הַיְשׁוּעָה). Through Psalm 118:15, God has established me in Peace of Triumphant Salvation; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Unveiled in Psalm 118:15, this redemptive name celebrates total ransom from captivity, establishing the believer's life upon Peace of Triumphant Salvation."
   },
   {
     "id": 430,
@@ -4733,8 +4733,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Peace of Heavenly Beauty",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaTiferet (שָׁלוֹם הַתִּפְאֶרֶת). I walk in peace of heavenly beauty according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaTiferet (שָׁלוֹם הַתִּפְאֶרֶת). Through 1 Chronicles 29:11, God has established me in Peace of Heavenly Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from 1 Chronicles 29:11, this redemptive declaration removes garments of mourning and clothes you in the majesty of Peace of Heavenly Beauty."
   },
   {
     "id": 431,
@@ -4744,8 +4744,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Peace of Divine Greatness",
     "scriptureReference": "Psalm 145:3",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaG'dulah (שָׁלוֹם הַגְּדֻלָּה). I walk in peace of divine greatness according to Psalm 145:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaG'dulah (שָׁלוֹם הַגְּדֻלָּה). Through Psalm 145:3, God has established me in Peace of Divine Greatness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Psalm 145:3, this redemptive declaration commands the blessings of heaven to overtake every area of your journey in Peace of Divine Greatness."
   },
   {
     "id": 432,
@@ -4755,8 +4755,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Peace of Wholeness and Peace",
     "scriptureReference": "Numbers 6:26",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaShalom (שָׁלוֹם הַשָּׁלוֹם). I walk in peace of wholeness and peace according to Numbers 6:26.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaShalom (שָׁלוֹם הַשָּׁלוֹם). Through Numbers 6:26, God has established me in Peace of Wholeness and Peace; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Infused with the joy of the Lord in Numbers 6:26, this title dissolves sorrow and imparts an unshakeable fortress of Peace of Wholeness and Peace."
   },
   {
     "id": 433,
@@ -4766,8 +4766,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Peace of Weighty Glory",
     "scriptureReference": "Psalm 24:7",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaKavod (שָׁלוֹם הַכָּבוֹד). I walk in peace of weighty glory according to Psalm 24:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaKavod (שָׁלוֹם הַכָּבוֹד). Through Psalm 24:7, God has established me in Peace of Weighty Glory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Psalm 24:7, this redemptive declaration removes garments of mourning and clothes you in the majesty of Peace of Weighty Glory."
   },
   {
     "id": 434,
@@ -4777,8 +4777,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Peace of Consecrated Holiness",
     "scriptureReference": "Leviticus 19:2",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaKedushah (שָׁלוֹם הַקְּדֻשָּׁה). I walk in peace of consecrated holiness according to Leviticus 19:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaKedushah (שָׁלוֹם הַקְּדֻשָּׁה). Through Leviticus 19:2, God has established me in Peace of Consecrated Holiness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Leviticus 19:2, this heavenly mandate establishes your life as an altar of worship and a vessel of divine dominion in Peace of Consecrated Holiness."
   },
   {
     "id": 435,
@@ -4788,8 +4788,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Peace of Tender Mercies",
     "scriptureReference": "Daniel 9:9",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaRachamim (שָׁלוֹם הָרַחֲמִים). I walk in peace of tender mercies according to Daniel 9:9.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaRachamim (שָׁלוֹם הָרַחֲמִים). Through Daniel 9:9, God has established me in Peace of Tender Mercies; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Daniel 9:9, this title breaks the spirit of rejection and orphanhood, welcoming the believer into intimate communion as Peace of Tender Mercies."
   },
   {
     "id": 436,
@@ -4799,8 +4799,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Peace of Unending Praise",
     "scriptureReference": "Psalm 145:1",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaTehillah (שָׁלוֹם הַתְּהִלָּה). I walk in peace of unending praise according to Psalm 145:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaTehillah (שָׁלוֹם הַתְּהִלָּה). Through Psalm 145:1, God has established me in Peace of Unending Praise; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Celebrated in Psalm 145:1, this name releases the supernatural peace that surpasses understanding, crowning your days with Peace of Unending Praise."
   },
   {
     "id": 437,
@@ -4810,8 +4810,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Peace of Generational Blessing",
     "scriptureReference": "Genesis 12:2",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaBerakhah (שָׁלוֹם הַבְּרָכָה). I walk in peace of generational blessing according to Genesis 12:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaBerakhah (שָׁלוֹם הַבְּרָכָה). Through Genesis 12:2, God has established me in Peace of Generational Blessing; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Genesis 12:2, this redemptive declaration commands the blessings of heaven to overtake every area of your journey in Peace of Generational Blessing."
   },
   {
     "id": 438,
@@ -4821,8 +4821,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Peace of Exuberant Joy",
     "scriptureReference": "Nehemiah 8:10",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaSimchah (שָׁלוֹם הַשִּׂמְחָה). I walk in peace of exuberant joy according to Nehemiah 8:10.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaSimchah (שָׁלוֹם הַשִּׂמְחָה). Through Nehemiah 8:10, God has established me in Peace of Exuberant Joy; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Infused with the joy of the Lord in Nehemiah 8:10, this title dissolves sorrow and imparts an unshakeable fortress of Peace of Exuberant Joy."
   },
   {
     "id": 439,
@@ -4832,8 +4832,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Peace of Eternity and Ages",
     "scriptureReference": "Ecclesiastes 3:11",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaOlam (שָׁלוֹם הָעוֹלָם). I walk in peace of eternity and ages according to Ecclesiastes 3:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaOlam (שָׁלוֹם הָעוֹלָם). Through Ecclesiastes 3:11, God has established me in Peace of Eternity and Ages; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Proclaimed in Ecclesiastes 3:11, this covenant moniker assures the believer that God's steadfast chesed preserves and honors you as Peace of Eternity and Ages."
   },
   {
     "id": 440,
@@ -4843,8 +4843,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Peace of Abundant Life",
     "scriptureReference": "Deuteronomy 30:19",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaChayim (שָׁלוֹם הַחַיִּים). I walk in peace of abundant life according to Deuteronomy 30:19.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaChayim (שָׁלוֹם הַחַיִּים). Through Deuteronomy 30:19, God has established me in Peace of Abundant Life; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in Deuteronomy 30:19, this redemptive name heralds total restoration of wasted years, re-establishing you in the joy of Peace of Abundant Life."
   },
   {
     "id": 441,
@@ -4854,8 +4854,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Peace of Supernatural Power",
     "scriptureReference": "Psalm 66:7",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaG'vurah (שָׁלוֹם הַגְּבוּרָה). I walk in peace of supernatural power according to Psalm 66:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaG'vurah (שָׁלוֹם הַגְּבוּרָה). Through Psalm 66:7, God has established me in Peace of Supernatural Power; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Forged in spiritual victory in Psalm 66:7, this redemptive name endows the believer with holy tenacity and supernatural Peace of Supernatural Power."
   },
   {
     "id": 442,
@@ -4865,8 +4865,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Peace of Heavenly Wisdom",
     "scriptureReference": "Proverbs 8:14",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaChokhmah (שָׁלוֹם הַחָכְמָה). I walk in peace of heavenly wisdom according to Proverbs 8:14.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaChokhmah (שָׁלוֹם הַחָכְמָה). Through Proverbs 8:14, God has established me in Peace of Heavenly Wisdom; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Proverbs 8:14, this warrior title declares that through Christ who strengthens you, you arise and conquer in Peace of Heavenly Wisdom."
   },
   {
     "id": 443,
@@ -4876,8 +4876,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Peace of Spiritual Discernment",
     "scriptureReference": "1 Chronicles 12:32",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaBina (שָׁלוֹם הַבִּינָה). I walk in peace of spiritual discernment according to 1 Chronicles 12:32.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaBina (שָׁלוֹם הַבִּינָה). Through 1 Chronicles 12:32, God has established me in Peace of Spiritual Discernment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in 1 Chronicles 12:32, this heavenly mandate establishes your life as an altar of worship and a vessel of divine dominion in Peace of Spiritual Discernment."
   },
   {
     "id": 444,
@@ -4887,8 +4887,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Peace of Unbreakable Covenant",
     "scriptureReference": "Genesis 9:16",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaBrit (שָׁלוֹם הַבְּרִית). I walk in peace of unbreakable covenant according to Genesis 9:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaBrit (שָׁלוֹם הַבְּרִית). Through Genesis 9:16, God has established me in Peace of Unbreakable Covenant; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Enshrined in Genesis 9:16, this name seals Yahweh's unshakeable covenant oath, affirming you as His treasured possession in Peace of Unbreakable Covenant."
   },
   {
     "id": 445,
@@ -4898,8 +4898,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Peace of Good Will and Delight",
     "scriptureReference": "Psalm 30:5",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaRatzon (שָׁלוֹם הָרָצוֹן). I walk in peace of good will and delight according to Psalm 30:5.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaRatzon (שָׁלוֹם הָרָצוֹן). Through Psalm 30:5, God has established me in Peace of Good Will and Delight; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Psalm 30:5, this prophetic name marks you with the goodness and lovingkindness of God, releasing the fullness of Peace of Good Will and Delight."
   },
   {
     "id": 446,
@@ -4909,8 +4909,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Peace of Everlasting Victory",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaNetzach (שָׁלוֹם הַנֵּצַח). I walk in peace of everlasting victory according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaNetzach (שָׁלוֹם הַנֵּצַח). Through 1 Chronicles 29:11, God has established me in Peace of Everlasting Victory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in 1 Chronicles 29:11, this redemptive name heralds total restoration of wasted years, re-establishing you in the joy of Peace of Everlasting Victory."
   },
   {
     "id": 447,
@@ -4920,8 +4920,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Peace of Majesty and Splendor",
     "scriptureReference": "Psalm 104:1",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaHod (שָׁלוֹם הַהוֹד). I walk in peace of majesty and splendor according to Psalm 104:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaHod (שָׁלוֹם הַהוֹד). Through Psalm 104:1, God has established me in Peace of Majesty and Splendor; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Rooted in Psalm 104:1, this title symbolizes celestial investiture, clothing the believer in robes of praise and divine authority as Peace of Majesty and Splendor."
   },
   {
     "id": 448,
@@ -4931,8 +4931,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Peace of Desirable Beauty",
     "scriptureReference": "Ezekiel 20:6",
     "category": "New Identity",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaTzvi (שָׁלוֹם הַצְּבִי). I walk in peace of desirable beauty according to Ezekiel 20:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaTzvi (שָׁלוֹם הַצְּבִי). Through Ezekiel 20:6, God has established me in Peace of Desirable Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in Ezekiel 20:6, this prophetic name marks a definitive transition from obscurity into God's radiant decree: Peace of Desirable Beauty."
   },
   {
     "id": 449,
@@ -4942,8 +4942,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Peace of Righteous Judgment",
     "scriptureReference": "Isaiah 28:6",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaMishpat (שָׁלוֹם הַמִּשְׁפָּט). I walk in peace of righteous judgment according to Isaiah 28:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaMishpat (שָׁלוֹם הַמִּשְׁפָּט). Through Isaiah 28:6, God has established me in Peace of Righteous Judgment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Isaiah 28:6, this heavenly mandate establishes your life as an altar of worship and a vessel of divine dominion in Peace of Righteous Judgment."
   },
   {
     "id": 450,
@@ -4953,8 +4953,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Peace of My Beloved One",
     "scriptureReference": "Song of Songs 2:16",
     "category": "Beloved & Intimacy",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaDodi (שָׁלוֹם הַדּוֹדִי). I walk in peace of my beloved one according to Song of Songs 2:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Shalom HaDodi (שָׁלוֹם הַדּוֹדִי). Through Song of Songs 2:16, God has established me in Peace of My Beloved One; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Breathed with tender bridal love in Song of Songs 2:16, this name reflects the secret place of divine intimacy where you abide as Peace of My Beloved One."
   },
   {
     "id": 451,
@@ -4964,8 +4964,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Dwelling of Righteousness",
     "scriptureReference": "Psalm 23:3",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaTsedek (מִשְׁכַּן הַצֶּדֶק). I walk in dwelling of righteousness according to Psalm 23:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaTsedek (מִשְׁכַּן הַצֶּדֶק). Through Psalm 23:3, God has established me in Dwelling of Righteousness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Psalm 23:3, this redemptive declaration removes garments of mourning and clothes you in the majesty of Dwelling of Righteousness."
   },
   {
     "id": 452,
@@ -4975,8 +4975,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Dwelling of Lovingkindness",
     "scriptureReference": "Psalm 103:4",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaChesed (מִשְׁכַּן הַחֶסֶד). I walk in dwelling of lovingkindness according to Psalm 103:4.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaChesed (מִשְׁכַּן הַחֶסֶד). Through Psalm 103:4, God has established me in Dwelling of Lovingkindness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Psalm 103:4, this redemptive designation assures your heart that in the house of God you walk in full acceptance as Dwelling of Lovingkindness."
   },
   {
     "id": 453,
@@ -4986,8 +4986,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Dwelling of Faithfulness",
     "scriptureReference": "Lamentations 3:23",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaEmunah (מִשְׁכַּן הָאֱמוּנָה). I walk in dwelling of faithfulness according to Lamentations 3:23.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaEmunah (מִשְׁכַּן הָאֱמוּנָה). Through Lamentations 3:23, God has established me in Dwelling of Faithfulness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Forged in spiritual victory in Lamentations 3:23, this redemptive name endows the believer with holy tenacity and supernatural Dwelling of Faithfulness."
   },
   {
     "id": 454,
@@ -4997,8 +4997,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Dwelling of Triumphant Salvation",
     "scriptureReference": "Psalm 118:15",
     "category": "Redemption & Grace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaYeshua (מִשְׁכַּן הַיְשׁוּעָה). I walk in dwelling of triumphant salvation according to Psalm 118:15.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaYeshua (מִשְׁכַּן הַיְשׁוּעָה). Through Psalm 118:15, God has established me in Dwelling of Triumphant Salvation; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Grounded in Psalm 118:15, this title bears witness to the triumph of divine mercy over judgment, designating you as an inheritor of Dwelling of Triumphant Salvation."
   },
   {
     "id": 455,
@@ -5008,8 +5008,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Dwelling of Heavenly Beauty",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaTiferet (מִשְׁכַּן הַתִּפְאֶרֶת). I walk in dwelling of heavenly beauty according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaTiferet (מִשְׁכַּן הַתִּפְאֶרֶת). Through 1 Chronicles 29:11, God has established me in Dwelling of Heavenly Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in 1 Chronicles 29:11, this heavenly title represents the royal ornament and priestly splendor of Dwelling of Heavenly Beauty placed upon your life."
   },
   {
     "id": 456,
@@ -5019,8 +5019,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Dwelling of Divine Greatness",
     "scriptureReference": "Psalm 145:3",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaG'dulah (מִשְׁכַּן הַגְּדֻלָּה). I walk in dwelling of divine greatness according to Psalm 145:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaG'dulah (מִשְׁכַּן הַגְּדֻלָּה). Through Psalm 145:3, God has established me in Dwelling of Divine Greatness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Poured out in Psalm 145:3, this title carries the generational blessing of Abraham, causing uncommon favor and Dwelling of Divine Greatness to rest upon you."
   },
   {
     "id": 457,
@@ -5030,8 +5030,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Dwelling of Wholeness and Peace",
     "scriptureReference": "Numbers 6:26",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaShalom (מִשְׁכַּן הַשָּׁלוֹם). I walk in dwelling of wholeness and peace according to Numbers 6:26.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaShalom (מִשְׁכַּן הַשָּׁלוֹם). Through Numbers 6:26, God has established me in Dwelling of Wholeness and Peace; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Celebrated in Numbers 6:26, this name releases the supernatural peace that surpasses understanding, crowning your days with Dwelling of Wholeness and Peace."
   },
   {
     "id": 458,
@@ -5041,8 +5041,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Dwelling of Weighty Glory",
     "scriptureReference": "Psalm 24:7",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaKavod (מִשְׁכַּן הַכָּבוֹד). I walk in dwelling of weighty glory according to Psalm 24:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaKavod (מִשְׁכַּן הַכָּבוֹד). Through Psalm 24:7, God has established me in Dwelling of Weighty Glory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Psalm 24:7, this heavenly title represents the royal ornament and priestly splendor of Dwelling of Weighty Glory placed upon your life."
   },
   {
     "id": 459,
@@ -5052,8 +5052,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Dwelling of Consecrated Holiness",
     "scriptureReference": "Leviticus 19:2",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaKedushah (מִשְׁכַּן הַקְּדֻשָּׁה). I walk in dwelling of consecrated holiness according to Leviticus 19:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaKedushah (מִשְׁכַּן הַקְּדֻשָּׁה). Through Leviticus 19:2, God has established me in Dwelling of Consecrated Holiness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Consecrated in Leviticus 19:2, this priestly title confers kingdom authority and intercessory access, ordaining the believer for Dwelling of Consecrated Holiness."
   },
   {
     "id": 460,
@@ -5063,8 +5063,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Dwelling of Tender Mercies",
     "scriptureReference": "Daniel 9:9",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaRachamim (מִשְׁכַּן הָרַחֲמִים). I walk in dwelling of tender mercies according to Daniel 9:9.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaRachamim (מִשְׁכַּן הָרַחֲמִים). Through Daniel 9:9, God has established me in Dwelling of Tender Mercies; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Daniel 9:9, this name affirms that by sovereign grace you are brought near and forever granted the status of Dwelling of Tender Mercies."
   },
   {
     "id": 461,
@@ -5074,8 +5074,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Dwelling of Unending Praise",
     "scriptureReference": "Psalm 145:1",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaTehillah (מִשְׁכַּן הַתְּהִלָּה). I walk in dwelling of unending praise according to Psalm 145:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaTehillah (מִשְׁכַּן הַתְּהִלָּה). Through Psalm 145:1, God has established me in Dwelling of Unending Praise; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Psalm 145:1, this sacred title reminds the believer that the oil of gladness has triumphed over spirit of heaviness in Dwelling of Unending Praise."
   },
   {
     "id": 462,
@@ -5085,8 +5085,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Dwelling of Generational Blessing",
     "scriptureReference": "Genesis 12:2",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaBerakhah (מִשְׁכַּן הַבְּרָכָה). I walk in dwelling of generational blessing according to Genesis 12:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaBerakhah (מִשְׁכַּן הַבְּרָכָה). Through Genesis 12:2, God has established me in Dwelling of Generational Blessing; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Poured out in Genesis 12:2, this title carries the generational blessing of Abraham, causing uncommon favor and Dwelling of Generational Blessing to rest upon you."
   },
   {
     "id": 463,
@@ -5096,8 +5096,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Dwelling of Exuberant Joy",
     "scriptureReference": "Nehemiah 8:10",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaSimchah (מִשְׁכַּן הַשִּׂמְחָה). I walk in dwelling of exuberant joy according to Nehemiah 8:10.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaSimchah (מִשְׁכַּן הַשִּׂמְחָה). Through Nehemiah 8:10, God has established me in Dwelling of Exuberant Joy; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Celebrated in Nehemiah 8:10, this name releases the supernatural peace that surpasses understanding, crowning your days with Dwelling of Exuberant Joy."
   },
   {
     "id": 464,
@@ -5107,8 +5107,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Dwelling of Eternity and Ages",
     "scriptureReference": "Ecclesiastes 3:11",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaOlam (מִשְׁכַּן הָעוֹלָם). I walk in dwelling of eternity and ages according to Ecclesiastes 3:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaOlam (מִשְׁכַּן הָעוֹלָם). Through Ecclesiastes 3:11, God has established me in Dwelling of Eternity and Ages; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Guaranteed by the covenant promises of Ecclesiastes 3:11, this sacred title reminds you that you are eternally set apart and cherished as Dwelling of Eternity and Ages."
   },
   {
     "id": 465,
@@ -5118,8 +5118,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Dwelling of Abundant Life",
     "scriptureReference": "Deuteronomy 30:19",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaChayim (מִשְׁכַּן הַחַיִּים). I walk in dwelling of abundant life according to Deuteronomy 30:19.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaChayim (מִשְׁכַּן הַחַיִּים). Through Deuteronomy 30:19, God has established me in Dwelling of Abundant Life; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Prophesied in Deuteronomy 30:19, this powerful decree overturns generational stagnation, commanding supernatural emergence and Dwelling of Abundant Life."
   },
   {
     "id": 466,
@@ -5129,8 +5129,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Dwelling of Supernatural Power",
     "scriptureReference": "Psalm 66:7",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaG'vurah (מִשְׁכַּן הַגְּבוּרָה). I walk in dwelling of supernatural power according to Psalm 66:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaG'vurah (מִשְׁכַּן הַגְּבוּרָה). Through Psalm 66:7, God has established me in Dwelling of Supernatural Power; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Psalm 66:7, this warrior title declares that through Christ who strengthens you, you arise and conquer in Dwelling of Supernatural Power."
   },
   {
     "id": 467,
@@ -5140,8 +5140,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Dwelling of Heavenly Wisdom",
     "scriptureReference": "Proverbs 8:14",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaChokhmah (מִשְׁכַּן הַחָכְמָה). I walk in dwelling of heavenly wisdom according to Proverbs 8:14.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaChokhmah (מִשְׁכַּן הַחָכְמָה). Through Proverbs 8:14, God has established me in Dwelling of Heavenly Wisdom; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Proverbs 8:14, this name proclaims that your life is fortified against every onslaught of darkness by the power of Dwelling of Heavenly Wisdom."
   },
   {
     "id": 468,
@@ -5151,8 +5151,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Dwelling of Spiritual Discernment",
     "scriptureReference": "1 Chronicles 12:32",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaBina (מִשְׁכַּן הַבִּינָה). I walk in dwelling of spiritual discernment according to 1 Chronicles 12:32.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaBina (מִשְׁכַּן הַבִּינָה). Through 1 Chronicles 12:32, God has established me in Dwelling of Spiritual Discernment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Consecrated in 1 Chronicles 12:32, this priestly title confers kingdom authority and intercessory access, ordaining the believer for Dwelling of Spiritual Discernment."
   },
   {
     "id": 469,
@@ -5162,8 +5162,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Dwelling of Unbreakable Covenant",
     "scriptureReference": "Genesis 9:16",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaBrit (מִשְׁכַּן הַבְּרִית). I walk in dwelling of unbreakable covenant according to Genesis 9:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaBrit (מִשְׁכַּן הַבְּרִית). Through Genesis 9:16, God has established me in Dwelling of Unbreakable Covenant; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Proclaimed in Genesis 9:16, this covenant moniker assures the believer that God's steadfast chesed preserves and honors you as Dwelling of Unbreakable Covenant."
   },
   {
     "id": 470,
@@ -5173,8 +5173,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Dwelling of Good Will and Delight",
     "scriptureReference": "Psalm 30:5",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaRatzon (מִשְׁכַּן הָרָצוֹן). I walk in dwelling of good will and delight according to Psalm 30:5.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaRatzon (מִשְׁכַּן הָרָצוֹן). Through Psalm 30:5, God has established me in Dwelling of Good Will and Delight; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Psalm 30:5, this redemptive declaration commands the blessings of heaven to overtake every area of your journey in Dwelling of Good Will and Delight."
   },
   {
     "id": 471,
@@ -5184,8 +5184,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Dwelling of Everlasting Victory",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaNetzach (מִשְׁכַּן הַנֵּצַח). I walk in dwelling of everlasting victory according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaNetzach (מִשְׁכַּן הַנֵּצַח). Through 1 Chronicles 29:11, God has established me in Dwelling of Everlasting Victory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Prophesied in 1 Chronicles 29:11, this powerful decree overturns generational stagnation, commanding supernatural emergence and Dwelling of Everlasting Victory."
   },
   {
     "id": 472,
@@ -5195,8 +5195,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Dwelling of Majesty and Splendor",
     "scriptureReference": "Psalm 104:1",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaHod (מִשְׁכַּן הַהוֹד). I walk in dwelling of majesty and splendor according to Psalm 104:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaHod (מִשְׁכַּן הַהוֹד). Through Psalm 104:1, God has established me in Dwelling of Majesty and Splendor; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Psalm 104:1, this redemptive declaration removes garments of mourning and clothes you in the majesty of Dwelling of Majesty and Splendor."
   },
   {
     "id": 473,
@@ -5206,8 +5206,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Dwelling of Desirable Beauty",
     "scriptureReference": "Ezekiel 20:6",
     "category": "New Identity",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaTzvi (מִשְׁכַּן הַצְּבִי). I walk in dwelling of desirable beauty according to Ezekiel 20:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaTzvi (מִשְׁכַּן הַצְּבִי). Through Ezekiel 20:6, God has established me in Dwelling of Desirable Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Ezekiel 20:6, the mouth of the Lord bestows this name to nullify human mockery and establish you in the reality of Dwelling of Desirable Beauty."
   },
   {
     "id": 474,
@@ -5217,8 +5217,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Dwelling of Righteous Judgment",
     "scriptureReference": "Isaiah 28:6",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaMishpat (מִשְׁכַּן הַמִּשְׁפָּט). I walk in dwelling of righteous judgment according to Isaiah 28:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaMishpat (מִשְׁכַּן הַמִּשְׁפָּט). Through Isaiah 28:6, God has established me in Dwelling of Righteous Judgment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Consecrated in Isaiah 28:6, this priestly title confers kingdom authority and intercessory access, ordaining the believer for Dwelling of Righteous Judgment."
   },
   {
     "id": 475,
@@ -5228,8 +5228,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Dwelling of My Beloved One",
     "scriptureReference": "Song of Songs 2:16",
     "category": "Beloved & Intimacy",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaDodi (מִשְׁכַּן הַדּוֹדִי). I walk in dwelling of my beloved one according to Song of Songs 2:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Mishkan HaDodi (מִשְׁכַּן הַדּוֹדִי). Through Song of Songs 2:16, God has established me in Dwelling of My Beloved One; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Revealed in Song of Songs 2:16, this cherished title expresses Yahweh's profound delight and jealous affection over your soul as Dwelling of My Beloved One."
   },
   {
     "id": 476,
@@ -5239,8 +5239,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Wall of Righteousness",
     "scriptureReference": "Psalm 23:3",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaTsedek (חוֹמַת הַצֶּדֶק). I walk in wall of righteousness according to Psalm 23:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaTsedek (חוֹמַת הַצֶּדֶק). Through Psalm 23:3, God has established me in Wall of Righteousness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Psalm 23:3, this heavenly title represents the royal ornament and priestly splendor of Wall of Righteousness placed upon your life."
   },
   {
     "id": 477,
@@ -5250,8 +5250,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Wall of Lovingkindness",
     "scriptureReference": "Psalm 103:4",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaChesed (חוֹמַת הַחֶסֶד). I walk in wall of lovingkindness according to Psalm 103:4.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaChesed (חוֹמַת הַחֶסֶד). Through Psalm 103:4, God has established me in Wall of Lovingkindness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Psalm 103:4, this title breaks the spirit of rejection and orphanhood, welcoming the believer into intimate communion as Wall of Lovingkindness."
   },
   {
     "id": 478,
@@ -5261,8 +5261,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Wall of Faithfulness",
     "scriptureReference": "Lamentations 3:23",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaEmunah (חוֹמַת הָאֱמוּנָה). I walk in wall of faithfulness according to Lamentations 3:23.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaEmunah (חוֹמַת הָאֱמוּנָה). Through Lamentations 3:23, God has established me in Wall of Faithfulness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Established in Lamentations 3:23, this warrior title declares that through Christ who strengthens you, you arise and conquer in Wall of Faithfulness."
   },
   {
     "id": 479,
@@ -5272,8 +5272,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Wall of Triumphant Salvation",
     "scriptureReference": "Psalm 118:15",
     "category": "Redemption & Grace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaYeshua (חוֹמַת הַיְשׁוּעָה). I walk in wall of triumphant salvation according to Psalm 118:15.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaYeshua (חוֹמַת הַיְשׁוּעָה). Through Psalm 118:15, God has established me in Wall of Triumphant Salvation; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Spoken in Psalm 118:15, this name commemorates the price paid to bring you into the liberty, righteousness, and unmerited favor of Wall of Triumphant Salvation."
   },
   {
     "id": 480,
@@ -5283,8 +5283,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Wall of Heavenly Beauty",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaTiferet (חוֹמַת הַתִּפְאֶרֶת). I walk in wall of heavenly beauty according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaTiferet (חוֹמַת הַתִּפְאֶרֶת). Through 1 Chronicles 29:11, God has established me in Wall of Heavenly Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Rooted in 1 Chronicles 29:11, this title symbolizes celestial investiture, clothing the believer in robes of praise and divine authority as Wall of Heavenly Beauty."
   },
   {
     "id": 481,
@@ -5294,8 +5294,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Wall of Divine Greatness",
     "scriptureReference": "Psalm 145:3",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaG'dulah (חוֹמַת הַגְּדֻלָּה). I walk in wall of divine greatness according to Psalm 145:3.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaG'dulah (חוֹמַת הַגְּדֻלָּה). Through Psalm 145:3, God has established me in Wall of Divine Greatness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Psalm 145:3, this prophetic name marks you with the goodness and lovingkindness of God, releasing the fullness of Wall of Divine Greatness."
   },
   {
     "id": 482,
@@ -5305,8 +5305,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Wall of Wholeness and Peace",
     "scriptureReference": "Numbers 6:26",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaShalom (חוֹמַת הַשָּׁלוֹם). I walk in wall of wholeness and peace according to Numbers 6:26.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaShalom (חוֹמַת הַשָּׁלוֹם). Through Numbers 6:26, God has established me in Wall of Wholeness and Peace; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Numbers 6:26, this sacred title reminds the believer that the oil of gladness has triumphed over spirit of heaviness in Wall of Wholeness and Peace."
   },
   {
     "id": 483,
@@ -5316,8 +5316,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Wall of Weighty Glory",
     "scriptureReference": "Psalm 24:7",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaKavod (חוֹמַת הַכָּבוֹד). I walk in wall of weighty glory according to Psalm 24:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaKavod (חוֹמַת הַכָּבוֹד). Through Psalm 24:7, God has established me in Wall of Weighty Glory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Rooted in Psalm 24:7, this title symbolizes celestial investiture, clothing the believer in robes of praise and divine authority as Wall of Weighty Glory."
   },
   {
     "id": 484,
@@ -5327,8 +5327,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Wall of Consecrated Holiness",
     "scriptureReference": "Leviticus 19:2",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaKedushah (חוֹמַת הַקְּדֻשָּׁה). I walk in wall of consecrated holiness according to Leviticus 19:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaKedushah (חוֹמַת הַקְּדֻשָּׁה). Through Leviticus 19:2, God has established me in Wall of Consecrated Holiness; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Set forth in Leviticus 19:2, this apostolic designation calls you to stand as a king and priest unto God, walking in the dignity of Wall of Consecrated Holiness."
   },
   {
     "id": 485,
@@ -5338,8 +5338,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Wall of Tender Mercies",
     "scriptureReference": "Daniel 9:9",
     "category": "Grace & Belonging",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaRachamim (חוֹמַת הָרַחֲמִים). I walk in wall of tender mercies according to Daniel 9:9.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaRachamim (חוֹמַת הָרַחֲמִים). Through Daniel 9:9, God has established me in Wall of Tender Mercies; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Daniel 9:9, this redemptive designation assures your heart that in the house of God you walk in full acceptance as Wall of Tender Mercies."
   },
   {
     "id": 486,
@@ -5349,8 +5349,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Wall of Unending Praise",
     "scriptureReference": "Psalm 145:1",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaTehillah (חוֹמַת הַתְּהִלָּה). I walk in wall of unending praise according to Psalm 145:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaTehillah (חוֹמַת הַתְּהִלָּה). Through Psalm 145:1, God has established me in Wall of Unending Praise; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Infused with the joy of the Lord in Psalm 145:1, this title dissolves sorrow and imparts an unshakeable fortress of Wall of Unending Praise."
   },
   {
     "id": 487,
@@ -5360,8 +5360,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Wall of Generational Blessing",
     "scriptureReference": "Genesis 12:2",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaBerakhah (חוֹמַת הַבְּרָכָה). I walk in wall of generational blessing according to Genesis 12:2.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaBerakhah (חוֹמַת הַבְּרָכָה). Through Genesis 12:2, God has established me in Wall of Generational Blessing; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Decreed in Genesis 12:2, this prophetic name marks you with the goodness and lovingkindness of God, releasing the fullness of Wall of Generational Blessing."
   },
   {
     "id": 488,
@@ -5371,8 +5371,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Wall of Exuberant Joy",
     "scriptureReference": "Nehemiah 8:10",
     "category": "Everlasting Joy & Peace",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaSimchah (חוֹמַת הַשִּׂמְחָה). I walk in wall of exuberant joy according to Nehemiah 8:10.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaSimchah (חוֹמַת הַשִּׂמְחָה). Through Nehemiah 8:10, God has established me in Wall of Exuberant Joy; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Nehemiah 8:10, this sacred title reminds the believer that the oil of gladness has triumphed over spirit of heaviness in Wall of Exuberant Joy."
   },
   {
     "id": 489,
@@ -5382,8 +5382,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Wall of Eternity and Ages",
     "scriptureReference": "Ecclesiastes 3:11",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaOlam (חוֹמַת הָעוֹלָם). I walk in wall of eternity and ages according to Ecclesiastes 3:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaOlam (חוֹמַת הָעוֹלָם). Through Ecclesiastes 3:11, God has established me in Wall of Eternity and Ages; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Enshrined in Ecclesiastes 3:11, this name seals Yahweh's unshakeable covenant oath, affirming you as His treasured possession in Wall of Eternity and Ages."
   },
   {
     "id": 490,
@@ -5393,8 +5393,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Wall of Abundant Life",
     "scriptureReference": "Deuteronomy 30:19",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaChayim (חוֹמַת הַחַיִּים). I walk in wall of abundant life according to Deuteronomy 30:19.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaChayim (חוֹמַת הַחַיִּים). Through Deuteronomy 30:19, God has established me in Wall of Abundant Life; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Proclaimed in Deuteronomy 30:19, this title marks the breaking of every ungodly siege, ushering the soul into divine abundance and Wall of Abundant Life."
   },
   {
     "id": 491,
@@ -5404,8 +5404,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Wall of Supernatural Power",
     "scriptureReference": "Psalm 66:7",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaG'vurah (חוֹמַת הַגְּבוּרָה). I walk in wall of supernatural power according to Psalm 66:7.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaG'vurah (חוֹמַת הַגְּבוּרָה). Through Psalm 66:7, God has established me in Wall of Supernatural Power; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Drawn from Psalm 66:7, this name proclaims that your life is fortified against every onslaught of darkness by the power of Wall of Supernatural Power."
   },
   {
     "id": 492,
@@ -5415,8 +5415,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Wall of Heavenly Wisdom",
     "scriptureReference": "Proverbs 8:14",
     "category": "Spiritual Strength",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaChokhmah (חוֹמַת הַחָכְמָה). I walk in wall of heavenly wisdom according to Proverbs 8:14.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaChokhmah (חוֹמַת הַחָכְמָה). Through Proverbs 8:14, God has established me in Wall of Heavenly Wisdom; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Forged in spiritual victory in Proverbs 8:14, this redemptive name endows the believer with holy tenacity and supernatural Wall of Heavenly Wisdom."
   },
   {
     "id": 493,
@@ -5426,8 +5426,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Wall of Spiritual Discernment",
     "scriptureReference": "1 Chronicles 12:32",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaBina (חוֹמַת הַבִּינָה). I walk in wall of spiritual discernment according to 1 Chronicles 12:32.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaBina (חוֹמַת הַבִּינָה). Through 1 Chronicles 12:32, God has established me in Wall of Spiritual Discernment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Set forth in 1 Chronicles 12:32, this apostolic designation calls you to stand as a king and priest unto God, walking in the dignity of Wall of Spiritual Discernment."
   },
   {
     "id": 494,
@@ -5437,8 +5437,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Wall of Unbreakable Covenant",
     "scriptureReference": "Genesis 9:16",
     "category": "Covenant & Treasured",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaBrit (חוֹמַת הַבְּרִית). I walk in wall of unbreakable covenant according to Genesis 9:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaBrit (חוֹמַת הַבְּרִית). Through Genesis 9:16, God has established me in Wall of Unbreakable Covenant; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Guaranteed by the covenant promises of Genesis 9:16, this sacred title reminds you that you are eternally set apart and cherished as Wall of Unbreakable Covenant."
   },
   {
     "id": 495,
@@ -5448,8 +5448,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Wall of Good Will and Delight",
     "scriptureReference": "Psalm 30:5",
     "category": "Blessing & Favor",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaRatzon (חוֹמַת הָרָצוֹן). I walk in wall of good will and delight according to Psalm 30:5.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaRatzon (חוֹמַת הָרָצוֹן). Through Psalm 30:5, God has established me in Wall of Good Will and Delight; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Poured out in Psalm 30:5, this title carries the generational blessing of Abraham, causing uncommon favor and Wall of Good Will and Delight to rest upon you."
   },
   {
     "id": 496,
@@ -5459,8 +5459,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Wall of Everlasting Victory",
     "scriptureReference": "1 Chronicles 29:11",
     "category": "Breakthrough & Restoration",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaNetzach (חוֹמַת הַנֵּצַח). I walk in wall of everlasting victory according to 1 Chronicles 29:11.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaNetzach (חוֹמַת הַנֵּצַח). Through 1 Chronicles 29:11, God has established me in Wall of Everlasting Victory; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Proclaimed in 1 Chronicles 29:11, this title marks the breaking of every ungodly siege, ushering the soul into divine abundance and Wall of Everlasting Victory."
   },
   {
     "id": 497,
@@ -5470,8 +5470,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Wall of Majesty and Splendor",
     "scriptureReference": "Psalm 104:1",
     "category": "Royal Garment & Glory",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaHod (חוֹמַת הַהוֹד). I walk in wall of majesty and splendor according to Psalm 104:1.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaHod (חוֹמַת הַהוֹד). Through Psalm 104:1, God has established me in Wall of Majesty and Splendor; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Psalm 104:1, this heavenly title represents the royal ornament and priestly splendor of Wall of Majesty and Splendor placed upon your life."
   },
   {
     "id": 498,
@@ -5481,8 +5481,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Wall of Desirable Beauty",
     "scriptureReference": "Ezekiel 20:6",
     "category": "New Identity",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaTzvi (חוֹמַת הַצְּבִי). I walk in wall of desirable beauty according to Ezekiel 20:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaTzvi (חוֹמַת הַצְּבִי). Through Ezekiel 20:6, God has established me in Wall of Desirable Beauty; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Unveiled in Ezekiel's prophetic visions of divine renewal and temple restoration (Ezekiel 20:6), this consecrated title replaces past labels of barrenness and defeat with royal identity as Wall of Desirable Beauty."
   },
   {
     "id": 499,
@@ -5492,8 +5492,8 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Wall of Righteous Judgment",
     "scriptureReference": "Isaiah 28:6",
     "category": "Royal Calling & Priesthood",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaMishpat (חוֹמַת הַמִּשְׁפָּט). I walk in wall of righteous judgment according to Isaiah 28:6.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaMishpat (חוֹמַת הַמִּשְׁפָּט). Through Isaiah 28:6, God has established me in Wall of Righteous Judgment; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Set forth in Isaiah 28:6, this apostolic designation calls you to stand as a king and priest unto God, walking in the dignity of Wall of Righteous Judgment."
   },
   {
     "id": 500,
@@ -5503,7 +5503,7 @@ export const SHEMOT_GEULAH_500_NAMES: ShemotGeulahName[] = [
     "meaning": "Wall of My Beloved One",
     "scriptureReference": "Song of Songs 2:16",
     "category": "Beloved & Intimacy",
-    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaDodi (חוֹמַת הַדּוֹדִי). I walk in wall of my beloved one according to Song of Songs 2:16.",
-    "biblicalContext": "A consecrated redemptive title revealing God's transforming covenant over your life, turning former affliction into royal identity."
+    "propheticDeclaration": "By the word of the Lord, I declare I am Chomat HaDodi (חוֹמַת הַדּוֹדִי). Through Song of Songs 2:16, God has established me in Wall of My Beloved One; I walk in royal identity and covenant favor.",
+    "biblicalContext": "Anchored in Song of Songs 2:16, this redemptive designation confirms that you are neither forgotten nor overlooked, but ever held close as Wall of My Beloved One."
   }
 ];

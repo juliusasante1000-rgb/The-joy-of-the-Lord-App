@@ -9,11 +9,12 @@ export function useTimeSchedule() {
   const [simulatedDate, setSimulatedDate] = useState<string | null>(null);
   const [now, setNow] = useState<Date>(new Date());
 
-  // Update clock every second
+  // Update clock at optimized intervals (every 15s) to eliminate unnecessary root app re-renders
+  // while keeping minute transitions and edition changes perfectly accurate
   useEffect(() => {
     const timer = setInterval(() => {
       setNow(new Date());
-    }, 1000);
+    }, 15000);
     return () => clearInterval(timer);
   }, []);
 

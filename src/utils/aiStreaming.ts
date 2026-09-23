@@ -20,6 +20,7 @@ import {
   ReservoirOutlet,
   UniversalReservoirItem
 } from "../data/permanentContentReservoir";
+import { generateMathemaSermonAndApostleMathFallback } from "./mathemaFallbackGenerator";
 
 export function sanitizeCreatorName(text: string): string {
   if (!text) return "";
@@ -320,9 +321,14 @@ export async function streamAiContent<T = any>(
   // 3. Initiate Streaming Call & register in-flight promise
   const streamPromise = (async () => {
     const isFast = options.fastMode ?? getIsFastMode();
-    const timeoutMs = options.timeoutMs ?? (isFast ? 25000 : 45000);
+    // Strict 15-second maximum timeout as requested: if AI takes longer, serve enriched fallback
+    const timeoutMs = options.timeoutMs ?? 15000;
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+    let isTimedOut = false;
+    const timeoutId = setTimeout(() => {
+      isTimedOut = true;
+      controller.abort();
+    }, timeoutMs);
 
     let accumulatedText = "";
     let parsedData: any = null;
@@ -612,14 +618,36 @@ export async function streamAiContent<T = any>(
         };
       }
 
+      // If 15-second timeout expired, immediately deliver enriched fallback without secondary delay!
+      if (isTimedOut) {
+        console.log(`[AI 15S TIMEOUT/FALLBACK] ⚡ Strict 15s timeout expired; delivering enriched MathemaSermon & ApostleMath fallback immediately.`);
+        const fallback = generateMathemaSermonAndApostleMathFallback(options);
+        options.onProgress?.(100);
+        options.onChunk?.(fallback.text, fallback.text, fallback.data);
+        options.onComplete?.(fallback.text, fallback.data, false);
+        saveAiResultToCache(cacheKey, fallback.text, fallback.data, isFast);
+        return {
+          success: true,
+          text: fallback.text,
+          data: fallback.data as T,
+          isCached: false,
+          isReservoir: true,
+          reservoirLabel: "MathemaSermon & ApostleMath Fallback"
+        };
+      }
+
       // Single Non-Streaming Fallback: Only for non-quota transport failure
       console.log("[AI FALLBACK] Attempting single non-streaming call to /api/generate...");
       try {
+        const fallbackController = new AbortController();
+        const fallbackTimeoutId = setTimeout(() => fallbackController.abort(), 4000);
         const fallbackRes = await fetch("/api/generate", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
+          body: JSON.stringify(payload),
+          signal: fallbackController.signal
         });
+        clearTimeout(fallbackTimeoutId);
 
         if (fallbackRes.status === 429) {
           const { outlet, key } = resolveOutletAndKey(options);
@@ -716,14 +744,21 @@ export async function streamAiContent<T = any>(
         };
       }
 
-      // Live AI generation could not be completed
-      const failureMsg = lastServerErrorMessage || "AI generation could not be completed right now. Please try again.";
-      options.onError?.(failureMsg);
+      // Live AI generation timed out or could not complete within 15 seconds:
+      // Immediately serve enriched MathemaSermon & ApostleMath fallback write-up
+      console.log(`[AI 15S TIMEOUT/FALLBACK] ⚡ Delivering enriched MathemaSermon & ApostleMath fallback write-up for "${options.actionType || "homiletics"}"`);
+      const fallback = generateMathemaSermonAndApostleMathFallback(options);
+      options.onProgress?.(100);
+      options.onChunk?.(fallback.text, fallback.text, fallback.data);
+      options.onComplete?.(fallback.text, fallback.data, false);
+      saveAiResultToCache(cacheKey, fallback.text, fallback.data, isFast);
       return {
-        success: false,
-        text: "",
-        error: failureMsg,
-        isCached: false
+        success: true,
+        text: fallback.text,
+        data: fallback.data as T,
+        isCached: false,
+        isReservoir: true,
+        reservoirLabel: "MathemaSermon & ApostleMath Fallback"
       };
     } catch (err: any) {
       clearTimeout(timeoutId);
@@ -749,29 +784,24 @@ export async function streamAiContent<T = any>(
               isReservoir: true,
               reservoirLabel: stored.label
             };
-          } else {
-            const gracefulMsg = getGracefulUniversalReservoirMessage(outlet, key);
-            options.onError?.(gracefulMsg);
-            return {
-              success: false,
-              text: "",
-              error: gracefulMsg,
-              isQuota: true,
-              isCached: false
-            };
           }
         }
       }
-      const failureMsg = isQuota
-        ? USER_FRIENDLY_QUOTA_MESSAGE
-        : (err?.message || lastServerErrorMessage || "AI generation could not be completed right now. Please try again.");
-      options.onError?.(failureMsg);
+
+      // If network abort, 15s timeout, or error occurred: Deliver MathemaSermon & ApostleMath fallback write-up
+      console.log(`[AI STREAM CATCH FALLBACK] ⚡ Delivering enriched MathemaSermon & ApostleMath fallback write-up`);
+      const fallback = generateMathemaSermonAndApostleMathFallback(options);
+      options.onProgress?.(100);
+      options.onChunk?.(fallback.text, fallback.text, fallback.data);
+      options.onComplete?.(fallback.text, fallback.data, false);
+      saveAiResultToCache(cacheKey, fallback.text, fallback.data, isFast);
       return {
-        success: false,
-        text: "",
-        error: failureMsg,
-        isQuota,
-        isCached: false
+        success: true,
+        text: fallback.text,
+        data: fallback.data as T,
+        isCached: false,
+        isReservoir: true,
+        reservoirLabel: "MathemaSermon & ApostleMath Fallback"
       };
     } finally {
       IN_FLIGHT_REQUESTS.delete(cacheKey);

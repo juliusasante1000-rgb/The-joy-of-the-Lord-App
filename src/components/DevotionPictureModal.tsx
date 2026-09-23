@@ -92,25 +92,32 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
 
   if (!isOpen || !devotion) return null;
 
-  // Helper for line wrapping on canvas
+  // Helper for line wrapping on canvas with multi-paragraph support
   const wrapText = (ctx: CanvasRenderingContext2D, text: string, maxWidth: number): string[] => {
     if (!text) return [];
-    const words = text.split(/\s+/);
+    const paragraphs = text.split(/\r?\n/);
     const lines: string[] = [];
-    let currentLine = words[0] || "";
 
-    for (let i = 1; i < words.length; i++) {
-      const word = words[i];
-      const width = ctx.measureText(currentLine + " " + word).width;
-      if (width < maxWidth) {
-        currentLine += " " + word;
-      } else {
-        lines.push(currentLine);
-        currentLine = word;
+    for (let p = 0; p < paragraphs.length; p++) {
+      const para = paragraphs[p].trim();
+      if (!para) continue;
+      const words = para.split(/\s+/);
+      let currentLine = words[0] || "";
+
+      for (let i = 1; i < words.length; i++) {
+        const word = words[i];
+        const testLine = currentLine + " " + word;
+        const width = ctx.measureText(testLine).width;
+        if (width <= maxWidth) {
+          currentLine = testLine;
+        } else {
+          lines.push(currentLine);
+          currentLine = word;
+        }
       }
-    }
-    if (currentLine) {
-      lines.push(currentLine);
+      if (currentLine) {
+        lines.push(currentLine);
+      }
     }
     return lines;
   };
@@ -285,6 +292,15 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
     clean = clean.replace(/\*\*([^*]+)\*\*/g, "$1");
     clean = clean.replace(/\*([^*]+)\*/g, "$1");
 
+    // Clean escaped characters and symbols
+    clean = clean
+      .replace(/\\&/g, "&")
+      .replace(/&amp;/g, "&")
+      .replace(/\\_/g, "_")
+      .replace(/\\%/g, "%")
+      .replace(/\\#/g, "#")
+      .replace(/\\\$/g, "$");
+
     // Remove any leftover LaTeX command slashes or isolated braces
     clean = clean.replace(/\\[a-zA-Z]+/g, "");
     clean = clean.replace(/[{}]/g, "");
@@ -451,9 +467,11 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
 
     // 5. CONTENT SECTIONS DATA PREPARATION
     const scriptureText = devotion.passageText || devotion.keyScripture || "";
-    const cleanReference = devotion.keyScripture && devotion.keyScripture.length < 90
-      ? devotion.keyScripture
-      : devotion.subtitle || "Holy Scripture";
+    const cleanReference = formatMathForCanvasDisplay(
+      devotion.keyScripture && devotion.keyScripture.length < 90
+        ? devotion.keyScripture
+        : devotion.subtitle || "Holy Scripture"
+    );
 
     const isMath = isMathAllowedCategory(devotion.category, (devotion as any).actionType);
     const cleanedReflection = isMath ? devotion.reflection : cleanMathFromNonMathContent(devotion.reflection);
@@ -466,9 +484,9 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
     const hasAction = Boolean(cleanedAction && cleanedAction.trim());
 
     // Footer Height reservation & Single-Page Strict Constraint
-    const footerHeight = Math.round(255 * baseScale);
+    const footerHeight = Math.round(250 * baseScale);
     const footerY = H - innerMargin - footerHeight;
-    const maxContentY = footerY - Math.round(28 * baseScale);
+    const maxContentY = footerY - Math.round(15 * baseScale);
     const availableVerticalSpace = maxContentY - currentY;
 
     // Content length calculation
@@ -486,84 +504,65 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
 
     const cardX = Math.round(110 * baseScale);
     const cardW = W - cardX * 2;
-    const innerTextW = cardW - Math.round(80 * baseScale);
+    const innerTextW = cardW - Math.round(72 * baseScale);
 
     const twoColBottom = (activeFormat.id === "full-page" || activeFormat.id === "social-square") && hasAction && hasPrayer;
     const colGap = Math.round(24 * baseScale);
     const bottomColW = twoColBottom ? Math.round((cardW - colGap) / 2) : cardW;
-    const bottomInnerW = bottomColW - Math.round(70 * baseScale);
+    const bottomInnerW = twoColBottom ? bottomColW - Math.round(72 * baseScale) : innerTextW;
 
-    // Baseline executive publication font sizes (balanced, crisp, highly legible, strictly 1 page)
-    const baseScripFont = Math.round(32 * baseScale);
+    // Baseline executive publication font sizes
+    const baseScripFont = Math.round(34 * baseScale);
     const baseIntroFont = Math.round(26 * baseScale);
     const baseExpoFont = Math.round(26 * baseScale);
     const baseActionFont = Math.round(24 * baseScale);
     const basePrayerFont = Math.round(24 * baseScale);
     const badgeFontSize = Math.round(20 * baseScale);
 
-    // AUTO-FIT SOLVER: Start at 0.95 and solve down smoothly so all content strictly fits on ONE page
-    let textScale = 0.95;
-    if (totalCharCount < 600) {
-      textScale = 0.95;
-    } else if (totalCharCount < 1000) {
-      textScale = 0.88;
-    } else if (totalCharCount < 1600) {
-      textScale = 0.80;
-    } else if (totalCharCount < 2200) {
-      textScale = 0.72;
-    } else {
-      textScale = 0.65;
-    }
-
-    if (activeFormat.id === "social-square") {
-      textScale *= 0.88;
-    }
-
     const numSections = 2 + (hasIntro ? 1 : 0) + (twoColBottom ? 1 : ((hasAction ? 1 : 0) + (hasPrayer ? 1 : 0)));
-    const baseGap = Math.round(18 * baseScale);
-    const totalGapsMin = (numSections - 1) * Math.round(14 * baseScale);
+    const minGap = Math.round(18 * baseScale);
+    const totalGapsMin = (numSections - 1) * minGap;
+    const targetSpaceForBoxes = Math.max(600, availableVerticalSpace - totalGapsMin);
 
-    // Iterative fit test down to 0.44 to guarantee complete single-page containment
-    let scripLines: string[] = [];
-    let introLines: string[] = [];
-    let expoParaBlocks: { lines: string[]; isFormula: boolean; isHeading: boolean }[] = [];
-    let actionLines: string[] = [];
-    let prayerLines: string[] = [];
-
-    let scripFontSize = baseScripFont;
-    let scripLineH = Math.round(scripFontSize * 1.45);
-    let introFontSize = baseIntroFont;
-    let introLineH = Math.round(introFontSize * 1.46);
-    let expoFontSize = baseExpoFont;
-    let expoLineH = Math.round(expoFontSize * 1.48);
-    let actionFontSize = baseActionFont;
-    let actionLineH = Math.round(actionFontSize * 1.45);
-    let prayerFontSize = basePrayerFont;
-    let prayerLineH = Math.round(prayerFontSize * 1.46);
-    const expoParaGap = Math.round(10 * baseScale);
+    // Dynamic full-page adaptive solver: starts high so short devotions fill the page, scans down to fit long ones
+    let bestScale = 0.35;
+    let bestScripLines: string[] = [];
+    let bestIntroLines: string[] = [];
+    let bestExpoParaBlocks: { lines: string[]; isFormula: boolean; isHeading: boolean }[] = [];
+    let bestActionLines: string[] = [];
+    let bestPrayerLines: string[] = [];
+    let bestScripH = 0;
+    let bestIntroH = 0;
+    let bestExpoH = 0;
+    let bestActionH = 0;
+    let bestPrayerH = 0;
+    let bestBottomRowH = 0;
+    let bestTotalContentH = 0;
 
     const rawExpoParas = cleanedReflection.split(/\n\n+/).filter(Boolean);
+    const startScanScale = totalCharCount < 350 ? 2.3 : totalCharCount < 650 ? 1.85 : totalCharCount < 1100 ? 1.35 : totalCharCount < 1700 ? 1.05 : 0.85;
 
-    for (let testScale = textScale; testScale >= 0.44; testScale -= 0.03) {
-      scripFontSize = Math.round(baseScripFont * testScale);
-      scripLineH = Math.round(scripFontSize * 1.45);
-      introFontSize = Math.round(baseIntroFont * testScale);
-      introLineH = Math.round(introFontSize * 1.46);
-      expoFontSize = Math.round(baseExpoFont * testScale);
-      expoLineH = Math.round(expoFontSize * 1.48);
-      actionFontSize = Math.round(baseActionFont * testScale);
-      actionLineH = Math.round(actionFontSize * 1.45);
-      prayerFontSize = Math.round(basePrayerFont * testScale);
-      prayerLineH = Math.round(prayerFontSize * 1.46);
+    for (let s = startScanScale; s >= 0.32; s -= 0.01) {
+      const curScripFont = Math.round(baseScripFont * s);
+      const curScripLineH = Math.round(curScripFont * 1.46);
+      const curIntroFont = Math.round(baseIntroFont * s);
+      const curIntroLineH = Math.round(curIntroFont * 1.48);
+      const curExpoFont = Math.round(baseExpoFont * s);
+      const curExpoLineH = Math.round(curExpoFont * 1.48);
+      const curActionFont = Math.round(baseActionFont * s);
+      const curActionLineH = Math.round(curActionFont * 1.46);
+      const curPrayerFont = Math.round(basePrayerFont * s);
+      const curPrayerLineH = Math.round(curPrayerFont * 1.46);
+      const curExpoParaGap = Math.round(10 * baseScale * Math.min(1.2, s));
 
-      ctx.font = `italic bold ${scripFontSize}px 'Georgia', serif`;
-      scripLines = wrapText(ctx, `"${scriptureText}"`, innerTextW);
+      ctx.font = `italic bold ${curScripFont}px Georgia, serif`;
+      const sLines = wrapText(ctx, `"${scriptureText}"`, innerTextW);
 
-      ctx.font = `500 ${introFontSize}px 'Georgia', serif`;
-      introLines = hasIntro ? wrapText(ctx, introContent, innerTextW) : [];
+      ctx.font = `normal ${curIntroFont}px Georgia, serif`;
+      const iLines = hasIntro ? wrapText(ctx, introContent, innerTextW) : [];
 
-      ctx.font = `500 ${expoFontSize}px 'Georgia', serif`;
-      expoParaBlocks = [];
+      ctx.font = `normal ${curExpoFont}px Georgia, serif`;
+      const eBlocks: { lines: string[]; isFormula: boolean; isHeading: boolean }[] = [];
       rawExpoParas.forEach((p) => {
         const trimmedP = p.trim();
         if (!trimmedP) return;
@@ -573,83 +572,106 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
         const formatted = formatMathForCanvasDisplay(trimmedP);
         const lines = wrapText(ctx, formatted, innerTextW);
         if (lines.length > 0) {
-          expoParaBlocks.push({ lines, isFormula, isHeading });
+          eBlocks.push({ lines, isFormula, isHeading });
         }
       });
 
-      ctx.font = `500 ${actionFontSize}px 'Georgia', serif`;
-      actionLines = hasAction ? wrapText(ctx, actionContent, twoColBottom ? bottomInnerW : innerTextW) : [];
+      ctx.font = `normal ${curActionFont}px Georgia, serif`;
+      const aLines = hasAction ? wrapText(ctx, actionContent, bottomInnerW) : [];
 
-      ctx.font = `italic 500 ${prayerFontSize}px 'Georgia', serif`;
-      prayerLines = hasPrayer ? wrapText(ctx, `"${prayerContent}"`, twoColBottom ? bottomInnerW : innerTextW) : [];
+      ctx.font = `italic ${curPrayerFont}px Georgia, serif`;
+      const pLines = hasPrayer ? wrapText(ctx, `"${prayerContent}"`, bottomInnerW) : [];
 
-      const padTop = Math.round(48 * baseScale);
-      const padBottom = Math.round(22 * baseScale);
+      const padTop = Math.round(44 * baseScale);
+      const padBottom = Math.round(24 * baseScale);
 
-      const testScripH = padTop + scripLines.length * scripLineH + Math.round(30 * baseScale) + padBottom;
-      const testIntroH = hasIntro ? padTop + introLines.length * introLineH + padBottom : 0;
-      const totalExpoLines = expoParaBlocks.reduce((acc, b) => acc + b.lines.length, 0);
-      const testExpoH = padTop + totalExpoLines * expoLineH + Math.max(0, expoParaBlocks.length - 1) * expoParaGap + padBottom;
-      const testActionH = hasAction ? padTop + actionLines.length * actionLineH + padBottom : 0;
-      const testPrayerH = hasPrayer ? padTop + prayerLines.length * prayerLineH + padBottom : 0;
-      const testBottomH = twoColBottom ? Math.max(testActionH, testPrayerH) : testActionH + testPrayerH;
+      const tScripH = padTop + sLines.length * curScripLineH + Math.round(32 * baseScale) + padBottom;
+      const tIntroH = hasIntro ? padTop + iLines.length * curIntroLineH + padBottom : 0;
+      const totalExpoL = eBlocks.reduce((acc, b) => acc + b.lines.length, 0);
+      const tExpoH = padTop + totalExpoL * curExpoLineH + Math.max(0, eBlocks.length - 1) * curExpoParaGap + padBottom;
+      const tActionH = hasAction ? padTop + aLines.length * curActionLineH + padBottom : 0;
+      const tPrayerH = hasPrayer ? padTop + pLines.length * curPrayerLineH + padBottom : 0;
+      const tBottomH = twoColBottom
+        ? Math.max(tActionH, tPrayerH)
+        : tActionH + (hasAction && hasPrayer ? minGap : 0) + tPrayerH;
 
-      const totalH = testScripH + testIntroH + testExpoH + testBottomH + totalGapsMin;
-      if (totalH <= availableVerticalSpace) {
-        textScale = testScale;
+      const tTotal = tScripH + tIntroH + tExpoH + tBottomH;
+
+      if (tTotal <= targetSpaceForBoxes) {
+        bestScale = s;
+        bestScripLines = sLines;
+        bestIntroLines = iLines;
+        bestExpoParaBlocks = eBlocks;
+        bestActionLines = aLines;
+        bestPrayerLines = pLines;
+        bestScripH = tScripH;
+        bestIntroH = tIntroH;
+        bestExpoH = tExpoH;
+        bestActionH = tActionH;
+        bestPrayerH = tPrayerH;
+        bestBottomRowH = tBottomH;
+        bestTotalContentH = tTotal;
         break;
       }
-      textScale = testScale;
     }
 
-    // Recalculate definitive natural heights with determined scale
-    const padTop = Math.round(48 * baseScale);
-    const padBottom = Math.round(22 * baseScale);
+    // Final font sizes with verified bestScale
+    const scripFontSize = Math.round(baseScripFont * bestScale);
+    const scripLineH = Math.round(scripFontSize * 1.46);
+    const introFontSize = Math.round(baseIntroFont * bestScale);
+    const introLineH = Math.round(introFontSize * 1.48);
+    const expoFontSize = Math.round(baseExpoFont * bestScale);
+    const expoLineH = Math.round(expoFontSize * 1.48);
+    const actionFontSize = Math.round(baseActionFont * bestScale);
+    const actionLineH = Math.round(actionFontSize * 1.46);
+    const prayerFontSize = Math.round(basePrayerFont * bestScale);
+    const prayerLineH = Math.round(prayerFontSize * 1.46);
+    const expoParaGap = Math.round(10 * baseScale * Math.min(1.2, bestScale));
 
-    const scripNaturalH = padTop + scripLines.length * scripLineH + Math.round(30 * baseScale) + padBottom;
-    const introNaturalH = hasIntro ? padTop + introLines.length * introLineH + padBottom : 0;
-    const totalExpoLinesCount = expoParaBlocks.reduce((acc, b) => acc + b.lines.length, 0);
-    const expoNaturalH = padTop + totalExpoLinesCount * expoLineH + Math.max(0, expoParaBlocks.length - 1) * expoParaGap + padBottom;
-    const actionNaturalH = hasAction ? padTop + actionLines.length * actionLineH + padBottom : 0;
-    const prayerNaturalH = hasPrayer ? padTop + prayerLines.length * prayerLineH + padBottom : 0;
-    const bottomRowNaturalH = twoColBottom
-      ? Math.max(actionNaturalH, prayerNaturalH)
-      : actionNaturalH + prayerNaturalH;
+    const scripLines = bestScripLines;
+    const introLines = bestIntroLines;
+    const expoParaBlocks = bestExpoParaBlocks;
+    const actionLines = bestActionLines;
+    const prayerLines = bestPrayerLines;
 
-    const totalNaturalContentH = scripNaturalH + introNaturalH + expoNaturalH + bottomRowNaturalH;
-    const remainingSpace = availableVerticalSpace - totalNaturalContentH;
+    // Distribute remaining slack so the content smoothly covers the 1 full page down to the footer
+    const remainingSpace = Math.max(0, availableVerticalSpace - (bestTotalContentH + totalGapsMin));
+    const gapShare = Math.min(Math.round(remainingSpace * 0.22), (numSections - 1) * Math.round(16 * baseScale));
+    const sectionGap = minGap + Math.round(gapShare / Math.max(1, numSections - 1));
 
-    let sectionGap = baseGap;
-    let scripBoxH = scripNaturalH;
-    let introBoxH = introNaturalH;
-    let expoBoxH = expoNaturalH;
-    let actionBoxH = actionNaturalH;
-    let prayerBoxH = prayerNaturalH;
+    const cardExtra = remainingSpace - gapShare;
+    let scripBoxH = bestScripH;
+    let introBoxH = bestIntroH;
+    let expoBoxH = bestExpoH;
+    let bottomRowH = bestBottomRowH;
+    let actionBoxH = bestActionH;
+    let prayerBoxH = bestPrayerH;
 
-    if (remainingSpace > 0) {
-      // Modest proportional gap expansion, avoiding any push towards footer
-      const maxExtraGap = (numSections - 1) * Math.round(8 * baseScale);
-      const gapAdd = Math.min(remainingSpace * 0.25, maxExtraGap);
-      sectionGap = baseGap + Math.round(gapAdd / Math.max(1, numSections - 1));
+    if (cardExtra > 0) {
+      const scripAdd = Math.round(cardExtra * (hasIntro ? 0.22 : 0.28));
+      const introAdd = hasIntro ? Math.round(cardExtra * 0.16) : 0;
+      const expoAdd = Math.round(cardExtra * 0.38);
+      const bottomAdd = Math.max(0, cardExtra - scripAdd - introAdd - expoAdd);
 
-      const cardExtra = Math.min(remainingSpace - gapAdd, Math.round(60 * baseScale));
-      scripBoxH += Math.round(cardExtra * 0.20);
-      if (hasIntro) introBoxH += Math.round(cardExtra * 0.20);
-      expoBoxH += Math.round(cardExtra * 0.40);
+      scripBoxH += scripAdd;
+      if (hasIntro) introBoxH += introAdd;
+      expoBoxH += expoAdd;
+      bottomRowH += bottomAdd;
+
       if (twoColBottom) {
-        actionBoxH = Math.max(actionBoxH, prayerBoxH) + Math.round(cardExtra * 0.20);
-        prayerBoxH = actionBoxH;
+        actionBoxH = bottomRowH;
+        prayerBoxH = bottomRowH;
+      } else {
+        const bottomSections = (hasAction ? 1 : 0) + (hasPrayer ? 1 : 0);
+        if (bottomSections > 0) {
+          const share = Math.round(bottomAdd / bottomSections);
+          if (hasAction) actionBoxH += share;
+          if (hasPrayer) prayerBoxH += share;
+        }
       }
-    } else {
-      // Tighten gaps if snug
-      sectionGap = Math.max(Math.round(12 * baseScale), baseGap + Math.round(remainingSpace / Math.max(1, numSections)));
     }
 
-    // Safety constraint: Cap each box height so currentY NEVER breaches maxContentY
-    const enforceBoxFit = (boxH: number): number => {
-      const roomLeft = Math.max(0, maxContentY - currentY);
-      return Math.min(boxH, roomLeft);
-    };
+    const enforceBoxFit = (boxH: number) => Math.max(60, Math.min(boxH, maxContentY - currentY));
 
     // 6. DRAW KEY SCRIPTURE BOX
     scripBoxH = enforceBoxFit(scripBoxH);
@@ -678,10 +700,8 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
     ctx.letterSpacing = "0.2px";
     let sY = scripBoxY + Math.round(78 * baseScale);
     scripLines.forEach((line) => {
-      if (sY + scripLineH <= scripBoxY + scripBoxH - Math.round(30 * baseScale)) {
-        ctx.fillText(line, cardX + Math.round(36 * baseScale), sY);
-        sY += scripLineH;
-      }
+      ctx.fillText(line, cardX + Math.round(36 * baseScale), sY);
+      sY += scripLineH;
     });
 
     // Scripture Reference (Right Aligned)
@@ -717,10 +737,8 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
       ctx.letterSpacing = "0.2px";
       let iY = inBoxY + Math.round(78 * baseScale);
       introLines.forEach((line) => {
-        if (iY + introLineH <= inBoxY + introBoxH - Math.round(16 * baseScale)) {
-          ctx.fillText(line, cardX + Math.round(36 * baseScale), iY);
-          iY += introLineH;
-        }
+        ctx.fillText(line, cardX + Math.round(36 * baseScale), iY);
+        iY += introLineH;
       });
 
       currentY = inBoxY + introBoxH + sectionGap;
@@ -763,10 +781,8 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
       }
       ctx.letterSpacing = "0.2px";
       block.lines.forEach((line) => {
-        if (eY + expoLineH <= expoBoxY + expoBoxH - Math.round(16 * baseScale)) {
-          ctx.fillText(line, cardX + Math.round(36 * baseScale), eY);
-          eY += expoLineH;
-        }
+        ctx.fillText(line, cardX + Math.round(36 * baseScale), eY);
+        eY += expoLineH;
       });
       if (bIdx < expoParaBlocks.length - 1) {
         eY += expoParaGap;
@@ -803,10 +819,8 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
       ctx.font = `italic ${prayerFontSize}px 'Georgia', serif`;
       let pY = bottomRowY + Math.round(76 * baseScale);
       prayerLines.forEach((line) => {
-        if (pY + prayerLineH <= bottomRowY + bottomRowH - Math.round(14 * baseScale)) {
-          ctx.fillText(line, prayerCardX + Math.round(28 * baseScale), pY);
-          pY += prayerLineH;
-        }
+        ctx.fillText(line, prayerCardX + Math.round(28 * baseScale), pY);
+        pY += prayerLineH;
       });
 
       // Right Column: Today's Faith Walk & Theme Decree
@@ -831,10 +845,8 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
       ctx.font = `500 ${actionFontSize}px 'Georgia', serif`;
       let aY = bottomRowY + Math.round(76 * baseScale);
       actionLines.forEach((line) => {
-        if (aY + actionLineH <= bottomRowY + bottomRowH - Math.round(14 * baseScale)) {
-          ctx.fillText(line, actionCardX + Math.round(28 * baseScale), aY);
-          aY += actionLineH;
-        }
+        ctx.fillText(line, actionCardX + Math.round(28 * baseScale), aY);
+        aY += actionLineH;
       });
 
       currentY = bottomRowY + bottomRowH + sectionGap;
@@ -863,10 +875,8 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
         ctx.font = `500 ${actionFontSize}px 'Georgia', serif`;
         let aY = actBoxY + Math.round(76 * baseScale);
         actionLines.forEach((line) => {
-          if (aY + actionLineH <= actBoxY + actionBoxH - Math.round(14 * baseScale)) {
-            ctx.fillText(line, cardX + Math.round(36 * baseScale), aY);
-            aY += actionLineH;
-          }
+          ctx.fillText(line, cardX + Math.round(36 * baseScale), aY);
+          aY += actionLineH;
         });
 
         currentY = actBoxY + actionBoxH + sectionGap;
@@ -895,10 +905,8 @@ export const DevotionPictureModal: React.FC<DevotionPictureModalProps> = ({
         ctx.font = `italic ${prayerFontSize}px 'Georgia', serif`;
         let pY = prayerBoxY + Math.round(76 * baseScale);
         prayerLines.forEach((line) => {
-          if (pY + prayerLineH <= prayerBoxY + prayerBoxH - Math.round(14 * baseScale)) {
-            ctx.fillText(line, cardX + Math.round(36 * baseScale), pY);
-            pY += prayerLineH;
-          }
+          ctx.fillText(line, cardX + Math.round(36 * baseScale), pY);
+          pY += prayerLineH;
         });
 
         currentY = prayerBoxY + prayerBoxH + sectionGap;

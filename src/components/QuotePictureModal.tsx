@@ -361,6 +361,7 @@ export const QuotePictureModal: React.FC<QuotePictureModalProps> = ({
       }
     }
 
+    // Iterative adaptive font scaler: find the best font sizes so all text lines fit comfortably
     let quoteLineH = Math.round(quoteFontSize * 1.45);
     ctx.font = `italic bold ${quoteFontSize}px 'Georgia', serif`;
     let quoteLines = wrapText(ctx, `“${quoteText}”`, innerTextW);
@@ -373,55 +374,75 @@ export const QuotePictureModal: React.FC<QuotePictureModalProps> = ({
     ctx.font = `500 ${reflectFontSize}px 'Georgia', serif`;
     let reflectLines = hasReflection ? wrapText(ctx, reflectText, innerTextW) : [];
 
-    // Calculate Box Heights
-    let quoteBoxNaturalH =
-      Math.round(75 * baseScale) +
-      quoteLines.length * quoteLineH +
-      (attribution ? Math.round(50 * baseScale) : Math.round(25 * baseScale));
+    let gap = (hasPrinciple || hasReflection) ? Math.round(24 * baseScale) : 0;
 
-    let extraBoxNaturalH =
-      (hasPrinciple || hasReflection)
+    // Helper to calculate total height at current font sizes
+    const calcRequiredH = () => {
+      const qH = Math.round(75 * baseScale) + quoteLines.length * quoteLineH + (attribution ? Math.round(50 * baseScale) : Math.round(25 * baseScale));
+      const eH = (hasPrinciple || hasReflection)
         ? Math.round(60 * baseScale) +
           (hasPrinciple ? principleLines.length * principleLineH + Math.round(20 * baseScale) : 0) +
           (hasReflection ? reflectLines.length * reflectLineH : 0) +
           Math.round(35 * baseScale)
         : 0;
+      return { qH, eH, total: qH + eH + gap };
+    };
 
-    let gap = (hasPrinciple || hasReflection) ? Math.round(24 * baseScale) : 0;
-    const totalRequiredH = quoteBoxNaturalH + extraBoxNaturalH + gap;
+    let dims = calcRequiredH();
 
-    // Strict boundary enforcement: NEVER allow content boxes to reach or cross footerY
-    let quoteBoxH = quoteBoxNaturalH;
-    let extraBoxH = extraBoxNaturalH;
+    // If too large, step down fonts until it fits
+    while (dims.total > availableSpace && quoteFontSize > 22) {
+      quoteFontSize = Math.max(22, quoteFontSize - 2);
+      quoteLineH = Math.round(quoteFontSize * 1.40);
+      ctx.font = `italic bold ${quoteFontSize}px 'Georgia', serif`;
+      quoteLines = wrapText(ctx, `“${quoteText}”`, innerTextW);
 
-    if (totalRequiredH > availableSpace) {
-      // Proportionally compress box heights so the bottom stays strictly above maxUsableBottom
-      const availableForBoxes = Math.max(100, availableSpace - gap);
-      const ratio = availableForBoxes / (quoteBoxNaturalH + extraBoxNaturalH);
-      quoteBoxH = Math.floor(quoteBoxNaturalH * ratio);
-      extraBoxH = Math.floor(extraBoxNaturalH * ratio);
+      if (hasPrinciple && principleFontSize > 18) {
+        principleFontSize = Math.max(18, principleFontSize - 1);
+        principleLineH = Math.round(principleFontSize * 1.38);
+        ctx.font = `bold ${principleFontSize}px 'Plus Jakarta Sans', sans-serif`;
+        principleLines = wrapText(ctx, principleText, innerTextW);
+      }
 
-      // Re-adjust inner font sizing slightly if compression is severe
-      if (ratio < 0.85) {
-        quoteFontSize = Math.max(22, Math.round(quoteFontSize * 0.88));
-        quoteLineH = Math.round(quoteFontSize * 1.38);
+      if (hasReflection && reflectFontSize > 16) {
+        reflectFontSize = Math.max(16, reflectFontSize - 1);
+        reflectLineH = Math.round(reflectFontSize * 1.38);
+        ctx.font = `500 ${reflectFontSize}px 'Georgia', serif`;
+        reflectLines = wrapText(ctx, reflectText, innerTextW);
+      }
+
+      dims = calcRequiredH();
+    }
+
+    // If short content with ample extra space, step up quote font size so it majestically fills the page
+    while (dims.total < availableSpace - Math.round(250 * baseScale) && quoteFontSize < 64 && quoteLines.length <= 4) {
+      quoteFontSize += 2;
+      quoteLineH = Math.round(quoteFontSize * 1.42);
+      ctx.font = `italic bold ${quoteFontSize}px 'Georgia', serif`;
+      quoteLines = wrapText(ctx, `“${quoteText}”`, innerTextW);
+      dims = calcRequiredH();
+      if (dims.total > availableSpace) {
+        quoteFontSize -= 2;
+        quoteLineH = Math.round(quoteFontSize * 1.42);
         ctx.font = `italic bold ${quoteFontSize}px 'Georgia', serif`;
         quoteLines = wrapText(ctx, `“${quoteText}”`, innerTextW);
-
-        principleFontSize = Math.max(18, Math.round(principleFontSize * 0.88));
-        principleLineH = Math.round(principleFontSize * 1.35);
-
-        reflectFontSize = Math.max(16, Math.round(reflectFontSize * 0.88));
-        reflectLineH = Math.round(reflectFontSize * 1.35);
+        dims = calcRequiredH();
+        break;
       }
-    } else {
-      // If there is extra comfortable space, expand boxes smoothly
-      const remainingComfortSpace = availableSpace - totalRequiredH;
-      quoteBoxH += Math.round(remainingComfortSpace * 0.55);
+    }
+
+    let quoteBoxH = dims.qH;
+    let extraBoxH = dims.eH;
+
+    // Distribute remaining slack so the content expands to fill 1 full page down to footer
+    const remainingComfortSpace = Math.max(0, availableSpace - dims.total);
+    if (remainingComfortSpace > 0) {
       if (extraBoxH > 0) {
-        extraBoxH += Math.round(remainingComfortSpace * 0.45);
+        quoteBoxH += Math.round(remainingComfortSpace * 0.58);
+        extraBoxH = availableSpace - gap - quoteBoxH;
+      } else {
+        quoteBoxH += remainingComfortSpace;
       }
-      gap += Math.min(Math.round(20 * baseScale), Math.round(remainingComfortSpace * 0.1));
     }
 
     // 5. DRAW MAIN QUOTE CARD
@@ -443,17 +464,16 @@ export const QuotePictureModal: React.FC<QuotePictureModalProps> = ({
     ctx.textAlign = "right";
     ctx.fillText("“", cardX + cardW - Math.round(40 * baseScale), quoteBoxY + Math.round(160 * baseScale));
 
-    // Quote Body Text
+    // Quote Body Text (vertically balanced inside card)
     ctx.fillStyle = textColor;
     ctx.font = `italic bold ${quoteFontSize}px 'Georgia', serif`;
     ctx.letterSpacing = "0.3px";
     ctx.textAlign = "left";
-    let qY = quoteBoxY + Math.round(75 * baseScale);
+    const totalQuoteContentH = quoteLines.length * quoteLineH + (attribution ? Math.round(48 * baseScale) : 0);
+    let qY = quoteBoxY + Math.max(Math.round(65 * baseScale), Math.round((quoteBoxH - totalQuoteContentH) / 2));
     quoteLines.forEach((line) => {
-      if (qY < quoteBoxY + quoteBoxH - Math.round(20 * baseScale)) {
-        ctx.fillText(line, cardX + Math.round(50 * baseScale), qY);
-        qY += quoteLineH;
-      }
+      ctx.fillText(line, cardX + Math.round(50 * baseScale), qY);
+      qY += quoteLineH;
     });
 
     // Author / Scripture Reference line (Shown in quote card ONLY when not the creator)
@@ -492,13 +512,11 @@ export const QuotePictureModal: React.FC<QuotePictureModalProps> = ({
         ctx.fillStyle = textColor;
         ctx.font = `bold ${principleFontSize}px 'Georgia', serif`;
         principleLines.forEach((line) => {
-          if (eY < extraBoxY + extraBoxH - Math.round(20 * baseScale)) {
-            ctx.fillText(line, cardX + Math.round(45 * baseScale), eY);
-            eY += principleLineH;
-          }
+          ctx.fillText(line, cardX + Math.round(45 * baseScale), eY);
+          eY += principleLineH;
         });
 
-        if (hasReference && !item.author && eY < extraBoxY + extraBoxH - Math.round(30 * baseScale)) {
+        if (hasReference && !item.author) {
           ctx.fillStyle = goldColor;
           ctx.font = `italic bold ${Math.round(28 * baseScale)}px 'Georgia', serif`;
           ctx.fillText(`Scripture Anchor: ${item.reference}`, cardX + Math.round(45 * baseScale), eY + Math.round(8 * baseScale));
@@ -511,10 +529,8 @@ export const QuotePictureModal: React.FC<QuotePictureModalProps> = ({
         ctx.fillStyle = secondaryTextColor;
         ctx.font = `500 ${reflectFontSize}px 'Georgia', serif`;
         reflectLines.forEach((line) => {
-          if (eY < extraBoxY + extraBoxH - Math.round(15 * baseScale)) {
-            ctx.fillText(line, cardX + Math.round(45 * baseScale), eY);
-            eY += reflectLineH;
-          }
+          ctx.fillText(line, cardX + Math.round(45 * baseScale), eY);
+          eY += reflectLineH;
         });
       }
     }
