@@ -271,16 +271,6 @@ export const EditCreatorProfileModal: React.FC<EditCreatorProfileModalProps> = (
             Work & Daily Focus
           </button>
           <button
-            onClick={() => setActiveSection("publications")}
-            className={`px-3 py-1.5 rounded-lg font-bold transition-all shrink-0 cursor-pointer ${
-              activeSection === "publications"
-                ? "bg-[#16235A] text-white shadow-xs"
-                : "text-slate-600 hover:bg-slate-200"
-            }`}
-          >
-            Work & Books ({profile.publications?.length || 0})
-          </button>
-          <button
             onClick={() => setActiveSection("principles")}
             className={`px-3 py-1.5 rounded-lg font-bold transition-all shrink-0 cursor-pointer ${
               activeSection === "principles"
@@ -656,107 +646,6 @@ export const EditCreatorProfileModal: React.FC<EditCreatorProfileModalProps> = (
                     />
                   ))}
                 </div>
-              </div>
-            </div>
-          )}
-
-          {/* 8. Publications & Books */}
-          {activeSection === "publications" && (
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#5B6B8A]">
-                    Books, Research & Publications
-                  </h4>
-                  <p className="text-xs text-slate-500">
-                    Add or modify books and academic publications
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  onClick={handleAddPublication}
-                  className="px-3 py-1.5 rounded-lg bg-[#16235A] text-white text-xs font-bold flex items-center gap-1.5 cursor-pointer"
-                >
-                  <Plus className="w-3.5 h-3.5" /> Add Publication
-                </button>
-              </div>
-
-              <div className="space-y-3">
-                {profile.publications?.map((pub, idx) => (
-                  <div
-                    key={pub.id || idx}
-                    className="p-4 rounded-xl bg-white border border-[#E8E0F0] space-y-3"
-                  >
-                    <div className="flex items-center justify-between">
-                      <input
-                        type="text"
-                        value={pub.title}
-                        onChange={(e) => {
-                          const updated = [...profile.publications];
-                          updated[idx] = { ...updated[idx], title: e.target.value };
-                          setProfile({ ...profile, publications: updated });
-                        }}
-                        placeholder="Book / Research Title"
-                        className="font-bold text-sm text-[#16235A] border-b border-slate-300 pb-1 flex-1 mr-3 focus:outline-hidden focus:border-[#9333EA]"
-                      />
-                      <button
-                        type="button"
-                        onClick={() => handleRemovePublication(pub.id)}
-                        className="text-red-500 hover:text-red-700 p-1 cursor-pointer"
-                        title="Delete publication"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </button>
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      <div>
-                        <label className="block text-[11px] font-bold text-slate-500 mb-0.5">Field / Category</label>
-                        <input
-                          type="text"
-                          value={pub.field}
-                          onChange={(e) => {
-                            const updated = [...profile.publications];
-                            updated[idx] = { ...updated[idx], field: e.target.value };
-                            setProfile({ ...profile, publications: updated });
-                          }}
-                          className="w-full px-2.5 py-1.5 text-xs rounded border border-slate-300"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-[11px] font-bold text-slate-500 mb-0.5">Status</label>
-                        <select
-                          value={pub.status}
-                          onChange={(e) => {
-                            const updated = [...profile.publications];
-                            updated[idx] = { ...updated[idx], status: e.target.value as any };
-                            setProfile({ ...profile, publications: updated });
-                          }}
-                          className="w-full px-2.5 py-1.5 text-xs rounded border border-slate-300"
-                        >
-                          <option value="Published">Published</option>
-                          <option value="In Research">In Research</option>
-                          <option value="Curriculum">Curriculum</option>
-                          <option value="Writing">Writing</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-[11px] font-bold text-slate-500 mb-0.5">Description & Synopsis</label>
-                      <textarea
-                        rows={2}
-                        value={pub.description}
-                        onChange={(e) => {
-                          const updated = [...profile.publications];
-                          updated[idx] = { ...updated[idx], description: e.target.value };
-                          setProfile({ ...profile, publications: updated });
-                        }}
-                        className="w-full px-2.5 py-1.5 text-xs rounded border border-slate-300"
-                      />
-                    </div>
-                  </div>
-                ))}
               </div>
             </div>
           )}

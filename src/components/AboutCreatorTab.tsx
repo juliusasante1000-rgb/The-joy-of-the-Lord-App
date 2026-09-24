@@ -291,7 +291,7 @@ export const AboutCreatorTab: React.FC<AboutCreatorTabProps> = ({
               : "text-[#5B6B8A] hover:bg-slate-100"
           }`}
         >
-          Work & Books
+          My Work
         </button>
         <button
           onClick={() => setActiveSubSection("principles")}
@@ -630,52 +630,21 @@ export const AboutCreatorTab: React.FC<AboutCreatorTabProps> = ({
         </div>
       )}
 
-      {/* SECTION: My Work & Books */}
+      {/* SECTION: My Work */}
       {activeSubSection === "work" && (
         <div className="space-y-6 animate-in fade-in duration-150">
           <div className="p-6 sm:p-8 rounded-2xl bg-white border border-[#E8E0F0] shadow-sm space-y-6">
             <div className="border-b border-[#E8E0F0] pb-4">
               <span className="text-[11px] font-bold uppercase tracking-widest text-[#9333EA]">
-                Pedagogy & Research
+                Pedagogy & Ministry
               </span>
               <h2 className="text-xl sm:text-2xl font-bold font-serif text-[#16235A]">
-                My Work, Research & Publications
+                My Work & Calling
               </h2>
             </div>
 
             <div className="text-sm sm:text-base leading-relaxed text-[#1E293B] font-serif">
               <p>{profile.myWork}</p>
-            </div>
-
-            <div className="space-y-3 pt-4 border-t border-[#E8E0F0]">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-[#5B6B8A] flex items-center gap-1.5">
-                <BookOpen className="w-4 h-4 text-[#9333EA]" /> Books & Curricular Works
-              </h3>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                {profile.publications.map((pub) => (
-                  <div
-                    key={pub.id}
-                    className="p-4 rounded-xl bg-[#FAF8FD] border border-[#E8E0F0] flex flex-col justify-between space-y-3 hover:border-[#9333EA] transition-all"
-                  >
-                    <div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-[#9333EA]/10 text-[#9333EA]">
-                        {pub.status}
-                      </span>
-                      <h4 className="text-base font-bold font-serif text-[#16235A] mt-2">
-                        {pub.title}
-                      </h4>
-                      <p className="text-xs font-medium text-[#DB2777] mt-0.5">{pub.field}</p>
-                      <p className="text-xs text-slate-600 mt-2 leading-relaxed">
-                        {pub.description}
-                      </p>
-                    </div>
-                    <div className="pt-2 border-t border-slate-200/60 text-[11px] font-mono text-[#5B6B8A]">
-                      Authored by Bismark Twum
-                    </div>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </div>

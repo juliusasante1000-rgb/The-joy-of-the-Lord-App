@@ -35,7 +35,7 @@ export const DEFAULT_CREATOR_PROFILE: CreatorProfile = {
   christianFaith:
     "I believe in the Triune God — Father, Son, and Holy Spirit. I believe the Holy Scriptures are the inspired, infallible, and authoritative Word of God, profitable for teaching, reproof, correction, and training in righteousness. Salvation is by grace through faith in Jesus Christ alone, who died for our sins and rose again triumphantly.\n\nMy personal walk with Christ is anchored on Philippians 4:13 ('I can do all things through Christ who strengthens me') and Proverbs 16:3 ('Commit your work to the Lord, and your plans will be established'). Everything we build, teach, and write is for the glory of God.",
   myWork:
-    "My professional work spans Mathematics Education, Educational Research, Pedagogical Innovations, Curriculum Development, and Christian Devotional Writing. I focus on developing structured learning frameworks that help students grasp complex concepts with clarity while instilling character, discipline, and purpose. As an author and researcher, I have authored works on Research Methods in Education, Mathematics Pedagogy, Curriculum Design, and Christian Life.",
+    "My calling and work are dedicated to Mathematics Education, Pedagogical Innovations, Christian Devotional Writing, and Kingdom Discipleship. I focus on developing structured educational frameworks and faith-building tools that help believers and students grasp profound truths with clarity, while instilling godly character, spiritual discipline, and divine purpose. All glory belongs to God alone.",
   dailyFocus: [
     "Pray without ceasing",
     "Plan with intentionality",
@@ -85,48 +85,7 @@ export const DEFAULT_CREATOR_PROFILE: CreatorProfile = {
       scripture: "Nehemiah 8:10"
     }
   ],
-  publications: [
-    {
-      id: "research-methods",
-      title: "Research Methods in Education",
-      field: "Academic & Methodological Research",
-      description:
-        "A comprehensive guide for researchers, educators, and graduate students on educational inquiry, statistical analysis, and empirical methodologies.",
-      status: "Published"
-    },
-    {
-      id: "math-education",
-      title: "Mathematics Education & Pedagogical Excellence",
-      field: "Mathematics & Curriculum Design",
-      description:
-        "Innovative pedagogical strategies, visual reasoning models, and conceptual mastery pathways for secondary and tertiary mathematics teaching.",
-      status: "Published"
-    },
-    {
-      id: "curriculum-dev",
-      title: "Curriculum Development & Instructional Leadership",
-      field: "Educational Leadership",
-      description:
-        "A strategic blueprint for modern curriculum evaluation, teacher development, and transformative classroom learning outcomes.",
-      status: "Published"
-    },
-    {
-      id: "joy-strength-bk",
-      title: "The Joy of the Lord is Our Strength",
-      field: "Christian Devotion & Spiritual Warfare",
-      description:
-        "An exposition of Nehemiah 8:10, exploring how supernatural joy provides impenetrable fortress-strength in trials and spiritual battles.",
-      status: "Published"
-    },
-    {
-      id: "gods-generals-lessons",
-      title: "Lessons from God's Generals: Faith, Fire, and Pitfalls",
-      field: "Church History & Revival Studies",
-      description:
-        "A profound examination of the great revivalists, miracle ministries, their spiritual secrets, and key lessons for contemporary believers.",
-      status: "Published"
-    }
-  ],
+  publications: [],
   platformGuide: {
     whatItIs:
       "The Joy of the Lord is a full-featured Christian devotional platform, digital theological library, and spiritual companion engineered to enrich the daily walk of believers worldwide.",

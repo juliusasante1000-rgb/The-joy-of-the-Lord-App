@@ -69,54 +69,54 @@ export const CURATED_LIBRARY_BOOKS: BookTopicDefinition[] = [
     ]
   },
   {
-    title: "Research Methods in Education: Empirical Inquiry and Rigor",
-    author: "Department of Academic & Pedagogical Research",
-    category: "Academic & Methodological Research",
-    badge: "Academic Treatise",
-    color: "from-slate-900 via-blue-950 to-indigo-950",
-    desc: "A comprehensive guide to quantitative and qualitative research methodologies, hypothesis testing, sampling validity, and ethical scholarship.",
-    tags: ["Research Methods", "Education", "Statistics", "Pedagogy", "Scholarship"],
+    title: "The Way of Salvation: Grace, Regeneration, and Eternal Life",
+    author: "Center for Biblical Salvation & Discipleship",
+    category: "Jesus Christ & Salvation",
+    badge: "Soteriology Classic",
+    color: "from-rose-950 via-red-950 to-stone-900",
+    desc: "An in-depth, biblically grounded exposition of the plan of salvation—from conviction and repentance to justification by faith alone in Christ and eternal security.",
+    tags: ["Salvation", "Justification", "Repentance", "Grace", "Eternal Life"],
     chapters: [
       {
-        title: "Epistemological Foundations of Educational Research",
-        subtitle: "Positivism, Constructivism, and Mixed-Methods Paradigms",
-        content: "Rigorous educational research begins with clarity of paradigm. Whether employing positivist empirical measurements or constructivist qualitative insights, researchers must formulate precise hypotheses, control confounding variables, and ensure internal and external validity in study designs."
+        title: "The Inescapable Need for Redemption",
+        subtitle: "Total Depravity, Conviction of Sin, and the Imago Dei",
+        content: "Scripture declares that all have sinned and fall short of the glory of God (Romans 3:23). Fallen humanity cannot purchase or engineer its own salvation through human morality, academic intellectualism, or good works. The law acts as a schoolmaster to reveal our spiritual bankruptcy and drive us directly to the Cross of Jesus Christ."
       },
       {
-        title: "Sampling Techniques and Statistical Inference",
-        subtitle: "Ensuring Representativeness and Eliminating Bias",
-        content: "Stratified random sampling, confidence intervals, and multivariate regression analyses form the analytical backbone for evaluating curriculum efficacy. True research elevates educational policy above subjective speculation."
+        title: "Justification by Sovereign Grace Through Faith",
+        subtitle: "The Imputed Righteousness of Christ and the Finished Work",
+        content: "Salvation is not earned; it is the free gift of God (Ephesians 2:8-9). On Calvary, Jesus bore our sins in His own body upon the tree. Through faith in His shed blood, the believer is instantly justified—declared righteous before God's holy throne—and adopted into the royal family of the Almighty."
       },
       {
-        title: "Action Research in the Modern Classroom",
-        subtitle: "Iterative Cycles of Observation, Assessment, and Reform",
-        content: "Educators who apply systematic action research become continuous innovators. By measuring student comprehension before and after pedagogical interventions, teachers establish data-driven excellence."
+        title: "Regeneration and the Fruit of the Holy Spirit",
+        subtitle: "The New Creation, Sanctification, and Finishing the Race",
+        content: "If any man be in Christ, he is a new creature (2 Corinthians 5:17). Salvation does not leave the soul unchanged; the Holy Spirit imparts spiritual life, writes God's laws upon the heart, and empowers the believer to walk in continuous holiness, victory over the world, and joyful endurance unto the end."
       }
     ]
   },
   {
-    title: "Mathematics Pedagogy and Conceptual Mastery",
-    author: "Mathematical Education Consortium",
-    category: "Mathematics Education",
-    badge: "Educational Mastery",
-    color: "from-cyan-950 via-slate-900 to-blue-950",
-    desc: "Transforming mathematics classrooms from rote memorization to visual reasoning, conceptual intuition, and joyful problem-solving.",
-    tags: ["Mathematics", "Teaching", "Pedagogy", "Critical Thinking", "Mastery"],
+    title: "The Foundations of Christian Discipleship & Biblical Truth",
+    author: "Apostolic Doctrine & Discipleship Guild",
+    category: "Systematic Theology",
+    badge: "Discipleship Manual",
+    color: "from-amber-950 via-slate-900 to-blue-950",
+    desc: "Equipping believers with foundational Christian doctrines: the infallibility of Scripture, prayer, spiritual warfare, and walking in the fullness of Christ.",
+    tags: ["Discipleship", "Sound Doctrine", "Scripture", "Prayer", "Holiness"],
     chapters: [
       {
-        title: "De-mystifying Abstract Algebra and Geometry",
-        subtitle: "From Concrete Manipulatives to Abstract Symbolic Logic",
-        content: "Every student possesses inherent mathematical capacity when concepts are introduced through concrete visual models before moving to formal symbolic abstraction. Bridging intuitive geometry with analytical proof builds lasting confidence."
+        title: "The Infallible Word of God as Absolute Authority",
+        subtitle: "2 Timothy 3:16 and the Unshakable Rock of Divine Truth",
+        content: "In a shifting world of human philosophies, the Word of God is eternal and without error. All Scripture is inspired by the Holy Ghost, profitable for doctrine, reproof, correction, and instruction in righteousness, establishing an immutable anchor for the soul."
       },
       {
-        title: "The Psychology of Mathematical Confidence",
-        subtitle: "Overcoming Math Anxiety Through Scaffolded Discovery",
-        content: "Math anxiety is not a lack of intelligence; it is a fear of error. By reframing errors as constructive data points in problem-solving, educators create a growth mindset that fosters creative mathematical genius."
+        title: "The Secret Place: Daily Fellowship with the Father",
+        subtitle: "Prayer, Fasting, and Abiding Under the Shadow of the Almighty",
+        content: "True Christian discipleship is nurtured in the secret place of prayer (Psalm 91:1). As we seek the Father in secret, He rewards us openly, clothing our inner man with supernatural resilience, divine guidance, and overcoming power."
       },
       {
-        title: "Socratic Questioning and Proof Formulation",
-        subtitle: "Developing Independent Logical Deduction in Young Minds",
-        content: "Rather than giving formulas directly, guiding learners to discover mathematical invariants through structured questioning cements deep neurological connections and long-term retention."
+        title: "Walking in Victory and Winning Souls for Christ",
+        subtitle: "The Great Commission and the Ministry of Reconciliation",
+        content: "Every believer is called to be a light in this world. Armed with the gospel of peace and the shield of faith, disciples are commissioned to make disciples of all nations, turning souls from darkness into God's marvelous light."
       }
     ]
   },
