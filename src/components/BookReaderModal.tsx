@@ -214,7 +214,7 @@ export const BookReaderModal: React.FC<BookReaderModalProps> = ({
                 {book.title}
               </h2>
               <p className="text-[11px] opacity-60 truncate">
-                Chapter {currentChapter.chapterNumber} of {book.totalChapters}: {currentChapter.title}
+                Page {currentChapter.chapterNumber} of {book.totalChapters}: {currentChapter.title}
               </p>
             </div>
           </div>
@@ -385,7 +385,7 @@ export const BookReaderModal: React.FC<BookReaderModalProps> = ({
               <div className={`p-4 border-b ${activeTheme.border} flex items-center justify-between`}>
                 <h3 className="text-xs font-bold uppercase tracking-wider flex items-center gap-2">
                   <BookOpen className="w-3.5 h-3.5 text-[#B48C35]" />
-                  Chapters ({book.chapters.length})
+                  Pages ({book.chapters.length})
                 </h3>
                 <button
                   onClick={() => setIsTocOpen(false)}
@@ -439,7 +439,7 @@ export const BookReaderModal: React.FC<BookReaderModalProps> = ({
             {/* Chapter Header */}
             <div className="text-center space-y-2 pb-6 border-b border-current/10">
               <span className="text-[11px] font-bold uppercase tracking-widest text-[#B48C35]">
-                Chapter {currentChapter.chapterNumber} of {book.totalChapters}
+                Page {currentChapter.chapterNumber} of {book.totalChapters}
               </span>
               <h1 className="text-2xl sm:text-3xl font-bold font-serif leading-tight">
                 {currentChapter.title}

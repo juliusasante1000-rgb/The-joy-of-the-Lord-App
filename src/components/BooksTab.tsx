@@ -141,16 +141,16 @@ export const BooksTab: React.FC<BooksTabProps> = ({
         <div className="relative z-10 space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs font-semibold text-[#E5D5BC]">
             <BookOpen className="w-3.5 h-3.5 text-[#B48C35]" />
-            Christian Library & E-Books Reader
+            Christian Library • 200 Detailed Messages (5 Pages Each)
           </div>
 
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="space-y-1 max-w-xl">
               <h1 className="text-2xl sm:text-3xl font-bold font-serif tracking-tight text-[#FDFBF7]">
-                Spiritual Books & Living Classics
+                Library of 200 Unique Messages
               </h1>
               <p className="text-xs sm:text-sm text-[#E5D5BC]/80 leading-relaxed font-light">
-                Read sound Christian spiritual classics, explore doctrinal treatises, and study inspirational biblical publications anytime.
+                Study 200 distinct, in-depth Christian messages (5 detailed pages each), exploring sound biblical doctrine, sovereign grace, spiritual warfare, kingdom multiplication, and apostolic prayer.
               </p>
             </div>
 
@@ -307,7 +307,7 @@ export const BooksTab: React.FC<BooksTabProps> = ({
         <div className="flex items-center justify-between">
           <h2 className="text-base font-bold font-serif text-[#1A2A44] flex items-center gap-2">
             <BookMarked className="w-4 h-4 text-[#B48C35]" />
-            Books Collection ({filteredBooks.length})
+            Messages & Books Collection ({filteredBooks.length})
           </h2>
           <span className="text-xs text-[#1A2A44]/60">
             {customBooks.length} uploaded by you
@@ -391,7 +391,7 @@ export const BooksTab: React.FC<BooksTabProps> = ({
                     {/* Chapter Pill List Preview */}
                     <div className="space-y-1.5 pt-1">
                       <p className="text-[10px] font-bold uppercase tracking-wider text-[#1A2A44]/40">
-                        Table of Contents ({book.chapters.length} Chapters):
+                        Table of Contents ({book.chapters.length} Pages):
                       </p>
                       <div className="space-y-1">
                         {book.chapters.slice(0, 2).map((ch) => (

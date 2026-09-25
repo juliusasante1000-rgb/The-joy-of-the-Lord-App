@@ -38,8 +38,6 @@ import { MathView, RichMathContent } from "./MathView";
 import { Devotion } from "../types";
 import { DevotionPictureModal } from "./DevotionPictureModal";
 import { printDevotionOnePageDocument } from "../utils/devotionDocumentExporter";
-import { streamAiContent, getIsFastMode, setIsFastMode } from "../utils/aiStreaming";
-import { AiFastLoadingView } from "./AiFastLoadingView";
 import { useSyncedContent } from "../utils/useSyncedContent";
 
 interface ApostleMathTabProps {
@@ -98,15 +96,6 @@ export const ApostleMathTab: React.FC<ApostleMathTabProps> = ({
   const simX = (simEqSum + simEqDiff) / 2;
   const simY = (simEqSum - simEqDiff) / 2;
 
-  // AI MathemaSermon generator state
-  const [customMathTopic, setCustomMathTopic] = useState("");
-  const [customScripture, setCustomScripture] = useState("");
-  const [isGeneratingAi, setIsGeneratingAi] = useState(false);
-  const [aiGeneratedLesson, setAiGeneratedLesson] = useState<ApostleMathLesson | null>(null);
-  const [streamingAiText, setStreamingAiText] = useState("");
-  const [streamingProgress, setStreamingProgress] = useState(25);
-  const [aiError, setAiError] = useState<string | null>(null);
-
   // Extract unique categories (math branches)
   const categories = useMemo(() => {
     const set = new Set<string>();
@@ -137,15 +126,12 @@ export const ApostleMathTab: React.FC<ApostleMathTabProps> = ({
   }, [allLessons, searchQuery, selectedCategory]);
 
   const selectedLesson = useMemo(() => {
-    if (aiGeneratedLesson && selectedLessonId === aiGeneratedLesson.id) {
-      return aiGeneratedLesson;
-    }
     return (
       allLessons.find((l) => l.id === selectedLessonId) ||
       allLessons[0] ||
       APOSTLE_MATH_LESSONS[0]
     );
-  }, [selectedLessonId, aiGeneratedLesson, allLessons]);
+  }, [selectedLessonId, allLessons]);
 
   const currentIndex = useMemo(() => {
     return allLessons.findIndex((l) => l.id === selectedLesson.id);
@@ -190,76 +176,6 @@ export const ApostleMathTab: React.FC<ApostleMathTabProps> = ({
       setTimeout(() => setCopiedId(null), 2000);
     } catch {
       // ignore
-    }
-  };
-
-  const handleGenerateAiMathemaSermon = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!customMathTopic.trim() && !customScripture.trim()) return;
-    setIsGeneratingAi(true);
-    setAiError(null);
-    setStreamingAiText("");
-    setStreamingProgress(25);
-
-    try {
-      const res = await streamAiContent<any>({
-        actionType: "apostlemath",
-        mathBranch: customMathTopic || "Vectors & Divine Trajectory",
-        spiritualConcept: customScripture || "Kingdom Alignment and Prophetic Velocity",
-        fastMode: getIsFastMode(),
-        storageKey: "ai_apostlemath_history",
-        onProgress: (prog) => {
-          setStreamingProgress(prog);
-        },
-        onChunk: (_chunk, accText) => {
-          setStreamingAiText(accText);
-        },
-        onComplete: (_fullText, data) => {
-          if (!data || (!data.mathemaSermon && !data.mathPrinciple && !data.title)) {
-            setAiError("AI generation could not be completed right now.");
-            setIsGeneratingAi(false);
-            return;
-          }
-          const inner = data;
-          const newLesson: ApostleMathLesson = {
-            id: inner.id || `ai-math-${Date.now()}`,
-            title: inner.title || "ApostleMath Lesson",
-            subtitle: inner.subtitle || "",
-            mathBranch: inner.mathBranch || customMathTopic || "Applied Mathematics",
-            mathPrinciple: inner.mathPrinciple || "",
-            mathFormula: inner.mathFormula || "",
-            mathIllustration: inner.mathIllustration || "",
-            lifeConnection: inner.lifeConnection || "",
-            biblicalTruth: inner.biblicalTruth || "",
-            keyScripture: {
-              reference: inner.keyScripture?.reference || customScripture || "Proverbs 3:5-6",
-              text: inner.keyScripture?.text || ""
-            },
-            mathemaSermon: inner.mathemaSermon || "",
-            practicalApplication: Array.isArray(inner.practicalApplication) ? inner.practicalApplication : [],
-            prayer: inner.prayer || "",
-            tags: Array.isArray(inner.tags) ? inner.tags : ["ApostleMath", "Wisdom"],
-            readTimeMinutes: inner.readTimeMinutes || 4
-          };
-
-          setAiGeneratedLesson(newLesson);
-          handleSelectLesson(newLesson.id);
-          setIsGeneratingAi(false);
-        },
-        onError: (err) => {
-          setAiError(err || "AI generation could not be completed right now. Please try again.");
-          setIsGeneratingAi(false);
-        }
-      });
-
-      if (!res.success && !aiGeneratedLesson) {
-        setAiError(res.error || "AI generation could not be completed right now. Please try again.");
-      }
-    } catch (err: any) {
-      console.warn("Error generating ApostleMath AI lesson:", err);
-      setAiError(err?.message || "AI generation could not be completed right now. Please try again.");
-    } finally {
-      setIsGeneratingAi(false);
     }
   };
 
@@ -838,81 +754,7 @@ export const ApostleMathTab: React.FC<ApostleMathTabProps> = ({
         </div>
       </div>
 
-      {/* 6. AI MathemaSermon Explorer */}
-      <div className="p-6 rounded-3xl bg-gradient-to-br from-slate-950 via-[#16235A] to-slate-900 text-white border border-purple-500/40 space-y-4 shadow-xl">
-        <div className="flex items-center gap-2">
-          <div className="p-2 rounded-xl bg-purple-500/20 border border-purple-400/30">
-            <Sparkles className="w-5 h-5 text-purple-300" />
-          </div>
-          <div>
-            <h3 className="text-base font-bold font-serif">
-              AI MathemaSermon Explorer (Ultra-Fast Response)
-            </h3>
-            <p className="text-xs text-slate-300">
-              Enter any mathematical concept (e.g. Fourier Transform, Navier-Stokes, Complex Roots, Probability) to generate an expository outline.
-            </p>
-          </div>
-        </div>
 
-        <form onSubmit={handleGenerateAiMathemaSermon} className="flex flex-col sm:flex-row gap-2.5">
-          <input
-            type="text"
-            value={customMathTopic}
-            onChange={(e) => setCustomMathTopic(e.target.value)}
-            placeholder="e.g. Euler's Identity, Bayes' Theorem, Eigenvalues..."
-            className="flex-1 px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-[#9333EA]"
-          />
-          <input
-            type="text"
-            value={customScripture}
-            onChange={(e) => setCustomScripture(e.target.value)}
-            placeholder="Anchor Scripture (e.g. John 14:6)"
-            className="sm:w-60 px-4 py-2.5 rounded-xl bg-white/10 border border-white/20 text-xs text-white placeholder:text-slate-400 focus:outline-none focus:border-[#9333EA]"
-          />
-          <button
-            type="submit"
-            disabled={isGeneratingAi || (!customMathTopic.trim() && !customScripture.trim())}
-            className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#9333EA] to-[#DB2777] hover:brightness-110 text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all cursor-pointer disabled:opacity-50 shadow-md"
-          >
-            {isGeneratingAi ? (
-              <span>Exploring...</span>
-            ) : (
-              <>
-                <Send className="w-3.5 h-3.5" />
-                <span>Explore</span>
-              </>
-            )}
-          </button>
-        </form>
-
-        {/* AI Streaming Loading View */}
-        {isGeneratingAi && (
-          <div className="pt-2">
-            <AiFastLoadingView
-              progress={streamingProgress}
-              title="Formulating ApostleMath Expository Sermon"
-              actionType="ApostleMath Laboratory"
-              streamingText={streamingAiText}
-              isStreaming={true}
-              onCancel={() => setIsGeneratingAi(false)}
-            />
-          </div>
-        )}
-
-        {/* AI Error View */}
-        {!isGeneratingAi && aiError && (
-          <div className="p-4 rounded-xl bg-red-950/60 border border-red-500/40 text-xs text-red-200 space-y-2">
-            <div className="font-bold font-mono uppercase text-red-300">ApostleMath Explorer Notice</div>
-            <p>{aiError}</p>
-            <button
-              onClick={handleGenerateAiMathemaSermon}
-              className="px-3 py-1.5 rounded-lg bg-red-600 hover:bg-red-500 text-white text-xs font-bold cursor-pointer transition-colors"
-            >
-              Retry
-            </button>
-          </div>
-        )}
-      </div>
 
       {/* Devotion Picture Export Modal */}
       {pictureDevotion && (

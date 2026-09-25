@@ -34,9 +34,7 @@ import {
 } from "../data/spiritualPlacesData";
 import { DevotionPictureModal } from "./DevotionPictureModal";
 import { printScripturalPlaceDocument, downloadScripturalPlaceDocument } from "../utils/devotionDocumentExporter";
-import { getCachedAiHistory } from "../utils/aiClient";
-import { streamAiContent, getIsFastMode, setIsFastMode } from "../utils/aiStreaming";
-import { AiFastLoadingView } from "./AiFastLoadingView";
+
 
 interface SpiritualPlaceSanctuaryModalProps {
   place: SpiritualPlace | null;
@@ -83,18 +81,6 @@ export const SpiritualPlaceSanctuaryModal: React.FC<SpiritualPlaceSanctuaryModal
   const [customPrayerExpanded, setCustomPrayerExpanded] = useState(false);
   const [pictureDevotion, setPictureDevotion] = useState<Devotion | null>(null);
 
-  // Biblical Historian Exegesis State
-  const [historyData, setHistoryData] = useState<{
-    historicalAccount: string;
-    biblicalReference?: string;
-    keyFigures?: string[];
-    historicalOutcome?: string;
-  } | null>(null);
-  const [isLoadingHistory, setIsLoadingHistory] = useState(false);
-  const [historyError, setHistoryError] = useState<string | null>(null);
-  const [streamingAiText, setStreamingAiText] = useState("");
-  const [streamingProgress, setStreamingProgress] = useState(25);
-
   const getPlaceDevotion = (): Devotion => {
     const scrip = currentScripture || {
       id: "scrip_1",
@@ -130,66 +116,8 @@ export const SpiritualPlaceSanctuaryModal: React.FC<SpiritualPlaceSanctuaryModal
       setSessionSeenIds([initial.id]);
       setActiveTab("sanctuary");
       setCustomPrayerExpanded(false);
-
-      // Load cached history or seed fallback
-      const cachedList = getCachedAiHistory(`place_history_${place.id}`);
-      if (cachedList && cachedList.length > 0) {
-        setHistoryData(cachedList[0]);
-      } else {
-        setHistoryData(null);
-      }
     }
   }, [place, isOpen]);
-
-  const handleFetchPlaceHistory = async () => {
-    if (!place) return;
-    setIsLoadingHistory(true);
-    setHistoryError(null);
-    setStreamingAiText("");
-    setStreamingProgress(25);
-
-    try {
-      const res = await streamAiContent<any>({
-        actionType: "scriptural_place_history",
-        placeName: place.name,
-        biblicalReference: place.biblicalReference,
-        context: place.historicalContext || place.description,
-        fastMode: getIsFastMode(),
-        storageKey: `place_history_${place.id}`,
-        onProgress: (prog) => {
-          setStreamingProgress(prog);
-        },
-        onChunk: (_chunk, accText) => {
-          setStreamingAiText(accText);
-        },
-        onComplete: (fullText, data) => {
-          if (data && data.historicalAccount) {
-            setHistoryData(data);
-          } else {
-            setHistoryData({
-              historicalAccount: fullText || `Biblical events at ${place.name} occurred according to Scripture (${place.biblicalReference}).`,
-              biblicalReference: place.biblicalReference,
-              keyFigures: [],
-              historicalOutcome: ""
-            });
-          }
-          setIsLoadingHistory(false);
-        },
-        onError: (err) => {
-          setHistoryError(err);
-          setIsLoadingHistory(false);
-        }
-      });
-
-      if (!res.success && res.error) {
-        setHistoryError(res.error);
-      }
-    } catch (err: any) {
-      setHistoryError(err?.message || "Failed to load historical biblical account.");
-    } finally {
-      setIsLoadingHistory(false);
-    }
-  };
 
   if (!isOpen || !place) return null;
 
@@ -454,71 +382,28 @@ export const SpiritualPlaceSanctuaryModal: React.FC<SpiritualPlaceSanctuaryModal
                       Biblical Historical Record ({place.name})
                     </h4>
                   </div>
-                  <button
-                    onClick={handleFetchPlaceHistory}
-                    disabled={isLoadingHistory}
-                    className="px-2.5 py-1 rounded-lg bg-indigo-900/50 hover:bg-indigo-800/60 border border-indigo-400/30 text-indigo-200 text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer disabled:opacity-50"
-                    title="Generate live factual biblical exegesis without motivational filler"
-                  >
-                    <Sparkles className={`w-3.5 h-3.5 text-indigo-300 ${isLoadingHistory ? "animate-spin" : ""}`} />
-                    <span>{isLoadingHistory ? "Historian Analyzing..." : "Live Historian Exegesis"}</span>
-                  </button>
+                  <span className="text-[11px] text-slate-400 font-mono">
+                    {place.biblicalReference}
+                  </span>
                 </div>
 
-                {historyError && !isLoadingHistory && (
-                  <div className="p-3 rounded-xl bg-red-950/50 border border-red-500/40 text-xs text-red-200 flex items-center justify-between gap-3">
-                    <span className="leading-relaxed">{historyError}</span>
-                    <button
-                      type="button"
-                      onClick={() => handleFetchPlaceHistory()}
-                      className="px-2.5 py-1 rounded-lg bg-red-600 hover:bg-red-500 text-white font-semibold text-xs transition-colors shrink-0 cursor-pointer"
-                    >
-                      Retry
-                    </button>
-                  </div>
-                )}
-
-                {/* Live Historian Exegesis Streaming Loading View */}
-                {isLoadingHistory && (
-                  <div className="pt-1">
-                    <AiFastLoadingView
-                      progress={streamingProgress}
-                      title={`Exegeting Biblical History for ${place.name}`}
-                      actionType="Biblical Historian Engine"
-                      streamingText={streamingAiText}
-                      isStreaming={true}
-                      onCancel={() => setIsLoadingHistory(false)}
-                    />
-                  </div>
-                )}
-
-                {!isLoadingHistory && (
-                  <div className="text-sm text-slate-200 leading-relaxed space-y-2">
-                    {historyData ? (
-                      <>
-                        <p className="font-serif">{historyData.historicalAccount}</p>
-                        {historyData.historicalOutcome && (
-                          <p className="text-xs text-emerald-300 pt-1 border-t border-white/10 font-medium">
-                            <strong>Biblical Outcome:</strong> {historyData.historicalOutcome}
-                          </p>
-                        )}
-                        {historyData.keyFigures && historyData.keyFigures.length > 0 && (
-                          <div className="flex flex-wrap gap-1.5 pt-1">
-                            {historyData.keyFigures.map((fig, idx) => (
-                              <span key={idx} className="px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 text-[11px] border border-slate-700">
-                                {fig}
-                              </span>
-                            ))}
-                          </div>
-                        )}
-                      </>
-                    ) : (
-                      <p className="font-serif text-slate-300">
-                        {place.historicalContext || `At ${place.name}, significant biblical events transpired according to Scripture (${place.biblicalReference}).`}
-                      </p>
-                    )}
-                  </div>
-                )}
+                <div className="text-sm text-slate-200 leading-relaxed space-y-2">
+                  <p className="font-serif">
+                    {place.historicalContext || `At ${place.name}, significant biblical events transpired according to Scripture (${place.biblicalReference}).`}
+                  </p>
+                  <p className="text-xs text-amber-300/90 pt-1 border-t border-white/10 font-medium">
+                    <strong>Spiritual Significance:</strong> {place.spiritualMeaning}
+                  </p>
+                  {place.themes && place.themes.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {place.themes.map((theme, idx) => (
+                        <span key={idx} className="px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 text-[11px] border border-slate-700">
+                          {theme}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
 
               {/* Scripture Display Card */}
