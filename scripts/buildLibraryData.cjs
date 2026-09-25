@@ -933,7 +933,7 @@ export function generate200LibraryMessages(): Book[] {
           estimatedMinutes: 7,
           content: \`" \${item.quote} " — \${item.scriptureRef}
 
-To approach the holy revelation of \${item.title.toLowerCase()}, one must stand before the inspired Scriptures with reverence, humility, and spiritual attentiveness. In the sacred text of \${item.scriptureRef}, the Holy Spirit establishes an immutable anchor for the believer's soul. As the Apostle writes, "All scripture is given by inspiration of God, and is profitable for doctrine, for reproof, for correction, for instruction in righteousness" (2 Timothy 3:16).
+When the Holy Spirit illuminates ${item.title.toLowerCase()} in ${item.scriptureRef}, the divine text establishes an immutable anchor for the believer's soul. As the Apostle writes, "All scripture is given by inspiration of God, and is profitable for doctrine, for reproof, for correction, for instruction in righteousness" (2 Timothy 3:16).
 
 Linguistic and historical scrutiny reveals the depth of this passage: \${item.langInsight} Throughout biblical history, God's servants did not navigate trials by human cleverness or carnal speculation; they anchored their lives upon the unalterable declarations of the Almighty. When circumstances contradicted heaven's promise, they held fast to the Word, knowing that heaven and earth shall pass away, but God's Words shall never pass away.
 

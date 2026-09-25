@@ -18,9 +18,11 @@ import {
   Sparkles,
   CheckCircle2,
   FileText,
-  Plus
+  Plus,
+  FileDown
 } from "lucide-react";
 import { Book, BookChapter, BookNote } from "../types";
+import { downloadBookAsWordDoc } from "../utils/wordBookExporter";
 
 interface BookReaderModalProps {
   book: Book | null;
@@ -214,7 +216,7 @@ export const BookReaderModal: React.FC<BookReaderModalProps> = ({
                 {book.title}
               </h2>
               <p className="text-[11px] opacity-60 truncate">
-                Page {currentChapter.chapterNumber} of {book.totalChapters}: {currentChapter.title}
+                {book.totalChapters >= 10 ? `Chapter ${currentChapter.chapterNumber} of ${book.totalChapters}` : `Page ${currentChapter.chapterNumber} of ${book.totalChapters}`}: {currentChapter.title}
               </p>
             </div>
           </div>
@@ -281,6 +283,16 @@ export const BookReaderModal: React.FC<BookReaderModalProps> = ({
               title="Search Book"
             >
               <Search className="w-4 h-4" />
+            </button>
+
+            {/* Download MS Word (.doc) formatted in Times New Roman 12pt, 1.5 spacing */}
+            <button
+              onClick={() => downloadBookAsWordDoc(book)}
+              className={`p-2 rounded-xl border border-[#B48C35]/40 bg-[#B48C35]/10 hover:bg-[#B48C35] hover:text-white text-[#B48C35] transition-all flex items-center gap-1.5 text-xs font-bold cursor-pointer shrink-0`}
+              title="Download MS Word (.doc) — Over 400 Pages (Times New Roman 12pt, 1.5 Spacing)"
+            >
+              <FileDown className="w-4 h-4" />
+              <span className="hidden sm:inline">Word (.doc)</span>
             </button>
 
             {/* Close */}
@@ -385,7 +397,7 @@ export const BookReaderModal: React.FC<BookReaderModalProps> = ({
               <div className={`p-4 border-b ${activeTheme.border} flex items-center justify-between`}>
                 <h3 className="text-xs font-bold uppercase tracking-wider flex items-center gap-2">
                   <BookOpen className="w-3.5 h-3.5 text-[#B48C35]" />
-                  Pages ({book.chapters.length})
+                  {book.totalChapters >= 10 ? `Chapters (${book.chapters.length})` : `Pages (${book.chapters.length})`}
                 </h3>
                 <button
                   onClick={() => setIsTocOpen(false)}
@@ -438,8 +450,8 @@ export const BookReaderModal: React.FC<BookReaderModalProps> = ({
           >
             {/* Chapter Header */}
             <div className="text-center space-y-2 pb-6 border-b border-current/10">
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[#B48C35]">
-                Page {currentChapter.chapterNumber} of {book.totalChapters}
+              <span className="text-[11px] font-bold uppercase tracking-widest text-[#B48C35] px-3 py-1 rounded-full bg-[#B48C35]/10 inline-block border border-[#B48C35]/20">
+                {book.totalChapters >= 10 ? `Chapter ${currentChapter.chapterNumber} of ${book.totalChapters}` : `Page ${currentChapter.chapterNumber} of ${book.totalChapters}`}
               </span>
               <h1 className="text-2xl sm:text-3xl font-bold font-serif leading-tight">
                 {currentChapter.title}
@@ -459,10 +471,79 @@ export const BookReaderModal: React.FC<BookReaderModalProps> = ({
               </div>
             </div>
 
-            {/* Paragraphs with Typography Styling */}
+            {/* Paragraphs with Typography & Markdown Styling */}
             <div className={`space-y-6 ${fontSizes[fontSize]} ${fontFamilies[fontFamily]}`}>
               {filteredParagraphs.map((para, pIdx) => {
+                const trimmed = para.trim();
                 const isMatch = searchQuery.trim() && para.toLowerCase().includes(searchQuery.toLowerCase());
+                
+                if (trimmed === "---") {
+                  return <hr key={pIdx} className="my-6 border-t border-current/20 border-dashed" />;
+                }
+
+                if (trimmed.startsWith("### ")) {
+                  return (
+                    <h3
+                      key={pIdx}
+                      className={`text-lg sm:text-xl font-bold font-serif text-[#B48C35] pt-4 pb-1 border-b border-current/10 ${
+                        isMatch ? "bg-amber-300/30 p-2 rounded-lg" : ""
+                      }`}
+                    >
+                      {trimmed.replace(/^###\s+/, "")}
+                    </h3>
+                  );
+                }
+
+                if (trimmed.startsWith("#### ")) {
+                  return (
+                    <h4
+                      key={pIdx}
+                      className={`text-base sm:text-lg font-bold font-serif opacity-90 pt-3 ${
+                        isMatch ? "bg-amber-300/30 p-2 rounded-lg" : ""
+                      }`}
+                    >
+                      {trimmed.replace(/^####\s+/, "")}
+                    </h4>
+                  );
+                }
+
+                if (trimmed.startsWith("> ")) {
+                  return (
+                    <blockquote
+                      key={pIdx}
+                      className={`border-l-4 border-[#B48C35] bg-[#B48C35]/10 px-4 py-3 rounded-r-xl italic font-serif my-3 leading-relaxed text-justify ${
+                        isMatch ? "ring-2 ring-amber-400" : ""
+                      }`}
+                    >
+                      {trimmed.replace(/^>\s*/, "")}
+                    </blockquote>
+                  );
+                }
+
+                if (trimmed.startsWith("$$") && trimmed.endsWith("$$")) {
+                  return (
+                    <div
+                      key={pIdx}
+                      className="my-4 p-4 rounded-xl bg-black/5 dark:bg-white/5 border border-[#B48C35]/30 text-center font-mono font-bold text-sm sm:text-base text-[#B48C35] tracking-wide shadow-inner"
+                    >
+                      {trimmed.slice(2, -2).trim()}
+                    </div>
+                  );
+                }
+
+                if (trimmed.startsWith("- ") || trimmed.startsWith("• ")) {
+                  const lines = trimmed.split("\n");
+                  return (
+                    <ul key={pIdx} className={`space-y-1.5 my-3 pl-5 list-disc marker:text-[#B48C35] ${isMatch ? "bg-amber-300/30 p-2 rounded-lg" : ""}`}>
+                      {lines.map((line, lIdx) => (
+                        <li key={lIdx} className="leading-relaxed">
+                          {line.replace(/^[-•]\s+/, "")}
+                        </li>
+                      ))}
+                    </ul>
+                  );
+                }
+
                 return (
                   <p
                     key={pIdx}
@@ -470,7 +551,7 @@ export const BookReaderModal: React.FC<BookReaderModalProps> = ({
                       isMatch ? "bg-amber-300/30 p-2 rounded-lg" : ""
                     }`}
                   >
-                    {para}
+                    {trimmed}
                   </p>
                 );
               })}
